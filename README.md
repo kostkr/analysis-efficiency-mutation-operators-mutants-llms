@@ -1,45 +1,68 @@
-# LLM-Mutants — Master's Thesis Repository
+# [LLM-Mutants] Analysis of the Effectiveness of Generating Mutation Operators (Mutants) Using Large Language Models
 
-Project: "LLM-Mutants: Analysis of the effectiveness of generating mutation operators (mutants) using large language models"
+## Definitions
 
-This repository contains the working artifacts, notes, code and examples for a master's thesis investigating whether large language models (LLMs) can generate useful mutation operators and mutants for Java projects and how those compare to classical mutation tools.
+- **Currently known mutation operators** — those described in [PIT](https://pitest.org/quickstart/mutators/) as the "ALL" group. These will be treated as the "classical" mutation operators for comparison.
+- **LLM operator (LLM‑mutator)** — a rule for changing code induced by an LLM (a textual description + an example change) that can be applied to many places in code to create mutants. (Unlike PIT mutators, this is not a pre-defined, hand-coded mutator.)
+- **Mutant** — a program version containing a small, intentionally designed change meant to test the strength of a test suite.
+- **Kill** — an event when existing tests detect a behavioral difference between the original program and the mutant.
+- **Mutation score** — the proportion of killed mutants in a generated mutant set; higher scores indicate stronger test suites.
+- **Equivalent mutant** — a mutant that does not change the program in a way detectable by tests; such mutants increase analysis cost without adding information.
+- **Duplicate mutant** — a mutant that is semantically the same as another mutant even if the patch looks different; causes artificial inflation of the mutant count.
+- **Compilability** — the percentage of generated mutants that compile.
+- **Proximity to a real bug (proximity)** — a measure of how much a mutant resembles a real bug. It can be measured by behavioral similarity (comparing which tests fail for the bug and for the mutant) and by semantic similarity (e.g., using an embedding model). (Which method is better should be decided later.)
+- **"Closest classical equivalent"** — the operator in PIT (the "ALL" group) that is most similar to a given LLM-generated operator; the exact matching procedure needs to be defined.
 
-Main contents
-- `plan_wykonania_pracy_magisterskiej.md` — project plan (Polish) with experimental outline and timeline.
-- `diploma/diploma.md` — short project description and milestones.
-- `THESIS_STRUCTURE.md` — proposed chapter structure and contents (English).
-- `docs/` — chapter drafts and stubs for the thesis text.
-- `notebooks/` — analysis and evaluation Jupyter notebooks (Python).
-- `src_examples/java/` — small Java examples and code snippets used as mutation targets.
-- `requirements.txt` — Python dependencies used for analysis and clustering.
+**Bug repositories (datasets) of real defects:**
+- [Defects4J](https://github.com/rjust/defects4j) (approx. 854 active bugs in newer releases)
+- [ConDefects](https://github.com/appmlk/ConDefects) (1254 Java bugs, plus Python)
+- [QuixBugs](https://github.com/jkoppel/QuixBugs) (40 algorithmic tasks, Python/Java)
 
-Quick start
-1. Create a Python virtual environment (recommended):
+## Research plan
 
-   python3 -m venv .venv
-   source .venv/bin/activate
+**Goal:** to verify whether large language models (LLMs) can generate new mutation operator rules (LLM operators) that do not exist in the classical PIT "ALL" list, and to assess their quality relative to classical operators.
 
-2. Install Python dependencies:
+1. **Generating mutants with LLMs**
+   - For selected bugs from the datasets, ask an LLM to generate mutations together with a description of the mutation rule (textual description).
+   - For each generated mutation, record metadata: rule description, patch, and location in the code.
 
-   pip install -r requirements.txt
+2. **Clustering mutations into LLM operators**
+   - Group similar mutations by their rule descriptions and edit patterns (an embedding model can be used to measure similarity).
+   - Define each cluster as a single LLM operator (rule description + example applications).
 
-3. Open the initial analysis notebook:
+3. **Comparison with classical PIT operators**
+   - For each LLM operator, check whether there exists a "closest classical equivalent" in PIT (based on change type and semantic effect).
+   - If there is no match, treat the LLM operator as a potential new mutation operator.
 
-   jupyter lab notebooks/initial_analysis.ipynb
+4. **Filtering LLM mutants (pre-analysis)**
+   - Check compilability: compile each mutant and discard those that do not compile (record reasons for rejection).
+   - Remove semantic duplicates: detect and remove semantic duplicates (e.g., compare ASTs, cluster on code embeddings, or apply heuristic comparisons).
+   - Document the number and causes of rejected mutants; these statistics will be reported as the cost of generating LLM operators.
 
-4. Use `src_examples/java/LLMMutantExample.java` as a simple target for manual mutation experiments and for developing prompts.
+5. **Technical validation of LLM operators**
+   - Compilability (after filtering): generate mutants according to the rule and check what percentage compile successfully.
+   - Repeatability / usefulness: evaluate whether the rule can be applied multiple times across different places and projects (count of applicable locations).
 
-Repository guidelines
-- Keep all prompts and model configuration in `configs/` (create when ready).
-- Store generated mutants and experimental outputs under `data/` (do not commit large files; use .gitignore rules or external storage).
+## Research theses
+This section maps the research plan to the specific research theses.
 
-Reproducibility
-- Record LLM model versions, prompts, seeds and temperatures in `configs/` and in experiment logs.
-- Prefer using Docker or pinned environment for reproducing the Java build/test environment.
+### Can LLMs generate mutation operators different from those known today (PIT)?
 
-Contact
-- Thesis author: (add your name and contact information here)
+Metrics answering this thesis:
+- **% of new operators** — proportion of LLM operators without a PIT equivalent.
+- **Compilability** — percentage of mutants generated by a given rule that compile.
+- **Number of applications** — how often the rule has meaningful applications across different projects (considering duplicate and equivalent mutants).
 
----
-This repo was generated to bootstrap the thesis workflow. See `THESIS_STRUCTURE.md` and `docs/` for chapter templates and next steps.
+### Are LLM operators closer to real defects?
 
+Metrics answering this thesis:
+- **Proximity to real bugs** — similarity between failing/passing profiles of mutants and real bugs, and semantic similarity measures.
+- **Mutation score** — proportion of mutants detected by tests for LLM operators vs PIT equivalents.
+
+### Are LLM operators more effective than their "closest" classical equivalents?
+
+Metrics answering this thesis:
+- **Mutation score** for LLM operators vs their closest PIT equivalents.
+- **Compilability** — compare compilation rates for LLM vs PIT mutants.
+- **Duplicate rate** — fraction of semantic duplicates among mutants: LLM vs PIT.
+- **Number of applications** — average count of code locations where a rule is applicable: LLM vs PIT.
