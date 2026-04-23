@@ -20,7 +20,7 @@
 
 - [Rozdział 2 — Testowanie mutacyjne](#rozdział-testowanie-mutacyjne)(TO DO)
   - [2.1 Czym jest mutant?](#czym-jest-mutant)
-  - [2.2 Zabicie mutanta i mutation score](#zabicie-mutanta-i-mutation-score)(TO DO)
+  - [2.2 Zabicie mutanta i mutation score](#zabicie-mutanta-i-mutation-score)
   - [2.3 Rodzaje mutantów](#rodzaje-mutantów)(TO DO)
     - [2.3.1 Equivalent mutants](#equivalent-mutants)
     - [2.3.2 Duplicate mutants](#duplicate-mutants)
@@ -214,11 +214,36 @@ Aby ocenić jakość testów, używa się metryki mutation score, która opisuje
 
 ### Zabicie mutanta i mutation score
 
-> ✏️ **Wskazówka:** Wyjaśnij mechanizm: kiedy mutant jest „zabity" (test wykrywa różnicę w zachowaniu), kiedy „przeżywa" (brak wykrycia). Mutation score = zabite / wszystkie skompilowane. Podaj przykład liczbowy: 80% mutation score = co to znaczy w praktyce.
+Gdy mutanty są wygenerowane, następuje ocena poprzez uruchomienie zbioru testów jednostkowych na zmodyfikowanym kodzie.
+Na tym etapie sprawdzane jest, czy istniejące testy jednostkowe potrafią zidentyfikować, że w kodzie został wprowadzony defekt, który zmienia zachowanie programu.
+Może to oznaczać, że mutant zawiera zarówno zmianę znaczącą, jak i prawie niewidoczną usterkę w kodzie.
+Niezależnie od charakteru zmiany, jeżeli co najmniej jeden test zakończy się niepowodzeniem, oznacza to, że mutant został "zabity" (killed mutant).
+Wskazuje to, że testy poprawnie reagują na modyfikacje w zachowaniu programu, które potencjalnie mogłyby być błędem w kodzie.
 
-*[Do napisania]*
+W innym przypadku, gdy testy jednostkowe nie wykryły zmian w kodzie, mutant jest klasyfikowany jako "przeżywający" (survived mutant).
+Oznacza to, że testy nie wystarczająco pokrywają kod, albo nie sprawdzają odpowiednich wymagań lub zawierają błędy.
+W każdym takim przypadku niewykrycia mutanta świadczy o słabości testów, co pozwala na estymację jakości zestawu testów oraz na wnioskowanie co do użycia produkcyjnego kodu, które te testy sprawdzają.
 
----
+Dla liczbowej oceny efektywności zestawu testów w kontekście mutacyjnego testowania jest stosowana metryka - mutation score.
+Metryka pozwala określić jaki procent mutantów, które udało się skompilować zostały zabite przez zbiór testów jednostkowych.
+
+Dokładny wzór:
+```
+mutation score = liczba zabitych mutantów / liczba skompilowanych mutantów
+```
+
+Dla jasności można rozważyć przykład. Jeżeli podczas testowania wygenerowano 100 mutantów.
+Spośród nich 20 nie skompilowało się i zostało wykluczonych ze zbioru mutantów.
+Na pozostałych 80 mutantach wykonano testy oraz 60 spośród nich zostało zabitych, a 20 przeżyło.
+W tym przypadku mutation score = 60 / 80 = 75%.
+Ten wynik oznacza, że zestaw testów wychwytuje 75% symulowanych błędów.
+Generalnie wyższy mutation score sugeruje lepszą skuteczność testów w wykrywaniu potencjalnych bugów.
+Z kolei niższa wartość sugeruje, że testy mogą wymagać poprawy, ponieważ nie wykrywają symulowanych błędów w kodzie.
+
+Trzeba jednak pamiętać, że mutation score nie jest jednoznacznym miernikiem jakości testów jednostkowych.
+Należy odczytywać tę metrykę wyłącznie w kontekście wygenerowanych mutantów, od których całkiem zależą wyniki testowania mutacyjnego.
+Na przykład duża liczba podobnych lub bardzo trywialnych mutantów może naprowadzić na błędne wyniki.
+Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zinterpretować wyniki.
 
 ### Rodzaje mutantów
 
