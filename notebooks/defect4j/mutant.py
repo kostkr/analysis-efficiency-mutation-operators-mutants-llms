@@ -16,14 +16,16 @@ Schema (JSON)
   "precode":    "if (x == null)",
   "aftercode":  "if (x != null)",
   "rule":       "Negate null check",
-  "gen_time_s": 1.23
+  "gen_time_s": 1.23,
+  "dublicate":  false
 }
 """
 
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, asdict
+import re
+from dataclasses import dataclass, field
 from pathlib import Path
 
 
@@ -36,11 +38,23 @@ class Mutant:
     ----------
     id          : unique integer identifier within one mutant JSON file
     filepath    : path relative to project root
-    line        : 1-based line number to patch
     precode     : original text on that line (stripped)
     aftercode   : replacement text (stripped)
     rule        : human-readable mutation operator description
     gen_time_s  : seconds spent generating this mutant
+    dublicate   : True when this mutant is equivalent to the original code or
+                  to another mutant after normalization
+    pit_mutator : raw PIT mutator FQN (optional, classic PIT only)
+    pit_description : raw PIT description (optional)
+    pit_status  : KILLED / SURVIVED / NO_COVERAGE / ... (optional)
+    pit_detected: whether PIT marked it as detected (optional)
+    pit_tests_run : number of tests PIT ran for this mutation (optional)
+    pit_killing_test : killing test name if any (optional)
+    pit_index   : first PIT instruction index (optional)
+    pit_indexes : all PIT instruction indexes (optional)
+    pit_blocks  : PIT basic blocks (optional)
+    pit_method  : mutated method name (optional)
+    pit_method_description : bytecode method descriptor (optional)
     """
 
     id:         int
@@ -50,19 +64,34 @@ class Mutant:
     aftercode:  str
     rule:       str   = ""
     gen_time_s: float = 0.0
+    dublicate: bool = False
+    pit_mutator: str = ""
+    pit_description: str = ""
+    pit_status: str = ""
+    pit_detected: bool = False
+    pit_tests_run: int = 0
+    pit_killing_test: str = ""
+    pit_index: int = -1
+    pit_indexes: list[int] = field(default_factory=list)
+    pit_blocks: list[int] = field(default_factory=list)
+    pit_method: str = ""
+    pit_method_description: str = ""
 
     # ------------------------------------------------------------------ #
     #  Identity / deduplication                                            #
     # ------------------------------------------------------------------ #
-    def signature(self) -> tuple:
+    def signature(self) -> tuple[str, int, str]:
         """
-        Syntactic identity tuple for deduplication.
+        Normalized mutant identity tuple for duplicate detection.
 
-        Two mutants are syntactic duplicates if they have the same
-        (filepath, line, aftercode.strip()) — they introduce the identical
-        change regardless of id or generator file.
+        Two mutants share the same duplicate group when they produce the same
+        normalized replacement for the same file/line.
         """
-        return (self.filepath, self.line, self.aftercode.strip())
+        return (self.filepath, self.line, normalize_code_fragment(self.aftercode))
+
+    def original_signature(self) -> tuple[str, int, str]:
+        """Normalized identity of the original source at this mutant location."""
+        return (self.filepath, self.line, normalize_code_fragment(self.precode))
 
     # ------------------------------------------------------------------ #
     #  Apply / revert (in-place on the host filesystem)                   #
@@ -126,7 +155,16 @@ class Mutant:
     #  Serialisation                                                       #
     # ------------------------------------------------------------------ #
     def to_dict(self) -> dict:
-        return asdict(self)
+        return {
+            "id": self.id,
+            "filepath": self.filepath,
+            "line": self.line,
+            "precode": self.precode,
+            "aftercode": self.aftercode,
+            "rule": self.rule,
+            "gen_time_s": self.gen_time_s,
+            "dublicate": self.dublicate,
+         }
 
     def __repr__(self) -> str:
         return f"Mutant({self.id!r}, {self.filepath}:{self.line})"
@@ -162,20 +200,23 @@ class MutantBank:
     #  I/O                                                                 #
     # ------------------------------------------------------------------ #
     def load(self) -> "MutantBank":
-        with open(self.path, encoding="utf-8") as f:
+        with self.path.open(encoding="utf-8") as f:
             raw = json.load(f)
         self.mutants = [Mutant(**m) for m in raw]
+        self.mark_duplicates()
         print(f"Loaded {len(self.mutants)} mutants from {self.path}")
         return self
 
     def save(self, path: Path | str | None = None) -> "MutantBank":
-        dest = Path(path) if path else self.path
+        dest: Path = Path(path) if path is not None else self.path
         dest.parent.mkdir(parents=True, exist_ok=True)
-        with open(dest, "w", encoding="utf-8") as f:
-            json.dump(
-                [m.to_dict() for m in self.mutants],
-                f, indent=2, ensure_ascii=False,
-            )
+        self.mark_duplicates()
+        payload = json.dumps(
+            [m.to_dict() for m in self.mutants],
+            indent=2,
+            ensure_ascii=False,
+        )
+        _atomic_write_text(Path(dest), payload)
         print(f"Saved {len(self.mutants)} mutants → {dest}")
         return self
 
@@ -204,6 +245,18 @@ class MutantBank:
                 aftercode  = r["aftercode"],
                 rule       = r.get("rule", ""),
                 gen_time_s = float(r.get("gen_time_s", 0.0)),
+                dublicate = bool(r.get("dublicate", False)),
+                pit_mutator = r.get("pit_mutator", ""),
+                pit_description = r.get("pit_description", ""),
+                pit_status = r.get("pit_status", ""),
+                pit_detected = bool(r.get("pit_detected", False)),
+                pit_tests_run = int(r.get("pit_tests_run", 0)),
+                pit_killing_test = r.get("pit_killing_test", ""),
+                pit_index = int(r.get("pit_index", -1)),
+                pit_indexes = list(r.get("pit_indexes", [])),
+                pit_blocks = list(r.get("pit_blocks", [])),
+                pit_method = r.get("pit_method", ""),
+                pit_method_description = r.get("pit_method_description", ""),
             )
             for r in records
         ]
@@ -214,6 +267,19 @@ class MutantBank:
     # ------------------------------------------------------------------ #
     def __len__(self)  -> int: return len(self.mutants)
     def __iter__(self):        return iter(self.mutants)
+
+    def mark_duplicates(self) -> "MutantBank":
+        mark_duplicate_mutants(self.mutants)
+        return self
+
+    def non_duplicates(self) -> list[Mutant]:
+        self.mark_duplicates()
+        return [m for m in self.mutants if not m.dublicate]
+
+    def duplicate_count(self) -> int:
+        self.mark_duplicates()
+        return sum(1 for m in self.mutants if m.dublicate)
+
     def __repr__(self) -> str:
         return f"MutantBank({self.path.name!r}, {len(self.mutants)} mutants)"
 
@@ -232,6 +298,7 @@ class MutantBank:
                 "aftercode":  "if (x != null)",
                 "rule":       "Negate null check",
                 "gen_time_s": 1.23,
+                "dublicate":  False,
             },
             {
                 "id":         2,
@@ -241,12 +308,50 @@ class MutantBank:
                 "aftercode":  "return value - 1;",
                 "rule":       "Math (+ → -)",
                 "gen_time_s": 0.02,
+                "dublicate":  False,
             },
         ]
         dest = Path(dest)
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(json.dumps(sample, indent=2, ensure_ascii=False))
+        _atomic_write_text(dest, json.dumps(sample, indent=2, ensure_ascii=False))
         print(f"Example written → {dest}")
+
+
+def _atomic_write_text(path: Path, payload: str) -> None:
+    tmp = path.with_name(f".{path.name}.tmp")
+    tmp.write_text(payload, encoding="utf-8")
+    tmp.replace(path)
+
+
+def normalize_code_fragment(text: str) -> str:
+    """Cheap normalization used for duplicate detection."""
+    return re.sub(r"\s+", " ", str(text or "").replace("\r\n", "\n").replace("\r", "\n")).strip()
+
+
+def mark_duplicate_mutants(mutants: list[Mutant]) -> list[Mutant]:
+    """
+    Mark duplicates in O(n) time without removing them.
+
+    Duplicate rules:
+    - mutant normalized replacement == normalized original code on the same file/line
+    - if multiple mutants share the same normalized replacement on the same file/line,
+      keep the first representative non-duplicate and mark only later ones duplicate
+    """
+    seen_unique_signatures: set[tuple[str, int, str]] = set()
+
+    for mutant in mutants:
+        original_sig = mutant.original_signature()
+        mutant_sig = mutant.signature()
+        if mutant_sig == original_sig:
+            mutant.dublicate = True
+            continue
+        if mutant_sig in seen_unique_signatures:
+            mutant.dublicate = True
+            continue
+        mutant.dublicate = False
+        seen_unique_signatures.add(mutant_sig)
+
+    return mutants
 
 
 

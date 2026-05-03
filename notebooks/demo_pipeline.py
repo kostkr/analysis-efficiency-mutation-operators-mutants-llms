@@ -3,28 +3,19 @@ demo_pipeline.py
 ================
 Real collection-only runner for Defects4J.
 
-How it works
-------------
-You work with the local folder:
-    notebooks/demo_collection_workspace/
+Edit only the small CONFIG block below:
+- which bugs to run
+- how many workers to use inside the container
+- per-mutant test timeout
 
-The running container is mounted to a different host workspace. This script:
-1. reads your local `BUG/mutants/*.json`
-2. copies those selected bug inputs into the real mounted workspace
-3. runs Defects4J inside the container
-4. copies `meta.json` and `results/` back into `notebooks/demo_collection_workspace`
-
-So after running:
-- your local `mutans/` stays untouched
-- your local `meta.json` is updated
-- your local `results/` is rewritten with fresh data
-
-No metrics are computed here.
+The rest of the container/runtime wiring stays fixed and is discovered
+automatically.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -37,49 +28,49 @@ from defect4j import Defects4J, MutantBank, Storage, DataCollector
 SEP = "━" * 64
 LOCAL_WORKSPACE = Path(__file__).parent / "demo_collection_workspace"
 LOCAL_RESULTS_ROOT = LOCAL_WORKSPACE   # bug dirs live directly under demo_collection_workspace/
-CONTAINER_NAME = "defects4j-container"
-CONTAINER_WORKSPACE = "/workspace"
-TEST_TIMEOUT_S = 600
 
-PROJECT_IDENTIFIERS = [
-    "Chart",
-    "Cli",
-    "Closure",
-    "Codec",
-    "Collections",
-    "Compress",
-    "Csv",
-    "Gson",
-    "JacksonCore",
-    "JacksonDatabind",
-    "JacksonXml",
-    "Jsoup",
-    "JxPath",
-    "Lang",
-    "Math",
-    "Mockito",
-    "Time",
+# ── Edit only this block ─────────────────────────────────────────────────────
+
+BUGS: list[tuple[str, int]] = [
+    ("Lang", 1),
+    ("Lang", 3),
 ]
 
-BUG_IDS_BY_PROJECT: dict[str, list[int]] = {
-    "Lang": [1, 3],
-}
+TEST_TIMEOUT_S = 600
+COLLECT_MAX_WORKERS = 12
+
+# ── Runtime defaults (normally no need to change) ────────────────────────────
+
+CONTAINER_NAME = os.environ.get("D4J_CONTAINER", "defects4j-container")
+CONTAINER_WORKSPACE = os.environ.get("D4J_CONTAINER_WORKSPACE", "/workspace")
 
 
-def validate_projects() -> None:
-    unknown = [p for p in BUG_IDS_BY_PROJECT if p not in PROJECT_IDENTIFIERS]
-    if unknown:
-        raise ValueError(
-            f"Unknown project identifiers: {unknown}. "
-            f"Allowed values: {PROJECT_IDENTIFIERS}"
-        )
-
-
-def iter_bug_plan() -> list[tuple[str, int]]:
+def validate_config() -> list[tuple[str, int]]:
     plan: list[tuple[str, int]] = []
-    for project in PROJECT_IDENTIFIERS:
-        for bug_id in BUG_IDS_BY_PROJECT.get(project, []):
-            plan.append((project, int(bug_id)))
+    for raw_project, raw_bug_id in BUGS:
+        project = str(raw_project).strip()
+        if not project:
+            raise ValueError("Each BUGS entry must have a non-empty project name.")
+
+        try:
+            bug_id = int(raw_bug_id)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"Invalid bug id for project {project!r}: {raw_bug_id!r}") from exc
+
+        if bug_id < 1:
+            raise ValueError(f"Bug id must be >= 1 for project {project!r}, got {bug_id}.")
+
+        plan.append((project, bug_id))
+
+    if not plan:
+        raise ValueError("BUGS must contain at least one (project, bug_id) entry.")
+
+    if int(TEST_TIMEOUT_S) < 1:
+        raise ValueError("TEST_TIMEOUT_S must be >= 1.")
+
+    if int(COLLECT_MAX_WORKERS) < 1:
+        raise ValueError("COLLECT_MAX_WORKERS must be >= 1.")
+
     return plan
 
 
@@ -133,12 +124,22 @@ def sync_bug_outputs_back(local_storage: Storage, runtime_storage: Storage, proj
         dst_results.mkdir(parents=True, exist_ok=True)
 
 
+def normalize_local_mutant_file(mutant_file: Path) -> tuple[int, int]:
+    """Ensure the local mutant JSON contains up-to-date duplicate markers."""
+    bank = MutantBank(mutant_file).load()
+    duplicate_count = bank.duplicate_count()
+    bank.save()
+    return len(bank), duplicate_count
+
+
 def print_intro(plan: list[tuple[str, int]]) -> None:
     print(SEP)
     print("REAL DEFECTS4J COLLECTION PIPELINE")
     print(SEP)
     print(f"Container    : {CONTAINER_NAME}")
     print(f"Workspace    : {LOCAL_WORKSPACE}")
+    print(f"Workers      : {int(COLLECT_MAX_WORKERS)}")
+    print(f"Timeout      : {int(TEST_TIMEOUT_S)}s")
     print(f"Bug plan     : {plan}")
 
 
@@ -146,10 +147,16 @@ def print_bug_summary(local_storage: Storage, project: str, bug_id: int) -> None
     bug_key = f"{project.upper()}_{bug_id}"
     print(f"\n{SEP}\nRESULT SUMMARY FOR {bug_key}\n{SEP}")
 
-    meta_path = local_storage.meta_path(project, bug_id)
-    if meta_path.exists():
-        print("meta.json:")
-        print(meta_path.read_text(encoding="utf-8"))
+    meta = local_storage.read_meta(project, bug_id)
+    totals = meta.get("totals", {}) if isinstance(meta, dict) else {}
+    if totals:
+        print(
+            "meta totals:"
+            f" input={int(totals.get('input_mutants', 0) or 0)}"
+            f" unique={int(totals.get('unique_mutants', 0) or 0)}"
+            f" duplicates={int(totals.get('duplicate_mutants', 0) or 0)}"
+            f" executed={int(totals.get('mutants', 0) or 0)}"
+        )
 
     output_files = sorted(local_storage.results_dir(project, bug_id).glob("*.json"))
     if not output_files:
@@ -167,8 +174,7 @@ def print_bug_summary(local_storage: Storage, project: str, bug_id: int) -> None
 
 
 def main() -> int:
-    validate_projects()
-    plan = iter_bug_plan()
+    plan = validate_config()
 
     d4j = Defects4J(
         container=CONTAINER_NAME,
@@ -195,7 +201,11 @@ def main() -> int:
 
         print("Local mutant files:")
         for path in local_mutant_files:
-            print(f"  {path.relative_to(LOCAL_WORKSPACE)}")
+            total_mutants, duplicate_mutants = normalize_local_mutant_file(path)
+            print(
+                f"  {path.relative_to(LOCAL_WORKSPACE)}"
+                f"  (mutants={total_mutants}, duplicates={duplicate_mutants})"
+            )
 
         sync_bug_inputs(local_storage, runtime_storage, project, bug_id)
         runtime_storage.clear_results(project, bug_id)
@@ -203,7 +213,13 @@ def main() -> int:
         total_records = 0
         for mutant_file in runtime_storage.mutant_files(project, bug_id):
             bank = MutantBank(mutant_file).load()
-            total_records += collector.collect_bug(project, bug_id, bank, test_timeout=TEST_TIMEOUT_S)
+            total_records += collector.collect_bug(
+                project,
+                bug_id,
+                bank,
+                test_timeout=TEST_TIMEOUT_S,
+                max_workers=COLLECT_MAX_WORKERS,
+            )
 
         sync_bug_outputs_back(local_storage, runtime_storage, project, bug_id)
 

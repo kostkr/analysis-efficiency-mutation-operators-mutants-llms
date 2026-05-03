@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  defects4j:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Must match PITConfig.pit_version in defect4j/generators/base.py
+        PIT_VERSION: "1.17.0"
+    image: defects4j-pit:1.17.0   # tag lets you rebuild without losing the old image
+    container_name: defects4j-container
+    environment:
+      - TZ=America/Los_Angeles
+      # JAVA_HOME is set via /etc/profile.d/java_home.sh inside the image
+    volumes:
+      # Host workspace bind-mounted into the container.
+      # The Python pipeline discovers this path automatically via `podman inspect`.
+      - ./workspace:/workspace
+    stdin_open: true
+    tty: true
+
+volumes:
+  maven-cache:
+    driver: local

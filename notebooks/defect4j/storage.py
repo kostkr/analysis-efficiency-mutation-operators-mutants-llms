@@ -68,7 +68,8 @@ class Storage:
         if p.exists():
             return
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(
+        _atomic_write_text(
+            p,
             json.dumps(
                 {
                     "project": project,
@@ -78,14 +79,19 @@ class Storage:
                 indent=2,
                 ensure_ascii=False,
             ),
-            encoding="utf-8",
         )
 
     def read_meta(self, project: str, bug_id: int) -> dict:
         self.ensure_meta(project, bug_id)
         return json.loads(self.meta_path(project, bug_id).read_text(encoding="utf-8"))
 
-    def update_meta(self, project: str, bug_id: int) -> dict:
+    def update_meta(
+        self,
+        project: str,
+        bug_id: int,
+        total_tests: int | None = None,
+        all_tests: list[str] | None = None,
+    ) -> dict:
         """
         Recompute and persist bug-level summary statistics.
 
@@ -93,7 +99,14 @@ class Storage:
         ``created_at`` is updated on every run (serves as last-updated timestamp).
         """
         meta = self.read_meta(project, bug_id)
-        mutant_files = [p.name for p in self.mutant_files(project, bug_id)]
+        mutant_paths = self.mutant_files(project, bug_id)
+        mutant_files = [p.name for p in mutant_paths]
+
+        by_set_inputs: dict[str, list[dict]] = {}
+        for path in mutant_paths:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(payload, list):
+                by_set_inputs[path.stem] = payload
 
         # ── load every result file exactly once ───────────────────────────
         results_root = self.results_dir(project, bug_id)
@@ -103,9 +116,17 @@ class Storage:
             if isinstance(payload, list):
                 by_set_records[path.stem] = payload
 
-        all_records = [r for recs in by_set_records.values() for r in recs]
-        totals = self._summarize_records(all_records)
-        by_set = {k: self._summarize_records(v) for k, v in by_set_records.items()}
+        by_set: dict[str, dict] = {}
+        for set_name in sorted(set(by_set_inputs) | set(by_set_records)):
+            summary = self._summarize_records(by_set_records.get(set_name, []))
+            summary.update(self._summarize_mutant_inputs(by_set_inputs.get(set_name, [])))
+            by_set[set_name] = summary
+        totals = self._merge_set_summaries(by_set.values())
+
+        merged_total_tests = max(int(meta.get("total_tests", 0) or 0), int(total_tests or 0))
+        merged_all_tests = sorted(set(meta.get("all_tests", [])) | set(all_tests or []))
+        if merged_all_tests:
+            merged_total_tests = max(merged_total_tests, len(merged_all_tests))
 
         meta.update(
             {
@@ -113,6 +134,8 @@ class Storage:
                 "bug_id":       int(bug_id),
                 "created_at":   _now(),
                 "mutant_files": mutant_files,
+                "all_tests":    merged_all_tests,
+                "total_tests":  merged_total_tests,
                 "totals":       totals,
                 "by_set":       by_set,
             }
@@ -121,9 +144,9 @@ class Storage:
         for key in ("trigger_tests", "trigger_test_count", "last_run_at", "result_files"):
             meta.pop(key, None)
 
-        self.meta_path(project, bug_id).write_text(
+        _atomic_write_text(
+            self.meta_path(project, bug_id),
             json.dumps(meta, indent=2, ensure_ascii=False),
-            encoding="utf-8",
         )
         return meta
 
@@ -171,6 +194,44 @@ class Storage:
             "survived":      survived,
         }
 
+    def _summarize_mutant_inputs(self, records: list[dict]) -> dict:
+        from .mutant import MutantBank
+
+        if not records:
+            return {
+                "input_mutants": 0,
+                "duplicate_mutants": 0,
+                "unique_mutants": 0,
+            }
+
+        bank = MutantBank.from_dicts(records)
+        bank.mark_duplicates()
+        duplicate_mutants = bank.duplicate_count()
+        input_mutants = len(bank)
+        return {
+            "input_mutants": input_mutants,
+            "duplicate_mutants": duplicate_mutants,
+            "unique_mutants": input_mutants - duplicate_mutants,
+        }
+
+    def _merge_set_summaries(self, summaries) -> dict:
+        totals = {
+            "input_mutants": 0,
+            "duplicate_mutants": 0,
+            "unique_mutants": 0,
+            "mutants": 0,
+            "apply_failed": 0,
+            "compiled": 0,
+            "compile_failed": 0,
+            "timed_out": 0,
+            "killed": 0,
+            "survived": 0,
+        }
+        for summary in summaries:
+            for key in totals:
+                totals[key] += int(summary.get(key, 0) or 0)
+        return totals
+
     # ------------------------------------------------------------------ #
     #  Inputs                                                              #
     # ------------------------------------------------------------------ #
@@ -194,7 +255,7 @@ class Storage:
     def write_result_set(self, project: str, bug_id: int, mutant_set: str, records: list[dict]) -> None:
         """Write one output JSON file for one mutant-set file."""
         p = self.results_file_path(project, bug_id, mutant_set)
-        p.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
+        _atomic_write_text(p, json.dumps(records, indent=2, ensure_ascii=False))
 
     def load_results(self, project: str, bug_id: int, mutant_set: str | None = None) -> list[dict]:
         """Load all raw result records for one bug."""
@@ -250,3 +311,10 @@ class Storage:
 
 def _now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")
+
+
+def _atomic_write_text(path: Path, payload: str) -> None:
+    tmp = path.with_name(f".{path.name}.tmp")
+    tmp.write_text(payload, encoding="utf-8")
+    tmp.replace(path)
+
