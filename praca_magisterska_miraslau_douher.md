@@ -120,7 +120,7 @@ Wygląd zawartości rozdziałów przedstawionych w pracy:
 - **Rozdział 2** Definicja testowania mutacyjnego, mutation score, rodzaje mutantów oraz opis procesu testowania mutacyjnego.
 - **Rozdział 3** Klasyczne operatory mutacyjne na przykładzie narzędzia PIT, zasada działania, katalog operatorów klasycznych z grupy ALL.
 - **Rozdział 4** Duże modele językowe w inżynierii oprogramowania, koncepcja LLM jako generatora zmian w kodzie oraz związane z tym ryzyka.
-- **Rozdział 5** Rzeczywiste błędy jako podstawa eksperymentu — zbiór Defects4J 2.0, miary podobieństwa mutanta do defektu na podstawie profili testowych oraz kompletna definicja wszystkich metryk i kryteriów oceny stosowanych w badaniu. Następnie problem badawczy, cel pracy i pytania badawcze.
+- **Rozdział 5** Rzeczywiste błędy jako podstawa eksperymentu — zbiór Defects4J 3.0.1, miary podobieństwa mutanta do defektu na podstawie profili testowych oraz kompletna definicja wszystkich metryk i kryteriów oceny stosowanych w badaniu. Następnie problem badawczy, cel pracy i pytania badawcze.
 - **Rozdział 6** Metodyka eksperymentu: przebieg, kryteria selekcji błędów, generacja mutantów przez LLM i PIT, weryfikacja oraz definicja mutanta nowego względem PIT — wszystko na podstawie metryk zdefiniowanych w rozdziale 5.
 - **Rozdział 7** Analiza wyników eksperymentu, dane liczbowe wraz z ich interpretacją, bezpośrednie odpowiedzi na tezy badawcze, porównanie LLM vs PIT, ograniczenia badania i kierunki dalszych badań.
 - **Podsumowanie** Główne wnioski pracy.
@@ -355,30 +355,34 @@ Trzecim są testy wyzwalające (*triggering tests*), które nie przechodzą dla 
 Dzięki tej strukturze możliwe jest precyzyjne odtwarzanie zachowania programu w obecności błędu i porównywanie go z zachowaniem wygenerowanego mutanta.
 Warto podkreślić, że testy wyzwalające stanowią jedynie podzbiór wszystkich testów projektu, obejmujący wyłącznie te, które są bezpośrednio powiązane z danym defektem.
 
-Źródłem danych w niniejszym badaniu jest  **Defects4J** [5], jako najszerzej stosowany benchmark dla Javy w badaniach nad jakością testów.
-
-Defects4J 2.0 to zbiór błędów z projektów Java open-source.
+Źródłem danych w niniejszym badaniu jest 3.0.1 **Defects4J** [5].
+Defects4J to zbiór 854 aktywnych błędów z 17 projektów Java open-source, utrzymywany przez środowisko akademickie od 2014 roku.
 Dla każdego błędu dostępna jest para wersji kodu (*buggy* i *fixed*) możliwa do pobrania narzędziem wiersza poleceń, lista zmodyfikowanych klas wskazująca dokładnie, które pliki uległy zmianie podczas naprawy, zestaw nazw testów wyzwalających oraz możliwość automatycznej kompilacji i uruchomienia testów bez żadnej ręcznej ingerencji.
+Każdy błąd został zgłoszony w odpowiednim systemie śledzenia zgłoszeń, naprawiony w pojedynczym zatwierdzeniu (*commit*) i ręcznie zminimalizowany przez opiekunów benchmarku w celu usunięcia zmian niezwiązanych z defektem (refaktoryzacji, nowych funkcji). 
+Dla każdego błędu istnieje co najmniej jeden test wyzwalający, którego niepowodzenie jest deterministyczne i niezależne od kolejności wykonania testów.
 
-| Projekt              | Dziedzina                 | Liczba błędów |
-|----------------------|---------------------------|---------------|
-| Apache Commons Math  | Biblioteka matematyczna   | 106           |
-| Apache Commons Lang  | Narzędzia dla klas Java   | 65            |
-| Jsoup                | Parser HTML               | 93            |
-| Closure Compiler     | Kompilator JavaScript     | 133           |
-| Mockito              | Biblioteka do mockowania  | 38            |
-| JFreeChart           | Biblioteka wykresów       | 26            |
-| Joda-Time            | Obsługa dat i czasu       | 27            |
-| Apache Commons CLI   | Parsowanie argumentów CLI | 39            |
-| Apache Commons Codec | Kodeki danych             | 18            |
-| Apache Commons CSV   | Obsługa plików CSV        | 16            |
-| Gson                 | Serializacja JSON         | 18            |
-| JacksonCore          | Parsowanie JSON           | 26            |
-| **Razem**            |                           | **605**       |
+| Identyfikator   | Projekt                | Liczba aktywnych bugów | IDs aktywnych bugów          |
+|-----------------|------------------------|------------------------|------------------------------|
+| Chart           | jfreechart             | 26                     | 1–26                         |
+| Cli             | commons-cli            | 39                     | 1–5, 7–40                    |
+| Closure         | closure-compiler       | 174                    | 1–62, 64–92, 94–176          |
+| Codec           | commons-codec          | 18                     | 1–18                         |
+| Collections     | commons-collections    | 28                     | 1–28                         |
+| Compress        | commons-compress       | 47                     | 1–47                         |
+| Csv             | commons-csv            | 16                     | 1–16                         |
+| Gson            | gson                   | 18                     | 1–18                         |
+| JacksonCore     | jackson-core           | 26                     | 1–26                         |
+| JacksonDatabind | jackson-databind       | 110                    | 1–64, 66–88, 90–112          |
+| JacksonXml      | jackson-dataformat-xml | 6                      | 1–6                          |
+| Jsoup           | jsoup                  | 93                     | 1–93                         |
+| JxPath          | commons-jxpath         | 22                     | 1–22                         |
+| Lang            | commons-lang           | 61                     | 1, 3–17, 19–24, 26–47, 49–65 |
+| Math            | commons-math           | 106                    | 1–106                        |
+| Mockito         | mockito                | 38                     | 1–38                         |
+| Time            | joda-time              | 26                     | 1–20, 22–27                  |
+| **Razem**       |                        | **854**                | —                            |
 
-Wybrane projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (Commons Lang, Commons Math), przez parsery (Jsoup, Gson, JacksonCore), aż po kompilatory (Closure Compiler).
-Różnorodność dziedzin zapewnia, że wyniki nie są specyficzne dla jednego rodzaju kodu i mogą stanowić podstawę wniosków ogólniejszej natury.
-Ze względu na koszty wywołań interfejsu API modelu językowego i czas uruchomienia testów, spośród dostępnych błędów wybierana jest reprezentatywna próba spełniająca zdefiniowane kryteria selekcji.
+Projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (Lang, Math, Collections), przez parsery i kodeki (Jsoup, Gson, JacksonCore, JacksonDatabind, Codec), aż po kompilatory (Closure) i narzędzia ogólnego przeznaczenia (Compress, Csv, Cli). Różnorodność dziedzin zapewnia, że wyniki nie są specyficzne dla jednego rodzaju kodu i mogą stanowić podstawę wniosków ogólniejszej natury. Ze względu na koszty wywołań interfejsu API modelu językowego i czas uruchomienia testów, spośród dostępnych błędów wybierana jest reprezentatywna próba spełniająca zdefiniowane kryteria selekcji.
 
 ### Rodzaje mutantów
 
@@ -563,7 +567,7 @@ Niniejszy rozdział opisuje, w jaki sposób przeprowadzono badanie empiryczne: j
 
 Eksperyment składa się z pięciu etapów wykonywanych kolejno dla każdego analizowanego błędu.
 
-**Etap 1 — Dobór błędów.** Ze zbioru Defects4J 2.0 wybierane są błędy spełniające kryteria opisane w sekcji 7.2. Wynik: lista par *projekt + numer błędu*.
+**Etap 1 — Dobór błędów.** Ze zbioru Defects4J 3.0.1 wybierane są błędy spełniające kryteria opisane w sekcji 7.2. Wynik: lista par *projekt + numer błędu*.
 
 **Etap 2 — Generacja mutantów.** Dla każdego błędu wygenerowane są mutanty dwiema metodami: przez model językowy (LLM) i przez narzędzie PIT — obie na tej samej wersji kodu. Szczegóły opisano w sekcji 7.3.
 
@@ -577,7 +581,7 @@ Eksperyment składa się z pięciu etapów wykonywanych kolejno dla każdego ana
 
 ### Materiał badawczy — zbiór danych i kryteria doboru
 
-Podstawą badania jest zbiór **Defects4J 2.0** — powszechnie stosowany w badaniach nad testowaniem oprogramowania zestaw rzeczywistych błędów z projektów open-source pisanych w Javie. Każdy błąd jest opatrzony wersją kodu sprzed naprawy (*buggy*), wersją po naprawie (*fixed*), pełnym zestawem testów regresyjnych i zestawem testów wyzwalających — odróżniających kod błędny od poprawionego. Dzięki temu można zmierzyć, czy wygenerowany mutant zachowuje się podobnie do prawdziwego defektu.
+Podstawą badania jest zbiór **Defects4J 3.0.1** — powszechnie stosowany w badaniach nad testowaniem oprogramowania zestaw rzeczywistych błędów z projektów open-source pisanych w Javie. Każdy błąd jest opatrzony wersją kodu sprzed naprawy (*buggy*), wersją po naprawie (*fixed*), pełnym zestawem testów regresyjnych i zestawem testów wyzwalających — odróżniających kod błędny od poprawionego. Dzięki temu można zmierzyć, czy wygenerowany mutant zachowuje się podobnie do prawdziwego defektu.
 
 Ze względu na koszty generacji przez model językowy i czas potrzebny na uruchomienie testów, z pełnego zbioru wybierana jest ograniczona liczba błędów z kilku projektów. Finalna lista przedstawiona jest w poniższej tabeli.
 
@@ -789,7 +793,7 @@ Rozkład przyczyn błędów kompilacji mutantów LLM:
 
 ### Ograniczenia badania
 
-**Ograniczona generalizowalność (język i zbiór danych).** Eksperyment przeprowadzono wyłącznie na projektach Java z Defects4J 2.0. Wyniki mogą nie być w pełni przenoszalne na inne języki programowania (Python, C#, Kotlin) ani na projekty spoza tego benchmarku. Przyszłe badania powinny objąć przynajmniej jeden dodatkowy benchmark.
+**Ograniczona generalizowalność (język i zbiór danych).** Eksperyment przeprowadzono wyłącznie na projektach Java z Defects4J 3.0.1. Wyniki mogą nie być w pełni przenoszalne na inne języki programowania (Python, C#, Kotlin) ani na projekty spoza tego benchmarku. Przyszłe badania powinny objąć przynajmniej jeden dodatkowy benchmark.
 
 **Jeden model LLM.** Użyto modelu GPT-4o-mini. Inne modele (Claude 3, DeepSeek, CodeLlama) mogą generować inne rozkłady operatorów i inny compile rate. Wybór modelu był podyktowany kosztami API i dostępnością — nie jest dowodem przewagi GPT-4o-mini nad innymi modelami.
 
@@ -805,7 +809,7 @@ Rozkład przyczyn błędów kompilacji mutantów LLM:
 
 Na podstawie wyników i ograniczeń zidentyfikowanych w niniejszej pracy można wskazać następujące kierunki przyszłych badań:
 
-**Replikacja na różnych językach i zbiorach danych.** Eksperyment ograniczony do Javy i Defects4J 2.0 powinien być powtórzony dla Pythona (BugsInPy) lub JavaScript, aby zbadać, czy nowość operatorów LLM jest cechą specyficzną dla Javy, czy zjawiskiem ogólnym.
+**Replikacja na różnych językach i zbiorach danych.** Eksperyment ograniczony do Javy i Defects4J 3.0.1 powinien być powtórzony dla Pythona (BugsInPy) lub JavaScript, aby zbadać, czy nowość operatorów LLM jest cechą specyficzną dla Javy, czy zjawiskiem ogólnym.
 
 **Porównanie wielu modeli LLM.** Użycie GPT-4o-mini, Claude 3 Haiku i modeli open-source (CodeLlama, DeepSeek-Coder) przy tym samym protokole pozwoli ocenić, czy różnorodność i realizm operatorów zależą od konkretnego modelu, czy są powtarzalną właściwością podejścia LLM jako klasy.
 
@@ -821,7 +825,7 @@ Na podstawie wyników i ograniczeń zidentyfikowanych w niniejszej pracy można 
 
 Niniejsza praca dotyczyła zastosowania dużych modeli językowych do generowania operatorów mutacyjnych — reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne definiowane w narzędziach takich jak PIT stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów.
 
-W pracy postawiono trzy pytania badawcze: (RQ1) czy LLM generuje operatory mutacyjne nieobecne w katalogu PIT ALL; (RQ2) czy mutanty LLM są bliższe rzeczywistym defektom z Defects4J pod względem zachowania programu niż mutanty PIT; (RQ3) jakie są koszty i wydajność podejścia LLM w porównaniu z PIT. Eksperyment przeprowadzono na zbiorze 605 błędów z 12 projektów Java należących do benchmarku Defects4J 2.0 — uznanego standardu w badaniach nad jakością testów.
+W pracy postawiono trzy pytania badawcze: (RQ1) czy LLM generuje operatory mutacyjne nieobecne w katalogu PIT ALL; (RQ2) czy mutanty LLM są bliższe rzeczywistym defektom z Defects4J pod względem zachowania programu niż mutanty PIT; (RQ3) jakie są koszty i wydajność podejścia LLM w porównaniu z PIT. Eksperyment przeprowadzono na zbiorze 605 błędów z 12 projektów Java należących do benchmarku Defects4J 3.0.1 — uznanego standardu w badaniach nad jakością testów.
 
 Wyniki eksperymentu wskazują, że:
 - *[RQ1: X% operatorów LLM nie ma odpowiednika w katalogu PIT ALL — co potwierdza / częściowo potwierdza hipotezę o różnorodności.]*
