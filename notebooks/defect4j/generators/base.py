@@ -55,46 +55,35 @@ class GeneratorJob:
 
 @dataclass
 class PITConfig:
-    """Configuration for the PIT (pitest-maven) generator and pipeline.
+    """Configuration for the direct custom PIT classic generator.
 
     Attributes
     ----------
-    timeout_s     : Timeout in seconds for each ``mvn pitest:mutate`` call
-    mutators      : PIT mutator group or comma-separated list.
-                    ``"DEFAULTS"`` covers CONDITIONALS_BOUNDARY, NEGATE_CONDITIONALS,
-                    MATH, INCREMENTS, INVERT_NEGS, RETURN_VALS.
-    target_tests  : Maven glob for pitest ``targetTests``; empty = auto-detect
-                    from the class package (e.g. ``"org.apache.commons.lang3.*"``)
-    pit_version   : pitest-maven plugin version pinned for reproducibility
+    timeout_s : Timeout in seconds for one direct PIT class-generation run.
+    mutators  : PIT mutator group or comma-separated list (for example ``"ALL"``).
     """
 
-    timeout_s:    int = 300
-    mutators:     str = "DEFAULTS"
-    target_tests: str = ""
-    pit_version:  str = "1.17.0"
+    timeout_s: int = 300
+    mutators: str = "DEFAULTS"
 
 
 @dataclass
 class LLMConfig:
-    """Configuration for the LLM generator and pipeline.
+    """Configuration for the local LLM mutation generator.
 
-    Note: API credentials are NOT stored here — the user manages their own
-    client.  This config only controls prompt construction and output format.
-
-    Attributes
-    ----------
-    model      : Model identifier used as the output filename stem, e.g. ``"gpt-4o-mini"``
-    n_mutants  : How many mutants to request per method in the prompt
-    temperature: Sampling temperature hint (metadata only — user passes to their client)
-    code_element: Description of mutation targets shown in the prompt
+    The default setup targets a local Ollama server and follows the paper's
+    mutation-generation prompt strategy: real-bug few-shot examples, one-shot
+    requests per fixed-version bug-diff method, and one requested mutant per
+    eligible line of that method.
     """
 
-    model:        str   = "gpt-4o-mini"
-    n_mutants:    int   = 10
-    temperature:  float = 0.8
-    code_element: str   = (
-        "conditional expressions, arithmetic operators, and return statements"
-    )
+    model: str = "qwen2.5-coder:14b"
+    output_name: str = ""
+    endpoint: str = "http://127.0.0.1:11434/api/generate"
+    timeout_s: int = 1800
+    temperature: float | None = None
+    keep_alive: str = "30m"
+    code_element: str = "all single-line Java statements and expressions"
 
 
 # ── Abstract generator ────────────────────────────────────────────────────────

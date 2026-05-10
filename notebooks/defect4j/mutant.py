@@ -1,7 +1,7 @@
 """
 mutant.py — Unified mutant JSON format.
 
-The mutant JSON file itself does NOT store the model/source.  That information
+The mutant JSON file itself does NOT store the model/source. That information
 is carried by the filename, for example:
 
     LANG_1/mutants/gpt-5-mini.json
@@ -11,7 +11,7 @@ Schema (JSON)
 -------------
 {
   "id":         4,                   // unique numeric id inside THIS file
-  "filepath":   "src/.../Foo.java",  // relative to project root
+  "filepath":   "src/.../Foo.java", // relative to project root
   "line":       42,                  // 1-based
   "precode":    "if (x == null)",
   "aftercode":  "if (x != null)",
@@ -25,7 +25,7 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 
@@ -33,49 +33,16 @@ from pathlib import Path
 class Mutant:
     """
     Single-line source mutation — unified format for LLM and PIT.
-
-    Attributes
-    ----------
-    id          : unique integer identifier within one mutant JSON file
-    filepath    : path relative to project root
-    precode     : original text on that line (stripped)
-    aftercode   : replacement text (stripped)
-    rule        : human-readable mutation operator description
-    gen_time_s  : seconds spent generating this mutant
-    dublicate   : True when this mutant is equivalent to the original code or
-                  to another mutant after normalization
-    pit_mutator : raw PIT mutator FQN (optional, classic PIT only)
-    pit_description : raw PIT description (optional)
-    pit_status  : KILLED / SURVIVED / NO_COVERAGE / ... (optional)
-    pit_detected: whether PIT marked it as detected (optional)
-    pit_tests_run : number of tests PIT ran for this mutation (optional)
-    pit_killing_test : killing test name if any (optional)
-    pit_index   : first PIT instruction index (optional)
-    pit_indexes : all PIT instruction indexes (optional)
-    pit_blocks  : PIT basic blocks (optional)
-    pit_method  : mutated method name (optional)
-    pit_method_description : bytecode method descriptor (optional)
     """
 
-    id:         int
-    filepath:   str
-    line:       int
-    precode:    str
-    aftercode:  str
-    rule:       str   = ""
+    id: int
+    filepath: str
+    line: int
+    precode: str
+    aftercode: str
+    rule: str = ""
     gen_time_s: float = 0.0
     dublicate: bool = False
-    pit_mutator: str = ""
-    pit_description: str = ""
-    pit_status: str = ""
-    pit_detected: bool = False
-    pit_tests_run: int = 0
-    pit_killing_test: str = ""
-    pit_index: int = -1
-    pit_indexes: list[int] = field(default_factory=list)
-    pit_blocks: list[int] = field(default_factory=list)
-    pit_method: str = ""
-    pit_method_description: str = ""
 
     # ------------------------------------------------------------------ #
     #  Identity / deduplication                                            #
@@ -164,7 +131,7 @@ class Mutant:
             "rule": self.rule,
             "gen_time_s": self.gen_time_s,
             "dublicate": self.dublicate,
-         }
+        }
 
     def __repr__(self) -> str:
         return f"Mutant({self.id!r}, {self.filepath}:{self.line})"
@@ -193,7 +160,7 @@ class MutantBank:
     """
 
     def __init__(self, path: Path | str):
-        self.path    = Path(path)
+        self.path: Path = Path(path)
         self.mutants: list[Mutant] = []
 
     # ------------------------------------------------------------------ #
@@ -202,13 +169,16 @@ class MutantBank:
     def load(self) -> "MutantBank":
         with self.path.open(encoding="utf-8") as f:
             raw = json.load(f)
-        self.mutants = [Mutant(**m) for m in raw]
+        self.mutants = self.from_dicts(raw, path=self.path).mutants
         self.mark_duplicates()
         print(f"Loaded {len(self.mutants)} mutants from {self.path}")
         return self
 
-    def save(self, path: Path | str | None = None) -> "MutantBank":
-        dest: Path = Path(path) if path is not None else self.path
+    def save(self, path: Path | str | None = None, quiet: bool = False) -> "MutantBank":
+        if path is None:
+            dest = self.path
+        else:
+            dest = Path(path)
         dest.parent.mkdir(parents=True, exist_ok=True)
         self.mark_duplicates()
         payload = json.dumps(
@@ -216,8 +186,9 @@ class MutantBank:
             indent=2,
             ensure_ascii=False,
         )
-        _atomic_write_text(Path(dest), payload)
-        print(f"Saved {len(self.mutants)} mutants → {dest}")
+        _atomic_write_text(dest, payload)
+        if not quiet:
+            print(f"Saved {len(self.mutants)} mutants → {dest}")
         return self
 
     @classmethod
@@ -238,27 +209,17 @@ class MutantBank:
         bank = cls(path)
         bank.mutants = [
             Mutant(
-                id         = int(r["id"]),
-                filepath   = r["filepath"],
-                line       = int(r["line"]),
-                precode    = r["precode"],
-                aftercode  = r["aftercode"],
-                rule       = r.get("rule", ""),
+                id=int(r["id"]),
+                filepath=str(r["filepath"]),
+                line=int(r["line"]),
+                precode=str(r["precode"]),
+                aftercode=str(r["aftercode"]),
+                rule=str(r.get("rule", "")),
                 gen_time_s = float(r.get("gen_time_s", 0.0)),
-                dublicate = bool(r.get("dublicate", False)),
-                pit_mutator = r.get("pit_mutator", ""),
-                pit_description = r.get("pit_description", ""),
-                pit_status = r.get("pit_status", ""),
-                pit_detected = bool(r.get("pit_detected", False)),
-                pit_tests_run = int(r.get("pit_tests_run", 0)),
-                pit_killing_test = r.get("pit_killing_test", ""),
-                pit_index = int(r.get("pit_index", -1)),
-                pit_indexes = list(r.get("pit_indexes", [])),
-                pit_blocks = list(r.get("pit_blocks", [])),
-                pit_method = r.get("pit_method", ""),
-                pit_method_description = r.get("pit_method_description", ""),
+                dublicate=bool(r.get("dublicate", False)),
             )
             for r in records
+            if isinstance(r, dict)
         ]
         return bank
 
@@ -352,6 +313,3 @@ def mark_duplicate_mutants(mutants: list[Mutant]) -> list[Mutant]:
         seen_unique_signatures.add(mutant_sig)
 
     return mutants
-
-
-

@@ -4,14 +4,13 @@ generators — Mutant generation sub-package for the Defects4J pipeline.
 Two generators + two pipelines:
 
 PITPipeline / PITGenerator
-    Full autonomous pipeline: checkout → find methods → run pitest-maven
-    → parse mutations.xml → save ``mutants/classic.json``.
-    No container image changes required (Maven downloads pitest from Central).
+    Full autonomous pipeline: checkout → find methods → run direct custom PIT generator
+    → read direct PIT JSON output → save ``mutants/classic.json``.
 
 LLMPipeline / LLMGenerator
-    Client-agnostic pipeline.  Phase 1 prepares prompts (PreparedPrompt).
-    Phase 2 (user's LLM client) sends them.  Phase 3 processes responses
-    and saves ``mutants/{model}.json``.
+    End-to-end local-LLM pipeline: checkout → find changed methods → call the
+    configured Ollama-compatible model → validate single-line mutants → save
+    ``mutants/{model}.json``.
 
 Quick start
 -----------
@@ -24,20 +23,15 @@ Quick start
     # PIT — fully automatic
     bank = PITPipeline(d4j, "demo_collection_workspace").run("Lang", 1)
 
-    # LLM — bring-your-own-client
-    config   = LLMConfig(model="gpt-4o-mini", n_mutants=10)
-    pipeline = LLMPipeline("demo_collection_workspace", config)
-    prompts  = pipeline.prepare_jobs("Lang", 1, d4j)
-    mutants  = []
-    for p in prompts:
-        response = my_client.chat(p.system, p.user)
-        mutants.extend(pipeline.process_response(p, response))
-    pipeline.save("Lang", 1, mutants)
+    # LLM — local Ollama-compatible model
+    config   = LLMConfig(model="qwen2.5-coder:14b")
+    pipeline = LLMPipeline(d4j, "demo_collection_workspace", config)
+    bank     = pipeline.run("Lang", 1)
 """
 
 from .base          import BaseGenerator, GeneratorJob, PITConfig, LLMConfig
 from .source_finder import SourceFinder
-from .llm           import LLMGenerator, LLMPipeline, PreparedPrompt
+from .llm           import LLMGenerator, LLMPipeline
 from .pit           import PITGenerator, PITPipeline
 
 __all__ = [
@@ -48,7 +42,6 @@ __all__ = [
     "SourceFinder",
     "LLMGenerator",
     "LLMPipeline",
-    "PreparedPrompt",
     "PITGenerator",
     "PITPipeline",
 ]

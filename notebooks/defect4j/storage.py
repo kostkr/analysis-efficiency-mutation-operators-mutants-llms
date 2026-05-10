@@ -39,13 +39,22 @@ class Storage:
     # ------------------------------------------------------------------ #
     #  Paths                                                               #
     # ------------------------------------------------------------------ #
+    def _bug_dir_path(self, project: str, bug_id: int) -> Path:
+        return self.workspace / f"{project.upper()}_{bug_id}"
+
     def bug_dir(self, project: str, bug_id: int) -> Path:
-        d = self.workspace / f"{project.upper()}_{bug_id}"
+        d = self._bug_dir_path(project, bug_id)
         d.mkdir(parents=True, exist_ok=True)
         (d / "mutants").mkdir(exist_ok=True)
         (d / "results").mkdir(exist_ok=True)
         self.ensure_meta(project, bug_id)
         return d
+
+    def mutants_dir_path(self, project: str, bug_id: int) -> Path:
+        return self._bug_dir_path(project, bug_id) / "mutants"
+
+    def results_dir_path(self, project: str, bug_id: int) -> Path:
+        return self._bug_dir_path(project, bug_id) / "results"
 
     def mutants_dir(self, project: str, bug_id: int) -> Path:
         d = self.bug_dir(project, bug_id) / "mutants"
@@ -91,12 +100,20 @@ class Storage:
         bug_id: int,
         total_tests: int | None = None,
         all_tests: list[str] | None = None,
+        suite_profile: dict | None = None,
+        bug_profile: dict | None = None,
     ) -> dict:
         """
         Recompute and persist bug-level summary statistics.
 
         Each result file is read exactly once.
         ``created_at`` is updated on every run (serves as last-updated timestamp).
+        When provided, ``suite_profile`` and ``bug_profile`` become the authoritative
+        baseline used for later mutant-vs-bug comparisons.
+
+        Legacy ``total_tests`` / ``all_tests`` inputs are accepted for backward
+        compatibility, but the persisted metadata keeps suite data only inside
+        ``suite_profile`` to avoid duplicated storage.
         """
         meta = self.read_meta(project, bug_id)
         mutant_paths = self.mutant_files(project, bug_id)
@@ -123,25 +140,34 @@ class Storage:
             by_set[set_name] = summary
         totals = self._merge_set_summaries(by_set.values())
 
-        merged_total_tests = max(int(meta.get("total_tests", 0) or 0), int(total_tests or 0))
-        merged_all_tests = sorted(set(meta.get("all_tests", [])) | set(all_tests or []))
-        if merged_all_tests:
-            merged_total_tests = max(merged_total_tests, len(merged_all_tests))
-
-        meta.update(
-            {
-                "project":      project,
-                "bug_id":       int(bug_id),
-                "created_at":   _now(),
-                "mutant_files": mutant_files,
-                "all_tests":    merged_all_tests,
-                "total_tests":  merged_total_tests,
-                "totals":       totals,
-                "by_set":       by_set,
-            }
+        normalized_suite = self._normalize_suite_profile(
+            suite_profile
+            or meta.get("suite_profile")
+            or self._legacy_suite_profile(total_tests=total_tests, all_tests=all_tests)
         )
+        normalized_bug = self._normalize_bug_profile(bug_profile or meta.get("bug_profile"))
+
+        meta = {
+            "project": project,
+            "bug_id": int(bug_id),
+            "created_at": _now(),
+            "mutant_files": mutant_files,
+            "totals": totals,
+            "by_set": by_set,
+        }
+        if normalized_bug is not None:
+            meta["bug_profile"] = normalized_bug
+        if normalized_suite is not None:
+            meta["suite_profile"] = normalized_suite
         # Remove legacy / removed keys if present in old meta files
-        for key in ("trigger_tests", "trigger_test_count", "last_run_at", "result_files"):
+        for key in (
+            "all_tests",
+            "total_tests",
+            "trigger_tests",
+            "trigger_test_count",
+            "last_run_at",
+            "result_files",
+        ):
             meta.pop(key, None)
 
         _atomic_write_text(
@@ -232,12 +258,51 @@ class Storage:
                 totals[key] += int(summary.get(key, 0) or 0)
         return totals
 
+    def _legacy_suite_profile(
+        self,
+        total_tests: int | None,
+        all_tests: list[str] | None,
+    ) -> dict | None:
+        if total_tests is None and not all_tests:
+            return None
+        normalized_all_tests = sorted(set(all_tests or []))
+        relevant_test_classes: list[str] = []
+        return {
+            "mode": "relevant",
+            "relevant_test_classes": relevant_test_classes,
+            "class_count": len(relevant_test_classes),
+            "all_tests": normalized_all_tests,
+            "total_tests": max(int(total_tests or 0), len(normalized_all_tests)),
+        }
+
+    def _normalize_suite_profile(self, profile: dict | None) -> dict | None:
+        if not isinstance(profile, dict) or not profile:
+            return None
+        all_tests = sorted(set(profile.get("all_tests", [])))
+        relevant_classes = sorted(set(profile.get("relevant_test_classes", [])))
+        return {
+            "mode": str(profile.get("mode", "relevant") or "relevant"),
+            "relevant_test_classes": relevant_classes,
+            "class_count": max(int(profile.get("class_count", 0) or 0), len(relevant_classes)),
+            "all_tests": all_tests,
+            "total_tests": max(int(profile.get("total_tests", 0) or 0), len(all_tests)),
+        }
+
+    def _normalize_bug_profile(self, profile: dict | None) -> dict | None:
+        if not isinstance(profile, dict) or not profile:
+            return None
+        failing_tests = sorted(set(profile.get("failing_tests", [])))
+        return {"failing_tests": failing_tests}
+
     # ------------------------------------------------------------------ #
     #  Inputs                                                              #
     # ------------------------------------------------------------------ #
     def mutant_files(self, project: str, bug_id: int) -> list[Path]:
         """Return all mutant JSON files from `mutants/`, sorted by name."""
-        return sorted(p for p in self.mutants_dir(project, bug_id).glob("*.json") if p.is_file())
+        root = self.mutants_dir_path(project, bug_id)
+        if not root.exists():
+            return []
+        return sorted(p for p in root.glob("*.json") if p.is_file())
 
     # ------------------------------------------------------------------ #
     #  Outputs                                                             #

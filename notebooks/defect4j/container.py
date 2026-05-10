@@ -17,6 +17,7 @@ import queue
 import re
 import shlex
 import subprocess
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Tuple
@@ -55,6 +56,15 @@ def _parse_junit_xml(xml_raw: str, test_class: str) -> set[str]:
     for m in re.finditer(r'<testcase\b[^>]*\bname="([^"]+)"', xml_raw):
         result.add(f"{test_class}::{m.group(1)}")
     return result
+
+
+def _parse_failing_tests_output(raw: str) -> set[str]:
+    """Parse failing Defects4J test IDs from command stdout."""
+    return {
+        line.strip()[2:]
+        for line in raw.splitlines()
+        if line.strip().startswith("- ") and "::" in line
+    }
 
 
 @dataclass(frozen=True)
@@ -246,6 +256,66 @@ class Defects4J:
         ok, _ = self.compile_result(container_path)
         return ok
 
+    def reset_checkout(self, container_path: str, timeout: int = 60) -> None:
+        """Restore a checkout to a clean git state before reusing it."""
+        _, err, rc = self.exec(
+            f"cd {container_path} && git reset --hard -q HEAD && git clean -fdq",
+            timeout=timeout,
+        )
+        if rc != 0:
+            raise RuntimeError(f"reset checkout failed for {container_path}:\n{err}")
+
+    def relevant_test_profile(self, container_path: str, timeout: int = 600) -> dict[str, Any]:
+        """Run a clean ``defects4j test -r`` once and return the authoritative suite profile."""
+        t0 = time.perf_counter()
+        out, err, rc = self.exec(
+            f"cd {container_path} && rm -f all_tests && defects4j test -r",
+            timeout=timeout,
+        )
+        run_time_s = round(time.perf_counter() - t0, 2)
+        all_raw, _, _ = self.exec(
+            f"cat {container_path}/all_tests 2>/dev/null || true",
+        )
+        all_tests = sorted(_parse_all_tests_file(all_raw))
+        failing_tests = sorted(_parse_failing_tests_output(out))
+
+        if rc != 0 and "Failing tests:" not in out:
+            msg = (err.strip() or out.strip() or "defects4j test -r failed")[:400]
+            raise RuntimeError(
+                f"clean relevant-suite run failed for {container_path}:\n{msg}"
+            )
+
+        relevant_test_classes = self.export(container_path, "tests.relevant")
+        return {
+            "mode": "relevant",
+            "source": "defects4j test -r",
+            "run_time_s": run_time_s,
+            "relevant_test_classes": relevant_test_classes,
+            "all_tests": all_tests,
+            "failing_tests": failing_tests,
+        }
+
+    def warm_relevant_suite(self, container_path: str, timeout: int = 600) -> float:
+        """Run one clean warmup ``defects4j test -r`` that is excluded from mutant timings."""
+        t0 = time.perf_counter()
+        out, err, rc = self.exec(
+            f"cd {container_path} && rm -f all_tests && defects4j test -r",
+            timeout=timeout,
+        )
+        run_time_s = round(time.perf_counter() - t0, 2)
+        failing_tests = sorted(_parse_failing_tests_output(out))
+
+        if rc != 0 and "Failing tests:" not in out:
+            msg = (err.strip() or out.strip() or "defects4j test -r warmup failed")[:400]
+            raise RuntimeError(
+                f"relevant-suite warmup failed for {container_path}:\n{msg}"
+            )
+        if failing_tests:
+            raise RuntimeError(
+                f"relevant-suite warmup is not clean for {container_path}: {failing_tests}"
+            )
+        return run_time_s
+
     def run_mutant_relevant(
         self,
         container_path: str,
@@ -299,6 +369,14 @@ def parse_all_tests(raw):
     return result
 
 
+def parse_failing_tests(raw):
+    return sorted(
+        line.strip()[2:]
+        for line in raw.splitlines()
+        if line.strip().startswith('- ') and '::' in line
+    )
+
+
 payload = json.loads(base64.b64decode(os.environ['MUTANT_PAYLOAD_B64']).decode('utf-8'))
 root = Path(sys.argv[1])
 target = root / payload['filepath']
@@ -311,8 +389,6 @@ record = {{
     'test_executed': False,
     'failing_count': 0,
     'failing_tests': [],
-    'total_tests': 0,
-    'all_tests': [],
 }}
 
 original = None
@@ -354,10 +430,6 @@ try:
     lines[idx] = lines[idx].replace(expected, str(payload['aftercode']).strip(), 1)
     target.write_text(''.join(lines), encoding='utf-8')
 
-    all_tests_path = root / 'all_tests'
-    if all_tests_path.exists():
-        all_tests_path.unlink()
-
     t0 = time.perf_counter()
     try:
         proc = subprocess.run(
@@ -377,20 +449,12 @@ try:
 
     record['run_time_s'] = round(time.perf_counter() - t0, 2)
 
-    all_raw = all_tests_path.read_text(encoding='utf-8') if all_tests_path.exists() else ''
-    all_tests = parse_all_tests(all_raw)
-    failing = {{
-        line.strip()[2:]
-        for line in proc.stdout.splitlines()
-        if line.strip().startswith('- ') and '::' in line
-    }}
+    failing = parse_failing_tests(proc.stdout)
 
-    if proc.returncode == 0 or all_tests:
+    if 'Failing tests:' in proc.stdout:
         record['compiled'] = True
         record['test_executed'] = True
-        record['total_tests'] = len(all_tests)
-        record['all_tests'] = sorted(all_tests)
-        record['failing_tests'] = sorted(failing)
+        record['failing_tests'] = failing
         record['failing_count'] = len(failing)
     else:
         record['compiled'] = False
@@ -414,8 +478,6 @@ PY
                 "test_executed": False,
                 "failing_count": 0,
                 "failing_tests": [],
-                "total_tests": 0,
-                "all_tests": [],
             }
         return json.loads(out.strip() or "{}")
 
@@ -497,11 +559,7 @@ PY
                 all_tests = _parse_junit_xml(xml_raw, test_class)
 
         # ── Parse failing tests from stdout ───────────────────────────────────
-        failing: set[str] = {
-            line.strip()[2:]
-            for line in out.splitlines()
-            if line.strip().startswith("- ") and "::" in line
-        }
+        failing = _parse_failing_tests_output(out)
 
         return failing, all_tests
 
@@ -606,6 +664,7 @@ class ParallelCheckoutPool:
             f"find {shlex.quote(self.base_container_path)} -mindepth 1 -maxdepth 1 | head -1"
         )
         if rc == 0 and out.strip():
+            self.d4j.reset_checkout(self.base_container_path)
             return
         self.d4j.checkout(
             self.project,
@@ -614,6 +673,7 @@ class ParallelCheckoutPool:
             dest=self.base_container_path,
             timeout=180,
         )
+        self.d4j.reset_checkout(self.base_container_path)
 
     def _copy_checkout(self, src: str, dest: str) -> None:
         self._run_checked(

@@ -3,7 +3,7 @@
 **Kierunek**: Informatyka
 **Specjalność**: Inżynieria Oprogramowania
 **Numer albumu**: 1185432
-**Autor:** Miraslau Douher
+**Autor**: Miraslau Douher
 **Promotor:** dr. prof. Michał Mnich
 **Uczelnia:** Uniwersytet Jagielloński
 **Rok:** 2026
@@ -341,9 +341,9 @@ Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zin
 
 ## Dane eksperymentalne i metryki
 
-Zanim jednak przejdzie się do opisu eksperymentu, warto odpowiedzieć na pytanie: jak w ogóle ocenić, czy mutanty wygenerowane przez LLM są *lepsze* od klasycznych?
-Odpowiedź wymaga punktu odniesienia, zbioru prawdziwych błędów, względem którego można mierzyć realizm mutantów, oraz precyzyjnych wskaźników porównawczych.
-W niniejszym rozdziale najpierw zostanie przedstawiony zbiór defectów, a potem wyjaśnienie, jak mierzyć podobieństwo mutanta do rzeczywistego defektu na podstawie profili testowych oraz definicja zestawu metryk.
+Zanim przejdziemy do szczegółowego opisu eksperymentu należy najpierw odpowiedzieć na pytanie: w jaki sposób ocenić, czy mutanty wygenerowane przez LLM są rzeczywiście lepsze od mutantów klasycznych?
+Taka ocena wymaga zbioru rzeczywistych błędów, względem którego można analizować stopień realizmu mutantów, a także zastosowania odpowiednich metryk do porównania.
+W tym rozdziale zostanie przedstawiony zbiór defectów, który będzie wykorzystany w badaniu, a potem zostaną zdefiniowane metryki, służącego do określania podobieństwa mutanta do rzeczywistego defektu.
 
 ### Zbiór rzeczywistych błędów
 

@@ -93,7 +93,7 @@ class PITPipeline:
         self._log("  d4j compile   : OK")
 
         all_mutants = self._run_by_class(project, bug_id, c_path, jobs)
-        saved_mutants = self._mark_source_mutants(all_mutants)
+        saved_mutants = mark_duplicate_mutants(all_mutants)
         duplicate_count = sum(1 for m in saved_mutants if m.dublicate)
 
         self._log(f"  mutants raw   : {len(all_mutants)}")
@@ -186,6 +186,7 @@ class PITPipeline:
         class_jobs = list(class_jobs)
         first = class_jobs[0]
         fqn = first.class_fqn
+        method_names = sorted({job.method_name for job in class_jobs if job.method_name})
         self._log(f"\n  class: {fqn}")
 
         wide_job = GeneratorJob(
@@ -195,22 +196,18 @@ class PITPipeline:
             host_path=first.host_path,
             filepath=first.filepath,
             class_fqn=fqn,
-            method_name="",
+            method_name=",".join(method_names),
             method_source="",
             method_start=1,
             method_end=999_999,
         )
 
         t0 = time.perf_counter()
-        all_class = self._generator.generate(wide_job, compile_first=False)
+        class_selected = self._generator.generate(wide_job)
         elapsed = round(time.perf_counter() - t0, 1)
-        self._log(f"    class_total={len(all_class)}  runtime={elapsed}s")
-
-        class_selected: list["Mutant"] = []
-        for job in class_jobs:
-            kept = [m for m in all_class if m.pit_method == job.method_name]
-            self._log(f"    {job.method_name}: pit_reported={len(kept)}  saved={len(kept)}")
-            class_selected.extend(kept)
+        self._log(
+            f"    methods={len(method_names)}  class_total={len(class_selected)}  runtime={elapsed}s"
+        )
 
         if class_selected:
             per_mutant = round(elapsed / len(class_selected), 2)
@@ -222,7 +219,7 @@ class PITPipeline:
     def _d4j_compile(self, container_path: str) -> bool:
         """Compile once with ``defects4j compile`` — no mutant recompilation is done."""
         _, _, rc = self.d4j.exec(
-            self._generator._clean_compile_cmd(container_path),
+            self._clean_compile_cmd(container_path),
             timeout=180,
         )
         return rc == 0
@@ -246,16 +243,22 @@ class PITPipeline:
 
     def _save(self, mutants: list["Mutant"], path: Path) -> "MutantBank":
         from ...mutant import MutantBank
-        bank = MutantBank.from_dicts([m.to_dict() for m in mutants], path=path)
+        bank = MutantBank(path)
+        bank.mutants = list(mutants)
         bank.save()
         return bank
-
-    def _mark_source_mutants(self, mutants: list["Mutant"]) -> list["Mutant"]:
-        return mark_duplicate_mutants(mutants)
 
     def _empty_bank(self, project: str, bug_id: int) -> "MutantBank":
         from ...mutant import MutantBank
         return MutantBank(self._out_path(project, bug_id))
+
+    def _clean_compile_cmd(self, container_path: str) -> str:
+        return (
+            f"cd {container_path} && "
+            f"git reset --hard -q >/dev/null 2>&1 || true && "
+            f"rm -rf target/pit-reports target/pit-reports-* && "
+            f"defects4j compile 2>&1"
+        )
 
     def _log(self, msg: str) -> None:
         if self.verbose:

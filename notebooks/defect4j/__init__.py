@@ -8,13 +8,11 @@ Typical usage:
     from defect4j.generators import PITPipeline, PITConfig
     bank = PITPipeline(Defects4J(), "demo_collection_workspace").run("Lang", 1)
 
-    # LLM pipeline (bring-your-own-client):
+    # LLM pipeline (local Ollama-compatible model):
     from defect4j.generators import LLMPipeline, LLMConfig
-    config   = LLMConfig(model="gpt-4o-mini", n_mutants=10)
-    pipeline = LLMPipeline("demo_collection_workspace", config)
-    prompts  = pipeline.prepare_jobs("Lang", 1, d4j)
-    ...
-    bank = pipeline.save("Lang", 1, all_mutants)
+    config   = LLMConfig(model="qwen2.5-coder:14b")
+    pipeline = LLMPipeline(d4j, "demo_collection_workspace", config)
+    bank = pipeline.run("Lang", 1)
 
     # Data collection (run mutants against tests):
     from defect4j import Storage, DataCollector
@@ -34,7 +32,6 @@ from .generators import (
     SourceFinder,
     LLMGenerator,
     LLMPipeline,
-    PreparedPrompt,
     PITGenerator,
     PITPipeline,
 )
@@ -56,7 +53,6 @@ __all__ = [
     "SourceFinder",
     "LLMGenerator",
     "LLMPipeline",
-    "PreparedPrompt",
     "PITGenerator",
     "PITPipeline",
 ]
