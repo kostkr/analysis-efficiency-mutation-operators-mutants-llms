@@ -18,7 +18,7 @@
   - [1.1 Temat i cel pracy](#temat-i-cel-pracy) (DONE)
   - [1.2 Budowa pracy](#budowa-pracy) (DONE)
 
-- [2 Testowanie mutacyjne](#testowanie-mutacyjne) (TO DO)
+- [2 Testowanie mutacyjne](#testowanie-mutacyjne) (DONE)
   - [2.1 Czym jest mutant?](#czym-jest-mutant) (DONE)
   - [2.2 Zabicie mutanta i mutation score](#zabicie-mutanta-i-mutation-score) (DONE)
   - [2.3 Proces testowania mutacyjnego krok po kroku](#proces-testowania-mutacyjnego-krok-po-kroku) (TO DO)
@@ -40,13 +40,13 @@
   - [4.3 LLM jako generator zmian w kodzie](#llm-jako-generator-zmian-w-kodzie) (TO DO)
   - [4.4 Ryzyka i ograniczenia LLM (z perspektywy jakości kodu)](#ryzyka-i-ograniczenia-llm-z-perspektywy-jakości-kodu) (TO DO)
 
-- [5 Dane eksperymentalne i metryki](#dane-eksperymentalne-i-metryki) (TO DO)
-  - [5.1 Zbiór rzeczywistych błędów](#zbiór-rzeczywistych-błędów) (TO DO)
+- [5 Dane eksperymentalne i metryki](#dane-eksperymentalne-i-metryki) (DONE)
+  - [5.1 Zbiór rzeczywistych błędów](#zbiór-rzeczywistych-błędów) (DONE)
   - [5.2 Rodzaje mutantów](#rodzaje-mutantów) (DONE)
     - [5.2.1 Compilable mutants](#compilable-mutants) (DONE)
     - [5.2.2 Duplicate mutants](#duplicate-mutants) (DONE)
     - [5.2.3 Equivalent mutants](#equivalent-mutants) (DONE)
-  - [5.3 Metryki i kryteria oceny](#metryki-i-kryteria-oceny) (TO DO)
+  - [5.3 Metryki i kryteria oceny](#metryki-i-kryteria-oceny) (DONE)
     - [5.3.1 LLM New Mutant Rate](#llm-new-mutant-rate) (TO DO)
     - [5.3.2 Real Bug Detection Rate](#real-bug-detection-rate) (TO DO)
     - [5.3.3 Average Ochiai Rate](#average-ochiai-rate) (TO DO)
@@ -343,23 +343,25 @@ Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zin
 
 Zanim przejdziemy do szczegółowego opisu eksperymentu należy najpierw odpowiedzieć na pytanie: w jaki sposób ocenić, czy mutanty wygenerowane przez LLM są rzeczywiście lepsze od mutantów klasycznych?
 Taka ocena wymaga zbioru rzeczywistych błędów, względem którego można analizować stopień realizmu mutantów, a także zastosowania odpowiednich metryk do porównania.
-W tym rozdziale zostanie przedstawiony zbiór defectów, który będzie wykorzystany w badaniu, a potem zostaną zdefiniowane metryki, służącego do określania podobieństwa mutanta do rzeczywistego defektu.
+W tym rozdziale zostanie przedstawiony zbiór defectów, który będzie wykorzystany w badaniu, a potem zostaną zdefiniowane metryki, służącego do określania podobieństwa mutanta do rzeczywistego błędu.
 
 ### Zbiór rzeczywistych błędów
 
-W badaniach nad jakością oprogramowania często potrzebny jest zbiór udokumentowanych, rzeczywistych błędów, które faktycznie pojawiły się w kodzie produkcyjnym, zostały zgłoszone i naprawione przez programistów.
-Takie zbiory nazywane są repozytoriami bugów (*bug benchmarks* lub *bug repositories*) i różnią się od zwykłych zestawów testów tym, że dla każdego błędu przechowują trzy elementy.
-Pierwszym jest wersja kodu przed naprawą (*buggy version*), zawierająca defekt w oryginalnej postaci.
-Drugim jest wersja kodu po naprawie (*fixed version*), w której defekt został usunięty.
-Trzecim są testy wyzwalające (*triggering tests*), które nie przechodzą dla wersji z błędem, lecz przechodzą po jego naprawie i tym samym bezpośrednio wskazują na obecność defektu.
-Dzięki tej strukturze możliwe jest precyzyjne odtwarzanie zachowania programu w obecności błędu i porównywanie go z zachowaniem wygenerowanego mutanta.
-Warto podkreślić, że testy wyzwalające stanowią jedynie podzbiór wszystkich testów projektu, obejmujący wyłącznie te, które są bezpośrednio powiązane z danym defektem.
+Oceniając jakość oprogramowania, kluczowe jest analiza zbioru udokumentowanych, rzeczywistych defektów, które faktycznie wystąpiły w kodzie produkcyjnym, zostały zgłoszone, a następnie naprawione przez programistów.
+Zbiory te, znane jako repozytoria błędów. One różnią się od standardowych zestawów testowych, ponieważ przechowują trzy kluczowe komponenty dla każdego błędu.
+Po pierwsze, istnieje "wersja z błędami" kodu, która zawiera defekt w jego oryginalnym stanie, jeszcze przed naprawą.
+Po drugie, mamy "wersję naprawioną" kodu, w której błąd został rozwiązany w sposób, który pozwala na porównanie zachowania programu przed i po naprawie.
+Po trzecie, istnieją "testy jednostkowe", które kończą się niepowodzeniem po uruchomieniu wersji z błędami oraz kończą się powodzeniem w naprawionej wersji.
+To ustrukturyzowane podejście pozwala na odtworzenie zachowania programu z obecnym błędem oraz porównanie jego z zachowaniem wygenerowanego mutanta.
 
-Źródłem danych w niniejszym badaniu jest 3.0.1 **Defects4J** [5].
-Defects4J to zbiór 854 aktywnych błędów z 17 projektów Java open-source, utrzymywany przez środowisko akademickie od 2014 roku.
-Dla każdego błędu dostępna jest para wersji kodu (*buggy* i *fixed*) możliwa do pobrania narzędziem wiersza poleceń, lista zmodyfikowanych klas wskazująca dokładnie, które pliki uległy zmianie podczas naprawy, zestaw nazw testów wyzwalających oraz możliwość automatycznej kompilacji i uruchomienia testów bez żadnej ręcznej ingerencji.
-Każdy błąd został zgłoszony w odpowiednim systemie śledzenia zgłoszeń, naprawiony w pojedynczym zatwierdzeniu (*commit*) i ręcznie zminimalizowany przez opiekunów benchmarku w celu usunięcia zmian niezwiązanych z defektem (refaktoryzacji, nowych funkcji). 
-Dla każdego błędu istnieje co najmniej jeden test wyzwalający, którego niepowodzenie jest deterministyczne i niezależne od kolejności wykonania testów.
+Źródłem danych w tym badaniu to **Defects4J** w wersji 3.0.1 [5]. 
+Defects4J to zestaw 854 błędów z 17 projektów Java open-source, który jest utrzymywana przez naukowców od 2014 roku.
+Dla każdego błędu mamy dostęp do wersji kodu z błędem oraz wersji naprawionej.
+Co więcej w celu ułatwienia analizy jest lista zmodyfikowanych klas, która pokazuje, które pliki zostały zmienione w wersji poprawionej.
+Dostępny jest także zestaw nazw testów oraz możliwość automatycznie kompilować i uruchamiać testy bez ręcznej konfiguracji środowiska.
+Każdy błąd został zgłoszony w systemie śledzenia zgłoszeń, a następnie naprawiony w jednym zatwierdzeniu. 
+Kod każdego błędu został ręcznie minimalizowany w taki sposób, żeby usunąć zmiany, które nie były związane z defektem, takie jak refaktoryzacja, czyli nowe funkcje.
+Dalej zgodnie z dokumentacją, dla każdego błędu istnieje przynajmniej jeden test, który zawsze kończy się niepowodzeniem nie zależnie od kolejności wywołania testów.
 
 | Identyfikator   | Projekt                | Liczba aktywnych bugów | IDs aktywnych bugów          |
 |-----------------|------------------------|------------------------|------------------------------|
@@ -383,6 +385,11 @@ Dla każdego błędu istnieje co najmniej jeden test wyzwalający, którego niep
 | **Razem**       |                        | **854**                | —                            |
 
 Projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (Lang, Math, Collections), przez parsery i kodeki (Jsoup, Gson, JacksonCore, JacksonDatabind, Codec), aż po kompilatory (Closure) i narzędzia ogólnego przeznaczenia (Compress, Csv, Cli). Różnorodność dziedzin zapewnia, że wyniki nie są specyficzne dla jednego rodzaju kodu i mogą stanowić podstawę wniosków ogólniejszej natury. Ze względu na koszty wywołań interfejsu API modelu językowego i czas uruchomienia testów, spośród dostępnych błędów wybierana jest reprezentatywna próba spełniająca zdefiniowane kryteria selekcji.
+
+Projekty obejmują różne obszary aplikacji, takich jak biblioteki pomocnicze ( Lang, Math, Collections), a także parsery(Jsoup, Gson, JacksonCore, JacksonDatabind i Codec).
+Też jest kompilator (Closure), ogólnoużytkowe narzędzia (Compress, Csv i Cli).
+Taka różnorodność aplikacji pozwala uzyskać wyniki, które nie dotyczą tylko jednego rodzaju kodu, lecz mogą być podstawą wniosków o szerszym zakresie.
+Ze względu na koszty połączeń z modelem językowym oraz czas potrzebny na wykonanie testów, zostanie wybrana tylko reprezentatywna grupa błędów.
 
 ### Rodzaje mutantów
 
@@ -435,7 +442,11 @@ Equivalent Mutation Rate (EMR) = liczba mutantów przeżywających / (liczbę mu
 
 ### Metryki i kryteria oceny
 
-Ocena wygenerowanych mutantów prowadzona na podstawie trzech kluczowych metryk: różnorodności operatorów względem narzędzi klasycznych, podobieństwa mutantów do rzeczywistych defektów oraz jakości i kosztu procesu generowania.
+Ocena mutantów generowanych odbywa się na podstawie trzech najważniejszych punktów:
+
+- jak bardzo mutanty różnią się od klasycznych narzędzi,
+- jak bardzo są podobne do rzeczywistych błędów,
+- jak tani i szybki jest proces ich tworzenia.
 
 #### LLM New Mutant Rate
 
