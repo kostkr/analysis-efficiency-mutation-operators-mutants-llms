@@ -21,18 +21,17 @@
 - [2 Testowanie mutacyjne](#testowanie-mutacyjne) (DONE)
   - [2.1 Czym jest mutant?](#czym-jest-mutant) (DONE)
   - [2.2 Zabicie mutanta i mutation score](#zabicie-mutanta-i-mutation-score) (DONE)
-  - [2.3 Proces testowania mutacyjnego krok po kroku](#proces-testowania-mutacyjnego-krok-po-kroku) (TO DO)
-  - [2.4 Koszty i problemy praktyczne](#koszty-i-problemy-praktyczne) (TO DO)
-    - [2.4.1 Czas wykonania i narzut obliczeniowy](#czas-wykonania-i-narzut-obliczeniowy) (TO DO)
-    - [2.4.2 Redukcja liczby mutantów (selektory, sampling)](#redukcja-liczby-mutantów-selektory-sampling) (TO DO)
+  - [2.3 Proces testowania mutacyjnego krok po kroku](#proces-testowania-mutacyjnego-krok-po-kroku) (DONE)
+  - [2.4 Koszty i problemy praktyczne](#koszty-i-problemy-praktyczne) (DONE)
 
-- [3 Operatory mutacyjne w narzędziach klasycznych](#operatory-mutacyjne-w-narzędziach-klasycznych) (TO DO)
-  - [3.1 Czym jest PIT i jak działa](#czym-jest-pit-i-jak-działa) (TO DO)
-  - [3.2 Model generacji mutantów w PIT](#model-generacji-mutantów-w-pit) (TO DO)
-  - [3.3 Katalog operatorów: typy i przykłady](#katalog-operatorów-typy-i-przykłady) (TO DO)
-  - [3.4 Ograniczenia operatorów klasycznych](#ograniczenia-operatorów-klasycznych) (TO DO)
-    - [3.4.1 Ograniczona różnorodność transformacji](#ograniczona-różnorodność-transformacji) (TO DO)
-    - [3.4.2 Niedopasowanie do błędów z praktyki](#niedopasowanie-do-błędów-z-praktyki) (TO DO)
+- [3 Operatory mutacyjne w narzędziach klasycznych](#operatory-mutacyjne-w-narzędziach-klasycznych) (DONE)
+  - [3.1 Czym jest PIT](#czym-jest-pit) (DONE)
+  - [3.2 Katalog operatorów klasycznych](#katalog-operatorów-klasycznych) (DONE)
+    - [3.2.1 Mutanty projektowe](#mutanty-projektowe) (DONE)
+    - [3.2.2 Mutanty integracyjne](#mutanty-integracyjne) (DONE)
+    - [3.2.3 Mutanty obiektowe](#mutanty-obiektowe) (DONE)
+    - [3.2.4 Mutanty wykonywane na gramatyce](#mutanty-wykonywane-na-gramatyce) (DONE)
+  - [3.3 Ograniczenia operatorów klasycznych](#ograniczenia-operatorów-klasycznych) (DONE)
 
 - [4 Duże modele językowe w inżynierii oprogramowania](#duże-modele-językowe-w-inżynierii-oprogramowania) (TO DO)
   - [4.1 Czym są LLM?](#czym-są-llm) (TO DO)
@@ -162,7 +161,7 @@ Aby móc przeprowadzić taką ocenę, trzeba najpierw zdefiniować, czym jest mu
 
 Mutant to specjalna wersja kodu, który powstaje przez wprowadzenie drobnej zmiany w oryginalnym kodzie.
 Zmiana ta jest celowa i wynika z określonej reguły, która nazywa się operatorem mutacyjnym.
-Definicja mutanta jest dość prosta, ale kryje w sobie kilka ważnych szczegółów.
+Definicja mutanta jest stosunkowo prosta, ale kryje w sobie kilka ważnych szczegółów.
 - Po pierwsze, mutant różni się od oryginału tylko w jednym miejscu.
 - Po drugie, zmiana jest celowa, a nie losowa. W klasycznym podejściu to określony operator mutacyjny.
 - Po trzecie, mutant nie jest błędem, który występuje w systemie produkcyjnym, ale raczej sztuczną symulacją błędów, które mogą wystąpić w kodzie.
@@ -214,90 +213,129 @@ Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zin
 
 ### Proces testowania mutacyjnego krok po kroku
 
-> ✏️ **Wskazówka:** Lista numerowana — sekwencja od kodu źródłowego do raportu końcowego. Bez szczegółów implementacyjnych. Uwzględnij: generację mutantów → kompilację → uruchomienie testów → klasyfikację (killed/survived) → obliczenie mutation score. Opcjonalnie: prosty diagram przepływu.
+Proces testowania mutacyjnego został po raz pierwszy opisany w 1978 roku przez DeMillo [7].
+W praktyce cały proces składa się z kolejnych etapów, gdzie każdy następny krok jest uzależniony od wyniku etapu poprzedniego [2], [6].
+Na początku generuje się tak zwany zbiór mutantów, po czym sprawdza się, czy są one poprawne pod względem technicznym dla uruchomienia testów na tych mutantach.
+Potem przeprowadzana jest analiza wyników oraz interpretacja danych takich "jak mutation score" i innych ustalonych metryk w celu oceny jakości testów.
 
-*[Do napisania]*
+![Process Testowania Mutacyjnego](images/proces-testowania-mutacyjnego.png)
 
----
+1. Na początku wybierany jest fragment kodu, który będzie analizowany. 
+2. Generowany jest zbiór mutantów, w celu symulacji potencjalne błędy w kodzie.
+3. Dla każdego wygenerowanego mutantu sprawdzana jest poprawność techniczna, najczęściej poprzez kompilację tak, aby do dalszego etapu filtrować jedynie mutanty możliwe do uruchomienia.
+4. Dla mutantów, które przeszły ten etap, wykonywany jest zbiór testów w celu sprawdzenia, że wprowadzona zmiana powoduje obserwowalną zmianę zachowania kodu.
+5. Po zakończeniu testów mutant zostaje sklasyfikowany jako zabity, jeżeli co najmniej jeden test zakończy się niepowodzeniem, albo jako przeżywający, jeżeli cały zestaw testów przejdzie.
+6. Kolejnym krokiem oblicza się mutation score, czyli procent zabitych mutantów, które przeszły etap sprawdzenia technicznego.
+7. Na samym końcu przeprowadzana jest interpretacja wyników dla oceny jakości testów oraz wnioskowanie o potencjalnych obszarach kodu, które wymagają poprawy/dopisania testów.
 
 ### Koszty i problemy praktyczne
 
-> ✏️ **Wskazówka:** Ta sekcja uzasadnia, dlaczego testowanie mutacyjne nie jest powszechnie stosowane w przemyśle. Każda podsekcja to osobny problem — połącz je na końcu krótkim akapitem podsumowującym.
+Największą przeszkodą w stosowaniu testowania mutacyjnego w praktyce jest wysoki koszt obliczeniowy oraz czasowy związany z generowaniem, kompilacją oraz uruchamianiem dużej liczby mutantów.
+Każdy mutant wymaga osobnego sprawdzenia, dlatego łączny koszt analizy rośnie bardzo szybko.
+Jeżeli projekt zawiera N testów oraz wygenerowano dla niego M mutantów, to liczba uruchomień rośnie w przybliżeniu proporcjonalnie do iloczynu N i M, co wprowadza znaczący narzut infrastrukturalny oraz czasowy.
+Z tego powodu testowanie mutacyjne, mimo bardzo wartościowej informacji o jakości testów, jest w projektach produkcyjnych stosowane rzadko albo ograniczane tylko do najbardziej krytycznych modułów.
 
-#### Czas wykonania i narzut obliczeniowy
+Jednym z podstawowych sposobów ograniczania tego kosztu jest zmniejszenie liczby analizowanych mutantów, w literaturze [6] opisuje się mutant sampling (losowy wybór reprezentatywnego podzbioru mutantów) oraz selective mutation (ograniczenie analizy do operatorów uznawanych za najbardziej informatywne).
+Takie podejście pozwala skrócić czas wykonania przy zachowaniu bardzo przybliżonej do oryginału oceny mutation score.
+Dodatkowo współczesne narzędzia starają się przyspieszać analizę przez równoległość, ograniczanie liczby uruchamianych testów oraz mutację na poziomie bajtkodu JVM, co wykorzystuje między innymi PIT [1], [2].
 
-> ✏️ **Wskazówka:** Podaj rząd wielkości: dla projektu z N testami i M mutantami czas rośnie jak N×M. Przytoczyć można przykład z literatury lub własne obserwacje z Defects4J. Techniki przyspieszenia: równoległość, bytecode mutation (PIT).
-
-*[Do napisania]*
-
-#### Redukcja liczby mutantów (selektory, sampling)
-
-> ✏️ **Wskazówka:** Dwa główne podejścia: (1) mutant sampling — losowe próbkowanie podzbioru mutantów; (2) selective mutation — ograniczenie do podzbioru operatorów. Krótko o badaniach pokazujących, że niewielki podzbiór operatorów wystarczy do uzyskania dobrego przybliżenia pełnego mutation score.
-
-*[Do napisania]*
+Częściowym sposobem ograniczenia tego problemu może być także generowanie mutantów przy użyciu LLM.
+W przeciwieństwie do klasycznych operatorów mutacyjnych opartych na szerokim katalogu operatorów LLM mogą potencjalnie generować mniejszą liczbę mutantów, ale bardziej zbliżonych do rzeczywistych błędów w kodzie.
+W takim przypadku redukcja liczby kandydatów może obniżyć koszt dalszej kompilacji i uruchamiania testów.
+Dodatkową zaletą jest to, że już zostały wytworzone małe, kwantyzowane LLM, z dobrymi metrykami w benchmarkach, dla których koszt obliczeniowy oraz czas pojedynczej generacji może być relatywnie niski.
+Oznacza to, że przy odpowiednio dobranym modelu i strategii selekcji mutantów podejście LLM może częściowo poprawić praktyczną opłacalność testowania mutacyjnego, zwiększając dostępność tego podejścia dla szerszego zakresu projektów produkcyjnych.
 
 ---
 
 ## Operatory mutacyjne w narzędziach klasycznych
 
-> ✏️ **Wskazówka do rozdziału:** Rozdział skupia się wyłącznie na narzędziu PIT jako reprezentancie klasycznego podejścia do testowania mutacyjnego. Po przeczytaniu czytelnik powinien wiedzieć: czym jest PIT, jak generuje mutanty, jakie operatory zawiera katalog ALL i — co najważniejsze — jakie są jego ograniczenia. Ta ostatnia część jest bezpośrednim uzasadnieniem dla badania opisanego w rozdziale 6.
+Głównym celem operatorów mutacyjnych jest symulowanie typowych błędów w kodzie.
+Klasyczne operatory mutacyjne to zbiór zdefiniowanych reguł transformacji kodu, których celem jest tworzenie sztucznych błędów o przewidywalnym charakterze.
+Ich największą zaletą jest powtarzalność, ponieważ każdy operator opisuje jasno określony wzorzec zmiany, co pozwala na stosunkowo łatwą automatyzację oraz pełną kontrolę nad procesu generacji mutantów.
+W tym rozdziale przedstawiono klasyczne operatory, realizowane za pomocą narzędzia PIT [1], jako rozpowszechnione i dobrze udokumentowane rozwiązanie.
 
----
+### Czym jest PIT
 
-### Czym jest PIT i jak działa
+PIT jest narzędziem do testowania mutacyjnego dla projektów napisanych w Javie.
+W niniejszej pracy stanowi ono reprezentatywny katalog dla klasycznych operatorów mutacyjnych, ponieważ udostępnia zarówno publiczną dokumentację z definicją operatorów, jak i otwarty kod źródłowy.
+Pozwala to jednoznacznie zapisywać, jakie mutanty są generowane, co będzie potrzebne dla dalszej analizy.
+Z dokumentacji PIT wynika, że grupa "ALL", która będzie stosowana w badaniu, obejmuje 29 operatorów mutacyjnych.
+Katalog "ALL" reprezentuje zakres klasycznych operatorów mutacyjnych, co jest istotne dla wyznaczenia listy klasycznych mutantów oraz porównania ich z mutantami generowanymi przez LLM.
 
-> ✏️ **Wskazówka:** Krótki opis narzędzia: język Java, operuje na bytecode JVM (nie na kodzie źródłowym — to ważna właściwość), integracja z Maven/Gradle, generuje raporty HTML. Podkreśl, że PIT jest *de facto* standardem w testowaniu mutacyjnym dla Javy. 1–2 akapity.
+### Katalog operatorów klasycznych
 
-*[Do napisania]*
+W klasyfikacji operatorów mutacyjnych wykorzystano klasyfikację przedstawioną przez Ammanna i Offutta [6].
+Na tej podstawie operatory PIT z grupy "ALL" uporządkowano według czterech rodzin, w celu zdefiniowania uporządkowanej listy klasycznych mutantów dla porównania z mutantami wygenerowanymi przez LLM.
 
----
+#### Mutanty projektowe
 
-### Model generacji mutantów w PIT
+Mutanty projektowe stanowią zbiór modyfikacji kodu źródłowego, które symulują proste lokalne błędy w logice.
+Obejmują one operacje arytmetyczne, inkrementacje, operatory relacyjne, operatory bitowe oraz literały występujące w obrębie jednej metody.
 
-> ✏️ **Wskazówka:** Opisz jak PIT generuje mutanty: analiza bytecode → aplikacja reguły transformacji → zapis zmutowanej klasy. Nie wchodź w szczegóły JVM — wystarczy intuicja. Zaznacz, że operowanie na bytecode gwarantuje kompilację mutantów (co odróżnia PIT od generatorów tekstowych, np. LLM). Cecha istotna dla późniejszego porównania compile rate.
+- `Conditionals Boundary` - służy do testowania poprawności warunków granicznych. Działa przez zamianę `<` na `<=`, `<=` na `<`, `>` na `>=` oraz `>=` na `>`.
+- `Increments` - sprawdza poprawność aktualizacji zmiennych lokalnych. Działa przez zamianę inkrementacji na dekrementacje i odwrotnie.
+- `Invert Negatives` - bada poprawność użycia znaku wartości numerycznych. Działa przez usunięcie negacji albo odwrócenie znaku zmiennej, ale nie mutuje ujemnych literałów.
+- `Math` - odpowiada za mutacje operatorów arytmetycznych, bitowych i przesunięć. Obejmuje między innymi zamiany `+` na `-`, `*` na `/`, `%` na `*`, `&` na `|` oraz `<<` na `>>`.
+- `Negate Conditionals` - służy do sprawdzania logiki porównań. Działa przez zamianę `==` na `!=`, `!=` na `==`, `<` na `>=`, `<=` na `>` oraz `>` na `<=`.
+- `Inline Constant` - mutuje literały przypisane do zmiennych niefinalnych. W zależności od typu zmienia je na wartości graniczne albo zwiększa ich wartość.
+- `Remove Increments` - Usuwa inkrementację lokalnych zmiennych.
+- `Negation (ABS)` - zastępuje użycie zmiennej numerycznej jej negacją.
+- `Arithmetic Operator Replacement (AOR)` - wykonuje rozszerzoną zamianę operatorów `+`, `-`, `*`, `/` i `%` na inne operatory arytmetyczne z tej listy.
+- `Arithmetic Operator Deletion (AOD)` - usuwa operator arytmetyczny i pozostawia tylko pierwszy albo drugi operand. Na przykład `int a = b + c;` mutuje do `int a = b;`.
+- `Constant Replacement (CRCR)` - mutuje stałe według kilku schematów, na przykład do `1`, `0`, `-1`, wartości przeciwnej albo wartości zwiększonej i zmniejszonej o jeden.
+- `Bitwise Operator (OBBN)` - mutuje operacje bitowe `&` i `|`, zamieniając operator albo redukując wyrażenie do jednego z operandów.
+- `Relational Operator Replacement (ROR)` - rozszerza mutacje operatorów relacyjnych przez podstawienia między `<`, `<=`, `>`, `>=`, `==` i `!=`.
+- `Unary Operator Insertion (UOI)` - wstawia operatory jednoargumentowe, takie jak preinkrementacja, postinkrementacja, predekrementacja i postdekrementacja przy odwołaniach do zmiennych.
 
-*[Do napisania]*
+Mutanty projektowe są katalogu PIT najliczniejsza.
+Wynika to z faktu, że klasyczne testowanie mutacyjne historycznie skupiało się na drobnych błędach w obrębie pojedynczej jednostki kodu, takich jak błędna granica porównania albo niewłaściwa modyfikacja zmiennej lokalnej.
 
----
+#### Mutanty integracyjne
 
-### Katalog operatorów: typy i przykłady
+Mutanty integracyjne stanowią zbiór modyfikacji kodu źródłowego, które badają poprawność współpracy między metodami oraz przepływu wartości pomiędzy komponentami kodu.
 
-> ✏️ **Wskazówka:** Opisz kategorie operatorów w grupie ALL (zmiany warunków logicznych, operatorów arytmetycznych, wartości zwracanych, usunięcia wywołań). Dodaj tabelę z przykładami (wzór z oryginalnej pracy — tabela PIT operators). Każdą kategorię opisz jednym zdaniem. Cel: czytelnik musi wiedzieć co PIT potrafi, żeby rozumieć co to znaczy „NEW" operator w rozdziale 7.
+- `Void Method Call` - usuwa wywołania metod typu `void`. Pozwala to sprawdzić, czy testy wykrywają brak efektu ubocznego operacji, która nic nie zwraca.
+- `Non Void Method Call` - usuwa wywołania metod zwracających wartość oraz zastępuje ich wynik domyślną wartością Javy dla danego typu, na przykład `0`, `false`, `0.0` albo `null`.
+- `Experimental Argument Propagation` - zastępuje całe wywołanie metody jednym z jego argumentów o zgodnym typie. Bada to pominięcie logiki metody i dalsze użycie wartości wejściowej.
 
-| Operator PIT | Skrót | Przykład zmiany |
-|---|---|---|
-| Conditionals Boundary | CBM | `x < 5` → `x <= 5` |
-| Negate Conditionals | NCM | `x == 0` → `x != 0` |
-| Remove Conditionals | RCM | `if (cond)` → `if (true)` |
-| Math | MTH | `a + b` → `a - b` |
-| Increments | INR | `i++` → `i--` |
-| Invert Negatives | INV | `return x` → `return -x` |
-| Return Values | RTV | `return x` → `return 0` |
-| Void Method Calls | VMC | `log.clear()` → *(usunięcie)* |
-| Empty Returns | ERT | `return obj` → `return null` |
-| False Returns | FRT | `return expr` → `return false` |
-| True Returns | TRT | `return expr` → `return true` |
-| Null Returns | NRT | `return obj` → `return null` |
+Jeżeli usunięcie wywołania metody albo zastąpienie przekazywanych parametrów nie wpływa na wynik testów, może to oznaczać, że integracja między elementami programu nie jest wystarczająco dobrze przetestowana.
 
-*[Do uzupełnienia: ewentualnie rozszerzyć tabelę o dodatkowe operatory z grupy ALL po weryfikacji dokumentacji PIT]*
+#### Mutanty obiektowe
 
----
+Mutanty obiektowe stanowią zbiór modyfikacji kodu źródłowego, które symulują błędy związane z korzystaniem z mechanizmów obiektowych.
+
+- `Constructor Call` - zastępuje wywołanie konstruktora wartością `null`. Służy do badania odporności programu na brak poprawnie zainicjalizowanego obiektu.
+- `Experimental Big Integer` - zamienia wywołania metod na obiektach `BigInteger`. Reprezentuje to błędy w użyciu obiektowego API liczbowego.
+- `Experimental Member Variable` - usuwa przypisania do pól obiektów, także pól finalnych, przez co pola przyjmują domyślne wartości Javy.
+- `Experimental Naked Receiver` - zastępuje wywołanie metody samym odbiorcą wywołania, co oznacza pominięcie logiki tej metody przy zachowaniu obiektu.
+
+Choć PIT nie implementuje całego katalogu klasycznych operatorów obiektowych znanych w literaturze, zawiera wystarczającą reprezentatywną grupę związaną z programowaniem obiektowym.
+
+#### Mutanty wykonywane na gramatyce
+
+Mutanty wykonywane na gramatyce obejmują takie modyfikacje, które symulują błędy przepływu sterowania albo zwracania wyniku z metody.
+W odróżnieniu od mutacji projektowych nie dotyczą one wyłącznie pojedynczego operatora, lecz wpływają na semantykę instrukcji `return`, `if` lub `switch`.
+
+- `Return Values` – zmienia wynik metody w sposób zależny od typu zwracanej wartości, na przykład dla typów logicznych odwraca `true` i `false`, dla liczb podstawiał wartości domyślne albo przesunięte, a dla obiektów zastępował wynik wartością `null`.
+- `Empty Returns` – zastępuje wynik metody odpowiadającą mu pustą reprezentacją. W praktyce może to być pusty napis, pusta kolekcja, `Optional.empty()` albo wartość zero. Operator ten pozwala sprawdzić, czy testy odróżniają wynik rzeczywisty od poprawnego składniowo, ale semantycznie pustego.
+- `False Returns` – wymusza zwracanie `false` dla wartości logicznych. Jest użyteczny tam, gdzie poprawność programu zależy od pojedynczych decyzji logicznych zwracanych przez metodę.
+- `True Returns` –  wymusza zwracanie `true` dla wartości logicznych. Jest podobny do `False Returns`.
+- `Null Returns` – zastępuje zwracany obiekt wartością `null`. Operator ten pozwala sprawdzić, czy testy poprawnie sprawdzają brak oczekiwanego obiektu.
+- `Primitive Returns` – zastępuje prymitywne wartości zwracane przez `0`. Dzięki temu bada, czy testy odróżniają wynik obliczenia od wartości domyślnej dla typu numerycznego.
+- `Remove Conditionals` – usuwa znaczenie warunku i wymusza wykonanie albo pominięcie gałęzi `if` lub `else`. Dokumentacja PIT wyróżnia tu specjalizacje dla warunków równościowych i porządkowych oraz dla gałęzi, która ma zostać wymuszona. Mutator ten sprawdza, czy testy są wrażliwe na sam wybór ścieżki wykonania programu.
+- `Experimental Switch` – mutuje instrukcję `switch` przez zastąpienie etykiety domyślnej pierwszą etykietą jawną, a pozostałych etykiet wartością `default`.
+
+Wspólną cechą tych mutantów jest to, że mutacje obejmują konstrukcje składniowe odpowiedzialne za wybór ścieżki wykonania albo za zwracanie wartości z metody.
+To pozwala badać, że testy wykrywają błędy związane nie tylko z lokalnym operatorem, lecz również z błędną strukturą sterowania.
 
 ### Ograniczenia operatorów klasycznych
 
-> ✏️ **Wskazówka:** To jest kluczowa sekcja uzasadniająca całe badanie. Pisz konkretnie — nie „PIT jest ograniczony", ale „PIT nie uwzględnia X, Y, Z". Zakończ wyraźnym stwierdzeniem: ta luka uzasadnia poszukiwanie innych źródeł reguł mutacyjnych.
-
-#### Ograniczona różnorodność transformacji
-
-> ✏️ **Wskazówka:** Katalog PIT ALL obejmuje ~12 operatorów — to skończony, statyczny zestaw reguł wybranych przez ekspertów. Porównaj z przestrzenią możliwych błędów: brakujące null-checki, błędy inicjalizacji, niepoprawna kolejność operacji, błędy obsługi wyjątków, problemy z współbieżnością — żadne z tych nie ma odpowiednika w ALL. Podaj liczby: ile operatorów ma PIT ALL vs ile klas błędów wyróżnia literatura (np. Defects4J taxonomy).
-
-*[Do napisania]*
-
-#### Niedopasowanie do błędów z praktyki
-
-> ✏️ **Wskazówka:** Powołaj się na badania pokazujące, że operatory PIT nie odpowiadają rozkładowi rzeczywistych defektów (literatura: Andrews et al., Daran & Thévenod-Fosse, lub podobne). Wspomnij o koncepcji „realistic mutation operators" jako kierunku badań. To bezpośrednio prowadzi do pytania: czy LLM, trenowany na historii bugów, może generować realistyczniejsze mutanty?
-
-*[Do napisania]*
+Mimo tego, że PIT ma bogaty katalog, to nadal jest narzędziem opartym na skończonym zbiorze ręcznie zdefiniowanych reguł na podstawie obserwacji ludzkich.
+Każdy operator opisuje tylko taki rodzaj zmiany, jaki przewidzieli jego twórcy.
+Dlatego przestrzeń możliwych defektów jest symulowana przez stosunkowo ograniczony obszar mutantów.
+W praktyce oznacza to, że PIT nie tworzy zmian wyraźnie zależnych od znaczenia całego fragmentu programu, lecz od wzorca rozpoznanego przez konkretny mutator.
+Jest to istotne, ponieważ właśnie poza tym obszarem mogą pojawiać się nowe operatory generowane przez LLM, które będą lepiej symulować rzeczywiste błędy w kodzie.
+Ograniczona różnorodność transformacji w podejściu klasycznym stanowi więc jedną z głównych przyczyn dla badania LLM jako generatora mutantów.
 
 ---
 
@@ -305,15 +343,11 @@ Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zin
 
 > ✏️ **Wskazówka do rozdziału:** Rozdział wprowadza czytelnika w tematykę LLM z perspektywy inżynierii oprogramowania — nie z perspektywy teorii ML. Unikaj szczegółów architektury transformerów. Skup się na: czym są LLM w kontekście kodu, do czego są używane w SE, i — kluczowe dla pracy — jakie są ich możliwości i ograniczenia jako generatora zmian w kodzie.
 
----
-
 ### Czym są LLM?
 
 > ✏️ **Wskazówka:** Dwa akapity: (1) intuicja — modele trenowane na ogromnych zbiorach tekstu (w tym kodu), modelują statystyczne zależności między tokenami; (2) kontekst do pracy — LLM „widział" miliardy linii kodu i historii bugów podczas treningu, co daje mu wiedzę o typowych wzorcach błędów. Wspomnij o kluczowych modelach: GPT-4, Claude, Gemini, CodeLlama. Odnieś się do Codex (Chen et al. 2021) jako pionierskiej pracy.
 
 *[Do napisania]*
-
----
 
 ### LLM w pracy programisty: typowe zastosowania
 
@@ -321,15 +355,11 @@ Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zin
 
 *[Do napisania]*
 
----
-
 ### LLM jako generator zmian w kodzie
 
 > ✏️ **Wskazówka:** To jest bezpośrednie tło dla Twojego eksperymentu. Opisz koncepcję: LLM jako „generator hipotez mutacyjnych" — model dostaje kontekst kodu + instrukcję i zwraca zmodyfikowany fragment + opis reguły. Kluczowa zaleta: reguła jest indukcyjna (wynika z wzorców w danych), a nie ręcznie specyfikowana. Wspomnij o wcześniejszych pracach stosujących LLM do generowania mutantów (MutationGPT, ChatMut — jeśli dostępne w literaturze).
 
 *[Do napisania]*
-
----
 
 ### Ryzyka i ograniczenia LLM (z perspektywy jakości kodu)
 
@@ -442,27 +472,30 @@ Equivalent Mutation Rate (EMR) = liczba mutantów przeżywających / (liczbę mu
 
 ### Metryki i kryteria oceny
 
-Ocena mutantów generowanych odbywa się na podstawie trzech najważniejszych punktów:
+Ocena mutantów generowanych opiera się na trzech najważniejszych kryteriach:
 
-- jak bardzo mutanty różnią się od klasycznych narzędzi,
-- jak bardzo są podobne do rzeczywistych błędów,
-- jak tani i szybki jest proces ich tworzenia.
+- stopniu różnicy względem mutantów generowanych przez klasyczne narzędzia,
+- poziomie podobieństwa do rzeczywistych błędów oprogramowania,
+- efektywności generacji mutantów, uwzględniając koszt oraz czas potrzebny do stworzenia mutantów.
 
 #### LLM New Mutant Rate
 
-*LLM New Mutant Rate* (LNMR) mierzy, jaka część użytecznych mutantów LLM nie ma odpowiednika wśród mutantów klasycznych.
-Wskaźnik pozwala ocenić, czy model językowy generuje typy zmian w kodzie nieobecne w klasycznym katalogu operatorów mutacyjnych.
-Mutant LLM uznaje się za nowy, gdy spełnia jednocześnie dwa warunki: nie powtarza żadnej zmiany wprowadzonej przez klasyczny generator w tej samej lokalizacji kodu (brak odpowiednika syntaktycznego) oraz wywołuje inny zestaw nieprzechodzących testów niż każdy mutant klasyczny (brak odpowiednika w profilu testowym).
+*LLM New Mutant Rate* (LLM-NMR) mierzy, jaka część mutantów LLM nie ma odpowiednika wśród mutantów klasycznych.
+Wskaźnik pozwala ocenić, czy LLM generuje typy zmian w kodzie nieobecne w katalogu mutantów wygenerowanych przez klasyczne operatory mutacyjne.
+
+Mutant LLM liczy się za nowy, gdy spełnia jednocześnie:
+1. Nie powtarza żadnej zmiany wprowadzonej przez klasyczny generator w tej samej linijki kodu (brak odpowiednika syntaktycznego po normalizacji).
+2. Wywołuje inny zestaw nieprzechodzących testów niż każdy mutant klasyczny (brak odpowiednika w profilu testowym).
 
 ```
-LNMR = liczba użytecznych mutantów LLM bez odpowiednika wśród mutantów klasycznych / liczba wszystkich użytecznych mutantów LLM
+LLM-NMR = liczba mutantów LLM bez odpowiednika wśród mutantów klasycznych / liczba wszystkich użytecznych mutantów LLM
 ```
 
 Wysoka wartość wskaźnika oznacza, że LLM generuje mutanty nieobecne w katalogu klasycznym; niska, że generowane zmiany w znacznej mierze pokrywają się z istniejącymi operatorami klasycznymi.
 
 #### Real Bug Detection Rate
 
-*Real Bug Detection Rate* (RBDR) mierzy, jaka część defektów ze zbioru analizowanych defektów jest pokryta przez co najmniej jeden wygenerowany mutant pod względem zachowania programu.
+*Real Bug Detection Rate* (RBDR) [4] mierzy, jaka część defektów ze zbioru analizowanych defektów jest pokryta przez co najmniej jeden wygenerowany mutant pod względem zachowania programu.
 Podstawą oceny jest porównanie dwóch zestawów testów.
 Profilu niepowodzeń mutanta, czyli zbioru testów, które nie przeszły po wprowadzeniu mutacji.
 Profilu defektu, czyli zbioru testów, które nie przechodzą dla wersji programu z błędem, lecz przechodzą po jego naprawie.
@@ -505,7 +538,7 @@ Niski wynik któregokolwiek z nich może wynikać z niedostatecznego pokrycia te
 
 #### Average Mutant Generation Time
 
-*Average Mutant Generation Time* (AMGT) opisuje koszt czasowy wytworzenia jednego mutanta.
+*Average Mutant Generation Time* (AMGT) mierzy koszt czasowy wytworzenia jednego mutanta.
 Dla LLM jest to czas od wysłania zapytania do interfejsu API do uzyskania pełnej odpowiedzi lub generacji lokalnie w przypadków lokalnych modeli.
 Dla klasycznych mutantów jest to łączny czas przebiegu narzędzia podzielony przez liczbę wygenerowanych mutantów.
 
@@ -534,8 +567,8 @@ Badanie odpowiada na trzy pytania badawcze:
 **RQ1 - Jaki odsetek mutantów LLM nie ma odpowiednika wśród mutantów klasycznych?**
 
 Pytanie dotyczy różnorodności: czy LLM w ogóle wykracza poza znany katalog klasycznych operatorów mutacyjnych.
-Odpowiada na nie wskaźnik *LLM New Mutant Rate* (LNMR), który mierzy proporcję użytecznych mutantów LLM nieposiadających odpowiednika ani pod względem syntaktycznym, ani pod względem profilu testowego wśród mutantów klasycznych.
-Wysoka wartość LNMR oznacza, że LLM generuje typy zmian niedostępne w katalogu klasycznym, co jest warunkiem koniecznym do uzasadnienia stosowania LLM jako uzupełnienia narzędzi klasycznych.
+Odpowiada na nie wskaźnik *LLM New Mutant Rate* (LLM-NMR), który mierzy proporcję użytecznych mutantów LLM nieposiadających odpowiednika ani pod względem syntaktycznym, ani pod względem profilu testowego wśród mutantów klasycznych.
+Wysoka wartość LLM-NMR oznacza, że LLM generuje typy zmian niedostępne w katalogu klasycznym, co jest warunkiem koniecznym do uzasadnienia stosowania LLM jako uzupełnienia narzędzi klasycznych.
 
 **RQ2 - Czy mutanty LLM są bliższe rzeczywistym defektom pod względem zachowania programu niż mutanty klasyczne?**
 
@@ -553,17 +586,17 @@ Wskaźniki kosztowe: *Average Mutant Generation Time* (AMGT) i *Cost per Useful 
 
 Poniższa tabela zbiera wszystkie wskaźniki w formie zestawienia:
 
-| Metryka                        | Skrót | Co mierzy                                                                    | Powiązane RQ |
-|--------------------------------|-------|------------------------------------------------------------------------------|--------------|
-| LLM New Mutant Rate            | LNMR  | Odsetek użytecznych mutantów LLM bez odpowiednika wśród mutantów klasycznych | RQ1          |
-| Real Bug Detection Rate        | RBDR  | Odsetek defektów pokrytych przez co najmniej jeden mutant                    | RQ2          |
-| Average Ochiai Rate            | AOR   | Stopień pokrycia profilu defektu przez profil niepowodzeń mutanta            | RQ2          |
-| Coupling Rate                  | CR    | Odsetek mutantów z niepustym przecięciem z testami wyzwalającymi             | RQ2          |
-| Compilability Mutation Rate    | CMR   | Odsetek wygenerowanych mutantów, które przeszły kompilację                   | RQ3          |
-| Duplication Mutation Rate      | DMR   | Odsetek duplikatów syntaktycznych wśród kompilowalnych mutantów              | RQ3          |
-| Equivalent Mutation Rate       | EMR   | Odsetek mutantów przeżywających pełny zestaw testów                          | RQ3          |
-| Average Mutant Generation Time | AMGT  | Średni czas wytworzenia jednego mutanta                                      | RQ3          |
-| Cost per Useful Mutant         | CPUM  | Efektywny koszt uzyskania jednego mutanta zdatnego do testowania             | RQ3          |
+| Metryka                        | Skrót   | Co mierzy                                                                    | Powiązane RQ |
+|--------------------------------|---------|------------------------------------------------------------------------------|--------------|
+| LLM New Mutant Rate            | LLM-NMR | Odsetek użytecznych mutantów LLM bez odpowiednika wśród mutantów klasycznych | RQ1          |
+| Real Bug Detection Rate        | RBDR    | Odsetek defektów pokrytych przez co najmniej jeden mutant                    | RQ2          |
+| Average Ochiai Rate            | AOR     | Stopień pokrycia profilu defektu przez profil niepowodzeń mutanta            | RQ2          |
+| Coupling Rate                  | CR      | Odsetek mutantów z niepustym przecięciem z testami wyzwalającymi             | RQ2          |
+| Compilability Mutation Rate    | CMR     | Odsetek wygenerowanych mutantów, które przeszły kompilację                   | RQ3          |
+| Duplication Mutation Rate      | DMR     | Odsetek duplikatów syntaktycznych wśród kompilowalnych mutantów              | RQ3          |
+| Equivalent Mutation Rate       | EMR     | Odsetek mutantów przeżywających pełny zestaw testów                          | RQ3          |
+| Average Mutant Generation Time | AMGT    | Średni czas wytworzenia jednego mutanta                                      | RQ3          |
+| Cost per Useful Mutant         | CPUM    | Efektywny koszt uzyskania jednego mutanta zdatnego do testowania             | RQ3          |
 
 Pytania badawcze są wzajemnie uzupełniające: RQ1 bada różnorodność, RQ2 bada realizm, RQ3 bada koszt.
 Pełna ocena podejścia LLM wymaga uwzględnienia wszystkich trzech wymiarów: wysoka różnorodność i realizm przy akceptowalnym koszcie uzasadniałyby stosowanie LLM jako uzupełnienia klasycznych generatorów mutantów.
@@ -865,5 +898,11 @@ URL: https://homes.cs.washington.edu/~rjust/publ/defects4j_issta_2014.pdf
 
 [5] Defects4J:
 URL: https://github.com/rjust/defects4j
+
+[6] Paul Ammann and Jeff Offutt Introduction to Software Testing, Cambridge University Press, Cambridge, UK, 2008
+URL: https://lira.epac.to/DOCS-TECH/Engineering%20and%20Management/Software%20Testing/Introduction%20to%20Software%20Testing.pdf
+
+[7] R.A. De Millo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer
+URL: https://www.st.cs.uni-saarland.de/edu/recommendation-systems/papers/Hints_on_Test_Data_Selection-1.pdf
 
 TO DO
