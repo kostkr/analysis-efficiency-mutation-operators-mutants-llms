@@ -45,13 +45,13 @@
     - [5.2.2 Duplicate mutants](#duplicate-mutants) (DONE)
     - [5.2.3 Equivalent mutants](#equivalent-mutants) (DONE)
   - [5.3 Metryki i kryteria oceny](#metryki-i-kryteria-oceny) (DONE)
-    - [5.3.1 LLM New Mutant Rate](#llm-new-mutant-rate) (TO DO)
-    - [5.3.2 Real Bug Detection Rate](#real-bug-detection-rate) (TO DO)
-    - [5.3.3 Average Ochiai Rate](#average-ochiai-rate) (TO DO)
-    - [5.3.4 Coupling Rate](#coupling-rate) (TO DO)
-    - [5.3.5 Average Mutant Generation Time](#average-mutant-generation-time) (TO DO)
-    - [5.3.6 Cost per Useful Mutant](#cost-per-useful-mutant) (TO DO)
-  - [5.4 Cel pracy i pytania badawcze](#cel-pracy-i-pytania-badawcze) (TO DO)
+    - [5.3.1 LLM New Mutant Rate](#llm-new-mutant-rate) (DONE)
+    - [5.3.2 Real Bug Detection Rate](#real-bug-detection-rate) (DONE)
+    - [5.3.3 Average Ochiai Rate](#average-ochiai-rate) (DONE)
+    - [5.3.4 Coupling Rate](#coupling-rate) (DONE)
+    - [5.3.5 Average Mutant Generation Time](#average-mutant-generation-time) (DONE)
+    - [5.3.6 Cost per Useful Mutant](#cost-per-useful-mutant) (DONE)
+  - [5.4 Cel pracy i pytania badawcze](#cel-pracy-i-pytania-badawcze) (DONE)
 
 - [6 Założenia eksperymentu i metodyka](#założenia-eksperymentu-i-metodyka) (TO DO)
   - [6.1 Przebieg eksperymentu](#przebieg-eksperymentu) (TO DO)
@@ -212,8 +212,8 @@ Do testów mutacyjnych trzeba podchodzić z ostrożnością, żeby poprawnie zin
 
 ### Proces testowania mutacyjnego krok po kroku
 
-Proces testowania mutacyjnego został po raz pierwszy opisany w 1978 roku przez DeMillo [7].
-W praktyce cały proces składa się z kolejnych etapów, w których każdy następny krok jest uzależniony od wyniku etapu poprzedniego [2], [6].
+Proces testowania mutacyjnego został po raz pierwszy opisany w 1978 roku przez DeMillo [5].
+W praktyce cały proces składa się z kolejnych etapów, w których każdy następny krok jest uzależniony od wyniku etapu poprzedniego [2], [4].
 Na początku generuje się tak zwany zbiór mutantów, po czym sprawdza się, czy są one poprawne pod względem technicznym, żeby można było uruchomić na nich testy.
 Następnie przeprowadza się analizę wyników oraz interpretację danych, takich jak "mutation score" i inne ustalone metryki, w celu oceny jakości testów.
 
@@ -235,7 +235,7 @@ Jeżeli projekt zawiera N testów oraz wygenerowano dla niego M mutantów, to li
 Z tego powodu testowanie mutacyjne, mimo bardzo wartościowej informacji o jakości testów, jest w projektach produkcyjnych stosowane rzadko albo ograniczane tylko do najbardziej krytycznych modułów.
 
 Jednym z podstawowych sposobów ograniczania tego kosztu jest zmniejszenie liczby analizowanych mutantów.
-W literaturze [6] opisuje się mutant sampling (losowy wybór reprezentatywnego podzbioru mutantów) oraz selective mutation (ograniczenie analizy do operatorów uznawanych za najbardziej informatywne).
+W literaturze [4] opisuje się mutant sampling (losowy wybór reprezentatywnego podzbioru mutantów) oraz selective mutation (ograniczenie analizy do operatorów uznawanych za najbardziej informatywne).
 Takie podejście pozwala skrócić czas wykonania przy zachowaniu bardzo przybliżonej do oryginału oceny mutation score.
 Dodatkowo współczesne narzędzia starają się przyspieszać analizę przez równoległość, ograniczanie liczby uruchamianych testów oraz mutację na poziomie bajtkodu JVM, co wykorzystuje między innymi PIT [1], [2].
 
@@ -264,7 +264,7 @@ Katalog "ALL" reprezentuje zakres klasycznych operatorów mutacyjnych, co jest i
 
 ### Katalog operatorów klasycznych
 
-W klasyfikacji operatorów mutacyjnych wykorzystano klasyfikację przedstawioną przez Ammanna i Offutta [6].
+W klasyfikacji operatorów mutacyjnych wykorzystano klasyfikację przedstawioną przez Ammanna i Offutta [4].
 Na tej podstawie operatory PIT z grupy "ALL" uporządkowano według czterech rodzin, aby zdefiniować uporządkowaną listę klasycznych mutantów do porównania z mutantami wygenerowanymi przez LLM.
 
 #### Mutanty projektowe
@@ -344,7 +344,7 @@ Ograniczona różnorodność transformacji w podejściu klasycznym stanowi więc
 Klasyczne operatory mutacyjne opierają się na skończonym, z góry zdefiniowanym zbiorze operatorów.
 Z tego powodu zakres generowanych przez nie mutantów jest ograniczony do zmian realizowanych przez te operatory
 Z kolei LLM są znacznie większą klasę narzędzi, ponieważ generują kod na podstawie zależności statystycznych wyuczonych z dużych zbiorów danych.
-W zastosowaniach związanych z testowaniem mutacyjnym [8] istotne są takie właściwości jak zdolność do uwzględniania kontekstu, możliwość generowania zmian podobnych do rzeczywistych błędów oraz syntaktycznie poprawnego kodu.
+W zastosowaniach związanych z testowaniem mutacyjnym [6] istotne są takie właściwości jak zdolność do uwzględniania kontekstu, możliwość generowania zmian podobnych do rzeczywistych błędów oraz syntaktycznie poprawnego kodu.
 Właściwości te pozwalają traktować LLM jako narzędzie, które może efektywniej generować zmiany w kodzie odzwierciedlające rzeczywiste błędy.
 
 ### Czym są LLM?
@@ -395,7 +395,7 @@ Po drugie, mamy "wersję naprawioną" kodu, w której błąd został rozwiązany
 Po trzecie, istnieją "testy jednostkowe", które kończą się niepowodzeniem po uruchomieniu wersji z błędami oraz kończą się powodzeniem w naprawionej wersji.
 To ustrukturyzowane podejście pozwala na odtworzenie zachowania programu z obecnym błędem oraz porównanie jego z zachowaniem wygenerowanego mutanta.
 
-Źródłem danych w tym badaniu jest **Defects4J** w wersji 3.0.1 [5]. 
+Źródłem danych w tym badaniu jest **Defects4J** w wersji 3.0.1 [3]. 
 Defects4J to zestaw 854 błędów z 17 projektów Java open-source, który jest utrzymywany przez naukowców od 2014 roku.
 Dla każdego błędu mamy dostęp do wersji kodu z błędem oraz wersji naprawionej.
 Co więcej, w celu ułatwienia analizy dostępna jest lista zmodyfikowanych klas, która pokazuje, które pliki zostały zmienione w wersji poprawionej.
@@ -430,6 +430,7 @@ Projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (
 Projekty obejmują różne rodzaje aplikacji, takie jak biblioteki pomocnicze (Lang, Math, Collections), parsery (Jsoup, Gson, JacksonCore, JacksonDatabind i Codec), kompilator (Closure) oraz narzędzia ogólnego przeznaczenia (Compress, Csv i Cli).
 Taka różnorodność aplikacji pozwala uzyskać wyniki, które nie dotyczą tylko jednego rodzaju kodu, lecz mogą stanowić podstawę wniosków o szerszym zakresie.
 Ze względu na koszty połączeń z modelem językowym oraz czas potrzebny na wykonanie testów wybrana zostanie jedynie reprezentatywna grupa błędów.
+W dalszej części rozdziału termin defekt oznacza pojedynczy rzeczywisty błąd pochodzący z tego zbioru.
 
 ### Rodzaje mutantów
 
@@ -440,7 +441,7 @@ Dla przeprowadzenia badania trzeba zdefiniować rodzaje mutantów, na podstawie 
 Mutant kompilowany to wersja kodu, która po wprowadzeniu mutacji przechodzi poprawnie etap kompilacji.
 Oznacza to brak błędów strukturalnych, syntaktycznych, niezgodności typów oraz brakujących symboli, które uniemożliwiałyby uruchomienie testów na zmodyfikowanym kodzie.
 W badaniu wszystkie wygenerowane mutanty, zarówno klasyczne, jak i wygenerowane przez LLM, są poddawane próbie kompilacji w konfiguracji projektu.
-Mutanty niekompilowane nie będą uczestniczyć w analizie, ponieważ jest niemożliwe uruchomić testy na tych mutantach.
+Mutanty niekompilowane nie będą uczestniczyć w metrykach opartych na uruchamianiu testów, ponieważ nie można uruchomić na nich testów.
 
 Metryka jest zdefiniowana jako liczba mutantów, które można skompilować, podzielona przez całkowitą liczbę wygenerowanych mutantów.
 ```
@@ -459,7 +460,7 @@ Przed obliczaniem metryk usuwa się je ze zbioru, aby nie zawyżały wyników ni
 Algorytm identyfikacji duplikatów polega na porównaniu reprezentacji kodu wygenerowanego mutanta po normalizacji z oryginalnym kodem oraz już istniejącymi mutantami.
 Jeżeli dwie reprezentacje mutantów są identyczne względem siebie, oba mutanty traktowane są jako duplikaty tej samej modyfikacji.
 Jeżeli mutant jest identyczny z oryginałem, oznacza się go jako duplikat.
-Po ich usunięciu pozostaje zbiór mutantów unikalnych, który stanowi podstawę do obliczania dalszych metryk.
+Po ich usunięciu pozostaje zbiór mutantów unikalnych, który wraz z warunkiem kompilowalności stanowi podstawę do obliczania dalszych metryk.
 
 ```
 Duplication Mutation Rate (DMR) = liczba mutantów zduplikowanych / liczba mutantów kompilowalnych
@@ -482,132 +483,128 @@ Equivalent Mutation Rate (EMR) = liczba mutantów przeżywających / (liczba mut
 
 ### Metryki i kryteria oceny
 
-Ocena mutantów generowanych opiera się na trzech najważniejszych kryteriach:
+Ocena mutantów opiera się na trzech najważniejszych kryteriach: stopniu różnorodności względem mutantów generowanych przez LLM oraz klasyczne narzędzia, poziomie podobieństwa do rzeczywistych błędów w kodzie, efektywności generacji mutantów, uwzględniając koszt oraz czas potrzebny do ich generacji.
 
-- stopniu różnicy względem mutantów generowanych przez klasyczne narzędzia,
-- poziomie podobieństwa do rzeczywistych błędów oprogramowania,
-- efektywności generacji mutantów, uwzględniając koszt oraz czas potrzebny do stworzenia mutantów.
+W dalszej części rozdziału termin "mutant" oznacza mutanta kompilowalnego i niezduplikowanego.
 
 #### LLM New Mutant Rate
 
-*LLM New Mutant Rate* (LLM-NMR) mierzy, jaka część mutantów LLM nie ma odpowiednika wśród mutantów klasycznych.
-Wskaźnik pozwala ocenić, czy LLM generuje typy zmian w kodzie nieobecne w katalogu klasycznych operatorów mutacyjnych.
+*LLM New Mutant Rate* (LLM-NMR) mierzy, jaka część mutantów generowanych przez LLM nie ma odpowiednika wśród mutantów klasycznych.
+Wskaźnik pozwala ocenić, czy LLM generuje nowe typy mutantów nieobecne w katalogu klasycznych operatorów.
 
 Mutant LLM liczy się za nowy, gdy spełnia jednocześnie:
-1. Nie powtarza żadnej zmiany wprowadzonej przez klasyczny generator w tej samej linijce kodu (brak odpowiednika syntaktycznego po normalizacji).
-2. Wywołuje inny zestaw nieprzechodzących testów niż każdy mutant klasyczny (brak odpowiednika w profilu testowym).
+1. Nie powtarza żadnej zmiany wprowadzonej przez klasyczny mutant w tej samej linijce kodu (brak odpowiednika syntaktycznego po normalizacji).
+2. Nie istnieje mutant klasyczny wywołujący ten sam zestaw nieprzechodzących testów (brak odpowiednika w profilu testowym).
 
 ```
 LLM-NMR = liczba mutantów LLM bez odpowiednika wśród mutantów klasycznych / liczba wszystkich użytecznych mutantów LLM
 ```
 
-Wysoka wartość wskaźnika oznacza, że LLM generuje mutanty nieobecne w katalogu klasycznym; niska, że generowane zmiany w znaczącej mierze pokrywają się z istniejącymi operatorami klasycznymi.
+Wysoka wartość wskaźnika oznacza, że LLM generuje dużo mutantów nieobecnych w katalogu klasycznym; niska, że generowane mutanty w znaczącej mierze pokrywają się z istniejącymi operatorami klasycznymi.
 
 #### Real Bug Detection Rate
 
-*Real Bug Detection Rate* (RBDR) [4] mierzy, jaka część defektów ze zbioru analizowanych defektów jest pokryta przez co najmniej jeden wygenerowany mutant pod względem zachowania programu.
-Podstawą oceny jest porównanie dwóch zestawów testów: profilu niepowodzeń mutanta, czyli zbioru testów, które nie przeszły po wprowadzeniu mutacji, oraz profilu defektu, czyli zbioru testów, które nie przechodzą dla wersji programu z błędem, lecz przechodzą po jego naprawie.
-Mutant uznaje się za powiązany z defektem, jeśli powoduje niepowodzenie przynajmniej jednego testu wchodzącego w skład profilu tego defektu.
-Przykładowo, jeśli dany defekt jest wykrywany przez testy T1 i T2, a istnieje mutant powodujący niepowodzenie testu T1, defekt ten uznaje się za wykryty.
+*Real Bug Detection Rate* (RBDR) mierzy, dla jakiej części rzeczywistych defektów można znaleźć co najmniej jednego mutanta, który wykazuje częściową zgodność profilu testowego z danym defektem.
+Kluczowym elementem tej metryki jest porównanie dwóch zbiorów testów: profilu testowego mutanta oraz defektu.
+Profil mutanta definiowany jako zbiór testów nieprzechodzących po wprowadzeniu mutacji, a profil defektu obejmuje testy, które nie przechodzą dla wersji kodu z bugiem, ale przechodzą dla naprawionej wersji.
+Na przykład, jeśli profil defektu zawiera testy `T1` i `T2`, a istnieje mutant powodujący niepowodzenie testu `T1`, to taki rzeczywisty defekt jest uznawany za wykryty. 
 
 ```
 RBDR = liczba defektów wykrytych przez co najmniej jeden mutant / liczba wszystkich analizowanych defektów
 ```
 
-Wysoka wartość RBDR oznacza, że dla wielu rzeczywistych defektów istnieją mutanty wywołujące niepowodzenie tych samych testów, a zatem wygenerowane mutanty mogą skutecznie odzwierciedlać rzeczywiste błędy i być użyteczne w testowaniu.
+Wysoka wartość RBDR oznacza, że dla wielu rzeczywistych defektów istnieją mutanty, które powodują niepowodzenie co najmniej części tych samych testów, co wskazuje na to, że odzwierciedlają one zachowanie rzeczywistych błędów.
 
 #### Average Ochiai Rate
 
-*Average Ochiai Rate* (AOR) mierzy, jak bardzo profil niepowodzeń mutanta pokrywa się z profilem danego defektu.
-Im więcej testów wyzwalających defekt pojawia się wśród testów, które nie przeszły po wprowadzeniu mutacji, tym wyższa wartość wskaźnika.
-Obliczenie przebiega trójstopniowo: najpierw dla każdej pary mutant–defekt wyznacza się wartość współczynnika Ochiai, następnie uśrednia się ją po wszystkich mutantach przypisanych do danego defektu, a na końcu uśrednia się wyniki po wszystkich defektach, uzyskując jedną globalną wartość dla porównywanego podejścia.
+*Average Ochiai Rate* (AOR) mierzy, w jakim stopniu mutanty pokrywają się z profilami testowymi rzeczywistych defektów.
+Kluczowym elementem oceny jest porównanie dwóch zbiorów testów: profilu mutanta oraz profilu defektu.
+W przeciwieństwie do `RBDR`, który jest metryką binarną, `AOR` odzwierciedla stopień tej zależności.
+Im większa część testów wykrywających defekt znajduje się również w profilu mutanta, tym wyższa jest wartość tej metryki.
 
 ```
-Ochiai(mutant, defekt) = liczba wspólnych testów nieprzechodzących / pierwiastek z (liczba testów nieprzechodzących mutanta × liczba testów wykrywających defekt)
-
-AOR = średnia wartość Ochiai uśredniona po wszystkich defektach
+AOR = średnia(liczba wspólnych testów nieprzechodzących / pierwiastek z (liczba testów nieprzechodzących mutanta × liczba testów wykrywających defekt))
 ```
 
-W odróżnieniu od RBDR, który odpowiada binarnie na pytanie, czy mutant w ogóle pokrywa dany defekt, AOR wyraża stopień tego pokrycia.
-Wyższa wartość oznacza, że mutanty wywołują niepowodzenie większej części testów charakterystycznych dla rzeczywistego błędu.
+Wyższa wartość `AOR` oznacza, że profile niepowodzeń mutantów są bardziej zbliżone do profili testowych rzeczywistych defektów.
 
 #### Coupling Rate
 
-*Coupling Rate* (CR) mierzy, jaki odsetek użytecznych mutantów jest połączony z odpowiadającym defektem, to znaczy powoduje niepowodzenie przynajmniej jednego testu wyzwalającego.
-W odróżnieniu od RBDR, który ocenia pokrycie od strony defektów, CR przyjmuje perspektywę mutantów i odpowiada na pytanie, ile spośród nich rzeczywiście dotyka obszaru kodu związanego z danym defektem.
-Oblicza się go jako stosunek liczby mutantów posiadających niepuste przecięcie z testami wyzwalającymi do łącznej liczby użytecznych mutantów.
+*Coupling Rate* (CR) mierzy, dla jakiej części użytecznych mutantów można znaleźć powiązanie z profilem testowym rzeczywistego defektu, dla którego dany mutant został wygenerowany.
+Kluczowym elementem oceny jest porównanie dwóch zbiorów testów: profilu mutanta oraz profilu defektu.
+Mutant jest powiązany z defektem, jeśli powoduje niepowodzenie co najmniej jednego testu z profilu tego defektu.
 
 ```
-CR = liczba mutantów powiązanych z co najmniej jednym testem wyzwalającym / liczba użytecznych mutantów
+CR = liczba użytecznych mutantów powiązanych z odpowiadającym im defektami / liczba wszystkich użytecznych mutantów
 ```
 
-RBDR, AOR i CR uzupełniają się wzajemnie i interpretuje się je łącznie.
-Niski wynik któregokolwiek z nich może wynikać z niedostatecznego pokrycia testowego w otoczeniu defektu, a nie ze słabości samych mutantów.
+W odróżnieniu od `RBDR`, który ocenia pokrycie od strony defektów, `CR` pokazuje, jaka część mutantów jest rzeczywiście związana z zachowaniem błędów w programie.
 
 #### Average Mutant Generation Time
 
-*Average Mutant Generation Time* (AMGT) mierzy koszt czasowy wytworzenia jednego mutanta.
-Dla LLM jest to czas od wysłania zapytania do interfejsu API do uzyskania pełnej odpowiedzi lub czas generacji lokalnej w przypadku modeli uruchamianych lokalnie.
-Dla klasycznych mutantów jest to łączny czas przebiegu narzędzia podzielony przez liczbę wygenerowanych mutantów.
+*Average Mutant Generation Time* (AMGT) mierzy średni czas potrzebny do wygenerowania jednego mutanta.
+Podstawą oceny jest łączny czas etapu generacji oraz całkowita liczba wygenerowanych mutantów.
+Dla LLM czas ten obejmuje okres od wysłania zapytania do modelu do uzyskania pełnej odpowiedzi.
 
 ```
 AMGT = łączny czas generacji / liczba wszystkich wygenerowanych mutantów
 ```
 
-AMGT umożliwia bezpośrednie porównanie szybkości obu podejść w tej samej skali, niezależnie od rozmiarów eksperymentu.
+Niższa wartość `AMGT` oznacza szybsze wytwarzanie pojedynczych mutantów i mniejszy koszt czasowy etapu generacji mutantów.
 
 #### Cost per Useful Mutant
 
-*Cost per Useful Mutant* (CPUM) łączy czas generacji z liczbą mutantów pozwalających na ocenę testów, czyli kompilowalnych i niezduplikowanych.
-Uwzględnia tym samym straty ponoszone na generację mutantów.
-W przeciwieństwie do AMGT, który mierzy koszt każdego wygenerowanego mutanta, CPUM odzwierciedla efektywny koszt uzyskania jednego mutanta, który można użyć dla uruchomienia testów, z uwzględnieniem strat na etapie filtracji.
+*Cost per Useful Mutant* (CPUM) mierzy koszt czasowy uzyskania jednego użytecznego mutanta, czyli mutanta kompilowalnego i niezduplikowanego.
 
 ```
 CPUM = łączny czas generacji / liczba mutantów kompilowalnych i niezduplikowanych
 ```
 
+Niższa wartość `CPUM` oznacza, że dane podejście szybciej generuje mutanty przydatne do dalszego uruchomienia oraz analizy.
+
 ### Cel pracy i pytania badawcze
 
-Celem niniejszej pracy jest weryfikacja, czy duże modele językowe (*Large Language Models*, LLM) są w stanie generować operatory mutacyjne różnorodniejsze i bliższe rzeczywistym defektom oprogramowania niż operatory dostępne w klasycznym generatorze mutantów, a także ocena kosztów i ograniczeń podejścia opartego na LLM.
+Celem tej pracy jest weryfikacja, czy LLM mogą generować nowe mutanty, których nie można uzyskać za pomocą klasycznych operatorów mutacyjnych.
+Dodatkowo analizowane jest, czy te wygenerowane mutanty są bardziej zbliżone do rzeczywistych defektów w programie w porównaniu do generowanych przy użyciu klasycznych narzędzi, a także jakie są koszty i ograniczenia podejścia opartego na LLM.
 
 Badanie odpowiada na trzy pytania badawcze:
 
-**RQ1 - Jaki odsetek mutantów LLM nie ma odpowiednika wśród mutantów klasycznych?**
+RQ1 - Czy możliwe jest generowanie nowych mutantów przy użyciu LLM, wykraczających poza klasyczny katalog operatorów mutacyjnych?
 
-Pytanie dotyczy różnorodności: czy LLM w ogóle wykracza poza znany katalog klasycznych operatorów mutacyjnych.
-Odpowiada na nie wskaźnik *LLM New Mutant Rate* (LLM-NMR), który mierzy proporcję użytecznych mutantów LLM nieposiadających odpowiednika ani pod względem syntaktycznym, ani pod względem profilu testowego wśród mutantów klasycznych.
-Wysoka wartość LLM-NMR oznacza, że LLM generuje typy zmian niedostępne w katalogu klasycznym, co jest warunkiem koniecznym do uzasadnienia stosowania LLM jako uzupełnienia narzędzi klasycznych.
+Pytanie dotyczy różnorodności: czy LLM w ogóle mogą wykroczyć poza zdefiniowany katalog klasycznych operatorów mutacyjnych.
+Odpowiada na nie metryka *LLM New Mutant Rate* (LLM-NMR), która mierzy procent mutantów LLM nieposiadających odpowiednika wśród mutantów klasycznych wygenerowanych dla tego samego defektu.
+Wysoka wartość LLM-NMR oznacza, że LLM generuje nowe mutanty, niedostępne w katalogu klasycznym.
 
-**RQ2 - Czy mutanty LLM są bliższe rzeczywistym defektom pod względem zachowania programu niż mutanty klasyczne?**
+RQ2 - Czy mutanty LLM są bliższe rzeczywistym defektom niż mutanty klasyczne?
 
 Pytanie dotyczy realizmu: czy mutanty LLM wywołują niepowodzenia testów podobne do tych, które wywołuje rzeczywisty błąd.
-Odpowiadają na nie trzy wskaźniki. *Real Bug Detection Rate* (RBDR) mierzy, jaki odsetek analizowanych defektów jest pokryty przez co najmniej jeden mutant w zakresie profilu testowego.
-*Average Ochiai Rate* (AOR) wyraża stopień pokrycia profilu defektu przez profil mutanta jako ciągłą miarę podobieństwa.
-*Coupling Rate* (CR) mierzy, jaki odsetek wszystkich użytecznych mutantów powoduje niepowodzenie przynajmniej jednego testu wyzwalającego.
-Łączna analiza RBDR, AOR i CR pozwala ocenić, które z podejść generuje mutanty lepiej imitujące realistyczne defekty oprogramowania.
+Odpowiadają na nie trzy metryki. *Real Bug Detection Rate* (RBDR) mierzy, dla jakiej części analizowanych defektów istnieje co najmniej jeden mutant mający zgodny profil z defektem.
+*Average Ochiai Rate* (AOR) wyraża średni stopień podobieństwa między profilem testowym mutanta a profilem rzeczywistego defektu.
+*Coupling Rate* (CR) mierzy, jaki odsetek wszystkich mutantów jest powiązany z profilem testowym odpowiadającego im defektu.
+Łączna analiza RBDR, AOR i CR pozwala ocenić, które z podejść generuje mutanty lepiej symulujące rzeczywiste defekty programów.
 
-**RQ3 - Jak LLM wypada w porównaniu z klasycznym generatorem pod względem jakości i kosztu generowania mutantów?**
+RQ3 - Czy mutanty generowane przez LLM są bardziej wydajne od bliskich klasycznych odpowiedników?
 
-Pytanie dotyczy efektywności: ile kosztuje uzyskanie mutanta zdatnego do testowania i jak duży jest odsetek mutantów odrzuconych w trakcie filtracji.
-Odpowiadają na nie wskaźniki jakości procesu: *Compilability Mutation Rate* (CMR), *Duplication Mutation Rate* (DMR) i *Equivalent Mutation Rate* (EMR) opisują kolejno odsetek mutantów, które przeszły kompilację, odsetek duplikatów syntaktycznych oraz odsetek mutantów przeżywających pełny zestaw testów.
-Wskaźniki kosztowe: *Average Mutant Generation Time* (AMGT) i *Cost per Useful Mutant* (CPUM), mierzą odpowiednio średni czas wytworzenia jednego mutanta i efektywny koszt uzyskania jednego mutanta zdatnego do testowania z uwzględnieniem strat na etapie filtracji.
+Pytanie dotyczy efektywności: ile kosztuje uzyskanie mutanta do uruchamiania testów, jak duży jest odsetek mutantów, które zostały odrzucone podczas filtracji, oraz jaki jest koszt czasowy potrzebny na generowanie zestawu mutantów.
+Odpowiedzi na te pytania dostarczają metryki: *Compilability Mutation Rate* (CMR), *Duplication Mutation Rate* (DMR) i *Equivalent Mutation Rate* (EMR).
+Te metryki opisują kolejno odsetek mutantów, które przeszły kompilację, odsetek duplikatów syntaktycznych wśród mutantów kompilowalnych oraz odsetek użytecznych mutantów, które nie zostały wykryte przez cały zestaw testów
+Wskaźniki kosztowe, takie jak *Average Mutant Generation Time* (AMGT) i *Cost per Useful Mutant* (CPUM), mierzą odpowiednio średni czas generacji jednego mutanta oraz efektywny koszt uzyskania jednego użytecznego mutanta, uwzględniając straty na etapie filtracji.
 
 Poniższa tabela zbiera wszystkie wskaźniki w formie zestawienia:
 
-| Metryka                        | Skrót   | Co mierzy                                                                    | Powiązane RQ |
-|--------------------------------|---------|------------------------------------------------------------------------------|--------------|
-| LLM New Mutant Rate            | LLM-NMR | Odsetek użytecznych mutantów LLM bez odpowiednika wśród mutantów klasycznych | RQ1          |
-| Real Bug Detection Rate        | RBDR    | Odsetek defektów pokrytych przez co najmniej jeden mutant                    | RQ2          |
-| Average Ochiai Rate            | AOR     | Stopień pokrycia profilu defektu przez profil niepowodzeń mutanta            | RQ2          |
-| Coupling Rate                  | CR      | Odsetek mutantów z niepustym przecięciem z testami wyzwalającymi             | RQ2          |
-| Compilability Mutation Rate    | CMR     | Odsetek wygenerowanych mutantów, które przeszły kompilację                   | RQ3          |
-| Duplication Mutation Rate      | DMR     | Odsetek duplikatów syntaktycznych wśród kompilowalnych mutantów              | RQ3          |
-| Equivalent Mutation Rate       | EMR     | Odsetek mutantów przeżywających pełny zestaw testów                          | RQ3          |
-| Average Mutant Generation Time | AMGT    | Średni czas wytworzenia jednego mutanta                                      | RQ3          |
-| Cost per Useful Mutant         | CPUM    | Efektywny koszt uzyskania jednego mutanta zdatnego do testowania             | RQ3          |
+| Metryka                        | Skrót   | Co mierzy                                                                 | Powiązane RQ |
+|--------------------------------|---------|---------------------------------------------------------------------------|--------------|
+| LLM New Mutant Rate            | LLM-NMR | Odsetek mutantów LLM bez odpowiednika wśród mutantów klasycznych          | RQ1          |
+| Real Bug Detection Rate        | RBDR    | Odsetek defektów, dla których istnieje co najmniej jeden powiązany mutant | RQ2          |
+| Average Ochiai Rate            | AOR     | Średni stopień podobieństwa profili testowych mutanta i defektu           | RQ2          |
+| Coupling Rate                  | CR      | Odsetek mutantów powiązanych z profilem odpowiadającego im defektu        | RQ2          |
+| Compilability Mutation Rate    | CMR     | Odsetek wygenerowanych mutantów, które przeszły kompilację                | RQ3          |
+| Duplication Mutation Rate      | DMR     | Odsetek duplikatów syntaktycznych wśród kompilowalnych mutantów           | RQ3          |
+| Equivalent Mutation Rate       | EMR     | Odsetek mutantów przeżywających pełny zestaw testów                       | RQ3          |
+| Average Mutant Generation Time | AMGT    | Średni czas wytworzenia jednego mutanta                                   | RQ3          |
+| Cost per Useful Mutant         | CPUM    | Efektywny koszt uzyskania jednego użytecznego mutanta                     | RQ3          |
 
-Pytania badawcze są wzajemnie uzupełniające: RQ1 bada różnorodność, RQ2 bada realizm, RQ3 bada koszt.
-Pełna ocena podejścia LLM wymaga uwzględnienia wszystkich trzech wymiarów: wysoka różnorodność i realizm przy akceptowalnym koszcie uzasadniałyby stosowanie LLM jako uzupełnienia klasycznych generatorów mutantów.
+Pytania badawcze są wzajemnie uzupełniające: RQ1 bada różnorodność, RQ2 bada realizm, RQ3 bada efektywność procesu generacji.
 
 ---
 
@@ -876,17 +873,14 @@ URL: https://pitest.org/quickstart/mutators/
 [2] Michał Mnich Testowanie mutacyjne - optymalizacja procesu i praktyczne zastosowania.
 URL: https://bip.pwr.edu.pl/fcp/qGBUKOQtTKlQhbx08SlkFTxYCEi8pMgQGS39TCVdbWCECWR1pXhs_W3dN/4/public/bip/doktoraty/mnich_m/rozprawa_doktorska_micha__mnich.pdf
 
-[4] Real bug detection rate.
-URL: https://homes.cs.washington.edu/~rjust/publ/defects4j_issta_2014.pdf
-
-[5] Defects4J:
+[3] Defects4J:
 URL: https://github.com/rjust/defects4j
 
-[6] Paul Ammann and Jeff Offutt Introduction to Software Testing, Cambridge University Press, Cambridge, UK, 2008
+[4] Paul Ammann and Jeff Offutt Introduction to Software Testing, Cambridge University Press, Cambridge, UK, 2008
 URL: https://lira.epac.to/DOCS-TECH/Engineering%20and%20Management/Software%20Testing/Introduction%20to%20Software%20Testing.pdf
 
-[7] R.A. De Millo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer
+[5] R.A. De Millo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer
 URL: https://www.st.cs.uni-saarland.de/edu/recommendation-systems/papers/Hints_on_Test_Data_Selection-1.pdf
 
-[8] LLMorpheus: Mutation Testing using Large Language Models
+[6] LLMorpheus: Mutation Testing using Large Language Models
 URL: https://arxiv.org/html/2404.09952v2#S1
