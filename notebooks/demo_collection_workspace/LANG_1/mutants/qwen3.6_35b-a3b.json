@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 455,
+    "precode": "throw new NumberFormatException(\"A blank string is not a valid number\");",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 461,
+    "precode": "if (str.startsWith(pfx)) {",
+    "aftercode": "if (!str.startsWith(pfx)) {",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 466,
+    "precode": "if (pfxLen > 0) { // we have a hex number",
+    "aftercode": "if (pfxLen == 0) { // we have a hex number",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 468,
+    "precode": "for(int i = pfxLen; i < str.length(); i++) {",
+    "aftercode": "for(int i = pfxLen; i <= str.length(); i++) {",
+    "rule": "Loop Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 470,
+    "precode": "if (firstSigDigit == '0') { // count leading zeroes",
+    "aftercode": "if (firstSigDigit != '0') { // count leading zeroes",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 476,
+    "precode": "final int hexDigits = str.length() - pfxLen;",
+    "aftercode": "final int hexDigits = str.length() + pfxLen;",
+    "rule": "Mathematical Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 477,
+    "precode": "if (hexDigits > 16 || (hexDigits == 16 && firstSigDigit > '7')) { // too many for Long",
+    "aftercode": "if (hexDigits >= 16 || (hexDigits == 16 && firstSigDigit > '7')) { // too many for Long",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 480,
+    "precode": "if (hexDigits > 8 || (hexDigits == 8 && firstSigDigit > '7')) { // too many for an int",
+    "aftercode": "if (hexDigits >= 8 || (hexDigits == 8 && firstSigDigit > '7')) { // too many for an int",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 485,
+    "precode": "final char lastChar = str.charAt(str.length() - 1);",
+    "aftercode": "final char lastChar = str.charAt(0);",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 489,
+    "precode": "final int decPos = str.indexOf('.');",
+    "aftercode": "final int decPos = str.lastIndexOf('.');",
+    "rule": "Function Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 490,
+    "precode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present",
+    "aftercode": "final int expPos = str.indexOf('e') + str.indexOf('E'); // assumes both not present",
+    "rule": "Mathematical Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 498,
+    "precode": "if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
+    "aftercode": "if (expPos >= decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 501,
+    "precode": "dec = str.substring(decPos + 1, expPos);",
+    "aftercode": "dec = str.substring(decPos, expPos);",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 503,
+    "precode": "dec = str.substring(decPos + 1);",
+    "aftercode": "dec = str.substring(decPos);",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 506,
+    "precode": "numDecimals = dec.length(); // gets number of digits past the decimal to ensure no loss of precision for floating point numbers.",
+    "aftercode": "numDecimals = dec.length() + 1; // gets number of digits past the decimal to ensure no loss of precision for floating point numbers.",
+    "rule": "Mathematical Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 509,
+    "precode": "if (expPos > str.length()) { // prevents double exponent causing IOOBE",
+    "aftercode": "if (expPos >= str.length()) { // prevents double exponent causing IOOBE",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 512,
+    "precode": "mant = str.substring(0, expPos);",
+    "aftercode": "mant = str.substring(1, expPos);",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 518,
+    "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
+    "aftercode": "if (Character.isDigit(lastChar) || lastChar != '.') {",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 519,
+    "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
+    "aftercode": "if (expPos > -1 && expPos > str.length() - 1) {",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 525,
+    "precode": "final String numeric = str.substring(0, str.length() - 1);",
+    "aftercode": "final String numeric = str.substring(0, str.length());",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 526,
+    "precode": "final boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "final boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Operator Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 530,
+    "precode": "if (dec == null",
+    "aftercode": "if (dec != null",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 531,
+    "precode": "&& exp == null",
+    "aftercode": "&& exp != null",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 580,
+    "precode": "exp = str.substring(expPos + 1, str.length());",
+    "aftercode": "exp = str.substring(expPos, str.length());",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 584,
+    "precode": "if (dec == null && exp == null) { // no decimal point and no exponent",
+    "aftercode": "if (dec != null && exp == null) { // no decimal point and no exponent",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 586,
+    "precode": "try {",
+    "aftercode": "return createLong(str); // skip integer attempt",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 600,
+    "precode": "final boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "final boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Operator Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 602,
+    "precode": "if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
+    "aftercode": "if(numDecimals >= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 603,
+    "precode": "final Float f = createFloat(str);",
+    "aftercode": "final Float f = createDouble(str);",
+    "rule": "Function Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 604,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (f.isInfinite() || (f.floatValue() == 0.0F && !allZeros)) {",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 612,
+    "precode": "if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
+    "aftercode": "if(numDecimals >= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 613,
+    "precode": "final Double d = createDouble(str);",
+    "aftercode": "final Double d = createBigDecimal(str);",
+    "rule": "Function Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 614,
+    "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros)) {",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 622,
+    "precode": "return createBigDecimal(str);",
+    "aftercode": "return createBigInteger(str);",
+    "rule": "Function Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 478,
+    "precode": "return createBigInteger(str);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 483,
+    "precode": "return createInteger(str);",
+    "aftercode": "return createLong(str);",
+    "rule": "Function Replacement Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  }
+]

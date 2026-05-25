@@ -16,11 +16,11 @@ CONTAINER_WORKSPACE = "/workspace"
 
 BUG_IDS_BY_PROJECT = {"Lang": [1, 3]}
 
-RUN_CLASSIC_GENERATION = False
-RUN_LLM_QWEN3_6_27B_Q4 = False
+RUN_CLASSIC_GENERATION = True
+RUN_LLM_QWEN3_6_35B_A3B = True
 RUN_LLM_QWEN3_5_4B = False
-RUN_LLM_GEMMA4_26B_A4B_Q4 = False
-RUN_COLLECTION = False
+RUN_LLM_GEMMA4_26B_A4B_Q4 = True
+RUN_COLLECTION = True
 
 
 # ── Classic generation ────────────────────────────────────────────
@@ -34,9 +34,9 @@ PIT_CONFIG = PITConfig(
 
 # ── LLM generation ────────────────────────────────────────────
 LLM_MODEL_PRESETS = {
-    "qwen3.6_27b_q4": {
-        "model": "qwen3.6:27b-q4_K_M",
-        "output_name": "qwen3.6_27b-q4_K_M",
+    "qwen3.6_35b_a3b": {
+        "model": "qwen3.6:35b-a3b",
+        "output_name": "qwen3.6_35b-a3b",
     },
     "qwen3.5_4b": {
         "model": "qwen3.5:4b",
@@ -54,7 +54,7 @@ LLM_KEEP_ALIVE = "1m"
 def _enabled_llm_configs() -> list[LLMConfig]:
     enabled: list[LLMConfig] = []
     llm_run_flags = [
-        (RUN_LLM_QWEN3_6_27B_Q4, "qwen3.6_27b_q4"),
+        (RUN_LLM_QWEN3_6_35B_A3B, "qwen3.6_35b_a3b"),
         (RUN_LLM_QWEN3_5_4B, "qwen3.5_4b"),
         (RUN_LLM_GEMMA4_26B_A4B_Q4, "gemma4_26b_a4b_q4"),
     ]
