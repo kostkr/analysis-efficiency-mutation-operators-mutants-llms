@@ -97,19 +97,17 @@ class LLMPipeline:
         bank: "MutantBank",
         seen_unique_signatures: set[tuple[str, int, str]],
     ) -> list["Mutant"]:
-        requested = self._generator.requested_mutant_count(job)
-        if requested <= 0:
-            self._log(f"  {job.method_name}: target=0  skipped=no eligible lines")
+        method_lines = sum(1 for line in job.method_source.splitlines() if line.strip())
+        if method_lines <= 0:
+            self._log(f"  {job.method_name}: skipped=no non-empty source lines")
             return []
         self._log(
-            f"  method plan   : {job.method_name}  eligible_targets={requested}  file={job.filepath}"
+            f"  method plan   : {job.method_name}  source_lines={method_lines}  file={job.filepath}"
         )
 
-        self._log(
-            f"  method call   : {job.method_name}  request_target={requested}"
-        )
+        self._log(f"  method call   : {job.method_name}  prompt_mode=selective")
         t0 = time.perf_counter()
-        collected = self._generator.generate_batch(job, requested=requested)
+        collected = self._generator.generate_batch(job)
         elapsed = round(time.perf_counter() - t0, 1)
         if collected:
             saved_total, duplicate_count = self._persist_chunk(bank, collected, seen_unique_signatures)
@@ -124,7 +122,7 @@ class LLMPipeline:
             saved_total = len(bank.mutants)
             duplicate_count = 0
         self._log(
-            f"  method saved  : {job.method_name}  target={requested} returned={len(collected)} saved_total={saved_total} chunk_duplicates={duplicate_count} runtime={elapsed}s"
+            f"  method saved  : {job.method_name}  returned={len(collected)} saved_total={saved_total} chunk_duplicates={duplicate_count} runtime={elapsed}s"
         )
         return collected
 

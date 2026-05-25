@@ -72,18 +72,17 @@ class LLMConfig:
     """Configuration for the local LLM mutation generator.
 
     The default setup targets a local Ollama server and follows the paper's
-    mutation-generation prompt strategy: real-bug few-shot examples, one-shot
-    requests per fixed-version bug-diff method, and one requested mutant per
-    eligible line of that method.
+    mutation-generation prompt strategy: real-bug few-shot examples and one
+    selective request per fixed-version bug-diff method.
     """
 
-    model: str = "qwen2.5-coder:14b"
+    model: str = ""
     output_name: str = ""
     endpoint: str = "http://127.0.0.1:11434/api/generate"
     timeout_s: int = 1800
     temperature: float | None = None
-    keep_alive: str = "30m"
-    code_element: str = "all single-line Java statements and expressions"
+    keep_alive: str = "1m"
+    code_element: str = "any single-line code element in the shown method"
 
 
 # ── Abstract generator ────────────────────────────────────────────────────────
@@ -97,7 +96,7 @@ class BaseGenerator(ABC):
 
         Implementations must:
         - Return an empty list rather than raising on soft failures
-        - Deduplicate output: no two returned mutants share the same
-          ``(filepath, line, aftercode.strip())``
+        - Return only mutants that match the expected structural format
+        - Leave duplicate marking to the later persistence/analysis stage
         """
         ...

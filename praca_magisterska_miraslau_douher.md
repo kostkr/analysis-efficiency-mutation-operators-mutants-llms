@@ -493,7 +493,7 @@ W dalszej części rozdziału termin "mutant" oznacza mutanta kompilowalnego i n
 Wskaźnik pozwala ocenić, czy LLM generuje nowe typy mutantów nieobecne w katalogu klasycznych operatorów.
 
 Mutant LLM liczy się za nowy, gdy spełnia jednocześnie:
-1. Nie powtarza żadnej zmiany wprowadzonej przez klasyczny mutant w tej samej linijce kodu (brak odpowiednika syntaktycznego po normalizacji).
+1. Nie powtarza żadnej zmiany wprowadzonej przez klasycznego mutanta w tej samej linijce kodu (brak odpowiednika syntaktycznego po normalizacji).
 2. Nie istnieje mutant klasyczny wywołujący ten sam zestaw nieprzechodzących testów (brak odpowiednika w profilu testowym).
 
 ```
@@ -616,15 +616,15 @@ Niniejszy rozdział opisuje, w jaki sposób przeprowadzono badanie empiryczne: j
 
 Eksperyment składa się z pięciu etapów wykonywanych kolejno dla każdego analizowanego błędu.
 
-**Etap 1 — Dobór błędów.** Ze zbioru Defects4J 3.0.1 wybierane są błędy spełniające kryteria opisane w sekcji 7.2. Wynik: lista par *projekt + numer błędu*.
+**Etap 1 — Dobór błędów.** Ze zbioru Defects4J 3.0.1 wybierane są błędy spełniające kryteria opisane w sekcji 6.2. Wynik: lista par *projekt + numer błędu*.
 
-**Etap 2 — Generacja mutantów.** Dla każdego błędu wygenerowane są mutanty dwiema metodami: przez model językowy (LLM) i przez narzędzie PIT — obie na tej samej wersji kodu. Szczegóły opisano w sekcji 7.3.
+**Etap 2 — Generacja mutantów.** Dla każdego błędu wygenerowane są mutanty dwiema metodami: przez model językowy (LLM) i przez narzędzie PIT — obie na tej samej wersji kodu. Szczegóły opisano w sekcji 6.3.
 
-**Etap 3 — Weryfikacja i zebranie wyników.** Każdy mutant LLM jest kompilowany; skompilowane mutanty obu źródeł przechodzą pełny przebieg testów. Profil niepowodzeń każdego mutanta jest porównywany z profilem oryginalnego błędu. Szczegóły opisano w sekcji 7.4.
+**Etap 3 — Weryfikacja i zebranie wyników.** Każdy mutant LLM jest kompilowany; skompilowane mutanty obu źródeł przechodzą pełny przebieg testów. Profil niepowodzeń każdego mutanta jest porównywany z profilem oryginalnego błędu. Szczegóły opisano w sekcji 6.4.
 
-**Etap 4 — Identyfikacja nowych mutantów.** Każdy skompilowany mutant LLM jest porównywany z mutantami PIT na podstawie dwóch filtrów: syntaktycznego i testowego. Mutanty, które nie mają odpowiednika w PIT według obu kryteriów, uznawane są za nowe. Definicja opisana jest w sekcji 7.5.
+**Etap 4 — Identyfikacja nowych mutantów.** Każdy skompilowany mutant LLM jest porównywany z mutantami PIT na podstawie dwóch filtrów: syntaktycznego i testowego. Mutanty, które nie mają odpowiednika w PIT według obu kryteriów, uznawane są za nowe. Definicja opisana jest w sekcji 6.5.
 
-**Etap 5 — Obliczenie wskaźników i analiza.** Na podstawie zgromadzonych danych obliczane są wskaźniki zdefiniowane w sekcji 7.6. Wyniki zestawiane są osobno dla mutantów LLM i PIT i analizowane w odniesieniu do pytań badawczych RQ1–RQ3.
+**Etap 5 — Obliczenie wskaźników i analiza.** Na podstawie zgromadzonych danych obliczane są wskaźniki zdefiniowane w rozdziale 5. Wyniki zestawiane są osobno dla mutantów LLM i PIT i analizowane w odniesieniu do pytań badawczych RQ1–RQ3.
 
 ### Materiał badawczy — zbiór danych i kryteria doboru
 
@@ -650,9 +650,9 @@ Aby błąd mógł zostać uwzględniony w badaniu, musi spełniać wszystkie czt
 
 ### Generacja mutantów — LLM i PIT
 
-Dla każdego wybranego błędu mutanty generowane są dwiema metodami na tej samej wersji kodu (*fixed*). Dane wyjściowe obu metod zapisywane są w ujednoliconym formacie — każdy mutant rejestruje: identyfikator, źródło (LLM lub PIT), projekt i numer błędu, plik i lokalizację w kodzie, treść zmiany w formacie diff, wynik kompilacji (z przyczyną błędu w przypadku niepowodzenia), listę nieprzechodzących testów, czy mutant został zabity oraz czas weryfikacji.
+Dla każdego wybranego błędu mutanty generowane są dwiema metodami na tej samej wersji kodu (*fixed*). Dane wyjściowe obu metod zapisywane są w ujednoliconym formacie rekordu mutanta. Na etapie generacji każdy rekord zawiera co najmniej identyfikator w pliku wynikowym, plik i linię zmiany, kod przed i po mutacji, nazwę reguły, czas generacji oraz znacznik duplikatu. Wyniki kompilacji i uruchomień testów są zbierane później, na etapie weryfikacji.
 
-**Generacja przez model językowy.** Do modelu przekazywane jest polecenie (*prompt*) złożone z: (1) instrukcji — model ma generować subtelne zmiany w jednej linii kodu naśladujące realistyczne błędy programistyczne; (2) pełnej metody Java z miejscem naprawy; (3) kilku przykładów rzeczywistych błędów z niezależnego zbioru, ilustrujących różne typy zmian; (4) oczekiwanej liczby mutantów proporcjonalnej do długości metody. Model zwraca listę propozycji w formacie JSON: numer linii, linia przed zmianą, linia po zmianie, jednozdaniowy opis reguły. Parametry generacji (temperatura, ustawienia losowości) są ustalane raz i stosowane do wszystkich wywołań.
+**Generacja przez model językowy.** Do modelu przekazywane jest polecenie (*prompt*) złożone z instrukcji oraz pełnej metody Java z numerami linii bezwzględnych. Prompt nakazuje wygenerowanie tylko takich mutantów, które stanowią sensowne pojedyncze zmiany w kodzie, bez narzucania z góry stałej liczby propozycji. Model zwraca listę propozycji w formacie JSON zawierającym wyłącznie: numer linii, linię przed zmianą, linię po zmianie oraz nazwę reguły. Parametry generacji są ustalane raz i stosowane do wszystkich wywołań.
 
 **Generacja przez PIT.** PIT uruchamiany jest z pełnym zestawem operatorów (grupa ALL, 29 operatorów) na tych samych klasach, które były kontekstem dla modelu językowego — zapewnia to porównywalność obu podejść. PIT generuje wyłącznie mutanty skompilowane poprawnie (działa na poziomie kodu bajtowego). Wyniki konwertowane są do tego samego formatu rekordu co mutanty LLM.
 
@@ -660,8 +660,8 @@ Dla każdego wybranego błędu mutanty generowane są dwiema metodami na tej sam
 
 Przed uruchomieniem testów każda propozycja mutanta LLM przechodzi trzy etapy filtracji:
 
-1. **Parsowanie odpowiedzi** — sprawdzenie, czy JSON zawiera wszystkie wymagane pola; odpowiedzi niekompletne są odrzucane i rejestrowane.
-2. **Usunięcie duplikatów syntaktycznych** — jeśli dwa mutanty wprowadzają identyczną zmianę w tej samej linii tego samego pliku, jeden z nich jest pomijany jeszcze przed kompilacją.
+1. **Parsowanie odpowiedzi** — sprawdzenie, czy JSON zawiera wszystkie wymagane pola i czy wskazane linie oraz fragmenty kodu odpowiadają rzeczywistej treści metody; odpowiedzi niekompletne lub niespójne są odrzucane.
+2. **Identyfikacja duplikatów syntaktycznych** — jeśli dwa mutanty wprowadzają identyczną zmianę w tej samej linii tego samego pliku albo nie zmieniają kodu względem oryginału, są oznaczane jako duplikaty i uwzględniane w metrykach jakości generacji.
 3. **Kompilacja** — zmiana jest aplikowana do kodu i projekt jest kompilowany; mutanty, których kod nie kompiluje się, są odrzucane z zapisem przyczyny błędu (niezgodność typów, brakująca metoda, błąd składniowy itp.). Po kompilacji kod jest natychmiast przywracany.
 
 Dla każdego mutanta, który przeszedł kompilację (LLM i PIT), wykonywana jest identyczna procedura:
@@ -670,7 +670,7 @@ Dla każdego mutanta, który przeszedł kompilację (LLM i PIT), wykonywana jest
 2. Do kopii wprowadzana jest zmiana mutanta.
 3. Uruchamiany jest pełny zestaw testów — zapisywana jest lista testów, które nie przeszły (*profil niepowodzeń mutanta*).
 4. Oddzielnie gromadzony jest profil niepowodzeń oryginalnego błędu.
-5. Na podstawie obu profili obliczany jest wskaźnik Ochiai (szczegóły w sekcji 7.6).
+5. Na podstawie obu profili obliczane są wskaźniki podobieństwa opisane w rozdziale 5.
 6. Kopia robocza jest usuwana — kolejny mutant weryfikowany jest w czystym środowisku.
 
 Każde uruchomienie testów ma określony limit czasu; jego przekroczenie rejestrowane jest osobno jako oddzielna kategoria odrzucenia.

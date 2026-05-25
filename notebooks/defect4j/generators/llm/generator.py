@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from typing import TYPE_CHECKING, Callable
 from urllib import error, request
@@ -30,17 +31,12 @@ class LLMGenerator(BaseGenerator):
             return []
         return self.generate_batch(job, requested=requested)
 
-    def generate_batch(
-        self,
-        job: GeneratorJob,
-        requested: int,
-    ) -> list["Mutant"]:
-        requested = int(requested)
+    def generate_batch(self, job: GeneratorJob, requested: int | None = None) -> list["Mutant"]:
+        requested = self.requested_mutant_count(job) if requested is None else int(requested)
         if requested <= 0:
             return []
         system, user = build_prompt(
             method_source=job.method_source,
-            filepath=job.filepath,
             target_mutants=requested,
             code_element=self.config.code_element,
             method_start_line=job.method_start,
@@ -53,11 +49,7 @@ class LLMGenerator(BaseGenerator):
         )
 
         t0 = time.perf_counter()
-        try:
-            raw_text = self._chat(system=system, user=user)
-        except RuntimeError as exc:
-            print(f"[LLMGenerator] request error for {job.filepath}:{job.method_name}: {exc}")
-            return []
+        raw_text = self._chat(system=system, user=user)
 
         gen_time = round(time.perf_counter() - t0, 2)
         raw_list = parse_response(raw_text)
@@ -76,37 +68,44 @@ class LLMGenerator(BaseGenerator):
 
         return mutants
 
-    def requested_mutant_count(self, job: GeneratorJob) -> int:
-        return max(sum(1 for line in job.method_source.splitlines() if line.strip()), 1)
-
     def model_stem(self) -> str:
         return model_stem(self.config.output_name or self.config.model)
+
+    def requested_mutant_count(self, job: GeneratorJob) -> int:
+        candidate_lines = sum(
+            1 for line in job.method_source.splitlines()
+            if self._is_mutation_candidate_line(line)
+        )
+        return max((candidate_lines + 1) // 3, 1) if candidate_lines else 0
+
+    @staticmethod
+    def _is_mutation_candidate_line(line: str) -> bool:
+        stripped = line.strip()
+        if not stripped:
+            return False
+        if stripped in {"{", "}", "};"}:
+            return False
+        if stripped.startswith(("//", "/*", "*", "@")):
+            return False
+        return True
 
     def _validated_mutants(self, job: GeneratorJob, raw_list: list[dict]) -> list["Mutant"]:
         from ...mutant import Mutant
 
+        source_lines = job.method_source.splitlines()
         mutants: list[Mutant] = []
-
         for item in raw_list:
-            try:
-                filepath = str(item.get("filepath", job.filepath)).strip()
-                line = int(item["line"])
-                precode = str(item["precode"]).strip()
-                aftercode = str(item["aftercode"]).strip()
-                rule = str(item.get("rule", "") or "").strip()
-            except (KeyError, TypeError, ValueError):
+            line = int(item["line"])
+            precode = str(item["precode"]).strip()
+            aftercode = str(item["aftercode"]).strip()
+            rule = str(item["rule"]).strip()
+            if not precode or not aftercode or _same_code(precode, aftercode):
                 continue
-            mutants.append(
-                Mutant(
-                    id=len(mutants) + 1,
-                    filepath=filepath or job.filepath,
-                    line=line,
-                    precode=precode,
-                    aftercode=aftercode,
-                    rule=rule,
-                )
-            )
-
+            if line < job.method_start or line > job.method_end:
+                continue
+            if precode not in source_lines[line - job.method_start]:
+                continue
+            mutants.append(Mutant(len(mutants) + 1, job.filepath, line, precode, aftercode, rule))
         return mutants
 
     def _chat(self, system: str, user: str) -> str:
@@ -119,14 +118,12 @@ class LLMGenerator(BaseGenerator):
                 "items": {
                     "type": "object",
                     "properties": {
-                        "id": {"type": "integer"},
                         "line": {"type": "integer"},
-                        "filepath": {"type": "string"},
                         "precode": {"type": "string"},
                         "aftercode": {"type": "string"},
                         "rule": {"type": "string"},
                     },
-                    "required": ["id", "line", "filepath", "precode", "aftercode", "rule"],
+                    "required": ["line", "precode", "aftercode", "rule"],
                     "additionalProperties": False,
                 },
             },
@@ -211,4 +208,9 @@ def model_stem(model: str) -> str:
         cleaned.append(char if char.isalnum() or char in {"-", "_", "."} else "_")
     stem = "".join(cleaned).strip("._")
     return stem or "llm"
+
+
+def _same_code(left: str, right: str) -> bool:
+    return re.sub(r"\s+", " ", left).strip() == re.sub(r"\s+", " ", right).strip()
+
 

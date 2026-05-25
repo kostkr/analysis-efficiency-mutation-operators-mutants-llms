@@ -74,7 +74,7 @@ def main(config: LLMGenerationConfig) -> int:
     _log(f"  Output name   : {model_stem(config.llm_config.output_name or config.llm_config.model)}")
     _log(f"  Endpoint      : {config.llm_config.endpoint}")
     _log(f"  Timeout       : {config.llm_config.timeout_s}s per method")
-    _log("  Mutants/method: article mode (one per eligible line)")
+    _log("  Mutants/method: selective prompt-guided generation")
     _log("  Scope         : only fixed-version methods overlapping buggy diff")
     _log("  Ollama load   : sequential single request")
     _log("  Thinking      : disabled (think=false)")

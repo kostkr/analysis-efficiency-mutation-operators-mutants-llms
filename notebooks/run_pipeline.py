@@ -14,13 +14,13 @@ WORKSPACE = Path(__file__).parent / "demo_collection_workspace"
 CONTAINER_NAME = "defects4j-container"
 CONTAINER_WORKSPACE = "/workspace"
 
+BUG_IDS_BY_PROJECT = {"Lang": [1, 3]}
 
-BUG_IDS_BY_PROJECT = {"Lang": [1]}
-
-RUN_CLASSIC_GENERATION = True
-RUN_LLM_QWEN3_6_27B_Q4 = True
-RUN_LLM_QWEN3_5_4B = True
-RUN_COLLECTION = True
+RUN_CLASSIC_GENERATION = False
+RUN_LLM_QWEN3_6_27B_Q4 = False
+RUN_LLM_QWEN3_5_4B = False
+RUN_LLM_GEMMA4_26B_A4B_Q4 = False
+RUN_COLLECTION = False
 
 
 # ── Classic generation ────────────────────────────────────────────
@@ -42,17 +42,21 @@ LLM_MODEL_PRESETS = {
         "model": "qwen3.5:4b",
         "output_name": "qwen3.5_4b",
     },
+    "gemma4_26b_a4b_q4": {
+        "model": "gemma4:26b-a4b-it-q4_K_M",
+        "output_name": "gemma4_26b-a4b-it-q4_K_M",
+    },
 }
 
 LLM_TIMEOUT_S = 1800
 LLM_KEEP_ALIVE = "1m"
-
 
 def _enabled_llm_configs() -> list[LLMConfig]:
     enabled: list[LLMConfig] = []
     llm_run_flags = [
         (RUN_LLM_QWEN3_6_27B_Q4, "qwen3.6_27b_q4"),
         (RUN_LLM_QWEN3_5_4B, "qwen3.5_4b"),
+        (RUN_LLM_GEMMA4_26B_A4B_Q4, "gemma4_26b_a4b_q4"),
     ]
     for is_enabled, preset_key in llm_run_flags:
         if not is_enabled:

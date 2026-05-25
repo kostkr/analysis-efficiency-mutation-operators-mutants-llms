@@ -1,8 +1,8 @@
-"""llm/prompt.py — Prompt builder for article-style LLM mutant generation."""
+"""llm/prompt.py — Prompt builder for per-method LLM mutant generation."""
 
 from __future__ import annotations
 
-_SYSTEM = ""
+_SYSTEM = "You are an expert in mutation testing. Make small realistic code changes to reveal weak tests."
 
 
 ARTICLE_FEW_SHOT_EXAMPLES: list[dict[str, str]] = [
@@ -19,10 +19,6 @@ ARTICLE_FEW_SHOT_EXAMPLES: list[dict[str, str]] = [
         "buggy": "return true;",
     },
     {
-        "correct": "ArrayList r = new ArrayList();\nr.add(first).addAll(subset);\nto_add.add(r);",
-        "buggy": "to_add.addAll(subset);",
-    },
-    {
         "correct": "c = bin_op.apply(b,a);",
         "buggy": "c = bin_op.apply(a,b);",
     },
@@ -35,14 +31,11 @@ ARTICLE_FEW_SHOT_EXAMPLES: list[dict[str, str]] = [
 
 def build_prompt(
     method_source: str,
-    filepath: str,
     target_mutants: int,
-    code_element: str = (
-        "all single-line Java statements and expressions"
-    ),
+    code_element: str,
     method_start_line: int = 1,
 ) -> tuple[str, str]:
-    """Build the article-style ``(system_prompt, user_prompt)`` pair."""
+    """Build the ``(system_prompt, user_prompt)`` pair for one source method."""
     source_lines = method_source.splitlines()
     numbered = "\n".join(
         f"{method_start_line + i:4d}:  {line}"
@@ -72,12 +65,12 @@ of mutants which you can refer to:
 1. Provide generated mutants directly
 2. A mutation can only occur on one line
 3. Your output must be like:
-   [ {{ "id": 1, "line": 123, "precode": "", "filepath": "{filepath}", "aftercode": "", "rule": "Conditionals Boundary (<= -> <)" }} ],
-   where "id" stands for the mutant serial number, "line" represents the 1-based absolute line number of the mutated line,
+   [ {{ "line": 123, "precode": "", "aftercode": "", "rule": "" }} ],
+   where "line" represents the 1-based absolute line number of the mutated line,
    "precode" represents the line of code before mutation and it can not be empty,
-    "aftercode" represents the line of code after mutation,
-    and "rule" is a short mutation-operator name in the style "Operator Name"
-5. Prohibit generating the exact same mutants
-6. All write in a JSON file"""
+   "aftercode" represents the line of code after mutation,
+   "rule" is a short mutation-operator name.
+4. Prohibit generating the exact same mutants
+"""
 
     return _SYSTEM, user
