@@ -67,12 +67,11 @@ def validate_config(config: CollectionConfig) -> list[tuple[str, int]]:
     return plan
 
 
-def normalize_local_mutant_file(mutant_file: Path) -> tuple[int, int]:
-    """Ensure the local mutant JSON contains up-to-date duplicate markers."""
-    bank = MutantBank(mutant_file).load()
+def prepare_local_mutant_bank(mutant_file: Path) -> tuple[MutantBank, int, int]:
+    """Load one local mutant JSON once and compute duplicate counts in memory."""
+    bank = MutantBank(mutant_file).load(quiet=True)
     duplicate_count = bank.duplicate_count()
-    bank.save()
-    return len(bank), duplicate_count
+    return bank, len(bank), duplicate_count
 
 
 def print_intro(plan: list[tuple[str, int]], config: CollectionConfig) -> None:
@@ -113,9 +112,10 @@ def print_bug_summary(local_storage: Storage, project: str, bug_id: int, local_w
             f" tests={int(suite_profile.get('total_tests', len(suite_tests)) or 0)}"
         )
     if bug_profile:
+        failing_tests = bug_profile.get("failing_tests", []) or []
         print(
             "bug profile:"
-            f" trigger_tests={len(bug_profile.get('failing_tests', []) or [])}"
+            f" failing_tests={len(failing_tests)}"
         )
 
     output_files = sorted(local_storage.results_dir(project, bug_id).glob("*.json"))
@@ -131,6 +131,26 @@ def print_bug_summary(local_storage: Storage, project: str, bug_id: int, local_w
         total_records += count
         print(f"  {path.relative_to(local_workspace)}  ({count} records)")
     print(f"Total records written: {total_records}")
+
+
+def print_run_summary(local_storage: Storage, plan: list[tuple[str, int]]) -> None:
+    print(f"\n{SEP}\nRUN SUMMARY\n{SEP}")
+    print(f"Storage @ {local_storage.workspace.resolve()}")
+    total_records = 0
+    for project, bug_id in plan:
+        result_files = sorted(local_storage.results_dir(project, bug_id).glob("*.json"))
+        by_set: dict[str, int] = {}
+        for path in result_files:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            count = len(payload) if isinstance(payload, list) else 1
+            by_set[path.stem] = count
+        total = sum(by_set.values())
+        print(
+            f"  {project.upper()}_{bug_id}: {len(result_files)} result files, {total} records"
+            + (f" ({', '.join(f'{k}={v}' for k, v in sorted(by_set.items()))})" if by_set else "")
+        )
+        total_records += total
+    print(f"  Total records: {total_records}")
 
 
 def main(config: CollectionConfig) -> int:
@@ -154,35 +174,35 @@ def main(config: CollectionConfig) -> int:
 
         print(f"\n{SEP}\nPREPARING {bug_key}\n{SEP}")
         if not local_mutant_files:
+            storage.begin_run(project, bug_id)
+            storage.update_meta(project, bug_id)
             print(f"No mutant files found in {storage.mutants_dir_path(project, bug_id)}")
             continue
 
         print("Local mutant files:")
+        banks: list[MutantBank] = []
         for path in local_mutant_files:
-            total_mutants, duplicate_mutants = normalize_local_mutant_file(path)
+            bank, total_mutants, duplicate_mutants = prepare_local_mutant_bank(path)
+            banks.append(bank)
             print(
                 f"  {path.relative_to(config.local_workspace)}"
                 f"  (mutants={total_mutants}, duplicates={duplicate_mutants})"
             )
 
-        storage.clear_results(project, bug_id)
+        storage.begin_run(project, bug_id)
 
-        total_records = 0
-        for mutant_file in storage.mutant_files(project, bug_id):
-            bank = MutantBank(mutant_file).load()
-            total_records += collector.collect_bug(
-                project,
-                bug_id,
-                bank,
-                test_timeout=config.test_timeout_s,
-                max_workers=config.collect_max_workers,
-            )
+        total_records = collector.collect_bug_banks(
+            project,
+            bug_id,
+            banks,
+            test_timeout=config.test_timeout_s,
+            max_workers=config.collect_max_workers,
+        )
 
         print(f"Total result records written for {bug_key}: {total_records}")
         print_bug_summary(storage, project, bug_id, config.local_workspace)
 
-    print(f"\n{SEP}\nLOCAL SUMMARY\n{SEP}")
-    print(storage.summary())
+    print_run_summary(storage, plan)
     print(f"\nLocal workspace updated at: {config.local_workspace}")
     return 0
 

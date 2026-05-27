@@ -72,9 +72,10 @@ class LLMGenerator(BaseGenerator):
         return model_stem(self.config.output_name or self.config.model)
 
     def requested_mutant_count(self, job: GeneratorJob) -> int:
+        changed = set(job.changed_lines or [])
         candidate_lines = sum(
-            1 for line in job.method_source.splitlines()
-            if self._is_mutation_candidate_line(line)
+            1 for offset, line in enumerate(job.method_source.splitlines(), start=job.method_start)
+            if (not changed or offset in changed) and self._is_mutation_candidate_line(line)
         )
         return max((candidate_lines + 1) // 3, 1) if candidate_lines else 0
 

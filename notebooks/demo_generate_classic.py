@@ -150,7 +150,12 @@ def main(config: ClassicGenerationConfig) -> int:
             verbose=False,
             max_workers=class_workers,
         )
-        bank = pipeline.run(project, bug_id)
+        try:
+            bank = pipeline.run(project, bug_id)
+        except Exception as exc:
+            elapsed = round(__import__("time").perf_counter() - t0, 1)
+            _log(f"✗ ERROR {bug_key}  {type(exc).__name__}: {exc}  time={elapsed}s")
+            return project, bug_id, 0, config.workspace / bug_key / "mutants" / "classic.json"
         out_path = config.workspace / f"{project.upper()}_{bug_id}" / "mutants" / "classic.json"
         elapsed = round(__import__("time").perf_counter() - t0, 1)
         _log(f"✓ DONE  {bug_key}  mutants={len(bank)}  time={elapsed}s")

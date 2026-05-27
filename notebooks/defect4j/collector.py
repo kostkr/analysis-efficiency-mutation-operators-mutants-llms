@@ -45,6 +45,57 @@ class DataCollector:
         self._log = print if verbose else lambda *a, **kw: None
         self._profile_cache: dict[tuple[str, int], dict] = {}
 
+    def collect_bug_banks(
+        self,
+        project: str,
+        bug_id: int,
+        banks: list["MutantBank"],
+        test_timeout: int = 600,
+        max_workers: int = 1,
+    ) -> int:
+        """Collect all mutant files for one bug using one checkout/profile/pool."""
+        c_path = self._ensure_checkout(project, bug_id, version="f")
+        profiles = self._ensure_profiles(project, bug_id, c_path, test_timeout)
+        baseline_total_tests = len(profiles["suite_profile"].get("all_tests", []))
+        trigger_tests = profiles["bug_profile"].get("trigger_tests", [])
+        tagged: list[tuple[str, "Mutant"]] = []
+        duplicates = 0
+        for bank in banks:
+            bank.mark_duplicates()
+            runnable = [mutant for mutant in bank if not mutant.dublicate]
+            duplicates += len(bank) - len(runnable)
+            tagged.extend((bank.path.stem, mutant) for mutant in runnable)
+
+        workers = max(1, min(int(max_workers), len(tagged) or 1))
+        self._log(
+            f"\n{'=' * 64}\n"
+            f"  {project}-{bug_id}  |  sets={len(banks)}  |  run={len(tagged)}  |  duplicates={duplicates}  |  workers={workers}\n"
+            f"{'=' * 64}"
+        )
+        by_set: dict[str, list[dict]] = {bank.path.stem: [] for bank in banks}
+        if tagged:
+            records = self._collect_tagged_parallel(
+
+                project=project,
+                bug_id=bug_id,
+                tagged=tagged,
+                test_timeout=test_timeout,
+                workers=workers,
+                base_container_path=c_path,
+                baseline_total_tests=baseline_total_tests,
+                trigger_tests=trigger_tests,
+            ) if workers > 1 else [
+                (name, self._run_one(mutant, bug_id, c_path, name, test_timeout, baseline_total_tests, trigger_tests=trigger_tests))
+                for name, mutant in tagged
+            ]
+            for name, record in records:
+                by_set.setdefault(name, []).append(record)
+        for name, records in by_set.items():
+            self.storage.write_result_set(project, bug_id, name, records)
+        self.storage.update_meta(project, bug_id, suite_profile=profiles["suite_profile"], bug_profile=profiles["bug_profile"])
+        self._log(f"  written  : {sum(len(v) for v in by_set.values())} result records across {len(by_set)} set(s)")
+        return sum(len(v) for v in by_set.values())
+
     def collect_bug(
         self,
         project: str,
@@ -64,6 +115,7 @@ class DataCollector:
         c_path = self._ensure_checkout(project, bug_id, version="f")
         profiles = self._ensure_profiles(project, bug_id, c_path, test_timeout)
         baseline_total_tests = len(profiles["suite_profile"].get("all_tests", []))
+        trigger_tests = profiles["bug_profile"].get("trigger_tests", [])
         bank.mark_duplicates()
         runnable_mutants = [mutant for mutant in bank if not mutant.dublicate]
         duplicate_count = len(bank) - len(runnable_mutants)
@@ -78,7 +130,6 @@ class DataCollector:
         if not runnable_mutants:
             records: list[dict] = []
         elif workers == 1:
-            self._warm_checkout(c_path, test_timeout)
             records = self._collect_sequential(
                 mutants=runnable_mutants,
                 bug_id=bug_id,
@@ -86,6 +137,7 @@ class DataCollector:
                 mutant_set=mutant_set,
                 test_timeout=test_timeout,
                 baseline_total_tests=baseline_total_tests,
+                trigger_tests=trigger_tests,
             )
         else:
             records = self._collect_parallel(
@@ -97,6 +149,7 @@ class DataCollector:
                 workers=workers,
                 base_container_path=c_path,
                 baseline_total_tests=baseline_total_tests,
+                trigger_tests=trigger_tests,
             )
 
         self.storage.write_result_set(project, bug_id, mutant_set, records)
@@ -117,6 +170,7 @@ class DataCollector:
         mutant_set: str,
         test_timeout: int,
         baseline_total_tests: int,
+        trigger_tests: list[str] | None,
     ) -> list[dict]:
         records: list[dict] = []
         for mutant in mutants:
@@ -127,6 +181,7 @@ class DataCollector:
                 mutant_set=mutant_set,
                 test_timeout=test_timeout,
                 baseline_total_tests=baseline_total_tests,
+                trigger_tests=trigger_tests,
             )
             records.append(record)
         return records
@@ -141,6 +196,7 @@ class DataCollector:
         workers: int,
         base_container_path: str,
         baseline_total_tests: int,
+        trigger_tests: list[str] | None,
     ) -> list[dict]:
         records: list[dict | None] = [None] * len(mutants)
         pool = self.d4j.parallel_checkouts(
@@ -152,7 +208,6 @@ class DataCollector:
             base_container_path=base_container_path,
         )
         pool.prepare()
-        self._warm_parallel_checkouts(pool, workers=workers, test_timeout=test_timeout)
 
         try:
             with ThreadPoolExecutor(max_workers=workers) as executor:
@@ -165,6 +220,7 @@ class DataCollector:
                         mutant_set,
                         test_timeout,
                         baseline_total_tests,
+                        trigger_tests,
                     ): index
                     for index, mutant in enumerate(mutants)
                 }
@@ -177,6 +233,49 @@ class DataCollector:
             pool.cleanup()
 
         return [r for r in records if r is not None]
+
+    def _collect_tagged_parallel(
+        self,
+        project: str,
+        bug_id: int,
+        tagged: list[tuple[str, "Mutant"]],
+        test_timeout: int,
+        workers: int,
+        base_container_path: str,
+        baseline_total_tests: int,
+        trigger_tests: list[str] | None,
+    ) -> list[tuple[str, dict]]:
+        records: list[tuple[str, dict] | None] = [None] * len(tagged)
+        pool = self.d4j.parallel_checkouts(
+            project=project,
+            bug_id=bug_id,
+            host_workspace=self.host_ws,
+            max_workers=workers,
+            version="f",
+            base_container_path=base_container_path,
+        )
+        pool.prepare()
+        try:
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                futures = {
+                    executor.submit(
+                        self._run_one_in_parallel_checkout,
+                        pool,
+                        mutant,
+                        bug_id,
+                        mutant_set,
+                        test_timeout,
+                        baseline_total_tests,
+                        trigger_tests,
+                    ): index
+                    for index, (mutant_set, mutant) in enumerate(tagged)
+                }
+                for future in as_completed(futures):
+                    index = futures[future]
+                    records[index] = (tagged[index][0], future.result())
+        finally:
+            pool.cleanup()
+        return [record for record in records if record is not None]
 
     def _warm_checkout(self, container_path: str, test_timeout: int) -> None:
         warm_time = self.d4j.warm_relevant_suite(container_path, timeout=test_timeout)
@@ -235,6 +334,7 @@ class DataCollector:
         mutant_set: str,
         test_timeout: int,
         baseline_total_tests: int,
+        trigger_tests: list[str] | None,
     ) -> dict:
         checkout = pool.acquire()
         try:
@@ -246,6 +346,7 @@ class DataCollector:
                 test_timeout=test_timeout,
                 baseline_total_tests=baseline_total_tests,
                 worker_id=checkout.worker_id,
+                trigger_tests=trigger_tests,
             )
         finally:
             pool.release(checkout)
@@ -304,6 +405,7 @@ class DataCollector:
 
         bug_profile = {
             "failing_tests": actual_bug_failing,
+            "trigger_tests": bug_tests,
         }
         suite_total_tests = len(suite_profile.get("all_tests", []))
         trigger_count = len(bug_tests)
@@ -331,6 +433,7 @@ class DataCollector:
         test_timeout: int,
         baseline_total_tests: int,
         worker_id: int | None = None,
+        trigger_tests: list[str] | None = None,
     ) -> dict:
         status = [f"[{mutant.id}]", mutant_set]
         if worker_id is not None:
@@ -354,8 +457,21 @@ class DataCollector:
             container_path=container_path,
             mutant=mutant,
             timeout=test_timeout,
+            trigger_tests=trigger_tests,
         )
         record.update({k: v for k, v in result.items() if k in record})
+
+        error_text = str(record.get("compile_error", ""))
+        if record["compiled"] is False \
+                and "Running ant (compile.tests)" in error_text \
+                and "OK" in error_text \
+                and "Running ant (run.dev.tests)" in error_text \
+                and "FAIL" in error_text:
+            record["compiled"] = True
+            record["test_executed"] = True
+            record["compile_error"] = ""
+            record["failing_tests"] = record["failing_tests"] or ["<test failure>"]
+            record["failing_count"] = len(record["failing_tests"])
 
         if record["compiled"] is False and str(record["compile_error"]).startswith("apply_failed:"):
             status.append("→ APPLY FAILED")
@@ -368,7 +484,7 @@ class DataCollector:
             return record
 
         if record["timed_out"]:
-            status.append(f"→ TIMEOUT ({test_timeout}s)")
+            status.append(f"→ TIMEOUT ({record['run_time_s']}s)")
         else:
             killed = bool(record["failing_tests"])
             status.append(

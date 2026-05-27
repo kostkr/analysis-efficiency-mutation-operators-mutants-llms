@@ -203,7 +203,11 @@ class PITPipeline:
         )
 
         t0 = time.perf_counter()
-        class_selected = self._generator.generate(wide_job)
+        try:
+            class_selected = self._generator.generate(wide_job)
+        except Exception as exc:
+            self._log(f"    class_error={type(exc).__name__}: {exc}")
+            return []
         elapsed = round(time.perf_counter() - t0, 1)
         self._log(
             f"    methods={len(method_names)}  class_total={len(class_selected)}  runtime={elapsed}s"

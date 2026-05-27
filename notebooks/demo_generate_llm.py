@@ -97,7 +97,16 @@ def main(config: LLMGenerationConfig) -> int:
             config=config.llm_config,
             verbose=True,
         )
-        bank = pipeline.run(project, bug_id)
+        try:
+            bank = pipeline.run(project, bug_id)
+        except Exception as exc:
+            elapsed = round(time.perf_counter() - t0, 1)
+            _log(f"✗ ERROR {bug_key}  {type(exc).__name__}: {exc}  time={elapsed}s")
+            out_path = config.workspace / f"{project.upper()}_{bug_id}" / "mutants" / (
+                model_stem(config.llm_config.output_name or config.llm_config.model) + ".json"
+            )
+            results.append((project, bug_id, 0, out_path))
+            continue
         out_path = config.workspace / f"{project.upper()}_{bug_id}" / "mutants" / (
             model_stem(config.llm_config.output_name or config.llm_config.model) + ".json"
         )

@@ -15,6 +15,7 @@ Algorithm
 from __future__ import annotations
 
 import re
+import shlex
 from typing import TYPE_CHECKING
 
 from .base import GeneratorJob
@@ -57,8 +58,10 @@ class SourceFinder:
                                checked out automatically as ``<project>_<id>_b``
         host_path            : optional host-side path (passed through to job)
         """
-        # 1. Modified classes
+        # 1. Modified classes and real source root. Lang uses both
+        #    src/main/java and src/java across Defects4J versions.
         classes = self.d4j.export(container_path_fixed, "classes.modified")
+        src_root = self._source_root(container_path_fixed)
 
         # 2. Ensure buggy checkout exists
         if container_path_buggy is None:
@@ -69,7 +72,7 @@ class SourceFinder:
 
         jobs: list[GeneratorJob] = []
         for fqn in classes:
-            rel_path = _fqn_to_path(fqn)
+            rel_path = _fqn_to_path(fqn, src_root)
 
             # 3. Changed lines (in fixed version)
             changed = self._changed_lines(
@@ -80,16 +83,20 @@ class SourceFinder:
 
             # 4. Read fixed source
             src_raw, _, rc = self.d4j.exec(
-                f"cat {container_path_fixed}/{rel_path} 2>/dev/null"
+                f"cat {shlex.quote(container_path_fixed + '/' + rel_path)} 2>/dev/null"
             )
             if rc != 0 or not src_raw.strip():
                 continue
 
             # 5. Find method boundaries and match against changed lines
+            class_ranges = _find_class_ranges(src_raw, fqn)
             for m_name, m_start, m_end, m_src in _find_methods(src_raw):
                 overlap = [ln for ln in changed if m_start <= ln <= m_end]
                 if not overlap:
                     continue
+                owner_fqn = _class_fqn_at_line(class_ranges, fqn, m_start)
+                if m_name == _simple_class_name(owner_fqn):
+                    m_name = "<init>"
                 jobs.append(
                     GeneratorJob(
                         project=project,
@@ -97,7 +104,7 @@ class SourceFinder:
                         container_path=container_path_fixed,
                         host_path=host_path,
                         filepath=rel_path,
-                        class_fqn=fqn,
+                        class_fqn=owner_fqn,
                         method_name=m_name,
                         method_source=m_src,
                         method_start=m_start,
@@ -119,19 +126,29 @@ class SourceFinder:
         if "ok" not in out:
             self.d4j.checkout(project, bug_id, version, dest=path, timeout=180)
 
+    def _source_root(self, container_path: str) -> str:
+        try:
+            lines = self.d4j.export(container_path, "dir.src.classes")
+        except RuntimeError:
+            return "src/main/java"
+        return (lines[-1] if lines else "src/main/java").strip().strip("/") or "src/main/java"
+
     def _changed_lines(
         self, buggy_path: str, fixed_path: str, rel: str
     ) -> list[int]:
         """Return 1-based line numbers added/changed in the fixed file."""
         out, _, _ = self.d4j.exec(
-            f"diff -u {buggy_path}/{rel} {fixed_path}/{rel} 2>/dev/null || true"
+            "diff -u "
+            f"{shlex.quote(buggy_path + '/' + rel)} "
+            f"{shlex.quote(fixed_path + '/' + rel)} "
+            "2>/dev/null || true"
         )
         return _parse_diff_fixed_lines(out)
 
 
 # ── Module-level helpers ───────────────────────────────────────────────────────
 
-def _fqn_to_path(fqn: str) -> str:
+def _fqn_to_path(fqn: str, src_root: str = "src/main/java") -> str:
     """Convert a fully-qualified Java class name to a relative source path.
 
     ``org.example.Foo`` → ``src/main/java/org/example/Foo.java``
@@ -140,7 +157,51 @@ def _fqn_to_path(fqn: str) -> str:
     """
     # Strip inner-class suffix
     top_level = fqn.split("$")[0]
-    return "src/main/java/" + top_level.replace(".", "/") + ".java"
+    return src_root.rstrip("/") + "/" + top_level.replace(".", "/") + ".java"
+
+
+def _simple_class_name(fqn: str) -> str:
+    return fqn.rsplit("$", 1)[-1].rsplit(".", 1)[-1]
+
+
+def _find_class_ranges(source: str, top_fqn: str) -> list[tuple[int, int, str]]:
+    ranges: list[tuple[int, int, str]] = []
+    for match in re.finditer(r"(?m)^[ \t]*(?:[\w@<>,.?]+\s+)*(?:class|interface|enum)\s+([A-Za-z_$][\w$]*)[^;{}]*\{", source):
+        name = match.group(1)
+        start = source[:match.start()].count("\n") + 1
+        end_pos = _matching_brace(source, match.end() - 1)
+        end = source[:end_pos].count("\n") + 1 if end_pos >= 0 else source.count("\n") + 1
+        parent = _class_fqn_at_line(ranges, "", start)
+        if parent:
+            fqn = parent + "$" + name
+        else:
+            fqn = top_fqn if name == _simple_class_name(top_fqn) else top_fqn + "$" + name
+        ranges.append((start, end, fqn))
+    return ranges
+
+
+def _class_fqn_at_line(ranges: list[tuple[int, int, str]], default: str, line: int) -> str:
+    owner = default
+    best_size: int | None = None
+    for start, end, fqn in ranges:
+        if start <= line <= end:
+            size = end - start
+            if best_size is None or size < best_size:
+                owner = fqn
+                best_size = size
+    return owner
+
+
+def _matching_brace(source: str, open_pos: int) -> int:
+    depth = 0
+    for pos in range(open_pos, len(source)):
+        if source[pos] == "{":
+            depth += 1
+        elif source[pos] == "}":
+            depth -= 1
+            if depth == 0:
+                return pos
+    return -1
 
 
 # Java keywords that must NOT be captured as method names
@@ -159,18 +220,14 @@ _JAVA_KEYWORDS = frozenset({
 # that is NOT a Java keyword, so that `if (...)`, `while (...)` etc. are
 # not matched.
 _METHOD_RE = re.compile(
-    r"(?P<mods>(?:(?:public|protected|private|static|final|synchronized|"
-    r"abstract|native|strictfp|default)\s+)+)"  # ≥1 modifier required
-    r"(?:<[^>]+>\s+)?"                           # optional generics
-    r"[\w\[\]<>,\s]+?\s+"                        # return type
-    r"(?P<name>\w+)\s*\([^)]*\)"                 # method name + params
-    r"(?:\s*throws\s+[\w\s,]+)?"
-    r"\s*\{",
-    re.MULTILINE,
+    r"(?m)^[ \t]*(?P<head>(?:(?:public|protected|private|static|final|synchronized|"
+    r"abstract|native|strictfp|default)\s+)*(?:<[^>\n]+>\s+)?(?:[\w$\[\]<>,.?]+\s+)*)"
+    r"(?P<name>[A-Za-z_$][\w$]*)\s*\([^;{}]*\)"
+    r"(?:\s*throws\s+[^;{}]+)?\s*\{"
 )
 
 
-def _find_methods(source: str) -> list[tuple[str, int, int, str]]:
+def _find_methods(source: str, class_name: str = "") -> list[tuple[str, int, int, str]]:
     """Find all method bodies in *source*.
 
     Returns list of ``(method_name, start_line, end_line, method_source)``
@@ -181,6 +238,9 @@ def _find_methods(source: str) -> list[tuple[str, int, int, str]]:
     for m in _METHOD_RE.finditer(source):
         name = m.group("name")
         if name in _JAVA_KEYWORDS:
+            continue
+        head_words = re.findall(r"[A-Za-z_$][\w$]*", m.group("head"))
+        if head_words and head_words[0] in {"return", "new", "if", "for", "while", "switch", "catch"}:
             continue
         # Opening brace is the last character of the regex match
         brace_pos = m.end() - 1
@@ -200,6 +260,8 @@ def _find_methods(source: str) -> list[tuple[str, int, int, str]]:
 
         end_line = source[:end_pos].count("\n") + 1
         method_src = source[m.start() : end_pos + 1]
+        if class_name and name == class_name:
+            name = "<init>"
         results.append((name, start_line, end_line, method_src))
 
     return results
@@ -210,8 +272,8 @@ def _parse_diff_fixed_lines(diff: str) -> list[int]:
 
     A hunk header ``@@ -a,b +c,d @@`` means the fixed file starts at line *c*.
     Lines prefixed with ``+`` (excluding ``+++``) are new/changed lines.
-    Context lines (no prefix) and deleted lines (``-``) advance the cursor
-    only for the fixed file.
+    Deleted-only hunks are mapped to the current fixed-file cursor so fixes
+    that only remove code still select the surrounding method.
     """
     lines_out: list[int] = []
     cur_line = 0
@@ -227,11 +289,11 @@ def _parse_diff_fixed_lines(diff: str) -> list[int]:
             lines_out.append(cur_line)
             cur_line += 1
         elif line.startswith("-"):
-            pass  # deleted from buggy — don't advance fixed cursor
+            lines_out.append(max(cur_line, 1))
         else:
             cur_line += 1  # context line
 
-    return lines_out
+    return sorted(set(lines_out))
 
 
 

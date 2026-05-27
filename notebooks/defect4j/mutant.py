@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import re
+from typing import cast
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -166,17 +167,18 @@ class MutantBank:
     # ------------------------------------------------------------------ #
     #  I/O                                                                 #
     # ------------------------------------------------------------------ #
-    def load(self) -> "MutantBank":
+    def load(self, quiet: bool = False) -> "MutantBank":
         with self.path.open(encoding="utf-8") as f:
             raw = json.load(f)
         self.mutants = self.from_dicts(raw, path=self.path).mutants
         self.mark_duplicates()
-        print(f"Loaded {len(self.mutants)} mutants from {self.path}")
+        if not quiet:
+            print(f"Loaded {len(self.mutants)} mutants from {self.path}")
         return self
 
     def save(self, path: Path | str | None = None, quiet: bool = False) -> "MutantBank":
         if path is None:
-            dest = self.path
+            dest = cast(Path, self.path)
         else:
             dest = Path(path)
         dest.parent.mkdir(parents=True, exist_ok=True)
@@ -278,7 +280,9 @@ class MutantBank:
         print(f"Example written → {dest}")
 
 
-def _atomic_write_text(path: Path, payload: str) -> None:
+def _atomic_write_text(path: Path | None, payload: str) -> None:
+    if path is None:
+        raise ValueError("path must not be None")
     tmp = path.with_name(f".{path.name}.tmp")
     tmp.write_text(payload, encoding="utf-8")
     tmp.replace(path)

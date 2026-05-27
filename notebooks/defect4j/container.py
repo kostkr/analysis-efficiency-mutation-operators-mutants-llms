@@ -131,7 +131,7 @@ class Defects4J:
         Raises subprocess.TimeoutExpired on timeout.
         """
         t   = timeout or self.timeout_default
-        cmd = bash_cmd.replace('"', '\\"')
+        cmd = ("export LANG=C.UTF-8 LC_ALL=C.UTF-8; " + bash_cmd).replace('"', '\\"')
         return self._run(f'podman exec {self.container} bash -lc "{cmd}"', t)
 
     # ------------------------------------------------------------------ #
@@ -321,6 +321,7 @@ class Defects4J:
         container_path: str,
         mutant: "Mutant",
         timeout: int = 600,
+        trigger_tests: list[str] | None = None,
     ) -> dict[str, Any]:
         """
         Apply one mutant, run ``defects4j test -r``, restore the file, and return
@@ -338,6 +339,7 @@ class Defects4J:
                     "precode": mutant.precode,
                     "aftercode": mutant.aftercode,
                     "timeout": int(timeout),
+                    "trigger_tests": list(trigger_tests or []),
                 },
                 ensure_ascii=False,
             ).encode("utf-8")
@@ -431,34 +433,74 @@ try:
     target.write_text(''.join(lines), encoding='utf-8')
 
     t0 = time.perf_counter()
+    trigger_tests = list(payload.get('trigger_tests') or [])
+    for test_id in trigger_tests:
+        try:
+            proc = subprocess.run(
+                ['defects4j', 'test', '-t', str(test_id)],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                timeout=min(int(payload['timeout']), 50),
+            )
+        except subprocess.TimeoutExpired:
+            record['compiled'] = True
+            record['timed_out'] = True
+            record['test_executed'] = True
+            record['run_time_s'] = round(time.perf_counter() - t0, 2)
+            print(json.dumps(record, ensure_ascii=False))
+            raise SystemExit(0)
+        failing = parse_failing_tests(proc.stdout)
+        if failing:
+            record['compiled'] = True
+            record['test_executed'] = True
+            record['run_time_s'] = round(time.perf_counter() - t0, 2)
+            record['failing_tests'] = failing
+            record['failing_count'] = len(failing)
+            print(json.dumps(record, ensure_ascii=False))
+            raise SystemExit(0)
+        if proc.returncode != 0 and 'Failing tests:' not in proc.stdout:
+            record['compiled'] = False
+            msg = (proc.stderr or proc.stdout or 'defects4j trigger test failed').strip()
+            record['compile_error'] = msg[:400] if msg else 'defects4j trigger test failed'
+            record['run_time_s'] = round(time.perf_counter() - t0, 2)
+            print(json.dumps(record, ensure_ascii=False))
+            raise SystemExit(0)
+
     try:
         proc = subprocess.run(
             ['defects4j', 'test', '-r'],
             cwd=root,
             capture_output=True,
             text=True,
-            timeout=int(payload['timeout']),
+            timeout=min(int(payload['timeout']), 50),
         )
     except subprocess.TimeoutExpired:
         record['compiled'] = True
         record['timed_out'] = True
         record['test_executed'] = True
-        record['run_time_s'] = int(payload['timeout'])
+        record['run_time_s'] = min(int(payload['timeout']), 50)
         print(json.dumps(record, ensure_ascii=False))
         raise SystemExit(0)
 
     record['run_time_s'] = round(time.perf_counter() - t0, 2)
 
-    failing = parse_failing_tests(proc.stdout)
+    output = (proc.stdout or '') + '\\n' + (proc.stderr or '')
+    failing = parse_failing_tests(output)
 
-    if 'Failing tests:' in proc.stdout:
+    if 'Failing tests:' in output:
         record['compiled'] = True
         record['test_executed'] = True
         record['failing_tests'] = failing
         record['failing_count'] = len(failing)
+    elif 'Running ant (compile.tests)' in output and 'Running ant (run.dev.tests)' in output:
+        record['compiled'] = True
+        record['test_executed'] = True
+        record['failing_tests'] = failing or ['<test failure>']
+        record['failing_count'] = len(record['failing_tests'])
     else:
         record['compiled'] = False
-        msg = (proc.stderr or proc.stdout or 'defects4j test failed').strip()
+        msg = (output or 'defects4j test failed').strip()
         record['compile_error'] = msg[:400] if msg else 'defects4j test failed'
 
     print(json.dumps(record, ensure_ascii=False))
@@ -587,6 +629,7 @@ class ParallelCheckoutPool:
         self.version = version
         self.host_workspace = Path(host_workspace)
         self.max_workers = int(max_workers)
+        self._external_base_checkout = base_container_path is not None
         self.base_container_path = (
             base_container_path
             or f"/tmp/defect4j-base/{project}_{bug_id}_{version}"
@@ -664,7 +707,8 @@ class ParallelCheckoutPool:
             f"find {shlex.quote(self.base_container_path)} -mindepth 1 -maxdepth 1 | head -1"
         )
         if rc == 0 and out.strip():
-            self.d4j.reset_checkout(self.base_container_path)
+            if not self._external_base_checkout:
+                self.d4j.reset_checkout(self.base_container_path)
             return
         self.d4j.checkout(
             self.project,
@@ -673,7 +717,8 @@ class ParallelCheckoutPool:
             dest=self.base_container_path,
             timeout=180,
         )
-        self.d4j.reset_checkout(self.base_container_path)
+        if not self._external_base_checkout:
+            self.d4j.reset_checkout(self.base_container_path)
 
     def _copy_checkout(self, src: str, dest: str) -> None:
         self._run_checked(

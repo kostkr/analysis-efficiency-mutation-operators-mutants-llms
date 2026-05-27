@@ -25,7 +25,7 @@ from __future__ import annotations
 
 import json
 import shutil
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 
 
@@ -175,6 +175,10 @@ class Storage:
             json.dumps(meta, indent=2, ensure_ascii=False),
         )
         return meta
+
+    def begin_run(self, project: str, bug_id: int) -> None:
+        """Clear old outputs before tests start without writing interim metadata."""
+        self.clear_results(project, bug_id)
 
     def _summarize_records(self, records: list[dict]) -> dict:
         """
@@ -375,7 +379,7 @@ class Storage:
 
 
 def _now() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")
+    return datetime.now().astimezone().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
 
 def _atomic_write_text(path: Path, payload: str) -> None:

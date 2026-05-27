@@ -107,7 +107,11 @@ class LLMPipeline:
 
         self._log(f"  method call   : {job.method_name}  prompt_mode=selective")
         t0 = time.perf_counter()
-        collected = self._generator.generate_batch(job)
+        try:
+            collected = self._generator.generate_batch(job)
+        except Exception as exc:
+            self._log(f"  method error  : {job.method_name}  {type(exc).__name__}: {exc}")
+            return []
         elapsed = round(time.perf_counter() - t0, 1)
         if collected:
             saved_total, duplicate_count = self._persist_chunk(bank, collected, seen_unique_signatures)

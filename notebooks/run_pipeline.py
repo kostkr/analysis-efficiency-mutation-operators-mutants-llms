@@ -14,20 +14,29 @@ WORKSPACE = Path(__file__).parent / "demo_collection_workspace"
 CONTAINER_NAME = "defects4j-container"
 CONTAINER_WORKSPACE = "/workspace"
 
-BUG_IDS_BY_PROJECT = {"Lang": [1, 3]}
+BUG_IDS_BY_PROJECT = {
+    "Lang": [
+        # 1, 3,
+        # 4, 5, 6, 7,
+        8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+        19, 20, 21, 22, 23, 24,
+        26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+        41, 42, 43, 44, 45, 46, 47,
+        49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65
+    ]
+}
 
-RUN_CLASSIC_GENERATION = True
-RUN_LLM_QWEN3_6_35B_A3B = True
-RUN_LLM_QWEN3_5_4B = False
-RUN_LLM_GEMMA4_26B_A4B_Q4 = True
+RUN_CLASSIC_GENERATION = False
+RUN_LLM_QWEN3_6_35B_A3B = False
+RUN_LLM_GEMMA4_26B_A4B_Q4 = False
 RUN_COLLECTION = True
 
 
 # ── Classic generation ────────────────────────────────────────────
-PIT_BUG_WORKERS = 14
+PIT_BUG_WORKERS = 10
 PIT_CLASS_WORKERS = 1
 PIT_CONFIG = PITConfig(
-    timeout_s=600,
+    timeout_s=900,
     mutators="ALL",
 )
 
@@ -37,10 +46,6 @@ LLM_MODEL_PRESETS = {
     "qwen3.6_35b_a3b": {
         "model": "qwen3.6:35b-a3b",
         "output_name": "qwen3.6_35b-a3b",
-    },
-    "qwen3.5_4b": {
-        "model": "qwen3.5:4b",
-        "output_name": "qwen3.5_4b",
     },
     "gemma4_26b_a4b_q4": {
         "model": "gemma4:26b-a4b-it-q4_K_M",
@@ -55,7 +60,6 @@ def _enabled_llm_configs() -> list[LLMConfig]:
     enabled: list[LLMConfig] = []
     llm_run_flags = [
         (RUN_LLM_QWEN3_6_35B_A3B, "qwen3.6_35b_a3b"),
-        (RUN_LLM_QWEN3_5_4B, "qwen3.5_4b"),
         (RUN_LLM_GEMMA4_26B_A4B_Q4, "gemma4_26b_a4b_q4"),
     ]
     for is_enabled, preset_key in llm_run_flags:
@@ -74,7 +78,7 @@ def _enabled_llm_configs() -> list[LLMConfig]:
 
 # ── Mutant execution pipeline ──────────────────────────────────────────────
 COLLECT_TEST_TIMEOUT_S = 600
-COLLECT_MAX_WORKERS = 14
+COLLECT_MAX_WORKERS = 13
 
 
 def main() -> int:

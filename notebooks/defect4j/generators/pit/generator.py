@@ -11,6 +11,7 @@ The heavy lifting now happens inside the bundled PIT sources:
 from __future__ import annotations
 
 from pathlib import Path
+import shlex
 import subprocess
 import threading
 import time
@@ -33,7 +34,7 @@ class PITGenerator(BaseGenerator):
     _CUSTOM_PIT_READY: set[str] = set()
     _CUSTOM_PIT_CONTAINER_DIR = "/opt/custom-pitest"
     _CUSTOM_PIT_READY_FILE = "/opt/custom-pitest/.classic_pit_ready"
-    _CUSTOM_PIT_VERSION = "classic-json-v7-all-operators"
+    _CUSTOM_PIT_VERSION = "classic-json-v20-chained-cast-receiver"
 
     def __init__(self, config: PITConfig, d4j: "Defects4J") -> None:
         self.config = config
@@ -130,17 +131,24 @@ class PITGenerator(BaseGenerator):
     ) -> str:
         custom_cp = self._custom_pit_classpath_prefix()
         mutators = self._effective_mutators()
+        cp_arg = shlex.quote(custom_cp + classpath)
+        target_class = self._pit_target_class(class_fqn)
         return (
-            f'java -cp "{custom_cp}{classpath}"'
+            f"java -cp {cp_arg}"
             f" {_PIT_MAIN}"
-            f' --projectBase "{project_base}"'
-            f' --classPath "{classpath}"'
-            f' --reportDir "{report_dir}"'
-            f' --targetClass "{class_fqn}"'
-            f' --targetMethods "{target_methods}"'
-            f' --sourceDir "{src_dir}"'
-            f' --mutators "{mutators}"'
+            f" --projectBase {shlex.quote(project_base)}"
+            f" --classPath {shlex.quote(classpath)}"
+            f" --reportDir {shlex.quote(report_dir)}"
+            f" --targetClass {shlex.quote(target_class)}"
+            f" --targetMethods {shlex.quote(target_methods)}"
+            f" --sourceDir {shlex.quote(src_dir)}"
+            f" --mutators {shlex.quote(mutators)}"
         )
+
+    def _pit_target_class(self, class_fqn: str) -> str:
+        if "$" not in class_fqn:
+            return class_fqn
+        return class_fqn.split("$", 1)[0] + "*"
 
     def _effective_mutators(self) -> str:
         requested = str(self.config.mutators or "").strip()
