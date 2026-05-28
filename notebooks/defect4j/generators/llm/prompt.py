@@ -69,7 +69,7 @@ of mutants which you can refer to:
    where "line" represents the 1-based absolute line number of the mutated line,
    "precode" represents the line of code before mutation and it can not be empty,
    "aftercode" represents the line of code after mutation,
-   "rule" is a short mutation-operator name.
+   "rule" is a short mutation-operator name, for example "Conditionals Boundary"
 4. Prohibit generating the exact same mutants
 """
 
