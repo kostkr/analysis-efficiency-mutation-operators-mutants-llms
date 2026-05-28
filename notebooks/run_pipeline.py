@@ -36,7 +36,7 @@ RUN_COLLECTION = True
 PIT_BUG_WORKERS = 10
 PIT_CLASS_WORKERS = 1
 PIT_CONFIG = PITConfig(
-    timeout_s=900,
+    timeout_s=600,
     mutators="ALL",
 )
 
@@ -77,7 +77,7 @@ def _enabled_llm_configs() -> list[LLMConfig]:
 
 
 # ── Mutant execution pipeline ──────────────────────────────────────────────
-COLLECT_TEST_TIMEOUT_S = 600
+COLLECT_TEST_TIMEOUT_S = 900
 COLLECT_MAX_WORKERS = 13
 
 

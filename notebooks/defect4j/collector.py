@@ -349,6 +349,10 @@ class DataCollector:
                 trigger_tests=trigger_tests,
             )
         finally:
+            try:
+                self.d4j.reset_checkout(checkout.container_path)
+            except Exception as exc:
+                self._log(f"  worker={checkout.worker_id} reset failed before release: {type(exc).__name__}: {exc}")
             pool.release(checkout)
 
     def _ensure_profiles(

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import queue
 import re
 import shlex
@@ -65,6 +66,136 @@ def _parse_failing_tests_output(raw: str) -> set[str]:
         for line in raw.splitlines()
         if line.strip().startswith("- ") and "::" in line
     }
+
+
+def _mutant_runner_helper_source() -> str:
+    """Python helper source embedded into the in-container mutant runner."""
+    return r'''
+def _path_is_inside(path, root):
+    path = os.path.realpath(str(path))
+    root = os.path.realpath(str(root))
+    return path == root or path.startswith(root.rstrip(os.sep) + os.sep)
+
+
+def _text_references_root(text, root):
+    text = str(text or '')
+    root = os.path.normpath(str(root))
+    start = 0
+    while True:
+        index = text.find(root, start)
+        if index == -1:
+            return False
+        after_index = index + len(root)
+        after_ok = after_index == len(text) or text[after_index] in {'/', os.sep, ' ', '\t', '\n', '\r', '"', "'", ';', ':'}
+        before_ok = index == 0 or text[index - 1] in {'=', ' ', '\t', '\n', '\r', '"', "'", ':', ';'}
+        if before_ok and after_ok:
+            return True
+        start = index + 1
+
+
+def _process_is_checkout_related(pid, root):
+    proc_dir = Path('/proc') / str(pid)
+    try:
+        cwd = os.readlink(proc_dir / 'cwd')
+        if _path_is_inside(cwd, root):
+            return True
+    except (FileNotFoundError, PermissionError, ProcessLookupError, OSError):
+        pass
+
+    try:
+        raw_cmdline = (proc_dir / 'cmdline').read_bytes()
+        cmdline = raw_cmdline.replace(b'\x00', b' ').decode('utf-8', errors='ignore')
+        if _text_references_root(cmdline, root):
+            return True
+    except (FileNotFoundError, PermissionError, ProcessLookupError, OSError):
+        pass
+
+    return False
+
+
+def _checkout_related_pids(root):
+    root = os.path.realpath(str(root))
+    current = os.getpid()
+    parent = os.getppid()
+    pids = []
+    proc_root = Path('/proc')
+    if not proc_root.exists():
+        return pids
+    for entry in proc_root.iterdir():
+        if not entry.name.isdigit():
+            continue
+        pid = int(entry.name)
+        if pid in {current, parent}:
+            continue
+        if _process_is_checkout_related(pid, root):
+            pids.append(pid)
+    return pids
+
+
+def _terminate_pids(pids, sig):
+    for pid in sorted(set(pids), reverse=True):
+        try:
+            os.kill(pid, sig)
+        except (ProcessLookupError, PermissionError, OSError):
+            pass
+
+
+def _kill_checkout_leftovers(root):
+    pids = _checkout_related_pids(root)
+    if not pids:
+        return 0
+    _terminate_pids(pids, signal.SIGTERM)
+    time.sleep(0.3)
+    remaining = [pid for pid in pids if _process_is_checkout_related(pid, root)]
+    if remaining:
+        _terminate_pids(remaining, signal.SIGKILL)
+    time.sleep(0.1)
+    return len(pids)
+
+
+def _kill_process_group(proc):
+    try:
+        os.killpg(proc.pid, signal.SIGTERM)
+    except (ProcessLookupError, PermissionError, OSError):
+        pass
+    try:
+        proc.wait(timeout=0.5)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except (ProcessLookupError, PermissionError, OSError):
+            pass
+
+
+def _run_test_command(args, root, timeout_s):
+    proc = subprocess.Popen(
+        args,
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        start_new_session=True,
+    )
+    try:
+        out, err = proc.communicate(timeout=timeout_s)
+        timed_out = False
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        _kill_process_group(proc)
+        try:
+            out, err = proc.communicate(timeout=1)
+        except subprocess.TimeoutExpired:
+            out, err = '', ''
+    finally:
+        _kill_checkout_leftovers(root)
+
+    return {
+        'returncode': proc.returncode,
+        'stdout': out or '',
+        'stderr': err or '',
+        'timed_out': timed_out,
+    }
+'''
 
 
 @dataclass(frozen=True)
@@ -154,6 +285,72 @@ class Defects4J:
     def status(self) -> str:
         ok = self.is_running()
         return f"Container '{self.container}': {'running ✅' if ok else 'NOT running ❌'}"
+
+    def kill_processes_under_path(self, container_path: str, timeout: int = 30) -> None:
+        """Best-effort kill of processes whose cwd/cmdline belongs to *container_path*."""
+        script = r'''
+import os
+import signal
+import time
+from pathlib import Path
+
+root = os.path.normpath(os.environ['TARGET_ROOT'])
+current = os.getpid()
+parent = os.getppid()
+
+def text_references_root(text):
+    text = str(text or '')
+    start = 0
+    while True:
+        index = text.find(root, start)
+        if index == -1:
+            return False
+        after_index = index + len(root)
+        after_ok = after_index == len(text) or text[after_index] in {'/', os.sep, ' ', '\t', '\n', '\r', '"', "'", ';', ':'}
+        before_ok = index == 0 or text[index - 1] in {'=', ' ', '\t', '\n', '\r', '"', "'", ':', ';'}
+        if before_ok and after_ok:
+            return True
+        start = index + 1
+
+def is_related(pid):
+    proc_dir = Path('/proc') / str(pid)
+    try:
+        cwd = os.path.normpath(os.readlink(proc_dir / 'cwd'))
+        if cwd == root or cwd.startswith(root.rstrip(os.sep) + os.sep):
+            return True
+    except Exception:
+        pass
+    try:
+        cmdline = (proc_dir / 'cmdline').read_bytes().replace(b'\x00', b' ').decode('utf-8', 'ignore')
+        return text_references_root(cmdline)
+    except Exception:
+        return False
+
+pids = []
+for entry in Path('/proc').iterdir():
+    if not entry.name.isdigit():
+        continue
+    pid = int(entry.name)
+    if pid in {current, parent}:
+        continue
+    if is_related(pid):
+        pids.append(pid)
+
+for sig in (signal.SIGTERM, signal.SIGKILL):
+    if not pids:
+        break
+    for pid in sorted(set(pids), reverse=True):
+        try:
+            os.kill(pid, sig)
+        except Exception:
+            pass
+    time.sleep(0.5 if sig == signal.SIGTERM else 0.1)
+    pids = [pid for pid in pids if is_related(pid)]
+'''
+        self.exec(
+            f"TARGET_ROOT={shlex.quote(container_path)} python3 - <<'PY'\n{script}\nPY",
+            timeout=timeout,
+        )
 
     def parallel_checkouts(
         self,
@@ -353,11 +550,13 @@ python3 - <<'PY' {q_path}
 import base64
 import json
 import os
+import signal
 import subprocess
 import sys
 import time
 from pathlib import Path
 
+{_mutant_runner_helper_source()}
 
 def parse_all_tests(raw):
     result = set()
@@ -432,25 +631,47 @@ try:
     lines[idx] = lines[idx].replace(expected, str(payload['aftercode']).strip(), 1)
     target.write_text(''.join(lines), encoding='utf-8')
 
+    # ── Step 1: compile (outside the test timer) ─────────────────────────────
+    # Compiling separately means `defects4j test -r` (and every `test -t`) will
+    # detect that .class files are newer than .java and SKIP recompilation.
+    # This restores the fast (~2s) per-mutant test time seen before the refactor
+    # that merged compile + test into a single `defects4j test -r` call.
+    compile_proc = _run_test_command(
+        ['defects4j', 'compile'],
+        root,
+        min(int(payload['timeout']), 30),
+    )
+    _kill_checkout_leftovers(root)
+    if compile_proc['timed_out']:
+        record['compiled'] = False
+        record['compile_error'] = 'defects4j compile timed out'
+        print(json.dumps(record, ensure_ascii=False))
+        raise SystemExit(0)
+    if compile_proc['returncode'] != 0:
+        record['compiled'] = False
+        compile_out = (compile_proc['stdout'] or '') + '\\n' + (compile_proc['stderr'] or '')
+        record['compile_error'] = (compile_out.strip() or 'defects4j compile failed')[:400]
+        print(json.dumps(record, ensure_ascii=False))
+        raise SystemExit(0)
+
+    # ── Step 2: run tests (timer starts here — compile excluded) ─────────────
     t0 = time.perf_counter()
     trigger_tests = list(payload.get('trigger_tests') or [])
     for test_id in trigger_tests:
-        try:
-            proc = subprocess.run(
-                ['defects4j', 'test', '-t', str(test_id)],
-                cwd=root,
-                capture_output=True,
-                text=True,
-                timeout=min(int(payload['timeout']), 40),
-            )
-        except subprocess.TimeoutExpired:
+        proc = _run_test_command(
+            ['defects4j', 'test', '-t', str(test_id)],
+            root,
+            min(int(payload['timeout']), 30),
+        )
+        _kill_checkout_leftovers(root)
+        if proc['timed_out']:
             record['compiled'] = True
             record['timed_out'] = True
             record['test_executed'] = True
             record['run_time_s'] = round(time.perf_counter() - t0, 2)
             print(json.dumps(record, ensure_ascii=False))
             raise SystemExit(0)
-        output = (proc.stdout or '') + '\\n' + (proc.stderr or '')
+        output = (proc['stdout'] or '') + '\\n' + (proc['stderr'] or '')
         failing = parse_failing_tests(output)
         if failing:
             record['compiled'] = True
@@ -460,7 +681,7 @@ try:
             record['failing_count'] = len(failing)
             print(json.dumps(record, ensure_ascii=False))
             raise SystemExit(0)
-        if proc.returncode != 0 and 'Running ant (compile.tests)' in output and 'OK' in output:
+        if proc['returncode'] != 0 and 'Running ant (compile.tests)' in output and 'OK' in output:
             record['compiled'] = True
             record['test_executed'] = True
             record['run_time_s'] = round(time.perf_counter() - t0, 2)
@@ -468,7 +689,7 @@ try:
             record['failing_count'] = 1
             print(json.dumps(record, ensure_ascii=False))
             raise SystemExit(0)
-        if proc.returncode != 0 and 'Failing tests:' not in output:
+        if proc['returncode'] != 0 and 'Failing tests:' not in output:
             record['compiled'] = False
             msg = (output or 'defects4j trigger test failed').strip()
             record['compile_error'] = msg[:400] if msg else 'defects4j trigger test failed'
@@ -476,25 +697,23 @@ try:
             print(json.dumps(record, ensure_ascii=False))
             raise SystemExit(0)
 
-    try:
-        proc = subprocess.run(
-            ['defects4j', 'test', '-r'],
-            cwd=root,
-            capture_output=True,
-            text=True,
-            timeout=min(int(payload['timeout']), 40),
-        )
-    except subprocess.TimeoutExpired:
+    proc = _run_test_command(
+        ['defects4j', 'test', '-r'],
+        root,
+        min(int(payload['timeout']), 30),
+    )
+    _kill_checkout_leftovers(root)
+    if proc['timed_out']:
         record['compiled'] = True
         record['timed_out'] = True
         record['test_executed'] = True
-        record['run_time_s'] = min(int(payload['timeout']), 40)
+        record['run_time_s'] = min(int(payload['timeout']), 30)
         print(json.dumps(record, ensure_ascii=False))
         raise SystemExit(0)
 
     record['run_time_s'] = round(time.perf_counter() - t0, 2)
 
-    output = (proc.stdout or '') + '\\n' + (proc.stderr or '')
+    output = (proc['stdout'] or '') + '\\n' + (proc['stderr'] or '')
     failing = parse_failing_tests(output)
 
     if 'Failing tests:' in output:
@@ -514,6 +733,7 @@ try:
 
     print(json.dumps(record, ensure_ascii=False))
 finally:
+    _kill_checkout_leftovers(root)
     if original is not None:
         target.write_text(original, encoding='utf-8')
 PY
@@ -649,8 +869,9 @@ class ParallelCheckoutPool:
             else self.host_workspace / "checkouts" / f"{project}_{bug_id}_{version}"
         )
         pool_name = f"{project}_{bug_id}_{version}"
-        self.pool_container_root = f"/tmp/defect4j-parallel/{pool_name}"
-        self.pool_host_root = self.host_workspace / "parallel" / pool_name
+        run_token = f"{os.getpid()}_{int(time.time() * 1000)}_{id(self) & 0xffff:x}"
+        self.pool_container_root = f"/tmp/defect4j-parallel/{pool_name}_{run_token}"
+        self.pool_host_root = self.host_workspace / "parallel" / f"{pool_name}_{run_token}"
         self._available: queue.Queue[ContainerCheckout] = queue.Queue()
         self._workspaces: list[ContainerCheckout] = []
         self._prepared = False
@@ -664,6 +885,7 @@ class ParallelCheckoutPool:
     def prepare(self) -> list[ContainerCheckout]:
         """Ensure the base checkout exists and materialize one isolated copy per worker."""
         self._ensure_base_checkout()
+        self.d4j.kill_processes_under_path(self.pool_container_root)
         self._run_checked(
             f"rm -rf {shlex.quote(self.pool_container_root)} && "
             f"mkdir -p {shlex.quote(self.pool_container_root)}",
@@ -701,6 +923,7 @@ class ParallelCheckoutPool:
 
     def cleanup(self) -> None:
         """Delete all worker checkout copies created by this pool."""
+        self.d4j.kill_processes_under_path(self.pool_container_root)
         self._run_checked(
             f"rm -rf {shlex.quote(self.pool_container_root)}",
             timeout=300,
