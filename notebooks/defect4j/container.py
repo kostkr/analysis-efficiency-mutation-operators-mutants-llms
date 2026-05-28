@@ -441,7 +441,7 @@ try:
                 cwd=root,
                 capture_output=True,
                 text=True,
-                timeout=min(int(payload['timeout']), 50),
+                timeout=min(int(payload['timeout']), 40),
             )
         except subprocess.TimeoutExpired:
             record['compiled'] = True
@@ -450,7 +450,8 @@ try:
             record['run_time_s'] = round(time.perf_counter() - t0, 2)
             print(json.dumps(record, ensure_ascii=False))
             raise SystemExit(0)
-        failing = parse_failing_tests(proc.stdout)
+        output = (proc.stdout or '') + '\\n' + (proc.stderr or '')
+        failing = parse_failing_tests(output)
         if failing:
             record['compiled'] = True
             record['test_executed'] = True
@@ -459,9 +460,17 @@ try:
             record['failing_count'] = len(failing)
             print(json.dumps(record, ensure_ascii=False))
             raise SystemExit(0)
-        if proc.returncode != 0 and 'Failing tests:' not in proc.stdout:
+        if proc.returncode != 0 and 'Running ant (compile.tests)' in output and 'OK' in output:
+            record['compiled'] = True
+            record['test_executed'] = True
+            record['run_time_s'] = round(time.perf_counter() - t0, 2)
+            record['failing_tests'] = ['<test failure>']
+            record['failing_count'] = 1
+            print(json.dumps(record, ensure_ascii=False))
+            raise SystemExit(0)
+        if proc.returncode != 0 and 'Failing tests:' not in output:
             record['compiled'] = False
-            msg = (proc.stderr or proc.stdout or 'defects4j trigger test failed').strip()
+            msg = (output or 'defects4j trigger test failed').strip()
             record['compile_error'] = msg[:400] if msg else 'defects4j trigger test failed'
             record['run_time_s'] = round(time.perf_counter() - t0, 2)
             print(json.dumps(record, ensure_ascii=False))
@@ -473,13 +482,13 @@ try:
             cwd=root,
             capture_output=True,
             text=True,
-            timeout=min(int(payload['timeout']), 50),
+            timeout=min(int(payload['timeout']), 40),
         )
     except subprocess.TimeoutExpired:
         record['compiled'] = True
         record['timed_out'] = True
         record['test_executed'] = True
-        record['run_time_s'] = min(int(payload['timeout']), 50)
+        record['run_time_s'] = min(int(payload['timeout']), 40)
         print(json.dumps(record, ensure_ascii=False))
         raise SystemExit(0)
 

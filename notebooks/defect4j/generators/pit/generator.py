@@ -34,7 +34,7 @@ class PITGenerator(BaseGenerator):
     _CUSTOM_PIT_READY: set[str] = set()
     _CUSTOM_PIT_CONTAINER_DIR = "/opt/custom-pitest"
     _CUSTOM_PIT_READY_FILE = "/opt/custom-pitest/.classic_pit_ready"
-    _CUSTOM_PIT_VERSION = "classic-json-v20-chained-cast-receiver"
+    _CUSTOM_PIT_VERSION = "classic-json-v30-nonconstant-char-while"
 
     def __init__(self, config: PITConfig, d4j: "Defects4J") -> None:
         self.config = config
