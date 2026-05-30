@@ -6,7 +6,7 @@
     "precode": "if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "aftercode": "if(numDecimals < 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "rule": "Conditionals Boundary",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -16,7 +16,7 @@
     "precode": "if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "aftercode": "if(numDecimals < 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "rule": "Conditionals Boundary",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -26,7 +26,7 @@
     "precode": "if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (expPos <= decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "rule": "Conditionals Boundary",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -36,7 +36,7 @@
     "precode": "if (pfxLen > 0) { // we have a hex number",
     "aftercode": "if (pfxLen >= 0) { // we have a hex number",
     "rule": "Conditionals Boundary",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -46,7 +46,7 @@
     "precode": "if (hexDigits > 16) { // too many for Long",
     "aftercode": "if (hexDigits >= 16) { // too many for Long",
     "rule": "Conditionals Boundary",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -56,7 +56,7 @@
     "precode": "throw new NumberFormatException(\"A blank string is not a valid number\");",
     "aftercode": "throw (java.lang.NumberFormatException) null;",
     "rule": "Constructor Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -66,7 +66,7 @@
     "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
     "aftercode": "throw (java.lang.NumberFormatException) null;",
     "rule": "Constructor Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -76,7 +76,7 @@
     "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
     "aftercode": "throw (java.lang.NumberFormatException) null;",
     "rule": "Constructor Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -86,7 +86,7 @@
     "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
     "aftercode": "throw (java.lang.NumberFormatException) null;",
     "rule": "Constructor Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -96,7 +96,7 @@
     "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
     "aftercode": "throw (java.lang.NumberFormatException) null;",
     "rule": "Constructor Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -106,7 +106,7 @@
     "precode": "int pfxLen = 0;",
     "aftercode": "int pfxLen = 1;",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -116,7 +116,7 @@
     "precode": "final char lastChar = str.charAt(str.length() - 1);",
     "aftercode": "final char lastChar = str.charAt(str.length() - 0);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -126,7 +126,7 @@
     "precode": "if (hexDigits > 16) { // too many for Long",
     "aftercode": "if (hexDigits > 17) { // too many for Long",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -136,7 +136,7 @@
     "precode": "if (hexDigits > 8) { // too many for an int",
     "aftercode": "if (hexDigits > 9) { // too many for an int",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -146,7 +146,7 @@
     "precode": "final int decPos = str.indexOf('.');",
     "aftercode": "final int decPos = str.indexOf('/');",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -156,7 +156,7 @@
     "precode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present",
     "aftercode": "final int expPos = str.indexOf('f') + str.indexOf('E') + 1; // assumes both not present",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -166,7 +166,7 @@
     "precode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present",
     "aftercode": "final int expPos = str.indexOf('e') + str.indexOf('F') + 1; // assumes both not present",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -176,7 +176,7 @@
     "precode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present",
     "aftercode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 0; // assumes both not present",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -186,7 +186,7 @@
     "precode": "int numDecimals = 0; // Check required precision (LANG-693)",
     "aftercode": "int numDecimals = 1; // Check required precision (LANG-693)",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -196,7 +196,7 @@
     "precode": "if (decPos > -1) { // there is a decimal point",
     "aftercode": "if (decPos > 0) { // there is a decimal point",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -206,7 +206,7 @@
     "precode": "if (expPos > -1) { // there is an exponent",
     "aftercode": "if (expPos > 0) { // there is an exponent",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -216,7 +216,7 @@
     "precode": "dec = str.substring(decPos + 1, expPos);",
     "aftercode": "dec = str.substring(decPos + 0, expPos);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -226,7 +226,7 @@
     "precode": "dec = str.substring(decPos + 1);",
     "aftercode": "dec = str.substring(decPos + 0);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -236,7 +236,7 @@
     "precode": "mant = str.substring(0, decPos);",
     "aftercode": "mant = str.substring(1, decPos);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -246,7 +246,7 @@
     "precode": "if (expPos > -1) {",
     "aftercode": "if (expPos > 0) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -256,7 +256,7 @@
     "precode": "mant = str.substring(0, expPos);",
     "aftercode": "mant = str.substring(1, expPos);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -266,7 +266,7 @@
     "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
     "aftercode": "if (!Character.isDigit(lastChar) && lastChar != '/') {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -276,7 +276,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos < str.length() - 0) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -286,7 +286,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
     "aftercode": "exp = str.substring(expPos + 1, str.length() - 0);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -296,7 +296,7 @@
     "precode": "final String numeric = str.substring(0, str.length() - 1);",
     "aftercode": "final String numeric = str.substring(1, str.length() - 1);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -306,7 +306,7 @@
     "precode": "final String numeric = str.substring(0, str.length() - 1);",
     "aftercode": "final String numeric = str.substring(0, str.length() - 0);",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -316,7 +316,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(1) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -326,7 +326,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) == '.' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -336,7 +336,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(0)) || isDigits(numeric))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -346,7 +346,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(f.isInfinite() || (f.floatValue() == 1.0F && !allZeros))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -356,7 +356,7 @@
     "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(d.isInfinite() || (d.floatValue() == 1.0D && !allZeros))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -366,7 +366,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos < str.length() - 0) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -376,7 +376,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length());",
     "aftercode": "exp = str.substring(expPos + 0, str.length());",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -386,7 +386,7 @@
     "precode": "if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "aftercode": "if(numDecimals <= 8){// If number has 7 or fewer digits past the decimal point then make it a float",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -396,7 +396,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(f.isInfinite() || (f.floatValue() == 1.0F && !allZeros))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -406,7 +406,7 @@
     "precode": "if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "aftercode": "if(numDecimals <= 16){// If number has between 8 and 17 digits past the decimal point then make it a double",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -416,7 +416,7 @@
     "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(d.isInfinite() || (d.doubleValue() == 1.0D && !allZeros))) {",
     "rule": "Inline Constant",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -426,7 +426,7 @@
     "precode": "pfxLen += pfx.length();",
     "aftercode": "pfxLen -= pfx.length();",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -436,7 +436,7 @@
     "precode": "final int hexDigits = str.length() - pfxLen;",
     "aftercode": "final int hexDigits = str.length() + pfxLen;",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -446,7 +446,7 @@
     "precode": "final char lastChar = str.charAt(str.length() - 1);",
     "aftercode": "final char lastChar = str.charAt(str.length() + 1);",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -456,7 +456,7 @@
     "precode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present",
     "aftercode": "final int expPos = str.indexOf('e') + str.indexOf('E') - 1; // assumes both not present",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -466,7 +466,7 @@
     "precode": "dec = str.substring(decPos + 1, expPos);",
     "aftercode": "dec = str.substring(decPos - 1, expPos);",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -476,7 +476,7 @@
     "precode": "dec = str.substring(decPos + 1);",
     "aftercode": "dec = str.substring(decPos - 1);",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -486,7 +486,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos < str.length() + 1) {",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -496,7 +496,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
     "aftercode": "exp = str.substring(expPos - 1, str.length() - 1);",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -506,7 +506,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
     "aftercode": "exp = str.substring(expPos + 1, str.length() + 1);",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -516,7 +516,7 @@
     "precode": "final String numeric = str.substring(0, str.length() - 1);",
     "aftercode": "final String numeric = str.substring(0, str.length() + 1);",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -526,7 +526,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos < str.length() + 1) {",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -536,7 +536,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length());",
     "aftercode": "exp = str.substring(expPos - 1, str.length());",
     "rule": "Math",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -546,7 +546,7 @@
     "precode": "if (str == null) {",
     "aftercode": "if (str != null) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -556,7 +556,7 @@
     "precode": "if (StringUtils.isBlank(str)) {",
     "aftercode": "if (!(StringUtils.isBlank(str))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -566,7 +566,7 @@
     "precode": "if (str.startsWith(pfx)) {",
     "aftercode": "if (!(str.startsWith(pfx))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -576,7 +576,7 @@
     "precode": "if (pfxLen > 0) { // we have a hex number",
     "aftercode": "if (pfxLen <= 0) { // we have a hex number",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -586,7 +586,7 @@
     "precode": "if (hexDigits > 16) { // too many for Long",
     "aftercode": "if (hexDigits <= 16) { // too many for Long",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -596,7 +596,7 @@
     "precode": "if (hexDigits > 8) { // too many for an int",
     "aftercode": "if (hexDigits <= 8) { // too many for an int",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -606,7 +606,7 @@
     "precode": "if (decPos > -1) { // there is a decimal point",
     "aftercode": "if (decPos <= -1) { // there is a decimal point",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -616,7 +616,7 @@
     "precode": "if (expPos > -1) { // there is an exponent",
     "aftercode": "if (expPos <= -1) { // there is an exponent",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -626,7 +626,7 @@
     "precode": "if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (expPos >= decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -636,7 +636,7 @@
     "precode": "if (expPos > -1) {",
     "aftercode": "if (expPos <= -1) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -646,7 +646,7 @@
     "precode": "if (expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (expPos <= str.length()) { // prevents double exponent causing IOOBE",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -656,7 +656,7 @@
     "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
     "aftercode": "if (!Character.isDigit(lastChar) && lastChar == '.') {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -666,7 +666,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos >= str.length() - 1) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -676,7 +676,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(f.isInfinite() || (f.floatValue() != 0.0F && !allZeros))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -686,7 +686,7 @@
     "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(d.isInfinite() || (d.floatValue() != 0.0D && !allZeros))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -696,7 +696,7 @@
     "precode": "if (dec == null",
     "aftercode": "if (dec != null",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -706,7 +706,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) != '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -716,7 +716,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos >= str.length() - 1) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -726,7 +726,7 @@
     "precode": "if (dec == null && exp == null) { // no decimal point and no exponent",
     "aftercode": "if (dec == null && exp != null) { // no decimal point and no exponent",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -736,7 +736,7 @@
     "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(d.isInfinite() || (d.doubleValue() != 0.0D && !allZeros))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -746,7 +746,7 @@
     "precode": "if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "aftercode": "if(numDecimals > 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -756,7 +756,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(f.isInfinite() || (f.floatValue() != 0.0F && !allZeros))) {",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -766,7 +766,7 @@
     "precode": "if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "aftercode": "if(numDecimals > 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "rule": "Negate Conditionals",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -776,7 +776,7 @@
     "precode": "if (StringUtils.isBlank(str)) {",
     "aftercode": "if (false) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -786,7 +786,7 @@
     "precode": "if (str.startsWith(pfx)) {",
     "aftercode": "if (false) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -796,7 +796,7 @@
     "precode": "pfxLen += pfx.length();",
     "aftercode": "pfxLen += 0;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -806,7 +806,7 @@
     "precode": "final int hexDigits = str.length() - pfxLen;",
     "aftercode": "final int hexDigits = 0 - pfxLen;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -816,7 +816,7 @@
     "precode": "return createBigInteger(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -826,7 +826,7 @@
     "precode": "return createLong(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -836,7 +836,7 @@
     "precode": "return createInteger(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -846,7 +846,7 @@
     "precode": "final char lastChar = str.charAt(str.length() - 1);",
     "aftercode": "final char lastChar = str.charAt(0 - 1);",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -856,7 +856,7 @@
     "precode": "final char lastChar = str.charAt(str.length() - 1);",
     "aftercode": "final char lastChar = '\\0';",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -866,7 +866,7 @@
     "precode": "final int decPos = str.indexOf('.');",
     "aftercode": "final int decPos = 0;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -876,7 +876,7 @@
     "precode": "final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present",
     "aftercode": "final int expPos = str.indexOf('e') + 0 + 1; // assumes both not present",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -886,7 +886,7 @@
     "precode": "if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (expPos < decPos || expPos > 0) { // prevents double exponent causing IOOBE",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -896,7 +896,7 @@
     "precode": "dec = str.substring(decPos + 1, expPos);",
     "aftercode": "dec = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -906,7 +906,7 @@
     "precode": "dec = str.substring(decPos + 1);",
     "aftercode": "dec = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -916,7 +916,7 @@
     "precode": "mant = str.substring(0, decPos);",
     "aftercode": "mant = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -926,7 +926,7 @@
     "precode": "numDecimals = dec.length(); // gets number of digits past the decimal to ensure no loss of precision for floating point numbers.",
     "aftercode": "numDecimals = 0; // gets number of digits past the decimal to ensure no loss of precision for floating point numbers.",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -936,7 +936,7 @@
     "precode": "if (expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (expPos > 0) { // prevents double exponent causing IOOBE",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -946,7 +946,7 @@
     "precode": "mant = str.substring(0, expPos);",
     "aftercode": "mant = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -956,7 +956,7 @@
     "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
     "aftercode": "if (!false && lastChar != '.') {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -966,7 +966,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos < 0 - 1) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -976,7 +976,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
     "aftercode": "exp = str.substring(expPos + 1, 0 - 1);",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -986,7 +986,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
     "aftercode": "exp = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -996,7 +996,7 @@
     "precode": "final String numeric = str.substring(0, str.length() - 1);",
     "aftercode": "final String numeric = str.substring(0, 0 - 1);",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1006,7 +1006,7 @@
     "precode": "final String numeric = str.substring(0, str.length() - 1);",
     "aftercode": "final String numeric = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1016,7 +1016,7 @@
     "precode": "final boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
     "aftercode": "final boolean allZeros = false && isAllZeros(exp);",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1026,7 +1026,7 @@
     "precode": "final boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
     "aftercode": "final boolean allZeros = isAllZeros(mant) && false;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1036,7 +1036,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& ('\\0' == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1046,7 +1046,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) == '-' && isDigits((java.lang.String) null) || isDigits(numeric))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1056,7 +1056,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) == '-' && false || isDigits(numeric))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1066,7 +1066,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || false)) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1076,7 +1076,7 @@
     "precode": "return createLong(numeric);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1086,7 +1086,7 @@
     "precode": "return createBigInteger(numeric);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1096,7 +1096,7 @@
     "precode": "final Float f = NumberUtils.createFloat(numeric);",
     "aftercode": "final Float f = (java.lang.Float) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1106,7 +1106,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(false || (f.floatValue() == 0.0F && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1116,7 +1116,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(f.isInfinite() || (0.0f == 0.0F && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1126,7 +1126,7 @@
     "precode": "final Double d = NumberUtils.createDouble(numeric);",
     "aftercode": "final Double d = (java.lang.Double) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1136,7 +1136,7 @@
     "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(false || (d.floatValue() == 0.0D && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1146,7 +1146,7 @@
     "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(d.isInfinite() || (0.0f == 0.0D && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1156,7 +1156,7 @@
     "precode": "return createBigDecimal(numeric);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1166,7 +1166,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (expPos > -1 && expPos < 0 - 1) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1176,7 +1176,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length());",
     "aftercode": "exp = str.substring(expPos + 1, 0);",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1186,7 +1186,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length());",
     "aftercode": "exp = (String) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1196,7 +1196,7 @@
     "precode": "return createInteger(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1206,7 +1206,7 @@
     "precode": "return createLong(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1216,7 +1216,7 @@
     "precode": "return createBigInteger(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1226,7 +1226,7 @@
     "precode": "final boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
     "aftercode": "final boolean allZeros = isAllZeros(mant) && false;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1236,7 +1236,7 @@
     "precode": "final Float f = createFloat(str);",
     "aftercode": "final Float f = (java.lang.Float) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1246,7 +1246,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(false || (f.floatValue() == 0.0F && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1256,7 +1256,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (!(f.isInfinite() || (0.0f == 0.0F && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1266,7 +1266,7 @@
     "precode": "final Double d = createDouble(str);",
     "aftercode": "final Double d = (java.lang.Double) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1276,7 +1276,7 @@
     "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(false || (d.doubleValue() == 0.0D && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1286,7 +1286,7 @@
     "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (!(d.isInfinite() || (0.0d == 0.0D && !allZeros))) {",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1296,7 +1296,7 @@
     "precode": "return createBigDecimal(str);",
     "aftercode": "return (Number) null;",
     "rule": "Non Void Method Calls",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1306,7 +1306,7 @@
     "precode": "if (str == null) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1316,7 +1316,7 @@
     "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1326,7 +1326,7 @@
     "precode": "if (hexDigits > 8) { // too many for an int",
     "aftercode": "if (false) { // too many for an int",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1336,7 +1336,7 @@
     "precode": "if (decPos > -1) { // there is a decimal point",
     "aftercode": "if (false) { // there is a decimal point",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1346,7 +1346,7 @@
     "precode": "if (expPos > -1) { // there is an exponent",
     "aftercode": "if (false) { // there is an exponent",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1356,7 +1356,7 @@
     "precode": "if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (false) { // prevents double exponent causing IOOBE",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1366,7 +1366,7 @@
     "precode": "if (expPos > -1) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1376,7 +1376,7 @@
     "precode": "if (expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (false) { // prevents double exponent causing IOOBE",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1386,7 +1386,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1396,7 +1396,7 @@
     "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1406,7 +1406,7 @@
     "precode": "if (dec == null && exp == null) { // no decimal point and no exponent",
     "aftercode": "if (false) { // no decimal point and no exponent",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1416,7 +1416,7 @@
     "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1426,7 +1426,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1436,7 +1436,7 @@
     "precode": "if (str == null) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1446,7 +1446,7 @@
     "precode": "if (StringUtils.isBlank(str)) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1456,7 +1456,7 @@
     "precode": "if (str.startsWith(pfx)) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1466,7 +1466,7 @@
     "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1476,7 +1476,7 @@
     "precode": "if (hexDigits > 8) { // too many for an int",
     "aftercode": "if (true) { // too many for an int",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1486,7 +1486,7 @@
     "precode": "if (decPos > -1) { // there is a decimal point",
     "aftercode": "if (true) { // there is a decimal point",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1496,7 +1496,7 @@
     "precode": "if (expPos > -1) { // there is an exponent",
     "aftercode": "if (true) { // there is an exponent",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1506,7 +1506,7 @@
     "precode": "if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (true) { // prevents double exponent causing IOOBE",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1516,7 +1516,7 @@
     "precode": "if (expPos > -1) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1526,7 +1526,7 @@
     "precode": "if (expPos > str.length()) { // prevents double exponent causing IOOBE",
     "aftercode": "if (true) { // prevents double exponent causing IOOBE",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1536,7 +1536,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1546,7 +1546,7 @@
     "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1556,7 +1556,7 @@
     "precode": "if (dec == null && exp == null) { // no decimal point and no exponent",
     "aftercode": "if (true) { // no decimal point and no exponent",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1566,7 +1566,7 @@
     "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1576,7 +1576,7 @@
     "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1586,7 +1586,7 @@
     "precode": "if (pfxLen > 0) { // we have a hex number",
     "aftercode": "if (false) { // we have a hex number",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1596,7 +1596,7 @@
     "precode": "if (hexDigits > 16) { // too many for Long",
     "aftercode": "if (false) { // too many for Long",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1606,7 +1606,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1616,7 +1616,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (false) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1626,7 +1626,7 @@
     "precode": "if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "aftercode": "if(false){// If number has 7 or fewer digits past the decimal point then make it a float",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1636,7 +1636,7 @@
     "precode": "if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "aftercode": "if(false){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1646,7 +1646,7 @@
     "precode": "if (pfxLen > 0) { // we have a hex number",
     "aftercode": "if (true) { // we have a hex number",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1656,7 +1656,7 @@
     "precode": "if (hexDigits > 16) { // too many for Long",
     "aftercode": "if (true) { // too many for Long",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1666,7 +1666,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1676,7 +1676,7 @@
     "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
     "aftercode": "if (true) {",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1686,7 +1686,7 @@
     "precode": "if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float",
     "aftercode": "if(true){// If number has 7 or fewer digits past the decimal point then make it a float",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1696,7 +1696,7 @@
     "precode": "if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "aftercode": "if(true){// If number has between 8 and 16 digits past the decimal point then make it a double",
     "rule": "Remove Conditional",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1706,7 +1706,7 @@
     "precode": "dec = str.substring(decPos + 1, expPos);",
     "aftercode": "dec = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1716,7 +1716,7 @@
     "precode": "dec = str.substring(decPos + 1);",
     "aftercode": "dec = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1726,7 +1726,7 @@
     "precode": "mant = str.substring(0, decPos);",
     "aftercode": "mant = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1736,7 +1736,7 @@
     "precode": "mant = str.substring(0, expPos);",
     "aftercode": "mant = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1746,7 +1746,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
     "aftercode": "exp = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1756,7 +1756,7 @@
     "precode": "final String numeric = str.substring(0, str.length() - 1);",
     "aftercode": "final String numeric = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1766,7 +1766,7 @@
     "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
     "aftercode": "&& (numeric.charAt(0) == '-' && isDigits(numeric) || isDigits(numeric))) {",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1776,7 +1776,7 @@
     "precode": "exp = str.substring(expPos + 1, str.length());",
     "aftercode": "exp = str;",
     "rule": "Naked Receiver",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1786,7 +1786,7 @@
     "precode": "case 'D' :",
     "aftercode": "case '\\u0000' :",
     "rule": "Remove Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1796,7 +1796,7 @@
     "precode": "case 'F' :",
     "aftercode": "case '\\u0000' :",
     "rule": "Remove Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1806,7 +1806,7 @@
     "precode": "case 'L' :",
     "aftercode": "case '\\u0000' :",
     "rule": "Remove Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1816,7 +1816,7 @@
     "precode": "case 'd' :",
     "aftercode": "case '\\u0000' :",
     "rule": "Remove Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1826,7 +1826,7 @@
     "precode": "case 'f' :",
     "aftercode": "case '\\u0000' :",
     "rule": "Remove Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1836,7 +1836,7 @@
     "precode": "case 'l' :",
     "aftercode": "case '\\u0000' :",
     "rule": "Remove Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1846,7 +1846,7 @@
     "precode": "switch (lastChar) {",
     "aftercode": "switch ((lastChar == 'l' || lastChar == 'L') ? '\\u0000' : 'l') {",
     "rule": "Experimental Switch",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1856,7 +1856,7 @@
     "precode": "return createBigInteger(str);",
     "aftercode": "return (createBigInteger(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1866,7 +1866,7 @@
     "precode": "return createLong(str);",
     "aftercode": "return (createLong(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1876,7 +1876,7 @@
     "precode": "return createInteger(str);",
     "aftercode": "return (createInteger(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1886,7 +1886,7 @@
     "precode": "return createLong(numeric);",
     "aftercode": "return (createLong(numeric)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1896,7 +1896,7 @@
     "precode": "return createBigInteger(numeric);",
     "aftercode": "return (createBigInteger(numeric)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1906,7 +1906,7 @@
     "precode": "return f;",
     "aftercode": "return (f) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1916,7 +1916,7 @@
     "precode": "return d;",
     "aftercode": "return (d) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1926,7 +1926,7 @@
     "precode": "return createBigDecimal(numeric);",
     "aftercode": "return (createBigDecimal(numeric)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1936,7 +1936,7 @@
     "precode": "return createInteger(str);",
     "aftercode": "return (createInteger(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1946,7 +1946,7 @@
     "precode": "return createLong(str);",
     "aftercode": "return (createLong(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1956,7 +1956,7 @@
     "precode": "return createBigInteger(str);",
     "aftercode": "return (createBigInteger(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1966,7 +1966,7 @@
     "precode": "return f;",
     "aftercode": "return (f) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1976,7 +1976,7 @@
     "precode": "return d;",
     "aftercode": "return (d) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   },
   {
@@ -1986,7 +1986,7 @@
     "precode": "return createBigDecimal(str);",
     "aftercode": "return (createBigDecimal(str)) == null ? null : null;",
     "rule": "Null Returns",
-    "gen_time_s": 0.02,
+    "gen_time_s": 0.01,
     "dublicate": false
   }
 ]
