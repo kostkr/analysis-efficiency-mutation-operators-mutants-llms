@@ -83,6 +83,8 @@ def print_intro(plan: list[tuple[str, int]], config: CollectionConfig) -> None:
     print("Storage mode : direct workspace access (no bind-mount discovery)")
     print(f"Workers      : {int(config.collect_max_workers)}")
     print(f"Timeout      : {int(config.test_timeout_s)}s")
+    print("Profiles     : full relevant `defects4j test -r`")
+    print("Optimisation : reuse worker build artifacts between successful mutants")
     print(f"Bug plan     : {plan}")
 
 
@@ -164,7 +166,12 @@ def main(config: CollectionConfig) -> int:
     d4j.assert_running()
 
     storage = Storage(config.local_workspace)
-    collector = DataCollector(d4j, storage, host_ws=config.local_workspace, verbose=True)
+    collector = DataCollector(
+        d4j,
+        storage,
+        host_ws=config.local_workspace,
+        verbose=True,
+    )
 
     print_intro(plan, config)
 

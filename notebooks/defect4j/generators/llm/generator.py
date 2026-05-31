@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import re
 import time
 from typing import TYPE_CHECKING, Callable
 from urllib import error, request
@@ -59,7 +58,8 @@ class LLMGenerator(BaseGenerator):
 
         mutants = self._validated_mutants(job, raw_list)
         self._log(
-            f"  llm validate  : method={job.method_name} valid_records={len(mutants)}"
+            f"  llm records   : method={job.method_name} kept_records={len(mutants)} "
+            f"duplicates={sum(1 for mutant in mutants if mutant.dublicate)}"
         )
         if mutants:
             per_mutant = round(gen_time / len(mutants), 2)
@@ -72,41 +72,25 @@ class LLMGenerator(BaseGenerator):
         return model_stem(self.config.output_name or self.config.model)
 
     def requested_mutant_count(self, job: GeneratorJob) -> int:
-        candidate_lines = sum(
-            1 for line in job.method_source.splitlines()
-            if self._is_mutation_candidate_line(line)
-        )
-        return max((candidate_lines + 1) // 2, 1) if candidate_lines else 0
-
-    @staticmethod
-    def _is_mutation_candidate_line(line: str) -> bool:
-        stripped = line.strip()
-        if not stripped:
-            return False
-        if stripped in {"{", "}", "};"}:
-            return False
-        if stripped.startswith(("//", "/*", "*", "@")):
-            return False
-        return True
+        source_lines = job.method_source.splitlines()
+        return max((len(source_lines) + 1) // 2, 1) if source_lines else 0
 
     def _validated_mutants(self, job: GeneratorJob, raw_list: list[dict]) -> list["Mutant"]:
-        from ...mutant import Mutant
+        """Convert every parsed LLM record to a Mutant and mark duplicates without dropping any."""
+        from ...mutant import Mutant, mark_duplicate_mutants
 
-        source_lines = job.method_source.splitlines()
-        mutants: list[Mutant] = []
-        for item in raw_list:
-            line = int(item["line"])
-            precode = str(item["precode"]).strip()
-            aftercode = str(item["aftercode"]).strip()
-            rule = str(item["rule"]).strip()
-            if not precode or not aftercode or _same_code(precode, aftercode):
-                continue
-            if line < job.method_start or line > job.method_end:
-                continue
-            if precode not in source_lines[line - job.method_start]:
-                continue
-            mutants.append(Mutant(len(mutants) + 1, job.filepath, line, precode, aftercode, rule))
-        return mutants
+        mutants = [
+            Mutant(
+                id=index,
+                filepath=job.filepath,
+                line=int(item["line"]),
+                precode=str(item["precode"]).strip(),
+                aftercode=str(item["aftercode"]).strip(),
+                rule=str(item["rule"]).strip(),
+            )
+            for index, item in enumerate(raw_list, start=1)
+        ]
+        return mark_duplicate_mutants(mutants)
 
     def _chat(self, system: str, user: str) -> str:
         prompt = user.strip() if not system.strip() else f"{system}\n\n{user}".strip()
@@ -208,9 +192,4 @@ def model_stem(model: str) -> str:
         cleaned.append(char if char.isalnum() or char in {"-", "_", "."} else "_")
     stem = "".join(cleaned).strip("._")
     return stem or "llm"
-
-
-def _same_code(left: str, right: str) -> bool:
-    return re.sub(r"\s+", " ", left).strip() == re.sub(r"\s+", " ", right).strip()
-
 

@@ -70,7 +70,7 @@ that reveal weak tests) in: '{code_element}'. Refer to these examples:
    [ {{ "line": 123, "precode": "", "aftercode": "", "rule": "" }} ],
    where "line" represents the 1-based absolute line number of the mutated line,
    "precode" represents the original line of code before mutation and it can not be empty,
-   "aftercode" represents the mutated line of ode after mutation and should be a valid line replacement,
+   "aftercode" represents the mutated line of code after mutation and should be a valid line replacement,
    "rule" is a short mutation-operator name, for example "Conditionals Boundary"
 4. Prohibit generating the exact same mutants
 """

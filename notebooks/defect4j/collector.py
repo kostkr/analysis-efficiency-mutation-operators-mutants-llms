@@ -338,7 +338,7 @@ class DataCollector:
     ) -> dict:
         checkout = pool.acquire()
         try:
-            return self._run_one(
+            record = self._run_one(
                 mutant=mutant,
                 bug_id=bug_id,
                 container_path=checkout.container_path,
@@ -348,11 +348,14 @@ class DataCollector:
                 worker_id=checkout.worker_id,
                 trigger_tests=trigger_tests,
             )
-        finally:
+            return record
+        except Exception:
             try:
                 self.d4j.reset_checkout(checkout.container_path)
             except Exception as exc:
-                self._log(f"  worker={checkout.worker_id} reset failed before release: {type(exc).__name__}: {exc}")
+                self._log(f"  worker={checkout.worker_id} reset failed after exception: {type(exc).__name__}: {exc}")
+            raise
+        finally:
             pool.release(checkout)
 
     def _ensure_profiles(
@@ -451,8 +454,13 @@ class DataCollector:
             "compiled":       None,
             "compile_error":  "",
             "run_time_s":     0,
+            "compile_time_s": 0,
+            "test_time_s":    0,
+            "wall_time_s":    0,
             "timed_out":      False,
             "test_executed":  False,
+            "profile_scope":  "relevant_full",
+            "test_command":   "defects4j test -r",
             "failing_count":  0,
             "failing_tests":  [],
         }

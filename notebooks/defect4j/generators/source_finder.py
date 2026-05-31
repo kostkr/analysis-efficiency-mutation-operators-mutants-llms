@@ -259,12 +259,18 @@ def _find_methods(source: str, class_name: str = "") -> list[tuple[str, int, int
                     break
 
         end_line = source[:end_pos].count("\n") + 1
-        method_src = source[m.start() : end_pos + 1]
+        method_src = _slice_line_range(source, start_line, end_line)
         if class_name and name == class_name:
             name = "<init>"
         results.append((name, start_line, end_line, method_src))
 
     return results
+
+
+def _slice_line_range(source: str, start_line: int, end_line: int) -> str:
+    """Return full source lines for an inclusive 1-based line range."""
+    lines = source.splitlines()
+    return "\n".join(lines[start_line - 1:end_line])
 
 
 def _parse_diff_fixed_lines(diff: str) -> list[int]:

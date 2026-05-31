@@ -586,8 +586,13 @@ record = {{
     'compiled': None,
     'compile_error': '',
     'run_time_s': 0.0,
+    'compile_time_s': 0.0,
+    'test_time_s': 0.0,
+    'wall_time_s': 0.0,
     'timed_out': False,
     'test_executed': False,
+    'profile_scope': 'relevant_full',
+    'test_command': 'defects4j test -r',
     'failing_count': 0,
     'failing_tests': [],
 }}
@@ -631,87 +636,27 @@ try:
     lines[idx] = lines[idx].replace(expected, str(payload['aftercode']).strip(), 1)
     target.write_text(''.join(lines), encoding='utf-8')
 
-    # ── Step 1: compile (outside the test timer) ─────────────────────────────
-    # Compiling separately means `defects4j test -r` (and every `test -t`) will
-    # detect that .class files are newer than .java and SKIP recompilation.
-    # This restores the fast (~2s) per-mutant test time seen before the refactor
-    # that merged compile + test into a single `defects4j test -r` call.
-    compile_proc = _run_test_command(
-        ['defects4j', 'compile'],
-        root,
-        min(int(payload['timeout']), 30),
-    )
-    _kill_checkout_leftovers(root)
-    if compile_proc['timed_out']:
-        record['compiled'] = False
-        record['compile_error'] = 'defects4j compile timed out'
-        print(json.dumps(record, ensure_ascii=False))
-        raise SystemExit(0)
-    if compile_proc['returncode'] != 0:
-        record['compiled'] = False
-        compile_out = (compile_proc['stdout'] or '') + '\\n' + (compile_proc['stderr'] or '')
-        record['compile_error'] = (compile_out.strip() or 'defects4j compile failed')[:400]
-        print(json.dumps(record, ensure_ascii=False))
-        raise SystemExit(0)
-
-    # ── Step 2: run tests (timer starts here — compile excluded) ─────────────
+    # ── Step 1: run the full relevant suite ─────────────────────────────────
+    # Every mutant must get a complete failure profile for RBDR/AOR/CR/HOBR.
+    # The speed optimisation is not a trigger-test shortcut: worker build
+    # artifacts are reused between successful mutants by the collector.
     t0 = time.perf_counter()
-    trigger_tests = list(payload.get('trigger_tests') or [])
-    for test_id in trigger_tests:
-        proc = _run_test_command(
-            ['defects4j', 'test', '-t', str(test_id)],
-            root,
-            min(int(payload['timeout']), 30),
-        )
-        _kill_checkout_leftovers(root)
-        if proc['timed_out']:
-            record['compiled'] = True
-            record['timed_out'] = True
-            record['test_executed'] = True
-            record['run_time_s'] = round(time.perf_counter() - t0, 2)
-            print(json.dumps(record, ensure_ascii=False))
-            raise SystemExit(0)
-        output = (proc['stdout'] or '') + '\\n' + (proc['stderr'] or '')
-        failing = parse_failing_tests(output)
-        if failing:
-            record['compiled'] = True
-            record['test_executed'] = True
-            record['run_time_s'] = round(time.perf_counter() - t0, 2)
-            record['failing_tests'] = failing
-            record['failing_count'] = len(failing)
-            print(json.dumps(record, ensure_ascii=False))
-            raise SystemExit(0)
-        if proc['returncode'] != 0 and 'Running ant (compile.tests)' in output and 'OK' in output:
-            record['compiled'] = True
-            record['test_executed'] = True
-            record['run_time_s'] = round(time.perf_counter() - t0, 2)
-            record['failing_tests'] = ['<test failure>']
-            record['failing_count'] = 1
-            print(json.dumps(record, ensure_ascii=False))
-            raise SystemExit(0)
-        if proc['returncode'] != 0 and 'Failing tests:' not in output:
-            record['compiled'] = False
-            msg = (output or 'defects4j trigger test failed').strip()
-            record['compile_error'] = msg[:400] if msg else 'defects4j trigger test failed'
-            record['run_time_s'] = round(time.perf_counter() - t0, 2)
-            print(json.dumps(record, ensure_ascii=False))
-            raise SystemExit(0)
-
     proc = _run_test_command(
         ['defects4j', 'test', '-r'],
         root,
         min(int(payload['timeout']), 30),
     )
-    _kill_checkout_leftovers(root)
     if proc['timed_out']:
         record['compiled'] = True
         record['timed_out'] = True
         record['test_executed'] = True
-        record['run_time_s'] = min(int(payload['timeout']), 30)
+        record['test_time_s'] = min(int(payload['timeout']), 30)
+        record['run_time_s'] = record['test_time_s']
         print(json.dumps(record, ensure_ascii=False))
         raise SystemExit(0)
 
-    record['run_time_s'] = round(time.perf_counter() - t0, 2)
+    record['test_time_s'] = round(time.perf_counter() - t0, 2)
+    record['run_time_s'] = record['test_time_s']
 
     output = (proc['stdout'] or '') + '\\n' + (proc['stderr'] or '')
     failing = parse_failing_tests(output)
@@ -738,19 +683,32 @@ finally:
         target.write_text(original, encoding='utf-8')
 PY
 """
+        wall_t0 = time.perf_counter()
         out, err, rc = self.exec(script, timeout=timeout + 60)
+        wall_time_s = round(time.perf_counter() - wall_t0, 2)
         if rc != 0:
             msg = (err.strip() or out.strip() or "container mutant run failed")[:400]
             return {
                 "compiled": False,
                 "compile_error": msg,
-                "run_time_s": 0.0,
+                "run_time_s": wall_time_s,
+                "compile_time_s": 0.0,
+                "test_time_s": 0.0,
+                "wall_time_s": wall_time_s,
                 "timed_out": False,
                 "test_executed": False,
+                "profile_scope": "relevant_full",
+                "test_command": "defects4j test -r",
                 "failing_count": 0,
                 "failing_tests": [],
             }
-        return json.loads(out.strip() or "{}")
+        result = json.loads(out.strip() or "{}")
+        if isinstance(result, dict):
+            result["test_time_s"] = float(result.get("test_time_s") or result.get("run_time_s") or 0.0)
+            result["compile_time_s"] = float(result.get("compile_time_s") or 0.0)
+            result["wall_time_s"] = wall_time_s
+            result["run_time_s"] = wall_time_s
+        return result
 
     def test(self, container_path: str, timeout: int = 600,
              relevant: bool = False,
