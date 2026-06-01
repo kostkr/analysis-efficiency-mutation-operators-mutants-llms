@@ -19,13 +19,15 @@ import re
 import shlex
 import subprocess
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Tuple
 
 if TYPE_CHECKING:
     from .mutant import Mutant
 
+
+MUTANT_TEST_TIMEOUT_CAP_S = 35
 
 # ── module-level test-list helpers ──────────────────────────────────────────
 
@@ -230,6 +232,7 @@ class Defects4J:
     container:       str = "defects4j-container"
     workspace:       str = "/workspace"
     timeout_default: int = 300
+    _mutant_run_cleanup_cache: dict[str, dict[str, tuple]] = field(default_factory=dict, init=False, repr=False)
 
     # ------------------------------------------------------------------ #
     #  Context manager                                                     #
@@ -285,6 +288,73 @@ class Defects4J:
     def status(self) -> str:
         ok = self.is_running()
         return f"Container '{self.container}': {'running ✅' if ok else 'NOT running ❌'}"
+
+    def _mutant_run_cleanup_config(self, container_path: str) -> dict[str, tuple]:
+        """Return cached source/bin mappings used to isolate consecutive mutant runs.
+
+        Reused checkouts can keep stale bytecode when Ant incremental compilation
+        decides that nothing needs recompiling. To avoid cross-mutant contamination
+        without forcing a full rebuild, delete only the compiled outputs that belong
+        to the mutated source file.
+        """
+        cached = self._mutant_run_cleanup_cache.get(container_path)
+        if cached is not None:
+            return cached
+
+        def exported(prop: str) -> tuple[str, ...]:
+            try:
+                values = self.export(container_path, prop)
+            except RuntimeError:
+                return ()
+            return tuple(entry.strip() for entry in values if entry.strip())
+
+        src_class_roots = exported("dir.src.classes")
+        bin_class_roots = exported("dir.bin.classes")
+        src_test_roots = exported("dir.src.tests")
+        bin_test_roots = exported("dir.bin.tests")
+
+        source_bin_pairs: list[tuple[str, str]] = []
+        for src_root, bin_root in zip(src_class_roots, bin_class_roots):
+            source_bin_pairs.append((src_root, bin_root))
+        for src_root, bin_root in zip(src_test_roots, bin_test_roots):
+            source_bin_pairs.append((src_root, bin_root))
+
+        fallback_paths: list[str] = []
+        seen_fallbacks: set[str] = set()
+        for bin_root in (*bin_class_roots, *bin_test_roots):
+            if bin_root not in seen_fallbacks:
+                fallback_paths.append(bin_root)
+                seen_fallbacks.add(bin_root)
+
+        cached = {
+            "source_bin_pairs": tuple(source_bin_pairs),
+            "fallback_paths": tuple(fallback_paths),
+        }
+        self._mutant_run_cleanup_cache[container_path] = cached
+        return cached
+
+    def mutant_run_cleanup_paths(self, container_path: str, filepath: str) -> tuple[str, ...]:
+        """Return artifact paths/patterns that must be removed before one mutant run."""
+        config = self._mutant_run_cleanup_config(container_path)
+        cleanup_paths: list[str] = ["all_tests"]
+        source_path = str(filepath).strip().lstrip("/")
+
+        for src_root, bin_root in config["source_bin_pairs"]:
+            normalized_src_root = str(src_root).strip().strip("/")
+            if not normalized_src_root:
+                continue
+            prefix = normalized_src_root + "/"
+            if not source_path.startswith(prefix):
+                continue
+            relative_source = source_path[len(prefix):]
+            if not relative_source.endswith(".java"):
+                break
+            class_stem = relative_source[:-5]
+            cleanup_paths.append(f"{bin_root.rstrip('/')}/{class_stem}.class")
+            cleanup_paths.append(f"{bin_root.rstrip('/')}/{class_stem}$*.class")
+            return tuple(cleanup_paths)
+
+        return tuple(cleanup_paths + list(config["fallback_paths"]))
 
     def kill_processes_under_path(self, container_path: str, timeout: int = 30) -> None:
         """Best-effort kill of processes whose cwd/cmdline belongs to *container_path*."""
@@ -537,6 +607,7 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
                     "aftercode": mutant.aftercode,
                     "timeout": int(timeout),
                     "trigger_tests": list(trigger_tests or []),
+                    "cleanup_paths": list(self.mutant_run_cleanup_paths(container_path, mutant.filepath)),
                 },
                 ensure_ascii=False,
             ).encode("utf-8")
@@ -548,9 +619,11 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
 export MUTANT_PAYLOAD_B64={q_payload}
 python3 - <<'PY' {q_path}
 import base64
+import glob
 import json
 import os
 import signal
+import shutil
 import subprocess
 import sys
 import time
@@ -636,21 +709,50 @@ try:
     lines[idx] = lines[idx].replace(expected, str(payload['aftercode']).strip(), 1)
     target.write_text(''.join(lines), encoding='utf-8')
 
+    for cleanup_entry in payload.get('cleanup_paths', []):
+        cleanup_entry = str(cleanup_entry or '').strip()
+        if not cleanup_entry:
+            continue
+
+        if any(ch in cleanup_entry for ch in '*?['):
+            pattern = cleanup_entry if os.path.isabs(cleanup_entry) else str(root / cleanup_entry)
+            for matched in glob.glob(pattern):
+                matched_path = Path(matched)
+                if matched_path.is_dir():
+                    shutil.rmtree(matched_path, ignore_errors=True)
+                else:
+                    try:
+                        matched_path.unlink()
+                    except FileNotFoundError:
+                        pass
+            continue
+
+        cleanup_path = Path(cleanup_entry)
+        if not cleanup_path.is_absolute():
+            cleanup_path = root / cleanup_path
+        if cleanup_path.is_dir():
+            shutil.rmtree(cleanup_path, ignore_errors=True)
+        else:
+            try:
+                cleanup_path.unlink()
+            except FileNotFoundError:
+                pass
+
     # ── Step 1: run the full relevant suite ─────────────────────────────────
     # Every mutant must get a complete failure profile for RBDR/AOR/CR/HOBR.
-    # The speed optimisation is not a trigger-test shortcut: worker build
-    # artifacts are reused between successful mutants by the collector.
+    # Clear only the compiled outputs for the mutated source file so reused
+    # checkouts stay correct without triggering a full rebuild of the project.
     t0 = time.perf_counter()
     proc = _run_test_command(
         ['defects4j', 'test', '-r'],
         root,
-        min(int(payload['timeout']), 30),
+        min(int(payload['timeout']), {MUTANT_TEST_TIMEOUT_CAP_S}),
     )
     if proc['timed_out']:
         record['compiled'] = True
         record['timed_out'] = True
         record['test_executed'] = True
-        record['test_time_s'] = min(int(payload['timeout']), 30)
+        record['test_time_s'] = min(int(payload['timeout']), {MUTANT_TEST_TIMEOUT_CAP_S})
         record['run_time_s'] = record['test_time_s']
         print(json.dumps(record, ensure_ascii=False))
         raise SystemExit(0)

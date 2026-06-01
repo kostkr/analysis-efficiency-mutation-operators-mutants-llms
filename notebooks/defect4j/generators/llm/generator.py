@@ -73,7 +73,7 @@ class LLMGenerator(BaseGenerator):
 
     def requested_mutant_count(self, job: GeneratorJob) -> int:
         source_lines = job.method_source.splitlines()
-        return max((len(source_lines) + 1) // 2, 1) if source_lines else 0
+        return len(source_lines) if source_lines else 0
 
     def _validated_mutants(self, job: GeneratorJob, raw_list: list[dict]) -> list["Mutant"]:
         """Convert every parsed LLM record to a Mutant and mark duplicates without dropping any."""
