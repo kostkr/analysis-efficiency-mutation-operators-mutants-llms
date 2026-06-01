@@ -8,29 +8,37 @@ sys.path.insert(0, str(Path(__file__).parent))
 import demo_generate_classic as classic
 import demo_generate_llm as llm
 import demo_pipeline as collect
+from bug_id_lists import BUG_IDS_BY_PROJECT
 from defect4j.generators import PITConfig, LLMConfig
 
 WORKSPACE = Path(__file__).parent / "demo_collection_workspace"
 CONTAINER_NAME = "defects4j-container"
 CONTAINER_WORKSPACE = "/workspace"
 
-BUG_IDS_BY_PROJECT = {
-    "Lang": [
-        1, 3,
-        # 4, 5, 6,
-        # 7, 8, 9, 10, 11,
-        # 12, 13, 14, 15, 16,
-        # 17, 19, 20, 21, 22,
-        # 23, 24, 26, 27, 28,
-        # 29, 30, 31, 32, 33,
-        # 34, 35, 36, 37, 38,
-        # 39, 40, 41, 42, 43,
-        # 44, 45, 46, 47, 49,
-        # 50, 51, 52, 53, 54,
-        # 55, 56, 57, 58, 59,
-        # 60, 61, 62, 63, 64, 65
-    ]
-}
+BATCH_SIZE = 10
+
+
+def _flatten_bug_refs(bug_ids_by_project: dict[str, list[int]]) -> list[tuple[str, int]]:
+    refs: list[tuple[str, int]] = []
+    for project, bug_ids in bug_ids_by_project.items():
+        refs.extend((project, bug_id) for bug_id in bug_ids)
+    return refs
+
+
+def _build_bug_id_batches(
+    bug_ids_by_project: dict[str, list[int]],
+) -> list[dict[str, list[int]]]:
+    refs = _flatten_bug_refs(bug_ids_by_project)
+    batches: list[dict[str, list[int]]] = []
+    for offset in range(0, len(refs), BATCH_SIZE):
+        chunk = refs[offset:offset + BATCH_SIZE]
+        batch: dict[str, list[int]] = {}
+        for project, bug_id in chunk:
+            batch.setdefault(project, []).append(bug_id)
+        batches.append(batch)
+    return batches
+
+BUG_ID_BATCHES = _build_bug_id_batches(BUG_IDS_BY_PROJECT)
 
 RUN_CLASSIC_GENERATION = True
 RUN_LLM_QWEN3_6_Q6 = True
@@ -88,41 +96,48 @@ COLLECT_MAX_WORKERS = 14
 
 
 def main() -> int:
-    if RUN_CLASSIC_GENERATION:
-        rc = classic.main(classic.ClassicGenerationConfig(
-            container_name=CONTAINER_NAME,
-            container_workspace=CONTAINER_WORKSPACE,
-            workspace=WORKSPACE,
-            bug_workers=PIT_BUG_WORKERS,
-            class_workers=PIT_CLASS_WORKERS,
-            bug_ids_by_project=BUG_IDS_BY_PROJECT,
-            pit_config=PIT_CONFIG,
-        ))
-        if rc != 0:
-            return int(rc)
+    total_batches = len(BUG_ID_BATCHES)
+    for batch_number, bug_ids_by_project in enumerate(BUG_ID_BATCHES, start=1):
+        print(
+            f"\n=== Running batch {batch_number}/{total_batches}: {bug_ids_by_project} ===",
+            flush=True,
+        )
 
-    for llm_config in _enabled_llm_configs():
-        rc = llm.main(llm.LLMGenerationConfig(
-            container_name=CONTAINER_NAME,
-            container_workspace=CONTAINER_WORKSPACE,
-            workspace=WORKSPACE,
-            bug_ids_by_project=BUG_IDS_BY_PROJECT,
-            llm_config=llm_config,
-        ))
-        if rc != 0:
-            return int(rc)
+        if RUN_CLASSIC_GENERATION:
+            rc = classic.main(classic.ClassicGenerationConfig(
+                container_name=CONTAINER_NAME,
+                container_workspace=CONTAINER_WORKSPACE,
+                workspace=WORKSPACE,
+                bug_workers=PIT_BUG_WORKERS,
+                class_workers=PIT_CLASS_WORKERS,
+                bug_ids_by_project=bug_ids_by_project,
+                pit_config=PIT_CONFIG,
+            ))
+            if rc != 0:
+                return int(rc)
 
-    if RUN_COLLECTION:
-        rc = collect.main(collect.CollectionConfig(
-            bug_ids_by_project=BUG_IDS_BY_PROJECT,
-            test_timeout_s=COLLECT_TEST_TIMEOUT_S,
-            collect_max_workers=COLLECT_MAX_WORKERS,
-            container_name=CONTAINER_NAME,
-            container_workspace=CONTAINER_WORKSPACE,
-            local_workspace=WORKSPACE,
-        ))
-        if rc != 0:
-            return int(rc)
+        for llm_config in _enabled_llm_configs():
+            rc = llm.main(llm.LLMGenerationConfig(
+                container_name=CONTAINER_NAME,
+                container_workspace=CONTAINER_WORKSPACE,
+                workspace=WORKSPACE,
+                bug_ids_by_project=bug_ids_by_project,
+                llm_config=llm_config,
+            ))
+            if rc != 0:
+                return int(rc)
+
+        if RUN_COLLECTION:
+            rc = collect.main(collect.CollectionConfig(
+                bug_ids_by_project=bug_ids_by_project,
+                test_timeout_s=COLLECT_TEST_TIMEOUT_S,
+                collect_max_workers=COLLECT_MAX_WORKERS,
+                container_name=CONTAINER_NAME,
+                container_workspace=CONTAINER_WORKSPACE,
+                local_workspace=WORKSPACE,
+            ))
+            if rc != 0:
+                return int(rc)
 
     return 0
 
