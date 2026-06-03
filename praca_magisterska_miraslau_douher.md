@@ -55,23 +55,20 @@
 
 - [6 Założenia eksperymentu i metodyka](#założenia-eksperymentu-i-metodyka) (TO DO)
   - [6.1 Przebieg eksperymentu](#przebieg-eksperymentu) (TO DO)
-  - [6.2 Materiał badawczy — zbiór danych i kryteria doboru](#materiał-badawczy--zbiór-danych-i-kryteria-doboru) (TO DO)
-  - [6.3 Generacja mutantów — LLM i PIT](#generacja-mutantów--llm-i-pit) (TO DO)
-  - [6.4 Weryfikacja mutantów i zbieranie wyników](#weryfikacja-mutantów-i-zbieranie-wyników) (TO DO)
-  - [6.5 Definicja mutanta nowego względem PIT](#definicja-mutanta-nowego-względem-pit) (TO DO)
+  - [6.2 Generacja mutantów - LLM i PIT](#generacja-mutantów---llm-i-pit) (TO DO)
+  - [6.3 Weryfikacja mutantów i zbieranie wyników](#weryfikacja-mutantów-i-zbieranie-wyników) (TO DO)
 
 - [7 Analiza wyników i wnioski](#analiza-wyników-i-wnioski) (TO DO)
   - [7.1 Statystyki ogólne eksperymentu](#statystyki-ogólne-eksperymentu) (TO DO)
-  - [7.2 RQ1 — Różnorodność i nowość mutantów LLM](#rq1--różnorodność-i-nowość-mutantów-llm) (TO DO)
-  - [7.3 RQ2 — Podobieństwo mutantów do defektów rzeczywistych](#rq2--podobieństwo-mutantów-do-defektów-rzeczywistych) (TO DO)
-  - [7.4 RQ3 — Koszty i wydajność podejścia](#rq3--koszty-i-wydajność-podejścia) (TO DO)
-  - [7.5 Synteza: LLM vs PIT — kiedy które podejście ma sens](#synteza-llm-vs-pit--kiedy-które-podejście-ma-sens) (TO DO)
+  - [7.2 RQ1 - Różnorodność i nowość mutantów LLM](#rq1---różnorodność-i-nowość-mutantów-llm) (TO DO)
+  - [7.3 RQ2 - Podobieństwo mutantów do defektów rzeczywistych](#rq2---podobieństwo-mutantów-do-defektów-rzeczywistych) (TO DO)
+  - [7.4 RQ3 - Koszty i wydajność podejścia](#rq3---koszty-i-wydajność-podejścia) (TO DO)
+  - [7.5 Porównanie LLM vs PIT](#porównanie-llm-vs-pit) (TO DO)
   - [7.6 Ograniczenia badania](#ograniczenia-badania) (TO DO)
-  - [7.7 Kierunki dalszych badań](#kierunki-dalszych-badań) (TO DO)
 
-- [Podsumowanie](#podsumowanie) (TO DO)
+- [Podsumowanie i wnioski](#podsumowanie-i-wnioski) (TO DO)
 
-- [Bibliografia](#bibliografia) (TO DO)
+- [Bibliografia](#bibliografia) (DONE)
 
 ## Streszczenie
 
@@ -81,9 +78,9 @@
 > (4) 2–3 najważniejsze wyniki liczbowe, (5) jedno zdanie wniosków.
 > Bez detali technicznych. Ogólny opis „co i po co".
 
-*[Do napisania jako ostatnie — po przeprowadzeniu eksperymentu i napisaniu pozostałych rozdziałów.]*
+*[Do napisania jako ostatnie - po przeprowadzeniu eksperymentu i napisaniu pozostałych rozdziałów.]*
 
-Praca dotyczy zastosowania dużych modeli językowych (LLM) do generowania operatorów mutacyjnych — reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne, definiowane ręcznie w narzędziach takich jak PIT, stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów. Niniejsza praca weryfikuje, czy LLM są w stanie indukować nowe reguły mutacyjne wykraczające poza ten katalog oraz czy generowane przez nie mutanty są bliższe rzeczywistym defektom oprogramowania pod względem zachowania programu.
+Praca dotyczy zastosowania dużych modeli językowych (LLM) do generowania operatorów mutacyjnych - reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne, definiowane ręcznie w narzędziach takich jak PIT, stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów. Niniejsza praca weryfikuje, czy LLM są w stanie indukować nowe reguły mutacyjne wykraczające poza ten katalog oraz czy generowane przez nie mutanty są bliższe rzeczywistym defektom oprogramowania pod względem zachowania programu.
 
 W ramach badania przeprowadzono jeden kompleksowy eksperyment na zbiorze błędów z repozytorium Defects4J: wygenerowano mutanty przy użyciu LLM oraz narzędzia PIT dla tych samych projektów Java, następnie każdy mutant poddano kompilacji i uruchomieniu relewantnego zestawu testów, a zebrane dane przeanalizowano pod kątem trzech tez badawczych dotyczących nowości mutantów, realizmu i wydajności podejścia LLM.
 
@@ -119,8 +116,8 @@ Wygląd zawartości rozdziałów przedstawionych w pracy:
 - **Rozdział 3** Klasyczne operatory mutacyjne na przykładzie narzędzia PIT, zasada działania, katalog operatorów klasycznych z grupy ALL.
 - **Rozdział 4** Duże modele językowe w inżynierii oprogramowania, testowaniu mutacyjnym, rola LLM jako generatora mutantów i zmian w kodzie oraz związane z tym ryzyka.
 - **Rozdział 5** Rzeczywiste błędy jako podstawa eksperymentu - zbiór Defects4J 3.0.1, miary podobieństwa mutanta do defektu na podstawie profili testowych oraz kompletna definicja wszystkich metryk i kryteriów oceny stosowanych w badaniu. Następnie problem badawczy, cel pracy i pytania badawcze.
-- **Rozdział 6** Metodyka eksperymentu: przebieg, kryteria selekcji błędów, generacja mutantów przez LLM i PIT, weryfikacja oraz definicja mutanta nowego względem PIT — wszystko na podstawie metryk zdefiniowanych w rozdziale 5.
-- **Rozdział 7** Analiza wyników eksperymentu, dane liczbowe wraz z ich interpretacją, bezpośrednie odpowiedzi na tezy badawcze, porównanie LLM vs PIT, ograniczenia badania i kierunki dalszych badań.
+- **Rozdział 6** Metodyka eksperymentu: przebieg badania, generacja mutantów przez LLM i PIT, weryfikacja wyników oraz zbieranie danych do dalszej analizy metryk.
+- **Rozdział 7** Analiza wyników eksperymentu, interpretacja danych liczbowych, odpowiedzi na tezy badawcze, porównanie LLM i PIT oraz ograniczenia badania.
 - **Podsumowanie** Główne wnioski pracy.
 
 ## Testowanie mutacyjne
@@ -416,7 +413,7 @@ Zgodnie z dokumentacją dla każdego błędu istnieje przynajmniej jeden test, k
 | Math            | commons-math           | 106                    | 1–106                        |
 | Mockito         | mockito                | 38                     | 1–38                         |
 | Time            | joda-time              | 26                     | 1–20, 22–27                  |
-| **Razem**       |                        | **854**                | —                            |
+| **Razem**       |                        | **854**                | –                            |
 
 Projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (Lang, Math, Collections), przez parsery i kodeki (Jsoup, Gson, JacksonCore, JacksonDatabind, Codec), aż po kompilatory (Closure) i narzędzia ogólnego przeznaczenia (Compress, Csv, Cli). Różnorodność dziedzin zapewnia, że wyniki nie są specyficzne dla jednego rodzaju kodu i mogą stanowić podstawę wniosków ogólniejszej natury. Ze względu na koszty wywołań interfejsu API modelu językowego i czas uruchomienia testów, spośród dostępnych błędów wybierana jest reprezentatywna próba spełniająca zdefiniowane kryteria selekcji.
 
@@ -603,266 +600,108 @@ Pytania badawcze są wzajemnie uzupełniające: RQ1 bada różnorodność, RQ2 b
 
 ## Założenia eksperymentu i metodyka
 
-Niniejszy rozdział opisuje, w jaki sposób przeprowadzono badanie empiryczne: jakie dane wybrano, jak generowano mutanty przez model językowy i przez PIT, jak weryfikowano ich poprawność oraz jak definiuje się mutanta nowego względem PIT. Wszystkie wskaźniki oceny zostały zdefiniowane w rozdziale 5 — tutaj podano wyłącznie procedury operacyjne służące do ich wyznaczenia.
+Celem tego eksperymentu jest porównanie efektywności mutantów wygenerowanych przez modele językowe z klasycznymi metodami generacji.
+W związku z tym dla każdego analizowanego defektu [3] generowany jest zbiór mutantów, na których są uruchomione testy, które stanowią podstawę dla dalszych obliczeń i interpretacji metryk.
+Podczas uruchamiania testów dla każdego mutanta są zbierane wyniki testów, czas potrzebny dla generacji, uruchomienia wraz z informacją o niepowodzeniu kompilacji, błędy wykonania kodu oraz duplikatach mutantów.
+Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić koszt, jakość, podobieństwo do rzeczywistych defektów oraz ocenić efektywność różnych podejść w analizie testów dla wytwarzania oprogramowania.
 
 ### Przebieg eksperymentu
 
-Eksperyment składa się z pięciu etapów wykonywanych kolejno dla każdego analizowanego błędu.
+[//]: # ()
+[//]: # (Eksperyment jest wykonywany osobno dla każdego defektu i za każdym razem przebiega według tego samego schematu.)
 
-**Etap 1 — Dobór błędów.** Ze zbioru Defects4J 3.0.1 wybierane są błędy spełniające kryteria opisane w sekcji 6.2. Wynik: lista par *projekt + numer błędu*.
+[//]: # (Najpierw wybierany jest rzeczywisty błąd oraz fragment kodu związany z jego poprawką.)
 
-**Etap 2 — Generacja mutantów.** Dla każdego błędu wygenerowane są mutanty dwiema metodami: przez model językowy (LLM) i przez narzędzie PIT — obie na tej samej wersji kodu. Szczegóły opisano w sekcji 6.3.
+[//]: # (Następnie dla tego miejsca generowane są dwa zbiory mutantów, jeden przez modele językowe, a drugi przez narzędzie klasyczne.)
 
-**Etap 3 — Weryfikacja i zebranie wyników.** Każdy mutant LLM jest kompilowany; skompilowane mutanty obu źródeł przechodzą relewantny zestaw testów Defects4J (`defects4j test -r`). Profil niepowodzeń każdego mutanta jest porównywany z profilem oryginalnego błędu uzyskanym w tym samym trybie. Szczegóły opisano w sekcji 6.4.
+[//]: # (W kolejnym kroku każdy mutant jest sprawdzany i uruchamiany na odpowiednim zestawie testów, aby zebrać informacje o tym, czy daje się zastosować, czy prowadzi do poprawnego wykonania programu oraz jakie testy wykrywają wprowadzoną zmianę.)
 
-**Etap 4 — Identyfikacja nowych mutantów.** Każdy skompilowany mutant LLM jest porównywany z mutantami PIT na podstawie dwóch filtrów: syntaktycznego i testowego. Mutanty, które nie mają odpowiednika w PIT według obu kryteriów, uznawane są za nowe. Definicja opisana jest w sekcji 6.5.
+[//]: # (Po zakończeniu tego etapu porządkowane są zebrane dane, obliczane są metryki i tworzona jest lista nowych mutantów wygenerowanych przez LLM.)
 
-**Etap 5 — Obliczenie wskaźników i analiza.** Na podstawie zgromadzonych danych obliczane są wskaźniki zdefiniowane w rozdziale 5. Wyniki zestawiane są osobno dla mutantów LLM i PIT i analizowane w odniesieniu do pytań badawczych RQ1–RQ3.
+[//]: # (W rezultacie cały eksperyment ma postać powtarzalnego procesu, który dla każdego defektu prowadzi od wygenerowania zmian do ich końcowej oceny.)
 
-### Materiał badawczy — zbiór danych i kryteria doboru
+[//]: # ()
+[//]: # (Eksperyment przeprowadzany jest oddzielnie dla każdego defektu, a jego przebieg zawsze wygląda tak samo. Na początku wybieramy konkretny błąd oraz fragment kodu, który jest z nim związany. Następnie tworzymy dwa zestawy mutantów: jeden za pomocą modeli językowych, a drugi przy użyciu tradycyjnego narzędzia. W kolejnym kroku każdy mutant jest testowany i uruchamiany na odpowiednim zestawie testów, aby zebrać informacje na temat jego zastosowania, sprawności programu oraz tego, które testy wykrywają wprowadzone zmiany. Po zakończeniu tego etapu porządkujemy zebrane dane, obliczamy metryki i tworzymy listę nowych mutantów wygenerowanych przez LLM. W efekcie cały eksperyment staje się powtarzalnym procesem, który dla każdego defektu prowadzi od generowania zmian do ich ostatecznej oceny.)
 
-Podstawą badania jest zbiór **Defects4J 3.0.1** — powszechnie stosowany w badaniach nad testowaniem oprogramowania zestaw rzeczywistych błędów z projektów open-source pisanych w Javie. Każdy błąd jest opatrzony wersją kodu sprzed naprawy (*buggy*), wersją po naprawie (*fixed*), pełnym zestawem testów regresyjnych i zestawem testów wyzwalających — odróżniających kod błędny od poprawionego. Dzięki temu można zmierzyć, czy wygenerowany mutant zachowuje się podobnie do prawdziwego defektu.
+[//]: # ()
 
-Ze względu na koszty generacji przez model językowy i czas potrzebny na uruchomienie testów, z pełnego zbioru wybierana jest ograniczona liczba błędów z kilku projektów. Finalna lista przedstawiona jest w poniższej tabeli.
+### Generacja mutantów - LLM i PIT
 
-| Projekt | Dziedzina | Liczba analizowanych błędów |
-|---|---|---|
-| Lang | Narzędzia języka Java | [do uzupełnienia] |
-| Math | Matematyka numeryczna | [do uzupełnienia] |
-| Chart | Wizualizacja danych | [do uzupełnienia] |
-| Closure | Kompilator JavaScript | [do uzupełnienia] |
-| Mockito | Biblioteka do testów | [do uzupełnienia] |
-| **Razem** | — | **[do uzupełnienia]** |
-
-Aby błąd mógł zostać uwzględniony w badaniu, musi spełniać wszystkie cztery warunki:
-
-1. **Kod wersji naprawionej kompiluje się bez błędów** — warunek konieczny do generowania mutantów.
-2. **Istnieje co najmniej jeden test wyzwalający** — bez niego nie można mierzyć podobieństwa mutanta do błędu.
-3. **Relewantny przebieg testów Defects4J zajmuje mniej niż 10 minut** — przy wielu tysiącach mutantów dłuższe testy czyniłyby eksperyment nierealistycznym.
-4. **Błąd dotyczy co najwyżej trzech plików Java** — upraszcza kontekst przekazywany modelowi i zapewnia spójność analizy.
-
-### Generacja mutantów — LLM i PIT
-
-Dla każdego wybranego błędu mutanty generowane są dwiema metodami na tej samej wersji kodu (*fixed*), w metodach nachodzących na zmiany między wersją błędną i naprawioną. Dane wyjściowe obu metod zapisywane są w ujednoliconym formacie rekordu mutanta. Na etapie generacji każdy rekord zawiera co najmniej identyfikator w pliku wynikowym, plik i linię zmiany, kod przed i po mutacji, nazwę reguły, czas generacji oraz znacznik duplikatu. Wyniki kompilacji i uruchomień testów są zbierane później, na etapie weryfikacji.
-
-**Generacja przez model językowy.** Do modelu przekazywane jest polecenie (*prompt*) złożone z instrukcji oraz pełnej metody Java z numerami linii bezwzględnych. Metoda jest wybierana tylko wtedy, gdy pokrywa się ze zmianą rzeczywistego defektu, dzięki czemu LLM i PIT działają na tym samym fragmencie programu. Prompt nakazuje wygenerowanie tylko takich mutantów, które stanowią sensowne pojedyncze zmiany w kodzie, bez narzucania z góry stałej liczby propozycji. Model zwraca listę propozycji w formacie JSON zawierającym wyłącznie: numer linii, linię przed zmianą, linię po zmianie oraz nazwę reguły. Parametry generacji są ustalane raz i stosowane do wszystkich wywołań.
-
-**Generacja przez PIT.** PIT uruchamiany jest z zestawem operatorów stanowiącym reprezentatywny zbiór klasycznych operatorów mutacji, działających na tych samych metodach co model językowy, co zapewnia porównywalność podejść. PIT działa na poziomie kodu bajtowego, dlatego w praktyce generuje mutanty o bardzo wysokiej kompilowalności. Wyniki konwertowane są do tego samego formatu rekordu co mutanty LLM.
+[//]: # (Generacja mutantów jest ograniczona do tych metod programu, które są bezpośrednio związane z analizowanym defektem. Oznacza to, że badanie nie obejmuje całego projektu, lecz tylko te miejsca, w których rzeczywisty błąd został poprawiony lub z którymi ta poprawka bezpośrednio się wiąże. W podejściu klasycznym wykorzystywane jest narzędzie PIT, zmodyfikowane w taki sposób, aby oprócz samego wygenerowania mutanta można było także odtworzyć konkretną zmianę w kodzie. Dzięki temu każdy mutant klasyczny może być zapisany w tej samej postaci co mutant wygenerowany przez model językowy. W podejściu opartym na LLM każda wybrana metoda jest przekazywana do modelu wraz z potrzebnym kontekstem, a model zwraca propozycje pojedynczych zmian, które mają przypominać realistyczne błędy programistyczne. Oba sposoby generowania prowadzą więc do utworzenia porównywalnych zbiorów mutantów, opisanych w jednolitej formie i gotowych do dalszego sprawdzenia.)
 
 ### Weryfikacja mutantów i zbieranie wyników
 
-Przed uruchomieniem testów każda propozycja mutanta LLM przechodzi trzy etapy filtracji:
-
-1. **Parsowanie odpowiedzi** — sprawdzenie, czy JSON zawiera wszystkie wymagane pola i czy wskazane linie oraz fragmenty kodu odpowiadają rzeczywistej treści metody; odpowiedzi niekompletne lub niespójne są odrzucane.
-2. **Identyfikacja duplikatów syntaktycznych** — jeśli dwa mutanty wprowadzają identyczną zmianę w tej samej linii tego samego pliku albo nie zmieniają kodu względem oryginału, są oznaczane jako duplikaty i uwzględniane w metrykach jakości generacji.
-3. **Kompilacja** — zmiana jest aplikowana do kodu i projekt jest kompilowany; mutanty, których kod nie kompiluje się, są odrzucane z zapisem przyczyny błędu (niezgodność typów, brakująca metoda, błąd składniowy itp.). Po kompilacji kod jest natychmiast przywracany.
-
-Dla każdego mutanta, który przeszedł kompilację (LLM i PIT), wykonywana jest identyczna procedura:
-
-1. Przygotowywana jest izolowana kopia robocza projektu (wersja *fixed*).
-2. Do kopii wprowadzana jest zmiana mutanta.
-3. Uruchamiany jest relewantny zestaw testów Defects4J (`defects4j test -r`) — zapisywana jest lista testów, które nie przeszły (*profil niepowodzeń mutanta*).
-4. Oddzielnie gromadzony jest profil niepowodzeń oryginalnego błędu.
-5. Na podstawie obu profili obliczane są wskaźniki podobieństwa opisane w rozdziale 5.
-6. Kopia robocza jest usuwana — kolejny mutant weryfikowany jest w czystym środowisku.
-
-Każde uruchomienie testów ma określony limit czasu; jego przekroczenie rejestrowane jest osobno jako oddzielna kategoria odrzucenia.
-
-### Definicja mutanta nowego względem PIT
-
-Zamiast grupować mutanty LLM w klastry i porównywać grupy z katalogiem PIT, stosuje się prostszą i przejrzystą definicję opartą na dwóch filtrach stosowanych do każdego mutanta z osobna.
-
-**Mutant LLM uznaje się za nowy względem PIT, jeżeli spełnia oba poniższe warunki jednocześnie:**
-
-1. **Filtr syntaktyczny** — mutant nie odpowiada żadnemu mutantowi PIT wygenerowanemu dla tego samego błędu na poziomie transformacji kodu: żaden mutant PIT nie wprowadza identycznej zmiany (ta sama linia, ta sama modyfikacja) w tym samym pliku.
-
-2. **Filtr testowy** — mutant nie wykazuje tego samego profilu testów nieprzechodzących, co którykolwiek mutant PIT wygenerowany dla tego samego błędu w tej samej linii kodu: żaden mutant PIT z tej samej lokalizacji nie powoduje niepowodzenia dokładnie tego samego zestawu testów.
-
-Mutant spełniający oba warunki nie ma odpowiednika w PIT ani syntaktycznego, ani pod względem profilu testowego w tej samej linii kodu — jest to operacyjna i weryfikowalna definicja nowości, niezależna od arbitralnych progów klasyfikacji. Mutanty, które spełniają tylko jeden z warunków, są traktowane jako *częściowo pokryte przez PIT* i analizowane osobno.
+[//]: # (Aby ograniczyć ryzyko błędu, po wygenerowaniu mutantów wykonywana jest ich dodatkowa weryfikacja. Najpierw sprawdzane jest, czy każda zaproponowana zmiana rzeczywiście pasuje do badanego fragmentu programu i czy może zostać poprawnie użyta w dalszej części eksperymentu. Następnie dla zaakceptowanych mutantów uruchamiane są testy, a wyniki są zapisywane w taki sposób, aby dla każdego mutanta było wiadomo, czy przeszedł etap sprawdzenia, czy program działał poprawnie po wprowadzeniu zmiany oraz które testy zakończyły się niepowodzeniem. Na tej podstawie wyznaczane są później wszystkie metryki używane w analizie. Równolegle tworzona jest także lista nowych mutantów wygenerowanych przez LLM, czyli takich zmian, które nie mają odpowiednika wśród mutantów klasycznych. Po zakończeniu całego procesu sprawdzana jest kompletność i spójność zgromadzonych danych, tak aby dalsza analiza opierała się wyłącznie na wynikach nadających się do rzetelnego porównania.)
 
 ---
 
 ## Analiza wyników i wnioski
 
-Niniejszy rozdział łączy wyniki eksperymentu z ich interpretacją i bezpośrednimi odpowiedziami na pytania badawcze. Dla każdego pytania (RQ1–RQ3) przedstawiono dane liczbowe, omówiono ich znaczenie, a następnie sformułowano jednoznaczną odpowiedź. Rozdział zamykają synteza porównawcza LLM vs PIT, ograniczenia badania oraz kierunki dalszych prac.
+> ✏️ **Wskazówka do pisania:** Ten rozdział uzupełniasz dopiero po wpisaniu wszystkich wartości liczbowych. Jego celem nie jest ponowne opisywanie przebiegu eksperymentu, lecz interpretacja wyników i udzielenie odpowiedzi na pytania badawcze. Pisz od razu językiem analitycznym i w każdym podrozdziale zaczynaj od najważniejszego wyniku, a dopiero potem wyjaśniaj, co on oznacza.
 
 ### Statystyki ogólne eksperymentu
 
-*[Do uzupełnienia po eksperymencie]*
+> ✏️ **Wskazówka do pisania:** W tej części wprowadź czytelnika w dane, na których opiera się dalsza analiza. Napisz krótko, ile defektów i mutantów objęto badaniem, a następnie odwołuj się już tylko do poniższej tabeli. Nie opisuj tutaj interpretacji szczegółowych, ponieważ to należy do kolejnych podrozdziałów. Po tabeli dodaj 2–4 zdania ogólnego komentarza o skali eksperymentu i o tym, czy zebrany materiał jest wystarczający do odpowiedzi na pytania badawcze.
 
-| Statystyka | Wartość |
-|---|---|
-| Liczba projektów | |
-| Liczba analizowanych błędów (N) | |
-| Liczba mutantów LLM łącznie (A_LLM) | |
-| Liczba mutantów PIT łącznie (A_PIT) | |
-| Mutanty LLM — skompilowane (C_LLM) | |
-| Mutanty PIT — skompilowane (C_PIT) | |
-| Mutanty LLM — unikalne po dedup. (C_LLM − D_LLM) | |
-| Mutanty PIT — unikalne po dedup. (C_PIT − D_PIT) | |
-| Mutanty LLM — zabite | |
-| Mutanty PIT — zabite | |
-| Liczba sklasyfikowanych użytecznych mutantów LLM | |
-| Łączny czas eksperymentu | |
+| Metryka                              | LLM | PIT |
+|--------------------------------------|-----|-----|
+| Liczba wygenerowanych mutantów       |     |     |
+| Liczba mutantów po walidacji         |     |     |
+| Liczba mutantów użytecznych          |     |     |
+| Odsetek mutantów nowych względem PIT |     | -   |
+| RBDR                                 |     |     |
+| Średnia Ochiai                       |     |     |
+| Mediana Ochiai                       |     |     |
+| Coupling Rate                        |     |     |
+| Średni czas generacji mutanta        |     |     |
+| Koszt jednego użytecznego mutanta    |     |     |
 
-*[Komentarz: jedno lub dwa zdania — czy skala eksperymentu odpowiada założeniom z rozdziału 7 i czy wystąpiły jakiekolwiek odstępstwa.]*
+> ✏️ **Jak napisać komentarz pod tabelą:** Najpierw wskaż, które różnice są największe. Następnie zaznacz, że ta tabela stanowi wspólną podstawę dla odpowiedzi na RQ1, RQ2 i RQ3. Nie powtarzaj już tych samych wartości w formie kolejnych tabel w dalszych sekcjach, tylko odwołuj się do danych zestawionych tutaj.
 
-### Kontrola porównywalności wyników z literaturą
+### RQ1 - Różnorodność i nowość mutantów LLM
 
-Wyniki tej pracy należy porównywać z pracą Wang i in. [1] ostrożnie, ponieważ zakres eksperymentu jest węższy.
-Artykuł referencyjny raportuje wyniki dla wielu projektów i technik generacji, natomiast niniejszy eksperyment koncentruje się na wybranych błędach Defects4J i na metodach nachodzących na rzeczywistą zmianę błędu.
-Dodatkowo profile testowe są mierzone przy użyciu relewantnego zestawu testów Defects4J (`defects4j test -r`), a nie pełnego zestawu wszystkich testów projektu.
+> ✏️ **Wskazówka do pisania:** Zacznij od jednego zdania, które wprost odpowiada na pytanie badawcze, na przykład czy mutanty LLM w istotnym stopniu wykraczają poza zbiór mutantów klasycznych. Następnie odwołaj się do metryki nowości z tabeli 7.1 i wyjaśnij, co ten wynik oznacza. W dalszej części opisz, czy nowość mutantów ma charakter praktycznie użyteczny, czyli czy wskazuje na dodatkowe typy zmian, które mogą mieć znaczenie z perspektywy rzeczywistych błędów, czy raczej prowadzi do zmian mało istotnych. Na końcu sformułuj krótką odpowiedź na RQ1 w jednym lub dwóch zdaniach.
 
-Dlatego szczególnie wysokie wartości `RBDR` nie powinny być interpretowane jako bezpośrednie pobicie wyniku `40,1%` dla PIT z pracy Wang i in. [1].
-W tym eksperymencie mutanty są generowane znacznie bliżej miejsca rzeczywistego defektu, co naturalnie zwiększa prawdopodobieństwo przecięcia profilu mutanta z testami wyzwalającymi błąd.
-Do oceny realizmu należy więc analizować `RBDR` razem z `AOR`, i `CR`: samo wykrycie co najmniej jednego testu wyzwalającego jest warunkiem słabszym niż wysokie podobieństwo profili testowych.
+> ✏️ **Proponowany układ akapitu:** Najpierw podaj wynik liczbowy. Następnie zinterpretuj, czy jest on wysoki czy niski w kontekście celu pracy. Potem wskaż, jakie znaczenie ma to dla oceny LLM jako źródła nowych mutantów. Zakończ jednoznacznym wnioskiem, czy RQ1 zostało potwierdzone, częściowo potwierdzone albo niepotwierdzone.
 
-### RQ1 — Różnorodność i nowość mutantów LLM
+### RQ2 - Podobieństwo mutantów do defektów rzeczywistych
 
-**Pytanie:** Jaki odsetek użytecznych mutantów wygenerowanych przez LLM nie ma odpowiednika wśród mutantów PIT ALL wygenerowanych dla tego samego błędu?
+> ✏️ **Wskazówka do pisania:** W tej części skup się wyłącznie na interpretacji metryk opisujących podobieństwo mutantów do rzeczywistych defektów. Odwołuj się do wartości RBDR, Ochiai i Coupling Rate z tabeli 7.1 i wyjaśnij, który z dwóch sposobów generowania daje mutanty bliższe rzeczywistym błędom. Nie wracaj do opisu testów ani procedury eksperymentalnej. Interesuje Cię wyłącznie to, co wyniki mówią o jakości mutantów jako przybliżenia realnych defektów.
 
-**Hipoteza:** LLM generuje zmiany wykraczające poza statyczny katalog operatorów PIT dostępnych w badaniu — spodziewamy się, że istotna część użytecznych mutantów zostanie sklasyfikowana jako NEW lub PARTIAL.
+> ✏️ **Proponowany układ akapitu:** Zacznij od porównania ogólnego, czyli wskaż, która metoda wypada lepiej i według jakich metryk. Następnie omów krótko każdą z najważniejszych miar, ale bez przepisywania definicji z części metodologicznej. Na końcu napisz, czy otrzymane wyniki wskazują na przewagę jednej z metod w kontekście realizmu mutantów i jakie ma to znaczenie dla praktycznej oceny jakości testów.
 
-*[Do uzupełnienia po eksperymencie]*
+### RQ3 - Koszty i wydajność podejścia
 
-| Etykieta | Liczba mutantów LLM | % użytecznych mutantów LLM |
-|---|---|---|
-| NEW (brak odpowiednika w PIT ALL) | | |
-| PARTIAL (częściowe pokrycie przez PIT) | | |
-| EXISTING (pełny odpowiednik w PIT ALL) | | |
-| **Razem** | | **100%** |
+> ✏️ **Wskazówka do pisania:** Ten podrozdział ma odpowiedzieć na pytanie, ile kosztuje uzyskanie mutantów przydatnych do analizy i jak szybko można je otrzymać. Korzystaj wyłącznie z danych o czasie generacji i koszcie jednego użytecznego mutanta z tabeli 7.1. Nie opisuj tutaj technicznych szczegółów środowiska ani sposobu uruchamiania narzędzi. Zamiast tego pokaż, czy różnice kosztowe i czasowe są na tyle duże, że wpływają na praktyczną opłacalność stosowania danej metody.
 
-Przykłady zmian sklasyfikowanych jako NEW:
+> ✏️ **Proponowany układ akapitu:** Najpierw wskaż, która metoda jest szybsza, a która bardziej kosztowna. Następnie oceń, czy wyższy koszt LLM jest uzasadniony jakością uzyskanych rezultatów, czy też stanowi istotne ograniczenie. Na końcu sformułuj krótką odpowiedź, w jakich warunkach dane podejście można uznać za opłacalne z praktycznego punktu widzenia.
 
-| Nazwa reguły LLM | Opis zmiany | Przykładowy diff | Liczba mutantów |
-|---|---|---|---|
-| *[np. NULL_CHECK_REMOVAL]* | *[usunięcie warunku sprawdzającego null przed użyciem referencji]* | `if (x != null) { ... }` → `{ ... }` | |
-| *[np. EXCEPTION_SWALLOW]* | *[zamiana bloku catch rzucającego wyjątek na pusty blok]* | `catch (E e) { throw e; }` → `catch (E e) {}` | |
+### Porównanie LLM vs PIT
 
-> ✏️ **Wskazówka do interpretacji:** (1) Czy wyniki potwierdzają hipotezę? (2) Co oznacza wysoki/niski odsetek NEW — czy LLM generuje sensowne nowe błędy, czy egzotyczne zmiany bez praktycznego znaczenia? (3) Czy przypadki PARTIAL poszerzają zakres znanych operatorów, czy jedynie duplikują je częściowo? (4) Odnieś się do literatury (MutationGPT, ChatMut) jeśli dostępne.
+> ✏️ **Wskazówka do pisania:** Tutaj nie wprowadzasz nowych danych, tylko syntetyzujesz wnioski z RQ1, RQ2 i RQ3. Napisz ten fragment jako zwartą ocenę porównawczą obu podejść. Pokaż, w czym LLM wypada lepiej, w czym lepszy jest PIT oraz czy wyniki sugerują zastąpienie jednego podejścia drugim, czy raczej ich uzupełniające wykorzystanie. Ten podrozdział powinien być krótki, ale stanowczy.
 
-*[Interpretacja: do napisania po eksperymencie]*
-
-**Odpowiedź na RQ1:** LLM generuje X% mutantów sklasyfikowanych jako NEW i Y% jako PARTIAL, co oznacza, że [łącznie / w przeważającej mierze] podejście LLM wykracza poza statyczny katalog PIT. Spośród zmian NEW najczęściej reprezentowane były błędy dotyczące *[obsługi wyjątków / inicjalizacji / logiki warunkowej z efektami ubocznymi]* — typów defektów słabo reprezentowanych wśród operatorów PIT ALL. Dla projektów, w których priorytetem jest symulacja realistycznych defektów domenowych, warto uzupełnić PIT o wywołania LLM.
-
-### RQ2 — Podobieństwo mutantów do defektów rzeczywistych
-
-**Pytanie:** Czy mutanty LLM są bliższe rzeczywistym defektom z Defects4J pod względem zachowania programu niż mutanty PIT — mierzone wskaźnikami RBDR, Ochiai i Coupling Rate?
-
-**Hipoteza:** Mutanty LLM, jako pochodne wiedzy o historii bugów, wykazują wyższy średni współczynnik Ochiai i wyższe RBDR niż mutanty PIT.
-
-*[Do uzupełnienia po eksperymencie]*
-
-| Statystyka | LLM | PIT |
-|---|---|---|
-| RBDR (Real Bug Detection Rate) | | |
-| Coupling Rate | | |
-| Mediana Ochiai | | |
-| Średnia Ochiai | | |
-| Odchylenie standardowe Ochiai | | |
-| Q1 / Q3 Ochiai | | |
-| High-Ochiai Bug Rate (Ochiai ≥ 0,8) | | |
-| Test Mann-Whitney U (p-value) | | |
-| Mutation score | | |
-
-> ✏️ **Wskazówka do interpretacji:** (1) Czy mediana Ochiai LLM > PIT? Czy różnica jest istotna statystycznie? (2) Czy wysoki mutation score PIT wynika z trywialnych mutantów, a nie z wyższego realizmu? (3) Dla których projektów LLM wypada lepiej? (4) Przywołaj RBDR = 40,1% dla PIT z literatury [1], ale zaznacz różnice zakresu eksperymentu i nie traktuj wartości jako bezpośrednio porównywalnych.
-
-*[Interpretacja: do napisania po eksperymencie]*
-
-**Odpowiedź na RQ2:** Mutanty LLM osiągają RBDR = X% wobec Y% dla PIT oraz medianę Ochiai A wobec B (test Mann-Whitney: p = …), co oznacza, że LLM [jest / nie jest] statystycznie bliżej rzeczywistych defektów Defects4J. Coupling Rate dla LLM wynosi C% wobec D% dla PIT. Wyższy mutation score PIT wynika prawdopodobnie z obecności mutantów trywialnych, co nie przekłada się na wyższy realizm. Jeśli celem jest ocena siły testów względem typowych błędów programistycznych, mutanty LLM dostarczają bardziej informatywnego sygnału niż ogólna miara mutation score.
-
-### RQ3 — Koszty i wydajność podejścia
-
-**Pytanie:** Jak LLM wypada w porównaniu z PIT pod względem wskaźnika kompilowalności, odsetka duplikatów i czasu generacji mutantów?
-
-**Hipoteza:** LLM generuje mutanty drożej (czas, koszt API) i z większym odpadkiem (niższy CMR, więcej duplikatów) niż deterministyczny PIT.
-
-*[Do uzupełnienia po eksperymencie]*
-
-| Metryka | LLM | PIT |
-|---|---|---|
-| Compilability Rate (CR) | | 100% |
-| Duplicate Rate (DR) | | |
-| Średni czas generacji mutanta [s] | | |
-| Koszt jednego użytecznego mutanta [s] | | |
-| Koszt API na jeden użyteczny mutant [USD] | | N/A |
-
-Rozkład przyczyn błędów kompilacji mutantów LLM:
-
-| Przyczyna błędu kompilacji | Liczba | % błędnych |
-|---|---|---|
-| Niezgodność typów | | |
-| Odwołanie do nieistniejącej metody/pola | | |
-| Błąd składniowy | | |
-| Inny | | |
-
-> ✏️ **Wskazówka do interpretacji:** (1) Co dominuje wśród przyczyn błędów kompilacji i co to mówi o jakości promptu? (2) Czy wysoki DR LLM oznacza problem z promptem, czy cechę modelu? (3) Czy LLM jest X-razy droższy od PIT per użyteczny mutant? Kiedy ta różnica ma znaczenie praktyczne?
-
-*[Interpretacja: do napisania po eksperymencie]*
-
-**Odpowiedź na RQ3:** LLM osiąga Compilability Rate = X% (wobec 100% dla PIT) i Duplicate Rate = Y%. Koszt jednego użytecznego mutanta LLM jest Z-krotnie wyższy niż dla PIT. Główną przyczyną odpadku kompilacji były *[niezgodność typów / odwołania do nieistniejących metod]* — łącznie N% błędów kompilacji. Koszty te są *[akceptowalne / uzasadnione / dyskwalifikujące]* dla projektów o małej do średniej liczbie analizowanych błędów, gdzie priorytetem jest realizm mutantów. Redukcja odpadku przez rozszerzenie promptu o informacje o typach lub fine-tuning modelu może znacząco obniżyć efektywny koszt podejścia LLM.
-
-### Synteza: LLM vs PIT — kiedy które podejście ma sens
-
-*[Do napisania po eksperymencie]*
-
-| Kryterium | LLM | PIT |
-|---|---|---|
-| Realizm mutantów (Ochiai, RBDR) | | |
-| Różnorodność operatorów | | |
-| Compile rate | | |
-| Czas i koszt generacji | | |
-| Deterministyczność | | |
-| Łatwość integracji (Maven/Gradle) | | |
-
-**PIT** jest lepszym wyborem gdy priorytetem jest szybka, deterministyczna ocena ogólnej siły testów przy zerowym koszcie API i pełnej powtarzalności wyników.
-
-**LLM** jest uzasadnionym uzupełnieniem PIT gdy priorytetem jest wykrywalność realistycznych defektów domenowych i dostępny jest budżet na wywołania API — szczególnie dla klas kodu obsługujących wyjątki i inicjalizację obiektów.
-
-**Oba łącznie** — najbardziej obiecujące podejście praktyczne: PIT jako szybka warstwa bazowa, LLM jako warstwa uzupełniająca dla klas kodu o niskim Ochiai lub braku wykrycia przez PIT.
-
-**Rekomendacja:** *[np. „LLM jest uzasadnionym uzupełnieniem PIT dla projektów, w których priorytetem jest symulacja realistycznych defektów i gdzie budżet API jest dostępny. PIT pozostaje lepszym wyborem dla szybkiej oceny ogólnej siły testów."]*
+> ✏️ **Co warto porównać w tekście:** różnorodność mutantów, podobieństwo do rzeczywistych defektów, koszt uzyskania wyników, szybkość generacji oraz praktyczną przydatność w codziennej pracy. Zakończ jednym jasnym zdaniem rekomendacji, które podejście jest lepsze jako rozwiązanie podstawowe, a które jako uzupełniające.
 
 ### Ograniczenia badania
 
-**Ograniczona generalizowalność (język i zbiór danych).** Eksperyment przeprowadzono wyłącznie na projektach Java z Defects4J 3.0.1. Wyniki mogą nie być w pełni przenoszalne na inne języki programowania (Python, C#, Kotlin) ani na projekty spoza tego benchmarku. Przyszłe badania powinny objąć przynajmniej jeden dodatkowy benchmark.
+> ✏️ **Wskazówka do pisania:** W tej części wskaż tylko takie ograniczenia, które rzeczywiście wpływają na interpretację wyników. Nie opisuj ograniczeń technicznych w detalach implementacyjnych. Skup się na tym, co może zawężać możliwość uogólnienia wniosków. Mogą to być na przykład ograniczenia związane z zakresem zbioru badawczego, liczbą analizowanych defektów, wyborem modeli, przyjętą definicją nowości mutanta albo charakterem metryk użytych w analizie.
 
-**Jeden model LLM.** Użyto modelu GPT-4o-mini. Inne modele (Claude 3, DeepSeek, CodeLlama) mogą generować inne rozkłady operatorów i inny compile rate. Wybór modelu był podyktowany kosztami API i dostępnością — nie jest dowodem przewagi GPT-4o-mini nad innymi modelami.
-
-**Heurystyczna klasyfikacja NEW/PARTIAL/EXISTING.** Progi 30% i 80% pokrycia (sekcja 7.8) są arbitralne — kalibrowane na próbie pilotażowej, lecz nie wynikają z teorii. Zmiana progów może wpłynąć na odsetek operatorów NEW.
-
-**Przybliżona ekwiwalentność.** Mutanty przeżywające traktowane są jako proxy dla mutantów ekwiwalentnych. Część z nich to mutanty słabe — niewychwycone przez niedostateczne testy, a nie faktycznie ekwiwalentne. To może zawyżać szacowany Equivalent Mutation Rate.
-
-**Niedeterminizm LLM.** Te same dane wejściowe dają różne mutanty w różnych uruchomieniach. Archiwizacja odpowiedzi API pozwala odtworzyć wyniki, ale nie eliminuje ryzyka, że inne uruchomienie dałoby inny rozkład operatorów.
-
-### Kierunki dalszych badań
-
-Na podstawie wyników i ograniczeń zidentyfikowanych w niniejszej pracy można wskazać następujące kierunki przyszłych badań:
-
-**Replikacja na różnych językach i zbiorach danych.** Eksperyment ograniczony do Javy i Defects4J 3.0.1 powinien być powtórzony dla Pythona (BugsInPy) lub JavaScript, aby zbadać, czy nowość mutantów generowanych przez LLM jest cechą specyficzną dla Javy, czy zjawiskiem ogólnym.
-
-**Porównanie wielu modeli LLM.** Użycie modeli zamkniętych i open-source przy tym samym protokole pozwoli ocenić, czy różnorodność i realizm mutantów zależą od konkretnego modelu, czy są powtarzalną właściwością podejścia LLM jako klasy.
-
-**Poprawa CMR przez inżynierię promptu i fine-tuning.** Rozszerzenie promptu o informację o typach i sygnaturach metod lub fine-tuning na zbiorze par (kod, skompilowany mutant) może znacząco podnieść CMR i obniżyć efektywny koszt generacji.
-
-**Automatyczna detekcja ekwiwalentności.** Przybliżona miara ekwiwalentności przez survived mutants jest niewystarczająca. Przyszłe prace mogą stosować symbolic execution lub SMT solvers do precyzyjniejszego wykrywania ekwiwalentnych mutantów.
-
-**Hybrydowe podejście PIT + LLM.** Najbardziej obiecującym kierunkiem praktycznym jest automatyczny selektor: PIT jako szybka i deterministyczna warstwa bazowa, LLM jako warstwa uzupełniająca dla klas kodu o niskim Ochiai lub braku wykrycia przez PIT.
+> ✏️ **Proponowany układ akapitu:** Najpierw wskaż ograniczenia dotyczące danych i zakresu badania. Następnie opisz ograniczenia wynikające z samej metody porównania LLM i PIT. Na końcu dopisz jedno zdanie, że mimo tych ograniczeń uzyskane wyniki pozwalają sformułować użyteczne wnioski dla analizowanego problemu, ale wymagają ostrożności przy ich uogólnianiu.
 
 ---
 
-## Podsumowanie
+## Podsumowanie i wnioski
 
-Niniejsza praca dotyczyła zastosowania dużych modeli językowych do generowania operatorów mutacyjnych — reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne definiowane w narzędziach takich jak PIT stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów.
+Niniejsza praca dotyczyła zastosowania dużych modeli językowych do generowania operatorów mutacyjnych - reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne definiowane w narzędziach takich jak PIT stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów.
 
-W pracy postawiono trzy pytania badawcze: (RQ1) czy LLM generuje mutanty nieobecne w zbiorze mutantów PIT ALL; (RQ2) czy mutanty LLM są bliższe rzeczywistym defektom z Defects4J pod względem zachowania programu niż mutanty PIT; (RQ3) jakie są koszty i wydajność podejścia LLM w porównaniu z PIT. Eksperyment przeprowadzono na wybranym podzbiorze błędów z benchmarku Defects4J 3.0.1 — uznanego standardu w badaniach nad jakością testów.
+W pracy postawiono trzy pytania badawcze: (RQ1) czy LLM generuje mutanty nieobecne w zbiorze mutantów PIT ALL; (RQ2) czy mutanty LLM są bliższe rzeczywistym defektom z Defects4J pod względem zachowania programu niż mutanty PIT; (RQ3) jakie są koszty i wydajność podejścia LLM w porównaniu z PIT. Eksperyment przeprowadzono na wybranym podzbiorze błędów z benchmarku Defects4J 3.0.1 - uznanego standardu w badaniach nad jakością testów.
 
 Wyniki eksperymentu wskazują, że:
-- *[RQ1: X% użytecznych mutantów LLM nie ma odpowiednika wśród mutantów PIT ALL — co potwierdza / częściowo potwierdza hipotezę o różnorodności.]*
-- *[RQ2: Mutanty LLM osiągają RBDR = X% wobec Y% dla PIT oraz medianę Ochiai A wobec B — co oznacza, że LLM generuje / nie generuje realistyczniejsze mutanty.]*
-- *[RQ3: LLM osiąga CMR = X% i jest Z-krotnie droższy od PIT per użyteczny mutant — co czyni podejście akceptowalnym / kosztownym dla projektów o małej do średniej liczbie bugów.]*
+- *[RQ1: X% użytecznych mutantów LLM nie ma odpowiednika wśród mutantów PIT ALL - co potwierdza / częściowo potwierdza hipotezę o różnorodności.]*
+- *[RQ2: Mutanty LLM osiągają RBDR = X% wobec Y% dla PIT oraz medianę Ochiai A wobec B - co oznacza, że LLM generuje / nie generuje realistyczniejsze mutanty.]*
+- *[RQ3: LLM osiąga CMR = X% i jest Z-krotnie droższy od PIT per użyteczny mutant - co czyni podejście akceptowalnym / kosztownym dla projektów o małej do średniej liczbie bugów.]*
 
-Wyniki sugerują, że podejście oparte na LLM stanowi wartościowe uzupełnienie klasycznych narzędzi mutacyjnych, a nie ich zastąpienie. PIT pozostaje szybki, deterministyczny i bezkosztowy, natomiast LLM dostarcza bogatszego i bardziej realistycznego zestawu operatorów — kosztem wyższego nakładu obliczeniowego i finansowego. Praktycznym wnioskiem jest rekomendacja hybrydowego podejścia: PIT jako szybka warstwa bazowa, LLM jako warstwa uzupełniająca dla obszarów kodu słabo wykrywanych przez klasyczne operatory.
+Wyniki sugerują, że podejście oparte na LLM stanowi wartościowe uzupełnienie klasycznych narzędzi mutacyjnych, a nie ich zastąpienie. PIT pozostaje szybki, deterministyczny i bezkosztowy, natomiast LLM dostarcza bogatszego i bardziej realistycznego zestawu operatorów - kosztem wyższego nakładu obliczeniowego i finansowego. Praktycznym wnioskiem jest rekomendacja hybrydowego podejścia: PIT jako szybka warstwa bazowa, LLM jako warstwa uzupełniająca dla obszarów kodu słabo wykrywanych przez klasyczne operatory.
 
 *[Uzupełnić po eksperymencie: ostateczne sformułowanie wniosków z konkretnymi wartościami liczbowymi.]*
 
@@ -876,14 +715,14 @@ URL: https://pitest.org/quickstart/mutators/
 [2] Michał Mnich Testowanie mutacyjne - optymalizacja procesu i praktyczne zastosowania.
 URL: https://bip.pwr.edu.pl/fcp/qGBUKOQtTKlQhbx08SlkFTxYCEi8pMgQGS39TCVdbWCECWR1pXhs_W3dN/4/public/bip/doktoraty/mnich_m/rozprawa_doktorska_micha__mnich.pdf
 
-[3] Defects4J:
+[3] Defects4J zbiór odtwarzalnych błędów w rzeczywistych projektach.
 URL: https://github.com/rjust/defects4j
 
-[4] Paul Ammann and Jeff Offutt Introduction to Software Testing, Cambridge University Press, Cambridge, UK, 2008
+[4] Paul Ammann and Jeff Offutt Introduction to Software Testing, Cambridge University Press, Cambridge, UK, 2008.
 URL: https://lira.epac.to/DOCS-TECH/Engineering%20and%20Management/Software%20Testing/Introduction%20to%20Software%20Testing.pdf
 
-[5] R.A. De Millo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer
+[5] R.A. De Millo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer.
 URL: https://www.st.cs.uni-saarland.de/edu/recommendation-systems/papers/Hints_on_Test_Data_Selection-1.pdf
 
-[6] LLMorpheus: Mutation Testing using Large Language Models
+[6] LLMorpheus: Mutation Testing using Large Language Models.
 URL: https://arxiv.org/html/2404.09952v2#S1
