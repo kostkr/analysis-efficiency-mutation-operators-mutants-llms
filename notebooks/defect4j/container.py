@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 import os
 import queue
 import re
@@ -27,7 +28,8 @@ if TYPE_CHECKING:
     from .mutant import Mutant
 
 
-MUTANT_TEST_TIMEOUT_CAP_S = 35
+MUTANT_TEST_TIMEOUT_CAP_S = 60
+MUTANT_TEST_TIMEOUT_PER_RELEVANT_TEST_S = 0.038
 
 # ── module-level test-list helpers ──────────────────────────────────────────
 
@@ -68,6 +70,19 @@ def _parse_failing_tests_output(raw: str) -> set[str]:
         for line in raw.splitlines()
         if line.strip().startswith("- ") and "::" in line
     }
+
+
+def _effective_mutant_timeout_s(configured_timeout_s: int, suite_total_tests: int) -> int:
+    adaptive_timeout_s = math.ceil(
+        max(0, int(suite_total_tests)) * MUTANT_TEST_TIMEOUT_PER_RELEVANT_TEST_S
+    )
+    return max(
+        1,
+        min(
+            int(configured_timeout_s),
+            max(MUTANT_TEST_TIMEOUT_CAP_S, adaptive_timeout_s),
+        ),
+    )
 
 
 def _mutant_runner_helper_source() -> str:
@@ -525,12 +540,27 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
 
     def reset_checkout(self, container_path: str, timeout: int = 60) -> None:
         """Restore a checkout to a clean git state before reusing it."""
-        _, err, rc = self.exec(
-            f"cd {container_path} && git reset --hard -q HEAD && git clean -fdq",
-            timeout=timeout,
+        q_path = shlex.quote(container_path)
+        self.kill_processes_under_path(container_path, timeout=min(timeout, 30))
+        reset_cmd = (
+            f"cd {q_path} && "
+            f"git reset --hard -q HEAD && "
+            f"git clean -ffdxq"
         )
-        if rc != 0:
-            raise RuntimeError(f"reset checkout failed for {container_path}:\n{err}")
+        _, err, rc = self.exec(reset_cmd, timeout=timeout)
+        if rc == 0:
+            return
+
+        retry_cmd = (
+            f"cd {q_path} && "
+            f"rm -rf all_tests build target && "
+            f"git reset --hard -q HEAD && "
+            f"git clean -ffdxq"
+        )
+        _, retry_err, retry_rc = self.exec(retry_cmd, timeout=timeout)
+        if retry_rc != 0:
+            message = retry_err.strip() or err.strip()
+            raise RuntimeError(f"reset checkout failed for {container_path}:\n{message}")
 
     def relevant_test_profile(self, container_path: str, timeout: int = 600) -> dict[str, Any]:
         """Run a clean ``defects4j test -r`` once and return the authoritative suite profile."""
@@ -588,6 +618,7 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         container_path: str,
         mutant: "Mutant",
         timeout: int = 600,
+        suite_total_tests: int = 0,
         trigger_tests: list[str] | None = None,
     ) -> dict[str, Any]:
         """
@@ -598,6 +629,7 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         Worker checkouts can therefore live fully inside the container on fast local
         storage instead of the macOS bind mount.
         """
+        effective_timeout_s = _effective_mutant_timeout_s(timeout, suite_total_tests)
         payload_b64 = base64.b64encode(
             json.dumps(
                 {
@@ -606,6 +638,7 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
                     "precode": mutant.precode,
                     "aftercode": mutant.aftercode,
                     "timeout": int(timeout),
+                    "effective_timeout": int(effective_timeout_s),
                     "trigger_tests": list(trigger_tests or []),
                     "cleanup_paths": list(self.mutant_run_cleanup_paths(container_path, mutant.filepath)),
                 },
@@ -746,13 +779,13 @@ try:
     proc = _run_test_command(
         ['defects4j', 'test', '-r'],
         root,
-        min(int(payload['timeout']), {MUTANT_TEST_TIMEOUT_CAP_S}),
+        max(1, int(payload['effective_timeout'])),
     )
     if proc['timed_out']:
         record['compiled'] = True
         record['timed_out'] = True
         record['test_executed'] = True
-        record['test_time_s'] = min(int(payload['timeout']), {MUTANT_TEST_TIMEOUT_CAP_S})
+        record['test_time_s'] = max(1, int(payload['effective_timeout']))
         record['run_time_s'] = record['test_time_s']
         print(json.dumps(record, ensure_ascii=False))
         raise SystemExit(0)
@@ -1026,5 +1059,3 @@ class ParallelCheckoutPool:
         _, err, rc = self.d4j.exec(bash_cmd, timeout=timeout)
         if rc != 0:
             raise RuntimeError(f"{action} failed:\n{err}")
-
-

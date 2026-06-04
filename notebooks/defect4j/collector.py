@@ -337,6 +337,8 @@ class DataCollector:
         trigger_tests: list[str] | None,
     ) -> dict:
         checkout = pool.acquire()
+        run_error: Exception | None = None
+        record: dict | None = None
         try:
             record = self._run_one(
                 mutant=mutant,
@@ -349,14 +351,30 @@ class DataCollector:
                 trigger_tests=trigger_tests,
             )
             return record
-        except Exception:
-            try:
-                self.d4j.reset_checkout(checkout.container_path)
-            except Exception as exc:
-                self._log(f"  worker={checkout.worker_id} reset failed after exception: {type(exc).__name__}: {exc}")
+        except Exception as exc:
+            run_error = exc
             raise
         finally:
-            pool.release(checkout)
+            should_reset = run_error is not None or (
+                record is not None and (
+                    bool(record.get("timed_out"))
+                    or record.get("compiled") is False
+                )
+            )
+            try:
+                if should_reset:
+                    try:
+                        self.d4j.reset_checkout(checkout.container_path)
+                    except Exception as exc:
+                        context = "after exception" if run_error is not None else "after failed run"
+                        self._log(
+                            f"  worker={checkout.worker_id} reset failed {context}: "
+                            f"{type(exc).__name__}: {exc}"
+                        )
+                        if run_error is None:
+                            raise
+            finally:
+                pool.release(checkout)
 
     def _ensure_profiles(
         self,
@@ -469,6 +487,7 @@ class DataCollector:
             container_path=container_path,
             mutant=mutant,
             timeout=test_timeout,
+            suite_total_tests=baseline_total_tests,
             trigger_tests=trigger_tests,
         )
         record.update({k: v for k, v in result.items() if k in record})
@@ -507,4 +526,3 @@ class DataCollector:
         self._log("  " + " ".join(status))
 
         return record
-

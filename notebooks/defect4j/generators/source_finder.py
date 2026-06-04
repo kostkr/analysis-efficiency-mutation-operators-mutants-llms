@@ -90,10 +90,12 @@ class SourceFinder:
 
             # 5. Find method boundaries and match against changed lines
             class_ranges = _find_class_ranges(src_raw, fqn)
+            covered_lines: set[int] = set()
             for m_name, m_start, m_end, m_src in _find_methods(src_raw):
                 overlap = [ln for ln in changed if m_start <= ln <= m_end]
                 if not overlap:
                     continue
+                covered_lines.update(overlap)
                 owner_fqn = _class_fqn_at_line(class_ranges, fqn, m_start)
                 if m_name == _simple_class_name(owner_fqn):
                     m_name = "<init>"
@@ -110,6 +112,29 @@ class SourceFinder:
                         method_start=m_start,
                         method_end=m_end,
                         changed_lines=overlap,
+                    )
+                )
+
+            for owner_fqn, synthetic_name, block_start, block_end, block_lines in _synthetic_jobs(
+                src_raw,
+                fqn,
+                class_ranges,
+                changed,
+                covered_lines,
+            ):
+                jobs.append(
+                    GeneratorJob(
+                        project=project,
+                        bug_id=bug_id,
+                        container_path=container_path_fixed,
+                        host_path=host_path,
+                        filepath=rel_path,
+                        class_fqn=owner_fqn,
+                        method_name=synthetic_name,
+                        method_source=_slice_line_range(src_raw, block_start, block_end),
+                        method_start=block_start,
+                        method_end=block_end,
+                        changed_lines=block_lines,
                     )
                 )
 
@@ -273,6 +298,63 @@ def _slice_line_range(source: str, start_line: int, end_line: int) -> str:
     return "\n".join(lines[start_line - 1:end_line])
 
 
+def _class_range_at_line(
+    ranges: list[tuple[int, int, str]],
+    default_fqn: str,
+    line: int,
+) -> tuple[int, int, str] | None:
+    owner = _class_fqn_at_line(ranges, default_fqn, line)
+    if not owner:
+        return None
+    candidates = [
+        (start, end, fqn)
+        for start, end, fqn in ranges
+        if fqn == owner and start <= line <= end
+    ]
+    if candidates:
+        return min(candidates, key=lambda item: item[1] - item[0])
+    return None
+
+
+def _synthetic_jobs(
+    source: str,
+    default_fqn: str,
+    class_ranges: list[tuple[int, int, str]],
+    changed_lines: list[int],
+    covered_lines: set[int],
+) -> list[tuple[str, str, int, int, list[int]]]:
+    remaining = [line for line in changed_lines if line not in covered_lines]
+    by_owner: dict[str, list[int]] = {}
+    owner_ranges: dict[str, tuple[int, int, str]] = {}
+    for line in remaining:
+        owner_range = _class_range_at_line(class_ranges, default_fqn, line)
+        if owner_range is None:
+            continue
+        start, end, owner_fqn = owner_range
+        owner_ranges[owner_fqn] = (start, end, owner_fqn)
+        by_owner.setdefault(owner_fqn, []).append(line)
+
+    synthetic: list[tuple[str, str, int, int, list[int]]] = []
+    lines = source.splitlines()
+    for owner_fqn, owner_lines in by_owner.items():
+        start, end, _ = owner_ranges[owner_fqn]
+        changed = sorted(set(owner_lines))
+        block_start = max(start, min(changed) - 2)
+        block_end = min(end, max(changed) + 2)
+        name = _synthetic_method_name(lines, changed)
+        synthetic.append((owner_fqn, name, block_start, block_end, changed))
+    return synthetic
+
+
+def _synthetic_method_name(lines: list[str], changed_lines: list[int]) -> str:
+    for line_number in changed_lines:
+        if 1 <= line_number <= len(lines):
+            line = lines[line_number - 1].strip()
+            if line.startswith("static ") or " static " in f" {line} ":
+                return "<clinit>"
+    return "<init>"
+
+
 def _parse_diff_fixed_lines(diff: str) -> list[int]:
     """Parse unified diff and return 1-based line numbers added in the fixed file.
 
@@ -300,6 +382,5 @@ def _parse_diff_fixed_lines(diff: str) -> list[int]:
             cur_line += 1  # context line
 
     return sorted(set(lines_out))
-
 
 

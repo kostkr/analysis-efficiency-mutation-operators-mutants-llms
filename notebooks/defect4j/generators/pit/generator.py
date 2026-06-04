@@ -73,9 +73,18 @@ class PITGenerator(BaseGenerator):
             print(f"[PITGenerator] classic generator failed for {job.class_fqn} (rc={rc}):\n{short}")
             return []
 
+        self._entry_cache.pop((job.container_path, job.class_fqn), None)
         entries = self._read_entries(job.container_path, job.class_fqn)
         if not entries:
             print(f"[PITGenerator] no CLASSIC_JSON report found for {job.class_fqn}")
+            return []
+        entries = self._entries_for_job(entries, job)
+        if not entries:
+            print(
+                f"[PITGenerator] CLASSIC_JSON report for {job.class_fqn} "
+                f"contained no mutations in {job.method_name} lines "
+                f"{job.method_start}-{job.method_end}"
+            )
             return []
 
         mutants: list[Mutant] = []
@@ -98,6 +107,15 @@ class PITGenerator(BaseGenerator):
             for mutant in mutants:
                 mutant.gen_time_s = per_mutant
         return mutants
+
+    def _entries_for_job(self, entries: list[PITClassicEntry], job: GeneratorJob) -> list[PITClassicEntry]:
+        job_path = job.filepath.replace("\\", "/").lstrip("/")
+        return [
+            entry
+            for entry in entries
+            if entry.filepath.replace("\\", "/").lstrip("/") == job_path
+            and job.method_start <= int(entry.line) <= job.method_end
+        ]
 
     def _classpath(self, container_path: str) -> str:
         cached = self._classpath_cache.get(container_path)
@@ -146,8 +164,6 @@ class PITGenerator(BaseGenerator):
         )
 
     def _pit_target_class(self, class_fqn: str) -> str:
-        if "$" not in class_fqn:
-            return class_fqn
         return class_fqn.split("$", 1)[0] + "*"
 
     def _effective_mutators(self) -> str:
@@ -233,4 +249,3 @@ class PITGenerator(BaseGenerator):
                 raise RuntimeError(f"custom pitest ready-marker write failed:\n{err.strip()}")
 
             self._CUSTOM_PIT_READY.add(container)
-

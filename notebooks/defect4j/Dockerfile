@@ -11,6 +11,7 @@ RUN \
   apt-get install software-properties-common -y && \
   apt-get update -y && \
   apt-get install -y openjdk-11-jdk \
+                maven \
                 git \
                 build-essential \
                 subversion \
