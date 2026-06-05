@@ -1,0 +1,792 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 128,
+    "precode": "return; // Don't even brother. All global variables are likely escaped.",
+    "aftercode": "// return; // Don't even brother. All global variables are likely escaped.",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 132,
+    "precode": "t.getScope().getVarCount()) {",
+    "aftercode": "t.getScope().getVarCount() + 1) {",
+    "rule": "Increment Value",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 133,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 137,
+    "precode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, false, true);",
+    "aftercode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, true, true);",
+    "rule": "Boolean Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 137,
+    "precode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, false, true);",
+    "aftercode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, false, false);",
+    "rule": "Boolean Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 140,
+    "precode": "cfa.process(null, t.getScopeRoot().getLastChild());",
+    "aftercode": "cfa.process(t.getScopeRoot(), t.getScopeRoot().getLastChild());",
+    "rule": "Null to Object",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 141,
+    "precode": "cfg = cfa.getCfg();",
+    "aftercode": "cfg = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 142,
+    "precode": "reachingDef = new MustBeReachingVariableDef(cfg, t.getScope(), compiler);",
+    "aftercode": "reachingDef = new MaybeReachingVariableDef(cfg, t.getScope(), compiler);",
+    "rule": "Class Type Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 144,
+    "precode": "candidates = Lists.newLinkedList();",
+    "aftercode": "candidates = Lists.newArrayList();",
+    "rule": "Collection Type Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 148,
+    "precode": "t.getScopeRoot().getLastChild());",
+    "aftercode": "t.getScopeRoot());",
+    "rule": "Method Argument Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 152,
+    "precode": "reachingUses = new MaybeReachingVariableUse(cfg, t.getScope(), compiler);",
+    "aftercode": "reachingUses = new MustBeReachingVariableUse(cfg, t.getScope(), compiler);",
+    "rule": "Class Type Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 154,
+    "precode": "for (Candidate c : candidates) {",
+    "aftercode": "for (Candidate c : new LinkedList<Candidate>()) {",
+    "rule": "Collection Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 155,
+    "precode": "if (c.canInline(t.getScope())) {",
+    "aftercode": "if (!c.canInline(t.getScope())) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 156,
+    "precode": "c.inlineVariable();",
+    "aftercode": "// c.inlineVariable();",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 165,
+    "precode": "if (!c.defMetadata.depends.isEmpty()) {",
+    "aftercode": "if (c.defMetadata.depends.isEmpty()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 166,
+    "precode": "inlinedNewDependencies.add(t.getScope().getVar(c.varName));",
+    "aftercode": "inlinedNewDependencies.add(t.getScope().getVar(\"\"));",
+    "rule": "String Argument Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 131,
+    "precode": "if (LiveVariablesAnalysis.MAX_VARIABLES_TO_ANALYZE <",
+    "aftercode": "if (LiveVariablesAnalysis.MAX_VARIABLES_TO_ANALYZE >=",
+    "rule": "Operator Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 139,
+    "precode": "Preconditions.checkState(t.getScopeRoot().isFunction());",
+    "aftercode": "// Preconditions.checkState(t.getScopeRoot().isFunction());",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 137,
+    "precode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, false, true);",
+    "aftercode": "ControlFlowAnalysis cfa = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 143,
+    "precode": "reachingDef.analyze();",
+    "aftercode": "// reachingDef.analyze();",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 148,
+    "precode": "new NodeTraversal(compiler, new GatherCandiates()).traverse(",
+    "aftercode": "// new NodeTraversal(compiler, new GatherCandiates()).traverse(",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 153,
+    "precode": "reachingUses.analyze();",
+    "aftercode": "// reachingUses.analyze();",
+    "rule": "Comment Out",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 140,
+    "precode": "cfa.process(null, t.getScopeRoot().getLastChild());",
+    "aftercode": "cfa.process(t.getScopeRoot().getLastChild(), null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 131,
+    "precode": "if (LiveVariablesAnalysis.MAX_VARIABLES_TO_ANALYZE <",
+    "aftercode": "if (LiveVariablesAnalysis.MAX_VARIABLES_TO_ANALYZE >",
+    "rule": "Operator Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 155,
+    "precode": "if (c.canInline(t.getScope())) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant True",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 165,
+    "precode": "if (!c.defMetadata.depends.isEmpty()) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant True",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 141,
+    "precode": "cfg = cfa.getCfg();",
+    "aftercode": "cfg = cfa.getDomTree();",
+    "rule": "Method Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 142,
+    "precode": "reachingDef = new MustBeReachingVariableDef(cfg, t.getScope(), compiler);",
+    "aftercode": "reachingDef = new MustBeReachingVariableDef(null, t.getScope(), compiler);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 152,
+    "precode": "reachingUses = new MaybeReachingVariableUse(cfg, t.getScope(), compiler);",
+    "aftercode": "reachingUses = new MaybeReachingVariableUse(null, t.getScope(), compiler);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 166,
+    "precode": "inlinedNewDependencies.add(t.getScope().getVar(c.varName));",
+    "aftercode": "inlinedNewDependencies.remove(t.getScope().getVar(c.varName));",
+    "rule": "Method Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 144,
+    "precode": "candidates = Lists.newLinkedList();",
+    "aftercode": "candidates = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 137,
+    "precode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, false, true);",
+    "aftercode": "ControlFlowAnalysis cfa = new ControlFlowAnalysis(null, false, true);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 140,
+    "precode": "cfa.process(null, t.getScopeRoot().getLastChild());",
+    "aftercode": "cfa.process(null, t.getScopeRoot());",
+    "rule": "Method Argument Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 148,
+    "precode": "t.getScopeRoot().getLastChild());",
+    "aftercode": "t.getScopeRoot().getParent());",
+    "rule": "Method Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 155,
+    "precode": "if (c.canInline(t.getScope())) {",
+    "aftercode": "if (c.canInline(null)) {",
+    "rule": "Null Argument",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 165,
+    "precode": "if (!c.defMetadata.depends.isEmpty()) {",
+    "aftercode": "if (c.defMetadata.depends != null && !c.defMetadata.depends.isEmpty()) {",
+    "rule": "Null Check Addition",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 166,
+    "precode": "inlinedNewDependencies.add(t.getScope().getVar(c.varName));",
+    "aftercode": "inlinedNewDependencies.add(c.varName);",
+    "rule": "Method Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 131,
+    "precode": "if (LiveVariablesAnalysis.MAX_VARIABLES_TO_ANALYZE <",
+    "aftercode": "if (LiveVariablesAnalysis.MAX_VARIABLES_TO_ANALYZE <=",
+    "rule": "Operator Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 132,
+    "precode": "t.getScope().getVarCount()) {",
+    "aftercode": "t.getScope().getVarCount() - 1) {",
+    "rule": "Decrement Value",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 140,
+    "precode": "cfa.process(null, t.getScopeRoot().getLastChild());",
+    "aftercode": "cfa.process(t.getScopeRoot(), t.getScopeRoot().getParent());",
+    "rule": "Method Argument Substitution",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 142,
+    "precode": "reachingDef = new MustBeReachingVariableDef(cfg, t.getScope(), compiler);",
+    "aftercode": "reachingDef = new MustBeReachingVariableDef(cfg, null, compiler);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 152,
+    "precode": "reachingUses = new MaybeReachingVariableUse(cfg, t.getScope(), compiler);",
+    "aftercode": "reachingUses = new MaybeReachingVariableUse(cfg, null, compiler);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 154,
+    "precode": "for (Candidate c : candidates) {",
+    "aftercode": "for (Candidate c : candidates) {",
+    "rule": "No Op",
+    "gen_time_s": 2.45,
+    "dublicate": true
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 166,
+    "precode": "inlinedNewDependencies.add(t.getScope().getVar(c.varName));",
+    "aftercode": "inlinedNewDependencies.add(t.getScope().getVar(c.varName));",
+    "rule": "No Op",
+    "gen_time_s": 2.45,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 282,
+    "precode": "if (getDefCfgNode().isFunction()) {",
+    "aftercode": "if (!getDefCfgNode().isFunction()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 290,
+    "precode": "if (inlinedNewDependencies.contains(dependency)) {",
+    "aftercode": "if (!inlinedNewDependencies.contains(dependency)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 299,
+    "precode": "if (def == null) {",
+    "aftercode": "if (def != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 305,
+    "precode": "if (def.isAssign() && !NodeUtil.isExprAssign(def.getParent())) {",
+    "aftercode": "if (def.isAssign() || NodeUtil.isExprAssign(def.getParent())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 335,
+    "precode": "if (numUseWithinUseCfgNode != 1) {",
+    "aftercode": "if (numUseWithinUseCfgNode == 1) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 335,
+    "precode": "if (numUseWithinUseCfgNode != 1) {",
+    "aftercode": "if (numUseWithinUseCfgNode > 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 340,
+    "precode": "if (NodeUtil.isWithinLoop(use)) {",
+    "aftercode": "if (!NodeUtil.isWithinLoop(use)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 347,
+    "precode": "if (uses.size() != 1) {",
+    "aftercode": "if (uses.size() == 1) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 347,
+    "precode": "if (uses.size() != 1) {",
+    "aftercode": "if (uses.size() > 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 397,
+    "precode": "if (NodeUtil.isStatementBlock(getDefCfgNode().getParent()) &&",
+    "aftercode": "if (NodeUtil.isStatementBlock(getDefCfgNode().getParent()) ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 398,
+    "precode": "getDefCfgNode().getNext() != useCfgNode) {",
+    "aftercode": "getDefCfgNode().getNext() == useCfgNode) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 398,
+    "precode": "getDefCfgNode().getNext() != useCfgNode) {",
+    "aftercode": "getDefCfgNode().getNext() == null) {",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 295,
+    "precode": "getDefinition(getDefCfgNode(), null);",
+    "aftercode": "getDefinition(getDefCfgNode(), getDefCfgNode());",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 296,
+    "precode": "getNumUseInUseCfgNode(useCfgNode, null);",
+    "aftercode": "getNumUseInUseCfgNode(null, null);",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 363,
+    "precode": "if (NodeUtil.has(def.getLastChild(),",
+    "aftercode": "if (NodeUtil.has(def.getParent(),",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 312,
+    "precode": "if (checkRightOf(def, getDefCfgNode(), SIDE_EFFECT_PREDICATE)) {",
+    "aftercode": "if (checkRightOf(def, useCfgNode, SIDE_EFFECT_PREDICATE)) {",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 319,
+    "precode": "if (checkLeftOf(use, useCfgNode, SIDE_EFFECT_PREDICATE)) {",
+    "aftercode": "if (checkLeftOf(use, getDefCfgNode(), SIDE_EFFECT_PREDICATE)) {",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 367,
+    "precode": "switch (input.getType()) {",
+    "aftercode": "switch (input.getType() + 1) {",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 374,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 376,
+    "precode": "Var var = scope.getOwnSlot(input.getString());",
+    "aftercode": "Var var = scope.getSlot(input.getString());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 377,
+    "precode": "if (var != null",
+    "aftercode": "if (var == null",
+    "rule": "Condition Boundary Mutation",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 378,
+    "precode": "&& var.getParentNode().isCatch()) {",
+    "aftercode": "|| var.getParentNode().isCatch()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 379,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 378,
+    "precode": "&& var.getParentNode().isCatch()) {",
+    "aftercode": "&& var.getParentNode().isFinally()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 376,
+    "precode": "Var var = scope.getOwnSlot(input.getString());",
+    "aftercode": "Var var = null;",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 379,
+    "precode": "return true;",
+    "aftercode": "/* return true; */",
+    "rule": "Empty Statement Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 374,
+    "precode": "return true;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 378,
+    "precode": "&& var.getParentNode().isCatch()) {",
+    "aftercode": "&& var.getParentNode().isCatch() && true) {",
+    "rule": "Constant Condition Mutation",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 376,
+    "precode": "Var var = scope.getOwnSlot(input.getString());",
+    "aftercode": "Var var = scope.getOwnSlot(input.getType().toString());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 377,
+    "precode": "if (var != null",
+    "aftercode": "if (var != null && true",
+    "rule": "Constant Condition Mutation",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 378,
+    "precode": "&& var.getParentNode().isCatch()) {",
+    "aftercode": "&& var.getParentNode().isCatch() || false) {",
+    "rule": "Constant Condition Mutation",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 379,
+    "precode": "return true;",
+    "aftercode": "return !true;",
+    "rule": "Unary Operator Replacement",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 374,
+    "precode": "return true;",
+    "aftercode": "if (true) return true;",
+    "rule": "Control Flow Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 378,
+    "precode": "&& var.getParentNode().isCatch()) {",
+    "aftercode": "&& var.getParentNode().getFirstChild().isCatch()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 376,
+    "precode": "Var var = scope.getOwnSlot(input.getString());",
+    "aftercode": "Var var = scope.getOwnSlot(input.getString()); var = null;",
+    "rule": "Statement Mutator",
+    "gen_time_s": 2.11,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 141,
+    "precode": "if (that.isRecordType()) {",
+    "aftercode": "if (!that.isRecordType()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 142,
+    "precode": "RecordType thatRecord = that.toMaybeRecordType();",
+    "aftercode": "RecordType thatRecord = that.toRecordType();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 143,
+    "precode": "RecordTypeBuilder builder = new RecordTypeBuilder(registry);",
+    "aftercode": "RecordTypeBuilder builder = new RecordTypeBuilder(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 148,
+    "precode": "for (String property : properties.keySet()) {",
+    "aftercode": "for (String property : properties.values()) {",
+    "rule": "CollectionReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 149,
+    "precode": "if (thatRecord.hasProperty(property) &&",
+    "aftercode": "if (thatRecord.hasProperty(property) ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 149,
+    "precode": "if (thatRecord.hasProperty(property) &&",
+    "aftercode": "if (!thatRecord.hasProperty(property) &&",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 150,
+    "precode": "!thatRecord.getPropertyType(property).isEquivalentTo(",
+    "aftercode": "thatRecord.getPropertyType(property).isEquivalentTo(",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 152,
+    "precode": "return registry.getNativeObjectType(JSTypeNative.NO_TYPE);",
+    "aftercode": "return registry.getNativeObjectType(JSTypeNative.OBJECT_TYPE);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 155,
+    "precode": "builder.addProperty(property, getPropertyType(property),",
+    "aftercode": "builder.addProperty(null, getPropertyType(property),",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 159,
+    "precode": "for (String property : thatRecord.properties.keySet()) {",
+    "aftercode": "for (String property : thatRecord.properties.values()) {",
+    "rule": "CollectionReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 160,
+    "precode": "if (!hasProperty(property)) {",
+    "aftercode": "if (hasProperty(property)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 161,
+    "precode": "builder.addProperty(property, thatRecord.getPropertyType(property),",
+    "aftercode": "builder.addProperty(property, null,",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 166,
+    "precode": "return builder.build();",
+    "aftercode": "return null;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 169,
+    "precode": "JSType greatestSubtype = registry.getNativeType(",
+    "aftercode": "JSType greatestSubtype = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 170,
+    "precode": "JSTypeNative.NO_OBJECT_TYPE);",
+    "aftercode": "JSTypeNative.OBJECT_TYPE);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 174,
+    "precode": "if (!thatRestrictedToObj.isEmptyType()) {",
+    "aftercode": "if (thatRestrictedToObj.isEmptyType()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 181,
+    "precode": "for (Map.Entry<String, JSType> entry : properties.entrySet()) {",
+    "aftercode": "for (Map.Entry<String, JSType> entry : properties.keySet()) {",
+    "rule": "TypeMismatch",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 184,
+    "precode": "UnionTypeBuilder builder = new UnionTypeBuilder(registry);",
+    "aftercode": "UnionTypeBuilder builder = new UnionTypeBuilder(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 185,
+    "precode": "for (ObjectType alt :",
+    "aftercode": "for (Object alt :",
+    "rule": "TypeReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 187,
+    "precode": "JSType altPropType = alt.getPropertyType(propName);",
+    "aftercode": "JSType altPropType = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 188,
+    "precode": "if (altPropType != null && !alt.isEquivalentTo(this) &&",
+    "aftercode": "if (altPropType == null && !alt.isEquivalentTo(this) &&",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 188,
+    "precode": "if (altPropType != null && !alt.isEquivalentTo(this) &&",
+    "aftercode": "if (altPropType != null || !alt.isEquivalentTo(this) &&",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 188,
+    "precode": "if (altPropType != null && !alt.isEquivalentTo(this) &&",
+    "aftercode": "if (altPropType != null && alt.isEquivalentTo(this) &&",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 189,
+    "precode": "alt.isSubtype(that) &&",
+    "aftercode": "!alt.isSubtype(that) &&",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 189,
+    "precode": "alt.isSubtype(that) &&",
+    "aftercode": "alt.isSubtype(that) ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 190,
+    "precode": "(propType.isUnknownType() || altPropType.isUnknownType() ||",
+    "aftercode": "(propType.isUnknownType() && altPropType.isUnknownType() ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 190,
+    "precode": "(propType.isUnknownType() || altPropType.isUnknownType() ||",
+    "aftercode": "(propType.isUnknownType() || !altPropType.isUnknownType() ||",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 191,
+    "precode": "altPropType.isEquivalentTo(propType)) {",
+    "aftercode": "!altPropType.isEquivalentTo(propType)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 192,
+    "precode": "builder.addAlternate(alt);",
+    "aftercode": "builder.addAlternate(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 195,
+    "precode": "greatestSubtype = greatestSubtype.getLeastSupertype(builder.build());",
+    "aftercode": "greatestSubtype = greatestSubtype.getGreatestSubtype(builder.build());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 195,
+    "precode": "greatestSubtype = greatestSubtype.getLeastSupertype(builder.build());",
+    "aftercode": "greatestSubtype = builder.build();",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 198,
+    "precode": "return greatestSubtype;",
+    "aftercode": "return null;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 142,
+    "precode": "RecordType thatRecord = that.toMaybeRecordType();",
+    "aftercode": "RecordType thatRecord = (RecordType) that;",
+    "rule": "TypeCastReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 148,
+    "precode": "for (String property : properties.keySet()) {",
+    "aftercode": "for (String property : properties.values()) {",
+    "rule": "CollectionReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 152,
+    "precode": "return registry.getNativeObjectType(JSTypeNative.NO_TYPE);",
+    "aftercode": "return registry.getNativeObjectType(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 155,
+    "precode": "builder.addProperty(property, getPropertyType(property),",
+    "aftercode": "builder.addProperty(property, getPropertyType(null),",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 159,
+    "precode": "for (String property : thatRecord.properties.keySet()) {",
+    "aftercode": "for (String property : thatRecord.properties.values()) {",
+    "rule": "CollectionReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 160,
+    "precode": "if (!hasProperty(property)) {",
+    "aftercode": "if (hasProperty(property)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 161,
+    "precode": "builder.addProperty(property, thatRecord.getPropertyType(property),",
+    "aftercode": "builder.addProperty(property, thatRecord.getPropertyType(null),",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 169,
+    "precode": "JSType greatestSubtype = registry.getNativeType(",
+    "aftercode": "JSType greatestSubtype = registry.getNativeObjectType(",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 174,
+    "precode": "if (!thatRestrictedToObj.isEmptyType()) {",
+    "aftercode": "if (thatRestrictedToObj.isEmptyType()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 181,
+    "precode": "for (Map.Entry<String, JSType> entry : properties.entrySet()) {",
+    "aftercode": "for (Map.Entry<String, JSType> entry : properties.keySet()) {",
+    "rule": "TypeMismatch",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 182,
+    "precode": "String propName = entry.getKey();",
+    "aftercode": "String propName = entry.getValue();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 183,
+    "precode": "JSType propType = entry.getValue();",
+    "aftercode": "JSType propType = entry.getKey();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 188,
+    "precode": "if (altPropType != null && !alt.isEquivalentTo(this) &&",
+    "aftercode": "if (altPropType != null && alt.isEquivalentTo(this) &&",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 188,
+    "precode": "if (altPropType != null && !alt.isEquivalentTo(this) &&",
+    "aftercode": "if (altPropType != null && !alt.isEquivalentTo(this) ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 189,
+    "precode": "alt.isSubtype(that) &&",
+    "aftercode": "!alt.isSubtype(that) &&",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 190,
+    "precode": "(propType.isUnknownType() || altPropType.isUnknownType() ||",
+    "aftercode": "(propType.isUnknownType() && altPropType.isUnknownType() ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 191,
+    "precode": "altPropType.isEquivalentTo(propType)) {",
+    "aftercode": "!altPropType.isEquivalentTo(propType)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 195,
+    "precode": "greatestSubtype = greatestSubtype.getLeastSupertype(builder.build());",
+    "aftercode": "greatestSubtype = greatestSubtype.getLeastSupertype(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 149,
+    "precode": "if (thatRecord.hasProperty(property) &&",
+    "aftercode": "if (thatRecord.hasProperty(property) && true &&",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 149,
+    "precode": "if (thatRecord.hasProperty(property) &&",
+    "aftercode": "if (thatRecord.hasProperty(property) && false &&",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 174,
+    "precode": "if (!thatRestrictedToObj.isEmptyType()) {",
+    "aftercode": "if (!thatRestrictedToObj.isEmptyType() && true) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 188,
+    "precode": "if (altPropType != null && !alt.isEquivalentTo(this) &&",
+    "aftercode": "if (altPropType != null && !alt.isEquivalentTo(this) && true &&",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 190,
+    "precode": "(propType.isUnknownType() || altPropType.isUnknownType() ||",
+    "aftercode": "(propType.isUnknownType() || altPropType.isUnknownType() || true ||",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 141,
+    "precode": "if (that.isRecordType()) {",
+    "aftercode": "if (that.isRecordType() == true) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 141,
+    "precode": "if (that.isRecordType()) {",
+    "aftercode": "if (that.isRecordType() == false) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 152,
+    "precode": "return registry.getNativeObjectType(JSTypeNative.NO_TYPE);",
+    "aftercode": "return registry.getNativeObjectType(JSTypeNative.NO_OBJECT_TYPE);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 166,
+    "precode": "return builder.build();",
+    "aftercode": "return builder.build(); //",
+    "rule": "SyntaxError",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/rhino/jstype/RecordType.java",
+    "line": 195,
+    "precode": "greatestSubtype = greatestSubtype.getLeastSupertype(builder.build());",
+    "aftercode": "greatestSubtype = greatestSubtype.getLeastSupertype(builder.build()); //",
+    "rule": "SyntaxError",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 713,
+    "precode": "if (parent == null || parent.isFunction() ||",
+    "aftercode": "if (parent == null && parent.isFunction() ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 713,
+    "precode": "if (parent == null || parent.isFunction() ||",
+    "aftercode": "if (parent == null || !parent.isFunction() ||",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 714,
+    "precode": "(cfa != null && node == cfa.root)) {",
+    "aftercode": "(cfa != null || node == cfa.root)) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 714,
+    "precode": "(cfa != null && node == cfa.root)) {",
+    "aftercode": "(cfa == null && node == cfa.root)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 722,
+    "precode": "return computeFollowNode(fromNode, parent, cfa);",
+    "aftercode": "return computeFollowNode(fromNode, node, cfa);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 728,
+    "precode": "if (parent.getNext().isCase()) {",
+    "aftercode": "if (!parent.getNext().isCase()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 729,
+    "precode": "return parent.getNext().getFirstChild().getNext();",
+    "aftercode": "return parent.getNext().getFirstChild();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 730,
+    "precode": "} else if (parent.getNext().isDefaultCase()) {",
+    "aftercode": "} else if (!parent.getNext().isDefaultCase()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 731,
+    "precode": "return parent.getNext().getFirstChild();",
+    "aftercode": "return parent.getNext();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 736,
+    "precode": "return computeFollowNode(fromNode, parent, cfa);",
+    "aftercode": "return computeFollowNode(fromNode, node, cfa);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 740,
+    "precode": "if (NodeUtil.isForIn(parent)) {",
+    "aftercode": "if (!NodeUtil.isForIn(parent)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 741,
+    "precode": "return parent;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 743,
+    "precode": "return parent.getFirstChild().getNext().getNext();",
+    "aftercode": "return parent.getFirstChild().getNext();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 750,
+    "precode": "if (parent.getFirstChild() == node) {",
+    "aftercode": "if (parent.getFirstChild() != node) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 751,
+    "precode": "if (NodeUtil.hasFinally(parent)) { // and have FINALLY block.",
+    "aftercode": "if (!NodeUtil.hasFinally(parent)) { // and have FINALLY block.",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 752,
+    "precode": "return computeFallThrough(parent.getLastChild());",
+    "aftercode": "return computeFallThrough(parent.getFirstChild());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 754,
+    "precode": "return computeFollowNode(fromNode, parent, cfa);",
+    "aftercode": "return computeFollowNode(fromNode, node, cfa);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 757,
+    "precode": "} else if (NodeUtil.getCatchBlock(parent) == node){",
+    "aftercode": "} else if (NodeUtil.getCatchBlock(parent) != node){",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 758,
+    "precode": "if (NodeUtil.hasFinally(parent)) { // and have FINALLY block.",
+    "aftercode": "if (!NodeUtil.hasFinally(parent)) { // and have FINALLY block.",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 759,
+    "precode": "return computeFallThrough(node.getNext());",
+    "aftercode": "return computeFallThrough(node);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 761,
+    "precode": "return computeFollowNode(fromNode, parent, cfa);",
+    "aftercode": "return computeFollowNode(fromNode, node, cfa);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 764,
+    "precode": "} else if (parent.getLastChild() == node){",
+    "aftercode": "} else if (parent.getLastChild() != node){",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 765,
+    "precode": "if (cfa != null) {",
+    "aftercode": "if (cfa == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 766,
+    "precode": "for (Node finallyNode : cfa.finallyMap.get(parent)) {",
+    "aftercode": "for (Node finallyNode : cfa.finallyMap.get(node)) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 767,
+    "precode": "cfa.createEdge(fromNode, Branch.ON_EX, finallyNode);",
+    "aftercode": "cfa.createEdge(node, Branch.ON_EX, finallyNode);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 770,
+    "precode": "return computeFollowNode(fromNode, parent, cfa);",
+    "aftercode": "return computeFollowNode(fromNode, node, cfa);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 776,
+    "precode": "Node nextSibling = node.getNext();",
+    "aftercode": "Node nextSibling = node.getPrev();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 779,
+    "precode": "while (nextSibling != null && nextSibling.isFunction()) {",
+    "aftercode": "while (nextSibling != null || nextSibling.isFunction()) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 779,
+    "precode": "while (nextSibling != null && nextSibling.isFunction()) {",
+    "aftercode": "while (nextSibling != null && !nextSibling.isFunction()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 780,
+    "precode": "nextSibling = nextSibling.getNext();",
+    "aftercode": "nextSibling = nextSibling.getPrev();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 783,
+    "precode": "if (nextSibling != null) {",
+    "aftercode": "if (nextSibling == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 784,
+    "precode": "return computeFallThrough(nextSibling);",
+    "aftercode": "return nextSibling;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/ControlFlowAnalysis.java",
+    "line": 787,
+    "precode": "return computeFollowNode(fromNode, parent, cfa);",
+    "aftercode": "return computeFollowNode(fromNode, node, cfa);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  }
+]

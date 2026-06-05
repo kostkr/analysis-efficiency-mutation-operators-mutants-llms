@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1735,
+    "precode": "Node astParameters = functionNode.getFirstChild().getNext();",
+    "aftercode": "Node astParameters = functionNode.getFirstChild().getFirstChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1735,
+    "precode": "Node astParameters = functionNode.getFirstChild().getNext();",
+    "aftercode": "Node astParameters = functionNode.getNext().getNext();",
+    "rule": "Object Member Access",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1736,
+    "precode": "Node body = astParameters.getNext();",
+    "aftercode": "Node body = astParameters.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1737,
+    "precode": "FunctionType functionType = (FunctionType) functionNode.getJSType();",
+    "aftercode": "FunctionType functionType = (FunctionType) functionNode.getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1739,
+    "precode": "Node jsDocParameters = functionType.getParametersNode();",
+    "aftercode": "Node jsDocParameters = functionType.getReturnTypeNode();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1741,
+    "precode": "Node jsDocParameter = jsDocParameters.getFirstChild();",
+    "aftercode": "Node jsDocParameter = jsDocParameters.getNextSibling();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1742,
+    "precode": "for (Node astParameter : astParameters.children()) {",
+    "aftercode": "for (Node astParameter : astParameters.getChildren()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1742,
+    "precode": "for (Node astParameter : astParameters.children()) {",
+    "aftercode": "for (Node astParameter : astParameters.getChildren().skip(1)) {",
+    "rule": "Iterator Modification",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1744,
+    "precode": "defineSlot(astParameter, functionNode,",
+    "aftercode": "defineSlot(functionNode, astParameter,",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1745,
+    "precode": "jsDocParameter.getJSType(), false);",
+    "aftercode": "jsDocParameter.getJSType(), true);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1745,
+    "precode": "jsDocParameter.getJSType(), false);",
+    "aftercode": "jsDocParameter.getJSType(), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1746,
+    "precode": "jsDocParameter = jsDocParameter.getNext();",
+    "aftercode": "jsDocParameter = jsDocParameter.getParent();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1748,
+    "precode": "defineSlot(astParameter, functionNode, null, true);",
+    "aftercode": "defineSlot(astParameter, functionNode, null, false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1748,
+    "precode": "defineSlot(astParameter, functionNode, null, true);",
+    "aftercode": "defineSlot(astParameter, null, null, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1746,
+    "precode": "jsDocParameter = jsDocParameter.getNext();",
+    "aftercode": "jsDocParameter = jsDocParameter.getNext(); jsDocParameter = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1741,
+    "precode": "Node jsDocParameter = jsDocParameters.getFirstChild();",
+    "aftercode": "Node jsDocParameter = jsDocParameters.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1738,
+    "precode": "if (functionType != null) {",
+    "aftercode": "if (functionType == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1740,
+    "precode": "if (jsDocParameters != null) {",
+    "aftercode": "if (jsDocParameters == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1743,
+    "precode": "if (jsDocParameter != null) {",
+    "aftercode": "if (jsDocParameter == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1737,
+    "precode": "FunctionType functionType = (FunctionType) functionNode.getJSType();",
+    "aftercode": "FunctionType functionType = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  }
+]

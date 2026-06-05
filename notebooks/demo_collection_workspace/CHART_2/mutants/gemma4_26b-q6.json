@@ -1,0 +1,842 @@
+[
+  {
+    "id": 1,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 743,
+    "precode": "throw new IllegalArgumentException(\"Null 'dataset' argument.\");",
+    "aftercode": "// throw new IllegalArgumentException(\"Null 'dataset' argument.\");",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 745,
+    "precode": "double minimum = Double.POSITIVE_INFINITY;",
+    "aftercode": "double minimum = Double.NEGATIVE_INFINITY;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 746,
+    "precode": "double maximum = Double.NEGATIVE_INFINITY;",
+    "aftercode": "double maximum = Double.POSITIVE_INFINITY;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 750,
+    "precode": "if (includeInterval && dataset instanceof IntervalXYDataset) {",
+    "aftercode": "if (includeInterval || dataset instanceof IntervalXYDataset) {",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 750,
+    "precode": "if (includeInterval && dataset instanceof IntervalXYDataset) {",
+    "aftercode": "if (includeInterval && !(dataset instanceof IntervalXYDataset)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 752,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 1; series < seriesCount; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 752,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 0; series <= seriesCount; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 753,
+    "precode": "int itemCount = dataset.getItemCount(series);",
+    "aftercode": "int itemCount = dataset.getItemCount(series - 1);",
+    "rule": "Variable Modification",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 754,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 1; item < itemCount; item++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 754,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 0; item <= itemCount; item++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 756,
+    "precode": "lvalue = intervalXYData.getStartXValue(series, item);",
+    "aftercode": "lvalue = intervalXYData.getEndXValue(series, item);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 757,
+    "precode": "uvalue = intervalXYData.getEndXValue(series, item);",
+    "aftercode": "uvalue = intervalXYData.getStartXValue(series, item);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 758,
+    "precode": "if (!Double.isNaN(value)) {",
+    "aftercode": "if (Double.isNaN(value)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 759,
+    "precode": "minimum = Math.min(minimum, value);",
+    "aftercode": "minimum = Math.max(minimum, value);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 760,
+    "precode": "maximum = Math.max(maximum, value);",
+    "aftercode": "maximum = Math.min(maximum, value);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 762,
+    "precode": "if (!Double.isNaN(lvalue)) {",
+    "aftercode": "if (Double.isNaN(lvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 763,
+    "precode": "minimum = Math.min(minimum, lvalue);",
+    "aftercode": "minimum = Math.max(minimum, lvalue);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 764,
+    "precode": "maximum = Math.max(maximum, lvalue);",
+    "aftercode": "maximum = Math.min(maximum, lvalue);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 766,
+    "precode": "if (!Double.isNaN(uvalue)) {",
+    "aftercode": "if (Double.isNaN(uvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 767,
+    "precode": "minimum = Math.min(minimum, uvalue);",
+    "aftercode": "minimum = Math.max(minimum, uvalue);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 768,
+    "precode": "maximum = Math.max(maximum, uvalue);",
+    "aftercode": "maximum = Math.min(maximum, uvalue);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 774,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 0; series < seriesCount - 1; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 776,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 0; item < itemCount - 1; item++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 779,
+    "precode": "if (!Double.isNaN(lvalue)) {",
+    "aftercode": "if (Double.isNaN(lvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 780,
+    "precode": "minimum = Math.min(minimum, lvalue);",
+    "aftercode": "minimum = Math.max(minimum, lvalue);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 781,
+    "precode": "maximum = Math.max(maximum, uvalue);",
+    "aftercode": "maximum = Math.min(maximum, uvalue);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 786,
+    "precode": "if (minimum > maximum) {",
+    "aftercode": "if (minimum >= maximum) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 786,
+    "precode": "if (minimum > maximum) {",
+    "aftercode": "if (minimum < maximum) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 787,
+    "precode": "return null;",
+    "aftercode": "return new Range(minimum, maximum);",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 790,
+    "precode": "return new Range(minimum, maximum);",
+    "aftercode": "return new Range(maximum, minimum);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 752,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 0; series < 0; series++) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 754,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 0; item < 0; item++) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 747,
+    "precode": "int seriesCount = dataset.getSeriesCount();",
+    "aftercode": "int seriesCount = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 753,
+    "precode": "int itemCount = dataset.getItemCount(series);",
+    "aftercode": "int itemCount = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 758,
+    "precode": "if (!Double.isNaN(value)) {",
+    "aftercode": "if (value != 0) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 762,
+    "precode": "if (!Double.isNaN(lvalue)) {",
+    "aftercode": "if (lvalue != 0) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 766,
+    "precode": "if (!Double.isNaN(uvalue)) {",
+    "aftercode": "if (uvalue != 0) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 779,
+    "precode": "if (!Double.isNaN(lvalue)) {",
+    "aftercode": "if (lvalue != 0) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 786,
+    "precode": "if (minimum > maximum) {",
+    "aftercode": "if (minimum < maximum) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 745,
+    "precode": "double minimum = Double.POSITIVE_INFINITY;",
+    "aftercode": "double minimum = 0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 746,
+    "precode": "double maximum = Double.NEGATIVE_INFINITY;",
+    "aftercode": "double maximum = 0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 750,
+    "precode": "if (includeInterval && dataset instanceof IntervalXYDataset) {",
+    "aftercode": "if (includeInterval && dataset == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 759,
+    "precode": "minimum = Math.min(minimum, value);",
+    "aftercode": "minimum = value;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 760,
+    "precode": "maximum = Math.max(maximum, value);",
+    "aftercode": "maximum = value;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 763,
+    "precode": "minimum = Math.min(minimum, lvalue);",
+    "aftercode": "minimum = lvalue;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 764,
+    "precode": "maximum = Math.max(maximum, lvalue);",
+    "aftercode": "maximum = lvalue;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 767,
+    "precode": "minimum = Math.min(minimum, uvalue);",
+    "aftercode": "minimum = uvalue;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 768,
+    "precode": "maximum = Math.max(maximum, uvalue);",
+    "aftercode": "maximum = uvalue;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 780,
+    "precode": "minimum = Math.min(minimum, lvalue);",
+    "aftercode": "minimum = lvalue;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 781,
+    "precode": "maximum = Math.max(maximum, uvalue);",
+    "aftercode": "maximum = uvalue;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 786,
+    "precode": "if (minimum > maximum) {",
+    "aftercode": "if (minimum == maximum) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 790,
+    "precode": "return new Range(minimum, maximum);",
+    "aftercode": "return new Range(0, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1238,
+    "precode": "double minimum = Double.POSITIVE_INFINITY;",
+    "aftercode": "double minimum = Double.NEGATIVE_INFINITY;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1239,
+    "precode": "double maximum = Double.NEGATIVE_INFINITY;",
+    "aftercode": "double maximum = Double.POSITIVE_INFINITY;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1243,
+    "precode": "if (includeInterval && dataset instanceof IntervalXYDataset) {",
+    "aftercode": "if (includeInterval || dataset instanceof IntervalXYDataset) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1243,
+    "precode": "if (includeInterval && dataset instanceof IntervalXYDataset) {",
+    "aftercode": "if (includeInterval && !(dataset instanceof IntervalXYDataset)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1246,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 1; series < seriesCount; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1246,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 0; series <= seriesCount; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1248,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 0; item <= itemCount; item++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1252,
+    "precode": "if (!Double.isNaN(value)) {",
+    "aftercode": "if (Double.isNaN(value)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1253,
+    "precode": "minimum = Math.min(minimum, value);",
+    "aftercode": "minimum = Math.max(minimum, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1254,
+    "precode": "maximum = Math.max(maximum, value);",
+    "aftercode": "maximum = Math.min(maximum, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1256,
+    "precode": "if (!Double.isNaN(lvalue)) {",
+    "aftercode": "if (Double.isNaN(lvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1257,
+    "precode": "minimum = Math.min(minimum, lvalue);",
+    "aftercode": "minimum = Math.max(minimum, lvalue);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1258,
+    "precode": "maximum = Math.max(maximum, lvalue);",
+    "aftercode": "maximum = Math.min(maximum, lvalue);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1260,
+    "precode": "if (!Double.isNaN(uvalue)) {",
+    "aftercode": "if (Double.isNaN(uvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1261,
+    "precode": "minimum = Math.min(minimum, uvalue);",
+    "aftercode": "minimum = Math.max(minimum, uvalue);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1262,
+    "precode": "maximum = Math.max(maximum, uvalue);",
+    "aftercode": "maximum = Math.min(maximum, uvalue);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1267,
+    "precode": "else if (includeInterval && dataset instanceof OHLCDataset) {",
+    "aftercode": "else if (includeInterval || dataset instanceof OHLCDataset) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1270,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 0; series <= seriesCount; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1272,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 1; item < itemCount; item++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1275,
+    "precode": "if (!Double.isNaN(lvalue)) {",
+    "aftercode": "if (Double.isNaN(lvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1276,
+    "precode": "minimum = Math.min(minimum, lvalue);",
+    "aftercode": "minimum = Math.max(minimum, lvalue);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1278,
+    "precode": "if (!Double.isNaN(uvalue)) {",
+    "aftercode": "if (Double.isNaN(uvalue)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1279,
+    "precode": "maximum = Math.max(maximum, uvalue);",
+    "aftercode": "maximum = Math.min(maximum, uvalue);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1286,
+    "precode": "for (int series = 0; series < seriesCount; series++) {",
+    "aftercode": "for (int series = 0; series < seriesCount - 1; series++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1287,
+    "precode": "int itemCount = dataset.getItemCount(series);",
+    "aftercode": "int itemCount = 0;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1288,
+    "precode": "for (int item = 0; item < itemCount; item++) {",
+    "aftercode": "for (int item = 0; item <= itemCount; item++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1290,
+    "precode": "if (!Double.isNaN(value)) {",
+    "aftercode": "if (Double.isNaN(value)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1291,
+    "precode": "minimum = Math.min(minimum, value);",
+    "aftercode": "minimum = Math.max(minimum, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1292,
+    "precode": "maximum = Math.max(maximum, value);",
+    "aftercode": "maximum = Math.min(maximum, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1297,
+    "precode": "if (minimum == Double.POSITIVE_INFINITY) {",
+    "aftercode": "if (minimum != Double.POSITIVE_INFINITY) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1297,
+    "precode": "if (minimum == Double.POSITIVE_INFINITY) {",
+    "aftercode": "if (minimum >= Double.POSITIVE_INFINITY) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "source/org/jfree/data/general/DatasetUtilities.java",
+    "line": 1301,
+    "precode": "return new Range(minimum, maximum);",
+    "aftercode": "return new Range(maximum, minimum);",
+    "rule": "Parameter Order",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  }
+]

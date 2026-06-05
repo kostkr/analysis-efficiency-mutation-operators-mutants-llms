@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 379,
+    "precode": "if (!removeGlobals) {",
+    "aftercode": "if (removeGlobals) {",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 383,
+    "precode": "Node function = fnScope.getRootNode();",
+    "aftercode": "Node function = fnScope.getParent();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 386,
+    "precode": "if (NodeUtil.isGetOrSetKey(function.getParent())) {",
+    "aftercode": "if (!NodeUtil.isGetOrSetKey(function.getParent())) {",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 392,
+    "precode": "boolean modifyCallers = modifyCallSites",
+    "aftercode": "boolean modifyCallers = !modifyCallSites",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 394,
+    "precode": "if (!modifyCallers) {",
+    "aftercode": "if (modifyCallers) {",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 397,
+    "precode": "while ((lastArg = argList.getLastChild()) != null) {",
+    "aftercode": "while ((lastArg = argList.getFirstChild()) != null) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 398,
+    "precode": "Var var = fnScope.getVar(lastArg.getString());",
+    "aftercode": "Var var = fnScope.getParent().getVar(lastArg.getString());",
+    "rule": "Object Reference Change",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 400,
+    "precode": "argList.removeChild(lastArg);",
+    "aftercode": "argList.removeChild(argList.getFirstChild());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/RemoveUnusedVars.java",
+    "line": 407,
+    "precode": "callSiteOptimizer.optimize(fnScope, referenced);",
+    "aftercode": "callSiteOptimizer.optimize(fnScope, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  }
+]

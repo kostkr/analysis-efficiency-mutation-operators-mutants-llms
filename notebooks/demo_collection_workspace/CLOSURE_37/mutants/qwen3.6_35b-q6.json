@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 511,
+    "precode": "Preconditions.checkState(n.getChildCount() == 3);",
+    "aftercode": "Preconditions.checkState(n.getChildCount() != 3);",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 512,
+    "precode": "Preconditions.checkState(n.isFunction());",
+    "aftercode": "Preconditions.checkState(!n.isFunction());",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 516,
+    "precode": "boolean isFunctionExpression = (parent != null)",
+    "aftercode": "boolean isFunctionExpression = (parent == null)",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 519,
+    "precode": "if (!isFunctionExpression) {",
+    "aftercode": "if (isFunctionExpression) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 521,
+    "precode": "traverseBranch(fnName, n);",
+    "aftercode": "traverseBranch(n, fnName);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 525,
+    "precode": "pushScope(n);",
+    "aftercode": "pushScope(null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 527,
+    "precode": "if (isFunctionExpression) {",
+    "aftercode": "if (!isFunctionExpression) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 530,
+    "precode": "traverseBranch(fnName, n);",
+    "aftercode": "traverseBranch(n, fnName);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 533,
+    "precode": "final Node args = fnName.getNext();",
+    "aftercode": "final Node args = fnName.getPrevious();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 534,
+    "precode": "final Node body = args.getNext();",
+    "aftercode": "final Node body = args.getPrevious();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 537,
+    "precode": "traverseBranch(args, n);",
+    "aftercode": "traverseBranch(n, args);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 540,
+    "precode": "Preconditions.checkState(body.getNext() == null &&",
+    "aftercode": "Preconditions.checkState(body.getNext() != null &&",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 541,
+    "precode": "body.isBlock(), body);",
+    "aftercode": "body.isBlock(), null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 542,
+    "precode": "traverseBranch(body, n);",
+    "aftercode": "traverseBranch(n, body);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 514,
+    "precode": "final Node fnName = n.getFirstChild();",
+    "aftercode": "final Node fnName = n.getLastChild();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 517,
+    "precode": "&& NodeUtil.isFunctionExpression(n);",
+    "aftercode": "|| NodeUtil.isFunctionExpression(n);",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 524,
+    "precode": "curNode = n;",
+    "aftercode": "curNode = null;",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 534,
+    "precode": "final Node body = args.getNext();",
+    "aftercode": "final Node body = args.getNext().getNext();",
+    "rule": "Arithmetic Addition",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 533,
+    "precode": "final Node args = fnName.getNext();",
+    "aftercode": "final Node args = fnName.getNext().getNext();",
+    "rule": "Arithmetic Addition",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 511,
+    "precode": "Preconditions.checkState(n.getChildCount() == 3);",
+    "aftercode": "Preconditions.checkState(n.getChildCount() == 2);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 511,
+    "precode": "Preconditions.checkState(n.getChildCount() == 3);",
+    "aftercode": "Preconditions.checkState(n.getChildCount() == 4);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 540,
+    "precode": "Preconditions.checkState(body.getNext() == null &&",
+    "aftercode": "Preconditions.checkState(body.getNext() == null ||",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 516,
+    "precode": "boolean isFunctionExpression = (parent != null)",
+    "aftercode": "boolean isFunctionExpression = (parent != null)",
+    "rule": "Dead Code",
+    "gen_time_s": 2.07,
+    "dublicate": true
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 516,
+    "precode": "boolean isFunctionExpression = (parent != null)",
+    "aftercode": "boolean isFunctionExpression = true",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 516,
+    "precode": "boolean isFunctionExpression = (parent != null)",
+    "aftercode": "boolean isFunctionExpression = false",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 525,
+    "precode": "pushScope(n);",
+    "aftercode": "pushScope(fnName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 537,
+    "precode": "traverseBranch(args, n);",
+    "aftercode": "traverseBranch(args, null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 542,
+    "precode": "traverseBranch(body, n);",
+    "aftercode": "traverseBranch(body, null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 544,
+    "precode": "popScope();",
+    "aftercode": "popScope(); popScope();",
+    "rule": "Duplicate Statement",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 544,
+    "precode": "popScope();",
+    "aftercode": "// popScope();",
+    "rule": "Comment Out",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 512,
+    "precode": "Preconditions.checkState(n.isFunction());",
+    "aftercode": "Preconditions.checkState(n.isFunction() && true);",
+    "rule": "Dead Code",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 512,
+    "precode": "Preconditions.checkState(n.isFunction());",
+    "aftercode": "Preconditions.checkState(n.isFunction() || true);",
+    "rule": "Dead Code",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 533,
+    "precode": "final Node args = fnName.getNext();",
+    "aftercode": "final Node args = fnName.getNext();",
+    "rule": "No-Op",
+    "gen_time_s": 2.07,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 534,
+    "precode": "final Node body = args.getNext();",
+    "aftercode": "final Node body = args.getNext();",
+    "rule": "No-Op",
+    "gen_time_s": 2.07,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 537,
+    "precode": "traverseBranch(args, n);",
+    "aftercode": "traverseBranch(args, n);",
+    "rule": "No-Op",
+    "gen_time_s": 2.07,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/NodeTraversal.java",
+    "line": 542,
+    "precode": "traverseBranch(body, n);",
+    "aftercode": "traverseBranch(body, n);",
+    "rule": "No-Op",
+    "gen_time_s": 2.07,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 615,
+    "precode": "if (functionType != FunctionNode.FUNCTION_EXPRESSION) {",
+    "aftercode": "if (functionType == FunctionNode.FUNCTION_EXPRESSION) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 619,
+    "precode": "functionNode.getLineno(), \"\", 0);",
+    "aftercode": "functionNode.getLineno(), \"\", -1);",
+    "rule": "Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 622,
+    "precode": "return newNode(Token.EXPR_RESULT, Node.newNumber(0));",
+    "aftercode": "return newNode(Token.EXPR_RESULT, Node.newNumber(1));",
+    "rule": "Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 626,
+    "precode": "isUnnamedFunction = true;",
+    "aftercode": "isUnnamedFunction = false;",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 633,
+    "precode": "newName.setLineno(functionNode.getLineno());",
+    "aftercode": "newName.setLineno(0);",
+    "rule": "Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 637,
+    "precode": "int lpColumn = functionNode.getAbsolutePosition() +",
+    "aftercode": "int lpColumn = functionNode.getAbsolutePosition() -",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 652,
+    "precode": "if (fnName != null) {",
+    "aftercode": "if (fnName == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 667,
+    "precode": "if (!bodyNode.isBlock()) {",
+    "aftercode": "if (bodyNode.isBlock()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 671,
+    "precode": "Preconditions.checkState(config.isIdeMode);",
+    "aftercode": "Preconditions.checkState(!config.isIdeMode);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 625,
+    "precode": "name.setIdentifier(\"\");",
+    "aftercode": "name.setIdentifier(\" \");",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 410,
+    "precode": "ObjectType objectType =",
+    "aftercode": "ObjectType objectType = ObjectType.cast(dereference(getprop.getFirstChild().getJSType()));",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 416,
+    "precode": "boolean isOverride = parent.getJSDocInfo() != null &&",
+    "aftercode": "boolean isOverride = parent.getJSDocInfo() == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 417,
+    "precode": "parent.getType() == Token.ASSIGN &&",
+    "aftercode": "parent.getType() != Token.ASSIGN &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 418,
+    "precode": "parent.getFirstChild() == getprop;",
+    "aftercode": "parent.getFirstChild() != getprop;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 423,
+    "precode": "objectType = objectType.getImplicitPrototype();",
+    "aftercode": "objectType = objectType;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 428,
+    "precode": "docInfo = objectType.getOwnPropertyJSDocInfo(propertyName);",
+    "aftercode": "docInfo = null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 429,
+    "precode": "if (docInfo != null &&",
+    "aftercode": "if (docInfo == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 430,
+    "precode": "docInfo.getVisibility() != Visibility.INHERITED) {",
+    "aftercode": "docInfo.getVisibility() == Visibility.INHERITED) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 435,
+    "precode": "if (objectType == null) {",
+    "aftercode": "if (objectType != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 441,
+    "precode": "t.getInput().getName().equals(docInfo.getSourceName());",
+    "aftercode": "t.getInput().getName().equals(docInfo.getFileName());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 447,
+    "precode": "JSDocInfo overridingInfo = parent.getJSDocInfo();",
+    "aftercode": "JSDocInfo overridingInfo = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 448,
+    "precode": "Visibility overridingVisibility = overridingInfo == null ?",
+    "aftercode": "Visibility overridingVisibility = overridingInfo != null ?",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 449,
+    "precode": "Visibility.INHERITED : overridingInfo.getVisibility();",
+    "aftercode": "overridingInfo.getVisibility() : Visibility.INHERITED;",
+    "rule": "Return Value Swap",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 454,
+    "precode": "if (visibility == Visibility.PRIVATE && !sameInput) {",
+    "aftercode": "if (visibility == Visibility.PRIVATE || !sameInput) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 458,
+    "precode": "} else if (overridingVisibility != Visibility.INHERITED &&",
+    "aftercode": "} else if (overridingVisibility == Visibility.INHERITED &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 459,
+    "precode": "overridingVisibility != visibility) {",
+    "aftercode": "overridingVisibility == visibility) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 466,
+    "precode": "if (sameInput) {",
+    "aftercode": "if (!sameInput) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 469,
+    "precode": "} else if (visibility == Visibility.PRIVATE &&",
+    "aftercode": "} else if (visibility != Visibility.PRIVATE &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 470,
+    "precode": "(currentClass == null || ownerType.differsFrom(currentClass))) {",
+    "aftercode": "(currentClass != null && ownerType.isSubtype(currentClass))) {",
+    "rule": "Logic Inversion",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 471,
+    "precode": "if (docInfo.isConstructor() &&",
+    "aftercode": "if (docInfo.isConstructor() ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 472,
+    "precode": "isValidPrivateConstructorAccess(parent)) {",
+    "aftercode": "!isValidPrivateConstructorAccess(parent)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CheckAccessControls.java",
+    "line": 490,
+    "precode": "if (currentClass == null || !currentClass.isSubtype(ownerType)) {",
+    "aftercode": "if (currentClass != null && currentClass.isSubtype(ownerType)) {",
+    "rule": "Logic Inversion",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  }
+]

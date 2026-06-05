@@ -20,6 +20,7 @@ import re
 import shlex
 import subprocess
 import time
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Tuple
@@ -57,19 +58,100 @@ def _parse_junit_xml(xml_raw: str, test_class: str) -> set[str]:
     Defects4J ant runner writes ``TEST-<ClassName>.xml`` reports after each run
     even for targeted (``-t``) runs.
     """
-    result: set[str] = set()
-    for m in re.finditer(r'<testcase\b[^>]*\bname="([^"]+)"', xml_raw):
-        result.add(f"{test_class}::{m.group(1)}")
+    result, _ = _parse_junit_xml_report(xml_raw, default_class=test_class)
     return result
+
+
+def _parse_junit_xml_report(
+    xml_raw: str,
+    *,
+    default_class: str = "",
+) -> tuple[set[str], set[str]]:
+    """Parse a JUnit XML report and return (all_tests, failing_tests)."""
+    all_tests: set[str] = set()
+    failing_tests: set[str] = set()
+    raw = str(xml_raw or "").strip()
+    if not raw:
+        return all_tests, failing_tests
+
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError:
+        return all_tests, failing_tests
+
+    for testcase in root.iter():
+        if not str(testcase.tag).endswith("testcase"):
+            continue
+        class_name = str(testcase.attrib.get("classname") or default_class).strip()
+        method_name = str(testcase.attrib.get("name") or "").strip()
+        if not class_name or not method_name:
+            continue
+        test_id = f"{class_name}::{method_name}"
+        all_tests.add(test_id)
+        if any(str(child.tag).endswith(("failure", "error")) for child in testcase):
+            failing_tests.add(test_id)
+
+    return all_tests, failing_tests
 
 
 def _parse_failing_tests_output(raw: str) -> set[str]:
     """Parse failing Defects4J test IDs from command stdout."""
-    return {
-        line.strip()[2:]
-        for line in raw.splitlines()
-        if line.strip().startswith("- ") and "::" in line
-    }
+    result: set[str] = set()
+    in_failing_section = False
+    for raw_line in raw.splitlines():
+        line = raw_line.strip()
+        if line.startswith("Failing tests:"):
+            in_failing_section = True
+            continue
+        if not in_failing_section:
+            continue
+        if not line:
+            if result:
+                break
+            continue
+        if not line.startswith("- "):
+            break
+        test_id = line[2:].strip()
+        if "::" in test_id:
+            result.add(test_id)
+            continue
+        if "(" in test_id and test_id.endswith(")"):
+            method, rest = test_id.split("(", 1)
+            cls = rest[:-1].strip()
+            method = method.strip()
+            if cls and method:
+                result.add(f"{cls}::{method}")
+    return result
+
+
+def _parse_failing_tests_file(raw: str) -> set[str]:
+    """Parse Defects4J ``failing_tests`` file entries."""
+    result: set[str] = set()
+    for raw_line in raw.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("Failing tests:"):
+            continue
+        if line.startswith("--- "):
+            line = line[4:].strip()
+        elif line.startswith("- "):
+            line = line[2:].strip()
+        if "::" in line and " " not in line and not line.startswith("at "):
+            result.add(line)
+            continue
+        if "(" in line and line.endswith(")"):
+            method, rest = line.split("(", 1)
+            cls = rest[:-1].strip()
+            method = method.strip()
+            if cls and method and " " not in cls and " " not in method and not method.startswith("at "):
+                result.add(f"{cls}::{method}")
+    return result
+
+
+def _collect_failing_tests(*, failing_raw: str, output_raw: str) -> list[str]:
+    return sorted(
+        set(_parse_failing_tests_file(failing_raw))
+        | set(_parse_failing_tests_output(output_raw))
+    )
 
 
 def _effective_mutant_timeout_s(configured_timeout_s: int, suite_total_tests: int) -> int:
@@ -351,7 +433,7 @@ class Defects4J:
     def mutant_run_cleanup_paths(self, container_path: str, filepath: str) -> tuple[str, ...]:
         """Return artifact paths/patterns that must be removed before one mutant run."""
         config = self._mutant_run_cleanup_config(container_path)
-        cleanup_paths: list[str] = ["all_tests"]
+        cleanup_paths: list[str] = ["all_tests", "failing_tests"]
         source_path = str(filepath).strip().lstrip("/")
 
         for src_root, bin_root in config["source_bin_pairs"]:
@@ -520,23 +602,34 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
             raise RuntimeError(f"export {prop} failed:\n{err}")
         return [line.strip() for line in out.strip().splitlines() if line.strip()]
 
-    def compile_result(self, container_path: str) -> Tuple[bool, str]:
+    def compile_result(self, container_path: str, timeout: int = 600) -> Tuple[bool, str]:
         """
         Compile the project and return (success, error_summary).
 
         Unlike compile(), returns the error message for storage in results.
         """
-        _, err, rc = self.exec(f"cd {container_path} && defects4j compile")
+        _, err, rc = self.exec(f"cd {container_path} && defects4j compile", timeout=timeout)
         if rc == 0:
             return True, ""
         # Extract a short error summary (first 400 chars of stderr)
         summary = err.strip()[:400] if err.strip() else "compile failed (no stderr)"
         return False, summary
 
-    def compile(self, container_path: str) -> bool:
+    def compile(self, container_path: str, timeout: int = 600) -> bool:
         """Compile project. Returns True on success (simple convenience wrapper)."""
-        ok, _ = self.compile_result(container_path)
+        ok, _ = self.compile_result(container_path, timeout=timeout)
         return ok
+
+    def warm_compile(self, container_path: str, timeout: int = 600) -> float:
+        """Compile one clean checkout once so the first mutant run is not cold."""
+        t0 = time.perf_counter()
+        ok, err = self.compile_result(container_path, timeout=timeout)
+        run_time_s = round(time.perf_counter() - t0, 2)
+        if not ok:
+            raise RuntimeError(
+                f"compile warmup failed for {container_path}:\n{err}"
+            )
+        return run_time_s
 
     def reset_checkout(self, container_path: str, timeout: int = 60) -> None:
         """Restore a checkout to a clean git state before reusing it."""
@@ -566,17 +659,20 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         """Run a clean ``defects4j test -r`` once and return the authoritative suite profile."""
         t0 = time.perf_counter()
         out, err, rc = self.exec(
-            f"cd {container_path} && rm -f all_tests && defects4j test -r",
+            f"cd {container_path} && rm -f all_tests failing_tests && defects4j test -r",
             timeout=timeout,
         )
         run_time_s = round(time.perf_counter() - t0, 2)
         all_raw, _, _ = self.exec(
             f"cat {container_path}/all_tests 2>/dev/null || true",
         )
+        failing_raw, _, _ = self.exec(
+            f"cat {container_path}/failing_tests 2>/dev/null || true",
+        )
         all_tests = sorted(_parse_all_tests_file(all_raw))
-        failing_tests = sorted(_parse_failing_tests_output(out))
+        failing_tests = _collect_failing_tests(failing_raw=failing_raw, output_raw=out)
 
-        if rc != 0 and "Failing tests:" not in out:
+        if rc != 0 and not failing_tests:
             msg = (err.strip() or out.strip() or "defects4j test -r failed")[:400]
             raise RuntimeError(
                 f"clean relevant-suite run failed for {container_path}:\n{msg}"
@@ -596,13 +692,16 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         """Run one clean warmup ``defects4j test -r`` that is excluded from mutant timings."""
         t0 = time.perf_counter()
         out, err, rc = self.exec(
-            f"cd {container_path} && rm -f all_tests && defects4j test -r",
+            f"cd {container_path} && rm -f all_tests failing_tests && defects4j test -r",
             timeout=timeout,
         )
         run_time_s = round(time.perf_counter() - t0, 2)
-        failing_tests = sorted(_parse_failing_tests_output(out))
+        failing_raw, _, _ = self.exec(
+            f"cat {container_path}/failing_tests 2>/dev/null || true",
+        )
+        failing_tests = _collect_failing_tests(failing_raw=failing_raw, output_raw=out)
 
-        if rc != 0 and "Failing tests:" not in out:
+        if rc != 0 and not failing_tests:
             msg = (err.strip() or out.strip() or "defects4j test -r warmup failed")[:400]
             raise RuntimeError(
                 f"relevant-suite warmup failed for {container_path}:\n{msg}"
@@ -677,11 +776,58 @@ def parse_all_tests(raw):
 
 
 def parse_failing_tests(raw):
-    return sorted(
-        line.strip()[2:]
-        for line in raw.splitlines()
-        if line.strip().startswith('- ') and '::' in line
-    )
+    result = set()
+    in_failing_section = False
+    for raw_line in raw.splitlines():
+        line = raw_line.strip()
+        if line.startswith('Failing tests:'):
+            in_failing_section = True
+            continue
+        if not in_failing_section:
+            continue
+        if not line:
+            if result:
+                break
+            continue
+        if not line.startswith('- '):
+            break
+        test_id = line[2:].strip()
+        if '::' in test_id:
+            result.add(test_id)
+            continue
+        if '(' in test_id and test_id.endswith(')'):
+            method, rest = test_id.split('(', 1)
+            cls = rest[:-1].strip()
+            method = method.strip()
+            if cls and method:
+                result.add(f"{{cls}}::{{method}}")
+    return sorted(result)
+
+
+def parse_failing_tests_file(raw):
+    result = set()
+    for raw_line in raw.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith('Failing tests:'):
+            continue
+        if line.startswith('--- '):
+            line = line[4:].strip()
+        elif line.startswith('- '):
+            line = line[2:].strip()
+        if '::' in line and ' ' not in line and not line.startswith('at '):
+            result.add(line)
+            continue
+        if '(' in line and line.endswith(')'):
+            method, rest = line.split('(', 1)
+            cls = rest[:-1].strip()
+            method = method.strip()
+            if cls and method and ' ' not in cls and ' ' not in method and not method.startswith('at '):
+                result.add(f"{{cls}}::{{method}}")
+    return sorted(result)
+
+
+def collect_failing_tests(failing_raw, output_raw):
+    return sorted(set(parse_failing_tests_file(failing_raw)) | set(parse_failing_tests(output_raw)))
 
 
 payload = json.loads(base64.b64decode(os.environ['MUTANT_PAYLOAD_B64']).decode('utf-8'))
@@ -794,18 +940,28 @@ try:
     record['run_time_s'] = record['test_time_s']
 
     output = (proc['stdout'] or '') + '\\n' + (proc['stderr'] or '')
-    failing = parse_failing_tests(output)
+    try:
+        failing_raw = (root / 'failing_tests').read_text(encoding='utf-8')
+    except FileNotFoundError:
+        failing_raw = ''
+    failing = collect_failing_tests(failing_raw, output)
+    tests_ran = 'Running ant (compile.tests)' in output and 'Running ant (run.dev.tests)' in output
 
-    if 'Failing tests:' in output:
+    if 'Failing tests:' in output and failing:
         record['compiled'] = True
         record['test_executed'] = True
         record['failing_tests'] = failing
         record['failing_count'] = len(failing)
-    elif 'Running ant (compile.tests)' in output and 'Running ant (run.dev.tests)' in output:
+    elif tests_ran and failing:
         record['compiled'] = True
         record['test_executed'] = True
-        record['failing_tests'] = failing or ['<test failure>']
-        record['failing_count'] = len(record['failing_tests'])
+        record['failing_tests'] = failing
+        record['failing_count'] = len(failing)
+    elif tests_ran and proc['returncode'] == 0:
+        record['compiled'] = True
+        record['test_executed'] = True
+        record['failing_tests'] = []
+        record['failing_count'] = 0
     else:
         record['compiled'] = False
         msg = (output or 'defects4j test failed').strip()
@@ -1014,6 +1170,11 @@ class ParallelCheckoutPool:
         """Return a previously borrowed checkout back to the pool."""
         self._available.put(checkout)
 
+    def reset_workspace(self, checkout: ContainerCheckout, timeout: int = 300) -> None:
+        """Restore one worker checkout from the shared clean base checkout."""
+        self.d4j.kill_processes_under_path(checkout.container_path, timeout=min(timeout, 30))
+        self._copy_checkout(self.base_container_path, checkout.container_path)
+
     def cleanup(self) -> None:
         """Delete all worker checkout copies created by this pool."""
         self.d4j.kill_processes_under_path(self.pool_container_root)
@@ -1046,16 +1207,54 @@ class ParallelCheckoutPool:
             self.d4j.reset_checkout(self.base_container_path)
 
     def _copy_checkout(self, src: str, dest: str) -> None:
-        self._run_checked(
+        copy_cmd = (
             f"rm -rf {shlex.quote(dest)} && "
             f"mkdir -p {shlex.quote(dest)} && "
-            f"tar -C {shlex.quote(src)} -cf - . | "
-            f"tar -C {shlex.quote(dest)} -xf -",
-            timeout=300,
-            action=f"copy checkout to {dest}",
+            f"tar -C {shlex.quote(src)} "
+            f"--exclude='./.git' "
+            f"--exclude='./build' "
+            f"--exclude='./target' "
+            f"--exclude='./all_tests' "
+            f"--exclude='./failing_tests' "
+            f"-cf - . | "
+            f"tar -C {shlex.quote(dest)} -xf -"
         )
+        try:
+            self._run_checked(
+                copy_cmd,
+                timeout=300,
+                action=f"copy checkout to {dest}",
+            )
+        except RuntimeError as copy_error:
+            self._run_checked(
+                f"rm -rf {shlex.quote(dest)}",
+                timeout=120,
+                action=f"remove broken checkout {dest}",
+            )
+            try:
+                self.d4j.checkout(
+                    self.project,
+                    self.bug_id,
+                    self.version,
+                    dest=dest,
+                    timeout=300,
+                )
+                self._run_checked(
+                    f"rm -rf {shlex.quote(dest)}/.git "
+                    f"{shlex.quote(dest)}/build "
+                    f"{shlex.quote(dest)}/target "
+                    f"{shlex.quote(dest)}/all_tests "
+                    f"{shlex.quote(dest)}/failing_tests",
+                    timeout=120,
+                    action=f"trim fallback checkout {dest}",
+                )
+            except Exception as fallback_error:
+                raise RuntimeError(
+                    f"{copy_error}\n\nfallback checkout for {dest} failed:\n{fallback_error}"
+                ) from fallback_error
 
     def _run_checked(self, bash_cmd: str, timeout: int, action: str) -> None:
-        _, err, rc = self.d4j.exec(bash_cmd, timeout=timeout)
+        out, err, rc = self.d4j.exec(bash_cmd, timeout=timeout)
         if rc != 0:
-            raise RuntimeError(f"{action} failed:\n{err}")
+            message = (err.strip() or out.strip() or f"exit code {rc}")
+            raise RuntimeError(f"{action} failed:\n{message}")

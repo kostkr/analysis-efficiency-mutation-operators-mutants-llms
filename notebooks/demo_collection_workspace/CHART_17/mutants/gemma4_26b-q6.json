@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "filepath": "source/org/jfree/data/time/TimeSeries.java",
+    "line": 857,
+    "precode": "TimeSeries clone = (TimeSeries) super.clone();",
+    "aftercode": "TimeSeries clone = (TimeSeries) this.clone();",
+    "rule": "Recursive Call",
+    "gen_time_s": 1.73,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "source/org/jfree/data/time/TimeSeries.java",
+    "line": 858,
+    "precode": "clone.data = (List) ObjectUtilities.deepClone(this.data);",
+    "aftercode": "clone.data = (List) ObjectUtilities.shallowClone(this.data);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.73,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "source/org/jfree/data/time/TimeSeries.java",
+    "line": 858,
+    "precode": "clone.data = (List) ObjectUtilities.deepClone(this.data);",
+    "aftercode": "clone.data = (List) ObjectUtilities.deepClone(clone.data);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.73,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "source/org/jfree/data/time/TimeSeries.java",
+    "line": 858,
+    "precode": "clone.data = (List) ObjectUtilities.deepClone(this.data);",
+    "aftercode": "clone.data = (List) this.data;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.73,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "source/org/jfree/data/time/TimeSeries.java",
+    "line": 858,
+    "precode": "clone.data = (List) ObjectUtilities.deepClone(this.data);",
+    "aftercode": "clone.data = (List) ObjectUtilities.deepClone(this.data.subList(0, 1));",
+    "rule": "Array/List Truncation",
+    "gen_time_s": 1.73,
+    "dublicate": false
+  }
+]

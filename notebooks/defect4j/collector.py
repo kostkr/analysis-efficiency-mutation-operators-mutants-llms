@@ -207,9 +207,9 @@ class DataCollector:
             version="f",
             base_container_path=base_container_path,
         )
-        pool.prepare()
-
         try:
+            pool.prepare()
+            self._warm_parallel_checkouts(pool, workers, test_timeout)
             with ThreadPoolExecutor(max_workers=workers) as executor:
                 futures = {
                     executor.submit(
@@ -254,8 +254,9 @@ class DataCollector:
             version="f",
             base_container_path=base_container_path,
         )
-        pool.prepare()
         try:
+            pool.prepare()
+            self._warm_parallel_checkouts(pool, workers, test_timeout)
             with ThreadPoolExecutor(max_workers=workers) as executor:
                 futures = {
                     executor.submit(
@@ -278,8 +279,8 @@ class DataCollector:
         return [record for record in records if record is not None]
 
     def _warm_checkout(self, container_path: str, test_timeout: int) -> None:
-        warm_time = self.d4j.warm_relevant_suite(container_path, timeout=test_timeout)
-        self._log(f"  warmup   : checkout warmed in {warm_time}s")
+        warm_time = self.d4j.warm_compile(container_path, timeout=test_timeout)
+        self._log(f"  warmup   : checkout compiled in {warm_time}s")
 
     def _warm_parallel_checkouts(
         self,
@@ -295,7 +296,7 @@ class DataCollector:
         with ThreadPoolExecutor(max_workers=min(workers, len(workspaces))) as executor:
             futures = {
                 executor.submit(
-                    self.d4j.warm_relevant_suite,
+                    self.d4j.warm_compile,
                     checkout.container_path,
                     test_timeout,
                 ): index
@@ -308,7 +309,7 @@ class DataCollector:
         if completed:
             avg = round(sum(completed) / len(completed), 2)
             self._log(
-                f"  warmup   : {len(completed)} parallel checkouts warmed "
+                f"  warmup   : {len(completed)} parallel checkouts compiled "
                 f"(avg {avg}s, max {max(completed):.2f}s)"
             )
 
@@ -364,7 +365,7 @@ class DataCollector:
             try:
                 if should_reset:
                     try:
-                        self.d4j.reset_checkout(checkout.container_path)
+                        pool.reset_workspace(checkout)
                     except Exception as exc:
                         context = "after exception" if run_error is not None else "after failed run"
                         self._log(
@@ -497,11 +498,11 @@ class DataCollector:
                 and "Running ant (compile.tests)" in error_text \
                 and "OK" in error_text \
                 and "Running ant (run.dev.tests)" in error_text \
-                and "FAIL" in error_text:
+                and "FAIL" in error_text \
+                and record["failing_tests"]:
             record["compiled"] = True
             record["test_executed"] = True
             record["compile_error"] = ""
-            record["failing_tests"] = record["failing_tests"] or ["<test failure>"]
             record["failing_count"] = len(record["failing_tests"])
 
         if record["compiled"] is False and str(record["compile_error"]).startswith("apply_failed:"):

@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 156,
+    "precode": "boolean ret = false;",
+    "aftercode": "boolean ret = true;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 157,
+    "precode": "Set<String> validProperties = Sets.newHashSet();",
+    "aftercode": "Set<String> validProperties = Sets.newHashSet(Collections.emptySet());",
+    "rule": "No-op",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 166,
+    "precode": "if (parent.isGetProp()) {",
+    "aftercode": "if (!parent.isGetProp()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 167,
+    "precode": "Preconditions.checkState(parent.getFirstChild() == name);",
+    "aftercode": "Preconditions.checkState(parent.getFirstChild() != name);",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 169,
+    "precode": "if (gramps.isCall()",
+    "aftercode": "if (!gramps.isCall()",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 170,
+    "precode": "&& gramps.getFirstChild() == parent) {",
+    "aftercode": "&& gramps.getFirstChild() != parent) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 170,
+    "precode": "&& gramps.getFirstChild() == parent) {",
+    "aftercode": "|| gramps.getFirstChild() == parent) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 183,
+    "precode": "if (!validProperties.contains(propName)) {",
+    "aftercode": "if (validProperties.contains(propName)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 184,
+    "precode": "if (NodeUtil.isVarOrSimpleAssignLhs(parent, gramps)) {",
+    "aftercode": "if (!NodeUtil.isVarOrSimpleAssignLhs(parent, gramps)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 185,
+    "precode": "validProperties.add(propName);",
+    "aftercode": "// validProperties.add(propName);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 190,
+    "precode": "continue;",
+    "aftercode": "// continue;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 194,
+    "precode": "if (!isVarOrAssignExprLhs(name)) {",
+    "aftercode": "if (isVarOrAssignExprLhs(name)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 199,
+    "precode": "if (val == null) {",
+    "aftercode": "if (val != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 201,
+    "precode": "continue;",
+    "aftercode": "return false;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 205,
+    "precode": "if (!val.isObjectLit()) {",
+    "aftercode": "if (val.isObjectLit()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 217,
+    "precode": "for (Node child = val.getFirstChild(); child != null;",
+    "aftercode": "for (Node child = val.getFirstChild(); child != null; child = child.getPrevious()) {",
+    "rule": "Loop Direction",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 219,
+    "precode": "if (child.isGetterDef() ||",
+    "aftercode": "if (child.isGetterDef() &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 220,
+    "precode": "child.isSetterDef()) {",
+    "aftercode": "!child.isSetterDef()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 225,
+    "precode": "validProperties.add(child.getString());",
+    "aftercode": "validProperties.add(\"\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 231,
+    "precode": "for (Reference t : refs) {",
+    "aftercode": "for (Reference t : new ArrayList<Reference>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 233,
+    "precode": "while (!NodeUtil.isStatementBlock(refNode)) {",
+    "aftercode": "while (NodeUtil.isStatementBlock(refNode)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 234,
+    "precode": "if (refNode == childVal) {",
+    "aftercode": "if (refNode != childVal) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 247,
+    "precode": "ret = true;",
+    "aftercode": "ret = false;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 249,
+    "precode": "return ret;",
+    "aftercode": "return true;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  }
+]

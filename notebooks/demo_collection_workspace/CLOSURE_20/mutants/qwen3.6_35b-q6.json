@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 210,
+    "precode": "Node callTarget = n.getFirstChild();",
+    "aftercode": "Node callTarget = n.getLastChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 212,
+    "precode": "callTarget.getString().equals(\"String\")) {",
+    "aftercode": "callTarget.getString().equals(\"Number\")) {",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 219,
+    "precode": "Node value = callTarget.getNext();",
+    "aftercode": "Node value = callTarget.getPrevious();",
+    "rule": "Sibling Access Swap",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 220,
+    "precode": "if (value != null && value.getNext() == null &&",
+    "aftercode": "if (value == null && value.getNext() == null &&",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 220,
+    "precode": "if (value != null && value.getNext() == null &&",
+    "aftercode": "if (value != null && value.getNext() != null &&",
+    "rule": "Boundary Condition Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 222,
+    "precode": "Node addition = IR.add(",
+    "aftercode": "Node addition = IR.sub(",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 223,
+    "precode": "IR.string(\"\").srcref(callTarget),",
+    "aftercode": "IR.string(\" \").srcref(callTarget),",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 224,
+    "precode": "value.detachFromParent());",
+    "aftercode": "value.copy();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 225,
+    "precode": "n.getParent().replaceChild(n, addition);",
+    "aftercode": "n.getParent().removeChild(n);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 225,
+    "precode": "n.getParent().replaceChild(n, addition);",
+    "aftercode": "n.getParent().replaceChild(addition, n);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 227,
+    "precode": "return addition;",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 227,
+    "precode": "return addition;",
+    "aftercode": "return n;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 229,
+    "precode": "}",
+    "aftercode": "if (false) {",
+    "rule": "Condition False",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 211,
+    "precode": "if (callTarget != null && callTarget.isName() &&",
+    "aftercode": "if (callTarget == null && callTarget.isName() &&",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 211,
+    "precode": "if (callTarget != null && callTarget.isName() &&",
+    "aftercode": "if (callTarget != null && !callTarget.isName() &&",
+    "rule": "Negation Insertion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 212,
+    "precode": "callTarget.getString().equals(\"String\")) {",
+    "aftercode": "callTarget.getString().startsWith(\"String\")) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 221,
+    "precode": "NodeUtil.isImmutableValue(value)) {",
+    "aftercode": "NodeUtil.isMutableValue(value)) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 221,
+    "precode": "NodeUtil.isImmutableValue(value)) {",
+    "aftercode": "!NodeUtil.isImmutableValue(value)) {",
+    "rule": "Negation Insertion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 222,
+    "precode": "Node addition = IR.add(",
+    "aftercode": "Node addition = IR.string(",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 223,
+    "precode": "IR.string(\"\").srcref(callTarget),",
+    "aftercode": "callTarget.srcref(callTarget),",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 226,
+    "precode": "reportCodeChange();",
+    "aftercode": "// reportCodeChange();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 230,
+    "precode": "return n;",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 210,
+    "precode": "Node callTarget = n.getFirstChild();",
+    "aftercode": "Node callTarget = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+    "line": 220,
+    "precode": "if (value != null && value.getNext() == null &&",
+    "aftercode": "if (value != null || value.getNext() == null &&",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  }
+]

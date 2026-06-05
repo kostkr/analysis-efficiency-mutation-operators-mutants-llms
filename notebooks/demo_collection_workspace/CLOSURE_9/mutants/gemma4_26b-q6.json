@@ -1,0 +1,372 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 119,
+    "precode": "filename = filename.replace(\"\\\", \"/\");",
+    "aftercode": "filename = filename.replace(\"/\", \"\\\");",
+    "rule": "Replaced Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 119,
+    "precode": "filename = filename.replace(\"\\\", \"/\");",
+    "aftercode": "filename = filename.replace(\"\", \"/\");",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 121,
+    "precode": "if (filename.indexOf(filenamePrefix) == 0) {",
+    "aftercode": "if (filename.indexOf(filenamePrefix) <= 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 121,
+    "precode": "if (filename.indexOf(filenamePrefix) == 0) {",
+    "aftercode": "if (filename.indexOf(filenamePrefix) != 0) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 121,
+    "precode": "if (filename.indexOf(filenamePrefix) == 0) {",
+    "aftercode": "if (filename.indexOf(filenamePrefix) > 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 121,
+    "precode": "if (filename.indexOf(filenamePrefix) == 0) {",
+    "aftercode": "if (filename.contains(filenamePrefix)) {",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 122,
+    "precode": "filename = filename.substring(filenamePrefix.length());",
+    "aftercode": "filename = filename.substring(filenamePrefix.length() - 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 122,
+    "precode": "filename = filename.substring(filenamePrefix.length());",
+    "aftercode": "filename = filename.substring(filenamePrefix.length() + 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 122,
+    "precode": "filename = filename.substring(filenamePrefix.length());",
+    "aftercode": "filename = filename.substring(0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 122,
+    "precode": "filename = filename.substring(filenamePrefix.length());",
+    "aftercode": "filename = filename.substring(filenamePrefix.length() - 1);",
+    "rule": "Off-by-one",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 125,
+    "precode": "return filename;",
+    "aftercode": "return filenamePrefix;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 181,
+    "precode": "Preconditions.checkArgument(scriptNodeCount == 1,",
+    "aftercode": "Preconditions.checkArgument(scriptNodeCount <= 1,",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 181,
+    "precode": "Preconditions.checkArgument(scriptNodeCount == 1,",
+    "aftercode": "Preconditions.checkArgument(scriptNodeCount != 1,",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 184,
+    "precode": "String moduleName = guessCJSModuleName(script.getSourceFileName());",
+    "aftercode": "String moduleName = \"\";",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 185,
+    "precode": "script.addChildToFront(IR.var(IR.name(moduleName), IR.objectlit())",
+    "aftercode": "script.addChildToBack(IR.var(IR.name(moduleName), IR.objectlit())",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 185,
+    "precode": "script.addChildToFront(IR.var(IR.name(moduleName), IR.objectlit())",
+    "aftercode": "script.addChildToFront(IR.var(IR.name(\"\"), IR.objectlit())",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 187,
+    "precode": "if (reportDependencies) {",
+    "aftercode": "if (!reportDependencies) {",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 187,
+    "precode": "if (reportDependencies) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 187,
+    "precode": "if (reportDependencies) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 189,
+    "precode": "ci.addProvide(moduleName);",
+    "aftercode": "// ci.addProvide(moduleName);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 190,
+    "precode": "JSModule m = new JSModule(moduleName);",
+    "aftercode": "JSModule m = new JSModule(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 191,
+    "precode": "m.addAndOverrideModule(ci);",
+    "aftercode": "m.addAndOverrideModule(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 192,
+    "precode": "module = m;",
+    "aftercode": "module = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 194,
+    "precode": "script.addChildToFront(IR.exprResult(",
+    "aftercode": "script.addChildToBack(IR.exprResult(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 195,
+    "precode": "IR.call(IR.getprop(IR.name(\"goog\"), IR.string(\"provide\")),",
+    "aftercode": "IR.call(IR.getprop(IR.name(\"\"), IR.string(\"provide\")),",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 195,
+    "precode": "IR.call(IR.getprop(IR.name(\"goog\"), IR.string(\"provide\")),",
+    "aftercode": "IR.call(IR.getprop(IR.name(\"goog\"), IR.string(\"provide\")),",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": true
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 196,
+    "precode": "IR.string(moduleName))).copyInformationFromForTree(script));",
+    "aftercode": "IR.string(moduleName)));",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 198,
+    "precode": "emitOptionalModuleExportsOverride(script, moduleName);",
+    "aftercode": "//        emitOptionalModuleExportsOverride(script, moduleName);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 198,
+    "precode": "emitOptionalModuleExportsOverride(script, moduleName);",
+    "aftercode": "emitOptionalModuleExportsOverride(null, moduleName);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 201,
+    "precode": "NodeTraversal.traverse(compiler, script, new SuffixVarsCallback(",
+    "aftercode": "NodeTraversal.traverse(null, script, new SuffixVarsCallback(",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 201,
+    "precode": "NodeTraversal.traverse(compiler, script, new SuffixVarsCallback(",
+    "aftercode": "NodeTraversal.traverse(compiler, null, new SuffixVarsCallback(",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 201,
+    "precode": "NodeTraversal.traverse(compiler, script, new SuffixVarsCallback(",
+    "aftercode": "NodeTraversal.traverse(compiler, script, new SuffixVarsCallback(",
+    "rule": "No-op",
+    "gen_time_s": 1.31,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 204,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "//        compiler.reportCodeChange();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 185,
+    "precode": "script.addChildToFront(IR.var(IR.name(moduleName), IR.objectlit())",
+    "aftercode": "script.addChildToFront(IR.var(IR.name(moduleName), null)",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 195,
+    "precode": "IR.call(IR.getprop(IR.name(\"goog\"), IR.string(\"provide\")),",
+    "aftercode": "IR.call(IR.getprop(IR.name(\"goog\"), IR.string(\"provide\")),",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 181,
+    "precode": "Preconditions.checkArgument(scriptNodeCount == 1,",
+    "aftercode": "Preconditions.checkArgument(scriptNodeCount > 1,",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 192,
+    "precode": "module = m;",
+    "aftercode": "m = module;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  }
+]

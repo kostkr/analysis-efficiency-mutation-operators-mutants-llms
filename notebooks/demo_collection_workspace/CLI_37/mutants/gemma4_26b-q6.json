@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") && token.length() == 1)",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (token.startsWith(\"-\") || token.length() == 1)",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") || token.length() < 1)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") || token.length() <= 1)",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") || token.length() > 1)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 308,
+    "precode": "int pos = token.indexOf(\"=\");",
+    "aftercode": "int pos = token.lastIndexOf(\"=\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 308,
+    "precode": "int pos = token.indexOf(\"=\");",
+    "aftercode": "int pos = token.indexOf(\"-\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos == -1 ? token.substring(0) : token.substring(1, pos);",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos + 1);",
+    "rule": "Off-by-one Error",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos != -1 ? token.substring(1) : token.substring(1, pos);",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos == -1 ? token.substring(1) : token.substring(0, pos);",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 310,
+    "precode": "return options.hasShortOption(optName);",
+    "aftercode": "return !options.hasShortOption(optName);",
+    "rule": "Negation Insertion",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 310,
+    "precode": "return options.hasShortOption(optName);",
+    "aftercode": "return options.hasLongOption(optName);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.96,
+    "dublicate": false
+  }
+]

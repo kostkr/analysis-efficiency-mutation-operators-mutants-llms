@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 998,
+    "precode": "case '\\0': sb.append(\"\\\\0\"); break;",
+    "aftercode": "case '\\0': sb.append(\"\\0\"); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 999,
+    "precode": "case '\\n': sb.append(\"\\\\n\"); break;",
+    "aftercode": "case '\\n': sb.append(\"\\n\"); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1002,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(\"\\\\\"); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1005,
+    "precode": "case '>':                       // Break --> into --\\> or ]]> into ]]\\>",
+    "aftercode": "case '<':                       // Break --> into --\\> or ]]> into ]]\\>",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1007,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' || s.charAt(i - 2) == '-') ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1007,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) != '-' && s.charAt(i - 2) == '-') ||",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1008,
+    "precode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == ']'))) {",
+    "aftercode": "(s.charAt(i - 1) == ']' || s.charAt(i - 2) == ']'))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1009,
+    "precode": "sb.append(\"\\\\>\");",
+    "aftercode": "sb.append(\">\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1021,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(false, i + 1, END_SCRIPT, 0,",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "} else if (s.regionMatches(false, i + 1, START_COMMENT, 0,",
+    "aftercode": "} else if (s.regionMatches(true, i + 1, START_COMMENT, 0,",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1035,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (!outputCharsetEncoder.canEncode(c)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1045,
+    "precode": "if (c > 0x1f && c < 0x7f) {",
+    "aftercode": "if (c >= 0x1f && c < 0x7f) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1045,
+    "precode": "if (c > 0x1f && c < 0x7f) {",
+    "aftercode": "if (c > 0x1f && c <= 0x7f) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1045,
+    "precode": "if (c > 0x1f && c < 0x7f) {",
+    "aftercode": "if (c > 0x1f || c < 0x7f) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  }
+]

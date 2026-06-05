@@ -1,0 +1,1042 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 141,
+    "precode": "if (properties == null)",
+    "aftercode": "if (properties != null)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 143,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 146,
+    "precode": "for (Enumeration e = properties.propertyNames(); e.hasMoreElements();)",
+    "aftercode": "for (Enumeration e = properties.propertyNames(); true;)",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 146,
+    "precode": "for (Enumeration e = properties.propertyNames(); e.hasMoreElements();)",
+    "aftercode": "for (Enumeration e = properties.propertyNames(); !e.hasMoreElements();)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 148,
+    "precode": "String option = e.nextElement().toString();",
+    "aftercode": "String option = e.nextElement().hashCode() + \"\";",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 151,
+    "precode": "if (opt == null)",
+    "aftercode": "if (opt != null)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 153,
+    "precode": "throw new UnrecognizedOptionException(\"Default option wasn't defined\", option);",
+    "aftercode": "return;",
+    "rule": "Exception Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 157,
+    "precode": "OptionGroup group = options.getOptionGroup(opt);",
+    "aftercode": "OptionGroup group = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 158,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null || group.getSelected() != null;",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 158,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group == null && group.getSelected() != null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 158,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null && group.getSelected() == null;",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 160,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (cmd.hasOption(option) && !selected)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 160,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (!cmd.hasOption(option) || !selected)",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 160,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (!cmd.hasOption(option) && selected)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 163,
+    "precode": "String value = properties.getProperty(option);",
+    "aftercode": "String value = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 165,
+    "precode": "if (opt.hasArg())",
+    "aftercode": "if (!opt.hasArg())",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 167,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() != null || opt.getValues().length == 0)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 167,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() == null && opt.getValues().length == 0)",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 167,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() == null || opt.getValues().length > 0)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 169,
+    "precode": "opt.addValueForProcessing(value);",
+    "aftercode": "// opt.addValueForProcessing(value);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 172,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (\"yes\".equalsIgnoreCase(value)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 172,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (\"yes\".equals(value)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 173,
+    "precode": "|| \"true\".equalsIgnoreCase(value)",
+    "aftercode": "&& \"true\".equalsIgnoreCase(value)",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 173,
+    "precode": "|| \"true\".equalsIgnoreCase(value)",
+    "aftercode": "|| \"true\".equals(value)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 174,
+    "precode": "|| \"1\".equalsIgnoreCase(value)))",
+    "aftercode": "|| \"1\".equals(value)))",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 174,
+    "precode": "|| \"1\".equalsIgnoreCase(value)))",
+    "aftercode": "|| \"1\".equalsIgnoreCase(value) && true)",
+    "rule": "Condition Insertion",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 177,
+    "precode": "continue;",
+    "aftercode": "// continue;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 180,
+    "precode": "handleOption(opt);",
+    "aftercode": "// handleOption(opt);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 181,
+    "precode": "currentOption = null;",
+    "aftercode": "currentOption = opt;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 181,
+    "precode": "currentOption = null;",
+    "aftercode": "currentOption = \"\";",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 150,
+    "precode": "Option opt = options.getOption(option);",
+    "aftercode": "Option opt = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 158,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null;",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 160,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (!cmd.hasOption(option))",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 167,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues().length == 0)",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 172,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (\"yes\".equalsIgnoreCase(value) || \"true\".equalsIgnoreCase(value) || \"1\".equalsIgnoreCase(value))",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 148,
+    "precode": "String option = e.nextElement().toString();",
+    "aftercode": "String option = e.nextElement().toString().toLowerCase();",
+    "rule": "Method Call Insertion",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 153,
+    "precode": "throw new UnrecognizedOptionException(\"Default option wasn't defined\", option);",
+    "aftercode": "throw new RuntimeException(option);",
+    "rule": "Exception Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 163,
+    "precode": "String value = properties.getProperty(option);",
+    "aftercode": "String value = properties.get(option);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 165,
+    "precode": "if (opt.hasArg())",
+    "aftercode": "if (opt.hasArg() == true)",
+    "rule": "Redundant Condition",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 165,
+    "precode": "if (opt.hasArg())",
+    "aftercode": "if (opt.hasArg() == false)",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 167,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() != null && opt.getValues().length == 0)",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 167,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() == null || opt.getValues().length != 0)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 172,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (!(\"yes\".equals(value)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 173,
+    "precode": "|| \"true\".equalsIgnoreCase(value)",
+    "aftercode": "|| \"true\".equals(value)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 174,
+    "precode": "|| \"1\".equalsIgnoreCase(value)))",
+    "aftercode": "|| \"1\".equals(value)))",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 180,
+    "precode": "handleOption(opt);",
+    "aftercode": "handleOption(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 254,
+    "precode": "if (properties == null)",
+    "aftercode": "if (properties != null)",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 256,
+    "precode": "return;",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 259,
+    "precode": "for (Enumeration e = properties.propertyNames(); e.hasMoreElements();)",
+    "aftercode": "for (Enumeration e = properties.propertyNames(); true;)",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 259,
+    "precode": "for (Enumeration e = properties.propertyNames(); e.hasMoreElements();)",
+    "aftercode": "for (Enumeration e = properties.propertyNames(); e.hasMoreElements(); e.nextElement())",
+    "rule": "Loop Mutation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 261,
+    "precode": "String option = e.nextElement().toString();",
+    "aftercode": "String option = e.nextElement().toString(); //",
+    "rule": "Comment",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 263,
+    "precode": "Option opt = options.getOption(option);",
+    "aftercode": "Option opt = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 264,
+    "precode": "if (opt == null)",
+    "aftercode": "if (opt != null)",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 266,
+    "precode": "throw new UnrecognizedOptionException(\"Default option wasn't defined\", option);",
+    "aftercode": "// throw new UnrecognizedOptionException(\"Default option wasn't defined\", option);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 270,
+    "precode": "OptionGroup group = options.getOptionGroup(opt);",
+    "aftercode": "OptionGroup group = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null || group.getSelected() != null;",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group == null && group.getSelected() != null;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null && group.getSelected() == null;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 273,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (cmd.hasOption(option) && !selected)",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 273,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (!cmd.hasOption(option) || !selected)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 273,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (!cmd.hasOption(option) && selected)",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 276,
+    "precode": "String value = properties.getProperty(option);",
+    "aftercode": "String value = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 278,
+    "precode": "if (opt.hasArg())",
+    "aftercode": "if (!opt.hasArg())",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 280,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() != null || opt.getValues().length == 0)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 280,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() == null && opt.getValues().length == 0)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 280,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues() != null && opt.getValues().length != 0)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 280,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (opt.getValues().length == 0)",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 284,
+    "precode": "opt.addValueForProcessing(value);",
+    "aftercode": "// opt.addValueForProcessing(value);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 286,
+    "precode": "catch (RuntimeException exp)",
+    "aftercode": "catch (Exception exp)",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 292,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (\"yes\".equalsIgnoreCase(value)",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 292,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (!(\"YES\".equalsIgnoreCase(value)",
+    "rule": "String Literal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 293,
+    "precode": "|| \"true\".equalsIgnoreCase(value)",
+    "aftercode": "&& \"true\".equalsIgnoreCase(value)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 293,
+    "precode": "|| \"true\".equalsIgnoreCase(value)",
+    "aftercode": "|| \"TRUE\".equalsIgnoreCase(value)",
+    "rule": "String Literal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 294,
+    "precode": "|| \"1\".equalsIgnoreCase(value)))",
+    "aftercode": "|| \"1\".equals(value)))",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 294,
+    "precode": "|| \"1\".equalsIgnoreCase(value)))",
+    "aftercode": "|| \"1\".equalsIgnoreCase(value) && true)",
+    "rule": "Condition Insertion",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 298,
+    "precode": "continue;",
+    "aftercode": "// continue;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 301,
+    "precode": "cmd.addOption(opt);",
+    "aftercode": "// cmd.addOption(opt);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 302,
+    "precode": "updateRequiredOptions(opt);",
+    "aftercode": "// updateRequiredOptions(opt);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null && true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = true && group.getSelected() != null;",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 273,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (false && !selected)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 278,
+    "precode": "if (opt.hasArg())",
+    "aftercode": "if (true)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 280,
+    "precode": "if (opt.getValues() == null || opt.getValues().length == 0)",
+    "aftercode": "if (false)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 292,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (true)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 292,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (false)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 264,
+    "precode": "if (opt == null)",
+    "aftercode": "if (false)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 264,
+    "precode": "if (opt == null)",
+    "aftercode": "if (true)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 254,
+    "precode": "if (properties == null)",
+    "aftercode": "if (false)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 254,
+    "precode": "if (properties == null)",
+    "aftercode": "if (true)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null && group.getSelected() == null;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.12,
+    "dublicate": true
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 273,
+    "precode": "if (!cmd.hasOption(option) && !selected)",
+    "aftercode": "if (!cmd.hasOption(option) || selected)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 276,
+    "precode": "String value = properties.getProperty(option);",
+    "aftercode": "String value = properties.get(option);",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 284,
+    "precode": "opt.addValueForProcessing(value);",
+    "aftercode": "opt.addValueForProcessing(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 266,
+    "precode": "throw new UnrecognizedOptionException(\"Default option wasn't defined\", option);",
+    "aftercode": "throw new RuntimeException(\"Default option wasn't defined\", option);",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 271,
+    "precode": "boolean selected = group != null && group.getSelected() != null;",
+    "aftercode": "boolean selected = group != null && group.getSelected() == null;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.12,
+    "dublicate": true
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 292,
+    "precode": "else if (!(\"yes\".equalsIgnoreCase(value)",
+    "aftercode": "else if (!(\"yes\".equals(value)",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 293,
+    "precode": "|| \"true\".equalsIgnoreCase(value)",
+    "aftercode": "|| \"true\".equals(value)",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 294,
+    "precode": "|| \"1\".equalsIgnoreCase(value)))",
+    "aftercode": "|| \"1\".equals(value)))",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.12,
+    "dublicate": true
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 261,
+    "precode": "String option = e.nextElement().toString();",
+    "aftercode": "String option = e.nextElement().toString(); //",
+    "rule": "Comment",
+    "gen_time_s": 1.12,
+    "dublicate": true
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 261,
+    "precode": "String option = e.nextElement().toString();",
+    "aftercode": "String option = e.nextElement().toString();",
+    "rule": "No-op",
+    "gen_time_s": 1.12,
+    "dublicate": true
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 263,
+    "precode": "Option opt = options.getOption(option);",
+    "aftercode": "Option opt = options.getOption(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 270,
+    "precode": "OptionGroup group = options.getOptionGroup(opt);",
+    "aftercode": "OptionGroup group = options.getOptionGroup(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 284,
+    "precode": "opt.addValueForProcessing(value);",
+    "aftercode": "opt.addValueForProcessing(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/apache/commons/cli/Parser.java",
+    "line": 301,
+    "precode": "cmd.addOption(opt);",
+    "aftercode": "cmd.addOption(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  }
+]

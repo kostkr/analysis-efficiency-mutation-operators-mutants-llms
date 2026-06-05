@@ -1,0 +1,482 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1419,
+    "precode": "String ownerName = ownerNode.getQualifiedName();",
+    "aftercode": "String ownerName = n.getQualifiedName();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1420,
+    "precode": "String qName = n.getQualifiedName();",
+    "aftercode": "String qName = ownerNode.getQualifiedName();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1421,
+    "precode": "String propName = n.getLastChild().getString();",
+    "aftercode": "String propName = n.getFirstChild().getString();",
+    "rule": "Child Node Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1422,
+    "precode": "Preconditions.checkArgument(qName != null && ownerName != null);",
+    "aftercode": "Preconditions.checkArgument(qName == null || ownerName == null);",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1438,
+    "precode": "JSType valueType = getDeclaredType(t.getSourceName(), info, n, rhsValue);",
+    "aftercode": "JSType valueType = getDeclaredType(t.getSourceName(), info, rhsValue, n);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1439,
+    "precode": "if (valueType == null && rhsValue != null) {",
+    "aftercode": "if (valueType != null && rhsValue != null) {",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1441,
+    "precode": "valueType = rhsValue.getJSType();",
+    "aftercode": "valueType = info.getType();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1448,
+    "precode": "if (\"prototype\".equals(propName)) {",
+    "aftercode": "if (!\"prototype\".equals(propName)) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1449,
+    "precode": "Var qVar = scope.getVar(qName);",
+    "aftercode": "Var qVar = scope.getVar(propName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1450,
+    "precode": "if (qVar != null) {",
+    "aftercode": "if (qVar == null) {",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1456,
+    "precode": "ObjectType qVarType = ObjectType.cast(qVar.getType());",
+    "aftercode": "ObjectType qVarType = ObjectType.cast(valueType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1457,
+    "precode": "if (qVarType != null &&",
+    "aftercode": "if (qVarType == null &&",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1458,
+    "precode": "rhsValue != null &&",
+    "aftercode": "rhsValue == null &&",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1460,
+    "precode": "typeRegistry.resetImplicitPrototype(",
+    "aftercode": "typeRegistry.setImplicitPrototype(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1462,
+    "precode": "} else if (!qVar.isTypeInferred()) {",
+    "aftercode": "} else if (qVar.isTypeInferred()) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1468,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Control Flow Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1470,
+    "precode": "if (qVar.getScope() == scope) {",
+    "aftercode": "if (qVar.getScope() != scope) {",
+    "rule": "Equality Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1471,
+    "precode": "scope.undeclare(qVar);",
+    "aftercode": "scope.declare(qVar);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1476,
+    "precode": "if (valueType == null) {",
+    "aftercode": "if (valueType != null) {",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1477,
+    "precode": "if (parent.isExprResult()) {",
+    "aftercode": "if (!parent.isExprResult()) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1480,
+    "precode": "t.getInput() != null && t.getInput().isExtern(),",
+    "aftercode": "t.getInput() == null || !t.getInput().isExtern(),",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1484,
+    "precode": "return;",
+    "aftercode": "continue;",
+    "rule": "Control Flow Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1511,
+    "precode": "boolean inferred = true;",
+    "aftercode": "boolean inferred = false;",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1514,
+    "precode": "inferred = !(info.hasType()",
+    "aftercode": "inferred = (info.hasType()",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1516,
+    "precode": "|| (info.isConstant() && valueType != null",
+    "aftercode": "|| (info.isConstant() && valueType == null",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1517,
+    "precode": "&& !valueType.isUnknownType())",
+    "aftercode": "&& valueType.isUnknownType())",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1521,
+    "precode": "if (inferred && rhsValue != null && rhsValue.isFunction()) {",
+    "aftercode": "if (inferred || rhsValue != null && rhsValue.isFunction()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1524,
+    "precode": "inferred = false;",
+    "aftercode": "inferred = true;",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1525,
+    "precode": "} else if (!scope.isDeclared(qName, false) &&",
+    "aftercode": "} else if (scope.isDeclared(qName, false) &&",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1527,
+    "precode": "inferred = false;",
+    "aftercode": "inferred = true;",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1531,
+    "precode": "if (!inferred) {",
+    "aftercode": "if (inferred) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1532,
+    "precode": "ObjectType ownerType = getObjectSlot(ownerName);",
+    "aftercode": "ObjectType ownerType = getObjectSlot(propName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1533,
+    "precode": "if (ownerType != null) {",
+    "aftercode": "if (ownerType == null) {",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1536,
+    "precode": "boolean isExtern = t.getInput() != null && t.getInput().isExtern();",
+    "aftercode": "boolean isExtern = t.getInput() == null || !t.getInput().isExtern();",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1537,
+    "precode": "if ((!ownerType.hasOwnProperty(propName) ||",
+    "aftercode": "if ((ownerType.hasOwnProperty(propName) ||",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1539,
+    "precode": "((isExtern && !ownerType.isNativeObjectType()) ||",
+    "aftercode": "((isExtern && ownerType.isNativeObjectType()) ||",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1540,
+    "precode": "!ownerType.isInstanceType())) {",
+    "aftercode": "ownerType.isInstanceType())) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1542,
+    "precode": "ownerType.defineDeclaredProperty(propName, valueType, n);",
+    "aftercode": "ownerType.undeclareProperty(propName);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1548,
+    "precode": "defineSlot(n, parent, valueType, inferred);",
+    "aftercode": "defineSlot(n, parent, null, inferred);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1549,
+    "precode": "} else if (rhsValue != null && rhsValue.isTrue()) {",
+    "aftercode": "} else if (rhsValue != null && rhsValue.isFalse()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1551,
+    "precode": "FunctionType ownerType =",
+    "aftercode": "ObjectType ownerType =",
+    "rule": "Type Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1552,
+    "precode": "JSType.toMaybeFunctionType(getObjectSlot(ownerName));",
+    "aftercode": "JSType.toMaybeFunctionType(getObjectSlot(propName));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1553,
+    "precode": "if (ownerType != null) {",
+    "aftercode": "if (ownerType == null) {",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1554,
+    "precode": "JSType ownerTypeOfThis = ownerType.getTypeOfThis();",
+    "aftercode": "JSType ownerTypeOfThis = valueType;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1556,
+    "precode": "JSType delegateType = delegateName == null ?",
+    "aftercode": "JSType delegateType = delegateName != null ?",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1558,
+    "precode": "if (delegateType != null &&",
+    "aftercode": "if (delegateType == null &&",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1559,
+    "precode": "ownerTypeOfThis.isSubtype(delegateType)) {",
+    "aftercode": "ownerTypeOfThis.isSupertype(delegateType)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1560,
+    "precode": "defineSlot(n, parent, getNativeType(BOOLEAN_TYPE), true);",
+    "aftercode": "defineSlot(n, parent, getNativeType(STRING_TYPE), true);",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") && token.length() == 1)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (token.startsWith(\"-\") || token.length() == 1)",
+    "rule": "Negation",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") || token.length() < 1)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") || token.length() <= 1)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 302,
+    "precode": "if (!token.startsWith(\"-\") || token.length() == 1)",
+    "aftercode": "if (!token.startsWith(\"-\") || token.length() > 1)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 308,
+    "precode": "int pos = token.indexOf(\"=\");",
+    "aftercode": "int pos = token.lastIndexOf(\"=\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos == -1 ? token.substring(0) : token.substring(1, pos);",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos + 1);",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 309,
+    "precode": "String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);",
+    "aftercode": "String optName = pos != -1 ? token.substring(1) : token.substring(1, pos);",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 310,
+    "precode": "if (options.hasShortOption(optName))",
+    "aftercode": "if (!options.hasShortOption(optName))",
+    "rule": "Negation",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 310,
+    "precode": "if (options.hasShortOption(optName))",
+    "aftercode": "if (options.hasLongOption(optName))",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() >= 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() > 0 || options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(1)));",
+    "rule": "Index Offset",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() > 0 && options.hasShortOption(optName.charAt(0) + \"\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.substring(0, 1)));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "rule": "Empty Statement",
+    "gen_time_s": 1.63,
+    "dublicate": true
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+    "line": 315,
+    "precode": "return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));",
+    "aftercode": "return optName.length() > 0 && options.hasLongOption(String.valueOf(optName.charAt(0)));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  }
+]

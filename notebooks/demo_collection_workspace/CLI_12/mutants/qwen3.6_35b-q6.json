@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 58,
+    "precode": "for (int i = 0; i < arguments.length; i++)",
+    "aftercode": "for (int i = 0; i <= arguments.length; i++)",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 62,
+    "precode": "if (\"--\".equals(arg))",
+    "aftercode": "if (!\"--\".equals(arg))",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 62,
+    "precode": "if (\"--\".equals(arg))",
+    "aftercode": "if (\"-\".equals(arg))",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 67,
+    "precode": "else if (\"-\".equals(arg))",
+    "aftercode": "else if (\"--\".equals(arg))",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 71,
+    "precode": "else if (arg.startsWith(\"-\"))",
+    "aftercode": "else if (!arg.startsWith(\"-\"))",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 73,
+    "precode": "String opt = Util.stripLeadingHyphens(arg);",
+    "aftercode": "String opt = arg;",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 75,
+    "precode": "if (options.hasOption(opt))",
+    "aftercode": "if (!options.hasOption(opt))",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 81,
+    "precode": "if (opt.indexOf('=') != -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))",
+    "aftercode": "if (opt.indexOf('=') != -1 || options.hasOption(opt.substring(0, opt.indexOf('='))))",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 81,
+    "precode": "if (opt.indexOf('=') != -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))",
+    "aftercode": "if (opt.indexOf('=') == -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))",
+    "rule": "Boundary Condition",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 85,
+    "precode": "tokens.add(arg.substring(arg.indexOf('=') + 1)); // value",
+    "aftercode": "tokens.add(arg.substring(arg.indexOf('=') - 1)); // value",
+    "rule": "Offset Change",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 87,
+    "precode": "else if (options.hasOption(arg.substring(0, 2)))",
+    "aftercode": "else if (options.hasOption(arg.substring(0, 1)))",
+    "rule": "Offset Change",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 95,
+    "precode": "eatTheRest = stopAtNonOption;",
+    "aftercode": "eatTheRest = !stopAtNonOption;",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 107,
+    "precode": "for (i++; i < arguments.length; i++)",
+    "aftercode": "for (i++; i <= arguments.length; i++)",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 107,
+    "precode": "for (i++; i < arguments.length; i++)",
+    "aftercode": "for (i++; i > arguments.length; i++)",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/cli/GnuParser.java",
+    "line": 114,
+    "precode": "return (String[]) tokens.toArray(new String[tokens.size()]);",
+    "aftercode": "return (String[]) tokens.toArray(new String[tokens.size() + 1]);",
+    "rule": "Offset Change",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 278,
+    "precode": "if (parent.isVar() &&",
+    "aftercode": "if (parent.isVar() ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 279,
+    "precode": "n.hasChildren() && n.getFirstChild().isQualifiedName()) {",
+    "aftercode": "n.hasChildren() || n.getFirstChild().isQualifiedName()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 280,
+    "precode": "String name = n.getString();",
+    "aftercode": "String name = n.getParent().getString();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 281,
+    "precode": "Var aliasVar = scope.getVar(name);",
+    "aftercode": "Var aliasVar = scope.getVar(name + \"_alias\");",
+    "rule": "Constant Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 282,
+    "precode": "aliases.put(name, aliasVar);",
+    "aftercode": "aliases.put(aliasVar, name);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 285,
+    "precode": "aliasVar.getInitialValue().getQualifiedName();",
+    "aftercode": "aliasVar.getInitialValue().getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 286,
+    "precode": "transformation.addAlias(name, qualifiedName);",
+    "aftercode": "transformation.addAlias(qualifiedName, name);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 287,
+    "precode": "} else if (v.isBleedingFunction()) {",
+    "aftercode": "} else if (!v.isBleedingFunction()) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 290,
+    "precode": "} else if (parent.getType() == Token.LP) {",
+    "aftercode": "} else if (parent.getType() != Token.LP) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 295,
+    "precode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());",
+    "aftercode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 276,
+    "precode": "int type = n.getType();",
+    "aftercode": "int type = 0;",
+    "rule": "Constant Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 277,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 279,
+    "precode": "n.hasChildren() && n.getFirstChild().isQualifiedName()) {",
+    "aftercode": "n.hasChildren() && n.getFirstChild().isString()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 281,
+    "precode": "Var aliasVar = scope.getVar(name);",
+    "aftercode": "Var aliasVar = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 285,
+    "precode": "aliasVar.getInitialValue().getQualifiedName();",
+    "aftercode": "aliasVar.getInitialValue().getString();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 274,
+    "precode": "for (Var v : scope.getVarIterable()) {",
+    "aftercode": "for (Var v : scope.getVarIterable()) { if (v == null) break; }",
+    "rule": "Null Check Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 275,
+    "precode": "Node n = v.getNode();",
+    "aftercode": "Node n = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 282,
+    "precode": "aliases.put(name, aliasVar);",
+    "aftercode": "aliases.remove(name);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 286,
+    "precode": "transformation.addAlias(name, qualifiedName);",
+    "aftercode": "transformation.removeAlias(name);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 290,
+    "precode": "} else if (parent.getType() == Token.LP) {",
+    "aftercode": "} else if (parent.getType() == Token.LP || true) {",
+    "rule": "Tautology Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 278,
+    "precode": "if (parent.isVar() &&",
+    "aftercode": "if (parent != null &&",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 280,
+    "precode": "String name = n.getString();",
+    "aftercode": "String name = \"\";",
+    "rule": "Constant Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 285,
+    "precode": "aliasVar.getInitialValue().getQualifiedName();",
+    "aftercode": "aliasVar.getInitialValue().getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": true
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 295,
+    "precode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());",
+    "aftercode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, \"\");",
+    "rule": "String Constant Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 281,
+    "precode": "Var aliasVar = scope.getVar(name);",
+    "aftercode": "Var aliasVar = scope.getVar(name); if (aliasVar == null) continue;",
+    "rule": "Null Check Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 286,
+    "precode": "transformation.addAlias(name, qualifiedName);",
+    "aftercode": "transformation.addAlias(name, qualifiedName); transformation.removeAlias(name);",
+    "rule": "Counteracting Operation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 295,
+    "precode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());",
+    "aftercode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getParent().getString());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 306,
+    "precode": "List<Node> nodes = Lists.newArrayList();",
+    "aftercode": "List<Node> nodes = Lists.newArrayList(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 307,
+    "precode": "Node val = ref.getAssignedValue();",
+    "aftercode": "Node val = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 308,
+    "precode": "blacklistVarReferencesInTree(val, v.scope);",
+    "aftercode": "// blacklistVarReferencesInTree(val, v.scope);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 309,
+    "precode": "Preconditions.checkState(val.getType() == Token.OBJECTLIT);",
+    "aftercode": "Preconditions.checkState(val.getType() != Token.OBJECTLIT);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 310,
+    "precode": "Set<String> all = Sets.newLinkedHashSet(varmap.keySet());",
+    "aftercode": "Set<String> all = Sets.newHashSet(varmap.keySet());",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 311,
+    "precode": "for (Node key = val.getFirstChild(); key != null;",
+    "aftercode": "for (Node key = val.getFirstChild(); key != null; key = key.getNext()) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 312,
+    "precode": "key = key.getNext()) {",
+    "aftercode": "key = key.getPrevious()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 313,
+    "precode": "String var = key.getString();",
+    "aftercode": "String var = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 314,
+    "precode": "Node value = key.removeFirstChild();",
+    "aftercode": "Node value = key.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 318,
+    "precode": "Node.newString(Token.NAME, varmap.get(var)), value));",
+    "aftercode": "Node.newString(Token.NAME, varmap.get(var)), null));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 319,
+    "precode": "all.remove(var);",
+    "aftercode": "//          all.remove(var);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 323,
+    "precode": "for (String var : all) {",
+    "aftercode": "for (String var : new HashSet<>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 326,
+    "precode": "Node.newString(Token.NAME, varmap.get(var)),",
+    "aftercode": "Node.newString(Token.NAME, varmap.get(\"wrong\")),",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 327,
+    "precode": "NodeUtil.newUndefinedNode(null)));",
+    "aftercode": "NodeUtil.newUndefinedNode(new Node(Token.NAME, \"x\")));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 331,
+    "precode": "if (nodes.isEmpty()) {",
+    "aftercode": "if (!nodes.isEmpty()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 332,
+    "precode": "replacement = new Node(Token.TRUE);",
+    "aftercode": "replacement = new Node(Token.FALSE);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 336,
+    "precode": "nodes.add(new Node(Token.TRUE));",
+    "aftercode": "nodes.remove(new Node(Token.TRUE));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 341,
+    "precode": "nodes = Lists.reverse(nodes);",
+    "aftercode": "nodes = Lists.newArrayList(nodes);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 342,
+    "precode": "replacement = new Node(Token.COMMA);",
+    "aftercode": "replacement = new Node(Token.SEMICOLON);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 345,
+    "precode": "for (i = 0; i < nodes.size() - 2; i++) {",
+    "aftercode": "for (i = 0; i <= nodes.size() - 2; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 345,
+    "precode": "for (i = 0; i < nodes.size() - 2; i++) {",
+    "aftercode": "for (i = 0; i < nodes.size() - 1; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 346,
+    "precode": "cur.addChildToFront(nodes.get(i));",
+    "aftercode": "cur.addChildToBack(nodes.get(i));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 347,
+    "precode": "Node t = new Node(Token.COMMA);",
+    "aftercode": "Node t = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 348,
+    "precode": "cur.addChildToFront(t);",
+    "aftercode": "cur.addChildToBack(t);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 351,
+    "precode": "cur.addChildToFront(nodes.get(i));",
+    "aftercode": "cur.addChildToBack(nodes.get(i));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 352,
+    "precode": "cur.addChildToFront(nodes.get(i + 1));",
+    "aftercode": "cur.addChildToFront(nodes.get(i));",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 356,
+    "precode": "replacement.copyInformationFromForTree(replace);",
+    "aftercode": "replace.copyInformationFromForTree(replacement);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 358,
+    "precode": "if (replace.getType() == Token.VAR) {",
+    "aftercode": "if (replace.getType() != Token.VAR) {",
+    "rule": "Negation",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 359,
+    "precode": "replace.getParent().replaceChild(",
+    "aftercode": "replace.getParent().replaceChild(null,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 360,
+    "precode": "replace, NodeUtil.newExpr(replacement));",
+    "aftercode": "replace, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+    "line": 362,
+    "precode": "replace.getParent().replaceChild(replace, replacement);",
+    "aftercode": "replace.getParent().replaceChild(replacement, replace);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,482 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 89,
+    "precode": "if (n.isEmpty() ||",
+    "aftercode": "if (n.isEmpty() &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 90,
+    "precode": "n.isComma()) {",
+    "aftercode": "n.isExpressionStatement()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 94,
+    "precode": "if (parent == null) {",
+    "aftercode": "if (parent != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (n.isExprResult() && n.isBlock()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (n.isQualifiedName() && n.getJSDocInfo() == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 111,
+    "precode": "boolean isResultUsed = NodeUtil.isExpressionResultUsed(n);",
+    "aftercode": "boolean isResultUsed = !NodeUtil.isExpressionResultUsed(n);",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 112,
+    "precode": "boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());",
+    "aftercode": "boolean isSimpleOp = !NodeUtil.isSimpleOperatorType(n.getType());",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 113,
+    "precode": "if (!isResultUsed &&",
+    "aftercode": "if (isResultUsed &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 114,
+    "precode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "aftercode": "(isSimpleOp && !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 116,
+    "precode": "if (n.isString()) {",
+    "aftercode": "if (!n.isString()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 117,
+    "precode": "msg = \"Is there a missing '+' on the previous line?\";",
+    "aftercode": "msg = \"Is there a missing '-' on the previous line?\";",
+    "rule": "String Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 118,
+    "precode": "} else if (isSimpleOp) {",
+    "aftercode": "} else if (!isSimpleOp) {",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 119,
+    "precode": "msg = \"The result of the '\" + Token.name(n.getType()).toLowerCase() +",
+    "aftercode": "msg = \"The result of the '\" + Token.name(n.getType()).toUpperCase() +",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (NodeUtil.isStatement(n)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 128,
+    "precode": "problemNodes.add(n);",
+    "aftercode": "problemNodes.remove(n);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 89,
+    "precode": "if (n.isEmpty() ||",
+    "aftercode": "if (n.isExprResult() ||",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 90,
+    "precode": "n.isComma()) {",
+    "aftercode": "n.isEmpty()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (n.isBlock() || n.isBlock()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (n.isString() && n.getJSDocInfo() != null) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 111,
+    "precode": "boolean isResultUsed = NodeUtil.isExpressionResultUsed(n);",
+    "aftercode": "boolean isResultUsed = false;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 112,
+    "precode": "boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());",
+    "aftercode": "boolean isSimpleOp = true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 114,
+    "precode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "aftercode": "(isSimpleOp || NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 119,
+    "precode": "msg = \"The result of the '\" + Token.name(n.getType()).toLowerCase() +",
+    "aftercode": "msg = \"The result of the '\" + Token.name(n.getType()) +",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 123,
+    "precode": "t.getCompiler().report(",
+    "aftercode": "if (true) t.getCompiler().report(",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 124,
+    "precode": "t.makeError(n, level, USELESS_CODE_ERROR, msg));",
+    "aftercode": "t.makeError(n, level, WARNING, msg));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 89,
+    "precode": "if (n.isEmpty() ||",
+    "aftercode": "if (true ||",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 94,
+    "precode": "if (parent == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 113,
+    "precode": "if (!isResultUsed &&",
+    "aftercode": "if (true &&",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 116,
+    "precode": "if (n.isString()) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 118,
+    "precode": "} else if (isSimpleOp) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 128,
+    "precode": "problemNodes.add(n);",
+    "aftercode": "/* problemNodes.add(n); */",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 89,
+    "precode": "if (n.isEmpty() ||",
+    "aftercode": "if (n.isBlock() ||",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 90,
+    "precode": "n.isComma()) {",
+    "aftercode": "n.isBlock()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (n.isString() || n.isBlock()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (n.isBlock() && n.getJSDocInfo() != null) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 114,
+    "precode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "aftercode": "(!isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 116,
+    "precode": "if (n.isString()) {",
+    "aftercode": "if (n.isBlock()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 118,
+    "precode": "} else if (isSimpleOp) {",
+    "aftercode": "} else if (isResultUsed) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 123,
+    "precode": "t.getCompiler().report(",
+    "aftercode": "t.getCompiler().warn(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (NodeUtil.isExpression(n)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 128,
+    "precode": "problemNodes.add(n);",
+    "aftercode": "problemNodes.clear();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 111,
+    "precode": "boolean isResultUsed = NodeUtil.isExpressionResultUsed(n);",
+    "aftercode": "boolean isResultUsed = NodeUtil.isStatement(n);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 112,
+    "precode": "boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());",
+    "aftercode": "boolean isSimpleOp = NodeUtil.isExpression(n);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 114,
+    "precode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "aftercode": "(isSimpleOp || NodeUtil.isStatement(n))) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 123,
+    "precode": "t.makeError(n, level, USELESS_CODE_ERROR, msg));",
+    "aftercode": "t.makeWarning(n, level, USELESS_CODE_ERROR, msg));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 244,
+    "precode": "if (oldType == null) {",
+    "aftercode": "if (oldType != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 248,
+    "precode": "returnType = oldType.getReturnType();",
+    "aftercode": "returnType = oldType.getReturnType(); returnType = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 249,
+    "precode": "returnTypeInferred = oldType.isReturnTypeInferred();",
+    "aftercode": "returnTypeInferred = !oldType.isReturnTypeInferred();",
+    "rule": "Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 250,
+    "precode": "if (paramsParent == null) {",
+    "aftercode": "if (paramsParent != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 252,
+    "precode": "parametersNode = oldType.getParametersNode();",
+    "aftercode": "parametersNode = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 253,
+    "precode": "if (parametersNode == null) {",
+    "aftercode": "if (parametersNode != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 261,
+    "precode": "Iterator<Node> oldParams = oldType.getParameters().iterator();",
+    "aftercode": "Iterator<Node> oldParams = oldType.getParameters().iterator(); oldParams = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 264,
+    "precode": "for (Node currentParam = paramsParent.getFirstChild();",
+    "aftercode": "for (Node currentParam = paramsParent.getLastChild();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 265,
+    "precode": "currentParam != null; currentParam = currentParam.getNext()) {",
+    "aftercode": "currentParam != null; currentParam = currentParam.getPrev()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 266,
+    "precode": "if (oldParams.hasNext()) {",
+    "aftercode": "if (!oldParams.hasNext()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 267,
+    "precode": "Node oldParam = oldParams.next();",
+    "aftercode": "Node oldParam = oldParams.next(); oldParam = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 268,
+    "precode": "Node newParam = paramBuilder.newParameterFromNode(oldParam);",
+    "aftercode": "Node newParam = paramBuilder.newParameterFromNode(oldParam); newParam = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 270,
+    "precode": "oldParamsListHitOptArgs = oldParamsListHitOptArgs ||",
+    "aftercode": "oldParamsListHitOptArgs = oldParamsListHitOptArgs &&",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 271,
+    "precode": "oldParam.isVarArgs() ||",
+    "aftercode": "oldParam.isVarArgs() &&",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 272,
+    "precode": "oldParam.isOptionalArg();",
+    "aftercode": "oldParam.isOptionalArg() ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 276,
+    "precode": "if (currentParam.getNext() != null && newParam.isVarArgs()) {",
+    "aftercode": "if (currentParam.getNext() == null && newParam.isVarArgs()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 277,
+    "precode": "newParam.setVarArgs(false);",
+    "aftercode": "newParam.setVarArgs(true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 278,
+    "precode": "newParam.setOptionalArg(true);",
+    "aftercode": "newParam.setOptionalArg(false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 281,
+    "precode": "warnedAboutArgList |= addParameter(",
+    "aftercode": "warnedAboutArgList &= addParameter(",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 285,
+    "precode": "codingConvention.isOptionalParameter(currentParam) ||",
+    "aftercode": "codingConvention.isOptionalParameter(currentParam) &&",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 286,
+    "precode": "oldParamsListHitOptArgs,",
+    "aftercode": "!oldParamsListHitOptArgs,",
+    "rule": "Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 292,
+    "precode": "while (oldParams.hasNext()) {",
+    "aftercode": "while (!oldParams.hasNext()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 293,
+    "precode": "paramBuilder.newParameterFromNode(oldParams.next());",
+    "aftercode": "paramBuilder.newParameterFromNode(oldParams.next()); paramBuilder = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 296,
+    "precode": "parametersNode = paramBuilder.build();",
+    "aftercode": "parametersNode = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 298,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 427,
+    "precode": "if (info == null) {",
+    "aftercode": "if (info != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 436,
+    "precode": "if (parametersNode != null) {",
+    "aftercode": "if (parametersNode == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 442,
+    "precode": "Set<String> allJsDocParams = (info == null) ?",
+    "aftercode": "Set<String> allJsDocParams = (info != null) ?",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 449,
+    "precode": "allJsDocParams.remove(argumentName);",
+    "aftercode": "allJsDocParams.add(argumentName);",
+    "rule": "Argument Insertion",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 456,
+    "precode": "if (info != null && info.hasParameterType(argumentName)) {",
+    "aftercode": "if (info == null || info.hasParameterType(argumentName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 459,
+    "precode": "} else if (oldParameterType != null &&",
+    "aftercode": "} else if (oldParameterType == null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 460,
+    "precode": "oldParameterType.getJSType() != null) {",
+    "aftercode": "oldParameterType.getJSType() == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 469,
+    "precode": "parameterType.restrictByNotNullOrUndefined().isTemplateType()) {",
+    "aftercode": "parameterType.restrictByNotNullOrUndefined().isNotTemplateType()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 470,
+    "precode": "if (foundTemplateType) {",
+    "aftercode": "if (!foundTemplateType) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 476,
+    "precode": "warnedAboutArgList |= addParameter(",
+    "aftercode": "warnedAboutArgList = addParameter(",
+    "rule": "Assignment Operator",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 480,
+    "precode": "if (oldParameterType != null) {",
+    "aftercode": "if (oldParameterType == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 487,
+    "precode": "while (oldParameterType != null && !isVarArgs) {",
+    "aftercode": "while (oldParameterType == null || !isVarArgs) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 488,
+    "precode": "builder.newParameterFromNode(oldParameterType);",
+    "aftercode": "builder.newParameterFromNode(null);",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 493,
+    "precode": "if (templateTypeName != null && !foundTemplateType) {",
+    "aftercode": "if (templateTypeName == null && !foundTemplateType) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/FunctionTypeBuilder.java",
+    "line": 497,
+    "precode": "for (String inexistentName : allJsDocParams) {",
+    "aftercode": "for (String inexistentName : new HashSet<>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  }
+]

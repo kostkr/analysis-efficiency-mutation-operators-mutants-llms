@@ -1,0 +1,992 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1376,
+    "precode": "String ownerName = ownerNode.getQualifiedName();",
+    "aftercode": "String ownerName = ownerNode.getName();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1379,
+    "precode": "Preconditions.checkArgument(qName != null && ownerName != null);",
+    "aftercode": "Preconditions.checkArgument(qName != null || ownerName != null);",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1396,
+    "precode": "if (valueType == null && rhsValue != null) {",
+    "aftercode": "if (valueType == null || rhsValue != null) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1405,
+    "precode": "if (\"prototype\".equals(propName)) {",
+    "aftercode": "if (\"prototype\".equalsIgnoreCase(propName)) {",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1407,
+    "precode": "if (qVar != null) {",
+    "aftercode": "if (qVar == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1414,
+    "precode": "if (qVarType != null &&",
+    "aftercode": "if (qVarType == null &&",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1415,
+    "precode": "rhsValue != null &&",
+    "aftercode": "rhsValue == null &&",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1416,
+    "precode": "rhsValue.getType() == Token.OBJECTLIT) {",
+    "aftercode": "rhsValue.getType() != Token.OBJECTLIT) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1419,
+    "precode": "} else if (!qVar.isTypeInferred()) {",
+    "aftercode": "} else if (qVar.isTypeInferred()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1427,
+    "precode": "if (qVar.getScope() == scope) {",
+    "aftercode": "if (qVar.getScope() != scope) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1433,
+    "precode": "if (valueType == null) {",
+    "aftercode": "if (valueType != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1434,
+    "precode": "if (parent.getType() == Token.EXPR_RESULT) {",
+    "aftercode": "if (parent.getType() != Token.EXPR_RESULT) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1437,
+    "precode": "t.getInput() != null && t.getInput().isExtern(),",
+    "aftercode": "t.getInput() == null && t.getInput().isExtern(),",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1447,
+    "precode": "inferred = !(info.hasType()",
+    "aftercode": "inferred = info.hasType()",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1448,
+    "precode": "|| info.hasEnumParameterType()",
+    "aftercode": "&& info.hasEnumParameterType()",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1449,
+    "precode": "|| (info.isConstant() && valueType != null",
+    "aftercode": "|| (info.isConstant() || valueType != null",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1450,
+    "precode": "&& !valueType.isUnknownType())",
+    "aftercode": "&& valueType.isUnknownType())",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1456,
+    "precode": "inferred = !(rhsValue != null &&",
+    "aftercode": "inferred = !(rhsValue == null &&",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1457,
+    "precode": "rhsValue.getType() == Token.FUNCTION &&",
+    "aftercode": "rhsValue.getType() != Token.FUNCTION &&",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1458,
+    "precode": "(info != null || !scope.isDeclared(qName, false)));",
+    "aftercode": "(info != null && !scope.isDeclared(qName, false)));",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1463,
+    "precode": "if (ownerType != null) {",
+    "aftercode": "if (ownerType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1467,
+    "precode": "if ((!ownerType.hasOwnProperty(propName) ||",
+    "aftercode": "if ((ownerType.hasOwnProperty(propName) ||",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1468,
+    "precode": "ownerType.isPropertyTypeInferred(propName)) &&",
+    "aftercode": "ownerType.isPropertyTypeInferred(propName) ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1469,
+    "precode": "((isExtern && !ownerType.isNativeObjectType()) ||",
+    "aftercode": "((isExtern && ownerType.isNativeObjectType()) ||",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1470,
+    "precode": "!ownerType.isInstanceType())) {",
+    "aftercode": "ownerType.isInstanceType())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1479,
+    "precode": "} else if (rhsValue != null &&",
+    "aftercode": "} else if (rhsValue == null &&",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1480,
+    "precode": "rhsValue.getType() == Token.TRUE) {",
+    "aftercode": "rhsValue.getType() != Token.TRUE) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1487,
+    "precode": "JSType delegateType = delegateName == null ?",
+    "aftercode": "JSType delegateType = delegateName != null ?",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1489,
+    "precode": "if (delegateType != null &&",
+    "aftercode": "if (delegateType == null &&",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 1490,
+    "precode": "ownerTypeOfThis.isSubtype(delegateType)) {",
+    "aftercode": "!ownerTypeOfThis.isSubtype(delegateType)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 340,
+    "precode": "if (baseType.hasReferenceName() ||",
+    "aftercode": "if (!baseType.hasReferenceName() ||",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 340,
+    "precode": "if (baseType.hasReferenceName() ||",
+    "aftercode": "if (baseType.hasReferenceName() &&",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 341,
+    "precode": "isNativeObjectType() ||",
+    "aftercode": "!isNativeObjectType() ||",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 341,
+    "precode": "isNativeObjectType() ||",
+    "aftercode": "isNativeObjectType() &&",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 342,
+    "precode": "baseType.isFunctionPrototypeType() ||",
+    "aftercode": "!baseType.isFunctionPrototypeType() ||",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 342,
+    "precode": "baseType.isFunctionPrototypeType() ||",
+    "aftercode": "baseType.isFunctionPrototypeType() &&",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 343,
+    "precode": "!(baseType instanceof PrototypeObjectType)) {",
+    "aftercode": "!(baseType instanceof PrototypeObjectType) && {",
+    "rule": "Syntax Error/Logical",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 343,
+    "precode": "!(baseType instanceof PrototypeObjectType)) {",
+    "aftercode": "(baseType instanceof PrototypeObjectType) {",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 343,
+    "precode": "!(baseType instanceof PrototypeObjectType)) {",
+    "aftercode": "!(baseType instanceof Object) {",
+    "rule": "Type Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 345,
+    "precode": "baseType = new PrototypeObjectType(",
+    "aftercode": "baseType = new Object(",
+    "rule": "Class Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 346,
+    "precode": "registry, this.getReferenceName() + \".prototype\", baseType);",
+    "aftercode": "registry, this.getReferenceName() + \"\", baseType);",
+    "rule": "String Literal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 346,
+    "precode": "registry, this.getReferenceName() + \".prototype\", baseType);",
+    "aftercode": "registry, this.getReferenceName(), baseType);",
+    "rule": "String Manipulation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 346,
+    "precode": "registry, this.getReferenceName() + \".prototype\", baseType);",
+    "aftercode": "registry, this.getReferenceName() + \".prototype\", null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 346,
+    "precode": "registry, this.getReferenceName() + \".prototype\", baseType);",
+    "aftercode": "null, this.getReferenceName() + \".prototype\", baseType);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 348,
+    "precode": "setPrototype((PrototypeObjectType) baseType);",
+    "aftercode": "setPrototype((ObjectType) baseType);",
+    "rule": "Type Cast",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 348,
+    "precode": "setPrototype((PrototypeObjectType) baseType);",
+    "aftercode": "setPrototype(baseType);",
+    "rule": "Cast Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 348,
+    "precode": "setPrototype((PrototypeObjectType) baseType);",
+    "aftercode": "setPrototype((PrototypeObjectType) null);",
+    "rule": "Null Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 340,
+    "precode": "if (baseType.hasReferenceName() ||",
+    "aftercode": "if (true ||",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 341,
+    "precode": "isNativeObjectType() ||",
+    "aftercode": "false ||",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 343,
+    "precode": "!(baseType instanceof PrototypeObjectType)) {",
+    "aftercode": "!(baseType instanceof PrototypeObjectType) ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 340,
+    "precode": "if (baseType.hasReferenceName() ||",
+    "aftercode": "if (baseType.hasReferenceName() == false ||",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 345,
+    "precode": "baseType = new PrototypeObjectType(",
+    "aftercode": "baseType = baseType;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 348,
+    "precode": "setPrototype((PrototypeObjectType) baseType);",
+    "aftercode": "// setPrototype((PrototypeObjectType) baseType);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 340,
+    "precode": "if (baseType.hasReferenceName() ||",
+    "aftercode": "if (baseType.hasReferenceName() == null ||",
+    "rule": "Comparison",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 346,
+    "precode": "registry, this.getReferenceName() + \".prototype\", baseType);",
+    "aftercode": "registry, this.getReferenceName() + \".prototype\", this.getReferenceName());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 343,
+    "precode": "!(baseType instanceof PrototypeObjectType)) {",
+    "aftercode": "!(baseType == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 348,
+    "precode": "setPrototype((PrototypeObjectType) baseType);",
+    "aftercode": "setPrototype((PrototypeObjectType) this);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 340,
+    "precode": "if (baseType.hasReferenceName() ||",
+    "aftercode": "if (baseType.hasReferenceName() != null ||",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 357,
+    "precode": "if (prototype == null) {",
+    "aftercode": "if (prototype != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 358,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 361,
+    "precode": "if (isConstructor() && prototype == getInstanceType()) {",
+    "aftercode": "if (isConstructor() || prototype == getInstanceType()) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 361,
+    "precode": "if (isConstructor() && prototype == getInstanceType()) {",
+    "aftercode": "if (isConstructor() && prototype != getInstanceType()) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 362,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 365,
+    "precode": "PrototypeObjectType oldPrototype = this.prototype;",
+    "aftercode": "PrototypeObjectType oldPrototype = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 366,
+    "precode": "boolean replacedPrototype = oldPrototype != null;",
+    "aftercode": "boolean replacedPrototype = oldPrototype == null;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 368,
+    "precode": "this.prototype = prototype;",
+    "aftercode": "this.prototype = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 369,
+    "precode": "this.prototypeSlot = new SimpleSlot(\"prototype\", prototype, true);",
+    "aftercode": "this.prototypeSlot = new SimpleSlot(\"prototype\", prototype, false);",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 370,
+    "precode": "this.prototype.setOwnerFunction(this);",
+    "aftercode": "// this.prototype.setOwnerFunction(this);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 372,
+    "precode": "if (oldPrototype != null) {",
+    "aftercode": "if (oldPrototype == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 375,
+    "precode": "oldPrototype.setOwnerFunction(null);",
+    "aftercode": "oldPrototype.setOwnerFunction(this);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 378,
+    "precode": "if (isConstructor() || isInterface()) {",
+    "aftercode": "if (isConstructor() && isInterface()) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 378,
+    "precode": "if (isConstructor() || isInterface()) {",
+    "aftercode": "if (isConstructor()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 379,
+    "precode": "FunctionType superClass = getSuperClassConstructor();",
+    "aftercode": "FunctionType superClass = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 380,
+    "precode": "if (superClass != null) {",
+    "aftercode": "if (superClass == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 381,
+    "precode": "superClass.addSubType(this);",
+    "aftercode": "// superClass.addSubType(this);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 384,
+    "precode": "if (isInterface()) {",
+    "aftercode": "if (!isInterface()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 385,
+    "precode": "for (ObjectType interfaceType : getExtendedInterfaces()) {",
+    "aftercode": "for (ObjectType interfaceType : null) {",
+    "rule": "Null Pointer",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 386,
+    "precode": "if (interfaceType.getConstructor() != null) {",
+    "aftercode": "if (interfaceType.getConstructor() == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 387,
+    "precode": "interfaceType.getConstructor().addSubType(this);",
+    "aftercode": "// interfaceType.getConstructor().addSubType(this);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 393,
+    "precode": "if (replacedPrototype) {",
+    "aftercode": "if (!replacedPrototype) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 394,
+    "precode": "clearCachedValues();",
+    "aftercode": "// clearCachedValues();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 397,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 361,
+    "precode": "if (isConstructor() && prototype == getInstanceType()) {",
+    "aftercode": "if (isConstructor()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 361,
+    "precode": "if (isConstructor() && prototype == getInstanceType()) {",
+    "aftercode": "if (prototype == getInstanceType()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 366,
+    "precode": "boolean replacedPrototype = oldPrototype != null;",
+    "aftercode": "boolean replacedPrototype = true;",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 366,
+    "precode": "boolean replacedPrototype = oldPrototype != null;",
+    "aftercode": "boolean replacedPrototype = false;",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 369,
+    "precode": "this.prototypeSlot = new SimpleSlot(\"prototype\", prototype, true);",
+    "aftercode": "this.prototypeSlot = new SimpleSlot(\"prototype\", null, true);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 375,
+    "precode": "oldPrototype.setOwnerFunction(null);",
+    "aftercode": "oldPrototype.setOwnerFunction(oldPrototype);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 378,
+    "precode": "if (isConstructor() || isInterface()) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 378,
+    "precode": "if (isConstructor() || isInterface()) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 380,
+    "precode": "if (superClass != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 385,
+    "precode": "for (ObjectType interfaceType : getExtendedInterfaces()) {",
+    "aftercode": "for (ObjectType interfaceType : new ArrayList<>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 386,
+    "precode": "if (interfaceType.getConstructor() != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 393,
+    "precode": "if (replacedPrototype) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 393,
+    "precode": "if (replacedPrototype) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 361,
+    "precode": "if (isConstructor() && prototype == getInstanceType()) {",
+    "aftercode": "if (isConstructor() && prototype != getInstanceType()) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.06,
+    "dublicate": true
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 361,
+    "precode": "if (isConstructor() && prototype == getInstanceType()) {",
+    "aftercode": "if (isConstructor() && prototype.equals(getInstanceType())) {",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 365,
+    "precode": "PrototypeObjectType oldPrototype = this.prototype;",
+    "aftercode": "PrototypeObjectType oldPrototype = this.prototype.getClass();",
+    "rule": "Type Mismatch",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 370,
+    "precode": "this.prototype.setOwnerFunction(this);",
+    "aftercode": "this.prototype.setOwnerFunction(null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  }
+]

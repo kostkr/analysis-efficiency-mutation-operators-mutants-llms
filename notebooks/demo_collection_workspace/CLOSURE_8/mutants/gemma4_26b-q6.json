@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 191,
+    "precode": "if (!NodeUtil.isExprAssign(n)) {",
+    "aftercode": "if (NodeUtil.isExprAssign(n)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 192,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 194,
+    "precode": "Node assign = n.getFirstChild();",
+    "aftercode": "Node assign = n.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 195,
+    "precode": "Node lhs = assign.getFirstChild();",
+    "aftercode": "Node lhs = assign.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 197,
+    "precode": "if (!lhs.isName()) {",
+    "aftercode": "if (lhs.isName()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 198,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 201,
+    "precode": "Var var = s.getVar(lhs.getString());",
+    "aftercode": "Var var = s.getVar(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 202,
+    "precode": "return var != null",
+    "aftercode": "return var == null",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 203,
+    "precode": "&& var.getScope() == s",
+    "aftercode": "&& var.getScope() != s",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 203,
+    "precode": "&& var.getScope() == s",
+    "aftercode": "&& var.getScope() != null",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 204,
+    "precode": "&& !isNamedParameter(var)",
+    "aftercode": "&& isNamedParameter(var)",
+    "rule": "Negation",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 205,
+    "precode": "&& !blacklistedVars.contains(var);",
+    "aftercode": "&& blacklistedVars.contains(var);",
+    "rule": "Negation",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 202,
+    "precode": "return var != null",
+    "aftercode": "return var != null && true",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 203,
+    "precode": "&& var.getScope() == s",
+    "aftercode": "&& true",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 204,
+    "precode": "&& !isNamedParameter(var)",
+    "aftercode": "&& true",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 205,
+    "precode": "&& !blacklistedVars.contains(var);",
+    "aftercode": "&& true;",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 202,
+    "precode": "return var != null",
+    "aftercode": "return var != null && var != null",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.02,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 210,
+    "precode": "return v.getParentNode().isParamList();",
+    "aftercode": "return !v.getParentNode().isParamList();",
+    "rule": "Negation",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 210,
+    "precode": "return v.getParentNode().isParamList();",
+    "aftercode": "return v.getParentNode() != null && v.getParentNode().isParamList();",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CollapseVariableDeclarations.java",
+    "line": 210,
+    "precode": "return v.getParentNode().isParamList();",
+    "aftercode": "return v.isParamList();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  }
+]

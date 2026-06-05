@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1572,
+    "precode": "if (implicitProto == null) {",
+    "aftercode": "if (implicitProto != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1575,
+    "precode": "currentPropertyNames = ImmutableSet.of();",
+    "aftercode": "currentPropertyNames = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1577,
+    "precode": "currentPropertyNames = implicitProto.getOwnPropertyNames();",
+    "aftercode": "currentPropertyNames = implicitProto.keySet();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1579,
+    "precode": "for (String name : currentPropertyNames) {",
+    "aftercode": "for (String name : new HashSet<>()) {",
+    "rule": "EmptyCollection",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1580,
+    "precode": "ObjectType oType = properties.get(name);",
+    "aftercode": "ObjectType oType = currentProperties.get(name);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1581,
+    "precode": "if (oType != null) {",
+    "aftercode": "if (oType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1582,
+    "precode": "if (!interfaceType.getPropertyType(name).isEquivalentTo(",
+    "aftercode": "if (interfaceType.getPropertyType(name).isEquivalentTo(",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1582,
+    "precode": "if (!interfaceType.getPropertyType(name).isEquivalentTo(",
+    "aftercode": "if (!interfaceType.getPropertyType(name).equals(",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1584,
+    "precode": "compiler.report(",
+    "aftercode": "// compiler.report(",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1586,
+    "precode": "functionName, name, oType.toString(),",
+    "aftercode": "functionName, name, null,",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1590,
+    "precode": "currentProperties.put(name, interfaceType);",
+    "aftercode": "currentProperties.put(name, oType);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1590,
+    "precode": "currentProperties.put(name, interfaceType);",
+    "aftercode": "// currentProperties.put(name, interfaceType);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1592,
+    "precode": "for (ObjectType iType : interfaceType.getCtorExtendedInterfaces()) {",
+    "aftercode": "for (ObjectType iType : interfaceType.getExtendedInterfaces()) {",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1593,
+    "precode": "checkInterfaceConflictProperties(t, n, functionName, properties,",
+    "aftercode": "checkInterfaceConflictProperties(t, n, null, properties,",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1593,
+    "precode": "checkInterfaceConflictProperties(t, n, functionName, properties,",
+    "aftercode": "checkInterfaceConflictProperties(t, n, functionName, currentProperties,",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1593,
+    "precode": "checkInterfaceConflictProperties(t, n, functionName, properties,",
+    "aftercode": "checkInterfaceConflictProperties(t, n, functionName, properties, currentProperties, interfaceType);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1572,
+    "precode": "if (implicitProto == null) {",
+    "aftercode": "if (false) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1581,
+    "precode": "if (oType != null) {",
+    "aftercode": "if (true) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1577,
+    "precode": "currentPropertyNames = implicitProto.getOwnPropertyNames();",
+    "aftercode": "currentPropertyNames = implicitProto.getOwnPropertyNames();",
+    "rule": "NoOp",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1580,
+    "precode": "ObjectType oType = properties.get(name);",
+    "aftercode": "ObjectType oType = properties.remove(name);",
+    "rule": "SideEffect",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1583,
+    "precode": "oType.getPropertyType(name)))",
+    "aftercode": "oType.getPropertyType(\"wrong\"))",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1590,
+    "precode": "currentProperties.put(name, interfaceType);",
+    "aftercode": "currentProperties.put(name, null);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1592,
+    "precode": "for (ObjectType iType : interfaceType.getCtorExtendedInterfaces()) {",
+    "aftercode": "if (interfaceType.getCtorExtendedInterfaces().size() > 0) {",
+    "rule": "LoopToIf",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1575,
+    "precode": "currentPropertyNames = ImmutableSet.of();",
+    "aftercode": "currentPropertyNames = ImmutableSet.of(\"dummy\");",
+    "rule": "CollectionSizeChange",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1582,
+    "precode": "if (!interfaceType.getPropertyType(name).isEquivalentTo(",
+    "aftercode": "if (interfaceType.getPropertyType(name) == null) {",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1593,
+    "precode": "checkInterfaceConflictProperties(t, n, functionName, properties,",
+    "aftercode": "checkInterfaceConflictProperties(null, n, functionName, properties,",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1570,
+    "precode": "ObjectType implicitProto = interfaceType.getImplicitPrototype();",
+    "aftercode": "ObjectType implicitProto = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1580,
+    "precode": "ObjectType oType = properties.get(name);",
+    "aftercode": "ObjectType oType = properties.getOrDefault(name, null);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1590,
+    "precode": "currentProperties.put(name, interfaceType);",
+    "aftercode": "currentProperties.putIfAbsent(name, interfaceType);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1582,
+    "precode": "if (!interfaceType.getPropertyType(name).isEquivalentTo(",
+    "aftercode": "if (interfaceType.getPropertyType(name).isEquivalentTo(",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1572,
+    "precode": "if (implicitProto == null) {",
+    "aftercode": "if (implicitProto == null && false) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/TypeCheck.java",
+    "line": 1592,
+    "precode": "for (ObjectType iType : interfaceType.getCtorExtendedInterfaces()) {",
+    "aftercode": "for (ObjectType iType : interfaceType.getCtorExtendedInterfaces().toArray(new Object[0])) {",
+    "rule": "CollectionTypeChange",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]

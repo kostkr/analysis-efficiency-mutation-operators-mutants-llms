@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 157,
+    "precode": "(new NodeTraversal(compiler, this)).traverseRoots(externs, root);",
+    "aftercode": "(new NodeTraversal(compiler, this)).traverseRoots(root, externs);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.84,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 157,
+    "precode": "(new NodeTraversal(compiler, this)).traverseRoots(externs, root);",
+    "aftercode": "(new NodeTraversal(compiler, this)).traverseRoots(null, root);",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 1.84,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 157,
+    "precode": "(new NodeTraversal(compiler, this)).traverseRoots(externs, root);",
+    "aftercode": "new NodeTraversal(compiler, this).traverseRoots(externs, root);",
+    "rule": "Redundant Parentheses Removal",
+    "gen_time_s": 1.84,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 393,
+    "precode": "NodeTraversal.traverse(compiler, rValue,",
+    "aftercode": "NodeTraversal.traverse(compiler, null,",
+    "rule": "NullValue",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 393,
+    "precode": "NodeTraversal.traverse(compiler, rValue,",
+    "aftercode": "NodeTraversal.traverse(null, rValue,",
+    "rule": "NullValue",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 397,
+    "precode": "if (n.isName()) {",
+    "aftercode": "if (!n.isName()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 397,
+    "precode": "if (n.isName()) {",
+    "aftercode": "if (true) {",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 398,
+    "precode": "Var dep = jsScope.getVar(n.getString());",
+    "aftercode": "Var dep = jsScope.getVar(\"\");",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 398,
+    "precode": "Var dep = jsScope.getVar(n.getString());",
+    "aftercode": "Var dep = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 399,
+    "precode": "if (dep == null) {",
+    "aftercode": "if (dep != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 399,
+    "precode": "if (dep == null) {",
+    "aftercode": "if (false) {",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 400,
+    "precode": "def.unknownDependencies = true;",
+    "aftercode": "def.unknownDependencies = false;",
+    "rule": "BooleanValue",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 402,
+    "precode": "def.depends.add(dep);",
+    "aftercode": "def.depends.remove(dep);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 402,
+    "precode": "def.depends.add(dep);",
+    "aftercode": "def.depends.add(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 402,
+    "precode": "def.depends.add(dep);",
+    "aftercode": "// def.depends.add(dep);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 396,
+    "precode": "public void visit(NodeTraversal t, Node n, Node parent) {",
+    "aftercode": "public void visit(NodeTraversal t, Node n, Node parent) { }",
+    "rule": "EmptyBody",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 393,
+    "precode": "NodeTraversal.traverse(compiler, rValue,",
+    "aftercode": "NodeTraversal.traverse(compiler, rValue, null,",
+    "rule": "ArgumentAddition",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 400,
+    "precode": "def.unknownDependencies = true;",
+    "aftercode": "def.unknownDependencies = def.unknownDependencies;",
+    "rule": "NoOp",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 398,
+    "precode": "Var dep = jsScope.getVar(n.getString());",
+    "aftercode": "Var dep = jsScope.getVar(n.toString());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 397,
+    "precode": "if (n.isName()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 397,
+    "precode": "if (n.isName()) {",
+    "aftercode": "if (!n.isName()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 398,
+    "precode": "Var dep = jsScope.getVar(n.getString());",
+    "aftercode": "Var dep = jsScope.getVar(\"\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 399,
+    "precode": "if (dep == null) {",
+    "aftercode": "if (dep != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 399,
+    "precode": "if (dep == null) {",
+    "aftercode": "if (dep == null && false) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 400,
+    "precode": "def.unknownDependencies = true;",
+    "aftercode": "def.unknownDependencies = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 402,
+    "precode": "def.depends.add(dep);",
+    "aftercode": "def.depends.remove(dep);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 402,
+    "precode": "def.depends.add(dep);",
+    "aftercode": "def.depends.add(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 402,
+    "precode": "def.depends.add(dep);",
+    "aftercode": "def.depends.add(n);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 398,
+    "precode": "Var dep = jsScope.getVar(n.getString());",
+    "aftercode": "Var dep = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 431,
+    "precode": "Preconditions.checkArgument(getCfg().hasNode(useNode));",
+    "aftercode": "Preconditions.checkArgument(true);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 432,
+    "precode": "GraphNode<Node, Branch> n = getCfg().getNode(useNode);",
+    "aftercode": "GraphNode<Node, Branch> n = getCfg().getNodes().get(0);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 434,
+    "precode": "Definition def = state.getIn().reachingDef.get(jsScope.getVar(name));",
+    "aftercode": "Definition def = state.getOut().reachingDef.get(jsScope.getVar(name));",
+    "rule": "State Access",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 435,
+    "precode": "if (def.unknownDependencies) {",
+    "aftercode": "if (!def.unknownDependencies) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 435,
+    "precode": "if (def.unknownDependencies) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 435,
+    "precode": "if (def.unknownDependencies) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 439,
+    "precode": "for (Var s : def.depends) {",
+    "aftercode": "for (Var s : new ArrayList<>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 439,
+    "precode": "for (Var s : def.depends) {",
+    "aftercode": "if (def.depends.isEmpty()) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 440,
+    "precode": "if (s.scope != jsScope) {",
+    "aftercode": "if (s.scope == jsScope) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 440,
+    "precode": "if (s.scope != jsScope) {",
+    "aftercode": "if (s.scope != null) {",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 440,
+    "precode": "if (s.scope != jsScope) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 440,
+    "precode": "if (s.scope != jsScope) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 441,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 444,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 434,
+    "precode": "Definition def = state.getIn().reachingDef.get(jsScope.getVar(name));",
+    "aftercode": "Definition def = state.getIn().reachingDef.get(name);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 432,
+    "precode": "GraphNode<Node, Branch> n = getCfg().getNode(useNode);",
+    "aftercode": "GraphNode<Node, Branch> n = getCfg().getNode(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 70,
+    "precode": "final Set<Var> depends = Sets.newHashSet();",
+    "aftercode": "final Set<Var> depends = Sets.newHashSet(1);",
+    "rule": "Collection Initialization",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 71,
+    "precode": "private boolean unknownDependencies = false;",
+    "aftercode": "private boolean unknownDependencies = true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 70,
+    "precode": "final Set<Var> depends = Sets.newHashSet();",
+    "aftercode": "final Set<Var> depends = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 71,
+    "precode": "private boolean unknownDependencies = false;",
+    "aftercode": "private boolean unknownDependencies;",
+    "rule": "Field Initialization Removal",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/MustBeReachingVariableDef.java",
+    "line": 70,
+    "precode": "final Set<Var> depends = Sets.newHashSet();",
+    "aftercode": "final Set<Var> depends = Collections.emptySet();",
+    "rule": "Immutable Collection Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  }
+]

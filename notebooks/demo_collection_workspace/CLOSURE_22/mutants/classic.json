@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 94,
+    "precode": "if (parent == null) {",
+    "aftercode": "if (parent != null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (n.isQualifiedName() && n.getJSDocInfo() == null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 118,
+    "precode": "} else if (isSimpleOp) {",
+    "aftercode": "} else if (!(isSimpleOp)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (NodeUtil.isStatement(n)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 116,
+    "precode": "if (n.isString()) {",
+    "aftercode": "if (!(n.isString())) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 89,
+    "precode": "if (n.isEmpty() ||",
+    "aftercode": "if (false ||",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 90,
+    "precode": "n.isComma()) {",
+    "aftercode": "false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (false || n.isBlock()) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (n.isExprResult() || false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (false && n.getJSDocInfo() != null) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (n.isQualifiedName() && (com.google.javascript.rhino.JSDocInfo) null != null) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 111,
+    "precode": "boolean isResultUsed = NodeUtil.isExpressionResultUsed(n);",
+    "aftercode": "boolean isResultUsed = false;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 112,
+    "precode": "boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());",
+    "aftercode": "boolean isSimpleOp = NodeUtil.isSimpleOperatorType(0);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 112,
+    "precode": "boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());",
+    "aftercode": "boolean isSimpleOp = false;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 114,
+    "precode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "aftercode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, (com.google.javascript.jscomp.Compiler) null))) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 114,
+    "precode": "(isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {",
+    "aftercode": "(isSimpleOp || !false)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 116,
+    "precode": "if (n.isString()) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 119,
+    "precode": "msg = \"The result of the '\" + Token.name(n.getType()).toLowerCase() +",
+    "aftercode": "msg = \"The result of the '\" + Token.name(0).toLowerCase() +",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 119,
+    "precode": "msg = \"The result of the '\" + Token.name(n.getType()).toLowerCase() +",
+    "aftercode": "msg = \"The result of the '\" + ((java.lang.String) null).toLowerCase() +",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 119,
+    "precode": "msg = \"The result of the '\" + Token.name(n.getType()).toLowerCase() +",
+    "aftercode": "msg = \"The result of the '\" + (java.lang.String) null +",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 123,
+    "precode": "t.getCompiler().report(",
+    "aftercode": "((com.google.javascript.jscomp.Compiler) null).report(",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 124,
+    "precode": "t.makeError(n, level, USELESS_CODE_ERROR, msg));",
+    "aftercode": "(com.google.javascript.jscomp.JSError) null);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (!false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 128,
+    "precode": "problemNodes.add(n);",
+    "aftercode": ";",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 94,
+    "precode": "if (parent == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 118,
+    "precode": "} else if (isSimpleOp) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 94,
+    "precode": "if (parent == null) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 101,
+    "precode": "if (n.isExprResult() || n.isBlock()) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 107,
+    "precode": "if (n.isQualifiedName() && n.getJSDocInfo() != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 127,
+    "precode": "if (!NodeUtil.isStatement(n)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 116,
+    "precode": "if (n.isString()) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 118,
+    "precode": "} else if (isSimpleOp) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 119,
+    "precode": "msg = \"The result of the '\" + Token.name(n.getType()).toLowerCase() +",
+    "aftercode": "msg = \"The result of the '\" + Token.name(n.getType()) +",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 184,
+    "precode": "if (n.isCall()) {",
+    "aftercode": "if (!(n.isCall())) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 184,
+    "precode": "if (n.isCall()) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 185,
+    "precode": "Node target = n.getFirstChild();",
+    "aftercode": "Node target = (Node) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 188,
+    "precode": "if (target.isName() && target.getString().equals(PROTECTOR_FN)) {",
+    "aftercode": "if (false && target.getString().equals(PROTECTOR_FN)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 188,
+    "precode": "if (target.isName() && target.getString().equals(PROTECTOR_FN)) {",
+    "aftercode": "if (target.isName() && ((java.lang.String) null).equals(PROTECTOR_FN)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 188,
+    "precode": "if (target.isName() && target.getString().equals(PROTECTOR_FN)) {",
+    "aftercode": "if (target.isName() && false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 189,
+    "precode": "Node expr = n.getLastChild();",
+    "aftercode": "Node expr = (Node) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 188,
+    "precode": "if (target.isName() && target.getString().equals(PROTECTOR_FN)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 184,
+    "precode": "if (n.isCall()) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 188,
+    "precode": "if (target.isName() && target.getString().equals(PROTECTOR_FN)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 190,
+    "precode": "n.detachChildren();",
+    "aftercode": "if (System.nanoTime() == Long.MIN_VALUE) { n.detachChildren(); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 191,
+    "precode": "parent.replaceChild(n, expr);",
+    "aftercode": "if (System.nanoTime() == Long.MIN_VALUE) { parent.replaceChild(n, expr); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 185,
+    "precode": "Node target = n.getFirstChild();",
+    "aftercode": "Node target = n;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/CheckSideEffects.java",
+    "line": 189,
+    "precode": "Node expr = n.getLastChild();",
+    "aftercode": "Node expr = n;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.1,
+    "dublicate": false
+  }
+]

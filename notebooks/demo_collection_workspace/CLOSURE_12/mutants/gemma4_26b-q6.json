@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 160,
+    "precode": "List<DiGraphEdge<Node, Branch>> branchEdges = getCfg().getOutEdges(cfgNode);",
+    "aftercode": "List<DiGraphEdge<Node, Branch>> branchEdges = getCfg().getInEdges(cfgNode);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 161,
+    "precode": "for (DiGraphEdge<Node, Branch> edge : branchEdges) {",
+    "aftercode": "for (DiGraphEdge<Node, Branch> edge : new ArrayList<>()) {",
+    "rule": "Empty Collection Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 162,
+    "precode": "if (edge.getValue() == Branch.ON_EX) {",
+    "aftercode": "if (edge.getValue() != Branch.ON_EX) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 162,
+    "precode": "if (edge.getValue() == Branch.ON_EX) {",
+    "aftercode": "if (edge.getValue() == null) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 162,
+    "precode": "if (edge.getValue() == Branch.ON_EX) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 163,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 166,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 160,
+    "precode": "List<DiGraphEdge<Node, Branch>> branchEdges = getCfg().getOutEdges(cfgNode);",
+    "aftercode": "List<DiGraphEdge<Node, Branch>> branchEdges = Collections.emptyList();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/MaybeReachingVariableUse.java",
+    "line": 161,
+    "precode": "for (DiGraphEdge<Node, Branch> edge : branchEdges) {",
+    "aftercode": "for (int i = 0; i < branchEdges.size(); i++) {",
+    "rule": "Loop Transformation",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  }
+]

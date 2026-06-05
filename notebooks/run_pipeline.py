@@ -40,6 +40,7 @@ def _build_bug_id_batches(
 
 BUG_ID_BATCHES = _build_bug_id_batches(BUG_IDS_BY_PROJECT)
 
+
 RUN_CLASSIC_GENERATION = True
 RUN_LLM_QWEN3_6_Q6 = True
 RUN_LLM_GEMMA4_26B_Q6 = True
@@ -92,7 +93,7 @@ def _enabled_llm_configs() -> list[LLMConfig]:
 
 # ── Mutant execution pipeline ──────────────────────────────────────────────
 COLLECT_TEST_TIMEOUT_S = 2700
-COLLECT_MAX_WORKERS = 14
+COLLECT_MAX_WORKERS = 13
 
 
 def main() -> int:

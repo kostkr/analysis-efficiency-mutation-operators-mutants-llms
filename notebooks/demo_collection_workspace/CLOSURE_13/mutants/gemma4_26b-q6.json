@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 118,
+    "precode": "if (!shouldVisit(node)) {",
+    "aftercode": "if (shouldVisit(node)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 118,
+    "precode": "if (!shouldVisit(node)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 122,
+    "precode": "int visits = 0;",
+    "aftercode": "int visits = 1;",
+    "rule": "Assignment",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 123,
+    "precode": "do {",
+    "aftercode": "while (false) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 124,
+    "precode": "Node c = node.getFirstChild();",
+    "aftercode": "Node c = node.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 125,
+    "precode": "while(c != null) {",
+    "aftercode": "while(c != null && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 125,
+    "precode": "while(c != null) {",
+    "aftercode": "while(c != null && true) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 125,
+    "precode": "while(c != null) {",
+    "aftercode": "while(c != null && c.isLeaf()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 126,
+    "precode": "Node next = c.getNext();",
+    "aftercode": "Node next = c.getPrev();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 127,
+    "precode": "traverse(c);",
+    "aftercode": "// traverse(c);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 127,
+    "precode": "traverse(c);",
+    "aftercode": "traverse(node);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 128,
+    "precode": "c = next;",
+    "aftercode": "c = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 131,
+    "precode": "visit(node);",
+    "aftercode": "// visit(node);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 132,
+    "precode": "visits++;",
+    "aftercode": "visits--;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 132,
+    "precode": "visits++;",
+    "aftercode": "visits += 2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 134,
+    "precode": "Preconditions.checkState(visits < 10000, \"too many interations\");",
+    "aftercode": "Preconditions.checkState(visits <= 10000, \"too many interations\");",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 134,
+    "precode": "Preconditions.checkState(visits < 10000, \"too many interations\");",
+    "aftercode": "Preconditions.checkState(visits < 0, \"too many interations\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 134,
+    "precode": "Preconditions.checkState(visits < 10000, \"too many interations\");",
+    "aftercode": "// Preconditions.checkState(visits < 10000, \"too many interations\");",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 135,
+    "precode": "} while (shouldRetraverse(node));",
+    "aftercode": "} while (true);",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 135,
+    "precode": "} while (shouldRetraverse(node));",
+    "aftercode": "} while (false);",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 135,
+    "precode": "} while (shouldRetraverse(node));",
+    "aftercode": "} while (!shouldRetraverse(node));",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 137,
+    "precode": "exitNode(node);",
+    "aftercode": "exitNode(null);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 137,
+    "precode": "exitNode(node);",
+    "aftercode": "// exitNode(node);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 124,
+    "precode": "Node c = node.getFirstChild();",
+    "aftercode": "Node c = node;",
+    "rule": "Assignment",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 122,
+    "precode": "int visits = 0;",
+    "aftercode": "int visits = -1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+    "line": 134,
+    "precode": "Preconditions.checkState(visits < 10000, \"too many interations\");",
+    "aftercode": "Preconditions.checkState(visits < 10001, \"too many interations\");",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  }
+]

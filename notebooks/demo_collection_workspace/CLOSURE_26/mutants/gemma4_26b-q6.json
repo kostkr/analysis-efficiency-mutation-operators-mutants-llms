@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 208,
+    "precode": "if (!modulesWithExports.contains(moduleName)) {",
+    "aftercode": "if (modulesWithExports.contains(moduleName)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 208,
+    "precode": "if (!modulesWithExports.contains(moduleName)) {",
+    "aftercode": "if (!modulesWithExports.isEmpty()) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 212,
+    "precode": "Node moduleExportsProp = IR.getprop(IR.name(moduleName),",
+    "aftercode": "Node moduleExportsProp = IR.getprop(IR.name(\"module$exports\"),",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 213,
+    "precode": "IR.string(\"module$exports\"));",
+    "aftercode": "IR.string(\"module_exports\"));",
+    "rule": "String Literal",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 214,
+    "precode": "script.addChildToBack(IR.ifNode(",
+    "aftercode": "script.addChildToFront(IR.ifNode(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 214,
+    "precode": "script.addChildToBack(IR.ifNode(",
+    "aftercode": "script.addChildToBack(IR.whileNode(",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 215,
+    "precode": "moduleExportsProp,",
+    "aftercode": "IR.trueNode,",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 215,
+    "precode": "moduleExportsProp,",
+    "aftercode": "IR.falseNode,",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 216,
+    "precode": "IR.block(IR.exprResult(IR.assign(IR.name(moduleName),",
+    "aftercode": "IR.block(IR.exprResult(IR.assign(IR.name(\"module$exports\"),",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 216,
+    "precode": "IR.block(IR.exprResult(IR.assign(IR.name(moduleName),",
+    "aftercode": "IR.block(IR.exprResult(IR.assign(IR.name(moduleName),",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.71,
+    "dublicate": true
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 216,
+    "precode": "IR.block(IR.exprResult(IR.assign(IR.name(moduleName),",
+    "aftercode": "IR.block(IR.exprResult(IR.getprop(IR.name(moduleName),",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 217,
+    "precode": "moduleExportsProp.cloneTree()))).copyInformationFromForTree(",
+    "aftercode": "moduleExportsProp.cloneTree()))).copyInformationFromForTree(",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.71,
+    "dublicate": true
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 217,
+    "precode": "moduleExportsProp.cloneTree()))).copyInformationFromForTree(",
+    "aftercode": "moduleExportsProp.cloneTree()))).copyInformationFromForTree(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.71,
+    "dublicate": true
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 217,
+    "precode": "moduleExportsProp.cloneTree()))).copyInformationFromForTree(",
+    "aftercode": "moduleExportsProp.cloneTree()))).copyInformationFromForTree(",
+    "rule": "Method Call Deletion",
+    "gen_time_s": 1.71,
+    "dublicate": true
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 225,
+    "precode": "String moduleName = guessCJSModuleName(prop.getSourceFileName());",
+    "aftercode": "String moduleName = prop.getSourceFileName();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 227,
+    "precode": "module.putProp(Node.ORIGINALNAME_PROP, \"module\");",
+    "aftercode": "module.putProp(Node.ORIGINALNAME_PROP, \"exports\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 228,
+    "precode": "module.setString(moduleName);",
+    "aftercode": "module.setString(\"\");",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 229,
+    "precode": "Node exports = prop.getChildAtIndex(1);",
+    "aftercode": "Node exports = prop.getChildAtIndex(0);",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 230,
+    "precode": "exports.putProp(Node.ORIGINALNAME_PROP, \"exports\");",
+    "aftercode": "exports.putProp(Node.ORIGINALNAME_PROP, \"module\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 231,
+    "precode": "exports.setString(\"module$exports\");",
+    "aftercode": "exports.setString(\"exports\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 232,
+    "precode": "modulesWithExports.add(moduleName);",
+    "aftercode": "// modulesWithExports.add(moduleName);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 226,
+    "precode": "Node module = prop.getChildAtIndex(0);",
+    "aftercode": "Node module = prop.getChildAtIndex(1);",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 231,
+    "precode": "exports.setString(\"module$exports\");",
+    "aftercode": "exports.setString(\"module\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 232,
+    "precode": "modulesWithExports.add(moduleName);",
+    "aftercode": "modulesWithExports.add(\"something_else\");",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 127,
+    "precode": "private int scriptNodeCount = 0;",
+    "aftercode": "private int scriptNodeCount = 1;",
+    "rule": "Scalar Variable Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 127,
+    "precode": "private int scriptNodeCount = 0;",
+    "aftercode": "private int scriptNodeCount = -1;",
+    "rule": "Scalar Variable Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 128,
+    "precode": "private Set<String> modulesWithExports = Sets.newHashSet();",
+    "aftercode": "private Set<String> modulesWithExports = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 128,
+    "precode": "private Set<String> modulesWithExports = Sets.newHashSet();",
+    "aftercode": "private Set<String> modulesWithExports = Sets.newHashSet(1);",
+    "rule": "Collection Initialization",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/ProcessCommonJSModules.java",
+    "line": 128,
+    "precode": "private Set<String> modulesWithExports = Sets.newHashSet();",
+    "aftercode": "private Set<String> modulesWithExports = Collections.emptySet();",
+    "rule": "Immutable Collection Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  }
+]

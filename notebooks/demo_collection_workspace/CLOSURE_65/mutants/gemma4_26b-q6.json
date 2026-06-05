@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1010,
+    "precode": "StringBuilder sb = new StringBuilder(s.length() + 2);",
+    "aftercode": "StringBuilder sb = new StringBuilder(s.length());",
+    "rule": "Removed Constant",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1012,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 0; i <= s.length(); i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1012,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 1; i < s.length(); i++) {",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1015,
+    "precode": "case '\\0': sb.append(\"\\\\000\"); break;",
+    "aftercode": "case '\\0': sb.append(\"\\\\000\");",
+    "rule": "Removed Statement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1016,
+    "precode": "case '\\n': sb.append(\"\\\\n\"); break;",
+    "aftercode": "case '\\n': sb.append(\"\\\\r\"); break;",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1017,
+    "precode": "case '\\r': sb.append(\"\\\\r\"); break;",
+    "aftercode": "case '\\r': sb.append(\"\\\\n\"); break;",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1018,
+    "precode": "case '\\t': sb.append(\"\\\\t\"); break;",
+    "aftercode": "case '\\t': sb.append(\"\\\\ \"); break;",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1019,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(doublequoteEscape); break;",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1020,
+    "precode": "case '\"': sb.append(doublequoteEscape); break;",
+    "aftercode": "case '\"': sb.append(singlequoteEscape); break;",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1021,
+    "precode": "case '\\'': sb.append(singlequoteEscape); break;",
+    "aftercode": "case '\\'': sb.append(backslashEscape); break;",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1023,
+    "precode": "if (i >= 2 &&",
+    "aftercode": "if (i > 2 &&",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1023,
+    "precode": "if (i >= 2 &&",
+    "aftercode": "if (i >= 2 ||",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' || s.charAt(i - 2) == '-') ||",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) != '-') ||",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == ']')))",
+    "aftercode": "(s.charAt(i - 1) == ']' || s.charAt(i - 2) == ']')))",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1026,
+    "precode": "sb.append(\"\\\\>\");",
+    "aftercode": "sb.append(c);",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1038,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(false, i + 1, END_SCRIPT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1038,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(true, i, END_SCRIPT, 0,",
+    "rule": "Offset Error",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1041,
+    "precode": "} else if (s.regionMatches(false, i + 1, START_COMMENT, 0,",
+    "aftercode": "} else if (s.regionMatches(true, i + 1, START_COMMENT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1041,
+    "precode": "} else if (s.regionMatches(false, i + 1, START_COMMENT, 0,",
+    "aftercode": "} else if (s.regionMatches(false, i + 2, START_COMMENT, 0,",
+    "rule": "Offset Error",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1040,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1043,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1051,
+    "precode": "if (outputCharsetEncoder != null) {",
+    "aftercode": "if (outputCharsetEncoder == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1052,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (!outputCharsetEncoder.canEncode(c)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1053,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(backslashEscape);",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1056,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "sb.append(c);",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1058,
+    "precode": "} else {",
+    "aftercode": "} if (true) {",
+    "rule": "Conditional Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1062,
+    "precode": "if (c > 0x1f && c < 0x7f) {",
+    "aftercode": "if (c >= 0x1f && c < 0x7f) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1062,
+    "precode": "if (c > 0x1f && c < 0x7f) {",
+    "aftercode": "if (c > 0x1f || c < 0x7f) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1062,
+    "precode": "if (c > 0x1f && c < 0x7f) {",
+    "aftercode": "if (c > 0x1f && c <= 0x7f) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1063,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append('\\0');",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1068,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "sb.append(c);",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1073,
+    "precode": "sb.append(quote);",
+    "aftercode": "sb.append(s);",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  }
+]

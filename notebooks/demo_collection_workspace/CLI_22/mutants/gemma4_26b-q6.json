@@ -1,0 +1,1092 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 98,
+    "precode": "this.options = options;",
+    "aftercode": "this.options = null;",
+    "rule": "AssignmentToNull",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 101,
+    "precode": "Iterator iter = Arrays.asList(arguments).iterator();",
+    "aftercode": "Iterator iter = Arrays.asList(new String[0]).iterator();",
+    "rule": "ArrayInitialization",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 104,
+    "precode": "while (iter.hasNext())",
+    "aftercode": "while (false)",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 104,
+    "precode": "while (iter.hasNext())",
+    "aftercode": "while (true)",
+    "rule": "InfiniteLoop",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 107,
+    "precode": "String token = (String) iter.next();",
+    "aftercode": "String token = null;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 110,
+    "precode": "if (token.startsWith(\"--\"))",
+    "aftercode": "if (token.startsWith(\"-\"))",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 112,
+    "precode": "int pos = token.indexOf('=');",
+    "aftercode": "int pos = token.lastIndexOf('=');",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 113,
+    "precode": "String opt = pos == -1 ? token : token.substring(0, pos); // --foo",
+    "aftercode": "String opt = pos == -1 ? token : token.substring(0, pos + 1); // --foo",
+    "rule": "OffByOne",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 113,
+    "precode": "String opt = pos == -1 ? token : token.substring(0, pos); // --foo",
+    "aftercode": "String opt = pos == -1 ? token : token.substring(pos); // --foo",
+    "rule": "OffByOne",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 115,
+    "precode": "if (!options.hasOption(opt))",
+    "aftercode": "if (options.hasOption(opt))",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 117,
+    "precode": "processNonOptionToken(token, stopAtNonOption);",
+    "aftercode": "processOptionToken(token, stopAtNonOption);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 121,
+    "precode": "currentOption = options.getOption(opt);",
+    "aftercode": "currentOption = null;",
+    "rule": "AssignmentToNull",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 123,
+    "precode": "tokens.add(opt);",
+    "aftercode": "// tokens.add(opt);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 124,
+    "precode": "if (pos != -1)",
+    "aftercode": "if (pos >= -1)",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 124,
+    "precode": "if (pos != -1)",
+    "aftercode": "if (pos == -1)",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 126,
+    "precode": "tokens.add(token.substring(pos + 1));",
+    "aftercode": "tokens.add(token.substring(pos));",
+    "rule": "OffByOne",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 126,
+    "precode": "tokens.add(token.substring(pos + 1));",
+    "aftercode": "tokens.add(token.substring(pos + 2));",
+    "rule": "OffByOne",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 132,
+    "precode": "else if (\"-\".equals(token))",
+    "aftercode": "else if (\"--\".equals(token))",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 134,
+    "precode": "tokens.add(token);",
+    "aftercode": "tokens.remove(token);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 136,
+    "precode": "else if (token.startsWith(\"-\"))",
+    "aftercode": "else if (!token.startsWith(\"-\"))",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() == 2 && options.hasOption(token))",
+    "rule": "LogicalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() != 2 || options.hasOption(token))",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() >= 2 || options.hasOption(token))",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 140,
+    "precode": "processOptionToken(token, stopAtNonOption);",
+    "aftercode": "processNonOptionToken(token, stopAtNonOption);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 145,
+    "precode": "burstToken(token, stopAtNonOption);",
+    "aftercode": "processOptionToken(token, stopAtNonOption);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 150,
+    "precode": "processNonOptionToken(token, stopAtNonOption);",
+    "aftercode": "processOptionToken(token, stopAtNonOption);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 153,
+    "precode": "gobble(iter);",
+    "aftercode": "// gobble(iter);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 156,
+    "precode": "return (String[]) tokens.toArray(new String[tokens.size()]);",
+    "aftercode": "return (String[]) tokens.toArray(new String[0]);",
+    "rule": "ArraySizeReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 156,
+    "precode": "return (String[]) tokens.toArray(new String[tokens.size()]);",
+    "aftercode": "return (String[]) tokens.toArray(new String[tokens.size() + 1]);",
+    "rule": "OffByOne",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 97,
+    "precode": "init();",
+    "aftercode": "// init();",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 112,
+    "precode": "int pos = token.indexOf('=');",
+    "aftercode": "int pos = token.indexOf('-');",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 121,
+    "precode": "currentOption = options.getOption(opt);",
+    "aftercode": "currentOption = options.hasOption(opt) ? options.getOption(opt) : null;",
+    "rule": "ConditionalAssignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() == 1 || options.hasOption(token))",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 104,
+    "precode": "while (iter.hasNext())",
+    "aftercode": "while (iter.hasMoreElements())",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 107,
+    "precode": "String token = (String) iter.next();",
+    "aftercode": "String token = (String) iter.previous();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 115,
+    "precode": "if (!options.hasOption(opt))",
+    "aftercode": "if (options.hasOption(opt) == null)",
+    "rule": "InvalidTypeComparison",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 132,
+    "precode": "else if (\"-\".equals(token))",
+    "aftercode": "else if (token.equals(\"-\"))",
+    "rule": "NullSafetyChange",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 156,
+    "precode": "return (String[]) tokens.toArray(new String[tokens.size()]);",
+    "aftercode": "return (String[]) tokens.toArray(new Object[0]);",
+    "rule": "TypeCastMismatch",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 113,
+    "precode": "String opt = pos == -1 ? token : token.substring(0, pos);",
+    "aftercode": "String opt = pos == -1 ? null : token.substring(0, pos);",
+    "rule": "NullAssignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 123,
+    "precode": "tokens.add(opt);",
+    "aftercode": "tokens.add(token);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 126,
+    "precode": "tokens.add(token.substring(pos + 1));",
+    "aftercode": "tokens.add(opt.substring(pos + 1));",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() == 2 || !options.hasOption(token))",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 145,
+    "precode": "burstToken(token, stopAtNonOption);",
+    "aftercode": "burstToken(token, !stopAtNonOption);",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 150,
+    "precode": "processNonOptionToken(token, stopAtNonOption);",
+    "aftercode": "processNonOptionToken(token, !stopAtNonOption);",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 101,
+    "precode": "Iterator iter = Arrays.asList(arguments).iterator();",
+    "aftercode": "Iterator iter = Arrays.asList(arguments).next();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 112,
+    "precode": "int pos = token.indexOf('=');",
+    "aftercode": "int pos = token.indexOf('=') + 1;",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 124,
+    "precode": "if (pos != -1)",
+    "aftercode": "if (pos > -1)",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() < 2 || options.hasOption(token))",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 138,
+    "precode": "if (token.length() == 2 || options.hasOption(token))",
+    "aftercode": "if (token.length() == 2 || !options.hasOption(token))",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 156,
+    "precode": "return (String[]) tokens.toArray(new String[tokens.size()]);",
+    "aftercode": "return (String[]) tokens.toArray(new String[tokens.size() - 1]);",
+    "rule": "OffByOne",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 110,
+    "precode": "if (token.startsWith(\"--\"))",
+    "aftercode": "if (token.contains(\"--\"))",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 136,
+    "precode": "else if (token.startsWith(\"-\"))",
+    "aftercode": "else if (token.contains(\"-\"))",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 121,
+    "precode": "currentOption = options.getOption(opt);",
+    "aftercode": "currentOption = options.getOption(token);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 107,
+    "precode": "String token = (String) iter.next();",
+    "aftercode": "String token = (String) iter.next();",
+    "rule": "NoChange",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 132,
+    "precode": "else if (\"-\".equals(token))",
+    "aftercode": "else if (",
+    "rule": "IncompleteStatement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (stopAtNonOption || (currentOption == null || !currentOption.hasArg()))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (stopAtNonOption && (currentOption == null && !currentOption.hasArg()))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (stopAtNonOption && (currentOption != null || !currentOption.hasArg()))",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (stopAtNonOption && (currentOption == null || currentOption.hasArg()))",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.41,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 186,
+    "precode": "eatTheRest = true;",
+    "aftercode": "eatTheRest = false;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 187,
+    "precode": "tokens.add(\"--\");",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 190,
+    "precode": "tokens.add(value);",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (true && (currentOption == null || !currentOption.hasArg()))",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 184,
+    "precode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "aftercode": "if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 1.41,
+    "dublicate": true
+  },
+  {
+    "id": 66,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 207,
+    "precode": "if (stopAtNonOption && !options.hasOption(token))",
+    "aftercode": "if (stopAtNonOption || !options.hasOption(token))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 207,
+    "precode": "if (stopAtNonOption && !options.hasOption(token))",
+    "aftercode": "if (stopAtNonOption && options.hasOption(token))",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 207,
+    "precode": "if (stopAtNonOption && !options.hasOption(token))",
+    "aftercode": "if (true && !options.hasOption(token))",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 207,
+    "precode": "if (stopAtNonOption && !options.hasOption(token))",
+    "aftercode": "if (stopAtNonOption && false)",
+    "rule": "Condition Deletion",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 209,
+    "precode": "eatTheRest = true;",
+    "aftercode": "eatTheRest = false;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 212,
+    "precode": "if (options.hasOption(token))",
+    "aftercode": "if (!options.hasOption(token))",
+    "rule": "Negation Insertion",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 212,
+    "precode": "if (options.hasOption(token))",
+    "aftercode": "if (true)",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 212,
+    "precode": "if (options.hasOption(token))",
+    "aftercode": "if (false)",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 214,
+    "precode": "currentOption = options.getOption(token);",
+    "aftercode": "currentOption = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 214,
+    "precode": "currentOption = options.getOption(token);",
+    "aftercode": "currentOption = options.getOption(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 217,
+    "precode": "tokens.add(token);",
+    "aftercode": "// tokens.add(token);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 217,
+    "precode": "tokens.add(token);",
+    "aftercode": "tokens.add(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 207,
+    "precode": "if (stopAtNonOption && !options.hasOption(token))",
+    "aftercode": "if (stopAtNonOption && !options.hasOption(\"unknown\"))",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 214,
+    "precode": "currentOption = options.getOption(token);",
+    "aftercode": "currentOption = token;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 248,
+    "precode": "for (int i = 1; i < token.length(); i++)",
+    "aftercode": "for (int i = 0; i < token.length(); i++)",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 248,
+    "precode": "for (int i = 1; i < token.length(); i++)",
+    "aftercode": "for (int i = 1; i <= token.length(); i++)",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 248,
+    "precode": "for (int i = 1; i < token.length(); i++)",
+    "aftercode": "for (int i = 1; i > token.length(); i++)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 250,
+    "precode": "String ch = String.valueOf(token.charAt(i));",
+    "aftercode": "String ch = String.valueOf(token.charAt(0));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 252,
+    "precode": "if (options.hasOption(ch))",
+    "aftercode": "if (!options.hasOption(ch))",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 254,
+    "precode": "tokens.add(\"-",
+    "aftercode": "tokens.add(ch);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 254,
+    "precode": "tokens.add(\"-",
+    "aftercode": "tokens.add(\"+\" + ch);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 255,
+    "precode": "currentOption = options.getOption(ch);",
+    "aftercode": "currentOption = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 257,
+    "precode": "if (currentOption.hasArg() && (token.length() != (i + 1)))",
+    "aftercode": "if (currentOption.hasArg() || (token.length() != (i + 1)))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 257,
+    "precode": "if (currentOption.hasArg() && (token.length() != (i + 1)))",
+    "aftercode": "if (currentOption.hasArg() && (token.length() == (i + 1)))",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 257,
+    "precode": "if (currentOption.hasArg() && (token.length() != (i + 1)))",
+    "aftercode": "if (currentOption.hasArg())",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 259,
+    "precode": "tokens.add(token.substring(i + 1));",
+    "aftercode": "tokens.add(token.substring(i));",
+    "rule": "Index Offset",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 259,
+    "precode": "tokens.add(token.substring(i + 1));",
+    "aftercode": "tokens.add(token.substring(i + 2));",
+    "rule": "Index Offset",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 259,
+    "precode": "tokens.add(token.substring(i + 1));",
+    "aftercode": "tokens.add(\"\");",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 264,
+    "precode": "else if (stopAtNonOption)",
+    "aftercode": "else if (!stopAtNonOption)",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 266,
+    "precode": "processNonOptionToken(token.substring(i), true);",
+    "aftercode": "processNonOptionToken(token.substring(i), false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 266,
+    "precode": "processNonOptionToken(token.substring(i), true);",
+    "aftercode": "processNonOptionToken(token.substring(i + 1), true);",
+    "rule": "Index Offset",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 266,
+    "precode": "processNonOptionToken(token.substring(i), true);",
+    "aftercode": "processNonOptionToken(token, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 271,
+    "precode": "tokens.add(token);",
+    "aftercode": "tokens.remove(token);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 271,
+    "precode": "tokens.add(token);",
+    "aftercode": "tokens.add(\"\");",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 271,
+    "precode": "tokens.add(token);",
+    "aftercode": "tokens.add(ch);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 248,
+    "precode": "for (int i = 1; i < token.length(); i++)",
+    "aftercode": "for (int i = 1; i < token.length(); i += 2)",
+    "rule": "Increment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 252,
+    "precode": "if (options.hasOption(ch))",
+    "aftercode": "if (options.hasOption(token))",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 257,
+    "precode": "if (currentOption.hasArg() && (token.length() != (i + 1)))",
+    "aftercode": "if (currentOption.hasArg() && (token.length() < (i + 1)))",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 257,
+    "precode": "if (currentOption.hasArg() && (token.length() != (i + 1)))",
+    "aftercode": "if (currentOption.hasArg() && (token.length() > (i + 1)))",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 264,
+    "precode": "else if (stopAtNonOption)",
+    "aftercode": "else if (true)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 264,
+    "precode": "else if (stopAtNonOption)",
+    "aftercode": "else if (false)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 254,
+    "precode": "tokens.add(\"-",
+    "aftercode": "tokens.add(\"-\" + ch + \" \");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 272,
+    "precode": "break;",
+    "aftercode": "// break;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/java/org/apache/commons/cli/PosixParser.java",
+    "line": 261,
+    "precode": "break;",
+    "aftercode": "return;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]
