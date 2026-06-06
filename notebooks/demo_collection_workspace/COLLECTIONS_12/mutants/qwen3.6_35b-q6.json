@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 821,
+    "precode": "for (Iterator it = props.getKeys(); it.hasNext();)",
+    "aftercode": "for (Iterator it = props.getKeys(); it.hasPrevious();)",
+    "rule": "Iterator Method Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 822,
+    "precode": "String key = (String) it.next();",
+    "aftercode": "String key = (String) it.previous();",
+    "rule": "Iterator Method Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 823,
+    "precode": "clearProperty(key);",
+    "aftercode": "setProperty(key, null);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 824,
+    "precode": "addPropertyDirect(key, props.get(key));",
+    "aftercode": "addPropertyDirect(key, null);",
+    "rule": "Argument Value Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 824,
+    "precode": "addPropertyDirect(key, props.get(key));",
+    "aftercode": "addPropertyDirect(props.get(key), key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 821,
+    "precode": "for (Iterator it = props.getKeys(); it.hasNext();)",
+    "aftercode": "for (Iterator it = props.getKeys(); it.hasNext(); it.next());",
+    "rule": "Statement Deletion/Addition",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 822,
+    "precode": "String key = (String) it.next();",
+    "aftercode": "String key = (String) it.next(); it.next();",
+    "rule": "Statement Deletion/Addition",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  }
+]

@@ -18,6 +18,7 @@ import time
 from typing import TYPE_CHECKING
 
 from ..base import BaseGenerator, GeneratorJob, PITConfig
+from ..source_finder import _top_level_class_fqn
 from .xml_parser import PITClassicEntry, parse_classic_entries
 
 if TYPE_CHECKING:
@@ -164,7 +165,7 @@ class PITGenerator(BaseGenerator):
         )
 
     def _pit_target_class(self, class_fqn: str) -> str:
-        return class_fqn.split("$", 1)[0] + "*"
+        return _top_level_class_fqn(class_fqn) + "*"
 
     def _effective_mutators(self) -> str:
         requested = str(self.config.mutators or "").strip()
@@ -235,14 +236,15 @@ class PITGenerator(BaseGenerator):
 
             build_cmd = (
                 "cd /tmp/custom-pitest-src && "
-                "mvn -q -DskipTests -pl pitest,pitest-entry -am package && "
+                "mvn -q -DskipTests -Dcheckstyle.skip=true -pl pitest,pitest-entry -am package && "
                 "find pitest/target -maxdepth 1 -type f -name 'pitest-*.jar' ! -name '*-tests.jar' ! -name 'original-*' | sort | head -n 1 | xargs -I{} cp '{}' /opt/custom-pitest/pitest.jar && "
                 "find pitest-entry/target -maxdepth 1 -type f -name 'pitest-entry-*.jar' ! -name '*-tests.jar' ! -name 'original-*' | sort | head -n 1 | xargs -I{} cp '{}' /opt/custom-pitest/pitest-entry.jar && "
                 "test -f /opt/custom-pitest/pitest.jar && test -f /opt/custom-pitest/pitest-entry.jar"
             )
-            _, err, rc = self.d4j.exec(build_cmd, timeout=1800)
+            out, err, rc = self.d4j.exec(build_cmd, timeout=1800)
             if rc != 0:
-                raise RuntimeError(f"custom pitest build failed:\n{err.strip()}")
+                details = "\n".join(part for part in (out.strip(), err.strip()) if part).strip()
+                raise RuntimeError(f"custom pitest build failed:\n{details}")
 
             _, err, rc = self.d4j.exec(f"printf '%s' {self._CUSTOM_PIT_VERSION} > {self._CUSTOM_PIT_READY_FILE}", timeout=15)
             if rc != 0:

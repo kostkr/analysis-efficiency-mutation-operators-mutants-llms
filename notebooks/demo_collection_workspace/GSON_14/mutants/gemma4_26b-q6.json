@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 79,
+    "precode": "if (bound instanceof WildcardType) {",
+    "aftercode": "if (!(bound instanceof WildcardType)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 80,
+    "precode": "upperBounds = ((WildcardType) bound).getUpperBounds();",
+    "aftercode": "upperBounds = new Type[] { bound };",
+    "rule": "Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 82,
+    "precode": "upperBounds = new Type[] { bound };",
+    "aftercode": "upperBounds = new Type[] {};",
+    "rule": "ArrayElementRemoval",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 82,
+    "precode": "upperBounds = new Type[] { bound };",
+    "aftercode": "upperBounds = new Type[] { null };",
+    "rule": "NullValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 84,
+    "precode": "return new WildcardTypeImpl(upperBounds, EMPTY_TYPE_ARRAY);",
+    "aftercode": "return new WildcardTypeImpl(EMPTY_TYPE_ARRAY, upperBounds);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 84,
+    "precode": "return new WildcardTypeImpl(upperBounds, EMPTY_TYPE_ARRAY);",
+    "aftercode": "return new WildcardTypeImpl(upperBounds, null);",
+    "rule": "NullValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 84,
+    "precode": "return new WildcardTypeImpl(upperBounds, EMPTY_TYPE_ARRAY);",
+    "aftercode": "return null;",
+    "rule": "ReturnNull",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 80,
+    "precode": "upperBounds = ((WildcardType) bound).getUpperBounds();",
+    "aftercode": "upperBounds = ((WildcardType) bound).getLowerBounds();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 79,
+    "precode": "if (bound instanceof WildcardType) {",
+    "aftercode": "if (bound == null) {",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 94,
+    "precode": "if (bound instanceof WildcardType) {",
+    "aftercode": "if (!(bound instanceof WildcardType)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 95,
+    "precode": "lowerBounds = ((WildcardType) bound).getLowerBounds();",
+    "aftercode": "lowerBounds = ((WildcardType) bound).getUpperBounds();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 97,
+    "precode": "lowerBounds = new Type[] { bound };",
+    "aftercode": "lowerBounds = new Type[] { null };",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 97,
+    "precode": "lowerBounds = new Type[] { bound };",
+    "aftercode": "lowerBounds = new Type[] { };",
+    "rule": "Array Initialization",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 99,
+    "precode": "return new WildcardTypeImpl(new Type[] { Object.class }, lowerBounds);",
+    "aftercode": "return new WildcardTypeImpl(new Type[] { bound }, lowerBounds);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 99,
+    "precode": "return new WildcardTypeImpl(new Type[] { Object.class }, lowerBounds);",
+    "aftercode": "return new WildcardTypeImpl(new Type[] { Object.class }, new Type[] { bound });",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 99,
+    "precode": "return new WildcardTypeImpl(new Type[] { Object.class }, lowerBounds);",
+    "aftercode": "return new WildcardTypeImpl(new Type[] { }, lowerBounds);",
+    "rule": "Array Initialization",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 95,
+    "precode": "lowerBounds = ((WildcardType) bound).getLowerBounds();",
+    "aftercode": "lowerBounds = new Type[] { ((WildcardType) bound).getLowerBounds()[0] };",
+    "rule": "Array Indexing",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 94,
+    "precode": "if (bound instanceof WildcardType) {",
+    "aftercode": "if (bound != null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  }
+]

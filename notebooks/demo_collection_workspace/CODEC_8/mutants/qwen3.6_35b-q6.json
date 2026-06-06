@@ -1,0 +1,642 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 421,
+    "precode": "* Encodes all of the provided data, starting at inPos, for inAvail bytes. Must be called at least twice: once with",
+    "aftercode": "* Encodes all of the provided data, starting at inPos, for inAvail bytes. Must be called only once: once with",
+    "rule": "Documentation/Logic Inversion",
+    "gen_time_s": 5.94,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 416,
+    "precode": "public byte[] encode(final byte[] data, final int inPos, final int inAvail) {",
+    "aftercode": "public byte[] encode(final byte[] data, final int inPos, final int inAvail) {",
+    "rule": "No Mutation (Comment/Signature preservation check - usually mutants are in body, but if body is missing, this is a placeholder for body mutations. Since I must provide code, I will assume the method body exists. Let's look for a standard arithmetic or boundary mutation in a hypothetical body line if one existed, but the prompt only shows lines 417-421. Wait, the prompt says 'in: any single-line code element in the shown method'. The shown method is just the Javadoc and closing brace. This is tricky. Usually, mutation testing targets executable code. If the visible code is only Javadoc and `}`, I cannot mutate executable logic visible here. However, often these prompts imply the method body follows. Let's look closer. Line 417 is `}`. Line 421 is a comment. There is no executable code shown in the snippet provided (lines 417-421). \n\n*Correction*: The prompt asks to generate mutants in the *shown* method. If the shown lines are just `}` and comments, I can only mutate comments or assume the user wants me to invent a line *inside* the method that would logically follow. But the constraint says",
+    "gen_time_s": 5.94,
+    "dublicate": true
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 417,
+    "precode": "}",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 5.94,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 421,
+    "precode": "* Encodes all of the provided data, starting at inPos, for inAvail bytes. Must be called at least twice: once with",
+    "aftercode": "* Encodes all of the provided data, starting at inPos, for inAvail bytes. Must be called at least twice: once with",
+    "rule": "No Mutation",
+    "gen_time_s": 5.94,
+    "dublicate": true
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 141,
+    "precode": "} else if (offset < 0 || len < 0) {",
+    "aftercode": "} else if (offset <= 0 || len < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 141,
+    "precode": "} else if (offset < 0 || len < 0) {",
+    "aftercode": "} else if (offset < 0 && len < 0) {",
+    "rule": "Conditionals Operator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 143,
+    "precode": "} else if (offset > b.length || offset + len > b.length) {",
+    "aftercode": "} else if (offset >= b.length || offset + len > b.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 143,
+    "precode": "} else if (offset > b.length || offset + len > b.length) {",
+    "aftercode": "} else if (offset > b.length && offset + len > b.length) {",
+    "rule": "Conditionals Operator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 143,
+    "precode": "} else if (offset > b.length || offset + len > b.length) {",
+    "aftercode": "} else if (offset > b.length || offset + len >= b.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 145,
+    "precode": "} else if (len == 0) {",
+    "aftercode": "} else if (len != 0) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 146,
+    "precode": "return 0;",
+    "aftercode": "return -1;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 148,
+    "precode": "int readLen = 0;",
+    "aftercode": "int readLen = -1;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 165,
+    "precode": "while (readLen == 0) {",
+    "aftercode": "while (readLen != 0) {",
+    "rule": "Loop Condition Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 165,
+    "precode": "while (readLen == 0) {",
+    "aftercode": "while (readLen < 0) {",
+    "rule": "Loop Condition Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 166,
+    "precode": "if (!base64.hasData()) {",
+    "aftercode": "if (base64.hasData()) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 167,
+    "precode": "byte[] buf = new byte[doEncode ? 4096 : 8192];",
+    "aftercode": "byte[] buf = new byte[doEncode ? 8192 : 4096];",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = in.read();",
+    "rule": "Method Argument Removal",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = -1;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 169,
+    "precode": "if (doEncode) {",
+    "aftercode": "if (!doEncode) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 170,
+    "precode": "base64.encode(buf, 0, c);",
+    "aftercode": "base64.decode(buf, 0, c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 171,
+    "precode": "} else {",
+    "aftercode": "} if (doEncode) {",
+    "rule": "Syntax Error",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 172,
+    "precode": "base64.decode(buf, 0, c);",
+    "aftercode": "base64.encode(buf, 0, c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 175,
+    "precode": "readLen = base64.readResults(b, offset, len);",
+    "aftercode": "readLen = base64.readResults(b, len, offset);",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 175,
+    "precode": "readLen = base64.readResults(b, offset, len);",
+    "aftercode": "readLen = 0;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 177,
+    "precode": "return readLen;",
+    "aftercode": "return -1;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 140,
+    "precode": "throw new NullPointerException();",
+    "aftercode": "return -1;",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 142,
+    "precode": "throw new IndexOutOfBoundsException();",
+    "aftercode": "return -1;",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 144,
+    "precode": "throw new IndexOutOfBoundsException();",
+    "aftercode": "return -1;",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 141,
+    "precode": "} else if (offset < 0 || len < 0) {",
+    "aftercode": "} else if (offset < 0 || len <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 143,
+    "precode": "} else if (offset > b.length || offset + len > b.length) {",
+    "aftercode": "} else if (offset >= b.length || offset + len >= b.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 166,
+    "precode": "if (!base64.hasData()) {",
+    "aftercode": "if (base64.hasData() && false) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = in.read(buf, 0, buf.length);",
+    "rule": "Method Argument Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 170,
+    "precode": "base64.encode(buf, 0, c);",
+    "aftercode": "base64.encode(buf, c, 0);",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 172,
+    "precode": "base64.decode(buf, 0, c);",
+    "aftercode": "base64.decode(buf, c, 0);",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 148,
+    "precode": "int readLen = 0;",
+    "aftercode": "int readLen = 1;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 165,
+    "precode": "while (readLen == 0) {",
+    "aftercode": "while (readLen >= 0) {",
+    "rule": "Loop Condition Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 167,
+    "precode": "byte[] buf = new byte[doEncode ? 4096 : 8192];",
+    "aftercode": "byte[] buf = new byte[0];",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 143,
+    "precode": "} else if (offset > b.length || offset + len > b.length) {",
+    "aftercode": "} else if (offset > b.length || offset + len < b.length) {",
+    "rule": "Conditionals Operator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 141,
+    "precode": "} else if (offset < 0 || len < 0) {",
+    "aftercode": "} else if (offset > 0 || len < 0) {",
+    "rule": "Conditionals Operator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 145,
+    "precode": "} else if (len == 0) {",
+    "aftercode": "} else if (len <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 169,
+    "precode": "if (doEncode) {",
+    "aftercode": "if (doEncode && false) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 175,
+    "precode": "readLen = base64.readResults(b, offset, len);",
+    "aftercode": "readLen = base64.readResults(null, offset, len);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 177,
+    "precode": "return readLen;",
+    "aftercode": "return readLen * 2;",
+    "rule": "Arithmetic Operation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = 0;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 140,
+    "precode": "throw new NullPointerException();",
+    "aftercode": "throw new IllegalArgumentException();",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 142,
+    "precode": "throw new IndexOutOfBoundsException();",
+    "aftercode": "throw new IllegalArgumentException();",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 165,
+    "precode": "while (readLen == 0) {",
+    "aftercode": "while (readLen != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 166,
+    "precode": "if (!base64.hasData()) {",
+    "aftercode": "if (base64.hasData()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 167,
+    "precode": "byte[] buf = new byte[doEncode ? 4096 : 8192];",
+    "aftercode": "byte[] buf = new byte[doEncode ? 8192 : 4096];",
+    "rule": "Value Change",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = in.read();",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 169,
+    "precode": "if (doEncode) {",
+    "aftercode": "if (!doEncode) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 170,
+    "precode": "base64.encode(buf, 0, c);",
+    "aftercode": "base64.encode(buf, 0, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 172,
+    "precode": "base64.decode(buf, 0, c);",
+    "aftercode": "base64.decode(buf, 0, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 175,
+    "precode": "readLen = base64.readResults(b, offset, len);",
+    "aftercode": "readLen = base64.readResults(b, offset, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = in.read(buf, 0, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 165,
+    "precode": "while (readLen == 0) {",
+    "aftercode": "while (readLen >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 170,
+    "precode": "base64.encode(buf, 0, c);",
+    "aftercode": "base64.encode(buf, c, c);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 172,
+    "precode": "base64.decode(buf, 0, c);",
+    "aftercode": "base64.decode(buf, c, c);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 175,
+    "precode": "readLen = base64.readResults(b, offset, len);",
+    "aftercode": "readLen = base64.readResults(b, len, offset);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 167,
+    "precode": "byte[] buf = new byte[doEncode ? 4096 : 8192];",
+    "aftercode": "byte[] buf = new byte[doEncode ? 0 : 8192];",
+    "rule": "Value Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 168,
+    "precode": "int c = in.read(buf);",
+    "aftercode": "int c = in.read(buf, 1, buf.length - 1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 170,
+    "precode": "base64.encode(buf, 0, c);",
+    "aftercode": "base64.encode(buf, 1, c - 1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 172,
+    "precode": "base64.decode(buf, 0, c);",
+    "aftercode": "base64.decode(buf, 1, c - 1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64InputStream.java",
+    "line": 166,
+    "precode": "if (!base64.hasData()) {",
+    "aftercode": "if (base64.hasData() == false) {",
+    "rule": "Equality Comparison",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  }
+]

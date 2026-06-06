@@ -1,0 +1,692 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 113,
+    "precode": "if(haveUnclosedEntry) {",
+    "aftercode": "if(!haveUnclosedEntry) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 114,
+    "precode": "throw new IOException(\"This archives contains unclosed entries.\");",
+    "aftercode": "throw new IOException(\"This archives contains closed entries.\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 114,
+    "precode": "throw new IOException(\"This archives contains unclosed entries.\");",
+    "aftercode": "return;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 116,
+    "precode": "writeEOFRecord();",
+    "aftercode": "// writeEOFRecord();",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 117,
+    "precode": "writeEOFRecord();",
+    "aftercode": "// writeEOFRecord();",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 116,
+    "precode": "writeEOFRecord();",
+    "aftercode": "writeEOFRecord(); writeEOFRecord();",
+    "rule": "Duplicate Method Call",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 117,
+    "precode": "writeEOFRecord();",
+    "aftercode": "writeEOFRecord(); writeEOFRecord();",
+    "rule": "Duplicate Method Call",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 158,
+    "precode": "TarArchiveEntry entry = (TarArchiveEntry) archiveEntry;",
+    "aftercode": "TarArchiveEntry entry = (TarArchiveEntry) archiveEntry.clone();",
+    "rule": "Object Creation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 159,
+    "precode": "if (entry.getName().length() >= TarConstants.NAMELEN) {",
+    "aftercode": "if (entry.getName().length() > TarConstants.NAMELEN) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 161,
+    "precode": "if (longFileMode == LONGFILE_GNU) {",
+    "aftercode": "if (longFileMode != LONGFILE_GNU) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 164,
+    "precode": "TarArchiveEntry longLinkEntry = new TarArchiveEntry(TarConstants.GNU_LONGLINK,",
+    "aftercode": "TarArchiveEntry longLinkEntry = new TarArchiveEntry(null,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 167,
+    "precode": "final byte[] nameBytes = entry.getName().getBytes(); // TODO is it correct to use the default charset here?",
+    "aftercode": "final byte[] nameBytes = entry.getName().getBytes(\"UTF-8\"); // TODO is it correct to use the default charset here?",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 168,
+    "precode": "longLinkEntry.setSize(nameBytes.length + 1); // +1 for NUL",
+    "aftercode": "longLinkEntry.setSize(nameBytes.length); // +1 for NUL",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 170,
+    "precode": "write(nameBytes);",
+    "aftercode": "write(new byte[0]);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 171,
+    "precode": "write(0); // NUL terminator",
+    "aftercode": "write(1); // NUL terminator",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 173,
+    "precode": "} else if (longFileMode != LONGFILE_TRUNCATE) {",
+    "aftercode": "} else if (longFileMode == LONGFILE_TRUNCATE) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 174,
+    "precode": "throw new RuntimeException(\"file name '\" + entry.getName()",
+    "aftercode": "throw new IOException(\"file name '\" + entry.getName()",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 176,
+    "precode": "+ TarConstants.NAMELEN + \" bytes)\");",
+    "aftercode": "+ TarConstants.NAMELEN + \" chars)\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 180,
+    "precode": "entry.writeEntryHeader(recordBuf);",
+    "aftercode": "entry.writeEntryHeader(null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 181,
+    "precode": "buffer.writeRecord(recordBuf);",
+    "aftercode": "buffer.writeRecord(null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 183,
+    "precode": "currBytes = 0;",
+    "aftercode": "currBytes = -1;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 185,
+    "precode": "if (entry.isDirectory()) {",
+    "aftercode": "if (entry.isFile()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 186,
+    "precode": "currSize = 0;",
+    "aftercode": "currSize = 1;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 188,
+    "precode": "currSize = entry.getSize();",
+    "aftercode": "currSize = 0;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 190,
+    "precode": "currName = entry.getName();",
+    "aftercode": "currName = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 191,
+    "precode": "haveUnclosedEntry = true;",
+    "aftercode": "haveUnclosedEntry = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 159,
+    "precode": "if (entry.getName().length() >= TarConstants.NAMELEN) {",
+    "aftercode": "if (entry.getName().length() <= TarConstants.NAMELEN) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 161,
+    "precode": "if (longFileMode == LONGFILE_GNU) {",
+    "aftercode": "if (longFileMode == LONGFILE_TRUNCATE) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 164,
+    "precode": "TarArchiveEntry longLinkEntry = new TarArchiveEntry(TarConstants.GNU_LONGLINK,",
+    "aftercode": "TarArchiveEntry longLinkEntry = new TarArchiveEntry(TarConstants.GNU_LONGLINK,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 165,
+    "precode": "TarConstants.LF_GNUTYPE_LONGNAME);",
+    "aftercode": "TarConstants.LF_NORMAL);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 168,
+    "precode": "longLinkEntry.setSize(nameBytes.length + 1); // +1 for NUL",
+    "aftercode": "longLinkEntry.setSize(nameBytes.length * 2); // +1 for NUL",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 169,
+    "precode": "putArchiveEntry(longLinkEntry);",
+    "aftercode": "putArchiveEntry(null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 173,
+    "precode": "} else if (longFileMode != LONGFILE_TRUNCATE) {",
+    "aftercode": "} else if (longFileMode == LONGFILE_GNU) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 174,
+    "precode": "throw new RuntimeException(\"file name '\" + entry.getName()",
+    "aftercode": "throw new RuntimeException(\"file name '\" + null",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 180,
+    "precode": "entry.writeEntryHeader(recordBuf);",
+    "aftercode": "recordBuf.writeEntryHeader(entry);",
+    "rule": "Method Call Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 181,
+    "precode": "buffer.writeRecord(recordBuf);",
+    "aftercode": "recordBuf.writeRecord(buffer);",
+    "rule": "Method Call Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 183,
+    "precode": "currBytes = 0;",
+    "aftercode": "currBytes = currBytes;",
+    "rule": "Self Assignment",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 186,
+    "precode": "currSize = 0;",
+    "aftercode": "currSize = currSize;",
+    "rule": "Self Assignment",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 188,
+    "precode": "currSize = entry.getSize();",
+    "aftercode": "currSize = entry.getSize() + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 190,
+    "precode": "currName = entry.getName();",
+    "aftercode": "currName = entry.getName().toUpperCase();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 191,
+    "precode": "haveUnclosedEntry = true;",
+    "aftercode": "haveUnclosedEntry = !haveUnclosedEntry;",
+    "rule": "Boolean Logic Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 158,
+    "precode": "TarArchiveEntry entry = (TarArchiveEntry) archiveEntry;",
+    "aftercode": "TarArchiveEntry entry = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 167,
+    "precode": "final byte[] nameBytes = entry.getName().getBytes(); // TODO is it correct to use the default charset here?",
+    "aftercode": "final byte[] nameBytes = entry.getName().getBytes(\"ASCII\"); // TODO is it correct to use the default charset here?",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 171,
+    "precode": "write(0); // NUL terminator",
+    "aftercode": "// write(0); // NUL terminator",
+    "rule": "Comment Out",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 206,
+    "precode": "for (int i = assemLen; i < assemBuf.length; ++i) {",
+    "aftercode": "for (int i = assemLen; i <= assemBuf.length; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 206,
+    "precode": "for (int i = assemLen; i < assemBuf.length; ++i) {",
+    "aftercode": "for (int i = assemLen; i > assemBuf.length; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 206,
+    "precode": "for (int i = assemLen; i < assemBuf.length; ++i) {",
+    "aftercode": "for (int i = assemLen + 1; i < assemBuf.length; ++i) {",
+    "rule": "Loop Value",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 206,
+    "precode": "for (int i = assemLen; i < assemBuf.length; ++i) {",
+    "aftercode": "for (int i = assemLen; i < assemBuf.length; --i) {",
+    "rule": "Loop Increment",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 207,
+    "precode": "assemBuf[i] = 0;",
+    "aftercode": "assemBuf[i] = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 207,
+    "precode": "assemBuf[i] = 0;",
+    "aftercode": "assemBuf[i] = -1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 207,
+    "precode": "assemBuf[i] = 0;",
+    "aftercode": "assemBuf[i] = assemBuf[i];",
+    "rule": "Return Value",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 212,
+    "precode": "currBytes += assemLen;",
+    "aftercode": "currBytes -= assemLen;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 212,
+    "precode": "currBytes += assemLen;",
+    "aftercode": "currBytes = currBytes;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 212,
+    "precode": "currBytes += assemLen;",
+    "aftercode": "currBytes += assemLen + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 213,
+    "precode": "assemLen = 0;",
+    "aftercode": "assemLen = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 213,
+    "precode": "assemLen = 0;",
+    "aftercode": "assemLen = assemLen;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 216,
+    "precode": "if (currBytes < currSize) {",
+    "aftercode": "if (currBytes <= currSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 216,
+    "precode": "if (currBytes < currSize) {",
+    "aftercode": "if (currBytes > currSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 216,
+    "precode": "if (currBytes < currSize) {",
+    "aftercode": "if (currBytes != currSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 216,
+    "precode": "if (currBytes < currSize) {",
+    "aftercode": "if (currBytes >= currSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 216,
+    "precode": "if (currBytes < currSize) {",
+    "aftercode": "if (currBytes == currSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 217,
+    "precode": "throw new IOException(\"entry '\" + currName + \"' closed at '\"",
+    "aftercode": "throw new IOException(\"entry '\" + currName + \"' closed at '\");",
+    "rule": "String Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 220,
+    "precode": "\"' bytes specified in the header were written\");",
+    "aftercode": "\"' bytes specified in the header were written\");",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 222,
+    "precode": "haveUnclosedEntry = false;",
+    "aftercode": "haveUnclosedEntry = true;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 55,
+    "precode": "private boolean haveUnclosedEntry = false;",
+    "aftercode": "private boolean haveUnclosedEntry = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 55,
+    "precode": "private boolean haveUnclosedEntry = false;",
+    "aftercode": "private boolean haveUnclosedEntry = !false;",
+    "rule": "Negation",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 57,
+    "precode": "private final OutputStream out;",
+    "aftercode": "private OutputStream out;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 55,
+    "precode": "private boolean haveUnclosedEntry = false;",
+    "aftercode": "private boolean haveUnclosedEntry = false || true;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java",
+    "line": 57,
+    "precode": "private final OutputStream out;",
+    "aftercode": "private OutputStream out = null;",
+    "rule": "Null Injection",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  }
+]

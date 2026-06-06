@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 362,
+    "precode": "if (formatHeader != null) {",
+    "aftercode": "if (formatHeader == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 363,
+    "precode": "hdrMap = new LinkedHashMap<String, Integer>();",
+    "aftercode": "hdrMap = new HashMap<String, Integer>();",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 366,
+    "precode": "if (formatHeader.length == 0) {",
+    "aftercode": "if (formatHeader.length > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 369,
+    "precode": "if (nextRecord != null) {",
+    "aftercode": "if (nextRecord == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 370,
+    "precode": "headerRecord = nextRecord.values();",
+    "aftercode": "headerRecord = nextRecord.headers();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 373,
+    "precode": "if (this.format.getSkipHeaderRecord()) {",
+    "aftercode": "if (!this.format.getSkipHeaderRecord()) {",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 374,
+    "precode": "this.nextRecord();",
+    "aftercode": "this.previousRecord();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 376,
+    "precode": "headerRecord = formatHeader;",
+    "aftercode": "headerRecord = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 380,
+    "precode": "if (headerRecord != null) {",
+    "aftercode": "if (headerRecord == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 381,
+    "precode": "for (int i = 0; i < headerRecord.length; i++) {",
+    "aftercode": "for (int i = 1; i < headerRecord.length; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 381,
+    "precode": "for (int i = 0; i < headerRecord.length; i++) {",
+    "aftercode": "for (int i = 0; i <= headerRecord.length; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 382,
+    "precode": "final String header = headerRecord[i];",
+    "aftercode": "final String header = headerRecord[i + 1];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 383,
+    "precode": "final boolean containsHeader = hdrMap.containsKey(header);",
+    "aftercode": "final boolean containsHeader = !hdrMap.containsKey(header);",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 384,
+    "precode": "final boolean emptyHeader = header == null || header.trim().isEmpty();",
+    "aftercode": "final boolean emptyHeader = header != null && !header.trim().isEmpty();",
+    "rule": "Boolean Logic De Morgan",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 385,
+    "precode": "if (containsHeader && (!emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {",
+    "aftercode": "if (containsHeader || (!emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 385,
+    "precode": "if (containsHeader && (!emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {",
+    "aftercode": "if (containsHeader && (emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 386,
+    "precode": "throw new IllegalArgumentException(\"The header contains a duplicate name: \\\"\" + header +",
+    "aftercode": "throw new IllegalStateException(\"The header contains a duplicate name: \\\"\" + header +",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 389,
+    "precode": "hdrMap.put(header, Integer.valueOf(i));",
+    "aftercode": "hdrMap.put(header, Integer.valueOf(i + 1));",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 389,
+    "precode": "hdrMap.put(header, Integer.valueOf(i));",
+    "aftercode": "hdrMap.put(header, i);",
+    "rule": "Type Cast Removal",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 393,
+    "precode": "return hdrMap;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 360,
+    "precode": "Map<String, Integer> hdrMap = null;",
+    "aftercode": "Map<String, Integer> hdrMap = new HashMap<>();",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 365,
+    "precode": "String[] headerRecord = null;",
+    "aftercode": "String[] headerRecord = new String[0];",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 368,
+    "precode": "final CSVRecord nextRecord = this.nextRecord();",
+    "aftercode": "final CSVRecord nextRecord = this.prevRecord();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 383,
+    "precode": "final boolean containsHeader = hdrMap.containsKey(header);",
+    "aftercode": "final boolean containsHeader = hdrMap.containsValue(header);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 384,
+    "precode": "final boolean emptyHeader = header == null || header.trim().isEmpty();",
+    "aftercode": "final boolean emptyHeader = header == null || header.isEmpty();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 385,
+    "precode": "if (containsHeader && (!emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {",
+    "aftercode": "if (containsHeader && (!emptyHeader || (emptyHeader && this.format.getIgnoreEmptyHeaders()))) {",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 386,
+    "precode": "throw new IllegalArgumentException(\"The header contains a duplicate name: \\\"\" + header +",
+    "aftercode": "throw new NullPointerException(\"The header contains a duplicate name: \\\"\" + header +",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 389,
+    "precode": "hdrMap.put(header, Integer.valueOf(i));",
+    "aftercode": "hdrMap.put(null, Integer.valueOf(i));",
+    "rule": "Null Argument",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 389,
+    "precode": "hdrMap.put(header, Integer.valueOf(i));",
+    "aftercode": "hdrMap.put(header, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 366,
+    "precode": "if (formatHeader.length == 0) {",
+    "aftercode": "if (formatHeader.length != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 373,
+    "precode": "if (this.format.getSkipHeaderRecord()) {",
+    "aftercode": "if (this.format.getIgnoreEmptyHeaders()) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 381,
+    "precode": "for (int i = 0; i < headerRecord.length; i++) {",
+    "aftercode": "for (int i = 0; i < headerRecord.length - 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 389,
+    "precode": "hdrMap.put(header, Integer.valueOf(i));",
+    "aftercode": "hdrMap.put(header, headerRecord[i].length());",
+    "rule": "Expression Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 393,
+    "precode": "return hdrMap;",
+    "aftercode": "return hdrMap.isEmpty() ? null : hdrMap;",
+    "rule": "Conditional Return",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 380,
+    "precode": "if (headerRecord != null) {",
+    "aftercode": "if (headerRecord != null && headerRecord.length > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 814,
+    "precode": "for (Iterator it = props.getKeys(); it.hasNext();)",
+    "aftercode": "for (Iterator it = props.getKeys(); false;)",
+    "rule": "Loop Condition Removal",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 814,
+    "precode": "for (Iterator it = props.getKeys(); it.hasNext();)",
+    "aftercode": "for (Iterator it = props.getKeys(); it.next() != null;",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 815,
+    "precode": "String key = (String) it.next();",
+    "aftercode": "String key = (String) it.next(); //",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 816,
+    "precode": "super.put(key, props.get(key));",
+    "aftercode": "super.put(key, null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 816,
+    "precode": "super.put(key, props.get(key));",
+    "aftercode": "super.put(props.get(key), key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 816,
+    "precode": "super.put(key, props.get(key));",
+    "aftercode": "props.put(key, props.get(key));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  }
+]

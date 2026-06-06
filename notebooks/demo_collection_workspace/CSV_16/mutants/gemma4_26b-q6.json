@@ -1,0 +1,522 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 353,
+    "precode": "Assertions.notNull(reader, \"reader\");",
+    "aftercode": "// Assertions.notNull(reader, \"reader\");",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 354,
+    "precode": "Assertions.notNull(format, \"format\");",
+    "aftercode": "// Assertions.notNull(format, \"format\");",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 356,
+    "precode": "this.format = format;",
+    "aftercode": "this.format = null;",
+    "rule": "Assignment to Null",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 357,
+    "precode": "this.lexer = new Lexer(format, new ExtendedBufferedReader(reader));",
+    "aftercode": "this.lexer = new Lexer(null, new ExtendedBufferedReader(reader));",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 358,
+    "precode": "this.csvRecordIterator = new CSVRecordIterator();",
+    "aftercode": "this.csvRecordIterator = null;",
+    "rule": "Assignment to Null",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 359,
+    "precode": "this.headerMap = this.initializeHeader();",
+    "aftercode": "this.headerMap = null;",
+    "rule": "Assignment to Null",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 360,
+    "precode": "this.characterOffset = characterOffset;",
+    "aftercode": "this.characterOffset = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 361,
+    "precode": "this.recordNumber = recordNumber - 1;",
+    "aftercode": "this.recordNumber = recordNumber;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 361,
+    "precode": "this.recordNumber = recordNumber - 1;",
+    "aftercode": "this.recordNumber = recordNumber + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 361,
+    "precode": "this.recordNumber = recordNumber - 1;",
+    "aftercode": "this.recordNumber = recordNumber - 0;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 357,
+    "precode": "this.lexer = new Lexer(format, new ExtendedBufferedReader(reader));",
+    "aftercode": "this.lexer = new Lexer(format, reader);",
+    "rule": "Type Mismatch/Argument Change",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 360,
+    "precode": "this.characterOffset = characterOffset;",
+    "aftercode": "this.characterOffset = -characterOffset;",
+    "rule": "Unary Operator Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 525,
+    "precode": "return csvRecordIterator;",
+    "aftercode": "return null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 525,
+    "precode": "return csvRecordIterator;",
+    "aftercode": "return new ArrayList<CSVRecord>().iterator();",
+    "rule": "ReturnEmptyCollection",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 525,
+    "precode": "return csvRecordIterator;",
+    "aftercode": "return csvRecordIterator.next() == null ? null : csvRecordIterator;",
+    "rule": "MethodCallInsertion",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 292,
+    "precode": "private final List<String> recordList = new ArrayList<>();",
+    "aftercode": "private final List<String> recordList = new LinkedList<>();",
+    "rule": "Collections Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 297,
+    "precode": "private long recordNumber;",
+    "aftercode": "private int recordNumber;",
+    "rule": "Type Change",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 305,
+    "precode": "private final Token reusableToken = new Token();",
+    "aftercode": "private final Token reusableToken = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 325,
+    "precode": "this(reader, format, 0, 1);",
+    "aftercode": "this(reader, format, 0, 0);",
+    "rule": "Integer Literal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 353,
+    "precode": "Assertions.notNull(reader, \"reader\");",
+    "aftercode": "Assertions.notNull(format, \"reader\");",
+    "rule": "Variable Swap",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 354,
+    "precode": "Assertions.notNull(format, \"format\");",
+    "aftercode": "Assertions.notNull(reader, \"format\");",
+    "rule": "Variable Swap",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 357,
+    "precode": "this.lexer = new Lexer(format, new ExtendedBufferedReader(reader));",
+    "aftercode": "this.lexer = new Lexer(null, new ExtendedBufferedReader(reader));",
+    "rule": "Null Argument",
+    "gen_time_s": 1.41,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 361,
+    "precode": "this.recordNumber = recordNumber - 1;",
+    "aftercode": "this.recordNumber = recordNumber;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.41,
+    "dublicate": true
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 366,
+    "precode": "final String inputClean = this.format.getTrim() ? input.trim() : input;",
+    "aftercode": "final String inputClean = this.format.getTrim() ? input : input.trim();",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 367,
+    "precode": "if (lastRecord && inputClean.isEmpty() && this.format.getTrailingDelimiter()) {",
+    "aftercode": "if (lastRecord || inputClean.isEmpty() || this.format.getTrailingDelimiter()) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 367,
+    "precode": "if (lastRecord && inputClean.isEmpty() && this.format.getTrailingDelimiter()) {",
+    "aftercode": "if (lastRecord && !inputClean.isEmpty() && this.format.getTrailingDelimiter()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 371,
+    "precode": "this.recordList.add(inputClean.equals(nullString) ? null : inputClean);",
+    "aftercode": "this.recordList.add(inputClean.equals(nullString) ? inputClean : null);",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 383,
+    "precode": "this.lexer.close();",
+    "aftercode": "this.lexer.close(); //",
+    "rule": "Comment Out",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 382,
+    "precode": "if (this.lexer != null) {",
+    "aftercode": "if (this.lexer == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 398,
+    "precode": "return this.lexer.getCurrentLineNumber();",
+    "aftercode": "return 0L;",
+    "rule": "Return Value",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 419,
+    "precode": "return this.headerMap == null ? null : new LinkedHashMap<>(this.headerMap);",
+    "aftercode": "return this.headerMap == null ? this.headerMap : new LinkedHashMap<>(this.headerMap);",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 433,
+    "precode": "return this.recordNumber;",
+    "aftercode": "return 0L;",
+    "rule": "Return Value",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 451,
+    "precode": "while ((rec = this.nextRecord()) != null) {",
+    "aftercode": "while ((rec = this.nextRecord()) == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 467,
+    "precode": "if (formatHeader != null) {",
+    "aftercode": "if (formatHeader == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 468,
+    "precode": "new TreeMap<String, Integer>(String.CASE_INSENSITIVE_ORDER) :",
+    "aftercode": "new TreeMap<String, Integer>() :",
+    "rule": "Argument Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 472,
+    "precode": "if (formatHeader.length == 0) {",
+    "aftercode": "if (formatHeader.length > 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 479,
+    "precode": "if (this.format.getSkipHeaderRecord()) {",
+    "aftercode": "if (!this.format.getSkipHeaderRecord()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 487,
+    "precode": "for (int i = 0; i < headerRecord.length; i++) {",
+    "aftercode": "for (int i = 0; i <= headerRecord.length; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 489,
+    "precode": "final boolean containsHeader = hdrMap.containsKey(header);",
+    "aftercode": "final boolean containsHeader = !hdrMap.containsKey(header);",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 490,
+    "precode": "final boolean emptyHeader = header == null || header.trim().isEmpty();",
+    "aftercode": "final boolean emptyHeader = header == null && header.trim().isEmpty();",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 491,
+    "precode": "if (containsHeader && (!emptyHeader || !this.format.getAllowMissingColumnNames())) {",
+    "aftercode": "if (containsHeader || (!emptyHeader || !this.format.getAllowMissingColumnNames())) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 495,
+    "precode": "hdrMap.put(header, Integer.valueOf(i));",
+    "aftercode": "hdrMap.put(header, Integer.valueOf(i + 1));",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 508,
+    "precode": "return this.lexer.isClosed();",
+    "aftercode": "return false;",
+    "rule": "Return Value",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 542,
+    "precode": "if (CSVParser.this.isClosed()) {",
+    "aftercode": "if (!CSVParser.this.isClosed()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 546,
+    "precode": "this.current = this.getNextRecord();",
+    "aftercode": "this.current = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 554,
+    "precode": "if (CSVParser.this.isClosed()) {",
+    "aftercode": "if (CSVParser.this.isClosed() == false) {",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 558,
+    "precode": "this.current = null;",
+    "aftercode": "this.current = this.current;",
+    "rule": "Assignment",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 563,
+    "precode": "if (next == null) {",
+    "aftercode": "if (next != null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 573,
+    "precode": "throw new UnsupportedOperationException();",
+    "aftercode": "// throw new UnsupportedOperationException();",
+    "rule": "Comment Out",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 529,
+    "precode": "private CSVRecord current;",
+    "aftercode": "public CSVRecord current;",
+    "rule": "Visibility Modifier Change",
+    "gen_time_s": 1.48,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 529,
+    "precode": "private CSVRecord current;",
+    "aftercode": "private CSVRecord current = null;",
+    "rule": "Field Initialization",
+    "gen_time_s": 1.48,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVParser.java",
+    "line": 528,
+    "precode": "class CSVRecordIterator implements Iterator<CSVRecord> {",
+    "aftercode": "class CSVRecordIterator implements Iterable<CSVRecord> {",
+    "rule": "Interface Replacement",
+    "gen_time_s": 1.48,
+    "dublicate": false
+  }
+]

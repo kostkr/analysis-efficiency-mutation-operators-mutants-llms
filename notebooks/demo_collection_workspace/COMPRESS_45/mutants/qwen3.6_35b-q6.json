@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 478,
+    "precode": "final long maxAsOctalChar = length == TarConstants.UIDLEN ? TarConstants.MAXID : TarConstants.MAXSIZE;",
+    "aftercode": "final long maxAsOctalChar = length != TarConstants.UIDLEN ? TarConstants.MAXID : TarConstants.MAXSIZE;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 481,
+    "precode": "if (!negative && value <= maxAsOctalChar) { // OK to store as octal chars",
+    "aftercode": "if (!negative && value < maxAsOctalChar) { // OK to store as octal chars",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 481,
+    "precode": "if (!negative && value <= maxAsOctalChar) { // OK to store as octal chars",
+    "aftercode": "if (!negative || value <= maxAsOctalChar) { // OK to store as octal chars",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 481,
+    "precode": "if (!negative && value <= maxAsOctalChar) { // OK to store as octal chars",
+    "aftercode": "if (negative && value <= maxAsOctalChar) { // OK to store as octal chars",
+    "rule": "Negation Removal",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 482,
+    "precode": "return formatLongOctalBytes(value, buf, offset, length);",
+    "aftercode": "return formatLongBinary(value, buf, offset, length, negative);",
+    "rule": "Method Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 485,
+    "precode": "if (length < 9) {",
+    "aftercode": "if (length <= 9) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 486,
+    "precode": "formatLongBinary(value, buf, offset, length, negative);",
+    "aftercode": "formatBigIntegerBinary(value, buf, offset, length, negative);",
+    "rule": "Method Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 488,
+    "precode": "formatBigIntegerBinary(value, buf, offset, length, negative);",
+    "aftercode": "formatLongBinary(value, buf, offset, length, negative);",
+    "rule": "Method Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 491,
+    "precode": "buf[offset] = (byte) (negative ? 0xff : 0x80);",
+    "aftercode": "buf[offset] = (byte) (negative ? 0x80 : 0xff);",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 492,
+    "precode": "return offset + length;",
+    "aftercode": "return offset + length - 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 492,
+    "precode": "return offset + length;",
+    "aftercode": "return offset + length + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 480,
+    "precode": "final boolean negative = value < 0;",
+    "aftercode": "final boolean negative = value <= 0;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 478,
+    "precode": "final long maxAsOctalChar = length == TarConstants.UIDLEN ? TarConstants.MAXID : TarConstants.MAXSIZE;",
+    "aftercode": "final long maxAsOctalChar = length == TarConstants.UIDLEN ? TarConstants.MAXSIZE : TarConstants.MAXID;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 481,
+    "precode": "if (!negative && value <= maxAsOctalChar) { // OK to store as octal chars",
+    "aftercode": "if (negative && value > maxAsOctalChar) { // OK to store as octal chars",
+    "rule": "De Morgan's Law",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 485,
+    "precode": "if (length < 9) {",
+    "aftercode": "if (length > 9) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 486,
+    "precode": "formatLongBinary(value, buf, offset, length, negative);",
+    "aftercode": "formatLongOctalBytes(value, buf, offset, length);",
+    "rule": "Method Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 491,
+    "precode": "buf[offset] = (byte) (negative ? 0xff : 0x80);",
+    "aftercode": "buf[offset] = (byte) (negative ? 0x00 : 0x00);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 478,
+    "precode": "final long maxAsOctalChar = length == TarConstants.UIDLEN ? TarConstants.MAXID : TarConstants.MAXSIZE;",
+    "aftercode": "final long maxAsOctalChar = TarConstants.MAXSIZE;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 481,
+    "precode": "if (!negative && value <= maxAsOctalChar) { // OK to store as octal chars",
+    "aftercode": "if (true) { // OK to store as octal chars",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 485,
+    "precode": "if (length < 9) {",
+    "aftercode": "if (length >= 9) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 3.2,
+    "dublicate": false
+  }
+]

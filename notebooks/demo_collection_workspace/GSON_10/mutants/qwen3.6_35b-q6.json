@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 106,
+    "precode": "final boolean isPrimitive = Primitives.isPrimitive(fieldType.getRawType());",
+    "aftercode": "final boolean isPrimitive = !Primitives.isPrimitive(fieldType.getRawType());",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 108,
+    "precode": "JsonAdapter annotation = field.getAnnotation(JsonAdapter.class);",
+    "aftercode": "JsonAdapter annotation = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 110,
+    "precode": "if (annotation != null) {",
+    "aftercode": "if (annotation == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 111,
+    "precode": "mapped = getTypeAdapter(constructorConstructor, context, fieldType, annotation);",
+    "aftercode": "mapped = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 113,
+    "precode": "final boolean jsonAdapterPresent = mapped != null;",
+    "aftercode": "final boolean jsonAdapterPresent = mapped == null;",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 114,
+    "precode": "if (mapped == null) mapped = context.getAdapter(fieldType);",
+    "aftercode": "mapped = context.getAdapter(fieldType);",
+    "rule": "Remove Condition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 119,
+    "precode": "throws IOException, IllegalAccessException {",
+    "aftercode": "throws IOException {",
+    "rule": "Signature Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 121,
+    "precode": "Object fieldValue = field.get(value);",
+    "aftercode": "Object fieldValue = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 122,
+    "precode": "TypeAdapter t = jsonAdapterPresent ? typeAdapter",
+    "aftercode": "TypeAdapter t = jsonAdapterPresent ? null",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 123,
+    "precode": ": new TypeAdapterRuntimeTypeWrapper(context, typeAdapter, fieldType.getType());",
+    "aftercode": ": typeAdapter;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 128,
+    "precode": "Object fieldValue = typeAdapter.read(reader);",
+    "aftercode": "Object fieldValue = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (fieldValue == null && isPrimitive) {",
+    "rule": "De Morgan's Law",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (fieldValue != null && !isPrimitive) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 130,
+    "precode": "field.set(value, fieldValue);",
+    "aftercode": "// field.set(value, fieldValue);",
+    "rule": "Remove Statement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 133,
+    "precode": "public boolean writeField(Object value) throws IOException, IllegalAccessException {",
+    "aftercode": "public boolean writeField(Object value) {",
+    "rule": "Signature Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 134,
+    "precode": "if (!serialized) return false;",
+    "aftercode": "if (serialized) return false;",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 135,
+    "precode": "Object fieldValue = field.get(value);",
+    "aftercode": "Object fieldValue = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 136,
+    "precode": "return fieldValue != value; // avoid recursion for example for Throwable.cause",
+    "aftercode": "return fieldValue == value; // avoid recursion for example for Throwable.cause",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  }
+]

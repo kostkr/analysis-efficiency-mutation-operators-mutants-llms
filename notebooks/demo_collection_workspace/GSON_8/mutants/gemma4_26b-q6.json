@@ -1,0 +1,1032 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 40,
+    "precode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "aftercode": "Class<?> unsafeClass = Class.forName(\"java.lang.Unsafe\");",
+    "rule": "WrongClass",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 41,
+    "precode": "Field f = unsafeClass.getDeclaredField(\"theUnsafe\");",
+    "aftercode": "Field f = unsafeClass.getField(\"theUnsafe\");",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 42,
+    "precode": "f.setAccessible(true);",
+    "aftercode": "f.setAccessible(false);",
+    "rule": "BooleanValueReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 43,
+    "precode": "final Object unsafe = f.get(null);",
+    "aftercode": "final Object unsafe = f.get(new Object());",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 44,
+    "precode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\", Class.class);",
+    "aftercode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\");",
+    "rule": "ArgumentCountChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 49,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "// assertInstantiable(c);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(null, c);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 53,
+    "precode": "} catch (Exception ignored) {",
+    "aftercode": "} catch (RuntimeException ignored) {",
+    "rule": "ExceptionTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 63,
+    "precode": ".getDeclaredMethod(\"getConstructorId\", Class.class);",
+    "aftercode": ".getDeclaredMethod(\"getConstructorId\");",
+    "rule": "ArgumentCountChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 64,
+    "precode": "getConstructorId.setAccessible(true);",
+    "aftercode": "getConstructorId.setAccessible(false);",
+    "rule": "BooleanValueReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 65,
+    "precode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class);",
+    "aftercode": "final int constructorId = (Integer) getConstructorId.invoke(null, c);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 67,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, int.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class);",
+    "rule": "ArgumentCountChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 68,
+    "precode": "newInstance.setAccessible(true);",
+    "aftercode": "newInstance.setAccessible(false);",
+    "rule": "BooleanValueReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 73,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(null, c);",
+    "rule": "ArgumentCountChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 77,
+    "precode": "} catch (Exception ignored) {",
+    "aftercode": "} catch (Throwable ignored) {",
+    "rule": "ExceptionTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 87,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, Class.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class);",
+    "rule": "ArgumentCountChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 88,
+    "precode": "newInstance.setAccessible(true);",
+    "aftercode": "newInstance.setAccessible(false);",
+    "rule": "BooleanValueReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 93,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "assertInstantiable(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, c, c);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 97,
+    "precode": "} catch (Exception ignored) {",
+    "aftercode": "} catch (Error ignored) {",
+    "rule": "ExceptionTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 104,
+    "precode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c);",
+    "aftercode": "throw new RuntimeException(\"Cannot allocate \" + c);",
+    "rule": "ExceptionTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 40,
+    "precode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "aftercode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\").asSubclass(Object.class);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 43,
+    "precode": "final Object unsafe = f.get(null);",
+    "aftercode": "final Object unsafe = f.get(unsafeClass);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(c, unsafe);",
+    "rule": "ArgumentOrderChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 65,
+    "precode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class);",
+    "aftercode": "final int constructorId = (Integer) getConstructorId.invoke(Object.class, null);",
+    "rule": "ArgumentOrderChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(c, constructorId, null);",
+    "rule": "ArgumentOrderChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(c, Object.class, null);",
+    "rule": "ArgumentOrderChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 104,
+    "precode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c);",
+    "aftercode": "return null;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 41,
+    "precode": "Field f = unsafeClass.getDeclaredField(\"theUnsafe\");",
+    "aftercode": "Field f = unsafeClass.getDeclaredField(\"unsafe\");",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 63,
+    "precode": ".getDeclaredMethod(\"getConstructorId\", Class.class);",
+    "aftercode": ".getDeclaredMethod(\"getConstructorId\", Object.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 67,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, int.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class, Integer.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 87,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, Class.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class, Object.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 40,
+    "precode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "aftercode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\").getClass();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 42,
+    "precode": "f.setAccessible(true);",
+    "aftercode": "f.setAccessible(true); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 44,
+    "precode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\", Class.class);",
+    "aftercode": "final Method allocateInstance = unsafeClass.getDeclaredMethod(\"allocateInstance\", Class.class);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 62,
+    "precode": "Method getConstructorId = ObjectStreamClass.class",
+    "aftercode": "Method getConstructorId = ObjectStreamClass.class.getClass();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 66,
+    "precode": "final Method newInstance = ObjectStreamClass.class",
+    "aftercode": "final Method newInstance = ObjectStreamClass.class.getClass();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 86,
+    "precode": "final Method newInstance = ObjectInputStream.class",
+    "aftercode": "final Method newInstance = ObjectInputStream.class.getClass();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 104,
+    "precode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c);",
+    "aftercode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c.getName());",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 43,
+    "precode": "final Object unsafe = f.get(null);",
+    "aftercode": "final Object unsafe = f.get(null); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 48,
+    "precode": "public <T> T newInstance(Class<T> c) throws Exception {",
+    "aftercode": "public <T> T newInstance(Class<T> c) {",
+    "rule": "ExceptionSignatureChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(unsafe, (Class) c);",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 72,
+    "precode": "public <T> T newInstance(Class<T> c) throws Exception {",
+    "aftercode": "public <T> T newInstance(Class<T> c) throws Exception {",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(null, c, (Integer) constructorId);",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 92,
+    "precode": "public <T> T newInstance(Class<T> c) throws Exception {",
+    "aftercode": "public <T> T newInstance(Class<T> c) throws Exception {",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, (Class) c, Object.class);",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 103,
+    "precode": "public <T> T newInstance(Class<T> c) {",
+    "aftercode": "public <T> T newInstance(Class<?> c) {",
+    "rule": "GenericTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 40,
+    "precode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "aftercode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\").getDeclaredField(\"theUnsafe\").getDeclaringClass();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 44,
+    "precode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\", Class.class);",
+    "aftercode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\", Object.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 65,
+    "precode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class);",
+    "aftercode": "final int constructorId = (Integer) getConstructorId.invoke(null, String.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 67,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, int.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class, long.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 87,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, Class.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class, Object.class);",
+    "rule": "ArgumentTypeChange",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, c, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 42,
+    "precode": "f.setAccessible(true);",
+    "aftercode": "f.setAccessible(true); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(unsafe, (Class) c);",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(null, c, (int) constructorId);",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, c, (Class) Object.class);",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 40,
+    "precode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "aftercode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\"); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 43,
+    "precode": "final Object unsafe = f.get(null);",
+    "aftercode": "final Object unsafe = f.get(null); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 65,
+    "precode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class);",
+    "aftercode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 88,
+    "precode": "newInstance.setAccessible(true);",
+    "aftercode": "newInstance.setAccessible(true); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 104,
+    "precode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c);",
+    "aftercode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 40,
+    "precode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "aftercode": "Class<?> unsafeClass = Class.forName(\"sun.misc.Unsafe\");",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 65,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 41,
+    "precode": "Field f = unsafeClass.getDeclaredField(\"theUnsafe\");",
+    "aftercode": "Field f = unsafeClass.getDeclaredField(\"theUnsafe\");",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 66,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 42,
+    "precode": "f.setAccessible(true);",
+    "aftercode": "f.setAccessible(true);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 67,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 43,
+    "precode": "final Object unsafe = f.get(null);",
+    "aftercode": "final Object unsafe = f.get(null);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 68,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 44,
+    "precode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\", Class.class);",
+    "aftercode": "final Method allocateInstance = unsafeClass.getMethod(\"allocateInstance\", Class.class);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 69,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 49,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "assertInstantiable(c);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 70,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 71,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 63,
+    "precode": ".getDeclaredMethod(\"getConstructorId\", Class.class);",
+    "aftercode": ".getDeclaredMethod(\"getConstructorId\", Class.class);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 72,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 64,
+    "precode": "getConstructorId.setAccessible(true);",
+    "aftercode": "getConstructorId.setAccessible(true);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 73,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 65,
+    "precode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class);",
+    "aftercode": "final int constructorId = (Integer) getConstructorId.invoke(null, Object.class);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 74,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 67,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, int.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class, int.class);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 75,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 68,
+    "precode": "newInstance.setAccessible(true);",
+    "aftercode": "newInstance.setAccessible(true);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 76,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 73,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "assertInstantiable(c);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 77,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 78,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 87,
+    "precode": ".getDeclaredMethod(\"newInstance\", Class.class, Class.class);",
+    "aftercode": ".getDeclaredMethod(\"newInstance\", Class.class, Class.class);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 79,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 88,
+    "precode": "newInstance.setAccessible(true);",
+    "aftercode": "newInstance.setAccessible(true);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 80,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 93,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "assertInstantiable(c);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 81,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 82,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 104,
+    "precode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c);",
+    "aftercode": "throw new UnsupportedOperationException(\"Cannot allocate \" + c);",
+    "rule": "NoOp",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 83,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 49,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "// assertInstantiable(c);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.6,
+    "dublicate": true
+  },
+  {
+    "id": 84,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(c);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.invoke(unsafe, null);",
+    "rule": "Null Value Replacement",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 50,
+    "precode": "return (T) allocateInstance.invoke(unsafe, c);",
+    "aftercode": "return (T) allocateInstance.call(unsafe, c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 73,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "// assertInstantiable(c);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(c, null, constructorId);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(null, constructorId, c);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 74,
+    "precode": "return (T) newInstance.invoke(null, c, constructorId);",
+    "aftercode": "return (T) newInstance.invoke(null, c, null);",
+    "rule": "Null Constant Replacement",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 93,
+    "precode": "assertInstantiable(c);",
+    "aftercode": "// assertInstantiable(c);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.68,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, Object.class, c);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 1.68,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(c, c, Object.class);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.68,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 94,
+    "precode": "return (T) newInstance.invoke(null, c, Object.class);",
+    "aftercode": "return (T) newInstance.invoke(null, c, c);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.68,
+    "dublicate": true
+  },
+  {
+    "id": 95,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 116,
+    "precode": "if (Modifier.isInterface(modifiers)) {",
+    "aftercode": "if (!Modifier.isInterface(modifiers)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 116,
+    "precode": "if (Modifier.isInterface(modifiers)) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 117,
+    "precode": "throw new UnsupportedOperationException(\"Interface can't be instantiated! Interface name: \" + c.getName());",
+    "aftercode": "throw new RuntimeException(\"Interface can't be instantiated! Interface name: \" + c.getName());",
+    "rule": "Exception Change",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 119,
+    "precode": "if (Modifier.isAbstract(modifiers)) {",
+    "aftercode": "if (!Modifier.isAbstract(modifiers)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 119,
+    "precode": "if (Modifier.isAbstract(modifiers)) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 120,
+    "precode": "throw new UnsupportedOperationException(\"Abstract class can't be instantiated! Class name: \" + c.getName());",
+    "aftercode": "throw new RuntimeException(\"Abstract class can't be instantiated! Class name: \" + c.getName());",
+    "rule": "Exception Change",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 115,
+    "precode": "int modifiers = c.getModifiers();",
+    "aftercode": "int modifiers = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 116,
+    "precode": "if (Modifier.isInterface(modifiers)) {",
+    "aftercode": "if (Modifier.isInterface(modifiers) || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+    "line": 119,
+    "precode": "if (Modifier.isAbstract(modifiers)) {",
+    "aftercode": "if (Modifier.isAbstract(modifiers) || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  }
+]

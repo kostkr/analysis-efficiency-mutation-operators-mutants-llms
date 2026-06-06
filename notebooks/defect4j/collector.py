@@ -405,41 +405,34 @@ class DataCollector:
                 f"Buggy checkout {project}-{bug_id} produced no failing tests under defects4j test -r"
             )
 
-        bug_tests = sorted(set(self.d4j.trigger_tests(container_path)))
+        exported_trigger_tests = sorted(set(self.d4j.trigger_tests(container_path)))
         suite_tests = set(suite_profile.get("all_tests", []))
         buggy_suite_tests = set(buggy_profile.get("all_tests", []))
-        missing_trigger_tests = sorted(set(bug_tests) - buggy_suite_tests)
-        if missing_trigger_tests:
-            raise RuntimeError(
-                f"Trigger tests are missing from buggy `defects4j test -r` for {project}-{bug_id}: "
-                f"{missing_trigger_tests}"
-            )
-
-        missing_trigger_failures = sorted(set(bug_tests) - set(actual_bug_failing))
+        relevant_trigger_tests = sorted(set(exported_trigger_tests) & buggy_suite_tests)
+        missing_trigger_failures = sorted(set(relevant_trigger_tests) - set(actual_bug_failing))
         if missing_trigger_failures:
             raise RuntimeError(
-                f"Trigger tests did not fail on buggy `defects4j test -r` for {project}-{bug_id}: "
+                f"Relevant trigger tests did not fail on buggy `defects4j test -r` for {project}-{bug_id}: "
                 f"{missing_trigger_failures}"
-            )
-
-        failing_outside_suite = sorted(set(actual_bug_failing) - suite_tests)
-        if failing_outside_suite:
-            raise RuntimeError(
-                f"Buggy failing tests are outside fixed-suite all_tests for {project}-{bug_id}: "
-                f"{failing_outside_suite}"
             )
 
         bug_profile = {
             "failing_tests": actual_bug_failing,
-            "trigger_tests": bug_tests,
+            "trigger_tests": relevant_trigger_tests,
         }
         suite_total_tests = len(suite_profile.get("all_tests", []))
-        trigger_count = len(bug_tests)
+        trigger_count = len(relevant_trigger_tests)
         actual_bug_count = len(actual_bug_failing)
+        exported_trigger_count = len(exported_trigger_tests)
+        skipped_trigger_count = exported_trigger_count - trigger_count
+        failures_outside_suite_count = len(set(actual_bug_failing) - suite_tests)
         extras = actual_bug_count - trigger_count
         self._log(
             f"  profile  : clean relevant suite={suite_total_tests} tests in {suite_profile['run_time_s']}s; "
-            f"buggy failures={actual_bug_count} tests (trigger export={trigger_count}" 
+            f"buggy failures={actual_bug_count} tests (relevant triggers={trigger_count}"
+            f"{', exported_trigger_tests=' + str(exported_trigger_count) if exported_trigger_count != trigger_count else ''}"
+            f"{', trigger_outside_relevant=' + str(skipped_trigger_count) if skipped_trigger_count > 0 else ''}"
+            f"{', failures_outside_all_tests=' + str(failures_outside_suite_count) if failures_outside_suite_count > 0 else ''}"
             f"{', extra_buggy_failures=' + str(extras) if extras > 0 else ''})"
         )
         profiles = {

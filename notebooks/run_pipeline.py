@@ -93,7 +93,7 @@ def _enabled_llm_configs() -> list[LLMConfig]:
 
 # ── Mutant execution pipeline ──────────────────────────────────────────────
 COLLECT_TEST_TIMEOUT_S = 2700
-COLLECT_MAX_WORKERS = 13
+COLLECT_MAX_WORKERS = 14
 
 
 def main() -> int:

@@ -1,0 +1,492 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 830,
+    "precode": "if (!clazz.isAssignableFrom(requestedType)) {",
+    "aftercode": "if (clazz.isAssignableFrom(requestedType)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 831,
+    "precode": "return null;",
+    "aftercode": "return typeAdapter;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 833,
+    "precode": "return (TypeAdapter<T2>) new TypeAdapter<T1>() {",
+    "aftercode": "return new TypeAdapter<T1>() {",
+    "rule": "Cast Removal",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 835,
+    "precode": "typeAdapter.write(out, value);",
+    "aftercode": "typeAdapter.write(value, out);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 839,
+    "precode": "T1 result = typeAdapter.read(in);",
+    "aftercode": "T1 result = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null || !requestedType.isInstance(result)) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null && requestedType.isInstance(result)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 841,
+    "precode": "throw new JsonSyntaxException(\"Expected a \" + requestedType.getName()",
+    "aftercode": "throw new JsonSyntaxException(\"Expected b \" + requestedType.getName()",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 842,
+    "precode": "+ \" but was \" + result.getClass().getName());",
+    "aftercode": "+ \" and was \" + result.getClass().getName());",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 844,
+    "precode": "return result;",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 849,
+    "precode": "return \"Factory[typeHierarchy=\" + clazz.getName() + \",adapter=\" + typeAdapter + \"]\";",
+    "aftercode": "return \"Factory[typeHierarchy=\" + typeAdapter + \",adapter=\" + clazz.getName() + \"]\";",
+    "rule": "String Concatenation Order Swap",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 829,
+    "precode": "final Class<? super T2> requestedType = typeToken.getRawType();",
+    "aftercode": "final Class<? super T2> requestedType = typeToken.getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 830,
+    "precode": "if (!clazz.isAssignableFrom(requestedType)) {",
+    "aftercode": "if (requestedType.isAssignableFrom(clazz)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 834,
+    "precode": "@Override public void write(JsonWriter out, T1 value) throws IOException {",
+    "aftercode": "@Override public void write(T1 value, JsonWriter out) throws IOException {",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 838,
+    "precode": "@Override public T1 read(JsonReader in) throws IOException {",
+    "aftercode": "@Override public T1 read() throws IOException {",
+    "rule": "Parameter Removal",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null && !requestedType.isInstance(null)) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 841,
+    "precode": "throw new JsonSyntaxException(\"Expected a \" + requestedType.getName()",
+    "aftercode": "throw new JsonSyntaxException(\"Expected a \" + result.getClass().getName()",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 849,
+    "precode": "return \"Factory[typeHierarchy=\" + clazz.getName() + \",adapter=\" + typeAdapter + \"]\";",
+    "aftercode": "return \"Factory[typeHierarchy=\" + clazz.getName() + \"]\";",
+    "rule": "String Concatenation Removal",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 826,
+    "precode": "return new TypeAdapterFactory() {",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 839,
+    "precode": "T1 result = typeAdapter.read(in);",
+    "aftercode": "T1 result = typeAdapter.read(null);",
+    "rule": "Null Parameter",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null && !requestedType.isAssignableFrom(result)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 841,
+    "precode": "throw new JsonSyntaxException(\"Expected a \" + requestedType.getName()",
+    "aftercode": "throw new RuntimeException(\"Expected a \" + requestedType.getName()",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 849,
+    "precode": "return \"Factory[typeHierarchy=\" + clazz.getName() + \",adapter=\" + typeAdapter + \"]\";",
+    "aftercode": "return \"Factory[typeHierarchy=\" + clazz.getName() + \",adapter=\" + null + \"]\";",
+    "rule": "Null Literal Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 835,
+    "precode": "typeAdapter.write(out, value);",
+    "aftercode": "// typeAdapter.write(out, value);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 839,
+    "precode": "T1 result = typeAdapter.read(in);",
+    "aftercode": "// T1 result = typeAdapter.read(in);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 844,
+    "precode": "return result;",
+    "aftercode": "// return result;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (false && !requestedType.isInstance(result)) {",
+    "rule": "Boolean Constant Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 841,
+    "precode": "throw new JsonSyntaxException(\"Expected a \" + requestedType.getName()",
+    "aftercode": "throw new JsonSyntaxException(\"Expected a \" + \"null\"",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 849,
+    "precode": "return \"Factory[typeHierarchy=\" + clazz.getName() + \",adapter=\" + typeAdapter + \"]\";",
+    "aftercode": "return \"Factory[typeHierarchy=\" + \"null\" + \",adapter=\" + typeAdapter + \"]\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.73,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 830,
+    "precode": "if (!clazz.isAssignableFrom(requestedType)) {",
+    "aftercode": "if (clazz.isAssignableFrom(requestedType)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 831,
+    "precode": "return null;",
+    "aftercode": "return gson.getAdapter(clazz);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 835,
+    "precode": "typeAdapter.write(out, value);",
+    "aftercode": "typeAdapter.write(out, null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 839,
+    "precode": "T1 result = typeAdapter.read(in);",
+    "aftercode": "T1 result = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result == null && !requestedType.isInstance(result)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null || !requestedType.isInstance(result)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null && requestedType.isInstance(result)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 841,
+    "precode": "+ \" but was \" + result.getClass().getName());",
+    "aftercode": "+ \" was \" + result.getClass().getName());",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 833,
+    "precode": "return (TypeAdapter<T2>) new TypeAdapter<T1>() {",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 839,
+    "precode": "T1 result = typeAdapter.read(in);",
+    "aftercode": "T1 result = (T1) new Object();",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 844,
+    "precode": "return result;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 834,
+    "precode": "public void write(JsonWriter out, T1 value) throws IOException {",
+    "aftercode": "public void write(JsonWriter out, T1 value) {",
+    "rule": "Exception Handler Removal",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 838,
+    "precode": "public T1 read(JsonReader in) throws IOException {",
+    "aftercode": "public T1 read(JsonReader in) {",
+    "rule": "Exception Handler Removal",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (false && !requestedType.isInstance(result)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 44,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 840,
+    "precode": "if (result != null && !requestedType.isInstance(result)) {",
+    "aftercode": "if (result != null && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 842,
+    "precode": "throw new JsonSyntaxException(\"Expected a \" + requestedType.getName()",
+    "aftercode": "// throw new JsonSyntaxException(\"Expected a \" + requestedType.getName()",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 835,
+    "precode": "typeAdapter.write(out, value);",
+    "aftercode": "typeAdapter.write(out, value); typeAdapter.write(out, value);",
+    "rule": "Double Statement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 839,
+    "precode": "T1 result = typeAdapter.read(in);",
+    "aftercode": "T1 result = typeAdapter.read(in); T1 result2 = typeAdapter.read(in);",
+    "rule": "Double Statement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 841,
+    "precode": "+ \" but was \" + result.getClass().getName());",
+    "aftercode": "+ \" but was \" + String.class.getName());",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+    "line": 843,
+    "precode": "}\n              return result;",
+    "aftercode": "}\n              return result; return null;",
+    "rule": "Double Statement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  }
+]

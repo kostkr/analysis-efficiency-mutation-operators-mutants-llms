@@ -1,0 +1,612 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 415,
+    "precode": "if (eof) {",
+    "aftercode": "if (!eof) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 420,
+    "precode": "if (inAvail < 0) {",
+    "aftercode": "if (inAvail <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 420,
+    "precode": "if (inAvail < 0) {",
+    "aftercode": "if (inAvail > 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 422,
+    "precode": "if (buf == null || buf.length - pos < encodeSize) {",
+    "aftercode": "if (buf == null && buf.length - pos < encodeSize) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 422,
+    "precode": "if (buf == null || buf.length - pos < encodeSize) {",
+    "aftercode": "if (buf == null || buf.length - pos <= encodeSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 427,
+    "precode": "buf[pos++] = encodeTable[(x >> 2) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 2) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 427,
+    "precode": "buf[pos++] = encodeTable[(x >> 2) & MASK_6BITS];",
+    "aftercode": "buf[pos] = encodeTable[(x >> 2) & MASK_6BITS];",
+    "rule": "Post-increment Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 428,
+    "precode": "buf[pos++] = encodeTable[(x << 4) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x << 4) & ~MASK_6BITS];",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 430,
+    "precode": "if (encodeTable == STANDARD_ENCODE_TABLE) {",
+    "aftercode": "if (encodeTable != STANDARD_ENCODE_TABLE) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 431,
+    "precode": "buf[pos++] = PAD;",
+    "aftercode": "buf[pos++] = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 437,
+    "precode": "buf[pos++] = encodeTable[(x >> 10) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 10) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 438,
+    "precode": "buf[pos++] = encodeTable[(x >> 4) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 4) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 439,
+    "precode": "buf[pos++] = encodeTable[(x << 2) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 2) & MASK_6BITS];",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 441,
+    "precode": "if (encodeTable == STANDARD_ENCODE_TABLE) {",
+    "aftercode": "if (encodeTable != STANDARD_ENCODE_TABLE) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 446,
+    "precode": "if (lineLength > 0 && pos > 0) {",
+    "aftercode": "if (lineLength >= 0 && pos > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 446,
+    "precode": "if (lineLength > 0 && pos > 0) {",
+    "aftercode": "if (lineLength > 0 || pos > 0) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 447,
+    "precode": "System.arraycopy(lineSeparator, 0, buf, pos, lineSeparator.length);",
+    "aftercode": "System.arraycopy(lineSeparator, 0, buf, 0, lineSeparator.length);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 448,
+    "precode": "pos += lineSeparator.length;",
+    "aftercode": "pos -= lineSeparator.length;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 451,
+    "precode": "for (int i = 0; i < inAvail; i++) {",
+    "aftercode": "for (int i = 0; i <= inAvail; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 451,
+    "precode": "for (int i = 0; i < inAvail; i++) {",
+    "aftercode": "for (int i = 1; i < inAvail; i++) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 452,
+    "precode": "if (buf == null || buf.length - pos < encodeSize) {",
+    "aftercode": "if (buf == null || buf.length - pos <= encodeSize) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 455,
+    "precode": "modulus = (++modulus) % 3;",
+    "aftercode": "modulus = (modulus) % 3;",
+    "rule": "Increment Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 455,
+    "precode": "modulus = (++modulus) % 3;",
+    "aftercode": "modulus = (++modulus) % 2;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 456,
+    "precode": "int b = in[inPos++];",
+    "aftercode": "int b = in[inPos];",
+    "rule": "Post-increment Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 457,
+    "precode": "if (b < 0) { b += 256; }",
+    "aftercode": "if (b <= 0) { b += 256; }",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 457,
+    "precode": "if (b < 0) { b += 256; }",
+    "aftercode": "if (b < 0) { b -= 256; }",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 458,
+    "precode": "x = (x << 8) + b;",
+    "aftercode": "x = (x << 8) - b;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 459,
+    "precode": "if (0 == modulus) {",
+    "aftercode": "if (0 != modulus) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 459,
+    "precode": "if (0 == modulus) {",
+    "aftercode": "if (0 <= modulus) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 460,
+    "precode": "buf[pos++] = encodeTable[(x >> 18) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 18) & ~MASK_6BITS];",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 461,
+    "precode": "buf[pos++] = encodeTable[(x >> 12) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 12) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 462,
+    "precode": "buf[pos++] = encodeTable[(x >> 6) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 6) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 463,
+    "precode": "buf[pos++] = encodeTable[x & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[x & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 464,
+    "precode": "currentLinePos += 4;",
+    "aftercode": "currentLinePos += 3;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 465,
+    "precode": "if (lineLength > 0 && lineLength <= currentLinePos) {",
+    "aftercode": "if (lineLength > 0 && lineLength < currentLinePos) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 465,
+    "precode": "if (lineLength > 0 && lineLength <= currentLinePos) {",
+    "aftercode": "if (lineLength >= 0 && lineLength <= currentLinePos) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 466,
+    "precode": "System.arraycopy(lineSeparator, 0, buf, pos, lineSeparator.length);",
+    "aftercode": "System.arraycopy(lineSeparator, 0, buf, pos, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 468,
+    "precode": "currentLinePos = 0;",
+    "aftercode": "currentLinePos = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 422,
+    "precode": "if (buf == null || buf.length - pos < encodeSize) {",
+    "aftercode": "if (buf != null || buf.length - pos < encodeSize) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 427,
+    "precode": "buf[pos++] = encodeTable[(x >> 2) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 2) | MASK_6BITS];",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 428,
+    "precode": "buf[pos++] = encodeTable[(x << 4) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x << 4) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 430,
+    "precode": "if (encodeTable == STANDARD_ENCODE_TABLE) {",
+    "aftercode": "if (encodeTable != null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 437,
+    "precode": "buf[pos++] = encodeTable[(x >> 10) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 10) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 438,
+    "precode": "buf[pos++] = encodeTable[(x >> 4) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 4) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 441,
+    "precode": "if (encodeTable == STANDARD_ENCODE_TABLE) {",
+    "aftercode": "if (encodeTable == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 446,
+    "precode": "if (lineLength > 0 && pos > 0) {",
+    "aftercode": "if (lineLength > 0 && pos < 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 452,
+    "precode": "if (buf == null || buf.length - pos < encodeSize) {",
+    "aftercode": "if (buf == null || buf.length - pos > encodeSize) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 455,
+    "precode": "modulus = (++modulus) % 3;",
+    "aftercode": "modulus = (modulus++) % 3;",
+    "rule": "Post-increment Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 456,
+    "precode": "int b = in[inPos++];",
+    "aftercode": "int b = in[inPos--];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 458,
+    "precode": "x = (x << 8) + b;",
+    "aftercode": "x = (x >> 8) + b;",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 460,
+    "precode": "buf[pos++] = encodeTable[(x >> 18) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 18) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 461,
+    "precode": "buf[pos++] = encodeTable[(x >> 12) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 12) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 462,
+    "precode": "buf[pos++] = encodeTable[(x >> 6) & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[(x >> 6) & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 463,
+    "precode": "buf[pos++] = encodeTable[x & MASK_6BITS];",
+    "aftercode": "buf[pos++] = encodeTable[x & MASK_6BITS];",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 465,
+    "precode": "if (lineLength > 0 && lineLength <= currentLinePos) {",
+    "aftercode": "if (lineLength > 0 || lineLength <= currentLinePos) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 467,
+    "precode": "pos += lineSeparator.length;",
+    "aftercode": "pos += 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 451,
+    "precode": "for (int i = 0; i < inAvail; i++) {",
+    "aftercode": "for (int i = 0; i < inAvail; i++) {",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 423,
+    "precode": "resizeBuf();",
+    "aftercode": "resizeBuf();",
+    "rule": "No-op",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 421,
+    "precode": "eof = true;",
+    "aftercode": "eof = false;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 433,
+    "precode": "}",
+    "aftercode": "else {",
+    "rule": "Block Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/java/org/apache/commons/codec/binary/Base64.java",
+    "line": 469,
+    "precode": "}",
+    "aftercode": "else {",
+    "rule": "Block Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  }
+]

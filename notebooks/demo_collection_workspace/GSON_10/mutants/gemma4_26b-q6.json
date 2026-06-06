@@ -1,0 +1,372 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 106,
+    "precode": "final boolean isPrimitive = Primitives.isPrimitive(fieldType.getRawType());",
+    "aftercode": "final boolean isPrimitive = !Primitives.isPrimitive(fieldType.getRawType());",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 110,
+    "precode": "if (annotation != null) {",
+    "aftercode": "if (annotation == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 110,
+    "precode": "if (annotation != null) {",
+    "aftercode": "if (annotation != null && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 113,
+    "precode": "final boolean jsonAdapterPresent = mapped != null;",
+    "aftercode": "final boolean jsonAdapterPresent = mapped == null;",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 114,
+    "precode": "if (mapped == null) mapped = context.getAdapter(fieldType);",
+    "aftercode": "if (mapped != null) mapped = context.getAdapter(fieldType);",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 121,
+    "precode": "Object fieldValue = field.get(value);",
+    "aftercode": "Object fieldValue = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 122,
+    "precode": "TypeAdapter t = jsonAdapterPresent ? typeAdapter",
+    "aftercode": "TypeAdapter t = !jsonAdapterPresent ? typeAdapter",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 122,
+    "precode": "TypeAdapter t = jsonAdapterPresent ? typeAdapter",
+    "aftercode": "TypeAdapter t = jsonAdapterPresent ? null : typeAdapter",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 124,
+    "precode": "t.write(writer, fieldValue);",
+    "aftercode": "t.write(writer, null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 128,
+    "precode": "Object fieldValue = typeAdapter.read(reader);",
+    "aftercode": "Object fieldValue = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (fieldValue != null && !isPrimitive) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (fieldValue == null || !isPrimitive) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (fieldValue != null || isPrimitive) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (fieldValue != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 129,
+    "precode": "if (fieldValue != null || !isPrimitive) {",
+    "aftercode": "if (!isPrimitive) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 130,
+    "precode": "field.set(value, fieldValue);",
+    "aftercode": "field.set(null, fieldValue);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 130,
+    "precode": "field.set(value, fieldValue);",
+    "aftercode": "field.set(value, null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 134,
+    "precode": "if (!serialized) return false;",
+    "aftercode": "if (serialized) return false;",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 134,
+    "precode": "if (!serialized) return false;",
+    "aftercode": "if (!serialized) return true;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 135,
+    "precode": "Object fieldValue = field.get(value);",
+    "aftercode": "Object fieldValue = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 136,
+    "precode": "return fieldValue != value; // avoid recursion for example for Throwable.cause",
+    "aftercode": "return fieldValue == value; // avoid recursion for example for Throwable.cause",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 136,
+    "precode": "return fieldValue != value; // avoid recursion for example for Throwable.cause",
+    "aftercode": "return true;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 136,
+    "precode": "return fieldValue != value; // avoid recursion for example for Throwable.cause",
+    "aftercode": "return false;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 104,
+    "precode": "final Gson context, final Field field, final String name,",
+    "aftercode": "final Gson context, final Field field, final String name = null,",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 111,
+    "precode": "mapped = getTypeAdapter(constructorConstructor, context, fieldType, annotation);",
+    "aftercode": "mapped = getTypeAdapter(null, context, fieldType, annotation);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 114,
+    "precode": "if (mapped == null) mapped = context.getAdapter(fieldType);",
+    "aftercode": "if (mapped == null) mapped = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 117,
+    "precode": "return new ReflectiveTypeAdapterFactory.BoundField(name, serialize, deserialize) {",
+    "aftercode": "return new ReflectiveTypeAdapterFactory.BoundField(null, serialize, deserialize) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 117,
+    "precode": "return new ReflectiveTypeAdapterFactory.BoundField(name, serialize, deserialize) {",
+    "aftercode": "return new ReflectiveTypeAdapterFactory.BoundField(name, false, deserialize) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 117,
+    "precode": "return new ReflectiveTypeAdapterFactory.BoundField(name, serialize, deserialize) {",
+    "aftercode": "return new ReflectiveTypeAdapterFactory.BoundField(name, serialize, false) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 123,
+    "precode": ": new TypeAdapterRuntimeTypeWrapper(context, typeAdapter, fieldType.getType());",
+    "aftercode": ": new TypeAdapterRuntimeTypeWrapper(null, typeAdapter, fieldType.getType());",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 123,
+    "precode": ": new TypeAdapterRuntimeTypeWrapper(context, typeAdapter, fieldType.getType());",
+    "aftercode": ": new TypeAdapterRuntimeTypeWrapper(context, null, fieldType.getType());",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 123,
+    "precode": ": new TypeAdapterRuntimeTypeWrapper(context, typeAdapter, fieldType.getType());",
+    "aftercode": ": new TypeAdapterRuntimeTypeWrapper(context, typeAdapter, null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 130,
+    "precode": "field.set(value, fieldValue);",
+    "aftercode": "field.set(value, fieldValue); // no-op",
+    "rule": "Empty Statement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 108,
+    "precode": "JsonAdapter annotation = field.getAnnotation(JsonAdapter.class);",
+    "aftercode": "JsonAdapter annotation = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 109,
+    "precode": "TypeAdapter<?> mapped = null;",
+    "aftercode": "TypeAdapter<?> mapped = new TypeAdapter<Object>() { public void write(JsonWriter w, Object v) {} public Object read(JsonReader r) { return null; } };",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 116,
+    "precode": "final TypeAdapter<?> typeAdapter = mapped;",
+    "aftercode": "final TypeAdapter<?> typeAdapter = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+    "line": 136,
+    "precode": "return fieldValue != value; // avoid recursion for example for Throwable.cause",
+    "aftercode": "return fieldValue != null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]

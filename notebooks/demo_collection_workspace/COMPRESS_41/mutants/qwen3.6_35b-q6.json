@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 221,
+    "precode": "if (closed || hitCentralDirectory) {",
+    "aftercode": "if (closed && hitCentralDirectory) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 224,
+    "precode": "if (current != null) {",
+    "aftercode": "if (current == null) {",
+    "rule": "Null Check Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 226,
+    "precode": "firstEntry = false;",
+    "aftercode": "firstEntry = true;",
+    "rule": "Variable Assignment Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 230,
+    "precode": "if (firstEntry) {",
+    "aftercode": "if (!firstEntry) {",
+    "rule": "Negation Injection",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 244,
+    "precode": "if (sig.equals(ZipLong.CFH_SIG) || sig.equals(ZipLong.AED_SIG)) {",
+    "aftercode": "if (sig.equals(ZipLong.CFH_SIG) && sig.equals(ZipLong.AED_SIG)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 249,
+    "precode": "if (!sig.equals(ZipLong.LFH_SIG)) {",
+    "aftercode": "if (sig.equals(ZipLong.LFH_SIG)) {",
+    "rule": "Negation Injection",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 257,
+    "precode": "off += SHORT;",
+    "aftercode": "off += WORD;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 258,
+    "precode": "current.entry.setPlatform((versionMadeBy >> ZipFile.BYTE_SHIFT) & ZipFile.NIBLET_MASK);",
+    "aftercode": "current.entry.setPlatform((versionMadeBy << ZipFile.BYTE_SHIFT) & ZipFile.NIBLET_MASK);",
+    "rule": "Bit Shift Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 262,
+    "precode": "final ZipEncoding entryEncoding = hasUTF8Flag ? ZipEncodingHelper.UTF8_ZIP_ENCODING : zipEncoding;",
+    "aftercode": "final ZipEncoding entryEncoding = hasUTF8Flag ? zipEncoding : ZipEncodingHelper.UTF8_ZIP_ENCODING;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 266,
+    "precode": "off += SHORT;",
+    "aftercode": "off += WORD;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 268,
+    "precode": "current.entry.setMethod(ZipShort.getValue(LFH_BUF, off));",
+    "aftercode": "current.entry.setMethod(ZipShort.getValue(LFH_BUF, off + WORD));",
+    "rule": "Offset Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 269,
+    "precode": "off += SHORT;",
+    "aftercode": "off += WORD;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 271,
+    "precode": "final long time = ZipUtil.dosToJavaTime(ZipLong.getValue(LFH_BUF, off));",
+    "aftercode": "final long time = ZipUtil.dosToJavaTime(ZipShort.getValue(LFH_BUF, off));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 273,
+    "precode": "off += WORD;",
+    "aftercode": "off += SHORT;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 276,
+    "precode": "if (!current.hasDataDescriptor) {",
+    "aftercode": "if (current.hasDataDescriptor) {",
+    "rule": "Negation Injection",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 278,
+    "precode": "off += WORD;",
+    "aftercode": "off += SHORT;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 281,
+    "precode": "off += WORD;",
+    "aftercode": "off += SHORT;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 284,
+    "precode": "off += WORD;",
+    "aftercode": "off += SHORT;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 286,
+    "precode": "off += 3 * WORD;",
+    "aftercode": "off += 3 * SHORT;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 289,
+    "precode": "final int fileNameLen = ZipShort.getValue(LFH_BUF, off);",
+    "aftercode": "final int fileNameLen = ZipLong.getValue(LFH_BUF, off);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 291,
+    "precode": "off += SHORT;",
+    "aftercode": "off += WORD;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 293,
+    "precode": "final int extraLen = ZipShort.getValue(LFH_BUF, off);",
+    "aftercode": "final int extraLen = ZipLong.getValue(LFH_BUF, off);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 294,
+    "precode": "off += SHORT;",
+    "aftercode": "off += WORD;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 298,
+    "precode": "current.entry.setName(entryEncoding.decode(fileName), fileName);",
+    "aftercode": "current.entry.setName(fileName, entryEncoding.decode(fileName));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 304,
+    "precode": "if (!hasUTF8Flag && useUnicodeExtraFields) {",
+    "aftercode": "if (!hasUTF8Flag || useUnicodeExtraFields) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 310,
+    "precode": "if (current.entry.getCompressedSize() != ArchiveEntry.SIZE_UNKNOWN) {",
+    "aftercode": "if (current.entry.getCompressedSize() == ArchiveEntry.SIZE_UNKNOWN) {",
+    "rule": "Equality Check Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 311,
+    "precode": "if (current.entry.getMethod() == ZipMethod.UNSHRINKING.getCode()) {",
+    "aftercode": "if (current.entry.getMethod() != ZipMethod.UNSHRINKING.getCode()) {",
+    "rule": "Equality Check Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 313,
+    "precode": "else if (current.entry.getMethod() == ZipMethod.IMPLODING.getCode()) {",
+    "aftercode": "else if (current.entry.getMethod() != ZipMethod.IMPLODING.getCode()) {",
+    "rule": "Equality Check Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 318,
+    "precode": "else if (current.entry.getMethod() == ZipMethod.BZIP2.getCode()) {",
+    "aftercode": "else if (current.entry.getMethod() != ZipMethod.BZIP2.getCode()) {",
+    "rule": "Equality Check Flip",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java",
+    "line": 323,
+    "precode": "entriesRead++;",
+    "aftercode": "entriesRead--;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 130,
+    "precode": "if (checkOffset(date, offset, '-')) {",
+    "aftercode": "if (checkOffset(date, offset, '/')) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 136,
+    "precode": "if (checkOffset(date, offset, '-')) {",
+    "aftercode": "if (checkOffset(date, offset, '/')) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 152,
+    "precode": "Calendar calendar = new GregorianCalendar(year, month - 1, day);",
+    "aftercode": "Calendar calendar = new GregorianCalendar(year, month, day);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 162,
+    "precode": "if (checkOffset(date, offset, ':')) {",
+    "aftercode": "if (checkOffset(date, offset, '.')) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 167,
+    "precode": "if (checkOffset(date, offset, ':')) {",
+    "aftercode": "if (checkOffset(date, offset, '.')) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 173,
+    "precode": "if (c != 'Z' && c != '+' && c != '-') {",
+    "aftercode": "if (c != 'Z' || c != '+' || c != '-') {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 175,
+    "precode": "if (seconds > 59 && seconds < 63) seconds = 59;",
+    "aftercode": "if (seconds >= 59 && seconds < 63) seconds = 59;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 177,
+    "precode": "if (checkOffset(date, offset, '.')) {",
+    "aftercode": "if (checkOffset(date, offset, ',')) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 179,
+    "precode": "int endOffset = indexOfNonDigit(date, offset + 1); // assume at least one digit",
+    "aftercode": "int endOffset = indexOfNonDigit(date, offset + 2); // assume at least one digit",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 180,
+    "precode": "int parseEndOffset = Math.min(endOffset, offset + 3); // parse up to 3 digits",
+    "aftercode": "int parseEndOffset = Math.max(endOffset, offset + 3); // parse up to 3 digits",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 183,
+    "precode": "switch (parseEndOffset - offset) { // number of digits parsed",
+    "aftercode": "switch (offset - parseEndOffset) { // number of digits parsed",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 207,
+    "precode": "if (timezoneIndicator == 'Z') {",
+    "aftercode": "if (timezoneIndicator != 'Z') {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 214,
+    "precode": "timezoneOffset = timezoneOffset.length() >= 5 ? timezoneOffset : timezoneOffset + \"00\";",
+    "aftercode": "timezoneOffset = timezoneOffset.length() > 5 ? timezoneOffset : timezoneOffset + \"00\";",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 218,
+    "precode": "if (\"+0000\".equals(timezoneOffset) || \"+00:00\".equals(timezoneOffset)) {",
+    "aftercode": "if (\"+0000\".equals(timezoneOffset) && \"+00:00\".equals(timezoneOffset)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 231,
+    "precode": "if (!act.equals(timezoneId)) {",
+    "aftercode": "if (act.equals(timezoneId)) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 237,
+    "precode": "String cleaned = act.replace(\":\", \"\");",
+    "aftercode": "String cleaned = act.replace(\"-\", \"\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 238,
+    "precode": "if (!cleaned.equals(timezoneId)) {",
+    "aftercode": "if (cleaned.equals(timezoneId)) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+    "line": 251,
+    "precode": "calendar.set(Calendar.MONTH, month - 1);",
+    "aftercode": "calendar.set(Calendar.MONTH, month);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  }
+]

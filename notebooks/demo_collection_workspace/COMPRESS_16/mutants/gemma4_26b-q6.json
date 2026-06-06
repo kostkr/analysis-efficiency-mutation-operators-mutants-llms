@@ -1,0 +1,712 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 199,
+    "precode": "if (in == null) {",
+    "aftercode": "if (in != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 203,
+    "precode": "if (!in.markSupported()) {",
+    "aftercode": "if (in.markSupported()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 207,
+    "precode": "final byte[] signature = new byte[12];",
+    "aftercode": "final byte[] signature = new byte[11];",
+    "rule": "Array Size Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 208,
+    "precode": "in.mark(signature.length);",
+    "aftercode": "in.mark(0);",
+    "rule": "Parameter Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 210,
+    "precode": "int signatureLength = in.read(signature);",
+    "aftercode": "int signatureLength = in.read();",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 212,
+    "precode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "if (ZipArchiveInputStream.matches(signature, 0)) {",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 214,
+    "precode": "} else if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "Conditional Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 216,
+    "precode": "} else if (ArArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (ArArchiveInputStream.matches(signature, 0)) {",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 218,
+    "precode": "} else if (CpioArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (CpioArchiveInputStream.matches(signature, -1)) {",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 223,
+    "precode": "final byte[] dumpsig = new byte[32];",
+    "aftercode": "final byte[] dumpsig = new byte[31];",
+    "rule": "Array Size Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 224,
+    "precode": "in.mark(dumpsig.length);",
+    "aftercode": "in.mark(1);",
+    "rule": "Parameter Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 225,
+    "precode": "signatureLength = in.read(dumpsig);",
+    "aftercode": "signatureLength = in.read();",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 227,
+    "precode": "if (DumpArchiveInputStream.matches(dumpsig, signatureLength)) {",
+    "aftercode": "if (DumpArchiveInputStream.matches(dumpsig, 0)) {",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 232,
+    "precode": "final byte[] tarheader = new byte[512];",
+    "aftercode": "final byte[] tarheader = new byte[511];",
+    "rule": "Array Size Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 233,
+    "precode": "in.mark(tarheader.length);",
+    "aftercode": "in.mark(0);",
+    "rule": "Parameter Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 234,
+    "precode": "signatureLength = in.read(tarheader);",
+    "aftercode": "signatureLength = in.read();",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 236,
+    "precode": "if (TarArchiveInputStream.matches(tarheader, signatureLength)) {",
+    "aftercode": "if (TarArchiveInputStream.matches(tarheader, 0)) {",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 240,
+    "precode": "if (signatureLength >= 512) {",
+    "aftercode": "if (signatureLength > 512) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 240,
+    "precode": "if (signatureLength >= 512) {",
+    "aftercode": "if (signatureLength <= 512) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 242,
+    "precode": "TarArchiveInputStream tais = new TarArchiveInputStream(new ByteArrayInputStream(tarheader));",
+    "aftercode": "TarArchiveInputStream tais = new TarArchiveInputStream(new ByteArrayInputStream(new byte[512]));",
+    "rule": "Object Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 244,
+    "precode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "aftercode": "if (tais.getNextTarEntry().isCheckSumOK() == false) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 244,
+    "precode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "aftercode": "if (tais.getNextTarEntry() != null) {",
+    "rule": "Conditional Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 245,
+    "precode": "return new TarArchiveInputStream(in);",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 254,
+    "precode": "} catch (IOException e) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 255,
+    "precode": "throw new ArchiveException(\"Could not use reset and mark operations.\", e);",
+    "aftercode": "throw new ArchiveException(\"Could not use reset and mark operations.\");",
+    "rule": "Parameter Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 258,
+    "precode": "throw new ArchiveException(\"No Archiver found for the stream signature\");",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 203,
+    "precode": "if (!in.markSupported()) {",
+    "aftercode": "if (in.markSupported()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 210,
+    "precode": "int signatureLength = in.read(signature);",
+    "aftercode": "int signatureLength = 0;",
+    "rule": "Assignment Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 211,
+    "precode": "in.reset();",
+    "aftercode": "// in.reset();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 212,
+    "precode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional Constant",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 214,
+    "precode": "} else if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Conditional Constant",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 216,
+    "precode": "} else if (ArArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Conditional Constant",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 218,
+    "precode": "} else if (CpioArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Conditional Constant",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 225,
+    "precode": "signatureLength = in.read(dumpsig);",
+    "aftercode": "signatureLength = in.read(new byte[32]);",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 226,
+    "precode": "in.reset();",
+    "aftercode": "in.mark(1);",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 234,
+    "precode": "signatureLength = in.read(tarheader);",
+    "aftercode": "signatureLength = in.read(new byte[10]);",
+    "rule": "Argument Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 235,
+    "precode": "in.reset();",
+    "aftercode": "in.mark(0);",
+    "rule": "Parameter Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 240,
+    "precode": "if (signatureLength >= 512) {",
+    "aftercode": "if (signatureLength > 0) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 244,
+    "precode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional Constant",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 258,
+    "precode": "throw new ArchiveException(\"No Archiver found for the stream signature\");",
+    "aftercode": "throw new RuntimeException(\"No Archiver found\");",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 207,
+    "precode": "final byte[] signature = new byte[12];",
+    "aftercode": "final byte[] signature = null;",
+    "rule": "Assignment Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 208,
+    "precode": "in.mark(signature.length);",
+    "aftercode": "in.mark(12);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 212,
+    "precode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "if (ZipArchiveInputStream.matches(signature, signatureLength - 1)) {",
+    "rule": "Arithmetic Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 224,
+    "precode": "in.mark(dumpsig.length);",
+    "aftercode": "in.mark(32);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 233,
+    "precode": "in.mark(tarheader.length);",
+    "aftercode": "in.mark(512);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 240,
+    "precode": "if (signatureLength >= 512) {",
+    "aftercode": "if (signatureLength >= 511) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 242,
+    "precode": "TarArchiveInputStream tais = new TarArchiveInputStream(new ByteArrayInputStream(tarheader));",
+    "aftercode": "TarArchiveInputStream tais = new TarArchiveInputStream(in);",
+    "rule": "Object Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 244,
+    "precode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "aftercode": "if (tais.getNextTarEntry() != null) {",
+    "rule": "Conditional Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 254,
+    "precode": "} catch (IOException e) {",
+    "aftercode": "} catch (RuntimeException e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 203,
+    "precode": "if (!in.markSupported()) {",
+    "aftercode": "if (in.markSupported() == false) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 210,
+    "precode": "int signatureLength = in.read(signature);",
+    "aftercode": "int signatureLength = in.read(signature, 0, signature.length);",
+    "rule": "Method Call Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 212,
+    "precode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 214,
+    "precode": "} else if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 216,
+    "precode": "} else if (ArArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (ArArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 218,
+    "precode": "} else if (CpioArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (CpioArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 227,
+    "precode": "if (DumpArchiveInputStream.matches(dumpsig, signatureLength)) {",
+    "aftercode": "if (DumpArchiveInputStream.matches(dumpsig, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 236,
+    "precode": "if (TarArchiveInputStream.matches(tarheader, signatureLength)) {",
+    "aftercode": "if (TarArchiveInputStream.matches(tarheader, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 244,
+    "precode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "aftercode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 255,
+    "precode": "throw new ArchiveException(\"Could not use reset and mark operations.\", e);",
+    "aftercode": "throw new ArchiveException(\"Could not use reset and mark operations.\", null);",
+    "rule": "Parameter Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 258,
+    "precode": "throw new ArchiveException(\"No Archiver found for the stream signature\");",
+    "aftercode": "throw new ArchiveException(\"No Archiver found\");",
+    "rule": "String Literal Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 200,
+    "precode": "throw new IllegalArgumentException(\"Stream must not be null.\");",
+    "aftercode": "throw new NullPointerException(\"Stream must not be null.\");",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 204,
+    "precode": "throw new IllegalArgumentException(\"Mark is not supported.\");",
+    "aftercode": "throw new IllegalStateException(\"Mark is not supported.\");",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 207,
+    "precode": "final byte[] signature = new byte[12];",
+    "aftercode": "final byte[] signature = new byte[13];",
+    "rule": "Array Size Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 212,
+    "precode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "if (ZipArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 214,
+    "precode": "} else if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (JarArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 216,
+    "precode": "} else if (ArArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (ArArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 218,
+    "precode": "} else if (CpioArchiveInputStream.matches(signature, signatureLength)) {",
+    "aftercode": "} else if (CpioArchiveInputStream.matches(signature, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 227,
+    "precode": "if (DumpArchiveInputStream.matches(dumpsig, signatureLength)) {",
+    "aftercode": "if (DumpArchiveInputStream.matches(dumpsig, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 236,
+    "precode": "if (TarArchiveInputStream.matches(tarheader, signatureLength)) {",
+    "aftercode": "if (TarArchiveInputStream.matches(tarheader, signatureLength)) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 244,
+    "precode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "aftercode": "if (tais.getNextTarEntry().isCheckSumOK()) {",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/ArchiveStreamFactory.java",
+    "line": 255,
+    "precode": "throw new ArchiveException(\"Could not use reset and mark operations.\", e);",
+    "aftercode": "throw new ArchiveException(\"Could not use reset and mark operations.\", e);",
+    "rule": "No Change",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  }
+]

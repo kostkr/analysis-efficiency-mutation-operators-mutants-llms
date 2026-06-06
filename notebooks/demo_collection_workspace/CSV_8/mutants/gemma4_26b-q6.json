@@ -1,0 +1,632 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 301,
+    "precode": "if (isLineBreak(delimiter)) {",
+    "aftercode": "if (!isLineBreak(delimiter)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 304,
+    "precode": "this.delimiter = delimiter;",
+    "aftercode": "this.delimiter = ' ';",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 305,
+    "precode": "this.quoteChar = quoteChar;",
+    "aftercode": "this.quoteChar = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 306,
+    "precode": "this.quotePolicy = quotePolicy;",
+    "aftercode": "this.quotePolicy = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 307,
+    "precode": "this.commentStart = commentStart;",
+    "aftercode": "this.commentStart = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 308,
+    "precode": "this.escape = escape;",
+    "aftercode": "this.escape = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 309,
+    "precode": "this.ignoreSurroundingSpaces = ignoreSurroundingSpaces;",
+    "aftercode": "this.ignoreSurroundingSpaces = !ignoreSurroundingSpaces;",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 310,
+    "precode": "this.ignoreEmptyLines = ignoreEmptyLines;",
+    "aftercode": "this.ignoreEmptyLines = !ignoreEmptyLines;",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 311,
+    "precode": "this.recordSeparator = recordSeparator;",
+    "aftercode": "this.recordSeparator = \"\\n\";",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 312,
+    "precode": "this.nullString = nullString;",
+    "aftercode": "this.nullString = \"\";",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 313,
+    "precode": "if (header == null) {",
+    "aftercode": "if (header != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 314,
+    "precode": "this.header = null;",
+    "aftercode": "this.header = new String[0];",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 316,
+    "precode": "Set<String> dupCheck = new HashSet<String>();",
+    "aftercode": "Set<String> dupCheck = new TreeSet<String>();",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 317,
+    "precode": "for(String hdr : header) {",
+    "aftercode": "for(int i = 0; i < header.length; i++) {",
+    "rule": "Loop Transformation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 318,
+    "precode": "if (!dupCheck.add(hdr)) {",
+    "aftercode": "if (dupCheck.add(hdr)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 318,
+    "precode": "if (!dupCheck.add(hdr)) {",
+    "aftercode": "if (dupCheck.contains(hdr)) {",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 319,
+    "precode": "throw new IllegalArgumentException(\"The header contains a duplicate entry: '\" + hdr + \"' in \" + Arrays.toString(header));",
+    "aftercode": "return;",
+    "rule": "Exception Removal",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 322,
+    "precode": "this.header = header.clone();",
+    "aftercode": "this.header = header;",
+    "rule": "Reference Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 322,
+    "precode": "this.header = header.clone();",
+    "aftercode": "this.header = new String[header.length];",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 324,
+    "precode": "this.skipHeaderRecord = skipHeaderRecord;",
+    "aftercode": "this.skipHeaderRecord = !skipHeaderRecord;",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 301,
+    "precode": "if (isLineBreak(delimiter)) {",
+    "aftercode": "if (isLineBreak(' ')) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 313,
+    "precode": "if (header == null) {",
+    "aftercode": "if (header == null || header.length == 0) {",
+    "rule": "Condition Expansion",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 316,
+    "precode": "Set<String> dupCheck = new HashSet<String>();",
+    "aftercode": "Set<String> dupCheck = new HashSet<String>(1);",
+    "rule": "Capacity Change",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 318,
+    "precode": "if (!dupCheck.add(hdr)) {",
+    "aftercode": "if (dupCheck.add(hdr)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 318,
+    "precode": "if (!dupCheck.add(hdr)) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 318,
+    "precode": "if (!dupCheck.add(hdr)) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 322,
+    "precode": "this.header = header.clone();",
+    "aftercode": "this.header = header.clone().clone();",
+    "rule": "Redundant Operation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 304,
+    "precode": "this.delimiter = delimiter;",
+    "aftercode": "this.delimiter = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 317,
+    "precode": "for(String hdr : header) {",
+    "aftercode": "for(String hdr : new String[0]) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 324,
+    "precode": "this.skipHeaderRecord = skipHeaderRecord;",
+    "aftercode": "this.skipHeaderRecord = true;",
+    "rule": "Constant Assignment",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (quoteChar != null || delimiter == quoteChar.charValue()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (quoteChar != null && delimiter != quoteChar.charValue()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (true && delimiter == quoteChar.charValue()) {",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 647,
+    "precode": "if (escape != null && delimiter == escape.charValue()) {",
+    "aftercode": "if (escape != null || delimiter == escape.charValue()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 647,
+    "precode": "if (escape != null && delimiter == escape.charValue()) {",
+    "aftercode": "if (escape != null && delimiter != escape.charValue()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 652,
+    "precode": "if (commentStart != null && delimiter == commentStart.charValue()) {",
+    "aftercode": "if (commentStart != null || delimiter == commentStart.charValue()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 652,
+    "precode": "if (commentStart != null && delimiter == commentStart.charValue()) {",
+    "aftercode": "if (commentStart != null && delimiter != commentStart.charValue()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 657,
+    "precode": "if (quoteChar != null && quoteChar.equals(commentStart)) {",
+    "aftercode": "if (quoteChar != null || quoteChar.equals(commentStart)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 657,
+    "precode": "if (quoteChar != null && quoteChar.equals(commentStart)) {",
+    "aftercode": "if (quoteChar != null && !quoteChar.equals(commentStart)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 662,
+    "precode": "if (escape != null && escape.equals(commentStart)) {",
+    "aftercode": "if (escape != null || escape.equals(commentStart)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 662,
+    "precode": "if (escape != null && escape.equals(commentStart)) {",
+    "aftercode": "if (escape != null && !escape.equals(commentStart)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 667,
+    "precode": "if (escape == null && quotePolicy == Quote.NONE) {",
+    "aftercode": "if (escape == null || quotePolicy == Quote.NONE) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 667,
+    "precode": "if (escape == null && quotePolicy == Quote.NONE) {",
+    "aftercode": "if (escape != null && quotePolicy == Quote.NONE) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 667,
+    "precode": "if (escape == null && quotePolicy == Quote.NONE) {",
+    "aftercode": "if (escape == null && quotePolicy != Quote.NONE) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (quoteChar != null && delimiter > quoteChar.charValue()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 647,
+    "precode": "if (escape != null && delimiter == escape.charValue()) {",
+    "aftercode": "if (escape != null && delimiter < escape.charValue()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 652,
+    "precode": "if (commentStart != null && delimiter == commentStart.charValue()) {",
+    "aftercode": "if (commentStart != null && delimiter < commentStart.charValue()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 657,
+    "precode": "if (quoteChar != null && quoteChar.equals(commentStart)) {",
+    "aftercode": "if (quoteChar != null && !quoteChar.equals(commentStart)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 662,
+    "precode": "if (escape != null && escape.equals(commentStart)) {",
+    "aftercode": "if (escape != null && !escape.equals(commentStart)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 643,
+    "precode": "throw new IllegalStateException(",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 648,
+    "precode": "throw new IllegalStateException(",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 653,
+    "precode": "throw new IllegalStateException(",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 658,
+    "precode": "throw new IllegalStateException(",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 663,
+    "precode": "throw new IllegalStateException(",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 668,
+    "precode": "throw new IllegalStateException(\"No quotes mode set but no escape character is set\");",
+    "aftercode": "throw new RuntimeException(\"No quotes mode set but no escape character is set\");",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (quoteChar != null && delimiter == quoteChar.charValue()) { //",
+    "rule": "Comment Injection",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (quoteChar != null && delimiter == ' ') {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 667,
+    "precode": "if (escape == null && quotePolicy == Quote.NONE) {",
+    "aftercode": "if (escape == null && quotePolicy != Quote.NONE) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 642,
+    "precode": "if (quoteChar != null && delimiter == quoteChar.charValue()) {",
+    "aftercode": "if (quoteChar != null && delimiter == quoteChar.charValue())",
+    "rule": "Removal of Braces",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 647,
+    "precode": "if (escape != null && delimiter == escape.charValue()) {",
+    "aftercode": "if (escape != null && delimiter == escape.charValue())",
+    "rule": "Removal of Braces",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 652,
+    "precode": "if (commentStart != null && delimiter == commentStart.charValue()) {",
+    "aftercode": "if (commentStart != null && delimiter == commentStart.charValue())",
+    "rule": "Removal of Braces",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 657,
+    "precode": "if (quoteChar != null && quoteChar.equals(commentStart)) {",
+    "aftercode": "if (quoteChar != null && quoteChar.equals(commentStart))",
+    "rule": "Removal of Braces",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+    "line": 662,
+    "precode": "if (escape != null && escape.equals(commentStart)) {",
+    "aftercode": "if (escape != null && escape.equals(commentStart))",
+    "rule": "Removal of Braces",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  }
+]

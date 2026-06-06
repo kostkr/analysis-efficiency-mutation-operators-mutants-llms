@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 180,
+    "precode": "if (mapping == null) {",
+    "aftercode": "if (mapping != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 183,
+    "precode": "for (final Entry<String, Integer> entry : mapping.entrySet()) {",
+    "aftercode": "for (final Entry<String, Integer> entry : mapping.keySet()) {",
+    "rule": "Iterator Removal",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 184,
+    "precode": "final int col = entry.getValue().intValue();",
+    "aftercode": "final int col = entry.getKey().hashCode();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 185,
+    "precode": "if (col < values.length) {",
+    "aftercode": "if (col <= values.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 185,
+    "precode": "if (col < values.length) {",
+    "aftercode": "if (col > values.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 185,
+    "precode": "if (col < values.length) {",
+    "aftercode": "if (col != values.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 186,
+    "precode": "map.put(entry.getKey(), values[col]);",
+    "aftercode": "map.put(values[col], entry.getKey());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 186,
+    "precode": "map.put(entry.getKey(), values[col]);",
+    "aftercode": "map.remove(entry.getKey());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 186,
+    "precode": "map.put(entry.getKey(), values[col]);",
+    "aftercode": "map.put(entry.getKey(), null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 186,
+    "precode": "map.put(entry.getKey(), values[col]);",
+    "aftercode": "map.put(entry.getKey(), \"\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 189,
+    "precode": "return map;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVRecord.java",
+    "line": 189,
+    "precode": "return map;",
+    "aftercode": "return mapping;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  }
+]

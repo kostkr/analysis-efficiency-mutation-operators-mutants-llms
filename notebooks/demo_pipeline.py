@@ -162,6 +162,7 @@ def main(config: CollectionConfig) -> int:
         container=config.container_name,
         workspace=config.container_workspace,
         timeout_default=300,
+        exec_max_concurrency=config.collect_max_workers,
     )
     d4j.assert_running()
 

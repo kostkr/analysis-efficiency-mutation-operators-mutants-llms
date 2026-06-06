@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 594,
+    "precode": "long storedSum = parseOctal(header, CHKSUM_OFFSET, CHKSUMLEN);",
+    "aftercode": "long storedSum = 0;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 599,
+    "precode": "for (int i = 0; i < header.length; i++) {",
+    "aftercode": "for (int i = 1; i < header.length; i++) {",
+    "rule": "Loop Boundary Shift",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 601,
+    "precode": "if (CHKSUM_OFFSET  <= i && i < CHKSUM_OFFSET + CHKSUMLEN) {",
+    "aftercode": "if (CHKSUM_OFFSET  <= i || i < CHKSUM_OFFSET + CHKSUMLEN) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 601,
+    "precode": "if (CHKSUM_OFFSET  <= i && i < CHKSUM_OFFSET + CHKSUMLEN) {",
+    "aftercode": "if (CHKSUM_OFFSET  < i && i < CHKSUM_OFFSET + CHKSUMLEN) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 604,
+    "precode": "unsignedSum += 0xff & b;",
+    "aftercode": "unsignedSum += 0xff ^ b;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 604,
+    "precode": "unsignedSum += 0xff & b;",
+    "aftercode": "unsignedSum += 0xff | b;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 605,
+    "precode": "signedSum += b;",
+    "aftercode": "signedSum -= b;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 605,
+    "precode": "signedSum += b;",
+    "aftercode": "signedSum = b;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 607,
+    "precode": "return storedSum == unsignedSum || storedSum == signedSum;",
+    "aftercode": "return storedSum == unsignedSum && storedSum == signedSum;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 607,
+    "precode": "return storedSum == unsignedSum || storedSum == signedSum;",
+    "aftercode": "return storedSum != unsignedSum || storedSum == signedSum;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 607,
+    "precode": "return storedSum == unsignedSum || storedSum == signedSum;",
+    "aftercode": "return storedSum == unsignedSum || storedSum != signedSum;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 607,
+    "precode": "return storedSum == unsignedSum || storedSum == signedSum;",
+    "aftercode": "return storedSum != unsignedSum && storedSum != signedSum;",
+    "rule": "Negation",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 601,
+    "precode": "if (CHKSUM_OFFSET  <= i && i < CHKSUM_OFFSET + CHKSUMLEN) {",
+    "aftercode": "if (CHKSUM_OFFSET  <= i && i <= CHKSUM_OFFSET + CHKSUMLEN) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 599,
+    "precode": "for (int i = 0; i < header.length; i++) {",
+    "aftercode": "for (int i = 0; i <= header.length; i++) {",
+    "rule": "Loop Boundary Shift",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 600,
+    "precode": "byte b = header[i];",
+    "aftercode": "byte b = 0;",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 602,
+    "precode": "b = ' ';",
+    "aftercode": "b = '\\0';",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  }
+]

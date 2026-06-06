@@ -1,0 +1,822 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 528,
+    "precode": "if (len <= buf.length) {",
+    "aftercode": "if (len < buf.length) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 529,
+    "precode": "text.getChars(offset, offset+len, buf, 0);",
+    "aftercode": "text.getChars(offset, offset+len-1, buf, 0);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 529,
+    "precode": "text.getChars(offset, offset+len, buf, 0);",
+    "aftercode": "text.getChars(offset+1, offset+len, buf, 0);",
+    "rule": "Offset Error",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 530,
+    "precode": "_writeRawSegment(buf, 0, len);",
+    "aftercode": "_writeRawSegment(buf, 0, len - 1);",
+    "rule": "Decrement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 537,
+    "precode": "final int maxChunk = (_outputEnd >> 2) + (_outputEnd >> 4);",
+    "aftercode": "final int maxChunk = (_outputEnd >> 2) - (_outputEnd >> 4);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 538,
+    "precode": "final int maxBytes = maxChunk * 3;",
+    "aftercode": "final int maxBytes = maxChunk * 2;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 541,
+    "precode": "int len2 = Math.min(maxChunk, len);",
+    "aftercode": "int len2 = Math.max(maxChunk, len);",
+    "rule": "Function Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 541,
+    "precode": "int len2 = Math.min(maxChunk, len);",
+    "aftercode": "int len2 = maxChunk;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 543,
+    "precode": "if ((_outputTail + maxBytes) > _outputEnd) {",
+    "aftercode": "if ((_outputTail + maxBytes) >= _outputEnd) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 543,
+    "precode": "if ((_outputTail + maxBytes) > _outputEnd) {",
+    "aftercode": "if ((_outputTail - maxBytes) > _outputEnd) {",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 548,
+    "precode": "if (len > 0) {",
+    "aftercode": "if (len >= 0) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 548,
+    "precode": "if (len > 0) {",
+    "aftercode": "if (len < 0) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 549,
+    "precode": "char ch = buf[len2-1];",
+    "aftercode": "char ch = buf[len2];",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 549,
+    "precode": "char ch = buf[len2-1];",
+    "aftercode": "char ch = buf[len2-2];",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 550,
+    "precode": "if ((ch >= SURR1_FIRST) && (ch <= SURR1_LAST)) {",
+    "aftercode": "if ((ch >= SURR1_FIRST) || (ch <= SURR1_LAST)) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 550,
+    "precode": "if ((ch >= SURR1_FIRST) && (ch <= SURR1_LAST)) {",
+    "aftercode": "if ((ch > SURR1_FIRST) && (ch <= SURR1_LAST)) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 550,
+    "precode": "if ((ch >= SURR1_FIRST) && (ch <= SURR1_LAST)) {",
+    "aftercode": "if ((ch >= SURR1_FIRST) && (ch < SURR1_LAST)) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 551,
+    "precode": "--len2;",
+    "aftercode": "len2++;",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 551,
+    "precode": "--len2;",
+    "aftercode": "len2 = 0;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 554,
+    "precode": "_writeRawSegment(buf, 0, len2);",
+    "aftercode": "_writeRawSegment(buf, 0, len);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 554,
+    "precode": "_writeRawSegment(buf, 0, len2);",
+    "aftercode": "_writeRawSegment(buf, 1, len2);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 555,
+    "precode": "offset += len2;",
+    "aftercode": "offset -= len2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 556,
+    "precode": "len -= len2;",
+    "aftercode": "len += len2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 540,
+    "precode": "while (len > 0) {",
+    "aftercode": "while (len >= 0) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 540,
+    "precode": "while (len > 0) {",
+    "aftercode": "while (len < 0) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 525,
+    "precode": "final char[] buf = _charBuffer;",
+    "aftercode": "final char[] buf = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 537,
+    "precode": "final int maxChunk = (_outputEnd >> 2) + (_outputEnd >> 4);",
+    "aftercode": "final int maxChunk = (_outputEnd >> 2);",
+    "rule": "Expression Simplification",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 543,
+    "precode": "if ((_outputTail + maxBytes) > _outputEnd) {",
+    "aftercode": "if ((_outputTail + maxBytes) < _outputEnd) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 544,
+    "precode": "_flushBuffer();",
+    "aftercode": "// _flushBuffer();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 550,
+    "precode": "if ((ch >= SURR1_FIRST) && (ch <= SURR1_LAST)) {",
+    "aftercode": "if (ch >= SURR1_FIRST && ch <= SURR1_LAST) {",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 530,
+    "precode": "_writeRawSegment(buf, 0, len);",
+    "aftercode": "_writeRawSegment(buf, 0, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 528,
+    "precode": "if (len <= buf.length) {",
+    "aftercode": "if (len <= buf.length - 1) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 542,
+    "precode": "text.getChars(offset, offset+len2, buf, 0);",
+    "aftercode": "text.getChars(offset, offset+len2, buf, 1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 556,
+    "precode": "len -= len2;",
+    "aftercode": "len = len2;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 555,
+    "precode": "offset += len2;",
+    "aftercode": "offset = len2;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 538,
+    "precode": "final int maxBytes = maxChunk * 3;",
+    "aftercode": "final int maxBytes = maxChunk * 3 + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 691,
+    "precode": "while (offset < end) {",
+    "aftercode": "while (offset <= end) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 693,
+    "precode": "while (true) {",
+    "aftercode": "while (false) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 695,
+    "precode": "if (ch > 0x7F) {",
+    "aftercode": "if (ch >= 0x7F) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 695,
+    "precode": "if (ch > 0x7F) {",
+    "aftercode": "if (ch < 0x7F) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 698,
+    "precode": "_outputBuffer[_outputTail++] = (byte) ch;",
+    "aftercode": "_outputBuffer[_outputTail] = (byte) ch;",
+    "rule": "Post-Increment Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 699,
+    "precode": "if (++offset >= end) {",
+    "aftercode": "if (++offset > end) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 699,
+    "precode": "if (++offset >= end) {",
+    "aftercode": "if (offset >= end) {",
+    "rule": "Increment Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 703,
+    "precode": "char ch = cbuf[offset++];",
+    "aftercode": "char ch = cbuf[offset];",
+    "rule": "Increment Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 704,
+    "precode": "if (ch < 0x800) { // 2-byte?",
+    "aftercode": "if (ch <= 0x800) { // 2-byte?",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 704,
+    "precode": "if (ch < 0x800) { // 2-byte?",
+    "aftercode": "if (ch > 0x800) { // 2-byte?",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 705,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0xc0 | (ch >> 6));",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (0xc0 | (ch >> 7));",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 705,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0xc0 | (ch >> 6));",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (0xc1 | (ch >> 6));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 706,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (0x80 | (ch & 0x3e));",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 706,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.36,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 708,
+    "precode": "offset = _outputRawMultiByteChar(ch, cbuf, offset, end);",
+    "aftercode": "offset = _outputRawMultiByteChar(ch, cbuf, offset, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 708,
+    "precode": "offset = _outputRawMultiByteChar(ch, cbuf, offset, end);",
+    "aftercode": "_outputRawMultiByteChar(ch, cbuf, offset, end);",
+    "rule": "Assignment Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 698,
+    "precode": "_outputBuffer[_outputTail++] = (byte) ch;",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (ch & 0xFF);",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 691,
+    "precode": "while (offset < end) {",
+    "aftercode": "while (offset < end + 1) {",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 705,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0xc0 | (ch >> 6));",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (0xc0 & (ch >> 6));",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 706,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "_outputBuffer[_outputTail++] = (byte) (0x80 & (ch & 0x3f));",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 694,
+    "precode": "int ch = (int) cbuf[offset];",
+    "aftercode": "int ch = (int) cbuf[offset + 1];",
+    "rule": "Array Index Offset",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 704,
+    "precode": "if (ch < 0x800) { // 2-byte?",
+    "aftercode": "if (ch < 0x7FF) { // 2-byte?",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 705,
+    "precode": "_outputBuffer[_outputTail++] = (byte) (0xc0 | (ch >> 6));",
+    "aftercode": "_outputBuffer[_outputTail--] = (byte) (0xc0 | (ch >> 6));",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 708,
+    "precode": "offset = _outputRawMultiByteChar(ch, cbuf, offset, end);",
+    "aftercode": "offset = _outputRawMultiByteChar(ch, cbuf, end, offset);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1923,
+    "precode": "if (ch >= SURR1_FIRST) {",
+    "aftercode": "if (ch > SURR1_FIRST) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1924,
+    "precode": "if (ch <= SURR2_LAST) { // yes, outside of BMP",
+    "aftercode": "if (ch < SURR2_LAST) { // yes, outside of BMP",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1926,
+    "precode": "if (inputOffset >= inputEnd || cbuf == null) { // nope... have to note down",
+    "aftercode": "if (inputOffset > inputEnd || cbuf == null) { // nope... have to note down",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1926,
+    "precode": "if (inputOffset >= inputEnd || cbuf == null) { // nope... have to note down",
+    "aftercode": "if (inputOffset >= inputEnd && cbuf == null) { // nope... have to note down",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1926,
+    "precode": "if (inputOffset >= inputEnd || cbuf == null) { // nope... have to note down",
+    "aftercode": "if (inputOffset >= inputEnd) { // nope... have to note down",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1930,
+    "precode": "_outputSurrogates(ch, cbuf[inputOffset]);",
+    "aftercode": "_outputSurrogates(ch, cbuf[inputOffset + 1]);",
+    "rule": "Array Index Offset",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1931,
+    "precode": "return inputOffset+1;",
+    "aftercode": "return inputOffset;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1931,
+    "precode": "return inputOffset+1;",
+    "aftercode": "return inputOffset+2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1935,
+    "precode": "bbuf[_outputTail++] = (byte) (0xe0 | (ch >> 12));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0xe1 | (ch >> 12));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1935,
+    "precode": "bbuf[_outputTail++] = (byte) (0xe0 | (ch >> 12));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0xe0 | (ch >> 11));",
+    "rule": "Bitwise Shift",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1936,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | ((ch >> 6) & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x80 | ((ch >> 6) & 0x3e));",
+    "rule": "Bitwise Mask",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1936,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | ((ch >> 6) & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x81 | ((ch >> 6) & 0x3f));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1937,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3e));",
+    "rule": "Bitwise Mask",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1937,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "rule": "No Change",
+    "gen_time_s": 1.61,
+    "dublicate": true
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1937,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "rule": "No Change",
+    "gen_time_s": 1.61,
+    "dublicate": true
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1935,
+    "precode": "bbuf[_outputTail++] = (byte) (0xe0 | (ch >> 12));",
+    "aftercode": "bbuf[_outputTail] = (byte) (0xe0 | (ch >> 12));",
+    "rule": "Post-Increment Removal",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1936,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | ((ch >> 6) & 0x3f));",
+    "aftercode": "bbuf[_outputTail] = (byte) (0x80 | ((ch >> 6) & 0x3f));",
+    "rule": "Post-Increment Removal",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1937,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "bbuf[_outputTail] = (byte) (0x80 | (ch & 0x3f));",
+    "rule": "Post-Increment Removal",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1935,
+    "precode": "bbuf[_outputTail++] = (byte) (0xe0 | (ch >> 12));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0xe0 ^ (ch >> 12));",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1936,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | ((ch >> 6) & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x80 & ((ch >> 6) & 0x3f));",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1937,
+    "precode": "bbuf[_outputTail++] = (byte) (0x80 | (ch & 0x3f));",
+    "aftercode": "bbuf[_outputTail++] = (byte) (0x80 & (ch & 0x3f));",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/UTF8JsonGenerator.java",
+    "line": 1938,
+    "precode": "return inputOffset;",
+    "aftercode": "return inputOffset + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  }
+]

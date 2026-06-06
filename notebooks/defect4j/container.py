@@ -19,6 +19,7 @@ import queue
 import re
 import shlex
 import subprocess
+import threading
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
@@ -29,8 +30,16 @@ if TYPE_CHECKING:
     from .mutant import Mutant
 
 
-MUTANT_TEST_TIMEOUT_CAP_S = 60
+MUTANT_TEST_TIMEOUT_CAP_S = 30
 MUTANT_TEST_TIMEOUT_PER_RELEVANT_TEST_S = 0.038
+PODMAN_EXEC_MAX_ATTEMPTS = 3
+_PODMAN_EXEC_RETRY_SNIPPETS = (
+    "unable to connect to Podman socket",
+    "Cannot connect to Podman",
+    "handshake failed",
+    "connection reset by peer",
+    "failed to connect",
+)
 
 # ── module-level test-list helpers ──────────────────────────────────────────
 
@@ -167,91 +176,14 @@ def _effective_mutant_timeout_s(configured_timeout_s: int, suite_total_tests: in
     )
 
 
+def _is_retryable_podman_exec_failure(stderr: str) -> bool:
+    text = str(stderr or "")
+    return any(snippet in text for snippet in _PODMAN_EXEC_RETRY_SNIPPETS)
+
+
 def _mutant_runner_helper_source() -> str:
     """Python helper source embedded into the in-container mutant runner."""
     return r'''
-def _path_is_inside(path, root):
-    path = os.path.realpath(str(path))
-    root = os.path.realpath(str(root))
-    return path == root or path.startswith(root.rstrip(os.sep) + os.sep)
-
-
-def _text_references_root(text, root):
-    text = str(text or '')
-    root = os.path.normpath(str(root))
-    start = 0
-    while True:
-        index = text.find(root, start)
-        if index == -1:
-            return False
-        after_index = index + len(root)
-        after_ok = after_index == len(text) or text[after_index] in {'/', os.sep, ' ', '\t', '\n', '\r', '"', "'", ';', ':'}
-        before_ok = index == 0 or text[index - 1] in {'=', ' ', '\t', '\n', '\r', '"', "'", ':', ';'}
-        if before_ok and after_ok:
-            return True
-        start = index + 1
-
-
-def _process_is_checkout_related(pid, root):
-    proc_dir = Path('/proc') / str(pid)
-    try:
-        cwd = os.readlink(proc_dir / 'cwd')
-        if _path_is_inside(cwd, root):
-            return True
-    except (FileNotFoundError, PermissionError, ProcessLookupError, OSError):
-        pass
-
-    try:
-        raw_cmdline = (proc_dir / 'cmdline').read_bytes()
-        cmdline = raw_cmdline.replace(b'\x00', b' ').decode('utf-8', errors='ignore')
-        if _text_references_root(cmdline, root):
-            return True
-    except (FileNotFoundError, PermissionError, ProcessLookupError, OSError):
-        pass
-
-    return False
-
-
-def _checkout_related_pids(root):
-    root = os.path.realpath(str(root))
-    current = os.getpid()
-    parent = os.getppid()
-    pids = []
-    proc_root = Path('/proc')
-    if not proc_root.exists():
-        return pids
-    for entry in proc_root.iterdir():
-        if not entry.name.isdigit():
-            continue
-        pid = int(entry.name)
-        if pid in {current, parent}:
-            continue
-        if _process_is_checkout_related(pid, root):
-            pids.append(pid)
-    return pids
-
-
-def _terminate_pids(pids, sig):
-    for pid in sorted(set(pids), reverse=True):
-        try:
-            os.kill(pid, sig)
-        except (ProcessLookupError, PermissionError, OSError):
-            pass
-
-
-def _kill_checkout_leftovers(root):
-    pids = _checkout_related_pids(root)
-    if not pids:
-        return 0
-    _terminate_pids(pids, signal.SIGTERM)
-    time.sleep(0.3)
-    remaining = [pid for pid in pids if _process_is_checkout_related(pid, root)]
-    if remaining:
-        _terminate_pids(remaining, signal.SIGKILL)
-    time.sleep(0.1)
-    return len(pids)
-
-
 def _kill_process_group(proc):
     try:
         os.killpg(proc.pid, signal.SIGTERM)
@@ -285,8 +217,6 @@ def _run_test_command(args, root, timeout_s):
             out, err = proc.communicate(timeout=1)
         except subprocess.TimeoutExpired:
             out, err = '', ''
-    finally:
-        _kill_checkout_leftovers(root)
 
     return {
         'returncode': proc.returncode,
@@ -329,7 +259,9 @@ class Defects4J:
     container:       str = "defects4j-container"
     workspace:       str = "/workspace"
     timeout_default: int = 300
+    exec_max_concurrency: int | None = None
     _mutant_run_cleanup_cache: dict[str, dict[str, tuple]] = field(default_factory=dict, init=False, repr=False)
+    _exec_semaphore: threading.BoundedSemaphore | None = field(default=None, init=False, repr=False)
 
     # ------------------------------------------------------------------ #
     #  Context manager                                                     #
@@ -361,9 +293,38 @@ class Defects4J:
         Returns (stdout, stderr, returncode).
         Raises subprocess.TimeoutExpired on timeout.
         """
-        t   = timeout or self.timeout_default
-        cmd = ("export LANG=C.UTF-8 LC_ALL=C.UTF-8; " + bash_cmd).replace('"', '\\"')
-        return self._run(f'podman exec {self.container} bash -lc "{cmd}"', t)
+        t = timeout or self.timeout_default
+        cmd = "export LANG=C.UTF-8 LC_ALL=C.UTF-8; " + bash_cmd
+        semaphore = self._exec_semaphore
+        if semaphore is None and self.exec_max_concurrency is not None:
+            semaphore = threading.BoundedSemaphore(max(1, int(self.exec_max_concurrency)))
+            self._exec_semaphore = semaphore
+        last_result: subprocess.CompletedProcess[str] | None = None
+        for attempt in range(1, PODMAN_EXEC_MAX_ATTEMPTS + 1):
+            if semaphore is None:
+                last_result = subprocess.run(
+                    ["podman", "exec", self.container, "bash", "-lc", cmd],
+                    capture_output=True,
+                    text=True,
+                    timeout=t,
+                )
+            else:
+                with semaphore:
+                    last_result = subprocess.run(
+                        ["podman", "exec", self.container, "bash", "-lc", cmd],
+                        capture_output=True,
+                        text=True,
+                        timeout=t,
+                    )
+            if last_result.returncode == 0:
+                break
+            if attempt >= PODMAN_EXEC_MAX_ATTEMPTS:
+                break
+            if not _is_retryable_podman_exec_failure(last_result.stderr):
+                break
+            time.sleep(0.5 * attempt)
+        assert last_result is not None
+        return last_result.stdout, last_result.stderr, last_result.returncode
 
     # ------------------------------------------------------------------ #
     #  Container lifecycle                                                 #
@@ -454,7 +415,7 @@ class Defects4J:
         return tuple(cleanup_paths + list(config["fallback_paths"]))
 
     def kill_processes_under_path(self, container_path: str, timeout: int = 30) -> None:
-        """Best-effort kill of processes whose cwd/cmdline belongs to *container_path*."""
+        """Best-effort kill of processes whose cwd belongs to *container_path*."""
         script = r'''
 import os
 import signal
@@ -465,20 +426,6 @@ root = os.path.normpath(os.environ['TARGET_ROOT'])
 current = os.getpid()
 parent = os.getppid()
 
-def text_references_root(text):
-    text = str(text or '')
-    start = 0
-    while True:
-        index = text.find(root, start)
-        if index == -1:
-            return False
-        after_index = index + len(root)
-        after_ok = after_index == len(text) or text[after_index] in {'/', os.sep, ' ', '\t', '\n', '\r', '"', "'", ';', ':'}
-        before_ok = index == 0 or text[index - 1] in {'=', ' ', '\t', '\n', '\r', '"', "'", ':', ';'}
-        if before_ok and after_ok:
-            return True
-        start = index + 1
-
 def is_related(pid):
     proc_dir = Path('/proc') / str(pid)
     try:
@@ -487,11 +434,7 @@ def is_related(pid):
             return True
     except Exception:
         pass
-    try:
-        cmdline = (proc_dir / 'cmdline').read_bytes().replace(b'\x00', b' ').decode('utf-8', 'ignore')
-        return text_references_root(cmdline)
-    except Exception:
-        return False
+    return False
 
 pids = []
 for entry in Path('/proc').iterdir():
@@ -503,6 +446,7 @@ for entry in Path('/proc').iterdir():
     if is_related(pid):
         pids.append(pid)
 
+deadline = time.monotonic() + 5.0
 for sig in (signal.SIGTERM, signal.SIGKILL):
     if not pids:
         break
@@ -512,6 +456,8 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         except Exception:
             pass
     time.sleep(0.5 if sig == signal.SIGTERM else 0.1)
+    if time.monotonic() >= deadline:
+        break
     pids = [pid for pid in pids if is_related(pid)]
 '''
         self.exec(
@@ -567,12 +513,21 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         str – absolute path inside the container.
         """
         path = dest or f"{self.workspace}/checkouts/{project}_{bug_id}_{version}"
-        cmd  = f"defects4j checkout -p {project} -v {bug_id}{version} -w {path}"
+        q_path = shlex.quote(path)
+        q_parent = shlex.quote(str(Path(path).parent))
+        cmd = (
+            f"rm -rf {q_path} && "
+            f"mkdir -p {q_parent} && "
+            f"defects4j checkout -p {project} -v {bug_id}{version} -w {q_path}"
+        )
         _, err, rc = self.exec(cmd, timeout=timeout)
         if rc != 0:
-            raise RuntimeError(
-                f"checkout({project}, {bug_id}, {version!r}) failed:\n{err}"
-            )
+            _, retry_err, retry_rc = self.exec(cmd, timeout=timeout)
+            if retry_rc != 0:
+                message = retry_err.strip() or err.strip()
+                raise RuntimeError(
+                    f"checkout({project}, {bug_id}, {version!r}) failed:\n{message}"
+                )
         return path
 
     def trigger_tests(self, container_path: str) -> list[str]:
@@ -602,13 +557,53 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
             raise RuntimeError(f"export {prop} failed:\n{err}")
         return [line.strip() for line in out.strip().splitlines() if line.strip()]
 
+    def checkout_temp_root(self, container_path: str) -> str:
+        """Return a per-checkout temp directory rooted under /tmp."""
+        normalized = re.sub(r"[^A-Za-z0-9_.-]+", "_", str(container_path).strip("/"))
+        if not normalized:
+            normalized = "root"
+        return f"/tmp/defect4j-copilot-tmp/{normalized}"
+
+    def wrap_with_checkout_temp(self, container_path: str, inner_cmd: str) -> str:
+        """Run one shell command with a checkout-local temp root cleaned before and after."""
+        q_temp_root = shlex.quote(self.checkout_temp_root(container_path))
+        return "\n".join(
+            [
+                f"temp_root={q_temp_root}",
+                'tmp_before="$temp_root/.tmp-before"',
+                'tmp_after="$temp_root/.tmp-after"',
+                'cleanup_temp() { rm -rf -- "$temp_root" >/dev/null 2>&1 || true; }',
+                "snapshot_tmp_dirs() {",
+                "  find /tmp -maxdepth 1 -mindepth 1 -name 'dir*' -printf '%f\\n' 2>/dev/null | LC_ALL=C sort > \"$1\" || true",
+                "}",
+                "cleanup_new_tmp_dirs() {",
+                '  snapshot_tmp_dirs "$tmp_after"',
+                '  comm -13 "$tmp_before" "$tmp_after" 2>/dev/null | while IFS= read -r entry; do',
+                '    [ -n "$entry" ] && rm -rf -- "/tmp/$entry"',
+                "  done",
+                "}",
+                'cleanup_temp && mkdir -p "$temp_root"',
+                'snapshot_tmp_dirs "$tmp_before"',
+                "(",
+                inner_cmd,
+                ")",
+                "status=$?",
+                "cleanup_new_tmp_dirs",
+                "cleanup_temp",
+                "exit $status",
+            ]
+        )
+
     def compile_result(self, container_path: str, timeout: int = 600) -> Tuple[bool, str]:
         """
         Compile the project and return (success, error_summary).
 
         Unlike compile(), returns the error message for storage in results.
         """
-        _, err, rc = self.exec(f"cd {container_path} && defects4j compile", timeout=timeout)
+        _, err, rc = self.exec(
+            f"cd {container_path} && {self.wrap_with_checkout_temp(container_path, 'defects4j compile')}",
+            timeout=timeout,
+        )
         if rc == 0:
             return True, ""
         # Extract a short error summary (first 400 chars of stderr)
@@ -659,7 +654,8 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         """Run a clean ``defects4j test -r`` once and return the authoritative suite profile."""
         t0 = time.perf_counter()
         out, err, rc = self.exec(
-            f"cd {container_path} && rm -f all_tests failing_tests && defects4j test -r",
+            f"cd {container_path} && "
+            f"{self.wrap_with_checkout_temp(container_path, 'rm -f all_tests failing_tests && defects4j test -r')}",
             timeout=timeout,
         )
         run_time_s = round(time.perf_counter() - t0, 2)
@@ -692,7 +688,8 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
         """Run one clean warmup ``defects4j test -r`` that is excluded from mutant timings."""
         t0 = time.perf_counter()
         out, err, rc = self.exec(
-            f"cd {container_path} && rm -f all_tests failing_tests && defects4j test -r",
+            f"cd {container_path} && "
+            f"{self.wrap_with_checkout_temp(container_path, 'rm -f all_tests failing_tests && defects4j test -r')}",
             timeout=timeout,
         )
         run_time_s = round(time.perf_counter() - t0, 2)
@@ -745,11 +742,8 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
             ).encode("utf-8")
         ).decode("ascii")
 
-        q_path = shlex.quote(container_path)
         q_payload = shlex.quote(payload_b64)
-        script = f"""
-export MUTANT_PAYLOAD_B64={q_payload}
-python3 - <<'PY' {q_path}
+        python_source = f"""
 import base64
 import glob
 import json
@@ -969,13 +963,23 @@ try:
 
     print(json.dumps(record, ensure_ascii=False))
 finally:
-    _kill_checkout_leftovers(root)
     if original is not None:
         target.write_text(original, encoding='utf-8')
-PY
 """
+        encoded_source = base64.b64encode(python_source.encode("utf-8")).decode("ascii")
+        runner = (
+            "import base64; "
+            f"exec(base64.b64decode({encoded_source!r}).decode('utf-8'))"
+        )
+        script = (
+            f"export MUTANT_PAYLOAD_B64={q_payload}\n"
+            f"python3 -c {shlex.quote(runner)} {shlex.quote(container_path)}"
+        )
         wall_t0 = time.perf_counter()
-        out, err, rc = self.exec(script, timeout=timeout + 60)
+        out, err, rc = self.exec(
+            self.wrap_with_checkout_temp(container_path, script),
+            timeout=timeout + 60,
+        )
         wall_time_s = round(time.perf_counter() - wall_t0, 2)
         if rc != 0:
             msg = (err.strip() or out.strip() or "container mutant run failed")[:400]
@@ -998,7 +1002,7 @@ PY
             result["test_time_s"] = float(result.get("test_time_s") or result.get("run_time_s") or 0.0)
             result["compile_time_s"] = float(result.get("compile_time_s") or 0.0)
             result["wall_time_s"] = wall_time_s
-            result["run_time_s"] = wall_time_s
+            result["run_time_s"] = float(result.get("run_time_s") or result["test_time_s"])
         return result
 
     def test(self, container_path: str, timeout: int = 600,
@@ -1054,7 +1058,8 @@ PY
 
         # ── Step 1: run tests (timeout applies here) ─────────────────────────
         out, _, _ = self.exec(
-            f"cd {container_path} && defects4j test{t_flag}",
+            f"cd {container_path} && "
+            f"{self.wrap_with_checkout_temp(container_path, f'defects4j test{t_flag}')}",
             timeout=timeout,
         )
 
@@ -1117,10 +1122,10 @@ class ParallelCheckoutPool:
             if base_host_path is not None
             else self.host_workspace / "checkouts" / f"{project}_{bug_id}_{version}"
         )
-        pool_name = f"{project}_{bug_id}_{version}"
+        self.pool_name = f"{project}_{bug_id}_{version}"
         run_token = f"{os.getpid()}_{int(time.time() * 1000)}_{id(self) & 0xffff:x}"
-        self.pool_container_root = f"/tmp/defect4j-parallel/{pool_name}_{run_token}"
-        self.pool_host_root = self.host_workspace / "parallel" / f"{pool_name}_{run_token}"
+        self.pool_container_root = f"/tmp/defect4j-parallel/{self.pool_name}_{run_token}"
+        self.pool_host_root = self.host_workspace / "parallel" / f"{self.pool_name}_{run_token}"
         self._available: queue.Queue[ContainerCheckout] = queue.Queue()
         self._workspaces: list[ContainerCheckout] = []
         self._prepared = False
@@ -1134,6 +1139,14 @@ class ParallelCheckoutPool:
     def prepare(self) -> list[ContainerCheckout]:
         """Ensure the base checkout exists and materialize one isolated copy per worker."""
         self._ensure_base_checkout()
+        self._run_checked(
+            "test ! -d /tmp/defect4j-parallel || "
+            f"find /tmp/defect4j-parallel -mindepth 1 -maxdepth 1 -type d "
+            f"-name {shlex.quote(self.pool_name + '_*')} "
+            f"! -path {shlex.quote(self.pool_container_root)} -exec rm -rf {{}} +",
+            timeout=300,
+            action="remove stale parallel checkout roots",
+        )
         self.d4j.kill_processes_under_path(self.pool_container_root)
         self._run_checked(
             f"rm -rf {shlex.quote(self.pool_container_root)} && "

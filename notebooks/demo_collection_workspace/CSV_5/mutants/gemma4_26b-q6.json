@@ -1,0 +1,392 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 173,
+    "precode": "final int end = offset + len;",
+    "aftercode": "final int end = offset + len - 1;",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 179,
+    "precode": "if (quotePolicy == null) {",
+    "aftercode": "if (quotePolicy != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 180,
+    "precode": "quotePolicy = Quote.MINIMAL;",
+    "aftercode": "quotePolicy = Quote.ALL;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 187,
+    "precode": "quote = !(object instanceof Number);",
+    "aftercode": "quote = (object instanceof Number);",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 194,
+    "precode": "if (len <= 0) {",
+    "aftercode": "if (len < 0) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 199,
+    "precode": "if (newRecord) {",
+    "aftercode": "if (!newRecord) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 206,
+    "precode": "if (newRecord && (c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || (c > 'z')))",
+    "aftercode": "if (newRecord || (c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || (c > 'z')))",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 209,
+    "precode": "} else if (c <= COMMENT) {",
+    "aftercode": "} else if (c < COMMENT) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 217,
+    "precode": "if (c == LF || c == CR || c == quoteChar || c == delimChar) {",
+    "aftercode": "if (c == LF && c == CR && c == quoteChar && c == delimChar) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 225,
+    "precode": "pos = end - 1;",
+    "aftercode": "pos = end;",
+    "rule": "Off-by-one",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 230,
+    "precode": "if (c <= SP) {",
+    "aftercode": "if (c < SP) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 237,
+    "precode": "if (!quote) {",
+    "aftercode": "if (quote) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 239,
+    "precode": "out.append(value, start, end);",
+    "aftercode": "out.append(value, start, end - 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 245,
+    "precode": "if (!quote) {",
+    "aftercode": "if (quote) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 247,
+    "precode": "out.append(value, start, end);",
+    "aftercode": "out.append(value, start, end + 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 258,
+    "precode": "if (c == quoteChar) {",
+    "aftercode": "if (c != quoteChar) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 262,
+    "precode": "out.append(value, start, pos + 1);",
+    "aftercode": "out.append(value, start, pos);",
+    "rule": "Off-by-one",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 265,
+    "precode": "start = pos;",
+    "aftercode": "start = pos + 1;",
+    "rule": "Off-by-one",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 271,
+    "precode": "out.append(value, start, pos);",
+    "aftercode": "out.append(value, start, pos - 1);",
+    "rule": "Off-by-one",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 288,
+    "precode": "if (!format.isCommentingEnabled()) {",
+    "aftercode": "if (format.isCommentingEnabled()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 291,
+    "precode": "if (!newRecord) {",
+    "aftercode": "if (newRecord) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 300,
+    "precode": "if (i + 1 < comment.length() && comment.charAt(i + 1) == LF) {",
+    "aftercode": "if (i + 1 <= comment.length() && comment.charAt(i + 1) == LF) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 301,
+    "precode": "i++;",
+    "aftercode": "i--;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 310,
+    "precode": "out.append(c);",
+    "aftercode": "out.append(' ');",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 325,
+    "precode": "if (recordSeparator != null) {",
+    "aftercode": "if (recordSeparator == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 328,
+    "precode": "newRecord = true;",
+    "aftercode": "newRecord = false;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 341,
+    "precode": "for (final Object value : values) {",
+    "aftercode": "for (Object value : values) {",
+    "rule": "Type Change",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 357,
+    "precode": "for (final Object value : values) {",
+    "aftercode": "for (int i = 0; i < values.length; i++) {",
+    "rule": "Loop Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 373,
+    "precode": "if (value instanceof Object[]) {",
+    "aftercode": "if (!(value instanceof Object[])) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 375,
+    "precode": "} else if (value instanceof Iterable) {",
+    "aftercode": "} else if (!(value instanceof Iterable)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 414,
+    "precode": "while (resultSet.next()) {",
+    "aftercode": "while (!resultSet.next()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 415,
+    "precode": "for (int i = 1; i <= columnCount; i++) {",
+    "aftercode": "for (int i = 1; i < columnCount; i++) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 325,
+    "precode": "if (recordSeparator != null) {",
+    "aftercode": "if (recordSeparator != null && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 325,
+    "precode": "if (recordSeparator != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 326,
+    "precode": "out.append(recordSeparator);",
+    "aftercode": "",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 326,
+    "precode": "out.append(recordSeparator);",
+    "aftercode": "out.append(\"\");",
+    "rule": "Replacement of Argument",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 328,
+    "precode": "newRecord = true;",
+    "aftercode": "newRecord = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.07,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 328,
+    "precode": "newRecord = true;",
+    "aftercode": "",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+    "line": 324,
+    "precode": "final String recordSeparator = format.getRecordSeparator();",
+    "aftercode": "final String recordSeparator = null;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  }
+]

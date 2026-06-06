@@ -1,0 +1,472 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 60,
+    "precode": "if (typeToEvaluate instanceof Class<?> ) {",
+    "aftercode": "if (!(typeToEvaluate instanceof Class<?> )) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 62,
+    "precode": "} else if (typeToEvaluate instanceof ParameterizedType) {",
+    "aftercode": "} else if (!(typeToEvaluate instanceof ParameterizedType)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 69,
+    "precode": "} else if (typeToEvaluate instanceof GenericArrayType) {",
+    "aftercode": "} else if (!(typeToEvaluate instanceof GenericArrayType)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 79,
+    "precode": "} else if (typeToEvaluate instanceof TypeVariable<?>) {",
+    "aftercode": "} else if (!(typeToEvaluate instanceof TypeVariable<?>)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 80,
+    "precode": "if (parentType instanceof ParameterizedType) {",
+    "aftercode": "if (!(parentType instanceof ParameterizedType)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 90,
+    "precode": "int indexOfActualTypeArgument = getIndex(classTypeVariables, fieldTypeVariable);",
+    "aftercode": "int indexOfActualTypeArgument = getIndex(fieldTypeVariable, classTypeVariables);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 92,
+    "precode": "return actualTypeArguments[indexOfActualTypeArgument];",
+    "aftercode": "return actualTypeArguments[indexOfActualTypeArgument + 1];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 98,
+    "precode": "} while ((theSearchedType != null) && (theSearchedType instanceof TypeVariable<?>));",
+    "aftercode": "} while ((theSearchedType != null) || (theSearchedType instanceof TypeVariable<?>));",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 100,
+    "precode": "if (theSearchedType != null) {",
+    "aftercode": "if (theSearchedType == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 108,
+    "precode": "} else if (typeToEvaluate instanceof WildcardType) {",
+    "aftercode": "} else if (!(typeToEvaluate instanceof WildcardType)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 110,
+    "precode": "return getActualType(castedType.getUpperBounds()[0], parentType, rawParentClass);",
+    "aftercode": "return getActualType(castedType.getLowerBounds()[0], parentType, rawParentClass);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.74,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 119,
+    "precode": "if (parentType instanceof Class<?>) {",
+    "aftercode": "if (parentType instanceof ParameterizedType) {",
+    "rule": "Instanceof Type Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 121,
+    "precode": "} else if (parentType instanceof ParameterizedType) {",
+    "aftercode": "} else if (parentType instanceof Class<?>) {",
+    "rule": "Instanceof Type Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 123,
+    "precode": "rawParentType = (Class<?>) parentTypeAsPT.getRawType();",
+    "aftercode": "rawParentType = (Class<?>) parentTypeAsPT.getActualTypeArguments();",
+    "rule": "Method Argument/Return Substitution",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 128,
+    "precode": "Type superClass = rawParentType.getGenericSuperclass();",
+    "aftercode": "Type superClass = rawParentType.getGenericInterfaces();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 129,
+    "precode": "if (superClass instanceof ParameterizedType",
+    "aftercode": "if (superClass != null && superClass instanceof ParameterizedType",
+    "rule": "Null Check Addition",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 130,
+    "precode": "&& ((ParameterizedType) superClass).getRawType() == typeToEvaluate.getGenericDeclaration()) {",
+    "aftercode": "&& ((ParameterizedType) superClass).getRawType().equals(typeToEvaluate.getGenericDeclaration())) {",
+    "rule": "Equality Operator Substitution",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 133,
+    "precode": "((Class<?>) ((ParameterizedType) superClass).getRawType()).getTypeParameters();",
+    "aftercode": "((Class<?>) ((ParameterizedType) superClass).getActualTypeArguments()).getTypeParameters();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 138,
+    "precode": "actualTypeArguments = ((ParameterizedType) superClass).getActualTypeArguments();",
+    "aftercode": "actualTypeArguments = ((ParameterizedType) superClass).getRawType().getTypeParameters();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 140,
+    "precode": "actualTypeArguments = ((ParameterizedType) parentType).getActualTypeArguments();",
+    "aftercode": "actualTypeArguments = ((ParameterizedType) parentType).getRawType().getTypeParameters();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 145,
+    "precode": "return actualTypeArguments[indexOfActualTypeArgument];",
+    "aftercode": "return actualTypeArguments[indexOfActualTypeArgument + 1];",
+    "rule": "Index Offset Change",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 145,
+    "precode": "return actualTypeArguments[indexOfActualTypeArgument];",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 149,
+    "precode": "if (superClass != null) {",
+    "aftercode": "if (superClass == null) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 150,
+    "precode": "searchedType = extractTypeForHierarchy(superClass, typeToEvaluate);",
+    "aftercode": "searchedType = extractTypeForHierarchy(parentType, typeToEvaluate);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 152,
+    "precode": "return searchedType;",
+    "aftercode": "return parentType;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 119,
+    "precode": "if (parentType instanceof Class<?>) {",
+    "aftercode": "if (parentType == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 121,
+    "precode": "} else if (parentType instanceof ParameterizedType) {",
+    "aftercode": "} else if (parentType == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 120,
+    "precode": "rawParentType = (Class<?>) parentType;",
+    "aftercode": "rawParentType = null;",
+    "rule": "Assignment Nullification",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 123,
+    "precode": "rawParentType = (Class<?>) parentTypeAsPT.getRawType();",
+    "aftercode": "rawParentType = null;",
+    "rule": "Assignment Nullification",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 130,
+    "precode": "&& ((ParameterizedType) superClass).getRawType() == typeToEvaluate.getGenericDeclaration()) {",
+    "aftercode": "&& ((ParameterizedType) superClass).getRawType() != typeToEvaluate.getGenericDeclaration()) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 134,
+    "precode": "int indexOfActualTypeArgument = getIndex(classTypeVariables, typeToEvaluate);",
+    "aftercode": "int indexOfActualTypeArgument = -1;",
+    "rule": "Assignment Constant Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 136,
+    "precode": "Type[] actualTypeArguments = null;",
+    "aftercode": "Type[] actualTypeArguments = new Type[0];",
+    "rule": "Initialization Change",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 142,
+    "precode": "return null;",
+    "aftercode": "return parentType;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 145,
+    "precode": "return actualTypeArguments[indexOfActualTypeArgument];",
+    "aftercode": "return actualTypeArguments[indexOfActualTypeArgument - 1];",
+    "rule": "Index Offset Change",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 129,
+    "precode": "if (superClass instanceof ParameterizedType",
+    "aftercode": "if (superClass instanceof Class<?>",
+    "rule": "Instanceof Type Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 133,
+    "precode": "((Class<?>) ((ParameterizedType) superClass).getRawType()).getTypeParameters();",
+    "aftercode": "((Class<?>) ((ParameterizedType) superClass).getRawType()).getInterfaces();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 138,
+    "precode": "actualTypeArguments = ((ParameterizedType) superClass).getActualTypeArguments();",
+    "aftercode": "actualTypeArguments = ((ParameterizedType) superClass).getActualTypeArguments();",
+    "rule": "No-Op (Test Coverage)",
+    "gen_time_s": 2.44,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 140,
+    "precode": "actualTypeArguments = ((ParameterizedType) parentType).getActualTypeArguments();",
+    "aftercode": "actualTypeArguments = ((ParameterizedType) parentType).getActualTypeArguments();",
+    "rule": "No-Op (Test Coverage)",
+    "gen_time_s": 2.44,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 150,
+    "precode": "searchedType = extractTypeForHierarchy(superClass, typeToEvaluate);",
+    "aftercode": "searchedType = null;",
+    "rule": "Assignment Nullification",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 118,
+    "precode": "Class<?> rawParentType = null;",
+    "aftercode": "Class<?> rawParentType = Object.class;",
+    "rule": "Initialization Constant Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 125,
+    "precode": "return null;",
+    "aftercode": "return rawParentType;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 148,
+    "precode": "Type searchedType = null;",
+    "aftercode": "Type searchedType = parentType;",
+    "rule": "Initialization Constant Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 130,
+    "precode": "&& ((ParameterizedType) superClass).getRawType() == typeToEvaluate.getGenericDeclaration()) {",
+    "aftercode": "&& ((ParameterizedType) superClass).getRawType() != typeToEvaluate.getGenericDeclaration()) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": true
+  },
+  {
+    "id": 44,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 145,
+    "precode": "return actualTypeArguments[indexOfActualTypeArgument];",
+    "aftercode": "return actualTypeArguments[0];",
+    "rule": "Index Constant Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 123,
+    "precode": "rawParentType = (Class<?>) parentTypeAsPT.getRawType();",
+    "aftercode": "rawParentType = (Class<?>) parentTypeAsPT.getOwnerType();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 138,
+    "precode": "actualTypeArguments = ((ParameterizedType) superClass).getActualTypeArguments();",
+    "aftercode": "actualTypeArguments = ((ParameterizedType) superClass).getOwnerType().getTypeParameters();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "gson/src/main/java/com/google/gson/TypeInfoFactory.java",
+    "line": 140,
+    "precode": "actualTypeArguments = ((ParameterizedType) parentType).getActualTypeArguments();",
+    "aftercode": "actualTypeArguments = ((ParameterizedType) parentType).getOwnerType().getTypeParameters();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 493,
+    "precode": "for (Entry<String, String> ent : headers.entrySet()){",
+    "aftercode": "for (Entry<String, String> ent : headers.values()){",
+    "rule": "WrongCollectionAccess",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 496,
+    "precode": "if (\"path\".equals(key)){",
+    "aftercode": "if (\"path\".equalsIgnoreCase(key)){",
+    "rule": "StringEquality",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 496,
+    "precode": "if (\"path\".equals(key)){",
+    "aftercode": "if (!\"path\".equals(key)){",
+    "rule": "Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 497,
+    "precode": "currEntry.setName(val);",
+    "aftercode": "currEntry.setName(\"\");",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 498,
+    "precode": "} else if (\"linkpath\".equals(key)){",
+    "aftercode": "} else if (\"linkpath\".equals(\"\")){",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 499,
+    "precode": "currEntry.setLinkName(val);",
+    "aftercode": "currEntry.setLinkName(key);",
+    "rule": "VariableSwap",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 501,
+    "precode": "currEntry.setGroupId(Long.parseLong(val));",
+    "aftercode": "currEntry.setGroupId(Integer.parseInt(val));",
+    "rule": "TypeMismatch",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 501,
+    "precode": "currEntry.setGroupId(Long.parseLong(val));",
+    "aftercode": "currEntry.setGroupId(0L);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 503,
+    "precode": "currEntry.setGroupName(val);",
+    "aftercode": "currEntry.setGroupName(null);",
+    "rule": "NullValue",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 505,
+    "precode": "currEntry.setUserId(Long.parseLong(val));",
+    "aftercode": "currEntry.setUserId(Long.parseLong(key));",
+    "rule": "VariableSwap",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 508,
+    "precode": "} else if (\"size\".equals(key)){",
+    "aftercode": "} else if (\"size\".equals(\"size\")){",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 509,
+    "precode": "currEntry.setSize(Long.parseLong(val));",
+    "aftercode": "currEntry.setSize(-1L);",
+    "rule": "BoundaryValue",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 511,
+    "precode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000));",
+    "aftercode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1));",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 511,
+    "precode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000));",
+    "aftercode": "currEntry.setModTime((long) (Double.parseDouble(val)));",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 511,
+    "precode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000));",
+    "aftercode": "currEntry.setModTime((int) (Double.parseDouble(val) * 1000));",
+    "rule": "TypeCast",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 513,
+    "precode": "currEntry.setDevMinor(Integer.parseInt(val));",
+    "aftercode": "currEntry.setDevMinor(Integer.parseInt(val) + 1);",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 514,
+    "precode": "} else if (\"SCHILY.devmajor\".equals(key)){",
+    "aftercode": "} else if (\"SCHILY.devmajor\".equals(\"key\")){",
+    "rule": "StringLiteral",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 515,
+    "precode": "currEntry.setDevMajor(Integer.parseInt(val));",
+    "aftercode": "currEntry.setDevMajor(Integer.parseInt(key));",
+    "rule": "VariableSwap",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 496,
+    "precode": "if (\"path\".equals(key)){",
+    "aftercode": "if (key.equals(\"path\")){",
+    "rule": "NullPointerRisk",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 501,
+    "precode": "currEntry.setGroupId(Long.parseLong(val));",
+    "aftercode": "currEntry.setGroupId(Long.valueOf(val));",
+    "rule": "MethodReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 509,
+    "precode": "currEntry.setSize(Long.parseLong(val));",
+    "aftercode": "currEntry.setSize(Long.parseLong(val) + 1);",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 511,
+    "precode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000));",
+    "aftercode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000.0));",
+    "rule": "LiteralType",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 493,
+    "precode": "for (Entry<String, String> ent : headers.entrySet()){",
+    "aftercode": "for (Entry<String, String> ent : headers.keySet()){",
+    "rule": "WrongCollectionAccess",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 500,
+    "precode": "} else if (\"gid\".equals(key)){",
+    "aftercode": "if (\"gid\".equals(key)){",
+    "rule": "ConditionalReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 504,
+    "precode": "} else if (\"uid\".equals(key)){",
+    "aftercode": "} else if (\"uid\".equals(null)){",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 506,
+    "precode": "} else if (\"uname\".equals(key)){",
+    "aftercode": "} else if (\"uname\".equals(\"\")){",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 512,
+    "precode": "} else if (\"SCHILY.devminor\".equals(key)){",
+    "aftercode": "} else if (\"SCHILY.devminor\".equals(\"SCHILY.devminor\")){",
+    "rule": "ConditionAlwaysTrue",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 514,
+    "precode": "} else if (\"SCHILY.devmajor\".equals(key)){",
+    "aftercode": "} else if (\"SCHILY.devmajor\".equals(\"key\")){",
+    "rule": "StringLiteral",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 509,
+    "precode": "currEntry.setSize(Long.parseLong(val));",
+    "aftercode": "currEntry.setSize(Long.parseLong(val) - 1);",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 511,
+    "precode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000));",
+    "aftercode": "currEntry.setModTime((long) (Double.parseDouble(val) / 1000));",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 497,
+    "precode": "currEntry.setName(val);",
+    "aftercode": "currEntry.setName(ent.getKey());",
+    "rule": "VariableSwap",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 503,
+    "precode": "currEntry.setGroupName(val);",
+    "aftercode": "currEntry.setGroupName(ent.getValue());",
+    "rule": "RedundantCode",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 507,
+    "precode": "currEntry.setUserName(val);",
+    "aftercode": "currEntry.setUserName(val.toString());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 513,
+    "precode": "currEntry.setDevMinor(Integer.parseInt(val));",
+    "aftercode": "currEntry.setDevMinor(Integer.parseInt(val) * 0);",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 515,
+    "precode": "currEntry.setDevMajor(Integer.parseInt(val));",
+    "aftercode": "currEntry.setDevMajor(Integer.parseInt(val) + 0);",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 496,
+    "precode": "if (\"path\".equals(key)){",
+    "aftercode": "if (key == \"path\"){",
+    "rule": "EqualityOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 511,
+    "precode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1000));",
+    "aftercode": "currEntry.setModTime((long) (Double.parseDouble(val) * 1001));",
+    "rule": "ArithmeticOperator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java",
+    "line": 501,
+    "precode": "currEntry.setGroupId(Long.parseLong(val));",
+    "aftercode": "currEntry.setGroupId(Long.parseLong(val));",
+    "rule": "NoOp",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  }
+]

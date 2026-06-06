@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 53,
+    "precode": "Class<?> value = annotation.value();",
+    "aftercode": "Class<?> value = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 55,
+    "precode": "if (TypeAdapter.class.isAssignableFrom(value)) {",
+    "aftercode": "if (!TypeAdapter.class.isAssignableFrom(value)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 57,
+    "precode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterClass)).construct();",
+    "aftercode": "typeAdapter = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 58,
+    "precode": "} else if (TypeAdapterFactory.class.isAssignableFrom(value)) {",
+    "aftercode": "} else if (!TypeAdapterFactory.class.isAssignableFrom(value)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 60,
+    "precode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterFactory))",
+    "aftercode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterFactory)).construct().create(gson, fieldType);",
+    "rule": "Remove Statement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 61,
+    "precode": ".construct()",
+    "aftercode": ".nullSafe()",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 64,
+    "precode": "throw new IllegalArgumentException(",
+    "aftercode": "throw new RuntimeException(",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 67,
+    "precode": "if (typeAdapter != null) {",
+    "aftercode": "if (typeAdapter == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 68,
+    "precode": "typeAdapter = typeAdapter.nullSafe();",
+    "aftercode": "typeAdapter = typeAdapter;",
+    "rule": "Remove Statement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 70,
+    "precode": "return typeAdapter;",
+    "aftercode": "return null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 53,
+    "precode": "Class<?> value = annotation.value();",
+    "aftercode": "Class<?> value = Object.class;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 56,
+    "precode": "Class<TypeAdapter<?>> typeAdapterClass = (Class<TypeAdapter<?>>) value;",
+    "aftercode": "Class<TypeAdapter<?>> typeAdapterClass = (Class<TypeAdapter<?>>) Object.class;",
+    "rule": "Cast Type Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 59,
+    "precode": "Class<TypeAdapterFactory> typeAdapterFactory = (Class<TypeAdapterFactory>) value;",
+    "aftercode": "Class<TypeAdapterFactory> typeAdapterFactory = (Class<TypeAdapterFactory>) Object.class;",
+    "rule": "Cast Type Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 57,
+    "precode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterClass)).construct();",
+    "aftercode": "typeAdapter = constructorConstructor.get(TypeToken.get(Object.class)).construct();",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 60,
+    "precode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterFactory))",
+    "aftercode": "typeAdapter = constructorConstructor.get(TypeToken.get(Object.class))",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 62,
+    "precode": ".create(gson, fieldType);",
+    "aftercode": ".create(null, fieldType);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 62,
+    "precode": ".create(gson, fieldType);",
+    "aftercode": ".create(gson, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 65,
+    "precode": "\"@JsonAdapter value must be TypeAdapter or TypeAdapterFactory reference.\");",
+    "aftercode": "\"@JsonAdapter value must be TypeAdapter or TypeAdapterFactory reference.\");",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": true
+  },
+  {
+    "id": 19,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 68,
+    "precode": "typeAdapter = typeAdapter.nullSafe();",
+    "aftercode": "typeAdapter = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 70,
+    "precode": "return typeAdapter;",
+    "aftercode": "return typeAdapter.nullSafe();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+    "line": 57,
+    "precode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterClass)).construct();",
+    "aftercode": "typeAdapter = constructorConstructor.get(TypeToken.get(typeAdapterClass)).construct().nullSafe();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  }
+]

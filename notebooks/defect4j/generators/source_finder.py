@@ -180,13 +180,29 @@ def _fqn_to_path(fqn: str, src_root: str = "src/main/java") -> str:
 
     Inner classes (``$``) are mapped to their top-level file.
     """
-    # Strip inner-class suffix
-    top_level = fqn.split("$")[0]
+    top_level = _top_level_class_fqn(fqn)
     return src_root.rstrip("/") + "/" + top_level.replace(".", "/") + ".java"
 
 
 def _simple_class_name(fqn: str) -> str:
-    return fqn.rsplit("$", 1)[-1].rsplit(".", 1)[-1]
+    _, simple_name = _split_package_and_class_name(fqn)
+    if simple_name.startswith("$"):
+        return simple_name
+    return simple_name.rsplit("$", 1)[-1]
+
+
+def _top_level_class_fqn(fqn: str) -> str:
+    package_name, simple_name = _split_package_and_class_name(fqn)
+    if simple_name.startswith("$"):
+        top_level = simple_name
+    else:
+        top_level = simple_name.split("$", 1)[0]
+    return f"{package_name}.{top_level}" if package_name else top_level
+
+
+def _split_package_and_class_name(fqn: str) -> tuple[str, str]:
+    package_name, _, simple_name = fqn.rpartition(".")
+    return package_name, simple_name or fqn
 
 
 def _find_class_ranges(source: str, top_fqn: str) -> list[tuple[int, int, str]]:
@@ -382,5 +398,4 @@ def _parse_diff_fixed_lines(diff: str) -> list[int]:
             cur_line += 1  # context line
 
     return sorted(set(lines_out))
-
 

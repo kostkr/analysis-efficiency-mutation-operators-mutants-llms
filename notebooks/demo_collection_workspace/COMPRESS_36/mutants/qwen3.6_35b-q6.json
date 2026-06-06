@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 902,
+    "precode": "if (archive.files[currentEntryIndex].getSize() == 0) {",
+    "aftercode": "if (archive.files[currentEntryIndex].getSize() != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 905,
+    "precode": "if (deferredBlockStreams.isEmpty()) {",
+    "aftercode": "if (!deferredBlockStreams.isEmpty()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 909,
+    "precode": "while (deferredBlockStreams.size() > 1) {",
+    "aftercode": "while (deferredBlockStreams.size() >= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 909,
+    "precode": "while (deferredBlockStreams.size() > 1) {",
+    "aftercode": "while (deferredBlockStreams.size() > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 913,
+    "precode": "final InputStream stream = deferredBlockStreams.remove(0);",
+    "aftercode": "final InputStream stream = deferredBlockStreams.remove(1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 913,
+    "precode": "final InputStream stream = deferredBlockStreams.remove(0);",
+    "aftercode": "final InputStream stream = deferredBlockStreams.remove(deferredBlockStreams.size() - 1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 914,
+    "precode": "IOUtils.skip(stream, Long.MAX_VALUE);",
+    "aftercode": "IOUtils.skip(stream, 0);",
+    "rule": "Literal Value",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 914,
+    "precode": "IOUtils.skip(stream, Long.MAX_VALUE);",
+    "aftercode": "IOUtils.skip(stream, -1);",
+    "rule": "Literal Value",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 915,
+    "precode": "stream.close();",
+    "aftercode": "// stream.close();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 915,
+    "precode": "stream.close();",
+    "aftercode": "stream = null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 918,
+    "precode": "return deferredBlockStreams.get(0);",
+    "aftercode": "return deferredBlockStreams.get(1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 918,
+    "precode": "return deferredBlockStreams.get(0);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 903,
+    "precode": "return new ByteArrayInputStream(new byte[0]);",
+    "aftercode": "return new ByteArrayInputStream(new byte[1]);",
+    "rule": "Literal Value",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 906,
+    "precode": "throw new IllegalStateException(\"No current 7z entry (call getNextEntry() first).\");",
+    "aftercode": "throw new IllegalArgumentException(\"No current 7z entry (call getNextEntry() first).\");",
+    "rule": "Exception Type",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 906,
+    "precode": "throw new IllegalStateException(\"No current 7z entry (call getNextEntry() first).\");",
+    "aftercode": "return null;",
+    "rule": "Exception Handling",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 902,
+    "precode": "if (archive.files[currentEntryIndex].getSize() == 0) {",
+    "aftercode": "if (archive.files[currentEntryIndex].getSize() > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 914,
+    "precode": "IOUtils.skip(stream, Long.MAX_VALUE);",
+    "aftercode": "IOUtils.skip(stream, Long.MAX_VALUE - 1);",
+    "rule": "Literal Value",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 915,
+    "precode": "stream.close();",
+    "aftercode": "stream.flush();",
+    "rule": "Method Call",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java",
+    "line": 909,
+    "precode": "while (deferredBlockStreams.size() > 1) {",
+    "aftercode": "while (deferredBlockStreams.size() == 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  }
+]

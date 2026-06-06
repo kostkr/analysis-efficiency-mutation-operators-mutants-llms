@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 101,
+    "precode": "for (final NameType s : NameType.values()) {",
+    "aftercode": "for (final NameType s : NameType.values()) { if (s == null) break; }",
+    "rule": "Null Check Injection",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.name()), Languages.getInstance(s)));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), null));",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, null);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s))); if (Langs.containsKey(s)) Langs.remove(s);",
+    "rule": "Logic Negation",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, \"\"), Languages.getInstance(s)));",
+    "rule": "String Constant Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "rule": "Dead Code Insertion",
+    "gen_time_s": 3.3,
+    "dublicate": true
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s))); // BUG: Simulated race condition",
+    "rule": "Comment Injection",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+    "line": 102,
+    "precode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "aftercode": "Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));",
+    "rule": "Whitespace Mutation",
+    "gen_time_s": 3.3,
+    "dublicate": true
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 334,
+    "precode": "if (finalRules.isEmpty()) {",
+    "aftercode": "if (finalRules != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 341,
+    "precode": "for (final Rule.Phoneme phoneme : phonemeBuilder.getPhonemes()) {",
+    "aftercode": "for (final Rule.Phoneme phoneme : phonemeBuilder.getPhonemes().subList(1, phonemeBuilder.getPhonemes().size())) {",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 343,
+    "precode": "final String phonemeText = phoneme.getPhonemeText().toString();",
+    "aftercode": "final String phonemeText = phoneme.getPhonemeText().toString().toUpperCase();",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 345,
+    "precode": "for (int i = 0; i < phonemeText.length();) {",
+    "aftercode": "for (int i = 0; i < phonemeText.length() - 1;) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 345,
+    "precode": "for (int i = 0; i < phonemeText.length();) {",
+    "aftercode": "for (int i = 0; i <= phonemeText.length();) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 345,
+    "precode": "for (int i = 0; i < phonemeText.length();) {",
+    "aftercode": "for (int i = 1; i < phonemeText.length();) {",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 348,
+    "precode": "final boolean found = rulesApplication.isFound();",
+    "aftercode": "final boolean found = !rulesApplication.isFound();",
+    "rule": "Negation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 351,
+    "precode": "if (!found) {",
+    "aftercode": "if (found) {",
+    "rule": "Negation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 353,
+    "precode": "subBuilder.append(phonemeText.subSequence(i, i + 1));",
+    "aftercode": "subBuilder.append(phonemeText.subSequence(i, i + 2));",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 356,
+    "precode": "i = rulesApplication.getI();",
+    "aftercode": "i = rulesApplication.getI() + 1;",
+    "rule": "Increment",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 356,
+    "precode": "i = rulesApplication.getI();",
+    "aftercode": "i = rulesApplication.getI() - 1;",
+    "rule": "Decrement",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 363,
+    "precode": "if (phonemes.containsKey(newPhoneme)) {",
+    "aftercode": "if (!phonemes.containsKey(newPhoneme)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 364,
+    "precode": "final Rule.Phoneme oldPhoneme = phonemes.remove(newPhoneme);",
+    "aftercode": "final Rule.Phoneme oldPhoneme = newPhoneme;",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 365,
+    "precode": "final Rule.Phoneme mergedPhoneme = oldPhoneme.mergeWithLanguage(newPhoneme.getLanguages());",
+    "aftercode": "final Rule.Phoneme mergedPhoneme = newPhoneme.mergeWithLanguage(oldPhoneme.getLanguages());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 366,
+    "precode": "phonemes.put(mergedPhoneme, mergedPhoneme);",
+    "aftercode": "phonemes.put(newPhoneme, newPhoneme);",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 368,
+    "precode": "phonemes.put(newPhoneme, newPhoneme);",
+    "aftercode": "phonemes.put(newPhoneme, oldPhoneme);",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 373,
+    "precode": "return new PhonemeBuilder(phonemes.keySet());",
+    "aftercode": "return new PhonemeBuilder(new ArrayList<>(phonemes.keySet()));",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 339,
+    "precode": "new TreeMap<Rule.Phoneme, Rule.Phoneme>(Rule.Phoneme.COMPARATOR);",
+    "aftercode": "new HashMap<Rule.Phoneme, Rule.Phoneme>();",
+    "rule": "Library Function",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 342,
+    "precode": "PhonemeBuilder subBuilder = PhonemeBuilder.empty(phoneme.getLanguages());",
+    "aftercode": "PhonemeBuilder subBuilder = PhonemeBuilder.empty(new HashSet<String>());",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 347,
+    "precode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, maxPhonemes).invoke();",
+    "aftercode": "new RulesApplication(finalRules, phonemeText, subBuilder, i + 1, maxPhonemes).invoke();",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 347,
+    "precode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, maxPhonemes).invoke();",
+    "aftercode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, maxPhonemes + 1).invoke();",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 347,
+    "precode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, maxPhonemes).invoke();",
+    "aftercode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, 0).invoke();",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 362,
+    "precode": "for (final Rule.Phoneme newPhoneme : subBuilder.getPhonemes()) {",
+    "aftercode": "for (final Rule.Phoneme newPhoneme : subBuilder.getPhonemes().subList(0, 1)) {",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 331,
+    "precode": "if (finalRules == null) {",
+    "aftercode": "if (finalRules != null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 332,
+    "precode": "throw new NullPointerException(\"finalRules can not be null\");",
+    "aftercode": "return phonemeBuilder;",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 335,
+    "precode": "return phonemeBuilder;",
+    "aftercode": "return new PhonemeBuilder();",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 338,
+    "precode": "final Map<Rule.Phoneme, Rule.Phoneme> phonemes =",
+    "aftercode": "final Map<Rule.Phoneme, Rule.Phoneme> phonemes = new HashMap<>();",
+    "rule": "Library Function",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 343,
+    "precode": "final String phonemeText = phoneme.getPhonemeText().toString();",
+    "aftercode": "final String phonemeText = \"\";",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 346,
+    "precode": "final RulesApplication rulesApplication =",
+    "aftercode": "final RulesApplication rulesApplication = new RulesApplication(null, phonemeText, subBuilder, i, maxPhonemes).invoke();",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 349,
+    "precode": "subBuilder = rulesApplication.getPhonemeBuilder();",
+    "aftercode": "// subBuilder = rulesApplication.getPhonemeBuilder();",
+    "rule": "Comment Out",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 353,
+    "precode": "subBuilder.append(phonemeText.subSequence(i, i + 1));",
+    "aftercode": "// subBuilder.append(phonemeText.subSequence(i, i + 1));",
+    "rule": "Comment Out",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 364,
+    "precode": "final Rule.Phoneme oldPhoneme = phonemes.remove(newPhoneme);",
+    "aftercode": "final Rule.Phoneme oldPhoneme = null;",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 366,
+    "precode": "phonemes.put(mergedPhoneme, mergedPhoneme);",
+    "aftercode": "// phonemes.put(mergedPhoneme, mergedPhoneme);",
+    "rule": "Comment Out",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 368,
+    "precode": "phonemes.put(newPhoneme, newPhoneme);",
+    "aftercode": "// phonemes.put(newPhoneme, newPhoneme);",
+    "rule": "Comment Out",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 373,
+    "precode": "return new PhonemeBuilder(phonemes.keySet());",
+    "aftercode": "return null;",
+    "rule": "Return Value",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 341,
+    "precode": "for (final Rule.Phoneme phoneme : phonemeBuilder.getPhonemes()) {",
+    "aftercode": "if (!phonemeBuilder.getPhonemes().isEmpty()) { for (final Rule.Phoneme phoneme : phonemeBuilder.getPhonemes()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 341,
+    "precode": "for (final Rule.Phoneme phoneme : phonemeBuilder.getPhonemes()) {",
+    "aftercode": "for (final Rule.Phoneme phoneme : phonemeBuilder.getPhonemes()) {",
+    "rule": "Empty Loop",
+    "gen_time_s": 2.66,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 362,
+    "precode": "for (final Rule.Phoneme newPhoneme : subBuilder.getPhonemes()) {",
+    "aftercode": "for (final Rule.Phoneme newPhoneme : subBuilder.getPhonemes()) {",
+    "rule": "Empty Loop",
+    "gen_time_s": 2.66,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 345,
+    "precode": "for (int i = 0; i < phonemeText.length();) {",
+    "aftercode": "for (int i = 0; i < phonemeText.length(); i++) {",
+    "rule": "Increment",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 356,
+    "precode": "i = rulesApplication.getI();",
+    "aftercode": "i = i + 1;",
+    "rule": "Increment",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 347,
+    "precode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, maxPhonemes).invoke();",
+    "aftercode": "new RulesApplication(finalRules, phonemeText, subBuilder, i, -1).invoke();",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 365,
+    "precode": "final Rule.Phoneme mergedPhoneme = oldPhoneme.mergeWithLanguage(newPhoneme.getLanguages());",
+    "aftercode": "final Rule.Phoneme mergedPhoneme = oldPhoneme.mergeWithLanguage(new HashSet<String>());",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+    "line": 366,
+    "precode": "phonemes.put(mergedPhoneme, mergedPhoneme);",
+    "aftercode": "phonemes.put(mergedPhoneme, null);",
+    "rule": "Argument Transformation",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Rule.java",
+    "line": 159,
+    "precode": "return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));",
+    "aftercode": "return new Phoneme(this.languages.merge(lang), this.phonemeText.toString());",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Rule.java",
+    "line": 159,
+    "precode": "return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));",
+    "aftercode": "return new Phoneme(this.phonemeText.toString(), lang);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/codec/language/bm/Rule.java",
+    "line": 159,
+    "precode": "return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));",
+    "aftercode": "return new Phoneme(this.phonemeText.toString(), this.languages);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.97,
+    "dublicate": false
+  }
+]

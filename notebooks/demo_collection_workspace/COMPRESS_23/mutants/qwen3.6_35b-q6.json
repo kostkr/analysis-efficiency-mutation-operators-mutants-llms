@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 109,
+    "precode": "byte propsByte = coder.properties[0];",
+    "aftercode": "byte propsByte = coder.properties[1];",
+    "rule": "Array Index Change",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 110,
+    "precode": "long dictSize = coder.properties[1];",
+    "aftercode": "long dictSize = coder.properties[0];",
+    "rule": "Array Index Change",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 111,
+    "precode": "for (int i = 1; i < 4; i++) {",
+    "aftercode": "for (int i = 1; i <= 4; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 111,
+    "precode": "for (int i = 1; i < 4; i++) {",
+    "aftercode": "for (int i = 0; i < 4; i++) {",
+    "rule": "Loop Condition",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 112,
+    "precode": "dictSize |= (coder.properties[i + 1] & 0xffl) << (8 * i);",
+    "aftercode": "dictSize &= (coder.properties[i + 1] & 0xffl) << (8 * i);",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 112,
+    "precode": "dictSize |= (coder.properties[i + 1] & 0xffl) << (8 * i);",
+    "aftercode": "dictSize = (coder.properties[i + 1] & 0xffl) << (8 * i);",
+    "rule": "Assignment Operator Change",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 112,
+    "precode": "dictSize |= (coder.properties[i + 1] & 0xffl) << (8 * i);",
+    "aftercode": "dictSize |= (coder.properties[i] & 0xffl) << (8 * i);",
+    "rule": "Array Index Change",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 112,
+    "precode": "dictSize |= (coder.properties[i + 1] & 0xffl) << (8 * i);",
+    "aftercode": "dictSize |= (coder.properties[i + 1] & 0xffl) >> (8 * i);",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 114,
+    "precode": "if (dictSize > LZMAInputStream.DICT_SIZE_MAX) {",
+    "aftercode": "if (dictSize >= LZMAInputStream.DICT_SIZE_MAX) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 114,
+    "precode": "if (dictSize > LZMAInputStream.DICT_SIZE_MAX) {",
+    "aftercode": "if (dictSize < LZMAInputStream.DICT_SIZE_MAX) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 115,
+    "precode": "throw new IOException(\"Dictionary larger than 4GiB maximum size\");",
+    "aftercode": "throw new IOException(\"Dictionary smaller than 4GiB maximum size\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/sevenz/Coders.java",
+    "line": 117,
+    "precode": "return new LZMAInputStream(in, -1, propsByte, (int) dictSize);",
+    "aftercode": "return new LZMAInputStream(in, 0, propsByte, (int) dictSize);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  }
+]

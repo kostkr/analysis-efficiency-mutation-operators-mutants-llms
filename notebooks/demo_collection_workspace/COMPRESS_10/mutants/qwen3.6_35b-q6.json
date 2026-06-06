@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 809,
+    "precode": "new LinkedHashMap<ZipArchiveEntry, OffsetEntry>(entries);",
+    "aftercode": "new HashMap<ZipArchiveEntry, OffsetEntry>(entries);",
+    "rule": "Class Type Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 810,
+    "precode": "entries.clear();",
+    "aftercode": "entries.clear(); entries.clear();",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 812,
+    "precode": "OffsetEntry offsetEntry = origMap.get(ze);",
+    "aftercode": "OffsetEntry offsetEntry = origMap.get(ze); offsetEntry = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 814,
+    "precode": "archive.seek(offset + LFH_OFFSET_FOR_FILENAME_LENGTH);",
+    "aftercode": "archive.seek(offset + LFH_OFFSET_FOR_FILENAME_LENGTH + 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 815,
+    "precode": "byte[] b = new byte[SHORT];",
+    "aftercode": "byte[] b = new byte[SHORT + 1];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 817,
+    "precode": "int fileNameLen = ZipShort.getValue(b);",
+    "aftercode": "int fileNameLen = ZipShort.getValue(b) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 819,
+    "precode": "int extraFieldLen = ZipShort.getValue(b);",
+    "aftercode": "int extraFieldLen = ZipShort.getValue(b) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 820,
+    "precode": "int lenToSkip = fileNameLen;",
+    "aftercode": "int lenToSkip = fileNameLen + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 821,
+    "precode": "while (lenToSkip > 0) {",
+    "aftercode": "while (lenToSkip >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 823,
+    "precode": "if (skipped <= 0) {",
+    "aftercode": "if (skipped < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 824,
+    "precode": "throw new RuntimeException(\"failed to skip file name in\"",
+    "aftercode": "// throw new RuntimeException(\"failed to skip file name in\"",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 827,
+    "precode": "lenToSkip -= skipped;",
+    "aftercode": "lenToSkip += skipped;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 829,
+    "precode": "byte[] localExtraData = new byte[extraFieldLen];",
+    "aftercode": "byte[] localExtraData = new byte[extraFieldLen + 1];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 832,
+    "precode": "offsetEntry.dataOffset = offset + LFH_OFFSET_FOR_FILENAME_LENGTH",
+    "aftercode": "offsetEntry.dataOffset = offset - LFH_OFFSET_FOR_FILENAME_LENGTH",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 833,
+    "precode": "+ SHORT + SHORT + fileNameLen + extraFieldLen;",
+    "aftercode": "+ SHORT + SHORT + fileNameLen - extraFieldLen;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 835,
+    "precode": "if (entriesWithoutUTF8Flag.containsKey(ze)) {",
+    "aftercode": "if (!entriesWithoutUTF8Flag.containsKey(ze)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 837,
+    "precode": "NameAndComment nc = entriesWithoutUTF8Flag.get(ze);",
+    "aftercode": "NameAndComment nc = entriesWithoutUTF8Flag.get(ze); nc = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 840,
+    "precode": "if (!orig.equals(ze.getName())) {",
+    "aftercode": "if (orig.equals(ze.getName())) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 841,
+    "precode": "nameMap.remove(orig);",
+    "aftercode": "nameMap.clear();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java",
+    "line": 845,
+    "precode": "entries.put(ze, offsetEntry);",
+    "aftercode": "entries.put(ze, null);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  }
+]

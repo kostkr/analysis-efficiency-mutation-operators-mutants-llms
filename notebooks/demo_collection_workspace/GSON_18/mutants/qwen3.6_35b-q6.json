@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 280,
+    "precode": "context = ((WildcardType)context).getUpperBounds()[0];",
+    "aftercode": "context = ((WildcardType)context).getUpperBounds()[1];",
+    "rule": "Array Index Offset",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 280,
+    "precode": "context = ((WildcardType)context).getUpperBounds()[0];",
+    "aftercode": "context = ((WildcardType)context).getUpperBounds()[0].getType();",
+    "rule": "Method Call Injection",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 282,
+    "precode": "checkArgument(supertype.isAssignableFrom(contextRawType));",
+    "aftercode": "checkArgument(contextRawType.isAssignableFrom(supertype));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 282,
+    "precode": "checkArgument(supertype.isAssignableFrom(contextRawType));",
+    "aftercode": "checkArgument(!supertype.isAssignableFrom(contextRawType));",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 283,
+    "precode": "return resolve(context, contextRawType,",
+    "aftercode": "return resolve(contextRawType, context,",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 284,
+    "precode": "$Gson$Types.getGenericSupertype(context, contextRawType, supertype));",
+    "aftercode": "$Gson$Types.getGenericSupertype(contextRawType, context, supertype));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 278,
+    "precode": "if (context instanceof WildcardType) {",
+    "aftercode": "if (context instanceof Class) {",
+    "rule": "Type Check Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 278,
+    "precode": "if (context instanceof WildcardType) {",
+    "aftercode": "if (context != null) {",
+    "rule": "Condition Simplification",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+    "line": 280,
+    "precode": "context = ((WildcardType)context).getUpperBounds()[0];",
+    "aftercode": "context = context;",
+    "rule": "Assignment Removal",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  }
+]

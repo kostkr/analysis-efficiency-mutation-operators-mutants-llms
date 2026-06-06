@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 45,
+    "precode": "super(parsers[0]);",
+    "aftercode": "super(parsers[1]);",
+    "rule": "Array Index Offset",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 45,
+    "precode": "super(parsers[0]);",
+    "aftercode": "super(null);",
+    "rule": "Null Substitution",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 46,
+    "precode": "_suppressNextToken = delegate.hasCurrentToken();",
+    "aftercode": "_suppressNextToken = !delegate.hasCurrentToken();",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 46,
+    "precode": "_suppressNextToken = delegate.hasCurrentToken();",
+    "aftercode": "_suppressNextToken = delegate.nextToken() != null;",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 48,
+    "precode": "_nextParser = 1;",
+    "aftercode": "_nextParser = 0;",
+    "rule": "Literal Value Change",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 48,
+    "precode": "_nextParser = 1;",
+    "aftercode": "_nextParser = parsers.length;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 47,
+    "precode": "_parsers = parsers;",
+    "aftercode": "_parsers = parsers.clone();",
+    "rule": "Reference Copy vs Clone",
+    "gen_time_s": 2.13,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 108,
+    "precode": "if (delegate == null) {",
+    "aftercode": "if (delegate != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 109,
+    "precode": "return null;",
+    "aftercode": "return delegate.nextToken();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 111,
+    "precode": "if (_suppressNextToken) {",
+    "aftercode": "if (!_suppressNextToken) {",
+    "rule": "Negation",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 112,
+    "precode": "_suppressNextToken = false;",
+    "aftercode": "_suppressNextToken = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 113,
+    "precode": "return delegate.currentToken();",
+    "aftercode": "return delegate.nextToken();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 115,
+    "precode": "JsonToken t = delegate.nextToken();",
+    "aftercode": "JsonToken t = delegate.currentToken();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 116,
+    "precode": "while ((t == null) && switchToNext()) {",
+    "aftercode": "while ((t == null) || switchToNext()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 116,
+    "precode": "while ((t == null) && switchToNext()) {",
+    "aftercode": "while ((t != null) && switchToNext()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 116,
+    "precode": "while ((t == null) && switchToNext()) {",
+    "aftercode": "while (switchToNext()) {",
+    "rule": "Empty Expression",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 117,
+    "precode": "t = delegate.hasCurrentToken()",
+    "aftercode": "t = !delegate.hasCurrentToken()",
+    "rule": "Negation",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 118,
+    "precode": "? delegate.currentToken() : delegate.nextToken();",
+    "aftercode": "? delegate.nextToken() : delegate.currentToken();",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 118,
+    "precode": "? delegate.currentToken() : delegate.nextToken();",
+    "aftercode": "? null : delegate.nextToken();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 120,
+    "precode": "return t;",
+    "aftercode": "return delegate.nextToken();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 116,
+    "precode": "while ((t == null) && switchToNext()) {",
+    "aftercode": "while ((t == null) && !switchToNext()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 113,
+    "precode": "return delegate.currentToken();",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 109,
+    "precode": "return null;",
+    "aftercode": "return delegate.currentToken();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 35,
+    "precode": "protected boolean _suppressNextToken;",
+    "aftercode": "protected int _suppressNextToken;",
+    "rule": "Variable Type Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 35,
+    "precode": "protected boolean _suppressNextToken;",
+    "aftercode": "protected volatile boolean _suppressNextToken;",
+    "rule": "Modifier Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 35,
+    "precode": "protected boolean _suppressNextToken;",
+    "aftercode": "protected static boolean _suppressNextToken;",
+    "rule": "Modifier Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 35,
+    "precode": "protected boolean _suppressNextToken;",
+    "aftercode": "protected transient boolean _suppressNextToken;",
+    "rule": "Modifier Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/util/JsonParserSequence.java",
+    "line": 35,
+    "precode": "protected boolean _suppressNextToken;",
+    "aftercode": "protected final boolean _suppressNextToken;",
+    "rule": "Modifier Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  }
+]

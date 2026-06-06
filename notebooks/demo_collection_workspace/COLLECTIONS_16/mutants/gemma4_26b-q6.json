@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 286,
+    "precode": "List superSubList = super.subList(fromIndex, toIndex);",
+    "aftercode": "List superSubList = super.subList(fromIndex, fromIndex);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.69,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 287,
+    "precode": "Set subSet = createSetBasedOnList(set, superSubList);",
+    "aftercode": "Set subSet = createSetBasedOnList(set, set);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.69,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 288,
+    "precode": "return new SetUniqueList(superSubList, subSet);",
+    "aftercode": "return new SetUniqueList(subSet, superSubList);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.69,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 286,
+    "precode": "List superSubList = super.subList(fromIndex, toIndex);",
+    "aftercode": "List superSubList = super.subList(0, toIndex);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.69,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 287,
+    "precode": "Set subSet = createSetBasedOnList(set, superSubList);",
+    "aftercode": "Set subSet = createSetBasedOnList(null, superSubList);",
+    "rule": "Null Value Injection",
+    "gen_time_s": 1.69,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 292,
+    "precode": "Set subSet = null;",
+    "aftercode": "Set subSet = new HashSet();",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 293,
+    "precode": "if(set.getClass().equals(HashSet.class)) {",
+    "aftercode": "if(set.getClass() != HashSet.class) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 293,
+    "precode": "if(set.getClass().equals(HashSet.class)) {",
+    "aftercode": "if(set.getClass().equals(LinkedHashSet.class)) {",
+    "rule": "Class Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 294,
+    "precode": "subSet = new HashSet();",
+    "aftercode": "subSet = new TreeSet();",
+    "rule": "Class Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 297,
+    "precode": "subSet = (Set) set.getClass().newInstance();",
+    "aftercode": "subSet = (Set) set.getClass().getDeclaredConstructor().newInstance();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 297,
+    "precode": "subSet = (Set) set.getClass().newInstance();",
+    "aftercode": "subSet = (Set) set.getClass().newInstance(); //",
+    "rule": "Comment Out",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 297,
+    "precode": "subSet = (Set) set.getClass().newInstance();",
+    "aftercode": "subSet = (Set) new HashSet();",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 298,
+    "precode": "} catch(InstantiationException ie) {",
+    "aftercode": "} catch(Exception ie) {",
+    "rule": "Exception Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 299,
+    "precode": "subSet = new HashSet();",
+    "aftercode": "subSet = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 300,
+    "precode": "} catch(IllegalAccessException iae) {",
+    "aftercode": "} catch(RuntimeException iae) {",
+    "rule": "Exception Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 301,
+    "precode": "subSet = new HashSet();",
+    "aftercode": "subSet = new TreeSet();",
+    "rule": "Class Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 304,
+    "precode": "subSet.addAll(list);",
+    "aftercode": "subSet.retainAll(list);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 304,
+    "precode": "subSet.addAll(list);",
+    "aftercode": "subSet.removeAll(list);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 304,
+    "precode": "subSet.addAll(list);",
+    "aftercode": "// subSet.addAll(list);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 304,
+    "precode": "subSet.addAll(list);",
+    "aftercode": "subSet.add(list);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 305,
+    "precode": "return subSet;",
+    "aftercode": "return set;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.08,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 288,
+    "precode": "return new SetUniqueList(superSubList, subSet);",
+    "aftercode": "return new SetUniqueList(subSet, superSubList);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 1.61,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 288,
+    "precode": "return new SetUniqueList(superSubList, subSet);",
+    "aftercode": "return new SetUniqueList(superSubList, null);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 291,
+    "precode": "protected Set createSetBasedOnList(Set set, List list) {",
+    "aftercode": "protected Set createSetBasedOnList(List set, Set list) {",
+    "rule": "Parameter Type Swap",
+    "gen_time_s": 1.61,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 292,
+    "precode": "Set subSet = null;",
+    "aftercode": "Set subSet = new HashSet();",
+    "rule": "Initialization Change",
+    "gen_time_s": 1.61,
+    "dublicate": true
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/collections/list/SetUniqueList.java",
+    "line": 291,
+    "precode": "protected Set createSetBasedOnList(Set set, List list) {",
+    "aftercode": "protected Set createSetBasedOnList(Set set, List list) {",
+    "rule": "Method Signature Modification",
+    "gen_time_s": 1.61,
+    "dublicate": true
+  }
+]

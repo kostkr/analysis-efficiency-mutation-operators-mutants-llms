@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 94,
+    "precode": "StringBuffer result = new StringBuffer(length);",
+    "aftercode": "StringBuffer result = new StringBuffer(0);",
+    "rule": "Replacement Value",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 95,
+    "precode": "int          end = offset + length;",
+    "aftercode": "int          end = offset - length;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 95,
+    "precode": "int          end = offset + length;",
+    "aftercode": "int          end = offset;",
+    "rule": "Assignment",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 97,
+    "precode": "for (int i = offset; i < end; ++i) {",
+    "aftercode": "for (int i = offset; i <= end; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 97,
+    "precode": "for (int i = offset; i < end; ++i) {",
+    "aftercode": "for (int i = offset + 1; i < end; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 97,
+    "precode": "for (int i = offset; i < end; ++i) {",
+    "aftercode": "for (int i = offset; i > end; ++i) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 98,
+    "precode": "byte b = buffer[i];",
+    "aftercode": "byte b = buffer[offset];",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 99,
+    "precode": "if (b == 0) { // Trailing null",
+    "aftercode": "if (b != 0) { // Trailing null",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 99,
+    "precode": "if (b == 0) { // Trailing null",
+    "aftercode": "if (b <= 0) { // Trailing null",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 102,
+    "precode": "result.append((char) (b & 0xFF)); // Allow for sign-extension",
+    "aftercode": "result.append((char) (b & 0x7F)); // Allow for sign-extension",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 102,
+    "precode": "result.append((char) (b & 0xFF)); // Allow for sign-extension",
+    "aftercode": "result.append((char) (b)); // Allow for sign-extension",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 102,
+    "precode": "result.append((char) (b & 0xFF)); // Allow for sign-extension",
+    "aftercode": "result.append((char) (b | 0xFF)); // Allow for sign-extension",
+    "rule": "Bitwise Operator",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 103,
+    "precode": "}",
+    "aftercode": "result.append((char) (b & 0xFF));",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/compress/archivers/tar/TarUtils.java",
+    "line": 105,
+    "precode": "return result.toString();",
+    "aftercode": "return \"\";",
+    "rule": "Return Value",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/collections4/list/SetUniqueList.java",
+    "line": 330,
+    "precode": "public List<E> subList(final int fromIndex, final int toIndex) {",
+    "aftercode": "public List<E> subList(final int fromIndex, final int toIndex) { throw new UnsupportedOperationException(); }",
+    "rule": "Method Return Value",
+    "gen_time_s": 3.08,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/collections4/list/SetUniqueList.java",
+    "line": 331,
+    "precode": "final List<E> superSubList = super.subList(fromIndex, toIndex);",
+    "aftercode": "final List<E> superSubList = super.subList(toIndex, fromIndex);",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.08,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/collections4/list/SetUniqueList.java",
+    "line": 332,
+    "precode": "final Set<E> subSet = createSetBasedOnList(set, superSubList);",
+    "aftercode": "final Set<E> subSet = createSetBasedOnList(superSubList, set);",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.08,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/collections4/list/SetUniqueList.java",
+    "line": 332,
+    "precode": "final Set<E> subSet = createSetBasedOnList(set, superSubList);",
+    "aftercode": "final Set<E> subSet = createSetBasedOnList(set, new ArrayList<>());",
+    "rule": "Literal Insertion",
+    "gen_time_s": 3.08,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/collections4/list/SetUniqueList.java",
+    "line": 333,
+    "precode": "return ListUtils.unmodifiableList(new SetUniqueList<E>(superSubList, subSet));",
+    "aftercode": "return ListUtils.unmodifiableList(new SetUniqueList<E>(subSet, superSubList));",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.08,
+    "dublicate": false
+  }
+]

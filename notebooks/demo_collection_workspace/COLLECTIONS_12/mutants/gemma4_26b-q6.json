@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 821,
+    "precode": "for (Iterator it = props.getKeys(); it.hasNext();) {",
+    "aftercode": "for (Iterator it = props.getKeys(); true;) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 821,
+    "precode": "for (Iterator it = props.getKeys(); it.hasNext();) {",
+    "aftercode": "for (Iterator it = props.getKeys(); false;) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 822,
+    "precode": "String key = (String) it.next();",
+    "aftercode": "String key = (String) it.previous();",
+    "rule": "Iterator Direction",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 823,
+    "precode": "clearProperty(key);",
+    "aftercode": "// clearProperty(key);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 824,
+    "precode": "addPropertyDirect(key, props.get(key));",
+    "aftercode": "addPropertyDirect(key, props.get(\" \"));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 824,
+    "precode": "addPropertyDirect(key, props.get(key));",
+    "aftercode": "addPropertyDirect(props.get(key), key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/collections/ExtendedProperties.java",
+    "line": 824,
+    "precode": "addPropertyDirect(key, props.get(key));",
+    "aftercode": "addPropertyDirect(key, null);",
+    "rule": "Null Value Injection",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  }
+]
