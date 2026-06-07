@@ -1,0 +1,772 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 585,
+    "precode": "throw new ArithmeticException(\"overflow: gcd is 2^31\");",
+    "aftercode": "throw (java.lang.ArithmeticException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 605,
+    "precode": "throw new ArithmeticException(\"overflow: gcd is 2^31\");",
+    "aftercode": "throw (java.lang.ArithmeticException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 602,
+    "precode": "u/=2; v/=2; k++; // cast out twos.",
+    "aftercode": "u/=2; v/=2; k--; // cast out twos.",
+    "rule": "Increments",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 590,
+    "precode": "if (Math.abs(u) == 1 || Math.abs(v) == 1) {",
+    "aftercode": "if (Math.abs(u) == 0 || Math.abs(v) == 1) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 590,
+    "precode": "if (Math.abs(u) == 1 || Math.abs(v) == 1) {",
+    "aftercode": "if (Math.abs(u) == 1 || Math.abs(v) == 0) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 591,
+    "precode": "return 1;",
+    "aftercode": "return 0;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 600,
+    "precode": "int k=0;",
+    "aftercode": "int k=1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while ((u&1)==0 && (v&0)==0 && k<31) { // while u and v are both even...",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while ((u&1)==0 && (v&1)==0 && k<32) { // while u and v are both even...",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 602,
+    "precode": "u/=2; v/=2; k++; // cast out twos.",
+    "aftercode": "u/=3; v/=2; k++; // cast out twos.",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 602,
+    "precode": "u/=2; v/=2; k++; // cast out twos.",
+    "aftercode": "u/=2; v/=3; k++; // cast out twos.",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 604,
+    "precode": "if (k==31) {",
+    "aftercode": "if (k==32) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 609,
+    "precode": "int t = ((u&1)==1) ? v : -(u/2)/*B3*/;",
+    "aftercode": "int t = ((u&1)==0) ? v : -(u/2)/*B3*/;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 609,
+    "precode": "int t = ((u&1)==1) ? v : -(u/2)/*B3*/;",
+    "aftercode": "int t = ((u&1)==1) ? v : -(u/3)/*B3*/;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 615,
+    "precode": "while ((t&1)==0) { // while t is even..",
+    "aftercode": "while ((t&0)==0) { // while t is even..",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 616,
+    "precode": "t/=2; // cast out twos",
+    "aftercode": "t/=3; // cast out twos",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 625,
+    "precode": "t = (v - u)/2;",
+    "aftercode": "t = (v - u)/3;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 629,
+    "precode": "return -u*(1<<k); // gcd is u*2^k",
+    "aftercode": "return -u*(0<<k); // gcd is u*2^k",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 597,
+    "precode": "if (u>0) { u=-u; } // make u negative",
+    "aftercode": "if (u>0) { u=u; } // make u negative",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 598,
+    "precode": "if (v>0) { v=-v; } // make v negative",
+    "aftercode": "if (v>0) { v=v; } // make v negative",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 609,
+    "precode": "int t = ((u&1)==1) ? v : -(u/2)/*B3*/;",
+    "aftercode": "int t = ((u&1)==1) ? v : (u/2)/*B3*/;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 620,
+    "precode": "u = -t;",
+    "aftercode": "u = t;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 629,
+    "precode": "return -u*(1<<k); // gcd is u*2^k",
+    "aftercode": "return u*(1<<k); // gcd is u*2^k",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 587,
+    "precode": "return Math.abs(u) + Math.abs(v);",
+    "aftercode": "return Math.abs(u) - Math.abs(v);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while ((u|1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while ((u&1)==0 && (v|1)==0 && k<31) { // while u and v are both even...",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 602,
+    "precode": "u/=2; v/=2; k++; // cast out twos.",
+    "aftercode": "u*=2; v/=2; k++; // cast out twos.",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 602,
+    "precode": "u/=2; v/=2; k++; // cast out twos.",
+    "aftercode": "u/=2; v*=2; k++; // cast out twos.",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 609,
+    "precode": "int t = ((u&1)==1) ? v : -(u/2)/*B3*/;",
+    "aftercode": "int t = ((u|1)==1) ? v : -(u/2)/*B3*/;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 609,
+    "precode": "int t = ((u&1)==1) ? v : -(u/2)/*B3*/;",
+    "aftercode": "int t = ((u&1)==1) ? v : -(u*2)/*B3*/;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 615,
+    "precode": "while ((t&1)==0) { // while t is even..",
+    "aftercode": "while ((t|1)==0) { // while t is even..",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 616,
+    "precode": "t/=2; // cast out twos",
+    "aftercode": "t*=2; // cast out twos",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 625,
+    "precode": "t = (v - u)/2;",
+    "aftercode": "t = (v + u)/2;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 625,
+    "precode": "t = (v - u)/2;",
+    "aftercode": "t = (v - u)*2;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 629,
+    "precode": "return -u*(1<<k); // gcd is u*2^k",
+    "aftercode": "return -u*(1>>k); // gcd is u*2^k",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 629,
+    "precode": "return -u*(1<<k); // gcd is u*2^k",
+    "aftercode": "return -u/(1<<k); // gcd is u*2^k",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 583,
+    "precode": "if ((u == 0) || (v == 0)) {",
+    "aftercode": "if ((u != 0) || (v == 0)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 583,
+    "precode": "if ((u == 0) || (v == 0)) {",
+    "aftercode": "if ((u == 0) || (v != 0)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 584,
+    "precode": "if ((u == Integer.MIN_VALUE) || (v == Integer.MIN_VALUE)) {",
+    "aftercode": "if ((u == Integer.MIN_VALUE) || (v != Integer.MIN_VALUE)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 590,
+    "precode": "if (Math.abs(u) == 1 || Math.abs(v) == 1) {",
+    "aftercode": "if (Math.abs(u) == 1 || Math.abs(v) != 1) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 597,
+    "precode": "if (u>0) { u=-u; } // make u negative",
+    "aftercode": "if (u<=0) { u=-u; } // make u negative",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 598,
+    "precode": "if (v>0) { v=-v; } // make v negative",
+    "aftercode": "if (v<=0) { v=-v; } // make v negative",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while ((u&1)==0 && (v&1)==0 && k>=31) { // while u and v are both even...",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 604,
+    "precode": "if (k==31) {",
+    "aftercode": "if (k!=31) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 609,
+    "precode": "int t = ((u&1)==1) ? v : -(u/2)/*B3*/;",
+    "aftercode": "int t = ((u&1)!=1) ? v : -(u/2)/*B3*/;",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 615,
+    "precode": "while ((t&1)==0) { // while t is even..",
+    "aftercode": "while ((t&1)!=0) { // while t is even..",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 619,
+    "precode": "if (t>0) {",
+    "aftercode": "if (t<=0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 628,
+    "precode": "} while (t!=0);",
+    "aftercode": "} while (t==0);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 587,
+    "precode": "return Math.abs(u) + Math.abs(v);",
+    "aftercode": "return 0 + Math.abs(v);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 587,
+    "precode": "return Math.abs(u) + Math.abs(v);",
+    "aftercode": "return Math.abs(u) + 0;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 590,
+    "precode": "if (Math.abs(u) == 1 || Math.abs(v) == 1) {",
+    "aftercode": "if (Math.abs(u) == 1 || 0 == 1) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 583,
+    "precode": "if ((u == 0) || (v == 0)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 584,
+    "precode": "if ((u == Integer.MIN_VALUE) || (v == Integer.MIN_VALUE)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 590,
+    "precode": "if (Math.abs(u) == 1 || Math.abs(v) == 1) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while (Boolean.FALSE) { // while u and v are both even...",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 604,
+    "precode": "if (k==31) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 628,
+    "precode": "} while (t!=0);",
+    "aftercode": "} while (false);",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 615,
+    "precode": "while ((t&1)==0) { // while t is even..",
+    "aftercode": "while (Boolean.FALSE) { // while t is even..",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 583,
+    "precode": "if ((u == 0) || (v == 0)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 584,
+    "precode": "if ((u == Integer.MIN_VALUE) || (v == Integer.MIN_VALUE)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 590,
+    "precode": "if (Math.abs(u) == 1 || Math.abs(v) == 1) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 601,
+    "precode": "while ((u&1)==0 && (v&1)==0 && k<31) { // while u and v are both even...",
+    "aftercode": "while (Boolean.TRUE) { // while u and v are both even...",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 604,
+    "precode": "if (k==31) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 628,
+    "precode": "} while (t!=0);",
+    "aftercode": "} while (true);",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 615,
+    "precode": "while ((t&1)==0) { // while t is even..",
+    "aftercode": "while (Boolean.TRUE) { // while t is even..",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 597,
+    "precode": "if (u>0) { u=-u; } // make u negative",
+    "aftercode": "if (false) { u=-u; } // make u negative",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 598,
+    "precode": "if (v>0) { v=-v; } // make v negative",
+    "aftercode": "if (false) { v=-v; } // make v negative",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 619,
+    "precode": "if (t>0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 597,
+    "precode": "if (u>0) { u=-u; } // make u negative",
+    "aftercode": "if (true) { u=-u; } // make u negative",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 598,
+    "precode": "if (v>0) { v=-v; } // make v negative",
+    "aftercode": "if (true) { v=-v; } // make v negative",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 619,
+    "precode": "if (t>0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 587,
+    "precode": "return Math.abs(u) + Math.abs(v);",
+    "aftercode": "return u + Math.abs(v);",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 587,
+    "precode": "return Math.abs(u) + Math.abs(v);",
+    "aftercode": "return Math.abs(u) + v;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 602,
+    "precode": "u/=2; v/=2; k++; // cast out twos.",
+    "aftercode": "u/=2; v/=2; ; // cast out twos.",
+    "rule": "Remove Increments",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 587,
+    "precode": "return Math.abs(u) + Math.abs(v);",
+    "aftercode": "return (Math.abs(u) + Math.abs(v)) == 0 ? 0 : 0;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 591,
+    "precode": "return 1;",
+    "aftercode": "return (1) == 0 ? 0 : 0;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/Fraction.java",
+    "line": 629,
+    "precode": "return -u*(1<<k); // gcd is u*2^k",
+    "aftercode": "return (-u*(1<<k)) == 0 ? 0 : 0; // gcd is u*2^k",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  }
+]

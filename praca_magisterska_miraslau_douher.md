@@ -677,11 +677,11 @@ Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić kosz
 
 > ✏️ **Wskazówka do pisania:** W tej części wprowadź czytelnika w dane, na których opiera się dalsza analiza. Napisz krótko, ile defektów i mutantów objęto badaniem, a następnie odwołuj się już tylko do poniższej tabeli. Nie opisuj tutaj interpretacji szczegółowych, ponieważ to należy do kolejnych podrozdziałów. Po tabeli dodaj 2–4 zdania ogólnego komentarza o skali eksperymentu i o tym, czy zebrany materiał jest wystarczający do odpowiedzi na pytania badawcze.
 
-Type    | CMR    | DMR   | EMR    | Mut.Score | LLM-NMR | RBDR   | AOR    | CR     | HAOR  | HOMR  | AMGT s  | CPUM s
---------+--------+-------+--------+-----------+---------+--------+--------+--------+-------+-------+---------+--------
-classic | 96.03% | 0.17% | 35.15% | 64.85%    | NA      | 97.13% | 23.08% | 26.84% | 2.01% | 3.82% | 16.7229 | 17.8869
-gemma4  | 87.43% | 9.75% | 31.39% | 68.61%    | 36.12%  | 97.99% | 24.55% | 35.01% | 1.72% | 7.03% | 18.2927 | 23.4888
-qwen3.6 | 90.25% | 8.91% | 29.94% | 70.06%    | 39.99%  | 97.71% | 25.45% | 35.76% | 3.72% | 7.10% | 17.8122 | 22.2399
+Type    | Mutants | CMR    | DMR   | EMR    | Mut.Score | LLM-NMR | RBDR   | AOR    | CR     | HAOR  | HOMR  | AMGT s  | CPUM s
+--------+---------+--------+-------+--------+-----------+---------+--------+--------+--------+-------+-------+---------+--------
+classic | 49258   | 94.35% | 0.11% | 35.96% | 64.04%    | NA      | 97.16% | 23.56% | 25.65% | 2.41% | 4.04% | 13.0824 | 14.2013
+gemma4  | 20741   | 88.26% | 8.72% | 31.04% | 68.96%    | 34.02%  | 98.03% | 24.93% | 36.05% | 2.19% | 7.44% | 15.7560 | 19.8118
+qwen3.6 | 19406   | 89.94% | 7.79% | 29.45% | 70.55%    | 37.61%  | 97.81% | 25.95% | 37.26% | 4.16% | 7.82% | 15.6404 | 19.3151
 
 > ✏️ **Jak napisać komentarz pod tabelą:** Najpierw wskaż, które różnice są największe. Następnie zaznacz, że ta tabela stanowi wspólną podstawę dla odpowiedzi na RQ1, RQ2 i RQ3. Nie powtarzaj już tych samych wartości w formie kolejnych tabel w dalszych sekcjach, tylko odwołuj się do danych zestawionych tutaj.
 

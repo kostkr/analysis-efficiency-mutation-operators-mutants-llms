@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 304,
+    "precode": "if (! statesInitialized) {",
+    "aftercode": "if (statesInitialized) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 308,
+    "precode": "statesInitialized = true;",
+    "aftercode": "statesInitialized = false;",
+    "rule": "Assignment",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 312,
+    "precode": "final int orderingSign = interpolator.isForward() ? +1 : -1;",
+    "aftercode": "final int orderingSign = interpolator.isForward() ? -1 : +1;",
+    "rule": "Ternary Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 317,
+    "precode": "return orderingSign * Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "aftercode": "return Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 323,
+    "precode": "if (state.evaluateStep(interpolator)) {",
+    "aftercode": "if (!state.evaluateStep(interpolator)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 333,
+    "precode": "final EventState currentEvent = iterator.next();",
+    "aftercode": "final EventState currentEvent = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 338,
+    "precode": "interpolator.setSoftPreviousTime(previousT);",
+    "aftercode": "interpolator.setSoftPreviousTime(0.0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 339,
+    "precode": "interpolator.setSoftCurrentTime(eventT);",
+    "aftercode": "interpolator.setSoftCurrentTime(previousT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 343,
+    "precode": "final double[] eventY = interpolator.getInterpolatedState().clone();",
+    "aftercode": "final double[] eventY = interpolator.getInterpolatedState();",
+    "rule": "Clone Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(currentT, eventY);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 348,
+    "precode": "isLastStep = isLastStep || state.stop();",
+    "aftercode": "isLastStep = isLastStep && state.stop();",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, !isLastStep);",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 358,
+    "precode": "System.arraycopy(eventY, 0, y, 0, y.length);",
+    "aftercode": "System.arraycopy(eventY, 0, y, 0, y.length - 1);",
+    "rule": "Array Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 364,
+    "precode": "needReset =  needReset || state.reset(eventT, eventY);",
+    "aftercode": "needReset =  needReset && state.reset(eventT, eventY);",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 369,
+    "precode": "System.arraycopy(eventY, 0, y, 0, y.length);",
+    "aftercode": "System.arraycopy(eventY, 0, y, 1, y.length);",
+    "rule": "Array Index",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 371,
+    "precode": "resetOccurred = true;",
+    "aftercode": "resetOccurred = false;",
+    "rule": "Assignment",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 377,
+    "precode": "interpolator.setSoftPreviousTime(eventT);",
+    "aftercode": "interpolator.setSoftPreviousTime(currentT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 378,
+    "precode": "interpolator.setSoftCurrentTime(currentT);",
+    "aftercode": "interpolator.setSoftCurrentTime(eventT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 381,
+    "precode": "if (currentEvent.evaluateStep(interpolator)) {",
+    "aftercode": "if (!currentEvent.evaluateStep(interpolator)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.remove(currentEvent);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(eventT, currentY);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 393,
+    "precode": "isLastStep = isLastStep || state.stop();",
+    "aftercode": "isLastStep = isLastStep || !state.stop();",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 395,
+    "precode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, 1);",
+    "aftercode": "isLastStep = isLastStep && Precision.equals(currentT, tEnd, 1);",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, true);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 402,
+    "precode": "return currentT;",
+    "aftercode": "return previousT;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  }
+]

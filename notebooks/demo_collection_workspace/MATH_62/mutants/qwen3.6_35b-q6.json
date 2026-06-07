@@ -1,0 +1,392 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 146,
+    "precode": "return optimize(f, goal, min, max, min + 0.5 * (max - min));",
+    "aftercode": "return optimize(f, goal, min, max, min + 0.5 * (min - max));",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 146,
+    "precode": "return optimize(f, goal, min, max, min + 0.5 * (max - min));",
+    "aftercode": "return optimize(f, goal, min, max, min + 0.5 * (max + min));",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 146,
+    "precode": "return optimize(f, goal, min, max, min + 0.5 * (max - min));",
+    "aftercode": "return optimize(f, goal, min, max, min + 0.6 * (max - min));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 146,
+    "precode": "return optimize(f, goal, min, max, min + 0.5 * (max - min));",
+    "aftercode": "return optimize(f, goal, min, max, max - 0.5 * (max - min));",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 146,
+    "precode": "return optimize(f, goal, min, max, min + 0.5 * (max - min));",
+    "aftercode": "return optimize(f, goal, min, max, min + 0.0 * (max - min));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 146,
+    "precode": "return optimize(f, goal, min, max, min + 0.5 * (max - min));",
+    "aftercode": "return optimize(f, goal, min, max, min + 1.0 * (max - min));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 154,
+    "precode": "optima = new UnivariateRealPointValuePair[starts];",
+    "aftercode": "optima = new UnivariateRealPointValuePair[0];",
+    "rule": "Array Creation",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 155,
+    "precode": "totalEvaluations = 0;",
+    "aftercode": "totalEvaluations = -1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 158,
+    "precode": "for (int i = 0; i < starts; ++i) {",
+    "aftercode": "for (int i = 0; i <= starts; ++i) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 160,
+    "precode": "final double s = (i == 0) ? startValue : min + generator.nextDouble() * (max - min);",
+    "aftercode": "final double s = (i == 0) ? startValue : min + generator.nextDouble() * (min - max);",
+    "rule": "Mathematical Transform",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 161,
+    "precode": "optima[i] = optimizer.optimize(f, goal, min, max, s);",
+    "aftercode": "optima[i] = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 163,
+    "precode": "optima[i] = null;",
+    "aftercode": "optima[i] = new UnivariateRealPointValuePair(0, 0);",
+    "rule": "Null Return",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 165,
+    "precode": "optima[i] = null;",
+    "aftercode": "optima[i] = new UnivariateRealPointValuePair(0, 0);",
+    "rule": "Null Return",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 168,
+    "precode": "final int usedEvaluations = optimizer.getEvaluations();",
+    "aftercode": "final int usedEvaluations = 0;",
+    "rule": "Value Change",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 169,
+    "precode": "optimizer.setMaxEvaluations(optimizer.getMaxEvaluations() - usedEvaluations);",
+    "aftercode": "optimizer.setMaxEvaluations(optimizer.getMaxEvaluations() + usedEvaluations);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 170,
+    "precode": "totalEvaluations += usedEvaluations;",
+    "aftercode": "totalEvaluations -= usedEvaluations;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 173,
+    "precode": "sortPairs(goal);",
+    "aftercode": "sortPairs(goal == GoalType.MAXIMIZE ? GoalType.MINIMIZE : GoalType.MAXIMIZE);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 175,
+    "precode": "if (optima[0] == null) {",
+    "aftercode": "if (optima[0] != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 176,
+    "precode": "throw new ConvergenceException(LocalizedFormats.NO_CONVERGENCE_WITH_ANY_START_POINT,\n                                             starts);",
+    "aftercode": "return null;",
+    "rule": "Exception Throw",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 181,
+    "precode": "return optima[0];",
+    "aftercode": "return optima[starts - 1];",
+    "rule": "Array Index",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 158,
+    "precode": "for (int i = 0; i < starts; ++i) {",
+    "aftercode": "for (int i = 1; i < starts; ++i) {",
+    "rule": "Loop Variable",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 160,
+    "precode": "final double s = (i == 0) ? startValue : min + generator.nextDouble() * (max - min);",
+    "aftercode": "final double s = (i == 0) ? max : min + generator.nextDouble() * (max - min);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 161,
+    "precode": "optima[i] = optimizer.optimize(f, goal, min, max, s);",
+    "aftercode": "optima[i] = optimizer.optimize(f, goal, max, min, s);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 169,
+    "precode": "optimizer.setMaxEvaluations(optimizer.getMaxEvaluations() - usedEvaluations);",
+    "aftercode": "optimizer.setMaxEvaluations(usedEvaluations);",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 170,
+    "precode": "totalEvaluations += usedEvaluations;",
+    "aftercode": "totalEvaluations = usedEvaluations;",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 175,
+    "precode": "if (optima[0] == null) {",
+    "aftercode": "if (optima[1] == null) {",
+    "rule": "Array Index",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 154,
+    "precode": "optima = new UnivariateRealPointValuePair[starts];",
+    "aftercode": "optima = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 162,
+    "precode": "} catch (FunctionEvaluationException fee) {",
+    "aftercode": "} catch (ConvergenceException fee) {",
+    "rule": "Exception Type",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 164,
+    "precode": "} catch (ConvergenceException ce) {",
+    "aftercode": "} catch (FunctionEvaluationException ce) {",
+    "rule": "Exception Type",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 168,
+    "precode": "final int usedEvaluations = optimizer.getEvaluations();",
+    "aftercode": "final int usedEvaluations = optimizer.getMaxEvaluations();",
+    "rule": "Method Call",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 169,
+    "precode": "optimizer.setMaxEvaluations(optimizer.getMaxEvaluations() - usedEvaluations);",
+    "aftercode": "optimizer.setMaxEvaluations(0);",
+    "rule": "Value Change",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 173,
+    "precode": "sortPairs(goal);",
+    "aftercode": "Arrays.sort(optima);",
+    "rule": "Method Call",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 176,
+    "precode": "throw new ConvergenceException(LocalizedFormats.NO_CONVERGENCE_WITH_ANY_START_POINT,\n                                             starts);",
+    "aftercode": "throw new FunctionEvaluationException(LocalizedFormats.NO_CONVERGENCE_WITH_ANY_START_POINT,\n                                             starts);",
+    "rule": "Exception Type",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 181,
+    "precode": "return optima[0];",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 155,
+    "precode": "totalEvaluations = 0;",
+    "aftercode": "totalEvaluations = 1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 160,
+    "precode": "final double s = (i == 0) ? startValue : min + generator.nextDouble() * (max - min);",
+    "aftercode": "final double s = (i != 0) ? startValue : min + generator.nextDouble() * (max - min);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 161,
+    "precode": "optima[i] = optimizer.optimize(f, goal, min, max, s);",
+    "aftercode": "optima[i] = optimizer.optimize(f, goal, min, max, min);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 163,
+    "precode": "optima[i] = null;",
+    "aftercode": "optima[i] = new UnivariateRealPointValuePair(min, Double.NaN);",
+    "rule": "Object Creation",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java",
+    "line": 175,
+    "precode": "if (optima[0] == null) {",
+    "aftercode": "if (optima.length == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  }
+]

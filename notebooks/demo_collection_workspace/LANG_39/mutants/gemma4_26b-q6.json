@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3612,
+    "precode": "if (text == null || text.length() == 0 || searchList == null ||",
+    "aftercode": "if (text == null && text.length() == 0 || searchList == null ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3613,
+    "precode": "searchList.length == 0 || replacementList == null || replacementList.length == 0)",
+    "aftercode": "searchList.length == 0 || replacementList == null || replacementList.length > 0)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3619,
+    "precode": "if (timeToLive < 0) {",
+    "aftercode": "if (timeToLive <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3627,
+    "precode": "if (searchLength != replacementLength) {",
+    "aftercode": "if (searchLength == replacementLength) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3644,
+    "precode": "for (int i = 0; i < searchLength; i++) {",
+    "aftercode": "for (int i = 0; i <= searchLength; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3645,
+    "precode": "if (noMoreMatchesForReplIndex[i] || searchList[i] == null ||",
+    "aftercode": "if (noMoreMatchesForReplIndex[i] && searchList[i] == null ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3653,
+    "precode": "if (tempIndex == -1) {",
+    "aftercode": "if (tempIndex != -1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3656,
+    "precode": "if (textIndex == -1 || tempIndex < textIndex) {",
+    "aftercode": "if (textIndex == -1 && tempIndex < textIndex) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3656,
+    "precode": "if (textIndex == -1 || tempIndex < textIndex) {",
+    "aftercode": "if (textIndex == -1 || tempIndex <= textIndex) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3675,
+    "precode": "for (int i = 0; i < searchList.length; i++) {",
+    "aftercode": "for (int i = 1; i < searchList.length; i++) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3679,
+    "precode": "int greater = replacementList[i].length() - searchList[i].length();",
+    "aftercode": "int greater = replacementList[i].length() + searchList[i].length();",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3680,
+    "precode": "if (greater > 0) {",
+    "aftercode": "if (greater >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3681,
+    "precode": "increase += 3 * greater; // assume 3 matches",
+    "aftercode": "increase += 3 / greater; // assume 3 matches",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3685,
+    "precode": "increase = Math.min(increase, text.length() / 5);",
+    "aftercode": "increase = Math.max(increase, text.length() / 5);",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3687,
+    "precode": "StringBuilder buf = new StringBuilder(text.length() + increase);",
+    "aftercode": "StringBuilder buf = new StringBuilder(text.length() - increase);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3691,
+    "precode": "for (int i = start; i < textIndex; i++) {",
+    "aftercode": "for (int i = start; i <= textIndex; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3694,
+    "precode": "buf.append(replacementList[replaceIndex]);",
+    "aftercode": "buf.append(replacementList[0]);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3696,
+    "precode": "start = textIndex + searchList[replaceIndex].length();",
+    "aftercode": "start = textIndex - searchList[replaceIndex].length();",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3704,
+    "precode": "if (noMoreMatchesForReplIndex[i] || searchList[i] == null ||",
+    "aftercode": "if (noMoreMatchesForReplIndex[i] || searchList[i] != null ||",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3709,
+    "precode": "tempIndex = text.indexOf(searchList[i], start);",
+    "aftercode": "tempIndex = text.indexOf(searchList[i], 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3712,
+    "precode": "if (tempIndex == -1) {",
+    "aftercode": "if (tempIndex == 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3715,
+    "precode": "if (textIndex == -1 || tempIndex < textIndex) {",
+    "aftercode": "if (textIndex != -1 || tempIndex < textIndex) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3725,
+    "precode": "for (int i = start; i < textLength; i++) {",
+    "aftercode": "for (int i = start; i > textLength; i++) {",
+    "rule": "Loop Condition",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3729,
+    "precode": "if (!repeat) {",
+    "aftercode": "if (repeat) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/lang3/StringUtils.java",
+    "line": 3733,
+    "precode": "return replaceEach(result, searchList, replacementList, repeat, timeToLive - 1);",
+    "aftercode": "return replaceEach(result, searchList, replacementList, repeat, timeToLive);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  }
+]

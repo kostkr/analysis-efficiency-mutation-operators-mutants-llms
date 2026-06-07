@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 173,
+    "precode": "final double n1n2prod = n1 * n2;",
+    "aftercode": "final double n1n2prod = n1 + n2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 176,
+    "precode": "final double EU = n1n2prod / 2.0;",
+    "aftercode": "final double EU = n1n2prod * 2.0;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 176,
+    "precode": "final double EU = n1n2prod / 2.0;",
+    "aftercode": "final double EU = n1n2prod / 1.0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 177,
+    "precode": "final double VarU = n1n2prod * (n1 + n2 + 1) / 12.0;",
+    "aftercode": "final double VarU = n1n2prod * (n1 + n2) / 12.0;",
+    "rule": "Boundary Value Error",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 177,
+    "precode": "final double VarU = n1n2prod * (n1 + n2 + 1) / 12.0;",
+    "aftercode": "final double VarU = n1n2prod * (n1 + n2 + 1) / 11.0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 177,
+    "precode": "final double VarU = n1n2prod * (n1 + n2 + 1) / 12.0;",
+    "aftercode": "final double VarU = n1n2prod * (n1 + n2 + 1) * 12.0;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 179,
+    "precode": "final double z = (Umin - EU) / FastMath.sqrt(VarU);",
+    "aftercode": "final double z = (Umin + EU) / FastMath.sqrt(VarU);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 179,
+    "precode": "final double z = (Umin - EU) / FastMath.sqrt(VarU);",
+    "aftercode": "final double z = (Umin - EU) * FastMath.sqrt(VarU);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 179,
+    "precode": "final double z = (Umin - EU) / FastMath.sqrt(VarU);",
+    "aftercode": "final double z = (Umin - EU) / FastMath.sqrt(VarU + 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 181,
+    "precode": "final NormalDistribution standardNormal = new NormalDistribution(0, 1);",
+    "aftercode": "final NormalDistribution standardNormal = new NormalDistribution(1, 1);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 181,
+    "precode": "final NormalDistribution standardNormal = new NormalDistribution(0, 1);",
+    "aftercode": "final NormalDistribution standardNormal = new NormalDistribution(0, 0);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 183,
+    "precode": "return 2 * standardNormal.cumulativeProbability(z);",
+    "aftercode": "return standardNormal.cumulativeProbability(z);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 183,
+    "precode": "return 2 * standardNormal.cumulativeProbability(z);",
+    "aftercode": "return -2 * standardNormal.cumulativeProbability(z);",
+    "rule": "Sign Change",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 183,
+    "precode": "return 2 * standardNormal.cumulativeProbability(z);",
+    "aftercode": "return 2 / standardNormal.cumulativeProbability(z);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 173,
+    "precode": "final double n1n2prod = n1 * n2;",
+    "aftercode": "final double n1n2prod = (double) n1 * n2;",
+    "rule": "No Change (Identity)",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 179,
+    "precode": "final double z = (Umin - EU) / FastMath.sqrt(VarU);",
+    "aftercode": "final double z = (Umin - EU) / FastMath.abs(VarU);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java",
+    "line": 183,
+    "precode": "return 2 * standardNormal.cumulativeProbability(z);",
+    "aftercode": "return 2 * standardNormal.cumulativeProbability(-z);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  }
+]

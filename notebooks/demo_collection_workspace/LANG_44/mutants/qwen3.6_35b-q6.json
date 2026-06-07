@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 145,
+    "precode": "if (val.length() == 1 && !Character.isDigit(val.charAt(0))) {",
+    "aftercode": "if (val.length() == 1 || !Character.isDigit(val.charAt(0))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 148,
+    "precode": "if (val.startsWith(\"--\")) {",
+    "aftercode": "if (val.startsWith(\"-\")) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 155,
+    "precode": "if (val.startsWith(\"0x\") || val.startsWith(\"-0x\")) {",
+    "aftercode": "if (val.startsWith(\"0x\") && val.startsWith(\"-0x\")) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 162,
+    "precode": "int decPos = val.indexOf('.');",
+    "aftercode": "int decPos = val.lastIndexOf('.');",
+    "rule": "Function Call Mutator",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 163,
+    "precode": "int expPos = val.indexOf('e') + val.indexOf('E') + 1;",
+    "aftercode": "int expPos = val.indexOf('e') * val.indexOf('E') + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 168,
+    "precode": "if (expPos < decPos) {",
+    "aftercode": "if (expPos <= decPos) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 171,
+    "precode": "dec = val.substring(decPos + 1, expPos);",
+    "aftercode": "dec = val.substring(decPos, expPos);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 175,
+    "precode": "mant = val.substring(0, decPos);",
+    "aftercode": "mant = val.substring(0, decPos + 1);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 178,
+    "precode": "mant = val.substring(0, expPos);",
+    "aftercode": "mant = val.substring(0, expPos + 1);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 185,
+    "precode": "if (expPos > -1 && expPos < val.length() - 1) {",
+    "aftercode": "if (expPos > -1 && expPos < val.length()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 186,
+    "precode": "exp = val.substring(expPos + 1, val.length() - 1);",
+    "aftercode": "exp = val.substring(expPos + 1, val.length());",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 192,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 196,
+    "precode": "if (dec == null",
+    "aftercode": "if (dec != null",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 212,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() && (f.floatValue() == 0.0F && !allZeros))) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 226,
+    "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() && (d.floatValue() == 0.0D && !allZeros))) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 245,
+    "precode": "if (expPos > -1 && expPos < val.length() - 1) {",
+    "aftercode": "if (expPos > -1 && expPos < val.length()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 250,
+    "precode": "if (dec == null && exp == null) {",
+    "aftercode": "if (dec == null || exp == null) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 266,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 269,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() && (f.floatValue() == 0.0F && !allZeros))) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 277,
+    "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() && (d.doubleValue() == 0.0D && !allZeros))) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  }
+]

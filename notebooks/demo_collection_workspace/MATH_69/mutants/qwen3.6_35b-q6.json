@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 161,
+    "precode": "TDistribution tDistribution = new TDistributionImpl(nObs - 2);",
+    "aftercode": "TDistribution tDistribution = new TDistributionImpl(nObs - 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 161,
+    "precode": "TDistribution tDistribution = new TDistributionImpl(nObs - 2);",
+    "aftercode": "TDistribution tDistribution = new TDistributionImpl(nObs + 2);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 162,
+    "precode": "int nVars = correlationMatrix.getColumnDimension();",
+    "aftercode": "int nVars = correlationMatrix.getRowDimension();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 167,
+    "precode": "out[i][j] = 0d;",
+    "aftercode": "out[i][j] = 1d;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 167,
+    "precode": "out[i][j] = 0d;",
+    "aftercode": "out[i][j] = -1d;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 170,
+    "precode": "double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 - r * r)));",
+    "aftercode": "double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 + r * r)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 170,
+    "precode": "double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 - r * r)));",
+    "aftercode": "double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 - r)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 170,
+    "precode": "double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 - r * r)));",
+    "aftercode": "double t = Math.abs(r * Math.sqrt((nObs - 2)/(r * r - 1)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 171,
+    "precode": "out[i][j] = 2 * tDistribution.cumulativeProbability(-t);",
+    "aftercode": "out[i][j] = 2 * tDistribution.cumulativeProbability(t);",
+    "rule": "Argument Negation",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 171,
+    "precode": "out[i][j] = 2 * tDistribution.cumulativeProbability(-t);",
+    "aftercode": "out[i][j] = 1 - 2 * tDistribution.cumulativeProbability(-t);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 171,
+    "precode": "out[i][j] = 2 * tDistribution.cumulativeProbability(-t);",
+    "aftercode": "out[i][j] = tDistribution.cumulativeProbability(-t);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 171,
+    "precode": "out[i][j] = 2 * tDistribution.cumulativeProbability(-t);",
+    "aftercode": "out[i][j] = 0.5 * tDistribution.cumulativeProbability(-t);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 175,
+    "precode": "return new BlockRealMatrix(out);",
+    "aftercode": "return new BlockRealMatrix(out.transpose());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 166,
+    "precode": "if (i == j) {",
+    "aftercode": "if (i != j) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 165,
+    "precode": "for (int j = 0; j < nVars; j++) {",
+    "aftercode": "for (int j = 0; j <= nVars; j++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 164,
+    "precode": "for (int i = 0; i < nVars; i++) {",
+    "aftercode": "for (int i = 0; i <= nVars; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java",
+    "line": 169,
+    "precode": "double r = correlationMatrix.getEntry(i, j);",
+    "aftercode": "double r = correlationMatrix.getEntry(j, i);",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.24,
+    "dublicate": false
+  }
+]

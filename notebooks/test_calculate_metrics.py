@@ -538,6 +538,56 @@ class CalculateMetricsTest(unittest.TestCase):
         self.assertEqual(metrics.invalid, 2)
         self.assertEqual(metrics.cmr, 1.0)
 
+    def test_metrics_row_shows_generated_count_as_a_separate_column(self) -> None:
+        tmp, workspace = self.make_bug_workspace(
+            {
+                "gemma4_model.json": [
+                    self.mutant(1, "return 1;"),
+                    self.mutant(2, "return 2;"),
+                    self.mutant(3, "return 3;"),
+                ]
+            },
+            {
+                "gemma4_model.json": [
+                    self.result(1, failing_tests=[]),
+                    self.result(2, failing_tests=["T1"]),
+                    self.result(3, compiled=False, compile_error="javac"),
+                ]
+            },
+        )
+        with tmp:
+            bug = cm.load_bugs(workspace, ())[0]
+            metrics = cm.calculate_metrics("BUG_1", "gemma4", (bug,))
+
+        row = cm.metrics_row(metrics)
+        self.assertEqual(row[0], "gemma4")
+        self.assertEqual(row[1], "3")
+        self.assertIn("Mutants", cm.CHAPTER_5_METRICS)
+
+    def test_generated_count_includes_duplicates_and_missing_results(self) -> None:
+        tmp, workspace = self.make_bug_workspace(
+            {
+                "gemma4_model.json": [
+                    self.mutant(1, "return 2;"),
+                    self.mutant(2, "return 2; // duplicate"),
+                    self.mutant(3, "return 3;"),
+                ]
+            },
+            {
+                "gemma4_model.json": [
+                    self.result(1, failing_tests=[]),
+                    self.result(2, failing_tests=[]),
+                ]
+            },
+        )
+        with tmp:
+            bug = cm.load_bugs(workspace, ())[0]
+            metrics = cm.calculate_metrics("BUG_1", "gemma4", (bug,))
+
+        self.assertEqual(metrics.generated, 3)
+        self.assertEqual(metrics.duplicates, 1)
+        self.assertEqual(metrics.missing_results, 1)
+
     def test_bug_total_uses_meta_input_mutants(self) -> None:
         tmp, workspace = self.make_bug_workspace(
             {

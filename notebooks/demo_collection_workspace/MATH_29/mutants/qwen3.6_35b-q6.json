@@ -1,0 +1,432 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 342,
+    "precode": "checkVectorDimensions(v.getDimension());",
+    "aftercode": "checkVectorDimensions(this.getDimension());",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 343,
+    "precode": "OpenMapRealVector res = new OpenMapRealVector(this);",
+    "aftercode": "OpenMapRealVector res = new OpenMapRealVector();",
+    "rule": "Constructor Removal",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 349,
+    "precode": "final int n = getDimension();",
+    "aftercode": "final int n = getDimension() + 1;",
+    "rule": "Arithmetic Addition",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 350,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 1; i < n; i++) {",
+    "rule": "Loop Condition Value",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 350,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i <= n; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 350,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i < n - 1; i++) {",
+    "rule": "Loop Condition Value",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 351,
+    "precode": "res.setEntry(i, this.getEntry(i) / v.getEntry(i));",
+    "aftercode": "res.setEntry(i, this.getEntry(i) * v.getEntry(i));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 351,
+    "precode": "res.setEntry(i, this.getEntry(i) / v.getEntry(i));",
+    "aftercode": "res.setEntry(i, this.getEntry(i) + v.getEntry(i));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 351,
+    "precode": "res.setEntry(i, this.getEntry(i) / v.getEntry(i));",
+    "aftercode": "res.setEntry(i, v.getEntry(i) / this.getEntry(i));",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 351,
+    "precode": "res.setEntry(i, this.getEntry(i) / v.getEntry(i));",
+    "aftercode": "res.setEntry(i, this.getEntry(i) - v.getEntry(i));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 351,
+    "precode": "res.setEntry(i, this.getEntry(i) / v.getEntry(i));",
+    "aftercode": "res.setEntry(i, 0);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 353,
+    "precode": "return res;",
+    "aftercode": "return new OpenMapRealVector();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 343,
+    "precode": "OpenMapRealVector res = new OpenMapRealVector(this);",
+    "aftercode": "OpenMapRealVector res = new OpenMapRealVector(v);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 351,
+    "precode": "res.setEntry(i, this.getEntry(i) / v.getEntry(i));",
+    "aftercode": "res.setEntry(i, this.getEntry(i) % v.getEntry(i));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 3.23,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 364,
+    "precode": "res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));",
+    "aftercode": "res.setEntry(iter.key(), iter.value() + v.getEntry(iter.key()));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 364,
+    "precode": "res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));",
+    "aftercode": "res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 364,
+    "precode": "res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));",
+    "aftercode": "res.setEntry(iter.key(), v.getEntry(iter.key()) * iter.value());",
+    "rule": "Operand Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 373,
+    "precode": "if (v.isNaN() || v.isInfinite()) {",
+    "aftercode": "if (v.isNaN() && v.isInfinite()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 373,
+    "precode": "if (v.isNaN() || v.isInfinite()) {",
+    "aftercode": "if (!v.isNaN() && !v.isInfinite()) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 373,
+    "precode": "if (v.isNaN() || v.isInfinite()) {",
+    "aftercode": "if (v.isInfinite() || v.isNaN()) {",
+    "rule": "Condition Order Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 377,
+    "precode": "if (Double.isNaN(y)) {",
+    "aftercode": "if (!Double.isNaN(y)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 377,
+    "precode": "if (Double.isNaN(y)) {",
+    "aftercode": "if (Double.isInfinite(y)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 379,
+    "precode": "} else if (Double.isInfinite(y)) {",
+    "aftercode": "} else if (!Double.isInfinite(y)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 379,
+    "precode": "} else if (Double.isInfinite(y)) {",
+    "aftercode": "} else if (Double.isNaN(y)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 381,
+    "precode": "res.setEntry(i, x * y);",
+    "aftercode": "res.setEntry(i, x + y);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 381,
+    "precode": "res.setEntry(i, x * y);",
+    "aftercode": "res.setEntry(i, y * x);",
+    "rule": "Operand Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 381,
+    "precode": "res.setEntry(i, x * y);",
+    "aftercode": "res.setEntry(i, 0);",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 375,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i <= n; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 375,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 1; i < n; i++) {",
+    "rule": "Loop Start Value Change",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 375,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i < n - 1; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 375,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i <= n - 2; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 376,
+    "precode": "final double y = v.getEntry(i);",
+    "aftercode": "final double y = v.getEntry(i + 1);",
+    "rule": "Index Shift",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 376,
+    "precode": "final double y = v.getEntry(i);",
+    "aftercode": "final double y = this.getEntry(i);",
+    "rule": "Object Reference Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 380,
+    "precode": "final double x = this.getEntry(i);",
+    "aftercode": "final double x = v.getEntry(i);",
+    "rule": "Object Reference Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 380,
+    "precode": "final double x = this.getEntry(i);",
+    "aftercode": "final double x = this.getEntry(i + 1);",
+    "rule": "Index Shift",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 380,
+    "precode": "final double x = this.getEntry(i);",
+    "aftercode": "final double x = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 360,
+    "precode": "OpenMapRealVector res = new OpenMapRealVector(this);",
+    "aftercode": "OpenMapRealVector res = new OpenMapRealVector(v);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 360,
+    "precode": "OpenMapRealVector res = new OpenMapRealVector(this);",
+    "aftercode": "OpenMapRealVector res = new OpenMapRealVector(n);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 361,
+    "precode": "Iterator iter = entries.iterator();",
+    "aftercode": "Iterator iter = new ArrayList().iterator();",
+    "rule": "Object Creation Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 363,
+    "precode": "iter.advance();",
+    "aftercode": "// iter.advance();",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 363,
+    "precode": "iter.advance();",
+    "aftercode": "iter.next();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 364,
+    "precode": "res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));",
+    "aftercode": "res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()) + 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java",
+    "line": 378,
+    "precode": "res.setEntry(i, Double.NaN);",
+    "aftercode": "res.setEntry(i, 0);",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.41,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,642 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 259,
+    "precode": "mant = new int[field.getRadixDigits()];",
+    "aftercode": "mant = new int[field.getRadixDigits() - 1];",
+    "rule": "Array Index Offset",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 260,
+    "precode": "sign = 1;",
+    "aftercode": "sign = 0;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 261,
+    "precode": "exp = 0;",
+    "aftercode": "exp = 1;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 265,
+    "precode": "long bits = Double.doubleToLongBits(x);",
+    "aftercode": "long bits = Double.doubleToLongBits(-x);",
+    "rule": "Negation",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 266,
+    "precode": "long mantissa = bits & 0x000fffffffffffffL;",
+    "aftercode": "long mantissa = bits & 0x000fffffffffffffL;",
+    "rule": "Bitwise Mask Change",
+    "gen_time_s": 2.55,
+    "dublicate": true
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 267,
+    "precode": "int exponent = (int) ((bits & 0x7ff0000000000000L) >> 52) - 1023;",
+    "aftercode": "int exponent = (int) ((bits & 0x7ff0000000000000L) >> 52) - 1024;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 269,
+    "precode": "if (exponent == -1023) {",
+    "aftercode": "if (exponent <= -1023) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 271,
+    "precode": "if (x == 0) {",
+    "aftercode": "if (x != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 273,
+    "precode": "if ((bits & 0x8000000000000000L) != 0) {",
+    "aftercode": "if ((bits & 0x8000000000000000L) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 274,
+    "precode": "sign = -1;",
+    "aftercode": "sign = 1;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 279,
+    "precode": "exponent++;",
+    "aftercode": "exponent--;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 282,
+    "precode": "while ( (mantissa & 0x0010000000000000L) == 0) {",
+    "aftercode": "while ( (mantissa & 0x0010000000000000L) != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 283,
+    "precode": "exponent--;",
+    "aftercode": "exponent++;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 284,
+    "precode": "mantissa <<= 1;",
+    "aftercode": "mantissa >>= 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 286,
+    "precode": "mantissa &= 0x000fffffffffffffL;",
+    "aftercode": "mantissa &= 0x000fffffffffffffL;",
+    "rule": "Bitwise Mask Change",
+    "gen_time_s": 2.55,
+    "dublicate": true
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 289,
+    "precode": "if (exponent == 1024) {",
+    "aftercode": "if (exponent >= 1024) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 291,
+    "precode": "if (x != x) {",
+    "aftercode": "if (x == x) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 292,
+    "precode": "sign = (byte) 1;",
+    "aftercode": "sign = (byte) -1;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 294,
+    "precode": "} else if (x < 0) {",
+    "aftercode": "} else if (x <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 295,
+    "precode": "sign = (byte) -1;",
+    "aftercode": "sign = (byte) 1;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 298,
+    "precode": "sign = (byte) 1;",
+    "aftercode": "sign = (byte) -1;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 304,
+    "precode": "Dfp xdfp = new Dfp(field, mantissa);",
+    "aftercode": "Dfp xdfp = new Dfp(field, 0);",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 305,
+    "precode": "xdfp = xdfp.divide(new Dfp(field, 4503599627370496l)).add(field.getOne());  // Divide by 2^52, then add one",
+    "aftercode": "xdfp = xdfp.divide(new Dfp(field, 4503599627370496l)).subtract(field.getOne());  // Divide by 2^52, then add one",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 306,
+    "precode": "xdfp = xdfp.multiply(DfpMath.pow(field.getTwo(), exponent));",
+    "aftercode": "xdfp = xdfp.multiply(DfpMath.pow(field.getTwo(), exponent - 1));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 308,
+    "precode": "if ((bits & 0x8000000000000000L) != 0) {",
+    "aftercode": "if ((bits & 0x8000000000000000L) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 309,
+    "precode": "xdfp = xdfp.negate();",
+    "aftercode": "xdfp = xdfp.abs();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 312,
+    "precode": "System.arraycopy(xdfp.mant, 0, mant, 0, mant.length);",
+    "aftercode": "System.arraycopy(xdfp.mant, 1, mant, 0, mant.length);",
+    "rule": "Array Index Offset",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 313,
+    "precode": "sign = xdfp.sign;",
+    "aftercode": "sign = -xdfp.sign;",
+    "rule": "Negation",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 314,
+    "precode": "exp  = xdfp.exp;",
+    "aftercode": "exp  = -xdfp.exp;",
+    "rule": "Negation",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 315,
+    "precode": "nans = xdfp.nans;",
+    "aftercode": "nans = FINITE;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2309,
+    "precode": "if (lessThan(getZero())) {",
+    "aftercode": "if (greaterThan(getZero())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2310,
+    "precode": "return Double.NEGATIVE_INFINITY;",
+    "aftercode": "return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2312,
+    "precode": "return Double.POSITIVE_INFINITY;",
+    "aftercode": "return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2317,
+    "precode": "return Double.NaN;",
+    "aftercode": "return 0.0;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2323,
+    "precode": "if (cmp0 == 0) {",
+    "aftercode": "if (cmp0 != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2324,
+    "precode": "return sign < 0 ? -0.0 : +0.0;",
+    "aftercode": "return sign < 0 ? +0.0 : -0.0;",
+    "rule": "Conditional Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2325,
+    "precode": "} else if (cmp0 < 0) {",
+    "aftercode": "} else if (cmp0 > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2327,
+    "precode": "negate = true;",
+    "aftercode": "negate = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2332,
+    "precode": "int exponent = (int)(y.log10() * 3.32);",
+    "aftercode": "int exponent = (int)(y.log10() * 3.33);",
+    "rule": "Math Constant Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2333,
+    "precode": "if (exponent < 0) {",
+    "aftercode": "if (exponent <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2334,
+    "precode": "exponent--;",
+    "aftercode": "exponent++;",
+    "rule": "Increment/Decrement Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2338,
+    "precode": "while (tempDfp.lessThan(y) || tempDfp.equals(y)) {",
+    "aftercode": "while (tempDfp.lessThan(y) && tempDfp.equals(y)) {",
+    "rule": "Conditional Operator Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2339,
+    "precode": "tempDfp = tempDfp.multiply(2);",
+    "aftercode": "tempDfp = tempDfp.multiply(3);",
+    "rule": "Math Argument Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2340,
+    "precode": "exponent++;",
+    "aftercode": "exponent--;",
+    "rule": "Increment/Decrement Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2342,
+    "precode": "exponent--;",
+    "aftercode": "exponent++;",
+    "rule": "Increment/Decrement Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2347,
+    "precode": "if (exponent > -1023) {",
+    "aftercode": "if (exponent >= -1023) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2348,
+    "precode": "y = y.subtract(getOne());",
+    "aftercode": "y = y.add(getOne());",
+    "rule": "Math Operator Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2351,
+    "precode": "if (exponent < -1074) {",
+    "aftercode": "if (exponent <= -1074) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2352,
+    "precode": "return 0;",
+    "aftercode": "return 0.0;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2355,
+    "precode": "if (exponent > 1023) {",
+    "aftercode": "if (exponent >= 1023) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2356,
+    "precode": "return negate ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;",
+    "aftercode": "return negate ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;",
+    "rule": "Conditional Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2360,
+    "precode": "y = y.multiply(newInstance(4503599627370496l)).rint();",
+    "aftercode": "y = y.multiply(newInstance(4503599627370495l)).rint();",
+    "rule": "Math Argument Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2362,
+    "precode": "str = str.substring(0, str.length()-1);",
+    "aftercode": "str = str.substring(0, str.length());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2365,
+    "precode": "if (mantissa == 4503599627370496L) {",
+    "aftercode": "if (mantissa != 4503599627370496L) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2367,
+    "precode": "mantissa = 0;",
+    "aftercode": "mantissa = 1;",
+    "rule": "Math Argument Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2368,
+    "precode": "exponent++;",
+    "aftercode": "exponent--;",
+    "rule": "Increment/Decrement Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2372,
+    "precode": "if (exponent <= -1023) {",
+    "aftercode": "if (exponent < -1023) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2373,
+    "precode": "exponent--;",
+    "aftercode": "exponent++;",
+    "rule": "Increment/Decrement Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2376,
+    "precode": "while (exponent < -1023) {",
+    "aftercode": "while (exponent <= -1023) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2377,
+    "precode": "exponent++;",
+    "aftercode": "exponent--;",
+    "rule": "Increment/Decrement Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2378,
+    "precode": "mantissa >>>= 1;",
+    "aftercode": "mantissa <<= 1;",
+    "rule": "Bitwise Operator Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2381,
+    "precode": "long bits = mantissa | ((exponent + 1023L) << 52);",
+    "aftercode": "long bits = mantissa & ((exponent + 1023L) << 52);",
+    "rule": "Bitwise Operator Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2384,
+    "precode": "if (negate) {",
+    "aftercode": "if (!negate) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math/dfp/Dfp.java",
+    "line": 2385,
+    "precode": "x = -x;",
+    "aftercode": "x = x;",
+    "rule": "Math Operator Mutator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  }
+]

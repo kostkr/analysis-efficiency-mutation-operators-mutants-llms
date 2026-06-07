@@ -1,0 +1,2572 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 174,
+    "precode": "throw new MathIllegalArgumentException(LocalizedFormats.NAN_VALUE_CONVERSION);",
+    "aftercode": "throw (org.apache.commons.math3.exception.MathIllegalArgumentException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 177,
+    "precode": "throw new MathIllegalArgumentException(LocalizedFormats.INFINITE_VALUE_CONVERSION);",
+    "aftercode": "throw (org.apache.commons.math3.exception.MathIllegalArgumentException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 195,
+    "precode": "++k;",
+    "aftercode": "--k;",
+    "rule": "Increments",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 185,
+    "precode": "if (exponent != 0) {",
+    "aftercode": "if (exponent != 1) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 189,
+    "precode": "if (sign != 0) {",
+    "aftercode": "if (sign != 1) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 192,
+    "precode": "int k = ((int) (exponent >> 52)) - 1075;",
+    "aftercode": "int k = ((int) (exponent >> 53)) - 1075;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 192,
+    "precode": "int k = ((int) (exponent >> 52)) - 1075;",
+    "aftercode": "int k = ((int) (exponent >> 52)) - 1076;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 193,
+    "precode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m & 0x1) == 0)) {",
+    "aftercode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m & 0x1) == 1)) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 194,
+    "precode": "m = m >> 1;",
+    "aftercode": "m = m >> 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 194,
+    "precode": "m = m >> 1;",
+    "aftercode": "m = m >> 0;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 190,
+    "precode": "m = -m;",
+    "aftercode": "m = m;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 200,
+    "precode": "denominator = BigInteger.ZERO.flipBit(-k);",
+    "aftercode": "denominator = BigInteger.ZERO.flipBit(k);",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 182,
+    "precode": "final long sign     = bits & 0x8000000000000000L;",
+    "aftercode": "final long sign     = bits | 0x8000000000000000L;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 183,
+    "precode": "final long exponent = bits & 0x7ff0000000000000L;",
+    "aftercode": "final long exponent = bits | 0x7ff0000000000000L;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 184,
+    "precode": "long m              = bits & 0x000fffffffffffffL;",
+    "aftercode": "long m              = bits | 0x000fffffffffffffL;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 187,
+    "precode": "m |= 0x0010000000000000L;",
+    "aftercode": "m &= 0x0010000000000000L;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 192,
+    "precode": "int k = ((int) (exponent >> 52)) - 1075;",
+    "aftercode": "int k = ((int) (exponent << 52)) - 1075;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 192,
+    "precode": "int k = ((int) (exponent >> 52)) - 1075;",
+    "aftercode": "int k = ((int) (exponent >> 52)) + 1075;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 193,
+    "precode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m & 0x1) == 0)) {",
+    "aftercode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m | 0x1) == 0)) {",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 194,
+    "precode": "m = m >> 1;",
+    "aftercode": "m = m << 1;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 173,
+    "precode": "if (Double.isNaN(value)) {",
+    "aftercode": "if (!(Double.isNaN(value))) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 176,
+    "precode": "if (Double.isInfinite(value)) {",
+    "aftercode": "if (!(Double.isInfinite(value))) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 185,
+    "precode": "if (exponent != 0) {",
+    "aftercode": "if (exponent == 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 189,
+    "precode": "if (sign != 0) {",
+    "aftercode": "if (sign == 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 193,
+    "precode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m & 0x1) == 0)) {",
+    "aftercode": "while (((m & 0x001ffffffffffffeL) == 0) && ((m & 0x1) == 0)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 198,
+    "precode": "if (k < 0) {",
+    "aftercode": "if (k >= 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 173,
+    "precode": "if (Double.isNaN(value)) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 176,
+    "precode": "if (Double.isInfinite(value)) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 181,
+    "precode": "final long bits     = Double.doubleToLongBits(value);",
+    "aftercode": "final long bits     = 0L;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 199,
+    "precode": "numerator   = BigInteger.valueOf(m);",
+    "aftercode": "numerator   = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 200,
+    "precode": "denominator = BigInteger.ZERO.flipBit(-k);",
+    "aftercode": "denominator = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = ((java.math.BigInteger) null).multiply(BigInteger.ZERO.flipBit(k));",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = BigInteger.valueOf(m).multiply((java.math.BigInteger) null);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 185,
+    "precode": "if (exponent != 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 189,
+    "precode": "if (sign != 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 193,
+    "precode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m & 0x1) == 0)) {",
+    "aftercode": "while (Boolean.FALSE) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 173,
+    "precode": "if (Double.isNaN(value)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 176,
+    "precode": "if (Double.isInfinite(value)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 185,
+    "precode": "if (exponent != 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 189,
+    "precode": "if (sign != 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 193,
+    "precode": "while (((m & 0x001ffffffffffffeL) != 0) && ((m & 0x1) == 0)) {",
+    "aftercode": "while (Boolean.TRUE) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 198,
+    "precode": "if (k < 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 198,
+    "precode": "if (k < 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 200,
+    "precode": "denominator = BigInteger.ZERO.flipBit(-k);",
+    "aftercode": "denominator = BigInteger.ZERO.setBit(-k);",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.setBit(k));",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = BigInteger.valueOf(m).divide(BigInteger.ZERO.flipBit(k));",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 199,
+    "precode": "numerator   = BigInteger.valueOf(m);",
+    "aftercode": "numerator   = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 200,
+    "precode": "denominator = BigInteger.ZERO.flipBit(-k);",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 203,
+    "precode": "denominator = BigInteger.ONE;",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 200,
+    "precode": "denominator = BigInteger.ZERO.flipBit(-k);",
+    "aftercode": "denominator = BigInteger.ZERO;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO);",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 202,
+    "precode": "numerator   = BigInteger.valueOf(m).multiply(BigInteger.ZERO.flipBit(k));",
+    "aftercode": "numerator   = BigInteger.valueOf(m);",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 303,
+    "precode": "if ((p2 > overflow) || (q2 > overflow)) {",
+    "aftercode": "if ((p2 >= overflow) || (q2 > overflow)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 327,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (n > maxIterations) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 306,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 0.0 && FastMath.abs(q1) <= maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 276,
+    "precode": "throw new FractionConversionException(value, a0, 1l);",
+    "aftercode": "throw (org.apache.commons.math3.fraction.FractionConversionException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 309,
+    "precode": "throw new FractionConversionException(value, p2, q2);",
+    "aftercode": "throw (org.apache.commons.math3.fraction.FractionConversionException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 328,
+    "precode": "throw new FractionConversionException(value, maxIterations);",
+    "aftercode": "throw (org.apache.commons.math3.fraction.FractionConversionException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 298,
+    "precode": "++n;",
+    "aftercode": "--n;",
+    "rule": "Increments",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 276,
+    "precode": "throw new FractionConversionException(value, a0, 1l);",
+    "aftercode": "throw new FractionConversionException(value, a0, 2l);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 287,
+    "precode": "long p0 = 1;",
+    "aftercode": "long p0 = 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 288,
+    "precode": "long q0 = 0;",
+    "aftercode": "long q0 = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 290,
+    "precode": "long q1 = 1;",
+    "aftercode": "long q1 = 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 292,
+    "precode": "long p2 = 0;",
+    "aftercode": "long p2 = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 293,
+    "precode": "long q2 = 1;",
+    "aftercode": "long q2 = 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 295,
+    "precode": "int n = 0;",
+    "aftercode": "int n = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 299,
+    "precode": "final double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "final double r1 = 2.0 / (r0 - a0);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 306,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 1.0 && FastMath.abs(q1) < maxDenominator) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 293,
+    "precode": "long q2 = 1;",
+    "aftercode": "long q2 = 0;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 281,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (FastMath.abs(a0 + value) < epsilon) {",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 299,
+    "precode": "final double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "final double r1 = 1.0 / (r0 + a0);",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 299,
+    "precode": "final double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "final double r1 = 1.0 * (r0 - a0);",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 301,
+    "precode": "p2 = (a1 * p1) + p0;",
+    "aftercode": "p2 = (a1 / p1) + p0;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 301,
+    "precode": "p2 = (a1 * p1) + p0;",
+    "aftercode": "p2 = (a1 * p1) - p0;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 302,
+    "precode": "q2 = (a1 * q1) + q0;",
+    "aftercode": "q2 = (a1 / q1) + q0;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 302,
+    "precode": "q2 = (a1 * q1) + q0;",
+    "aftercode": "q2 = (a1 * q1) - q0;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 312,
+    "precode": "final double convergent = (double) p2 / (double) q2;",
+    "aftercode": "final double convergent = (double) p2 * (double) q2;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 314,
+    "precode": "(FastMath.abs(convergent - value) > epsilon) &&",
+    "aftercode": "(FastMath.abs(convergent + value) > epsilon) &&",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 275,
+    "precode": "if (a0 > overflow) {",
+    "aftercode": "if (a0 <= overflow) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 281,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (FastMath.abs(a0 - value) >= epsilon) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 303,
+    "precode": "if ((p2 > overflow) || (q2 > overflow)) {",
+    "aftercode": "if ((p2 > overflow) || (q2 <= overflow)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 306,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 0.0 && FastMath.abs(q1) >= maxDenominator) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 313,
+    "precode": "if ((n < maxIterations) &&",
+    "aftercode": "if ((n >= maxIterations) &&",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 314,
+    "precode": "(FastMath.abs(convergent - value) > epsilon) &&",
+    "aftercode": "(FastMath.abs(convergent - value) <= epsilon) &&",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 325,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (stop);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 327,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (n < maxIterations) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 331,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (q2 >= maxDenominator) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 274,
+    "precode": "long a0 = (long) FastMath.floor(r0);",
+    "aftercode": "long a0 = (long) 0.0d;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 281,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (0.0d < epsilon) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 282,
+    "precode": "numerator = BigInteger.valueOf(a0);",
+    "aftercode": "numerator = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 300,
+    "precode": "final long a1 = (long) FastMath.floor(r1);",
+    "aftercode": "final long a1 = (long) 0.0d;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 306,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 0.0 && 0L < maxDenominator) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 314,
+    "precode": "(FastMath.abs(convergent - value) > epsilon) &&",
+    "aftercode": "(0.0d > epsilon) &&",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 332,
+    "precode": "numerator   = BigInteger.valueOf(p2);",
+    "aftercode": "numerator   = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 333,
+    "precode": "denominator = BigInteger.valueOf(q2);",
+    "aftercode": "denominator = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 335,
+    "precode": "numerator   = BigInteger.valueOf(p1);",
+    "aftercode": "numerator   = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 336,
+    "precode": "denominator = BigInteger.valueOf(q1);",
+    "aftercode": "denominator = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 306,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 325,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (false);",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 306,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 325,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (true);",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 275,
+    "precode": "if (a0 > overflow) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 281,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 303,
+    "precode": "if ((p2 > overflow) || (q2 > overflow)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 331,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 327,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 275,
+    "precode": "if (a0 > overflow) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 281,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 303,
+    "precode": "if ((p2 > overflow) || (q2 > overflow)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 331,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 327,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 282,
+    "precode": "numerator = BigInteger.valueOf(a0);",
+    "aftercode": "numerator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 283,
+    "precode": "denominator = BigInteger.ONE;",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 332,
+    "precode": "numerator   = BigInteger.valueOf(p2);",
+    "aftercode": "numerator   = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 333,
+    "precode": "denominator = BigInteger.valueOf(q2);",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 335,
+    "precode": "numerator   = BigInteger.valueOf(p1);",
+    "aftercode": "numerator   = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 336,
+    "precode": "denominator = BigInteger.valueOf(q1);",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 359,
+    "precode": "this(value, 0, maxDenominator, 100);",
+    "aftercode": "this(value, 0, maxDenominator, 101);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 372,
+    "precode": "this(BigInteger.valueOf(num), BigInteger.ONE);",
+    "aftercode": "this((java.math.BigInteger) null, BigInteger.ONE);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 387,
+    "precode": "this(BigInteger.valueOf(num), BigInteger.valueOf(den));",
+    "aftercode": "this(BigInteger.valueOf(num), (java.math.BigInteger) null);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 399,
+    "precode": "this(BigInteger.valueOf(num), BigInteger.ONE);",
+    "aftercode": "this((java.math.BigInteger) null, BigInteger.ONE);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 414,
+    "precode": "this(BigInteger.valueOf(num), BigInteger.valueOf(den));",
+    "aftercode": "this(BigInteger.valueOf(num), (java.math.BigInteger) null);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 124,
+    "precode": "throw new ZeroException(LocalizedFormats.ZERO_DENOMINATOR);",
+    "aftercode": "throw (org.apache.commons.math3.exception.ZeroException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 139,
+    "precode": "if (BigInteger.ZERO.compareTo(den) > 0) {",
+    "aftercode": "if (BigInteger.ZERO.compareTo(den) > 1) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 123,
+    "precode": "if (BigInteger.ZERO.equals(den)) {",
+    "aftercode": "if (!(BigInteger.ZERO.equals(den))) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 126,
+    "precode": "if (BigInteger.ZERO.equals(num)) {",
+    "aftercode": "if (!(BigInteger.ZERO.equals(num))) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 133,
+    "precode": "if (BigInteger.ONE.compareTo(gcd) < 0) {",
+    "aftercode": "if (BigInteger.ONE.compareTo(gcd) >= 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 139,
+    "precode": "if (BigInteger.ZERO.compareTo(den) > 0) {",
+    "aftercode": "if (BigInteger.ZERO.compareTo(den) <= 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 123,
+    "precode": "if (BigInteger.ZERO.equals(den)) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 126,
+    "precode": "if (BigInteger.ZERO.equals(num)) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 132,
+    "precode": "final BigInteger gcd = num.gcd(den);",
+    "aftercode": "final BigInteger gcd = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 133,
+    "precode": "if (BigInteger.ONE.compareTo(gcd) < 0) {",
+    "aftercode": "if (0 < 0) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 134,
+    "precode": "num = num.divide(gcd);",
+    "aftercode": "num = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 135,
+    "precode": "den = den.divide(gcd);",
+    "aftercode": "den = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 139,
+    "precode": "if (BigInteger.ZERO.compareTo(den) > 0) {",
+    "aftercode": "if (0 > 0) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 140,
+    "precode": "num = num.negate();",
+    "aftercode": "num = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 141,
+    "precode": "den = den.negate();",
+    "aftercode": "den = (BigInteger) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 123,
+    "precode": "if (BigInteger.ZERO.equals(den)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 126,
+    "precode": "if (BigInteger.ZERO.equals(num)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 133,
+    "precode": "if (BigInteger.ONE.compareTo(gcd) < 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 139,
+    "precode": "if (BigInteger.ZERO.compareTo(den) > 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 133,
+    "precode": "if (BigInteger.ONE.compareTo(gcd) < 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 139,
+    "precode": "if (BigInteger.ZERO.compareTo(den) > 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 121,
+    "precode": "MathUtils.checkNotNull(num, LocalizedFormats.NUMERATOR);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { MathUtils.checkNotNull(num, LocalizedFormats.NUMERATOR); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 122,
+    "precode": "MathUtils.checkNotNull(den, LocalizedFormats.DENOMINATOR);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { MathUtils.checkNotNull(den, LocalizedFormats.DENOMINATOR); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 132,
+    "precode": "final BigInteger gcd = num.gcd(den);",
+    "aftercode": "final BigInteger gcd = den;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 134,
+    "precode": "num = num.divide(gcd);",
+    "aftercode": "num = gcd;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 135,
+    "precode": "den = den.divide(gcd);",
+    "aftercode": "den = gcd;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 134,
+    "precode": "num = num.divide(gcd);",
+    "aftercode": "num = num.multiply(gcd);",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 135,
+    "precode": "den = den.divide(gcd);",
+    "aftercode": "den = den.multiply(gcd);",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 140,
+    "precode": "num = num.negate();",
+    "aftercode": "num = num.not();",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 141,
+    "precode": "den = den.negate();",
+    "aftercode": "den = den.not();",
+    "rule": "Big Integer",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 127,
+    "precode": "numerator   = BigInteger.ZERO;",
+    "aftercode": "numerator   = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 128,
+    "precode": "denominator = BigInteger.ONE;",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 145,
+    "precode": "numerator   = num;",
+    "aftercode": "numerator   = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 146,
+    "precode": "denominator = den;",
+    "aftercode": "denominator = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 132,
+    "precode": "final BigInteger gcd = num.gcd(den);",
+    "aftercode": "final BigInteger gcd = num;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 134,
+    "precode": "num = num.divide(gcd);",
+    "aftercode": "num = num;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 135,
+    "precode": "den = den.divide(gcd);",
+    "aftercode": "den = den;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 140,
+    "precode": "num = num.negate();",
+    "aftercode": "num = num;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/BigFraction.java",
+    "line": 141,
+    "precode": "den = den.negate();",
+    "aftercode": "den = den;",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 102,
+    "precode": "this(value, DEFAULT_EPSILON, 100);",
+    "aftercode": "this(value, DEFAULT_EPSILON, 101);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 212,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if ((FastMath.abs(p2) >= overflow) || (FastMath.abs(q2) > overflow)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 234,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (n > maxIterations) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 0.0 && FastMath.abs(q1) <= maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 185,
+    "precode": "throw new FractionConversionException(value, a0, 1l);",
+    "aftercode": "throw (org.apache.commons.math3.fraction.FractionConversionException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 218,
+    "precode": "throw new FractionConversionException(value, p2, q2);",
+    "aftercode": "throw (org.apache.commons.math3.fraction.FractionConversionException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 235,
+    "precode": "throw new FractionConversionException(value, maxIterations);",
+    "aftercode": "throw (org.apache.commons.math3.fraction.FractionConversionException) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 206,
+    "precode": "++n;",
+    "aftercode": "--n;",
+    "rule": "Increments",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 185,
+    "precode": "throw new FractionConversionException(value, a0, 1l);",
+    "aftercode": "throw new FractionConversionException(value, a0, 2l);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 191,
+    "precode": "this.denominator = 1;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 195,
+    "precode": "long p0 = 1;",
+    "aftercode": "long p0 = 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 196,
+    "precode": "long q0 = 0;",
+    "aftercode": "long q0 = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 198,
+    "precode": "long q1 = 1;",
+    "aftercode": "long q1 = 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 177,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 200,
+    "precode": "long p2 = 0;",
+    "aftercode": "long p2 = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 178,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 201,
+    "precode": "long q2 = 1;",
+    "aftercode": "long q2 = 2;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 179,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 203,
+    "precode": "int n = 0;",
+    "aftercode": "int n = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 180,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 207,
+    "precode": "double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "double r1 = 2.0 / (r0 - a0);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 181,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 1.0 && FastMath.abs(q1) < maxDenominator) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 182,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 254,
+    "precode": "this(num, 1);",
+    "aftercode": "this(num, 0);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 183,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 189,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (FastMath.abs(a0 + value) < epsilon) {",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 184,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 207,
+    "precode": "double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "double r1 = 1.0 / (r0 + a0);",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 185,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 207,
+    "precode": "double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "double r1 = 1.0 * (r0 - a0);",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 186,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 209,
+    "precode": "p2 = (a1 * p1) + p0;",
+    "aftercode": "p2 = (a1 / p1) + p0;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 187,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 209,
+    "precode": "p2 = (a1 * p1) + p0;",
+    "aftercode": "p2 = (a1 * p1) - p0;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 188,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 210,
+    "precode": "q2 = (a1 * q1) + q0;",
+    "aftercode": "q2 = (a1 / q1) + q0;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 189,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 210,
+    "precode": "q2 = (a1 * q1) + q0;",
+    "aftercode": "q2 = (a1 * q1) - q0;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 190,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 221,
+    "precode": "double convergent = (double)p2 / (double)q2;",
+    "aftercode": "double convergent = (double)p2 * (double)q2;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 191,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 222,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent + value) > epsilon && q2 < maxDenominator) {",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 192,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 184,
+    "precode": "if (FastMath.abs(a0) > overflow) {",
+    "aftercode": "if (FastMath.abs(a0) <= overflow) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 193,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 189,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (FastMath.abs(a0 - value) >= epsilon) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 194,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 212,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) <= overflow)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 195,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 0.0 && FastMath.abs(q1) >= maxDenominator) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 196,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 222,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 >= maxDenominator) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 197,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 232,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (stop);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 198,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 234,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (n < maxIterations) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 199,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 238,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (q2 >= maxDenominator) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 200,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 183,
+    "precode": "long a0 = (long)FastMath.floor(r0);",
+    "aftercode": "long a0 = 0.0d;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 201,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 184,
+    "precode": "if (FastMath.abs(a0) > overflow) {",
+    "aftercode": "if (0L > overflow) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 202,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 189,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (0.0d < epsilon) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 203,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 208,
+    "precode": "long a1 = (long)FastMath.floor(r1);",
+    "aftercode": "long a1 = 0.0d;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 204,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 212,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if ((FastMath.abs(p2) > overflow) || (0L > overflow)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 205,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (epsilon == 0.0 && 0L < maxDenominator) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 206,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 222,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && 0.0d > epsilon && q2 < maxDenominator) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 207,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 208,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 232,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (false);",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 209,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 210,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 232,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (true);",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 211,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 184,
+    "precode": "if (FastMath.abs(a0) > overflow) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 212,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 189,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 213,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 212,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 214,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 222,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 215,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 234,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 216,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 238,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 217,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 184,
+    "precode": "if (FastMath.abs(a0) > overflow) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 218,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 189,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 219,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 212,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 220,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 222,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 221,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 234,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 222,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 238,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 223,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 190,
+    "precode": "this.numerator = (int) a0;",
+    "aftercode": "this.numerator = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 224,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 239,
+    "precode": "this.numerator = (int) p2;",
+    "aftercode": "this.numerator = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 225,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 240,
+    "precode": "this.denominator = (int) q2;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 226,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 242,
+    "precode": "this.numerator = (int) p1;",
+    "aftercode": "this.numerator = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 227,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 243,
+    "precode": "this.denominator = (int) q1;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 228,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 144,
+    "precode": "this(value, 0, maxDenominator, 100);",
+    "aftercode": "this(value, 0, maxDenominator, 101);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 229,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 300,
+    "precode": "if (numerator >= 0) {",
+    "aftercode": "if (numerator > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 230,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 286,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (den < 1) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 231,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 280,
+    "precode": "if (d > 1) {",
+    "aftercode": "if (d > 0) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 232,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 300,
+    "precode": "if (numerator >= 0) {",
+    "aftercode": "if (numerator >= 1) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 233,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 275,
+    "precode": "num = -num;",
+    "aftercode": "num = num;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 234,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 276,
+    "precode": "den = -den;",
+    "aftercode": "den = den;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 235,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 287,
+    "precode": "num = -num;",
+    "aftercode": "num = num;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 236,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 288,
+    "precode": "den = -den;",
+    "aftercode": "den = den;",
+    "rule": "Invert Negatives",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 237,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 281,
+    "precode": "num /= d;",
+    "aftercode": "num *= d;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 238,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 282,
+    "precode": "den /= d;",
+    "aftercode": "den *= d;",
+    "rule": "Math",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 239,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 265,
+    "precode": "if (den == 0) {",
+    "aftercode": "if (den != 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 240,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 269,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (den >= 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 241,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 270,
+    "precode": "if (num == Integer.MIN_VALUE ||",
+    "aftercode": "if (num != Integer.MIN_VALUE ||",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 242,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 280,
+    "precode": "if (d > 1) {",
+    "aftercode": "if (d <= 1) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 243,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 286,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (den >= 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 244,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 279,
+    "precode": "final int d = ArithmeticUtils.gcd(num, den);",
+    "aftercode": "final int d = 0;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 245,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 265,
+    "precode": "if (den == 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 246,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 286,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 247,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 300,
+    "precode": "if (numerator >= 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 248,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 265,
+    "precode": "if (den == 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 249,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 286,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 250,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 300,
+    "precode": "if (numerator >= 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 251,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 269,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 252,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 280,
+    "precode": "if (d > 1) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 253,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 269,
+    "precode": "if (den < 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 254,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 280,
+    "precode": "if (d > 1) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 255,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 279,
+    "precode": "final int d = ArithmeticUtils.gcd(num, den);",
+    "aftercode": "final int d = num;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 256,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 290,
+    "precode": "this.numerator   = num;",
+    "aftercode": "this.numerator   = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  },
+  {
+    "id": 257,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 291,
+    "precode": "this.denominator = den;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.01,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 245,
+    "precode": "solvedCols  = Math.min(rows, cols);",
+    "aftercode": "solvedCols  = Math.max(rows, cols);",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 272,
+    "precode": "for (int i=0;i<rows;i++) {",
+    "aftercode": "for (int i=0;i<=rows;i++) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 286,
+    "precode": "for (int k = 0; k < solvedCols; ++k) {",
+    "aftercode": "for (int k = 0; k <= solvedCols; ++k) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 298,
+    "precode": "if (dk == 0) {",
+    "aftercode": "if (dk <= 0) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 308,
+    "precode": "delta = (xNorm == 0) ? initialStepBoundFactor : (initialStepBoundFactor * xNorm);",
+    "aftercode": "delta = (xNorm == 0) ? initialStepBoundFactor : (initialStepBoundFactor / xNorm);",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 314,
+    "precode": "if (cost != 0) {",
+    "aftercode": "if (cost >= 0) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 315,
+    "precode": "for (int j = 0; j < solvedCols; ++j) {",
+    "aftercode": "for (int j = 1; j < solvedCols; ++j) {",
+    "rule": "VariableIncrement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 320,
+    "precode": "for (int i = 0; i <= j; ++i) {",
+    "aftercode": "for (int i = 0; i < j; ++i) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 323,
+    "precode": "maxCosine = Math.max(maxCosine, Math.abs(sum) / (s * cost));",
+    "aftercode": "maxCosine = Math.max(maxCosine, Math.abs(sum) / (s + cost));",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 327,
+    "precode": "if (maxCosine <= orthoTolerance) {",
+    "aftercode": "if (maxCosine < orthoTolerance) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 336,
+    "precode": "diag[j] = Math.max(diag[j], jacNorm[j]);",
+    "aftercode": "diag[j] = Math.min(diag[j], jacNorm[j]);",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 340,
+    "precode": "for (double ratio = 0; ratio < 1.0e-4;) {",
+    "aftercode": "for (double ratio = 0; ratio <= 1.0e-4;) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 362,
+    "precode": "lmDir[pj] = -lmDir[pj];",
+    "aftercode": "lmDir[pj] = lmDir[pj];",
+    "rule": "NegationRemoval",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 364,
+    "precode": "double s = diag[pj] * lmDir[pj];",
+    "aftercode": "double s = diag[pj] / lmDir[pj];",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 370,
+    "precode": "delta = Math.min(delta, lmNorm);",
+    "aftercode": "delta = Math.max(delta, lmNorm);",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 378,
+    "precode": "if (0.1 * cost < previousCost) {",
+    "aftercode": "if (0.1 * cost <= previousCost) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 380,
+    "precode": "actRed = 1.0 - r * r;",
+    "aftercode": "actRed = 1.0 + r * r;",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 389,
+    "precode": "for (int i = 0; i <= j; ++i) {",
+    "aftercode": "for (int i = 1; i <= j; ++i) {",
+    "rule": "VariableIncrement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 398,
+    "precode": "coeff1 = coeff1 / pc2;",
+    "aftercode": "coeff1 = coeff1 * pc2;",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 399,
+    "precode": "double coeff2 = lmPar * lmNorm * lmNorm / pc2;",
+    "aftercode": "double coeff2 = lmPar * lmNorm * lmNorm * pc2;",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 400,
+    "precode": "double preRed = coeff1 + 2 * coeff2;",
+    "aftercode": "double preRed = coeff1 - 2 * coeff2;",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 401,
+    "precode": "double dirDer = -(coeff1 + coeff2);",
+    "aftercode": "double dirDer = (coeff1 + coeff2);",
+    "rule": "NegationRemoval",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 404,
+    "precode": "ratio = (preRed == 0) ? 0 : (actRed / preRed);",
+    "aftercode": "ratio = (preRed == 0) ? 1 : (actRed / preRed);",
+    "rule": "ConditionalOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 407,
+    "precode": "if (ratio <= 0.25) {",
+    "aftercode": "if (ratio < 0.25) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 409,
+    "precode": "(actRed < 0) ? (0.5 * dirDer / (dirDer + 0.5 * actRed)) : 0.5;",
+    "aftercode": "(actRed <= 0) ? (0.5 * dirDer / (dirDer + 0.5 * actRed)) : 0.5;",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 410,
+    "precode": "if ((0.1 * cost >= previousCost) || (tmp < 0.1)) {",
+    "aftercode": "if ((0.1 * cost >= previousCost) && (tmp < 0.1)) {",
+    "rule": "LogicalOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 413,
+    "precode": "delta = tmp * Math.min(delta, 10.0 * lmNorm);",
+    "aftercode": "delta = tmp * Math.max(delta, 10.0 * lmNorm);",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 415,
+    "precode": "} else if ((lmPar == 0) || (ratio >= 0.75)) {",
+    "aftercode": "} else if ((lmPar == 0) && (ratio >= 0.75)) {",
+    "rule": "LogicalOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 416,
+    "precode": "delta = 2 * lmNorm;",
+    "aftercode": "delta = 2 / lmNorm;",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 417,
+    "precode": "lmPar *= 0.5;",
+    "aftercode": "lmPar /= 0.5;",
+    "rule": "MathOperatorReplacement",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 421,
+    "precode": "if (ratio >= 1.0e-4) {",
+    "aftercode": "if (ratio > 1.0e-4) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 435,
+    "precode": "if (checker.converged(getIterations(), previous, current)) {",
+    "aftercode": "if (!checker.converged(getIterations(), previous, current)) {",
+    "rule": "NegationRemoval",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 454,
+    "precode": "if (((Math.abs(actRed) <= costRelativeTolerance) &&",
+    "aftercode": "if (((Math.abs(actRed) < costRelativeTolerance) &&",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 456,
+    "precode": "(ratio <= 2.0)) ||",
+    "aftercode": "(ratio < 2.0)) ||",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 457,
+    "precode": "(delta <= parRelativeTolerance * xNorm)) {",
+    "aftercode": "(delta < parRelativeTolerance * xNorm) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 463,
+    "precode": "if ((Math.abs(actRed) <= 2.2204e-16) && (preRed <= 2.2204e-16) && (ratio <= 2.0)) {",
+    "aftercode": "if ((Math.abs(actRed) <= 2.2204e-16) && (preRed <= 2.2204e-16) && (ratio < 2.0)) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 466,
+    "precode": "} else if (delta <= 2.2204e-16 * xNorm) {",
+    "aftercode": "} else if (delta < 2.2204e-16 * xNorm) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java",
+    "line": 469,
+    "precode": "} else if (maxCosine <= 2.2204e-16)  {",
+    "aftercode": "} else if (maxCosine < 2.2204e-16)  {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  }
+]

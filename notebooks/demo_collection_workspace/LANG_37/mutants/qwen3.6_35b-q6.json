@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2954,
+    "precode": "if (array1 == null) {",
+    "aftercode": "if (array1 != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2956,
+    "precode": "else if (array2 == null) {",
+    "aftercode": "else if (array2 != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2955,
+    "precode": "return clone(array2);",
+    "aftercode": "return clone(array1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2957,
+    "precode": "return clone(array1);",
+    "aftercode": "return clone(array2);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2959,
+    "precode": "final Class<?> type1 = array1.getClass().getComponentType();",
+    "aftercode": "final Class<?> type1 = array2.getClass().getComponentType();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2960,
+    "precode": "T[] joinedArray = (T[]) Array.newInstance(type1, array1.length + array2.length);",
+    "aftercode": "T[] joinedArray = (T[]) Array.newInstance(type1, array1.length - array2.length);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2960,
+    "precode": "T[] joinedArray = (T[]) Array.newInstance(type1, array1.length + array2.length);",
+    "aftercode": "T[] joinedArray = (T[]) Array.newInstance(type1, array2.length + array1.length);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2961,
+    "precode": "System.arraycopy(array1, 0, joinedArray, 0, array1.length);",
+    "aftercode": "System.arraycopy(array2, 0, joinedArray, 0, array2.length);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2963,
+    "precode": "System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);",
+    "aftercode": "System.arraycopy(array1, 0, joinedArray, array2.length, array1.length);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2963,
+    "precode": "System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);",
+    "aftercode": "System.arraycopy(array2, 0, joinedArray, 0, array2.length);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2967,
+    "precode": "if (!type1.isAssignableFrom(type2)){",
+    "aftercode": "if (type1.isAssignableFrom(type2)){",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2967,
+    "precode": "if (!type1.isAssignableFrom(type2)){",
+    "aftercode": "if (type2.isAssignableFrom(type1)){",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2968,
+    "precode": "throw new IllegalArgumentException(\"Cannot store \"+type2.getName()+\" in an array of \"+type1.getName());",
+    "aftercode": "throw new IllegalArgumentException(\"Cannot store \"+type1.getName()+\" in an array of \"+type2.getName());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2970,
+    "precode": "throw ase; // No, so rethrow original",
+    "aftercode": "return joinedArray; // No, so rethrow original",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2972,
+    "precode": "return joinedArray;",
+    "aftercode": "return array1;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2972,
+    "precode": "return joinedArray;",
+    "aftercode": "return array2;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2960,
+    "precode": "T[] joinedArray = (T[]) Array.newInstance(type1, array1.length + array2.length);",
+    "aftercode": "T[] joinedArray = (T[]) Array.newInstance(type1, 0);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2961,
+    "precode": "System.arraycopy(array1, 0, joinedArray, 0, array1.length);",
+    "aftercode": "System.arraycopy(array1, 0, joinedArray, 0, 0);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2963,
+    "precode": "System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);",
+    "aftercode": "System.arraycopy(array2, 0, joinedArray, array1.length, 0);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2963,
+    "precode": "System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);",
+    "aftercode": "System.arraycopy(array2, 0, joinedArray, array1.length, array1.length);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/lang3/ArrayUtils.java",
+    "line": 2960,
+    "precode": "T[] joinedArray = (T[]) Array.newInstance(type1, array1.length + array2.length);",
+    "aftercode": "T[] joinedArray = (T[]) Array.newInstance(type1, array1.length * array2.length);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.57,
+    "dublicate": false
+  }
+]

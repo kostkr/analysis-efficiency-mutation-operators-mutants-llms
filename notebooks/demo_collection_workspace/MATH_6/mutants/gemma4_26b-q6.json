@@ -1,0 +1,2982 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java",
+    "line": 48,
+    "precode": "this.checker = checker;",
+    "aftercode": "// this.checker = checker;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java",
+    "line": 50,
+    "precode": "evaluations = new Incrementor(0, new MaxEvalCallback());",
+    "aftercode": "evaluations = new Incrementor(1, new MaxEvalCallback());",
+    "rule": "Boundary Value Mutation",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java",
+    "line": 50,
+    "precode": "evaluations = new Incrementor(0, new MaxEvalCallback());",
+    "aftercode": "evaluations = new Incrementor(0, new MaxIterCallback());",
+    "rule": "Wrong Argument Substitution",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java",
+    "line": 51,
+    "precode": "iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());",
+    "aftercode": "iterations = new Incrementor(Integer.MAX_VALUE - 1, new MaxIterCallback());",
+    "rule": "Off-by-one Error",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java",
+    "line": 51,
+    "precode": "iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());",
+    "aftercode": "iterations = new Incrementor(0, new MaxIterCallback());",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java",
+    "line": 51,
+    "precode": "iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());",
+    "aftercode": "iterations = new Incrementor(Integer.MAX_VALUE, new MaxEvalCallback());",
+    "rule": "Wrong Argument Substitution",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 197,
+    "precode": "double[] r = computeObjectiveGradient(point);",
+    "aftercode": "double[] r = computeObjectiveGradient(new double[n]);",
+    "rule": "Array Initialization",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 199,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i <= n; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 200,
+    "precode": "r[i] = -r[i];",
+    "aftercode": "r[i] = r[i];",
+    "rule": "Negation",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 205,
+    "precode": "double[] steepestDescent = preconditioner.precondition(point, r);",
+    "aftercode": "double[] steepestDescent = preconditioner.precondition(point, new double[n]);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 206,
+    "precode": "double[] searchDirection = steepestDescent.clone();",
+    "aftercode": "double[] searchDirection = steepestDescent;",
+    "rule": "Reference Assignment",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 209,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 0; i <= n; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta -= r[i] * searchDirection[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 214,
+    "precode": "int maxEval = getMaxEvaluations();",
+    "aftercode": "int maxEval = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 218,
+    "precode": "final double objective = computeObjectiveValue(point);",
+    "aftercode": "final double objective = 0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 222,
+    "precode": "if (checker.converged(getIterations(), previous, current)) {",
+    "aftercode": "if (!checker.converged(getIterations(), previous, current)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 230,
+    "precode": "final double uB = findUpperBound(lsf, 0, initialStep);",
+    "aftercode": "final double uB = findUpperBound(lsf, 0, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 234,
+    "precode": "final double step = solver.solve(maxEval, lsf, 0, uB, 1e-15);",
+    "aftercode": "final double step = solver.solve(maxEval, lsf, 0, uB, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 235,
+    "precode": "maxEval -= solver.getEvaluations(); // Subtract used up evaluations.",
+    "aftercode": "maxEval += solver.getEvaluations(); // Subtract used up evaluations.",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] -= step * searchDirection[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 244,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 0; i <= n; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 245,
+    "precode": "r[i] = -r[i];",
+    "aftercode": "r[i] = r[i];",
+    "rule": "Negation",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 251,
+    "precode": "final double[] newSteepestDescent = preconditioner.precondition(point, r);",
+    "aftercode": "final double[] newSteepestDescent = preconditioner.precondition(point, new double[n]);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] + newSteepestDescent[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 260,
+    "precode": "beta = delta / deltaOld;",
+    "aftercode": "beta = delta * deltaOld;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid -= r[i] * steepestDescent[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 267,
+    "precode": "beta = (delta - deltaMid) / deltaOld;",
+    "aftercode": "beta = (delta + deltaMid) / deltaOld;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 276,
+    "precode": "if (getIterations() % n == 0 ||",
+    "aftercode": "if (getIterations() % n != 0 ||",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 277,
+    "precode": "beta < 0)",
+    "aftercode": "beta > 0)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 279,
+    "precode": "searchDirection = steepestDescent.clone();",
+    "aftercode": "searchDirection = steepestDescent;",
+    "rule": "Reference Assignment",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] - beta * searchDirection[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 276,
+    "precode": "if (getIterations() % n == 0 ||",
+    "aftercode": "if (getIterations() % n == 0 &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 277,
+    "precode": "beta < 0)",
+    "aftercode": "beta < 0",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i];",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step;",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += newSteepestDescent[i];",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += steepestDescent[i];",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = beta * searchDirection[i];",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 260,
+    "precode": "beta = delta / deltaOld;",
+    "aftercode": "beta = delta;",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 267,
+    "precode": "beta = (delta - deltaMid) / deltaOld;",
+    "aftercode": "beta = delta - deltaMid;",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 209,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 1; i < n; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 238,
+    "precode": "for (int i = 0; i < point.length; ++i) {",
+    "aftercode": "for (int i = 1; i < point.length; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 253,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 1; i < n; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 264,
+    "precode": "for (int i = 0; i < r.length; ++i) {",
+    "aftercode": "for (int i = 1; i < r.length; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 282,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 1; i < n; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 199,
+    "precode": "for (int i = 0; i < n; i++) {",
+    "aftercode": "for (int i = 0; i < n - 1; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 209,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 0; i < n - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 238,
+    "precode": "for (int i = 0; i < point.length; ++i) {",
+    "aftercode": "for (int i = 0; i < point.length - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 253,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 0; i < n - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 264,
+    "precode": "for (int i = 0; i < r.length; ++i) {",
+    "aftercode": "for (int i = 0; i < r.length - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 282,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 0; i < n - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i] * searchDirection[i] + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step * searchDirection[i] + 0.001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] * newSteepestDescent[i] + 0.001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += r[i] * steepestDescent[i] + 0.001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i] + 0.001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 200,
+    "precode": "r[i] = -r[i];",
+    "aftercode": "r[i] = -r[i] * 1.000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 245,
+    "precode": "r[i] = -r[i];",
+    "aftercode": "r[i] = -r[i] * 1.000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 260,
+    "precode": "beta = delta / deltaOld;",
+    "aftercode": "beta = delta / (deltaOld + 1e-20);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 267,
+    "precode": "beta = (delta - deltaMid) / deltaOld;",
+    "aftercode": "beta = (delta - deltaMid) / (deltaOld + 1e-20);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 234,
+    "precode": "final double step = solver.solve(maxEval, lsf, 0, uB, 1e-15);",
+    "aftercode": "final double step = solver.solve(maxEval, lsf, 0, uB, 1e-14);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 234,
+    "precode": "final double step = solver.solve(maxEval, lsf, 0, uB, 1e-15);",
+    "aftercode": "final double step = solver.solve(maxEval, lsf, 0, uB, 1e-16);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta = r[i] * searchDirection[i];",
+    "rule": "Assignment Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] = step * searchDirection[i];",
+    "rule": "Assignment Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta = r[i] * newSteepestDescent[i];",
+    "rule": "Assignment Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid = r[i] * steepestDescent[i];",
+    "rule": "Assignment Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] += steepestDescent[i] + beta * searchDirection[i];",
+    "rule": "Assignment Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i] * searchDirection[i] + 0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step * searchDirection[i] + 0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] * newSteepestDescent[i] + 0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += r[i] * steepestDescent[i] + 0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i] + 0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i] * searchDirection[i] * 1.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step * searchDirection[i] * 1.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] * newSteepestDescent[i] * 1.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += r[i] * steepestDescent[i] * 1.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i] * 1.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += Math.abs(r[i] * searchDirection[i]);",
+    "rule": "Function Call",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += Math.abs(step * searchDirection[i]);",
+    "rule": "Function Call",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += Math.abs(r[i] * newSteepestDescent[i]);",
+    "rule": "Function Call",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += Math.abs(r[i] * steepestDescent[i]);",
+    "rule": "Function Call",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = Math.abs(steepestDescent[i] + beta * searchDirection[i]);",
+    "rule": "Function Call",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i] / searchDirection[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step / searchDirection[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] / newSteepestDescent[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += r[i] / steepestDescent[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] / (beta * searchDirection[i]);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i] * searchDirection[i] + 0.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step * searchDirection[i] + 0.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] * newSteepestDescent[i] + 0.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += r[i] * steepestDescent[i] + 0.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i] + 0.0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += (double) r[i] * searchDirection[i];",
+    "rule": "Casting",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += (double) step * searchDirection[i];",
+    "rule": "Casting",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += (double) r[i] * newSteepestDescent[i];",
+    "rule": "Casting",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += (double) r[i] * steepestDescent[i];",
+    "rule": "Casting",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = (double) steepestDescent[i] + beta * searchDirection[i];",
+    "rule": "Casting",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 210,
+    "precode": "delta += r[i] * searchDirection[i];",
+    "aftercode": "delta += r[i] * searchDirection[i] + 0.000000000000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 239,
+    "precode": "point[i] += step * searchDirection[i];",
+    "aftercode": "point[i] += step * searchDirection[i] + 0.000000000000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 254,
+    "precode": "delta += r[i] * newSteepestDescent[i];",
+    "aftercode": "delta += r[i] * newSteepestDescent[i] + 0.000000000000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 265,
+    "precode": "deltaMid += r[i] * steepestDescent[i];",
+    "aftercode": "deltaMid += r[i] * steepestDescent[i] + 0.000000000000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java",
+    "line": 283,
+    "precode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i];",
+    "aftercode": "searchDirection[i] = steepestDescent[i] + beta * searchDirection[i] + 0.000000000000001;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 370,
+    "precode": "isMinimize = getGoalType().equals(GoalType.MINIMIZE);",
+    "aftercode": "isMinimize = !getGoalType().equals(GoalType.MINIMIZE);",
+    "rule": "Negation",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 374,
+    "precode": "dimension = guess.length;",
+    "aftercode": "dimension = guess.length - 1;",
+    "rule": "Arithmetic",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 377,
+    "precode": "double bestValue = fitfun.value(guess);",
+    "aftercode": "double bestValue = 0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 381,
+    "precode": "isMinimize ? bestValue : -bestValue);",
+    "aftercode": "isMinimize ? -bestValue : bestValue);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 387,
+    "precode": "for (iterations = 1; iterations <= maxIterations; iterations++) {",
+    "aftercode": "for (iterations = 1; iterations < maxIterations; iterations++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 391,
+    "precode": "final RealMatrix arz = randn1(dimension, lambda);",
+    "aftercode": "final RealMatrix arz = randn1(dimension, lambda - 1);",
+    "rule": "Arithmetic",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 397,
+    "precode": "for (int i = 0; i < checkFeasableCount + 1; i++) {",
+    "aftercode": "for (int i = 0; i <= checkFeasableCount + 1; i++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 398,
+    "precode": "if (diagonalOnly <= 0) {",
+    "aftercode": "if (diagonalOnly < 0) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 405,
+    "precode": "if (i >= checkFeasableCount ||",
+    "aftercode": "if (i > checkFeasableCount ||",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 405,
+    "precode": "if (i >= checkFeasableCount ||",
+    "aftercode": "if (i >= checkFeasableCount &&",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 406,
+    "precode": "fitfun.isFeasible(arxk.getColumn(0))) {",
+    "aftercode": "fitfun.isFeasible(arxk.getColumn(1))) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 414,
+    "precode": "fitness[k] = fitfun.value(arx.getColumn(k)); // compute fitness",
+    "aftercode": "fitness[k] = fitfun.value(arx.getColumn(0)); // compute fitness",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 423,
+    "precode": "final RealMatrix bestArx = selectColumns(arx, MathArrays.copyOf(arindex, mu));",
+    "aftercode": "final RealMatrix bestArx = selectColumns(arx, MathArrays.copyOf(arindex, mu - 1));",
+    "rule": "Arithmetic",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 424,
+    "precode": "xmean = bestArx.multiply(weights);",
+    "aftercode": "xmean = bestArx.add(weights);",
+    "rule": "Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 427,
+    "precode": "final boolean hsig = updateEvolutionPaths(zmean, xold);",
+    "aftercode": "final boolean hsig = updateEvolutionPaths(zmean, xmean);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 428,
+    "precode": "if (diagonalOnly <= 0) {",
+    "aftercode": "if (diagonalOnly >= 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 434,
+    "precode": "sigma *= Math.exp(Math.min(1, (normps/chiN - 1) * cs / damps));",
+    "aftercode": "sigma *= Math.exp(Math.min(1, (normps/chiN + 1) * cs / damps));",
+    "rule": "Arithmetic",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 437,
+    "precode": "if (bestValue > bestFitness) {",
+    "aftercode": "if (bestValue >= bestFitness) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 437,
+    "precode": "if (bestValue > bestFitness) {",
+    "aftercode": "if (bestValue < bestFitness) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 440,
+    "precode": "optimum = new PointValuePair(fitfun.repair(bestArx.getColumn(0)),",
+    "aftercode": "optimum = new PointValuePair(bestArx.getColumn(0),",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 442,
+    "precode": "if (getConvergenceChecker() != null &&",
+    "aftercode": "if (getConvergenceChecker() != null ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 451,
+    "precode": "if (stopFitness != 0) { // only if stopFitness is defined",
+    "aftercode": "if (stopFitness == 0) { // only if stopFitness is defined",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 452,
+    "precode": "if (bestFitness < (isMinimize ? stopFitness : -stopFitness)) {",
+    "aftercode": "if (bestFitness <= (isMinimize ? stopFitness : -stopFitness)) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 459,
+    "precode": "if (sigma * Math.max(Math.abs(pcCol[i]), sqrtDiagC[i]) > stopTolX) {",
+    "aftercode": "if (sigma * Math.max(Math.abs(pcCol[i]), sqrtDiagC[i]) >= stopTolX) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 462,
+    "precode": "if (i >= dimension - 1) {",
+    "aftercode": "if (i > dimension - 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 467,
+    "precode": "if (sigma * sqrtDiagC[i] > stopTolUpX) {",
+    "aftercode": "if (sigma * sqrtDiagC[i] < stopTolUpX) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 473,
+    "precode": "if (iterations > 2 &&",
+    "aftercode": "if (iterations >= 2 &&",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 474,
+    "precode": "Math.max(historyWorst, worstFitness) -",
+    "aftercode": "Math.min(historyWorst, worstFitness) -",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 475,
+    "precode": "Math.min(historyBest, bestFitness) < stopTolFun) {",
+    "aftercode": "Math.min(historyBest, bestFitness) <= stopTolFun) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 478,
+    "precode": "if (iterations > fitnessHistory.length &&",
+    "aftercode": "if (iterations >= fitnessHistory.length &&",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 483,
+    "precode": "if (max(diagD) / min(diagD) > 1e7) {",
+    "aftercode": "if (max(diagD) / min(diagD) < 1e7) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 487,
+    "precode": "if (getConvergenceChecker() != null) {",
+    "aftercode": "if (getConvergenceChecker() == null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 491,
+    "precode": "if (lastResult != null &&",
+    "aftercode": "if (lastResult != null ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 498,
+    "precode": "if (bestValue == fitness[arindex[(int)(0.1+lambda/4.)]]) {",
+    "aftercode": "if (bestValue != fitness[arindex[(int)(0.1+lambda/4.)]]) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 499,
+    "precode": "sigma = sigma * Math.exp(0.2 + cs / damps);",
+    "aftercode": "sigma = sigma * Math.exp(0.2 - cs / damps);",
+    "rule": "Arithmetic",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 501,
+    "precode": "if (iterations > 2 && Math.max(historyWorst, bestFitness) -",
+    "aftercode": "if (iterations > 2 && Math.min(historyWorst, bestFitness) -",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 502,
+    "precode": "Math.min(historyBest, bestFitness) == 0) {",
+    "aftercode": "Math.min(historyBest, bestFitness) != 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 503,
+    "precode": "sigma = sigma * Math.exp(0.2 + cs / damps);",
+    "aftercode": "sigma = sigma / Math.exp(0.2 + cs / damps);",
+    "rule": "Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/CMAESOptimizer.java",
+    "line": 507,
+    "precode": "fitfun.setValueRange(worstFitness-bestFitness);",
+    "aftercode": "fitfun.setValueRange(worstFitness+bestFitness);",
+    "rule": "Arithmetic",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 182,
+    "precode": "direc[i][i] = 1;",
+    "aftercode": "direc[i][i] = 0;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 182,
+    "precode": "direc[i][i] = 1;",
+    "aftercode": "direc[i][i] = -1;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 190,
+    "precode": "double[] x1 = x.clone();",
+    "aftercode": "double[] x1 = x;",
+    "rule": "Reference Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 194,
+    "precode": "double fX = fVal;",
+    "aftercode": "double fX = 0;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 195,
+    "precode": "double fX2 = 0;",
+    "aftercode": "double fX2 = fVal;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 196,
+    "precode": "double delta = 0;",
+    "aftercode": "double delta = 1e-10;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 201,
+    "precode": "final double[] d = MathArrays.copyOf(direc[i]);",
+    "aftercode": "final double[] d = direc[i];",
+    "rule": "Reference Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 203,
+    "precode": "fX2 = fVal;",
+    "aftercode": "fX2 = 0;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 211,
+    "precode": "if ((fX2 - fVal) > delta) {",
+    "aftercode": "if ((fX2 - fVal) >= delta) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 211,
+    "precode": "if ((fX2 - fVal) > delta) {",
+    "aftercode": "if ((fX2 - fVal) < delta) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 212,
+    "precode": "delta = fX2 - fVal;",
+    "aftercode": "delta = fVal - fX2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 218,
+    "precode": "boolean stop = 2 * (fX - fVal) <=",
+    "aftercode": "boolean stop = 2 * (fX - fVal) <",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 218,
+    "precode": "boolean stop = 2 * (fX - fVal) <=",
+    "aftercode": "boolean stop = 2 * (fX - fVal) >=",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 219,
+    "precode": "(relativeThreshold * (FastMath.abs(fX) + FastMath.abs(fVal)) +",
+    "aftercode": "(relativeThreshold * (FastMath.abs(fX) - FastMath.abs(fVal)) +",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 220,
+    "precode": "absoluteThreshold);",
+    "aftercode": "-absoluteThreshold);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 224,
+    "precode": "if (!stop) { // User-defined stopping criteria.",
+    "aftercode": "if (stop) { // User-defined stopping criteria.",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 226,
+    "precode": "stop = checker.converged(getIterations(), previous, current);",
+    "aftercode": "stop = checker.converged(getIterations(), current, previous);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 230,
+    "precode": "if (goal == GoalType.MINIMIZE) {",
+    "aftercode": "if (goal != GoalType.MINIMIZE) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 231,
+    "precode": "return (fVal < fX) ? current : previous;",
+    "aftercode": "return (fVal <= fX) ? current : previous;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 231,
+    "precode": "return (fVal < fX) ? current : previous;",
+    "aftercode": "return (fVal < fX) ? previous : current;",
+    "rule": "Ternary Swap",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 233,
+    "precode": "return (fVal > fX) ? current : previous;",
+    "aftercode": "return (fVal >= fX) ? current : previous;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 233,
+    "precode": "return (fVal > fX) ? current : previous;",
+    "aftercode": "return (fVal > fX) ? previous : current;",
+    "rule": "Ternary Swap",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 240,
+    "precode": "d[i] = x[i] - x1[i];",
+    "aftercode": "d[i] = x[i] + x1[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 241,
+    "precode": "x2[i] = 2 * x[i] - x1[i];",
+    "aftercode": "x2[i] = 2 * x[i] + x1[i];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 247,
+    "precode": "if (fX > fX2) {",
+    "aftercode": "if (fX >= fX2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 247,
+    "precode": "if (fX > fX2) {",
+    "aftercode": "if (fX < fX2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 248,
+    "precode": "double t = 2 * (fX + fX2 - 2 * fVal);",
+    "aftercode": "double t = 2 * (fX + fX2 + 2 * fVal);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 249,
+    "precode": "double temp = fX - fVal - delta;",
+    "aftercode": "double temp = fX - fVal + delta;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 250,
+    "precode": "t *= temp * temp;",
+    "aftercode": "t *= temp;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 251,
+    "precode": "temp = fX - fX2;",
+    "aftercode": "temp = fX + fX2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 252,
+    "precode": "t -= delta * temp * temp;",
+    "aftercode": "t += delta * temp * temp;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 254,
+    "precode": "if (t < 0.0) {",
+    "aftercode": "if (t <= 0.0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 254,
+    "precode": "if (t < 0.0) {",
+    "aftercode": "if (t > 0.0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 262,
+    "precode": "direc[bigInd] = direc[lastInd];",
+    "aftercode": "direc[bigInd] = direc[0];",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizer.java",
+    "line": 263,
+    "precode": "direc[lastInd] = result[1];",
+    "aftercode": "direc[lastInd] = result[0];",
+    "rule": "Index Swap",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 177,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 128,
+    "precode": "checkParameters();",
+    "aftercode": "// checkParameters();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 178,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 135,
+    "precode": "return computeObjectiveValue(point);",
+    "aftercode": "return 0.0;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 179,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 139,
+    "precode": "final boolean isMinim = getGoalType() == GoalType.MINIMIZE;",
+    "aftercode": "final boolean isMinim = getGoalType() != GoalType.MINIMIZE;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 180,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 144,
+    "precode": "final double v1 = o1.getValue();",
+    "aftercode": "final double v1 = 0.0;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 181,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 145,
+    "precode": "final double v2 = o2.getValue();",
+    "aftercode": "final double v2 = 0.0;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 182,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 146,
+    "precode": "return isMinim ? Double.compare(v1, v2) : Double.compare(v2, v1);",
+    "aftercode": "return isMinim ? Double.compare(v2, v1) : Double.compare(v1, v2);",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 183,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 146,
+    "precode": "return isMinim ? Double.compare(v1, v2) : Double.compare(v2, v1);",
+    "aftercode": "return isMinim ? Double.compare(v1, v2) : Double.compare(v1, v2);",
+    "rule": "Ternary Operator Logic Error",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 184,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 151,
+    "precode": "simplex.build(getStartPoint());",
+    "aftercode": "simplex.build(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 185,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 152,
+    "precode": "simplex.evaluate(evalFunc, comparator);",
+    "aftercode": "simplex.evaluate(evalFunc, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 186,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 154,
+    "precode": "PointValuePair[] previous = null;",
+    "aftercode": "PointValuePair[] previous = new PointValuePair[0];",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 187,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 155,
+    "precode": "int iteration = 0;",
+    "aftercode": "int iteration = 1;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 188,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 157,
+    "precode": "while (true) {",
+    "aftercode": "while (false) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 189,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 158,
+    "precode": "if (getIterations() > 0) {",
+    "aftercode": "if (getIterations() >= 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 190,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 158,
+    "precode": "if (getIterations() > 0) {",
+    "aftercode": "if (getIterations() < 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 191,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 159,
+    "precode": "boolean converged = true;",
+    "aftercode": "boolean converged = false;",
+    "rule": "Boolean Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 192,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < simplex.getSize(); i++) {",
+    "aftercode": "for (int i = 0; i <= simplex.getSize(); i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 193,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < simplex.getSize(); i++) {",
+    "aftercode": "for (int i = 1; i < simplex.getSize(); i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 194,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 161,
+    "precode": "PointValuePair prev = previous[i];",
+    "aftercode": "PointValuePair prev = previous[0];",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 195,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 162,
+    "precode": "converged = converged &&",
+    "aftercode": "converged = converged ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 196,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 163,
+    "precode": "checker.converged(iteration, prev, simplex.getPoint(i));",
+    "aftercode": "checker.converged(iteration, prev, simplex.getPoint(0));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 197,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 165,
+    "precode": "if (converged) {",
+    "aftercode": "if (!converged) {",
+    "rule": "Negation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 198,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 167,
+    "precode": "return simplex.getPoint(0);",
+    "aftercode": "return simplex.getPoint(1);",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 199,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 172,
+    "precode": "previous = simplex.getPoints();",
+    "aftercode": "previous = null;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 200,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 173,
+    "precode": "simplex.iterate(evalFunc, comparator);",
+    "aftercode": "simplex.iterate(null, comparator);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 201,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 173,
+    "precode": "simplex.iterate(evalFunc, comparator);",
+    "aftercode": "simplex.iterate(evalFunc, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 202,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 175,
+    "precode": "incrementIterationCount();",
+    "aftercode": "// incrementIterationCount();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 203,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 134,
+    "precode": "public double value(double[] point) {",
+    "aftercode": "public double value(double[] point) { return 0.0; }",
+    "rule": "Method Body Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 204,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 146,
+    "precode": "return isMinim ? Double.compare(v1, v2) : Double.compare(v2, v1);",
+    "aftercode": "return Double.compare(v1, v2);",
+    "rule": "Conditional Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 205,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < simplex.getSize(); i++) {",
+    "aftercode": "for (int i = 0; i < simplex.getSize() - 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 206,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 162,
+    "precode": "converged = converged &&",
+    "aftercode": "converged = true &&",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 207,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 163,
+    "precode": "checker.converged(iteration, prev, simplex.getPoint(i));",
+    "aftercode": "checker.converged(0, prev, simplex.getPoint(i));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 208,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 151,
+    "precode": "simplex.build(getStartPoint());",
+    "aftercode": "simplex.build(getStartPoint()); // build",
+    "rule": "Comment Addition",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 209,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 139,
+    "precode": "final boolean isMinim = getGoalType() == GoalType.MINIMIZE;",
+    "aftercode": "final boolean isMinim = true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 210,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 155,
+    "precode": "int iteration = 0;",
+    "aftercode": "int iteration = -1;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 211,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 158,
+    "precode": "if (getIterations() > 0) {",
+    "aftercode": "if (getIterations() > 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 212,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 167,
+    "precode": "return simplex.getPoint(0);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 213,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 173,
+    "precode": "simplex.iterate(evalFunc, comparator);",
+    "aftercode": "simplex.iterate(evalFunc, comparator); // iterate",
+    "rule": "Comment Addition",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 214,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 144,
+    "precode": "final double v1 = o1.getValue();",
+    "aftercode": "final double v1 = o2.getValue();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 215,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 145,
+    "precode": "final double v2 = o2.getValue();",
+    "aftercode": "final double v2 = o1.getValue();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 216,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 135,
+    "precode": "return computeObjectiveValue(point);",
+    "aftercode": "return computeObjectiveValue(new double[0]);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 217,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < simplex.getSize(); i++) {",
+    "aftercode": "for (int i = 0; i < 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 218,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 163,
+    "precode": "checker.converged(iteration, prev, simplex.getPoint(i));",
+    "aftercode": "checker.converged(iteration, simplex.getPoint(i), prev);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 219,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 152,
+    "precode": "simplex.evaluate(evalFunc, comparator);",
+    "aftercode": "simplex.evaluate(comparator, evalFunc);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 220,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 128,
+    "precode": "checkParameters();",
+    "aftercode": "if (false) checkParameters();",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 221,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 140,
+    "precode": "final Comparator<PointValuePair> comparator",
+    "aftercode": "Comparator<PointValuePair> comparator",
+    "rule": "Final Modifier Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 222,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 132,
+    "precode": "final MultivariateFunction evalFunc",
+    "aftercode": "MultivariateFunction evalFunc",
+    "rule": "Final Modifier Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 223,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 162,
+    "precode": "converged = converged &&",
+    "aftercode": "converged = true;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 224,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 165,
+    "precode": "if (converged) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 225,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java",
+    "line": 158,
+    "precode": "if (getIterations() > 0) {",
+    "aftercode": "if (getIterations() == 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 226,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 81,
+    "precode": "checkParameters();",
+    "aftercode": "// checkParameters();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 227,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 87,
+    "precode": "if (checker == null) {",
+    "aftercode": "if (checker != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 228,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 88,
+    "precode": "throw new NullArgumentException();",
+    "aftercode": "// throw new NullArgumentException();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 229,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 92,
+    "precode": "final int nR = targetValues.length;",
+    "aftercode": "final int nR = 0;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 230,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 97,
+    "precode": "for (int i = 0; i < nR; i++) {",
+    "aftercode": "for (int i = 0; i <= nR; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 231,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 98,
+    "precode": "residualsWeights[i] = weightMatrix.getEntry(i, i);",
+    "aftercode": "residualsWeights[i] = weightMatrix.getEntry(i, 0);",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 232,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 102,
+    "precode": "final int nC = currentPoint.length;",
+    "aftercode": "final int nC = 0;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 233,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 106,
+    "precode": "for (boolean converged = false; !converged;) {",
+    "aftercode": "for (boolean converged = true; !converged;) {",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 234,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 107,
+    "precode": "incrementIterationCount();",
+    "aftercode": "// incrementIterationCount();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 235,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 112,
+    "precode": "final double[] currentObjective = computeObjectiveValue(currentPoint);",
+    "aftercode": "final double[] currentObjective = new double[nC];",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 236,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 113,
+    "precode": "final double[] currentResiduals = computeResiduals(currentObjective);",
+    "aftercode": "final double[] currentResiduals = new double[nR];",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 237,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 114,
+    "precode": "final RealMatrix weightedJacobian = computeWeightedJacobian(currentPoint);",
+    "aftercode": "final RealMatrix weightedJacobian = null;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 238,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 118,
+    "precode": "final double[]   b = new double[nC];",
+    "aftercode": "final double[]   b = new double[nR];",
+    "rule": "Array Size Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 239,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 119,
+    "precode": "final double[][] a = new double[nC][nC];",
+    "aftercode": "final double[][] a = new double[nR][nR];",
+    "rule": "Array Size Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 240,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 120,
+    "precode": "for (int i = 0; i < nR; ++i) {",
+    "aftercode": "for (int i = 0; i <= nR; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 241,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 122,
+    "precode": "final double[] grad   = weightedJacobian.getRow(i);",
+    "aftercode": "final double[] grad   = weightedJacobian.getRow(0);",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 242,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 123,
+    "precode": "final double weight   = residualsWeights[i];",
+    "aftercode": "final double weight   = 1.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 243,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 127,
+    "precode": "final double wr = weight * residual;",
+    "aftercode": "final double wr = weight / residual;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 244,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 128,
+    "precode": "for (int j = 0; j < nC; ++j) {",
+    "aftercode": "for (int j = 1; j < nC; ++j) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 245,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 129,
+    "precode": "b[j] += wr * grad[j];",
+    "aftercode": "b[j] -= wr * grad[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 246,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 133,
+    "precode": "for (int k = 0; k < nC; ++k) {",
+    "aftercode": "for (int k = 0; k <= nC; ++k) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 247,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 135,
+    "precode": "double wgk = weight * grad[k];",
+    "aftercode": "double wgk = weight + grad[k];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 248,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 136,
+    "precode": "for (int l = 0; l < nC; ++l) {",
+    "aftercode": "for (int l = 1; l < nC; ++l) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 249,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 137,
+    "precode": "ak[l] += wgk * grad[l];",
+    "aftercode": "ak[l] += wgk + grad[l];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 250,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 144,
+    "precode": "RealMatrix mA = new BlockRealMatrix(a);",
+    "aftercode": "RealMatrix mA = new BlockRealMatrix(a);",
+    "rule": "Type Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 251,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 145,
+    "precode": "useLU ?",
+    "aftercode": "!useLU ?",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 252,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 148,
+    "precode": "final double[] dX = solver.solve(new ArrayRealVector(b, false)).toArray();",
+    "aftercode": "final double[] dX = solver.solve(new ArrayRealVector(b, true)).toArray();",
+    "rule": "Boolean Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 253,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 150,
+    "precode": "for (int i = 0; i < nC; ++i) {",
+    "aftercode": "for (int i = 0; i <= nC; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 254,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 151,
+    "precode": "currentPoint[i] += dX[i];",
+    "aftercode": "currentPoint[i] -= dX[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 255,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 153,
+    "precode": "catch (SingularMatrixException e) {",
+    "aftercode": "catch (Exception e) {",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 256,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 154,
+    "precode": "throw new ConvergenceException(LocalizedFormats.UNABLE_TO_SOLVE_SINGULAR_PROBLEM);",
+    "aftercode": "return null;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 257,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 158,
+    "precode": "if (previous != null) {",
+    "aftercode": "if (previous == null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 258,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 159,
+    "precode": "converged = checker.converged(getIterations(), previous, current);",
+    "aftercode": "converged = true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 259,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 161,
+    "precode": "setCost(computeCost(currentResiduals));",
+    "aftercode": "// setCost(computeCost(currentResiduals));",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 260,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/GaussNewtonOptimizer.java",
+    "line": 167,
+    "precode": "throw new MathInternalError();",
+    "aftercode": "return current;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 261,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 292,
+    "precode": "solvedCols  = FastMath.min(nR, nC);",
+    "aftercode": "solvedCols  = FastMath.max(nR, nC);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 262,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 300,
+    "precode": "double   delta   = 0;",
+    "aftercode": "double   delta   = 1.0;",
+    "rule": "Scalar Variable Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 263,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 332,
+    "precode": "for (int i = 0; i < nR; i++) {",
+    "aftercode": "for (int i = 0; i <= nR; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 264,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 353,
+    "precode": "dk = 1.0;",
+    "aftercode": "dk = 0.0;",
+    "rule": "Scalar Variable Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 265,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 356,
+    "precode": "xNorm  += xk * xk;",
+    "aftercode": "xNorm  -= xk * xk;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 266,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 367,
+    "precode": "if (currentCost != 0) {",
+    "aftercode": "if (currentCost == 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 267,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 373,
+    "precode": "for (int i = 0; i <= j; ++i) {",
+    "aftercode": "for (int i = 0; i < j; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 268,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 376,
+    "precode": "maxCosine = FastMath.max(maxCosine, FastMath.abs(sum) / (s * currentCost));",
+    "aftercode": "maxCosine = FastMath.min(maxCosine, FastMath.abs(sum) / (s * currentCost));",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 269,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 380,
+    "precode": "if (maxCosine <= orthoTolerance) {",
+    "aftercode": "if (maxCosine < orthoTolerance) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 270,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 388,
+    "precode": "diag[j] = FastMath.max(diag[j], jacNorm[j]);",
+    "aftercode": "diag[j] = FastMath.min(diag[j], jacNorm[j]);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 271,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 392,
+    "precode": "for (double ratio = 0; ratio < 1.0e-4;) {",
+    "aftercode": "for (double ratio = 0; ratio <= 1.0e-4;) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 272,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 414,
+    "precode": "lmDir[pj] = -lmDir[pj];",
+    "aftercode": "lmDir[pj] = lmDir[pj];",
+    "rule": "Unary Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 273,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 416,
+    "precode": "double s = diag[pj] * lmDir[pj];",
+    "aftercode": "double s = diag[pj] / lmDir[pj];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 274,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 422,
+    "precode": "delta = FastMath.min(delta, lmNorm);",
+    "aftercode": "delta = FastMath.max(delta, lmNorm);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 275,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 433,
+    "precode": "if (0.1 * currentCost < previousCost) {",
+    "aftercode": "if (0.1 * currentCost <= previousCost) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 276,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 435,
+    "precode": "actRed = 1.0 - r * r;",
+    "aftercode": "actRed = 1.0 + r * r;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 277,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 445,
+    "precode": "work1[i] += weightedJacobian[i][pj] * dirJ;",
+    "aftercode": "work1[i] -= weightedJacobian[i][pj] * dirJ;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 278,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 450,
+    "precode": "coeff1 += work1[j] * work1[j];",
+    "aftercode": "coeff1 += work1[j] + work1[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 279,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 454,
+    "precode": "double coeff2 = lmPar * lmNorm * lmNorm / pc2;",
+    "aftercode": "double coeff2 = lmPar * lmNorm * lmNorm * pc2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 280,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 455,
+    "precode": "double preRed = coeff1 + 2 * coeff2;",
+    "aftercode": "double preRed = coeff1 - 2 * coeff2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 281,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 456,
+    "precode": "double dirDer = -(coeff1 + coeff2);",
+    "aftercode": "double dirDer = (coeff1 + coeff2);",
+    "rule": "Unary Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 282,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 459,
+    "precode": "ratio = (preRed == 0) ? 0 : (actRed / preRed);",
+    "aftercode": "ratio = (preRed != 0) ? 0 : (actRed / preRed);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 283,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 462,
+    "precode": "if (ratio <= 0.25) {",
+    "aftercode": "if (ratio < 0.25) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 284,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 464,
+    "precode": "(actRed < 0) ? (0.5 * dirDer / (dirDer + 0.5 * actRed)) : 0.5;",
+    "aftercode": "(actRed <= 0) ? (0.5 * dirDer / (dirDer + 0.5 * actRed)) : 0.5;",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 285,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 465,
+    "precode": "if ((0.1 * currentCost >= previousCost) || (tmp < 0.1)) {",
+    "aftercode": "if ((0.1 * currentCost >= previousCost) && (tmp < 0.1)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 286,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 468,
+    "precode": "delta = tmp * FastMath.min(delta, 10.0 * lmNorm);",
+    "aftercode": "delta = tmp * FastMath.max(delta, 10.0 * lmNorm);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 287,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 469,
+    "precode": "lmPar /= tmp;",
+    "aftercode": "lmPar *= tmp;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 288,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 470,
+    "precode": "} else if ((lmPar == 0) || (ratio >= 0.75)) {",
+    "aftercode": "} else if ((lmPar == 0) && (ratio >= 0.75)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 289,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 471,
+    "precode": "delta = 2 * lmNorm;",
+    "aftercode": "delta = 2 / lmNorm;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 290,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 472,
+    "precode": "lmPar *= 0.5;",
+    "aftercode": "lmPar /= 0.5;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 291,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 476,
+    "precode": "if (ratio >= 1.0e-4) {",
+    "aftercode": "if (ratio > 1.0e-4) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 292,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 482,
+    "precode": "xNorm += xK * xK;",
+    "aftercode": "xNorm -= xK * xK;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 293,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 497,
+    "precode": "for (int j = 0; j < solvedCols; ++j) {",
+    "aftercode": "for (int j = 0; j <= solvedCols; ++j) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 294,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 512,
+    "precode": "if ((FastMath.abs(actRed) <= costRelativeTolerance &&",
+    "aftercode": "if ((FastMath.abs(actRed) < costRelativeTolerance &&",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 295,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 514,
+    "precode": "ratio <= 2.0) ||",
+    "aftercode": "ratio < 2.0 ||",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 296,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 522,
+    "precode": "if ((FastMath.abs(actRed) <= 2.2204e-16) && (preRed <= 2.2204e-16) && (ratio <= 2.0)) {",
+    "aftercode": "if ((FastMath.abs(actRed) <= 2.2204e-16) && (preRed <= 2.2204e-16) && (ratio < 2.0)) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 297,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 525,
+    "precode": "else if (delta <= 2.2204e-16 * xNorm) {",
+    "aftercode": "else if (delta < 2.2204e-16 * xNorm) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 298,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java",
+    "line": 528,
+    "precode": "else if (maxCosine <= 2.2204e-16)  {",
+    "aftercode": "else if (maxCosine < 2.2204e-16)  {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  }
+]

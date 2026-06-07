@@ -1,0 +1,532 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 280,
+    "precode": "Object key = new Integer(style);",
+    "aftercode": "Object key = new Integer(style + 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 282,
+    "precode": "key = new Pair(key, timeZone);",
+    "aftercode": "key = new Pair(timeZone, key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 286,
+    "precode": "locale = Locale.getDefault();",
+    "aftercode": "locale = Locale.getDefault(Locale.Category.FORMAT);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 289,
+    "precode": "key = new Pair(key, locale);",
+    "aftercode": "key = new Pair(locale, key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 294,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateInstance(style, locale);",
+    "aftercode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateTimeInstance(style, locale);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 294,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateInstance(style, locale);",
+    "aftercode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateInstance(style, locale, Locale.ENGLISH);",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 295,
+    "precode": "String pattern = formatter.toPattern();",
+    "aftercode": "String pattern = formatter.toLocalizedPattern();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 296,
+    "precode": "format = getInstance(pattern, timeZone, locale);",
+    "aftercode": "format = getInstance(pattern, locale, timeZone);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 296,
+    "precode": "format = getInstance(pattern, timeZone, locale);",
+    "aftercode": "format = getInstance(pattern, null, locale);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 297,
+    "precode": "cDateInstanceCache.put(key, format);",
+    "aftercode": "cDateInstanceCache.put(format, key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 299,
+    "precode": "} catch (ClassCastException ex) {",
+    "aftercode": "} catch (IllegalArgumentException ex) {",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 300,
+    "precode": "throw new IllegalArgumentException(\"No date pattern for locale: \" + locale);",
+    "aftercode": "throw new IllegalArgumentException(\"No date pattern for locale: \" + style);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 303,
+    "precode": "return format;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 281,
+    "precode": "if (timeZone != null) {",
+    "aftercode": "if (timeZone == null) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 285,
+    "precode": "if (locale == null) {",
+    "aftercode": "if (locale != null) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 292,
+    "precode": "if (format == null) {",
+    "aftercode": "if (format != null) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 280,
+    "precode": "Object key = new Integer(style);",
+    "aftercode": "Object key = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 286,
+    "precode": "locale = Locale.getDefault();",
+    "aftercode": "locale = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 297,
+    "precode": "cDateInstanceCache.put(key, format);",
+    "aftercode": "cDateInstanceCache.remove(key, format);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 294,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateInstance(style, locale);",
+    "aftercode": "SimpleDateFormat formatter = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 295,
+    "precode": "String pattern = formatter.toPattern();",
+    "aftercode": "String pattern = \"\";",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 296,
+    "precode": "format = getInstance(pattern, timeZone, locale);",
+    "aftercode": "format = getInstance(\"\", timeZone, locale);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 282,
+    "precode": "key = new Pair(key, timeZone);",
+    "aftercode": "key = new Pair(key, null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 289,
+    "precode": "key = new Pair(key, locale);",
+    "aftercode": "key = new Pair(key, null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 291,
+    "precode": "FastDateFormat format = (FastDateFormat) cDateInstanceCache.get(key);",
+    "aftercode": "FastDateFormat format = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 297,
+    "precode": "cDateInstanceCache.put(key, format);",
+    "aftercode": "cDateInstanceCache.clear();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 460,
+    "precode": "if (timeZone != null) {",
+    "aftercode": "if (timeZone == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 461,
+    "precode": "key = new Pair(key, timeZone);",
+    "aftercode": "key = new Pair(timeZone, key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 463,
+    "precode": "if (locale == null) {",
+    "aftercode": "if (locale != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 464,
+    "precode": "locale = Locale.getDefault();",
+    "aftercode": "locale = Locale.ENGLISH;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 466,
+    "precode": "key = new Pair(key, locale);",
+    "aftercode": "key = new Pair(locale, key);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 468,
+    "precode": "FastDateFormat format = (FastDateFormat) cDateTimeInstanceCache.get(key);",
+    "aftercode": "FastDateFormat format = (FastDateFormat) cDateTimeInstanceCache.put(key, null);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 469,
+    "precode": "if (format == null) {",
+    "aftercode": "if (format != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 471,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateTimeInstance(dateStyle, timeStyle,",
+    "aftercode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateInstance(dateStyle, timeStyle,",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 471,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateTimeInstance(dateStyle, timeStyle,",
+    "aftercode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getTimeInstance(dateStyle, timeStyle,",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 473,
+    "precode": "String pattern = formatter.toPattern();",
+    "aftercode": "String pattern = formatter.toLocalizedPattern();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 474,
+    "precode": "format = getInstance(pattern, timeZone, locale);",
+    "aftercode": "format = getInstance(timeZone, pattern, locale);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 475,
+    "precode": "cDateTimeInstanceCache.put(key, format);",
+    "aftercode": "cDateTimeInstanceCache.remove(key);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 478,
+    "precode": "throw new IllegalArgumentException(\"No date time pattern for locale: \" + locale);",
+    "aftercode": "throw new IllegalStateException(\"No date time pattern for locale: \" + locale);",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 479,
+    "precode": "}",
+    "aftercode": "}",
+    "rule": "No-Op",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 459,
+    "precode": "Object key = new Pair(new Integer(dateStyle), new Integer(timeStyle));",
+    "aftercode": "Object key = new Pair(new Integer(timeStyle), new Integer(dateStyle));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 468,
+    "precode": "FastDateFormat format = (FastDateFormat) cDateTimeInstanceCache.get(key);",
+    "aftercode": "FastDateFormat format = (FastDateFormat) cDateTimeInstanceCache.get(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 471,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateTimeInstance(dateStyle, timeStyle,",
+    "aftercode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateTimeInstance(timeStyle, dateStyle,",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 474,
+    "precode": "format = getInstance(pattern, timeZone, locale);",
+    "aftercode": "format = getInstance(pattern, locale, timeZone);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 464,
+    "precode": "locale = Locale.getDefault();",
+    "aftercode": "locale = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 461,
+    "precode": "key = new Pair(key, timeZone);",
+    "aftercode": "key = new Pair(key, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 466,
+    "precode": "key = new Pair(key, locale);",
+    "aftercode": "key = new Pair(key, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 473,
+    "precode": "String pattern = formatter.toPattern();",
+    "aftercode": "String pattern = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 474,
+    "precode": "format = getInstance(pattern, timeZone, locale);",
+    "aftercode": "format = getInstance(null, timeZone, locale);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 475,
+    "precode": "cDateTimeInstanceCache.put(key, format);",
+    "aftercode": "cDateTimeInstanceCache.put(key, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 468,
+    "precode": "FastDateFormat format = (FastDateFormat) cDateTimeInstanceCache.get(key);",
+    "aftercode": "FastDateFormat format = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 471,
+    "precode": "SimpleDateFormat formatter = (SimpleDateFormat) DateFormat.getDateTimeInstance(dateStyle, timeStyle,",
+    "aftercode": "SimpleDateFormat formatter = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/lang/time/FastDateFormat.java",
+    "line": 478,
+    "precode": "throw new IllegalArgumentException(\"No date time pattern for locale: \" + locale);",
+    "aftercode": "throw new RuntimeException(\"No date time pattern for locale: \" + locale);",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  }
+]

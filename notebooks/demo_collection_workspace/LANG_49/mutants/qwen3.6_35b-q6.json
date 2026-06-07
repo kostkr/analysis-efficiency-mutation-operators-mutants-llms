@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 466,
+    "precode": "if (numerator == 0) {",
+    "aftercode": "if (numerator != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 467,
+    "precode": "return equals(ZERO) ? this : ZERO;",
+    "aftercode": "return equals(ZERO) ? ZERO : this;",
+    "rule": "Conditional Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 469,
+    "precode": "int gcd = greatestCommonDivisor(Math.abs(numerator), denominator);",
+    "aftercode": "int gcd = greatestCommonDivisor(Math.abs(numerator), -denominator);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 469,
+    "precode": "int gcd = greatestCommonDivisor(Math.abs(numerator), denominator);",
+    "aftercode": "int gcd = greatestCommonDivisor(Math.abs(denominator), numerator);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 470,
+    "precode": "if (gcd == 1) {",
+    "aftercode": "if (gcd >= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 470,
+    "precode": "if (gcd == 1) {",
+    "aftercode": "if (gcd <= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 471,
+    "precode": "return this;",
+    "aftercode": "return ZERO;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 473,
+    "precode": "return Fraction.getFraction(numerator / gcd, denominator / gcd);",
+    "aftercode": "return Fraction.getFraction(numerator * gcd, denominator / gcd);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 473,
+    "precode": "return Fraction.getFraction(numerator / gcd, denominator / gcd);",
+    "aftercode": "return Fraction.getFraction(numerator / gcd, denominator * gcd);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang/math/Fraction.java",
+    "line": 473,
+    "precode": "return Fraction.getFraction(numerator / gcd, denominator / gcd);",
+    "aftercode": "return Fraction.getFraction(-numerator / gcd, denominator / gcd);",
+    "rule": "Negation",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  }
+]

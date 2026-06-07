@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 113,
+    "precode": "Vector3D v1D = line.intersection(subLine.line);",
+    "aftercode": "Vector3D v1D = subLine.line.intersection(line);",
+    "rule": "Method Call Argument Swap",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 114,
+    "precode": "if (v1D == null) {",
+    "aftercode": "if (v1D != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 119,
+    "precode": "Location loc1 = remainingRegion.checkPoint(line.toSubSpace(v1D));",
+    "aftercode": "Location loc1 = remainingRegion.checkPoint(subLine.line.toSubSpace(v1D));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 122,
+    "precode": "Location loc2 = subLine.remainingRegion.checkPoint(subLine.line.toSubSpace(v1D));",
+    "aftercode": "Location loc2 = subLine.remainingRegion.checkPoint(line.toSubSpace(v1D));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) || (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? null : v1D;",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 == Location.OUTSIDE) && (loc2 == Location.OUTSIDE)) ? v1D : null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 127,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) || (loc2 == Location.INSIDE)) ? v1D : null;",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 127,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? null : v1D;",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 127,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.INSIDE) && (loc2 != Location.INSIDE)) ? v1D : null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 124,
+    "precode": "if (includeEndPoints) {",
+    "aftercode": "if (!includeEndPoints) {",
+    "rule": "Negation",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 113,
+    "precode": "Vector3D v1D = line.intersection(subLine.line);",
+    "aftercode": "Vector3D v1D = line.intersection(subLine.remainingRegion);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : v1D;",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 127,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v1D : v1D;",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 114,
+    "precode": "if (v1D == null) {",
+    "aftercode": "if (v1D == null || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? null : null;",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 119,
+    "precode": "Location loc1 = remainingRegion.checkPoint(line.toSubSpace(v1D));",
+    "aftercode": "Location loc1 = remainingRegion.checkPoint(line.toSubSpace(null));",
+    "rule": "Null Parameter Injection",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.63,
+    "dublicate": true
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 127,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? null : null;",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 113,
+    "precode": "Vector3D v1D = line.intersection(subLine.line);",
+    "aftercode": "Vector3D v1D = line.intersection(subLine.line); //",
+    "rule": "Comment Injection",
+    "gen_time_s": 1.63,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+    "line": 125,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : v1D;",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.63,
+    "dublicate": true
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 113,
+    "precode": "Line line1 = (Line) getHyperplane();",
+    "aftercode": "Line line1 = (Line) subLine.getHyperplane();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 114,
+    "precode": "Line line2 = (Line) subLine.getHyperplane();",
+    "aftercode": "Line line2 = (Line) getHyperplane();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 117,
+    "precode": "Vector2D v2D = line1.intersection(line2);",
+    "aftercode": "Vector2D v2D = line2.intersection(line1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 118,
+    "precode": "if (v2D == null) {",
+    "aftercode": "if (v2D != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 123,
+    "precode": "Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));",
+    "aftercode": "Location loc1 = subLine.getRemainingRegion().checkPoint(line1.toSubSpace(v2D));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 123,
+    "precode": "Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));",
+    "aftercode": "Location loc1 = getRemainingRegion().checkPoint(line2.toSubSpace(v2D));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 126,
+    "precode": "Location loc2 = subLine.getRemainingRegion().checkPoint(line2.toSubSpace(v2D));",
+    "aftercode": "Location loc2 = subLine.getRemainingRegion().checkPoint(line1.toSubSpace(v2D));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 126,
+    "precode": "Location loc2 = subLine.getRemainingRegion().checkPoint(line2.toSubSpace(v2D));",
+    "aftercode": "Location loc2 = getRemainingRegion().checkPoint(line2.toSubSpace(v2D));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 129,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) || (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 129,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 == Location.OUTSIDE)) ? v2D : null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 129,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? null : v2D;",
+    "rule": "Ternary Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 129,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 == Location.OUTSIDE) && (loc2 == Location.OUTSIDE)) ? v2D : null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 131,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) || (loc2 == Location.INSIDE)) ? v2D : null;",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 131,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 != Location.INSIDE)) ? v2D : null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 131,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.OUTSIDE)) ? v2D : null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 131,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? null : v2D;",
+    "rule": "Ternary Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 128,
+    "precode": "if (includeEndPoints) {",
+    "aftercode": "if (!includeEndPoints) {",
+    "rule": "Negation",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 117,
+    "precode": "Vector2D v2D = line1.intersection(line2);",
+    "aftercode": "Vector2D v2D = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 129,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : v2D;",
+    "rule": "Ternary Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 131,
+    "precode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;",
+    "aftercode": "return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? null : null;",
+    "rule": "Ternary Operator Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 113,
+    "precode": "Line line1 = (Line) getHyperplane();",
+    "aftercode": "Line line1 = (Line) subLine.getHyperplane();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.59,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 123,
+    "precode": "Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));",
+    "aftercode": "Location loc1 = getRemainingRegion().checkPoint(v2D);",
+    "rule": "Method Call Deletion",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 126,
+    "precode": "Location loc2 = subLine.getRemainingRegion().checkPoint(line2.toSubSpace(v2D));",
+    "aftercode": "Location loc2 = subLine.getRemainingRegion().checkPoint(v2D);",
+    "rule": "Method Call Deletion",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 118,
+    "precode": "if (v2D == null) {",
+    "aftercode": "if (v2D == null || true) {",
+    "rule": "Conditional Constant",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java",
+    "line": 129,
+    "precode": "return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;",
+    "aftercode": "return (loc1 != Location.OUTSIDE && loc2 != Location.OUTSIDE) ? v2D : null;",
+    "rule": "Parentheses Removal",
+    "gen_time_s": 1.59,
+    "dublicate": false
+  }
+]

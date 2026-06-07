@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 187,
+    "precode": "if (className.length() == 0) {",
+    "aftercode": "if (className.length() != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 194,
+    "precode": "if (className.startsWith(\"[\")) {",
+    "aftercode": "if (!className.startsWith(\"[\")) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 195,
+    "precode": "while (className.charAt(0) == '[') {",
+    "aftercode": "while (className.charAt(0) != '[') {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 196,
+    "precode": "className = className.substring(1);",
+    "aftercode": "className = className.substring(2);",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 200,
+    "precode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {",
+    "aftercode": "if (className.charAt(0) == 'L' || className.charAt(className.length() - 1) == ';') {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 201,
+    "precode": "className = className.substring(1, className.length() - 1);",
+    "aftercode": "className = className.substring(0, className.length() - 1);",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 205,
+    "precode": "if (reverseAbbreviationMap.containsKey(className)) {",
+    "aftercode": "if (!reverseAbbreviationMap.containsKey(className)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 206,
+    "precode": "className = reverseAbbreviationMap.get(className);",
+    "aftercode": "className = reverseAbbreviationMap.get(\"java.lang.Object\");",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 209,
+    "precode": "int lastDotIdx = className.lastIndexOf(PACKAGE_SEPARATOR_CHAR);",
+    "aftercode": "int lastDotIdx = className.indexOf(PACKAGE_SEPARATOR_CHAR);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 210,
+    "precode": "int innerIdx = className.indexOf(",
+    "aftercode": "int innerIdx = className.lastIndexOf(",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 212,
+    "precode": "String out = className.substring(lastDotIdx + 1);",
+    "aftercode": "String out = className.substring(lastDotIdx - 1);",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 213,
+    "precode": "if (innerIdx != -1) {",
+    "aftercode": "if (innerIdx == -1) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 214,
+    "precode": "out = out.replace(INNER_CLASS_SEPARATOR_CHAR, PACKAGE_SEPARATOR_CHAR);",
+    "aftercode": "out = out.replace(PACKAGE_SEPARATOR_CHAR, INNER_CLASS_SEPARATOR_CHAR);",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 216,
+    "precode": "return out + arrayPrefix;",
+    "aftercode": "return arrayPrefix + out;",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 185,
+    "precode": "return StringUtils.EMPTY;",
+    "aftercode": "return className;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 188,
+    "precode": "return StringUtils.EMPTY;",
+    "aftercode": "return className;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 191,
+    "precode": "StringBuffer arrayPrefix = new StringBuffer();",
+    "aftercode": "StringBuilder arrayPrefix = new StringBuilder();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 197,
+    "precode": "arrayPrefix.append(\"[]\");",
+    "aftercode": "arrayPrefix.append(\"[]\").append(\"[]\");",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 201,
+    "precode": "className = className.substring(1, className.length() - 1);",
+    "aftercode": "className = className.substring(1);",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 210,
+    "precode": "int innerIdx = className.indexOf(",
+    "aftercode": "int innerIdx = className.indexOf(",
+    "rule": "Comment Out Line",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 212,
+    "precode": "String out = className.substring(lastDotIdx + 1);",
+    "aftercode": "String out = className;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 187,
+    "precode": "if (className.length() == 0) {",
+    "aftercode": "if (className.length() > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 195,
+    "precode": "while (className.charAt(0) == '[') {",
+    "aftercode": "while (className.length() > 0 && className.charAt(0) == '[') {",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 200,
+    "precode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {",
+    "aftercode": "if (className.charAt(0) == 'L' && className.length() > 1 && className.charAt(className.length() - 1) == ';') {",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 205,
+    "precode": "if (reverseAbbreviationMap.containsKey(className)) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 213,
+    "precode": "if (innerIdx != -1) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 194,
+    "precode": "if (className.startsWith(\"[\")) {",
+    "aftercode": "if (className.length() > 0 && className.startsWith(\"[\")) {",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 210,
+    "precode": "int innerIdx = className.indexOf(",
+    "aftercode": "int innerIdx = className.indexOf(",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 212,
+    "precode": "String out = className.substring(lastDotIdx + 1);",
+    "aftercode": "String out = className.substring(lastDotIdx + 2);",
+    "rule": "Arguments Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 214,
+    "precode": "out = out.replace(INNER_CLASS_SEPARATOR_CHAR, PACKAGE_SEPARATOR_CHAR);",
+    "aftercode": "out = out.replaceAll(INNER_CLASS_SEPARATOR_CHAR, String.valueOf(PACKAGE_SEPARATOR_CHAR));",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 216,
+    "precode": "return out + arrayPrefix;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 196,
+    "precode": "className = className.substring(1);",
+    "aftercode": "className = \"\";",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 201,
+    "precode": "className = className.substring(1, className.length() - 1);",
+    "aftercode": "className = \"\";",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 206,
+    "precode": "className = reverseAbbreviationMap.get(className);",
+    "aftercode": "className = \"\";",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 215,
+    "precode": "}",
+    "aftercode": "{ out = out.replace(INNER_CLASS_SEPARATOR_CHAR, PACKAGE_SEPARATOR_CHAR); }",
+    "rule": "Comment Out Line",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 258,
+    "precode": "if (className == null || className.length() == 0) {",
+    "aftercode": "if (className == null && className.length() == 0) {",
+    "rule": "Conditionals Operand",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 263,
+    "precode": "while (className.charAt(0) == '[') {",
+    "aftercode": "while (className.charAt(0) != '[') {",
+    "rule": "Relational Operator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 263,
+    "precode": "while (className.charAt(0) == '[') {",
+    "aftercode": "while (className.charAt(1) == '[') {",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 264,
+    "precode": "className = className.substring(1);",
+    "aftercode": "className = className.substring(0);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 264,
+    "precode": "className = className.substring(1);",
+    "aftercode": "className = className.substring(2);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 267,
+    "precode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {",
+    "aftercode": "if (className.charAt(0) == 'L' || className.charAt(className.length() - 1) == ';') {",
+    "rule": "Conditionals Operand",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 267,
+    "precode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {",
+    "aftercode": "if (className.charAt(0) != 'L' && className.charAt(className.length() - 1) == ';') {",
+    "rule": "Relational Operator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 267,
+    "precode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {",
+    "aftercode": "if (className.charAt(0) == 'L' && className.charAt(className.length()) == ';') {",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 268,
+    "precode": "className = className.substring(1);",
+    "aftercode": "className = className.substring(0);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 268,
+    "precode": "className = className.substring(1);",
+    "aftercode": "className = className.substring(2);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 271,
+    "precode": "int i = className.lastIndexOf(PACKAGE_SEPARATOR_CHAR);",
+    "aftercode": "int i = className.indexOf(PACKAGE_SEPARATOR_CHAR);",
+    "rule": "Method Call",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 272,
+    "precode": "if (i == -1) {",
+    "aftercode": "if (i != -1) {",
+    "rule": "Negation",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 272,
+    "precode": "if (i == -1) {",
+    "aftercode": "if (i > -1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 273,
+    "precode": "return StringUtils.EMPTY;",
+    "aftercode": "return className;",
+    "rule": "Return Value",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 275,
+    "precode": "return className.substring(0, i);",
+    "aftercode": "return className.substring(i);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 275,
+    "precode": "return className.substring(0, i);",
+    "aftercode": "return className.substring(0, i + 1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 275,
+    "precode": "return className.substring(0, i);",
+    "aftercode": "return className.substring(0, i - 1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 258,
+    "precode": "if (className == null || className.length() == 0) {",
+    "aftercode": "if (className == null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 267,
+    "precode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {",
+    "aftercode": "if (className.charAt(0) == 'L' && className.charAt(className.length() - 2) == ';') {",
+    "rule": "Argument Index",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/lang/ClassUtils.java",
+    "line": 263,
+    "precode": "while (className.charAt(0) == '[') {",
+    "aftercode": "while (className.charAt(0) == ']') {",
+    "rule": "Literal",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  }
+]

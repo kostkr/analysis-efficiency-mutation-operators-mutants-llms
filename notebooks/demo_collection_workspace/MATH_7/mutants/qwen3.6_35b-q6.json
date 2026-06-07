@@ -1,0 +1,1642 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeEnd(interpolator);",
+    "rule": "Method Name Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 312,
+    "precode": "final int orderingSign = interpolator.isForward() ? +1 : -1;",
+    "aftercode": "final int orderingSign = interpolator.isForward() ? -1 : +1;",
+    "rule": "Conditional Boundary Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 313,
+    "precode": "SortedSet<EventState> occuringEvents = new TreeSet<EventState>(new Comparator<EventState>() {",
+    "aftercode": "List<EventState> occuringEvents = new ArrayList<EventState>();",
+    "rule": "Data Structure Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.remove(state);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 334,
+    "precode": "iterator.remove();",
+    "aftercode": "// iterator.remove();",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 338,
+    "precode": "interpolator.setSoftPreviousTime(previousT);",
+    "aftercode": "interpolator.setSoftPreviousTime(eventT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 339,
+    "precode": "interpolator.setSoftCurrentTime(eventT);",
+    "aftercode": "interpolator.setSoftCurrentTime(currentT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 343,
+    "precode": "final double[] eventY = interpolator.getInterpolatedState().clone();",
+    "aftercode": "final double[] eventY = interpolator.getInterpolatedState();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 348,
+    "precode": "isLastStep = isLastStep || state.stop();",
+    "aftercode": "isLastStep = isLastStep && state.stop();",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, !isLastStep);",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 358,
+    "precode": "System.arraycopy(eventY, 0, y, 0, y.length);",
+    "aftercode": "System.arraycopy(y, 0, eventY, 0, y.length);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 364,
+    "precode": "needReset =  needReset || state.reset(eventT, eventY);",
+    "aftercode": "needReset =  needReset && state.reset(eventT, eventY);",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 369,
+    "precode": "System.arraycopy(eventY, 0, y, 0, y.length);",
+    "aftercode": "System.arraycopy(y, 0, eventY, 0, y.length);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 376,
+    "precode": "previousT = eventT;",
+    "aftercode": "previousT = currentT;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 377,
+    "precode": "interpolator.setSoftPreviousTime(eventT);",
+    "aftercode": "interpolator.setSoftPreviousTime(currentT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 378,
+    "precode": "interpolator.setSoftCurrentTime(currentT);",
+    "aftercode": "interpolator.setSoftCurrentTime(eventT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.remove(currentEvent);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 390,
+    "precode": "final double[] currentY = interpolator.getInterpolatedState();",
+    "aftercode": "final double[] currentY = interpolator.getInterpolatedState().clone();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 393,
+    "precode": "isLastStep = isLastStep || state.stop();",
+    "aftercode": "isLastStep = isLastStep && state.stop();",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 395,
+    "precode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, 1);",
+    "aftercode": "isLastStep = isLastStep && Precision.equals(currentT, tEnd, 1);",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, !isLastStep);",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 402,
+    "precode": "return currentT;",
+    "aftercode": "return previousT;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 304,
+    "precode": "if (! statesInitialized) {",
+    "aftercode": "if (statesInitialized) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 323,
+    "precode": "if (state.evaluateStep(interpolator)) {",
+    "aftercode": "if (!state.evaluateStep(interpolator)) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 381,
+    "precode": "if (currentEvent.evaluateStep(interpolator)) {",
+    "aftercode": "if (!currentEvent.evaluateStep(interpolator)) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 356,
+    "precode": "if (isLastStep) {",
+    "aftercode": "if (!isLastStep) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 366,
+    "precode": "if (needReset) {",
+    "aftercode": "if (!needReset) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 329,
+    "precode": "while (!occuringEvents.isEmpty()) {",
+    "aftercode": "while (occuringEvents.isEmpty()) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 317,
+    "precode": "return orderingSign * Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "aftercode": "return -orderingSign * Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 300,
+    "precode": "double previousT = interpolator.getGlobalPreviousTime();",
+    "aftercode": "double previousT = interpolator.getGlobalCurrentTime();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 301,
+    "precode": "final double currentT = interpolator.getGlobalCurrentTime();",
+    "aftercode": "final double currentT = interpolator.getGlobalPreviousTime();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 342,
+    "precode": "interpolator.setInterpolatedTime(eventT);",
+    "aftercode": "interpolator.setInterpolatedTime(currentT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 389,
+    "precode": "interpolator.setInterpolatedTime(currentT);",
+    "aftercode": "interpolator.setInterpolatedTime(previousT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 332,
+    "precode": "final Iterator<EventState> iterator = occuringEvents.iterator();",
+    "aftercode": "final Iterator<EventState> iterator = occuringEvents.listIterator();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 333,
+    "precode": "final EventState currentEvent = iterator.next();",
+    "aftercode": "final EventState currentEvent = iterator.previous();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 352,
+    "precode": "for (final StepHandler handler : stepHandlers) {",
+    "aftercode": "for (final StepHandler handler : new ArrayList<StepHandler>(stepHandlers)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 398,
+    "precode": "for (StepHandler handler : stepHandlers) {",
+    "aftercode": "for (StepHandler handler : new ArrayList<StepHandler>(stepHandlers)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 322,
+    "precode": "for (final EventState state : eventsStates) {",
+    "aftercode": "for (final EventState state : new ArrayList<EventState>(eventsStates)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 346,
+    "precode": "for (final EventState state : eventsStates) {",
+    "aftercode": "for (final EventState state : new ArrayList<EventState>(eventsStates)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 363,
+    "precode": "for (final EventState state : eventsStates) {",
+    "aftercode": "for (final EventState state : new ArrayList<EventState>(eventsStates)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 391,
+    "precode": "for (final EventState state : eventsStates) {",
+    "aftercode": "for (final EventState state : new ArrayList<EventState>(eventsStates)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 305,
+    "precode": "for (EventState state : eventsStates) {",
+    "aftercode": "for (EventState state : new ArrayList<EventState>(eventsStates)) {",
+    "rule": "Collection Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 339,
+    "precode": "interpolator.setSoftCurrentTime(eventT);",
+    "aftercode": "interpolator.setSoftCurrentTime(previousT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 377,
+    "precode": "interpolator.setSoftPreviousTime(eventT);",
+    "aftercode": "interpolator.setSoftPreviousTime(previousT);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 313,
+    "precode": "SortedSet<EventState> occuringEvents = new TreeSet<EventState>(new Comparator<EventState>() {",
+    "aftercode": "Set<EventState> occuringEvents = new HashSet<EventState>();",
+    "rule": "Data Structure Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 313,
+    "precode": "SortedSet<EventState> occuringEvents = new TreeSet<EventState>(new Comparator<EventState>() {",
+    "aftercode": "LinkedHashSet<EventState> occuringEvents = new LinkedHashSet<EventState>();",
+    "rule": "Data Structure Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 313,
+    "precode": "SortedSet<EventState> occuringEvents = new TreeSet<EventState>(new Comparator<EventState>() {",
+    "aftercode": "PriorityQueue<EventState> occuringEvents = new PriorityQueue<EventState>();",
+    "rule": "Data Structure Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 343,
+    "precode": "final double[] eventY = interpolator.getInterpolatedState().clone();",
+    "aftercode": "final double[] eventY = Arrays.copyOf(interpolator.getInterpolatedState(), y.length);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 358,
+    "precode": "System.arraycopy(eventY, 0, y, 0, y.length);",
+    "aftercode": "System.arraycopy(eventY, 0, y, 0, eventY.length);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 369,
+    "precode": "System.arraycopy(eventY, 0, y, 0, y.length);",
+    "aftercode": "System.arraycopy(eventY, 0, y, 0, eventY.length);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 312,
+    "precode": "final int orderingSign = interpolator.isForward() ? +1 : -1;",
+    "aftercode": "final int orderingSign = interpolator.isForward() ? 1 : -1;",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 395,
+    "precode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, 1);",
+    "aftercode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, 0);",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 395,
+    "precode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, 1);",
+    "aftercode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, Double.MIN_VALUE);",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 338,
+    "precode": "interpolator.setSoftPreviousTime(previousT);",
+    "aftercode": "interpolator.setSoftPreviousTime(previousT - 1.0e-10);",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 339,
+    "precode": "interpolator.setSoftCurrentTime(eventT);",
+    "aftercode": "interpolator.setSoftCurrentTime(eventT + 1.0e-10);",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 377,
+    "precode": "interpolator.setSoftPreviousTime(eventT);",
+    "aftercode": "interpolator.setSoftPreviousTime(eventT - 1.0e-10);",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 378,
+    "precode": "interpolator.setSoftCurrentTime(currentT);",
+    "aftercode": "interpolator.setSoftCurrentTime(currentT + 1.0e-10);",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 308,
+    "precode": "statesInitialized = true;",
+    "aftercode": "statesInitialized = false;",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 371,
+    "precode": "resetOccurred = true;",
+    "aftercode": "resetOccurred = false;",
+    "rule": "Constant Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 348,
+    "precode": "isLastStep = isLastStep || state.stop();",
+    "aftercode": "isLastStep = state.stop();",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 393,
+    "precode": "isLastStep = isLastStep || state.stop();",
+    "aftercode": "isLastStep = state.stop();",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 395,
+    "precode": "isLastStep = isLastStep || Precision.equals(currentT, tEnd, 1);",
+    "aftercode": "isLastStep = Precision.equals(currentT, tEnd, 1);",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 364,
+    "precode": "needReset =  needReset || state.reset(eventT, eventY);",
+    "aftercode": "needReset = state.reset(eventT, eventY);",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 317,
+    "precode": "return orderingSign * Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "aftercode": "return Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "rule": "Operator Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 317,
+    "precode": "return orderingSign * Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "aftercode": "return -Double.compare(es0.getEventTime(), es1.getEventTime());",
+    "rule": "Operator Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 334,
+    "precode": "iterator.remove();",
+    "aftercode": "iterator.remove(); iterator.remove();",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); occuringEvents.add(state);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); occuringEvents.add(currentEvent);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); state.reinitializeEnd(interpolator);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); state.stepAccepted(eventT, eventY);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); state.stepAccepted(currentT, currentY);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); handler.handleStep(interpolator, isLastStep);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); handler.handleStep(interpolator, isLastStep);",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "if (true) { state.reinitializeBegin(interpolator); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "if (true) { occuringEvents.add(state); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "if (true) { occuringEvents.add(currentEvent); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "if (true) { state.stepAccepted(eventT, eventY); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "if (true) { state.stepAccepted(currentT, currentY); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "if (true) { handler.handleStep(interpolator, isLastStep); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "if (true) { handler.handleStep(interpolator, isLastStep); }",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return;",
+    "rule": "Early Return Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); throw new RuntimeException();",
+    "rule": "Exception Throw Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); continue;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); break;",
+    "rule": "Loop Control Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return eventT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return currentT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return previousT;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return 0.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return -1.0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return Double.NaN;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return Double.POSITIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 306,
+    "precode": "state.reinitializeBegin(interpolator);",
+    "aftercode": "state.reinitializeBegin(interpolator); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 325,
+    "precode": "occuringEvents.add(state);",
+    "aftercode": "occuringEvents.add(state); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 383,
+    "precode": "occuringEvents.add(currentEvent);",
+    "aftercode": "occuringEvents.add(currentEvent); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 347,
+    "precode": "state.stepAccepted(eventT, eventY);",
+    "aftercode": "state.stepAccepted(eventT, eventY); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 392,
+    "precode": "state.stepAccepted(currentT, currentY);",
+    "aftercode": "state.stepAccepted(currentT, currentY); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 353,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java",
+    "line": 399,
+    "precode": "handler.handleStep(interpolator, isLastStep);",
+    "aftercode": "handler.handleStep(interpolator, isLastStep); return Double.NEGATIVE_INFINITY;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  }
+]

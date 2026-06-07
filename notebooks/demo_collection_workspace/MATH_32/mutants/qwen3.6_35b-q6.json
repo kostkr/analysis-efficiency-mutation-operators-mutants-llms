@@ -1,0 +1,492 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 136,
+    "precode": "if (tree.getCut() == null && (Boolean) tree.getAttribute()) {",
+    "aftercode": "if (tree.getCut() == null || (Boolean) tree.getAttribute()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 144,
+    "precode": "} else if (v[0][0] == null) {",
+    "aftercode": "} else if (v[0][0] != null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 156,
+    "precode": "double x1 = loop[loop.length - 1].getX();",
+    "aftercode": "double x1 = loop[0].getX();",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 157,
+    "precode": "double y1 = loop[loop.length - 1].getY();",
+    "aftercode": "double y1 = loop[0].getY();",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 163,
+    "precode": "final double factor = x0 * y1 - y0 * x1;",
+    "aftercode": "final double factor = x0 * y1 + y0 * x1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 164,
+    "precode": "sum  += factor;",
+    "aftercode": "sum  -= factor;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 165,
+    "precode": "sumX += factor * (x0 + x1);",
+    "aftercode": "sumX += factor * (x0 - x1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 166,
+    "precode": "sumY += factor * (y0 + y1);",
+    "aftercode": "sumY += factor * (y0 - y1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 170,
+    "precode": "if (sum < 0) {",
+    "aftercode": "if (sum <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 170,
+    "precode": "if (sum < 0) {",
+    "aftercode": "if (sum > 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 175,
+    "precode": "setSize(sum / 2);",
+    "aftercode": "setSize(sum * 2);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 176,
+    "precode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (3 * sum)));",
+    "aftercode": "setBarycenter(new Vector2D(sumX / (2 * sum), sumY / (3 * sum)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 176,
+    "precode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (3 * sum)));",
+    "aftercode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (2 * sum)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 138,
+    "precode": "setSize(Double.POSITIVE_INFINITY);",
+    "aftercode": "setSize(Double.NEGATIVE_INFINITY);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 139,
+    "precode": "setBarycenter(Vector2D.NaN);",
+    "aftercode": "setBarycenter(Vector2D.ZERO);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 141,
+    "precode": "setSize(0);",
+    "aftercode": "setSize(-1);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 142,
+    "precode": "setBarycenter(new Vector2D(0, 0));",
+    "aftercode": "setBarycenter(new Vector2D(1, 1));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 146,
+    "precode": "setSize(Double.POSITIVE_INFINITY);",
+    "aftercode": "setSize(0);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 147,
+    "precode": "setBarycenter(Vector2D.NaN);",
+    "aftercode": "setBarycenter(new Vector2D(0, 0));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 172,
+    "precode": "setSize(Double.POSITIVE_INFINITY);",
+    "aftercode": "setSize(0);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 173,
+    "precode": "setBarycenter(Vector2D.NaN);",
+    "aftercode": "setBarycenter(new Vector2D(0, 0));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 132,
+    "precode": "final Vector2D[][] v = getVertices();",
+    "aftercode": "final Vector2D[][] v = null;",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 134,
+    "precode": "if (v.length == 0) {",
+    "aftercode": "if (v.length != 0) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 151,
+    "precode": "double sum  = 0;",
+    "aftercode": "double sum  = 1;",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 152,
+    "precode": "double sumX = 0;",
+    "aftercode": "double sumX = 1;",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 153,
+    "precode": "double sumY = 0;",
+    "aftercode": "double sumY = 1;",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 136,
+    "precode": "if (tree.getCut() == null && (Boolean) tree.getAttribute()) {",
+    "aftercode": "if (tree.getCut() != null && (Boolean) tree.getAttribute()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 156,
+    "precode": "double x1 = loop[loop.length - 1].getX();",
+    "aftercode": "double x1 = loop[loop.length].getX();",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 157,
+    "precode": "double y1 = loop[loop.length - 1].getY();",
+    "aftercode": "double y1 = loop[loop.length].getY();",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 163,
+    "precode": "final double factor = x0 * y1 - y0 * x1;",
+    "aftercode": "final double factor = y0 * x1 - x0 * y1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 165,
+    "precode": "sumX += factor * (x0 + x1);",
+    "aftercode": "sumX -= factor * (x0 + x1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 166,
+    "precode": "sumY += factor * (y0 + y1);",
+    "aftercode": "sumY -= factor * (y0 + y1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 175,
+    "precode": "setSize(sum / 2);",
+    "aftercode": "setSize(sum / 3);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 176,
+    "precode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (3 * sum)));",
+    "aftercode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (2 * sum)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 139,
+    "precode": "setBarycenter(Vector2D.NaN);",
+    "aftercode": "setBarycenter(new Vector2D(0, 0));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 147,
+    "precode": "setBarycenter(Vector2D.NaN);",
+    "aftercode": "setBarycenter(new Vector2D(1, 1));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 173,
+    "precode": "setBarycenter(Vector2D.NaN);",
+    "aftercode": "setBarycenter(new Vector2D(0, 0));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 138,
+    "precode": "setSize(Double.POSITIVE_INFINITY);",
+    "aftercode": "setSize(0);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 146,
+    "precode": "setSize(Double.POSITIVE_INFINITY);",
+    "aftercode": "setSize(Double.NEGATIVE_INFINITY);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 172,
+    "precode": "setSize(Double.POSITIVE_INFINITY);",
+    "aftercode": "setSize(Double.NEGATIVE_INFINITY);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 141,
+    "precode": "setSize(0);",
+    "aftercode": "setSize(1);",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 142,
+    "precode": "setBarycenter(new Vector2D(0, 0));",
+    "aftercode": "setBarycenter(new Vector2D(1, 0));",
+    "rule": "Literal Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 136,
+    "precode": "if (tree.getCut() == null && (Boolean) tree.getAttribute()) {",
+    "aftercode": "if (tree.getCut() == null && !(Boolean) tree.getAttribute()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 170,
+    "precode": "if (sum < 0) {",
+    "aftercode": "if (sum != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 156,
+    "precode": "double x1 = loop[loop.length - 1].getX();",
+    "aftercode": "double x1 = loop[loop.length + 1].getX();",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 157,
+    "precode": "double y1 = loop[loop.length - 1].getY();",
+    "aftercode": "double y1 = loop[loop.length + 1].getY();",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 163,
+    "precode": "final double factor = x0 * y1 - y0 * x1;",
+    "aftercode": "final double factor = x0 * x1 - y0 * y1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 176,
+    "precode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (3 * sum)));",
+    "aftercode": "setBarycenter(new Vector2D(sumX / (sum), sumY / (3 * sum)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java",
+    "line": 176,
+    "precode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (3 * sum)));",
+    "aftercode": "setBarycenter(new Vector2D(sumX / (3 * sum), sumY / (sum)));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 267,
+    "precode": "if (m instanceof DiagonalMatrix) {",
+    "aftercode": "if (!(m instanceof DiagonalMatrix)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)) * -1);",
+    "rule": "Math Constant",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, FastMath.abs(m.getEntry(i, i)));",
+    "rule": "Math Function",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, FastMath.log(m.getEntry(i, i)));",
+    "rule": "Math Function",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, FastMath.pow(m.getEntry(i, i), 3));",
+    "rule": "Math Function",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)) + 1);",
+    "rule": "Increment",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)) - 1);",
+    "rule": "Decrement",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 271,
+    "precode": "sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));",
+    "aftercode": "sqrtM.setEntry(i, i, m.getEntry(i, i));",
+    "rule": "Return Value",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 275,
+    "precode": "final EigenDecomposition dec = new EigenDecomposition(m);",
+    "aftercode": "final EigenDecomposition dec = new EigenDecomposition(m.transpose());",
+    "rule": "Method Call",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 275,
+    "precode": "final EigenDecomposition dec = new EigenDecomposition(m);",
+    "aftercode": "final EigenDecomposition dec = new EigenDecomposition(m.multiply(-1));",
+    "rule": "Math Operator",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 276,
+    "precode": "return dec.getSquareRoot();",
+    "aftercode": "return dec.getInverse();",
+    "rule": "Method Call",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 276,
+    "precode": "return dec.getSquareRoot();",
+    "aftercode": "return dec.getEigenvalueMatrix();",
+    "rule": "Method Call",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java",
+    "line": 276,
+    "precode": "return dec.getSquareRoot();",
+    "aftercode": "return null;",
+    "rule": "Return Value",
+    "gen_time_s": 2.59,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java",
+    "line": 42,
+    "precode": "final int dim = weight.length;",
+    "aftercode": "final int dim = 0;",
+    "rule": "Value Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java",
+    "line": 43,
+    "precode": "weightMatrix = new DiagonalMatrix(weight);",
+    "aftercode": "weightMatrix = new DiagonalMatrix(new double[0]);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java",
+    "line": 42,
+    "precode": "final int dim = weight.length;",
+    "aftercode": "final int dim = weight.length + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java",
+    "line": 43,
+    "precode": "weightMatrix = new DiagonalMatrix(weight);",
+    "aftercode": "weightMatrix = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  }
+]

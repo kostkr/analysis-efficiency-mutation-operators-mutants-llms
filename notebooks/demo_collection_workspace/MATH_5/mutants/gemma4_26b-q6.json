@@ -1,0 +1,232 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 300,
+    "precode": "if (isNaN) {",
+    "aftercode": "if (!isNaN) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 304,
+    "precode": "if (real == 0.0 && imaginary == 0.0) {",
+    "aftercode": "if (real == 0.0 || imaginary == 0.0) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 304,
+    "precode": "if (real == 0.0 && imaginary == 0.0) {",
+    "aftercode": "if (real != 0.0 && imaginary != 0.0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 308,
+    "precode": "if (isInfinite) {",
+    "aftercode": "if (!isInfinite) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 312,
+    "precode": "if (FastMath.abs(real) < FastMath.abs(imaginary)) {",
+    "aftercode": "if (FastMath.abs(real) <= FastMath.abs(imaginary)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 312,
+    "precode": "if (FastMath.abs(real) < FastMath.abs(imaginary)) {",
+    "aftercode": "if (FastMath.abs(real) > FastMath.abs(imaginary)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 313,
+    "precode": "double q = real / imaginary;",
+    "aftercode": "double q = imaginary / real;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 314,
+    "precode": "double scale = 1. / (real * q + imaginary);",
+    "aftercode": "double scale = 1. / (real * q - imaginary);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 314,
+    "precode": "double scale = 1. / (real * q + imaginary);",
+    "aftercode": "double scale = 1. / (real / q + imaginary);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 315,
+    "precode": "return createComplex(scale * q, -scale);",
+    "aftercode": "return createComplex(scale * q, scale);",
+    "rule": "Unary Minus Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 315,
+    "precode": "return createComplex(scale * q, -scale);",
+    "aftercode": "return createComplex(scale / q, -scale);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 317,
+    "precode": "double q = imaginary / real;",
+    "aftercode": "double q = real / imaginary;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 318,
+    "precode": "double scale = 1. / (imaginary * q + real);",
+    "aftercode": "double scale = 1. / (imaginary * q - real);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 318,
+    "precode": "double scale = 1. / (imaginary * q + real);",
+    "aftercode": "double scale = 1. / (imaginary / q + real);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 319,
+    "precode": "return createComplex(scale, -scale * q);",
+    "aftercode": "return createComplex(scale, scale * q);",
+    "rule": "Unary Minus Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 319,
+    "precode": "return createComplex(scale, -scale * q);",
+    "aftercode": "return createComplex(scale, -scale / q);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 304,
+    "precode": "if (real == 0.0 && imaginary == 0.0) {",
+    "aftercode": "if (real == 0.0) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 312,
+    "precode": "if (FastMath.abs(real) < FastMath.abs(imaginary)) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 316,
+    "precode": "} else {",
+    "aftercode": "}",
+    "rule": "Else Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 314,
+    "precode": "double scale = 1. / (real * q + imaginary);",
+    "aftercode": "double scale = 1.0 / (real * q + imaginary);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 313,
+    "precode": "double q = real / imaginary;",
+    "aftercode": "double q = 1.0 / imaginary;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 317,
+    "precode": "double q = imaginary / real;",
+    "aftercode": "double q = 1.0 / real;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/complex/Complex.java",
+    "line": 300,
+    "precode": "if (isNaN) {",
+    "aftercode": "if (isNaN == false) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  }
+]

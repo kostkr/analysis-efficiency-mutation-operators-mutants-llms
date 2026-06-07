@@ -1,0 +1,372 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 110,
+    "precode": "final boolean isMinim = getGoalType() == GoalType.MINIMIZE;",
+    "aftercode": "final boolean isMinim = getGoalType() != GoalType.MINIMIZE;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 121,
+    "precode": "if (lo < hi) {",
+    "aftercode": "if (lo <= hi) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 121,
+    "precode": "if (lo < hi) {",
+    "aftercode": "if (lo > hi) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 135,
+    "precode": "if (!isMinim) {",
+    "aftercode": "if (isMinim) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 136,
+    "precode": "fx = -fx;",
+    "aftercode": "fx = fx;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 143,
+    "precode": "= new UnivariatePointValuePair(x, isMinim ? fx : -fx);",
+    "aftercode": "= new UnivariatePointValuePair(x, isMinim ? fx : fx);",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 147,
+    "precode": "final double m = 0.5 * (a + b);",
+    "aftercode": "final double m = 0.5 * (a - b);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 148,
+    "precode": "final double tol1 = relativeThreshold * FastMath.abs(x) + absoluteThreshold;",
+    "aftercode": "final double tol1 = relativeThreshold * FastMath.abs(x) - absoluteThreshold;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 149,
+    "precode": "final double tol2 = 2 * tol1;",
+    "aftercode": "final double tol2 = tol1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 152,
+    "precode": "final boolean stop = FastMath.abs(x - m) <= tol2 - 0.5 * (b - a);",
+    "aftercode": "final boolean stop = FastMath.abs(x - m) < tol2 - 0.5 * (b - a);",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 159,
+    "precode": "if (FastMath.abs(e) > tol1) { // Fit parabola.",
+    "aftercode": "if (FastMath.abs(e) >= tol1) { // Fit parabola.",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 162,
+    "precode": "p = (x - v) * q - (x - w) * r;",
+    "aftercode": "p = (x - v) * q + (x - w) * r;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 163,
+    "precode": "q = 2 * (q - r);",
+    "aftercode": "q = 2 * (q + r);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 165,
+    "precode": "if (q > 0) {",
+    "aftercode": "if (q >= 0) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 167,
+    "precode": "} else {",
+    "aftercode": "} if (q > 0) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 174,
+    "precode": "if (p > q * (a - x) &&",
+    "aftercode": "if (p >= q * (a - x) &&",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 175,
+    "precode": "p < q * (b - x) &&",
+    "aftercode": "p <= q * (b - x) &&",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 176,
+    "precode": "FastMath.abs(p) < FastMath.abs(0.5 * q * r)) {",
+    "aftercode": "FastMath.abs(p) <= FastMath.abs(0.5 * q * r)) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 178,
+    "precode": "d = p / q;",
+    "aftercode": "d = p * q;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 182,
+    "precode": "if (u - a < tol2 || b - u < tol2) {",
+    "aftercode": "if (u - a < tol2 && b - u < tol2) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 183,
+    "precode": "if (x <= m) {",
+    "aftercode": "if (x < m) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 191,
+    "precode": "if (x < m) {",
+    "aftercode": "if (x <= m) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 196,
+    "precode": "d = GOLDEN_SECTION * e;",
+    "aftercode": "d = GOLDEN_SECTION / e;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 200,
+    "precode": "if (x < m) {",
+    "aftercode": "if (x > m) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 209,
+    "precode": "if (FastMath.abs(d) < tol1) {",
+    "aftercode": "if (FastMath.abs(d) <= tol1) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 210,
+    "precode": "if (d >= 0) {",
+    "aftercode": "if (d > 0) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 216,
+    "precode": "u = x + d;",
+    "aftercode": "u = x - d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 220,
+    "precode": "if (!isMinim) {",
+    "aftercode": "if (isMinim) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 226,
+    "precode": "current = new UnivariatePointValuePair(u, isMinim ? fu : -fu);",
+    "aftercode": "current = new UnivariatePointValuePair(u, isMinim ? -fu : fu);",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 229,
+    "precode": "if (checker.converged(iter, previous, current)) {",
+    "aftercode": "if (!checker.converged(iter, previous, current)) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 235,
+    "precode": "if (fu <= fx) {",
+    "aftercode": "if (fu < fx) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 236,
+    "precode": "if (u < x) {",
+    "aftercode": "if (u <= x) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 248,
+    "precode": "if (u < x) {",
+    "aftercode": "if (u > x) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 253,
+    "precode": "if (fu <= fw ||",
+    "aftercode": "if (fu < fw ||",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 254,
+    "precode": "Precision.equals(w, x)) {",
+    "aftercode": "Precision.equals(w, x) == false) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 259,
+    "precode": "} else if (fu <= fv ||",
+    "aftercode": "} else if (fu < fv ||",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+    "line": 269,
+    "precode": "++iter;",
+    "aftercode": "--iter;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  }
+]

@@ -33,6 +33,7 @@ DEFAULT_WORKSPACE = Path(__file__).resolve().parent / "demo_collection_workspace
 CLASSIC_TYPE = "classic"
 EXPECTED_TYPES = (CLASSIC_TYPE, "gemma4", "qwen3.6")
 CHAPTER_5_METRICS = (
+    "Mutants",
     "CMR",
     "DMR",
     "EMR",
@@ -616,13 +617,13 @@ def print_report(
 
     print("\nAggregate chapter 5 metrics")
     print_table(
-        ["Type", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
+        ["Type", "Mutants", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
         [metrics_row(item) for item in aggregate_metrics],
     )
 
     print("\nPer-bug chapter 5 metrics")
     print_table(
-        ["Bug", "Type", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
+        ["Bug", "Type", "Mutants", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
         [metrics_row(item, include_scope=True) for item in per_bug_metrics],
     )
 
@@ -655,6 +656,7 @@ def readiness_row(bug: BugData, mutant_type: str) -> list[str]:
 def metrics_row(metrics: TypeMetrics, include_scope: bool = False) -> list[str]:
     row = [
         metrics.mutant_type,
+        str(metrics.generated),
         format_percent(metrics.cmr),
         format_percent(metrics.dmr),
         format_percent(metrics.emr),
@@ -830,6 +832,7 @@ def metrics_to_dict(metrics: TypeMetrics) -> dict[str, Any]:
             "total_time_s": metrics.total_time_s,
         },
         "metrics": {
+            "Generated (all)": metrics.generated,
             "CMR": metrics.cmr,
             "DMR": metrics.dmr,
             "EMR": metrics.emr,

@@ -1,0 +1,572 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 103,
+    "precode": "isNaN = Double.isNaN(real) || Double.isNaN(imaginary);",
+    "aftercode": "isNaN = Double.isNaN(real) && Double.isNaN(imaginary);",
+    "rule": "Operator Replacement (Logical)",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 104,
+    "precode": "isInfinite = !isNaN &&",
+    "aftercode": "isInfinite = !isNaN ||",
+    "rule": "Operator Replacement (Logical)",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 105,
+    "precode": "(Double.isInfinite(real) || Double.isInfinite(imaginary));",
+    "aftercode": "(Double.isInfinite(real) && Double.isInfinite(imaginary));",
+    "rule": "Operator Replacement (Logical)",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 106,
+    "precode": "isZero = real == 0 && imaginary == 0;",
+    "aftercode": "isZero = real == 0 || imaginary == 0;",
+    "rule": "Operator Replacement (Logical)",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 100,
+    "precode": "this.real = real;",
+    "aftercode": "this.real = imaginary;",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 101,
+    "precode": "this.imaginary = imaginary;",
+    "aftercode": "this.imaginary = real;",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 106,
+    "precode": "isZero = real == 0 && imaginary == 0;",
+    "aftercode": "isZero = real == 0.0 && imaginary == 0.0;",
+    "rule": "Literal Value Substitution",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 103,
+    "precode": "isNaN = Double.isNaN(real) || Double.isNaN(imaginary);",
+    "aftercode": "isNaN = false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 106,
+    "precode": "isZero = real == 0 && imaginary == 0;",
+    "aftercode": "isZero = true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 254,
+    "precode": "if (isNaN || divisor.isNaN) {",
+    "aftercode": "if (isNaN && divisor.isNaN) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 255,
+    "precode": "return NaN;",
+    "aftercode": "return ZERO;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 259,
+    "precode": "return isZero ? NaN : INF;",
+    "aftercode": "return isZero ? INF : NaN;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 262,
+    "precode": "if (divisor.isInfinite() && !isInfinite()) {",
+    "aftercode": "if (divisor.isInfinite() || !isInfinite()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 263,
+    "precode": "return ZERO;",
+    "aftercode": "return NaN;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 266,
+    "precode": "final double c = divisor.getReal();",
+    "aftercode": "final double c = divisor.getImaginary();",
+    "rule": "Argument Swapper",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 267,
+    "precode": "final double d = divisor.getImaginary();",
+    "aftercode": "final double d = divisor.getReal();",
+    "rule": "Argument Swapper",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 269,
+    "precode": "if (FastMath.abs(c) < FastMath.abs(d)) {",
+    "aftercode": "if (FastMath.abs(c) <= FastMath.abs(d)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 270,
+    "precode": "double q = c / d;",
+    "aftercode": "double q = d / c;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 271,
+    "precode": "double denominator = c * q + d;",
+    "aftercode": "double denominator = c * q - d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 272,
+    "precode": "return createComplex((real * q + imaginary) / denominator,",
+    "aftercode": "return createComplex((real * q - imaginary) / denominator,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 273,
+    "precode": "(imaginary * q - real) / denominator);",
+    "aftercode": "(imaginary * q + real) / denominator);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 275,
+    "precode": "double q = d / c;",
+    "aftercode": "double q = c / d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 276,
+    "precode": "double denominator = d * q + c;",
+    "aftercode": "double denominator = d * q - c;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 277,
+    "precode": "return createComplex((imaginary * q + real) / denominator,",
+    "aftercode": "return createComplex((imaginary * q - real) / denominator,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 278,
+    "precode": "(imaginary - real * q) / denominator);",
+    "aftercode": "(imaginary + real * q) / denominator);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 253,
+    "precode": "MathUtils.checkNotNull(divisor);",
+    "aftercode": "// MathUtils.checkNotNull(divisor);",
+    "rule": "Empty Block",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 254,
+    "precode": "if (isNaN || divisor.isNaN) {",
+    "aftercode": "if (!isNaN || divisor.isNaN) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 259,
+    "precode": "return isZero ? NaN : INF;",
+    "aftercode": "return isZero ? 0.0 : INF;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 262,
+    "precode": "if (divisor.isInfinite() && !isInfinite()) {",
+    "aftercode": "if (!divisor.isInfinite() && !isInfinite()) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 271,
+    "precode": "double denominator = c * q + d;",
+    "aftercode": "double denominator = c + q + d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 276,
+    "precode": "double denominator = d * q + c;",
+    "aftercode": "double denominator = d + q + c;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 272,
+    "precode": "return createComplex((real * q + imaginary) / denominator,",
+    "aftercode": "return createComplex((real + q + imaginary) / denominator,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 277,
+    "precode": "return createComplex((imaginary * q + real) / denominator,",
+    "aftercode": "return createComplex((imaginary + q + real) / denominator,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 259,
+    "precode": "return isZero ? NaN : INF;",
+    "aftercode": "return NaN;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 263,
+    "precode": "return ZERO;",
+    "aftercode": "return isZero ? ZERO : INF;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 254,
+    "precode": "if (isNaN || divisor.isNaN) {",
+    "aftercode": "if (isNaN || !divisor.isNaN) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 262,
+    "precode": "if (divisor.isInfinite() && !isInfinite()) {",
+    "aftercode": "if (divisor.isInfinite() && isInfinite()) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 270,
+    "precode": "double q = c / d;",
+    "aftercode": "double q = c * d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 275,
+    "precode": "double q = d / c;",
+    "aftercode": "double q = d * c;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 291,
+    "precode": "if (isNaN || Double.isNaN(divisor)) {",
+    "aftercode": "if (isNaN && Double.isNaN(divisor)) {",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 291,
+    "precode": "if (isNaN || Double.isNaN(divisor)) {",
+    "aftercode": "if (Double.isNaN(divisor) && Double.isNaN(divisor)) {",
+    "rule": "Arg to Arg",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 294,
+    "precode": "if (divisor == 0d) {",
+    "aftercode": "if (divisor != 0d) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 294,
+    "precode": "if (divisor == 0d) {",
+    "aftercode": "if (divisor > 0d) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 295,
+    "precode": "return isZero ? NaN : INF;",
+    "aftercode": "return isZero ? INF : NaN;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 295,
+    "precode": "return isZero ? NaN : INF;",
+    "aftercode": "return !isZero ? NaN : INF;",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 297,
+    "precode": "if (Double.isInfinite(divisor)) {",
+    "aftercode": "if (!Double.isInfinite(divisor)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 298,
+    "precode": "return !isInfinite() ? ZERO : NaN;",
+    "aftercode": "return isInfinite() ? ZERO : NaN;",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 298,
+    "precode": "return !isInfinite() ? ZERO : NaN;",
+    "aftercode": "return !isInfinite() ? NaN : ZERO;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 300,
+    "precode": "return createComplex(real / divisor,",
+    "aftercode": "return createComplex(real * divisor,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 301,
+    "precode": "imaginary  / divisor);",
+    "aftercode": "imaginary  * divisor);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 300,
+    "precode": "return createComplex(real / divisor,",
+    "aftercode": "return createComplex(divisor / real,",
+    "rule": "Arg to Arg",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 301,
+    "precode": "imaginary  / divisor);",
+    "aftercode": "divisor / imaginary);",
+    "rule": "Arg to Arg",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 80,
+    "precode": "private final transient boolean isInfinite;",
+    "aftercode": "private transient boolean isInfinite;",
+    "rule": "Member Variable Modifier Removal",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 82,
+    "precode": "private final transient boolean isZero;",
+    "aftercode": "private transient boolean isZero;",
+    "rule": "Member Variable Modifier Removal",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 80,
+    "precode": "private final transient boolean isInfinite;",
+    "aftercode": "private transient volatile boolean isInfinite;",
+    "rule": "Member Variable Modifier Addition",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 82,
+    "precode": "private final transient boolean isZero;",
+    "aftercode": "private transient volatile boolean isZero;",
+    "rule": "Member Variable Modifier Addition",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math/complex/Complex.java",
+    "line": 80,
+    "precode": "private final transient boolean isInfinite;",
+    "aftercode": "private final transient int isInfinite;",
+    "rule": "Variable Type Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  }
+]

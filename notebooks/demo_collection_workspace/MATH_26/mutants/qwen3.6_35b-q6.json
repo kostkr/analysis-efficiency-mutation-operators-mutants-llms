@@ -1,0 +1,682 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 178,
+    "precode": "long overflow = Integer.MAX_VALUE;",
+    "aftercode": "long overflow = Integer.MIN_VALUE;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 181,
+    "precode": "if (FastMath.abs(a0) > overflow) {",
+    "aftercode": "if (FastMath.abs(a0) >= overflow) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 182,
+    "precode": "throw new FractionConversionException(value, a0, 1l);",
+    "aftercode": "return;",
+    "rule": "Empty Return",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 187,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (FastMath.abs(a0 - value) <= epsilon) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 188,
+    "precode": "this.numerator = (int) a0;",
+    "aftercode": "this.numerator = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 189,
+    "precode": "this.denominator = 1;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 190,
+    "precode": "return;",
+    "aftercode": "throw new FractionConversionException(value, 0, 0);",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 193,
+    "precode": "long p0 = 1;",
+    "aftercode": "long p0 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 195,
+    "precode": "long p1 = a0;",
+    "aftercode": "long p1 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 198,
+    "precode": "long p2 = 0;",
+    "aftercode": "long p2 = 1;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 204,
+    "precode": "++n;",
+    "aftercode": "n--;",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 205,
+    "precode": "double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "double r1 = 1.0 / (r0 + a0);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 207,
+    "precode": "p2 = (a1 * p1) + p0;",
+    "aftercode": "p2 = (a1 * p1) - p0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 208,
+    "precode": "q2 = (a1 * q1) + q0;",
+    "aftercode": "q2 = (a1 * q1) - q0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 209,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if ((FastMath.abs(p2) > overflow) && (FastMath.abs(q2) > overflow)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 210,
+    "precode": "throw new FractionConversionException(value, p2, q2);",
+    "aftercode": "return;",
+    "rule": "Empty Return",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 >= maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "p0 = p1;",
+    "aftercode": "p0 = p2;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 216,
+    "precode": "p1 = p2;",
+    "aftercode": "p1 = p0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 217,
+    "precode": "q0 = q1;",
+    "aftercode": "q0 = q2;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 218,
+    "precode": "q1 = q2;",
+    "aftercode": "q1 = q0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 221,
+    "precode": "} else {",
+    "aftercode": "if (n >= maxIterations) {",
+    "rule": "Control Flow",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 222,
+    "precode": "stop = true;",
+    "aftercode": "stop = false;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 226,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (n > maxIterations) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 227,
+    "precode": "throw new FractionConversionException(value, maxIterations);",
+    "aftercode": "return;",
+    "rule": "Empty Return",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 230,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (q2 <= maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 231,
+    "precode": "this.numerator = (int) p2;",
+    "aftercode": "this.numerator = (int) p1;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 232,
+    "precode": "this.denominator = (int) q2;",
+    "aftercode": "this.denominator = (int) q1;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 234,
+    "precode": "this.numerator = (int) p1;",
+    "aftercode": "this.numerator = (int) p2;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 235,
+    "precode": "this.denominator = (int) q1;",
+    "aftercode": "this.denominator = (int) q2;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 180,
+    "precode": "long a0 = (long)FastMath.floor(r0);",
+    "aftercode": "long a0 = (long)FastMath.ceil(r0);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 206,
+    "precode": "long a1 = (long)FastMath.floor(r1);",
+    "aftercode": "long a1 = (long)FastMath.ceil(r1);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 179,
+    "precode": "double r0 = value;",
+    "aftercode": "double r0 = -value;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 194,
+    "precode": "long q0 = 0;",
+    "aftercode": "long q0 = 1;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 196,
+    "precode": "long q1 = 1;",
+    "aftercode": "long q1 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 199,
+    "precode": "long q2 = 1;",
+    "aftercode": "long q2 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 202,
+    "precode": "boolean stop = false;",
+    "aftercode": "boolean stop = true;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n <= maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent - value) <= epsilon && q2 < maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 207,
+    "precode": "p2 = (a1 * p1) + p0;",
+    "aftercode": "p2 = (a1 + p1) + p0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 208,
+    "precode": "q2 = (a1 * q1) + q0;",
+    "aftercode": "q2 = (a1 + q1) + q0;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 181,
+    "precode": "if (FastMath.abs(a0) > overflow) {",
+    "aftercode": "if (FastMath.abs(a0) < overflow) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 209,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if ((FastMath.abs(p2) < overflow) || (FastMath.abs(q2) > overflow)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 210,
+    "precode": "throw new FractionConversionException(value, p2, q2);",
+    "aftercode": "throw new FractionConversionException(value, q2, p2);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 182,
+    "precode": "throw new FractionConversionException(value, a0, 1l);",
+    "aftercode": "throw new FractionConversionException(value, 1l, a0);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 213,
+    "precode": "double convergent = (double)p2 / (double)q2;",
+    "aftercode": "double convergent = (double)q2 / (double)p2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 224,
+    "precode": "} while (!stop);",
+    "aftercode": "} while (stop);",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 226,
+    "precode": "if (n >= maxIterations) {",
+    "aftercode": "if (n <= maxIterations) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 230,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (q2 > maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 178,
+    "precode": "long overflow = Integer.MAX_VALUE;",
+    "aftercode": "long overflow = Long.MAX_VALUE;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 180,
+    "precode": "long a0 = (long)FastMath.floor(r0);",
+    "aftercode": "long a0 = (long)r0;",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 206,
+    "precode": "long a1 = (long)FastMath.floor(r1);",
+    "aftercode": "long a1 = (long)r1;",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 205,
+    "precode": "double r1 = 1.0 / (r0 - a0);",
+    "aftercode": "double r1 = 1.0 / (a0 - r0);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon || q2 < maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations || FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon || q2 < maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 209,
+    "precode": "if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {",
+    "aftercode": "if ((FastMath.abs(p2) > overflow) && (FastMath.abs(q2) > overflow)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 187,
+    "precode": "if (FastMath.abs(a0 - value) < epsilon) {",
+    "aftercode": "if (FastMath.abs(a0 - value) > epsilon) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 214,
+    "precode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 < maxDenominator) {",
+    "aftercode": "if (n < maxIterations && FastMath.abs(convergent - value) > epsilon && q2 <= maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 230,
+    "precode": "if (q2 < maxDenominator) {",
+    "aftercode": "if (q2 <= maxDenominator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 215,
+    "precode": "p0 = p1;",
+    "aftercode": "p0 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 216,
+    "precode": "p1 = p2;",
+    "aftercode": "p1 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 217,
+    "precode": "q0 = q1;",
+    "aftercode": "q0 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 218,
+    "precode": "q1 = q2;",
+    "aftercode": "q1 = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 231,
+    "precode": "this.numerator = (int) p2;",
+    "aftercode": "this.numerator = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 232,
+    "precode": "this.denominator = (int) q2;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 234,
+    "precode": "this.numerator = (int) p1;",
+    "aftercode": "this.numerator = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/math3/fraction/Fraction.java",
+    "line": 235,
+    "precode": "this.denominator = (int) q1;",
+    "aftercode": "this.denominator = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 240,
+    "precode": "return Math.sqrt(getChiSquare() / rows);",
+    "aftercode": "return Math.sqrt(getChiSquare() * rows);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 240,
+    "precode": "return Math.sqrt(getChiSquare() / rows);",
+    "aftercode": "return Math.pow(getChiSquare() / rows, 2);",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 240,
+    "precode": "return Math.sqrt(getChiSquare() / rows);",
+    "aftercode": "return getChiSquare() / rows;",
+    "rule": "Function Call Removal",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 252,
+    "precode": "final double residual = residuals[i];",
+    "aftercode": "final double residual = residuals[i + 1];",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 253,
+    "precode": "chiSquare += residual * residual * residualsWeights[i];",
+    "aftercode": "chiSquare += residual * residualsWeights[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 253,
+    "precode": "chiSquare += residual * residual * residualsWeights[i];",
+    "aftercode": "chiSquare += residual * residual + residualsWeights[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 253,
+    "precode": "chiSquare += residual * residual * residualsWeights[i];",
+    "aftercode": "chiSquare += residual * residual * residualsWeights[i + 1];",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 251,
+    "precode": "for (int i = 0; i < rows; ++i) {",
+    "aftercode": "for (int i = 0; i <= rows; ++i) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 251,
+    "precode": "for (int i = 0; i < rows; ++i) {",
+    "aftercode": "for (int i = 0; i < rows; i += 2) {",
+    "rule": "Loop Increment",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 250,
+    "precode": "double chiSquare = 0;",
+    "aftercode": "double chiSquare = 1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+    "line": 253,
+    "precode": "chiSquare += residual * residual * residualsWeights[i];",
+    "aftercode": "chiSquare -= residual * residual * residualsWeights[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.56,
+    "dublicate": false
+  }
+]

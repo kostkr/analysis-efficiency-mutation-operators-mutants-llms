@@ -1,0 +1,392 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 164,
+    "precode": "final List<T> pointSet = new ArrayList<T>(points);",
+    "aftercode": "final List<T> pointSet = new ArrayList<T>();",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 168,
+    "precode": "final T firstPoint = pointSet.remove(random.nextInt(pointSet.size()));",
+    "aftercode": "final T firstPoint = pointSet.get(random.nextInt(pointSet.size()));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 168,
+    "precode": "final T firstPoint = pointSet.remove(random.nextInt(pointSet.size()));",
+    "aftercode": "final T firstPoint = pointSet.remove(0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 171,
+    "precode": "final double[] dx2 = new double[pointSet.size()];",
+    "aftercode": "final double[] dx2 = new double[pointSet.size() + 1];",
+    "rule": "Array Size Mutation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 172,
+    "precode": "while (resultSet.size() < k) {",
+    "aftercode": "while (resultSet.size() <= k) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 172,
+    "precode": "while (resultSet.size() < k) {",
+    "aftercode": "while (resultSet.size() > k) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 175,
+    "precode": "double sum = 0;",
+    "aftercode": "double sum = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 176,
+    "precode": "for (int i = 0; i < pointSet.size(); i++) {",
+    "aftercode": "for (int i = 1; i < pointSet.size(); i++) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 176,
+    "precode": "for (int i = 0; i < pointSet.size(); i++) {",
+    "aftercode": "for (int i = 0; i <= pointSet.size(); i++) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 178,
+    "precode": "final Cluster<T> nearest = getNearestCluster(resultSet, p);",
+    "aftercode": "final Cluster<T> nearest = getNearestCluster(pointSet, p);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 179,
+    "precode": "final double d = p.distanceFrom(nearest.getCenter());",
+    "aftercode": "final double d = p.distanceFrom(nearest);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 180,
+    "precode": "sum += d * d;",
+    "aftercode": "sum += d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 180,
+    "precode": "sum += d * d;",
+    "aftercode": "sum -= d * d;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 181,
+    "precode": "dx2[i] = sum;",
+    "aftercode": "dx2[i] = d;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 186,
+    "precode": "final double r = random.nextDouble() * sum;",
+    "aftercode": "final double r = random.nextDouble() + sum;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 186,
+    "precode": "final double r = random.nextDouble() * sum;",
+    "aftercode": "final double r = random.nextDouble();",
+    "rule": "Expression Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 187,
+    "precode": "for (int i = 0 ; i < dx2.length; i++) {",
+    "aftercode": "for (int i = 0 ; i <= dx2.length; i++) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 187,
+    "precode": "for (int i = 0 ; i < dx2.length; i++) {",
+    "aftercode": "for (int i = 1 ; i < dx2.length; i++) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 188,
+    "precode": "if (dx2[i] >= r) {",
+    "aftercode": "if (dx2[i] > r) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 188,
+    "precode": "if (dx2[i] >= r) {",
+    "aftercode": "if (dx2[i] <= r) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 189,
+    "precode": "final T p = pointSet.remove(i);",
+    "aftercode": "final T p = pointSet.get(i);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 189,
+    "precode": "final T p = pointSet.remove(i);",
+    "aftercode": "final T p = pointSet.remove(0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 190,
+    "precode": "resultSet.add(new Cluster<T>(p));",
+    "aftercode": "resultSet.add(p);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 191,
+    "precode": "break;",
+    "aftercode": "// break;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 164,
+    "precode": "final List<T> pointSet = new ArrayList<T>(points);",
+    "aftercode": "final List<T> pointSet = new LinkedList<T>(points);",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 175,
+    "precode": "double sum = 0;",
+    "aftercode": "double sum = -0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 179,
+    "precode": "final double d = p.distanceFrom(nearest.getCenter());",
+    "aftercode": "final double d = p.distanceFrom(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 180,
+    "precode": "sum += d * d;",
+    "aftercode": "sum += Math.abs(d);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 186,
+    "precode": "final double r = random.nextDouble() * sum;",
+    "aftercode": "final double r = random.nextDouble() * (sum / 2);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 188,
+    "precode": "if (dx2[i] >= r) {",
+    "aftercode": "if (dx2[i] == r) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 176,
+    "precode": "for (int i = 0; i < pointSet.size(); i++) {",
+    "aftercode": "for (int i = 0; i < pointSet.size() - 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 187,
+    "precode": "for (int i = 0 ; i < dx2.length; i++) {",
+    "aftercode": "for (int i = 0 ; i < dx2.length - 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 168,
+    "precode": "final T firstPoint = pointSet.remove(random.nextInt(pointSet.size()));",
+    "aftercode": "final T firstPoint = pointSet.remove(random.nextInt(pointSet.size() - 1));",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 171,
+    "precode": "final double[] dx2 = new double[pointSet.size()];",
+    "aftercode": "final double[] dx2 = new double[0];",
+    "rule": "Array Size Mutation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 175,
+    "precode": "double sum = 0;",
+    "aftercode": "double sum = Double.MAX_VALUE;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 180,
+    "precode": "sum += d * d;",
+    "aftercode": "sum += d * d + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 186,
+    "precode": "final double r = random.nextDouble() * sum;",
+    "aftercode": "final double r = random.nextGaussian() * sum;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 190,
+    "precode": "resultSet.add(new Cluster<T>(p));",
+    "aftercode": "resultSet.add(new Cluster<T>(null));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+    "line": 165,
+    "precode": "final List<Cluster<T>> resultSet = new ArrayList<Cluster<T>>();",
+    "aftercode": "final List<Cluster<T>> resultSet = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  }
+]

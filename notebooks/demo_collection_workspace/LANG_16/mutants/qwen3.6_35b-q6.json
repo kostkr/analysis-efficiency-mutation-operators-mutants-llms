@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 446,
+    "precode": "return null;",
+    "aftercode": "return new NumberFormatException();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 449,
+    "precode": "throw new NumberFormatException(\"A blank string is not a valid number\");",
+    "aftercode": "return null;",
+    "rule": "Throw Exception Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 456,
+    "precode": "return null;",
+    "aftercode": "return createInteger(str);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 458,
+    "precode": "if (str.startsWith(\"0x\") || str.startsWith(\"-0x\") || str.startsWith(\"0X\") || str.startsWith(\"-0X\")) {",
+    "aftercode": "if (str.startsWith(\"0x\") && str.startsWith(\"-0x\") || str.startsWith(\"0X\") || str.startsWith(\"-0X\")) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 465,
+    "precode": "int decPos = str.indexOf('.');",
+    "aftercode": "int decPos = str.lastIndexOf('.');",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 466,
+    "precode": "int expPos = str.indexOf('e') + str.indexOf('E') + 1;",
+    "aftercode": "int expPos = str.indexOf('e') - str.indexOf('E') + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 471,
+    "precode": "if (expPos < decPos || expPos > str.length()) {",
+    "aftercode": "if (expPos < decPos && expPos > str.length()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 472,
+    "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
+    "aftercode": "return null;",
+    "rule": "Throw Exception Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 474,
+    "precode": "dec = str.substring(decPos + 1, expPos);",
+    "aftercode": "dec = str.substring(decPos, expPos);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 476,
+    "precode": "dec = str.substring(decPos + 1);",
+    "aftercode": "dec = str.substring(decPos);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 478,
+    "precode": "mant = str.substring(0, decPos);",
+    "aftercode": "mant = str.substring(1, decPos);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 481,
+    "precode": "if (expPos > str.length()) {",
+    "aftercode": "if (expPos >= str.length()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 484,
+    "precode": "mant = str.substring(0, expPos);",
+    "aftercode": "mant = str.substring(0, expPos + 1);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 490,
+    "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
+    "aftercode": "if (Character.isDigit(lastChar) && lastChar != '.') {",
+    "rule": "Negation Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 491,
+    "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
+    "aftercode": "if (expPos > -1 || expPos < str.length() - 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 492,
+    "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
+    "aftercode": "exp = str.substring(expPos + 1, str.length());",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 498,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 502,
+    "precode": "if (dec == null",
+    "aftercode": "if (dec != null",
+    "rule": "Negation Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 504,
+    "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
+    "aftercode": "&& (numeric.charAt(0) == '-' || isDigits(numeric.substring(1)) || isDigits(numeric))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 506,
+    "precode": "return createLong(numeric);",
+    "aftercode": "return createInteger(numeric);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 510,
+    "precode": "return createBigInteger(numeric);",
+    "aftercode": "return createLong(numeric);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 513,
+    "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
+    "aftercode": "return null;",
+    "rule": "Throw Exception Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 518,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F || !allZeros))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 521,
+    "precode": "return f;",
+    "aftercode": "return createDouble(numeric);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 532,
+    "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D || !allZeros))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 533,
+    "precode": "return d;",
+    "aftercode": "return createBigDecimal(numeric);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 539,
+    "precode": "return createBigDecimal(numeric);",
+    "aftercode": "return createDouble(numeric);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 545,
+    "precode": "throw new NumberFormatException(str + \" is not a valid number.\");",
+    "aftercode": "return null;",
+    "rule": "Throw Exception Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 552,
+    "precode": "exp = str.substring(expPos + 1, str.length());",
+    "aftercode": "exp = str.substring(expPos + 1, str.length() - 1);",
+    "rule": "Argument Index Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 559,
+    "precode": "return createInteger(str);",
+    "aftercode": "return createLong(str);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 564,
+    "precode": "return createLong(str);",
+    "aftercode": "return createInteger(str);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 568,
+    "precode": "return createBigInteger(str);",
+    "aftercode": "return createLong(str);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 572,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 575,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F || !allZeros))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 576,
+    "precode": "return f;",
+    "aftercode": "return createDouble(str);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 583,
+    "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D || !allZeros))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 584,
+    "precode": "return d;",
+    "aftercode": "return createBigDecimal(str);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 590,
+    "precode": "return createBigDecimal(str);",
+    "aftercode": "return createDouble(str);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 453,
+    "precode": "if (str == null) {",
+    "aftercode": "if (str == null || str.length() == 0) {",
+    "rule": "Conditionals Addition",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 456,
+    "precode": "if (StringUtils.isBlank(str)) {",
+    "aftercode": "if (StringUtils.isEmpty(str)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 459,
+    "precode": "if (str.startsWith(\"--\")) {",
+    "aftercode": "if (str.startsWith(\"-\")) {",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 466,
+    "precode": "if (str.startsWith(\"0x\") || str.startsWith(\"-0x\")) {",
+    "aftercode": "if (str.startsWith(\"0x\") && str.startsWith(\"-0x\")) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 473,
+    "precode": "int decPos = str.indexOf('.');",
+    "aftercode": "int decPos = str.lastIndexOf('.');",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 474,
+    "precode": "int expPos = str.indexOf('e') + str.indexOf('E') + 1;",
+    "aftercode": "int expPos = str.indexOf('e') + str.indexOf('E');",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 476,
+    "precode": "if (decPos > -1) {",
+    "aftercode": "if (decPos >= -1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 478,
+    "precode": "if (expPos > -1) {",
+    "aftercode": "if (expPos >= -1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 479,
+    "precode": "if (expPos < decPos || expPos > str.length()) {",
+    "aftercode": "if (expPos <= decPos || expPos > str.length()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 482,
+    "precode": "dec = str.substring(decPos + 1, expPos);",
+    "aftercode": "dec = str.substring(decPos, expPos);",
+    "rule": "Index Offset Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 484,
+    "precode": "dec = str.substring(decPos + 1);",
+    "aftercode": "dec = str.substring(decPos);",
+    "rule": "Index Offset Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 486,
+    "precode": "mant = str.substring(0, decPos);",
+    "aftercode": "mant = str.substring(0, decPos + 1);",
+    "rule": "Index Offset Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 488,
+    "precode": "if (expPos > -1) {",
+    "aftercode": "if (expPos > 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 489,
+    "precode": "if (expPos > str.length()) {",
+    "aftercode": "if (expPos >= str.length()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 492,
+    "precode": "mant = str.substring(0, expPos);",
+    "aftercode": "mant = str.substring(1, expPos);",
+    "rule": "Index Offset Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 498,
+    "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
+    "aftercode": "if (!Character.isDigit(lastChar) || lastChar != '.') {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 499,
+    "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
+    "aftercode": "if (expPos > -1 || expPos < str.length() - 1) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 500,
+    "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
+    "aftercode": "exp = str.substring(expPos + 1, str.length());",
+    "rule": "Index Offset Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 506,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 512,
+    "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
+    "aftercode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) && isDigits(numeric))) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 526,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() && (f.floatValue() == 0.0F && !allZeros))) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 540,
+    "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && allZeros))) {",
+    "rule": "Negation Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 559,
+    "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
+    "aftercode": "if (expPos > -1 && expPos <= str.length() - 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 560,
+    "precode": "exp = str.substring(expPos + 1, str.length());",
+    "aftercode": "exp = str.substring(expPos, str.length());",
+    "rule": "Index Offset Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 564,
+    "precode": "if (dec == null && exp == null) {",
+    "aftercode": "if (dec == null || exp == null) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 580,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) && isAllZeros(str);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 583,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (f.isInfinite() || (f.floatValue() == 0.0F && !allZeros)) {",
+    "rule": "Negation Mutation",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 591,
+    "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() || (d.doubleValue() != 0.0D && !allZeros))) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.51,
+    "dublicate": false
+  }
+]

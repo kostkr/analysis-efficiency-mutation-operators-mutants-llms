@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 139,
+    "precode": "if (val == null) {",
+    "aftercode": "if (val != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 142,
+    "precode": "if (val.length() == 0) {",
+    "aftercode": "if (val.length() <= 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 145,
+    "precode": "if (val.length() == 1 && !Character.isDigit(val.charAt(0))) {",
+    "aftercode": "if (val.length() == 1 || !Character.isDigit(val.charAt(0))) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 148,
+    "precode": "if (val.startsWith(\"--\")) {",
+    "aftercode": "if (!val.startsWith(\"--\")) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 155,
+    "precode": "if (val.startsWith(\"0x\") || val.startsWith(\"-0x\")) {",
+    "aftercode": "if (val.startsWith(\"0x\") && val.startsWith(\"-0x\")) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 163,
+    "precode": "int expPos = val.indexOf('e') + val.indexOf('E') + 1;",
+    "aftercode": "int expPos = val.indexOf('e') + val.indexOf('E') - 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 165,
+    "precode": "if (decPos > -1) {",
+    "aftercode": "if (decPos >= -1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 167,
+    "precode": "if (expPos > -1) {",
+    "aftercode": "if (expPos >= -1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 168,
+    "precode": "if (expPos < decPos) {",
+    "aftercode": "if (expPos <= decPos) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 171,
+    "precode": "dec = val.substring(decPos + 1, expPos);",
+    "aftercode": "dec = val.substring(decPos, expPos);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 173,
+    "precode": "dec = val.substring(decPos + 1);",
+    "aftercode": "dec = val.substring(decPos);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 175,
+    "precode": "mant = val.substring(0, decPos);",
+    "aftercode": "mant = val.substring(0, decPos + 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 177,
+    "precode": "if (expPos > -1) {",
+    "aftercode": "if (expPos >= -1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 178,
+    "precode": "mant = val.substring(0, expPos);",
+    "aftercode": "mant = val.substring(0, expPos + 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 184,
+    "precode": "if (!Character.isDigit(lastChar)) {",
+    "aftercode": "if (Character.isDigit(lastChar)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 185,
+    "precode": "if (expPos > -1 && expPos < val.length() - 1) {",
+    "aftercode": "if (expPos > -1 || expPos < val.length() - 1) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 186,
+    "precode": "exp = val.substring(expPos + 1, val.length() - 1);",
+    "aftercode": "exp = val.substring(expPos + 1, val.length());",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 192,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 198,
+    "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
+    "aftercode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) && isDigits(numeric))) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 212,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() && (f.floatValue() == 0.0F && !allZeros))) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 212,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && allZeros))) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 226,
+    "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && allZeros))) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 245,
+    "precode": "if (expPos > -1 && expPos < val.length() - 1) {",
+    "aftercode": "if (expPos > -1 && expPos <= val.length() - 1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 246,
+    "precode": "exp = val.substring(expPos + 1, val.length());",
+    "aftercode": "exp = val.substring(expPos, val.length());",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 250,
+    "precode": "if (dec == null && exp == null) {",
+    "aftercode": "if (dec == null || exp == null) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 266,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 269,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (f.isInfinite() || (f.floatValue() == 0.0F && !allZeros)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/lang/NumberUtils.java",
+    "line": 277,
+    "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  }
+]

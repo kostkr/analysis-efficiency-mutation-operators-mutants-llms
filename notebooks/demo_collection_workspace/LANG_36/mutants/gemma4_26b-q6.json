@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 450,
+    "precode": "return null;",
+    "aftercode": "return 0;",
+    "rule": "ReturnValueChange",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 452,
+    "precode": "if (StringUtils.isBlank(str)) {",
+    "aftercode": "if (true) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 455,
+    "precode": "if (str.startsWith(\"--\")) {",
+    "aftercode": "if (str.startsWith(\"-\")) {",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 462,
+    "precode": "if (str.startsWith(\"0x\") || str.startsWith(\"-0x\")) {",
+    "aftercode": "if (str.startsWith(\"0x\") && str.startsWith(\"-0x\")) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 469,
+    "precode": "int decPos = str.indexOf('.');",
+    "aftercode": "int decPos = str.lastIndexOf('.');",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 470,
+    "precode": "int expPos = str.indexOf('e') + str.indexOf('E') + 1;",
+    "aftercode": "int expPos = str.indexOf('e') + str.indexOf('E');",
+    "rule": "ArithmeticOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 472,
+    "precode": "if (decPos > -1) {",
+    "aftercode": "if (decPos >= -1) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 474,
+    "precode": "if (expPos > -1) {",
+    "aftercode": "if (expPos >= -1) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 475,
+    "precode": "if (expPos < decPos) {",
+    "aftercode": "if (expPos <= decPos) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 478,
+    "precode": "dec = str.substring(decPos + 1, expPos);",
+    "aftercode": "dec = str.substring(decPos, expPos);",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 480,
+    "precode": "dec = str.substring(decPos + 1);",
+    "aftercode": "dec = str.substring(decPos);",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 482,
+    "precode": "mant = str.substring(0, decPos);",
+    "aftercode": "mant = str.substring(0, decPos + 1);",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 484,
+    "precode": "if (expPos > -1) {",
+    "aftercode": "if (expPos > 0) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 485,
+    "precode": "mant = str.substring(0, expPos);",
+    "aftercode": "mant = str.substring(1, expPos);",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 491,
+    "precode": "if (!Character.isDigit(lastChar) && lastChar != '.') {",
+    "aftercode": "if (!Character.isDigit(lastChar) || lastChar != '.') {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 492,
+    "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
+    "aftercode": "if (expPos > -1 || expPos < str.length() - 1) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 493,
+    "precode": "exp = str.substring(expPos + 1, str.length() - 1);",
+    "aftercode": "exp = str.substring(expPos + 1, str.length());",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 498,
+    "precode": "String numeric = str.substring(0, str.length() - 1);",
+    "aftercode": "String numeric = str.substring(0, str.length());",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 499,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 505,
+    "precode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {",
+    "aftercode": "&& (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) && isDigits(numeric))) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 519,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() && (f.floatValue() == 0.0F && !allZeros))) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 519,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (f.isInfinite() || (f.floatValue() == 0.0F && !allZeros)) {",
+    "rule": "NegationRemoval",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 519,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && allZeros))) {",
+    "rule": "NegationRemoval",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 533,
+    "precode": "if (!(d.isInfinite() || (d.floatValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (d.isInfinite() || (d.floatValue() == 0.0D && !allZeros)) {",
+    "rule": "NegationRemoval",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 552,
+    "precode": "if (expPos > -1 && expPos < str.length() - 1) {",
+    "aftercode": "if (expPos > -1 && expPos <= str.length() - 1) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 553,
+    "precode": "exp = str.substring(expPos + 1, str.length());",
+    "aftercode": "exp = str.substring(expPos, str.length());",
+    "rule": "OffByOneError",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 557,
+    "precode": "if (dec == null && exp == null) {",
+    "aftercode": "if (dec == null || exp == null) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 573,
+    "precode": "boolean allZeros = isAllZeros(mant) && isAllZeros(exp);",
+    "aftercode": "boolean allZeros = isAllZeros(mant) || isAllZeros(exp);",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 576,
+    "precode": "if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {",
+    "aftercode": "if (!(f.isInfinite() || (f.floatValue() != 0.0F && !allZeros))) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 584,
+    "precode": "if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {",
+    "aftercode": "if (!(d.isInfinite() || (d.doubleValue() != 0.0D && !allZeros))) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1313,
+    "precode": "if (StringUtils.isEmpty(str)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1314,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1318,
+    "precode": "boolean hasExp = false;",
+    "aftercode": "boolean hasExp = true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1319,
+    "precode": "boolean hasDecPoint = false;",
+    "aftercode": "boolean hasDecPoint = true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1320,
+    "precode": "boolean allowSigns = false;",
+    "aftercode": "boolean allowSigns = true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1321,
+    "precode": "boolean foundDigit = false;",
+    "aftercode": "boolean foundDigit = true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1323,
+    "precode": "int start = (chars[0] == '-') ? 1 : 0;",
+    "aftercode": "int start = (chars[0] == '-') ? 0 : 1;",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1324,
+    "precode": "if (sz > start + 1) {",
+    "aftercode": "if (sz >= start + 1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1325,
+    "precode": "if (chars[start] == '0' && chars[start + 1] == 'x') {",
+    "aftercode": "if (chars[start] == '0' || chars[start + 1] == 'x') {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1327,
+    "precode": "if (i == sz) {",
+    "aftercode": "if (i >= sz) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1332,
+    "precode": "if ((chars[i] < '0' || chars[i] > '9')",
+    "aftercode": "if ((chars[i] <= '0' || chars[i] > '9')",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1333,
+    "precode": "&& (chars[i] < 'a' || chars[i] > 'f')",
+    "aftercode": "&& (chars[i] <= 'a' || chars[i] > 'f')",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1334,
+    "precode": "&& (chars[i] < 'A' || chars[i] > 'F')) {",
+    "aftercode": "&& (chars[i] < 'A' || chars[i] >= 'F')) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1341,
+    "precode": "sz--; // don't want to loop to the last char, check it afterwords",
+    "aftercode": "sz++; // don't want to loop to the last char, check it afterwords",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1346,
+    "precode": "while (i < sz || (i < sz + 1 && allowSigns && !foundDigit)) {",
+    "aftercode": "while (i < sz && (i < sz + 1 && allowSigns && !foundDigit)) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1347,
+    "precode": "if (chars[i] >= '0' && chars[i] <= '9') {",
+    "aftercode": "if (chars[i] > '0' && chars[i] <= '9') {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1352,
+    "precode": "if (hasDecPoint || hasExp) {",
+    "aftercode": "if (hasDecPoint && hasExp) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1357,
+    "precode": "} else if (chars[i] == 'e' || chars[i] == 'E') {",
+    "aftercode": "} else if (chars[i] == 'e' && chars[i] == 'E') {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1359,
+    "precode": "if (hasExp) {",
+    "aftercode": "if (!hasExp) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1363,
+    "precode": "if (!foundDigit) {",
+    "aftercode": "if (foundDigit) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1367,
+    "precode": "allowSigns = true;",
+    "aftercode": "allowSigns = false;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1368,
+    "precode": "} else if (chars[i] == '+' || chars[i] == '-') {",
+    "aftercode": "} else if (chars[i] == '+' && chars[i] == '-') {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1369,
+    "precode": "if (!allowSigns) {",
+    "aftercode": "if (allowSigns) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1372,
+    "precode": "allowSigns = false;",
+    "aftercode": "allowSigns = true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1373,
+    "precode": "foundDigit = false; // we need a digit after the E",
+    "aftercode": "foundDigit = true; // we need a digit after the E",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1379,
+    "precode": "if (i < chars.length) {",
+    "aftercode": "if (i <= chars.length) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1380,
+    "precode": "if (chars[i] >= '0' && chars[i] <= '9') {",
+    "aftercode": "if (chars[i] > '0' && chars[i] < '9') {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1384,
+    "precode": "if (chars[i] == 'e' || chars[i] == 'E') {",
+    "aftercode": "if (chars[i] == 'e' && chars[i] == 'E') {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1388,
+    "precode": "if (chars[i] == '.') {",
+    "aftercode": "if (chars[i] != '.') {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1389,
+    "precode": "if (hasDecPoint || hasExp) {",
+    "aftercode": "if (hasDecPoint || !hasExp) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1397,
+    "precode": "&& (chars[i] == 'd'",
+    "aftercode": "&& (chars[i] != 'd'",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1398,
+    "precode": "|| chars[i] == 'D'",
+    "aftercode": "|| chars[i] != 'D'",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1403,
+    "precode": "if (chars[i] == 'l'",
+    "aftercode": "if (chars[i] != 'l'",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1406,
+    "precode": "return foundDigit && !hasExp;",
+    "aftercode": "return foundDigit || !hasExp;",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/java/org/apache/commons/lang3/math/NumberUtils.java",
+    "line": 1413,
+    "precode": "return !allowSigns && foundDigit;",
+    "aftercode": "return !allowSigns || foundDigit;",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  }
+]

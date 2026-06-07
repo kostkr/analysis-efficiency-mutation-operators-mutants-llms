@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 398,
+    "precode": "Integer negativeVarBasicRow = negativeVarColumn > 0 ? getBasicRow(negativeVarColumn) : null;",
+    "aftercode": "Integer negativeVarBasicRow = negativeVarColumn >= 0 ? getBasicRow(negativeVarColumn) : null;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 399,
+    "precode": "double mostNegative = negativeVarBasicRow == null ? 0 : getEntry(negativeVarBasicRow, getRhsOffset());",
+    "aftercode": "double mostNegative = negativeVarBasicRow != null ? 0 : getEntry(negativeVarBasicRow, getRhsOffset());",
+    "rule": "Null Check Flip",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 403,
+    "precode": "for (int i = 0; i < coefficients.length; i++) {",
+    "aftercode": "for (int i = 0; i <= coefficients.length; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 404,
+    "precode": "int colIndex = columnLabels.indexOf(\"x\" + i);",
+    "aftercode": "int colIndex = columnLabels.indexOf(\"x\" + (i + 1));",
+    "rule": "Argument Offset",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 405,
+    "precode": "if (colIndex < 0) {",
+    "aftercode": "if (colIndex <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 406,
+    "precode": "coefficients[i] = 0;",
+    "aftercode": "coefficients[i] = 1;",
+    "rule": "Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 410,
+    "precode": "if (basicRow != null && basicRow == 0) {",
+    "aftercode": "if (basicRow != null && basicRow != 0) {",
+    "rule": "Equality Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 414,
+    "precode": "coefficients[i] = 0;",
+    "aftercode": "coefficients[i] = 1;",
+    "rule": "Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 415,
+    "precode": "} else if (basicRows.contains(basicRow)) {",
+    "aftercode": "} else if (!basicRows.contains(basicRow)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 418,
+    "precode": "coefficients[i] = 0 - (restrictToNonNegative ? 0 : mostNegative);",
+    "aftercode": "coefficients[i] = 0 + (restrictToNonNegative ? 0 : mostNegative);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 420,
+    "precode": "basicRows.add(basicRow);",
+    "aftercode": "basicRows.remove(basicRow);",
+    "rule": "Collection Method Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 422,
+    "precode": "(basicRow == null ? 0 : getEntry(basicRow, getRhsOffset())) -",
+    "aftercode": "(basicRow == null ? 0 : getEntry(basicRow, getRhsOffset())) +",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 423,
+    "precode": "(restrictToNonNegative ? 0 : mostNegative);",
+    "aftercode": "(restrictToNonNegative ? 1 : mostNegative);",
+    "rule": "Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 397,
+    "precode": "int negativeVarColumn = columnLabels.indexOf(NEGATIVE_VAR_COLUMN_LABEL);",
+    "aftercode": "int negativeVarColumn = columnLabels.lastIndexOf(NEGATIVE_VAR_COLUMN_LABEL);",
+    "rule": "Method Call Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 399,
+    "precode": "double mostNegative = negativeVarBasicRow == null ? 0 : getEntry(negativeVarBasicRow, getRhsOffset());",
+    "aftercode": "double mostNegative = negativeVarBasicRow == null ? getEntry(negativeVarBasicRow, getRhsOffset()) : 0;",
+    "rule": "True/False Branch Swap",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 403,
+    "precode": "for (int i = 0; i < coefficients.length; i++) {",
+    "aftercode": "for (int i = 1; i < coefficients.length; i++) {",
+    "rule": "Loop Initial Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 403,
+    "precode": "for (int i = 0; i < coefficients.length; i++) {",
+    "aftercode": "for (int i = 0; i < coefficients.length - 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 404,
+    "precode": "int colIndex = columnLabels.indexOf(\"x\" + i);",
+    "aftercode": "int colIndex = columnLabels.indexOf(\"X\" + i);",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 409,
+    "precode": "Integer basicRow = getBasicRow(colIndex);",
+    "aftercode": "Integer basicRow = getBasicRow(colIndex + 1);",
+    "rule": "Argument Offset",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 410,
+    "precode": "if (basicRow != null && basicRow == 0) {",
+    "aftercode": "if (basicRow != null && basicRow == 1) {",
+    "rule": "Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 414,
+    "precode": "coefficients[i] = 0;",
+    "aftercode": "coefficients[i] = -1;",
+    "rule": "Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 418,
+    "precode": "coefficients[i] = 0 - (restrictToNonNegative ? 0 : mostNegative);",
+    "aftercode": "coefficients[i] = 0 - (restrictToNonNegative ? 1 : mostNegative);",
+    "rule": "Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 418,
+    "precode": "coefficients[i] = 0 - (restrictToNonNegative ? 0 : mostNegative);",
+    "aftercode": "coefficients[i] = 0 - (restrictToNonNegative ? 0 : mostNegative * 2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 421,
+    "precode": "coefficients[i] =",
+    "aftercode": "coefficients[i] = 0;",
+    "rule": "Assignment Removal",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 422,
+    "precode": "(basicRow == null ? 0 : getEntry(basicRow, getRhsOffset())) -",
+    "aftercode": "(basicRow == null ? getEntry(basicRow, getRhsOffset()) : 0) -",
+    "rule": "True/False Branch Swap",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 422,
+    "precode": "(basicRow == null ? 0 : getEntry(basicRow, getRhsOffset())) -",
+    "aftercode": "(basicRow == null ? 0 : getEntry(basicRow, getRhsOffset() + 1)) -",
+    "rule": "Argument Offset",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 423,
+    "precode": "(restrictToNonNegative ? 0 : mostNegative);",
+    "aftercode": "(restrictToNonNegative ? 0 : mostNegative * 2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 423,
+    "precode": "(restrictToNonNegative ? 0 : mostNegative);",
+    "aftercode": "(restrictToNonNegative ? 0 : mostNegative / 2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 426,
+    "precode": "return new RealPointValuePair(coefficients, f.getValue(coefficients));",
+    "aftercode": "return new RealPointValuePair(coefficients, f.getValue(new double[0]));",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 426,
+    "precode": "return new RealPointValuePair(coefficients, f.getValue(coefficients));",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 401,
+    "precode": "Set<Integer> basicRows = new HashSet<Integer>();",
+    "aftercode": "Set<Integer> basicRows = new LinkedHashSet<Integer>();",
+    "rule": "Collection Type Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 402,
+    "precode": "double[] coefficients = new double[getOriginalNumDecisionVariables()];",
+    "aftercode": "double[] coefficients = new double[getOriginalNumDecisionVariables() + 1];",
+    "rule": "Array Size Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  }
+]

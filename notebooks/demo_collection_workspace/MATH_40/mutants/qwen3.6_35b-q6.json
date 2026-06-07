@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 146,
+    "precode": "final double[] x = new double[maximalOrder + 1];",
+    "aftercode": "final double[] x = new double[maximalOrder];",
+    "rule": "Array Index Size",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 147,
+    "precode": "final double[] y = new double[maximalOrder + 1];",
+    "aftercode": "final double[] y = new double[maximalOrder];",
+    "rule": "Array Index Size",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 148,
+    "precode": "x[0] = getMin();",
+    "aftercode": "x[0] = getMax();",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 149,
+    "precode": "x[1] = getStartValue();",
+    "aftercode": "x[1] = getMin();",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 150,
+    "precode": "x[2] = getMax();",
+    "aftercode": "x[2] = getStartValue();",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 154,
+    "precode": "y[1] = computeObjectiveValue(x[1]);",
+    "aftercode": "y[1] = -computeObjectiveValue(x[1]);",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 155,
+    "precode": "if (Precision.equals(y[1], 0.0, 1)) {",
+    "aftercode": "if (!Precision.equals(y[1], 0.0, 1)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 161,
+    "precode": "y[0] = computeObjectiveValue(x[0]);",
+    "aftercode": "y[0] = -computeObjectiveValue(x[0]);",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 162,
+    "precode": "if (Precision.equals(y[0], 0.0, 1)) {",
+    "aftercode": "if (!Precision.equals(y[0], 0.0, 1)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 169,
+    "precode": "if (y[0] * y[1] < 0) {",
+    "aftercode": "if (y[0] * y[1] > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 178,
+    "precode": "y[2] = computeObjectiveValue(x[2]);",
+    "aftercode": "y[2] = -computeObjectiveValue(x[2]);",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 179,
+    "precode": "if (Precision.equals(y[2], 0.0, 1)) {",
+    "aftercode": "if (!Precision.equals(y[2], 0.0, 1)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 184,
+    "precode": "if (y[1] * y[2] < 0) {",
+    "aftercode": "if (y[1] * y[2] > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 200,
+    "precode": "double absYA = FastMath.abs(yA);",
+    "aftercode": "double absYA = yA;",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 204,
+    "precode": "double absYB = FastMath.abs(yB);",
+    "aftercode": "double absYB = yB;",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 213,
+    "precode": "if (((xB - xA) <= xTol) || (FastMath.max(absYA, absYB) < getFunctionValueAccuracy())) {",
+    "aftercode": "if (((xB - xA) >= xTol) || (FastMath.max(absYA, absYB) < getFunctionValueAccuracy())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 216,
+    "precode": "return absYA < absYB ? xA : xB;",
+    "aftercode": "return absYA > absYB ? xA : xB;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 222,
+    "precode": "return (yA <= 0) ? xA : xB;",
+    "aftercode": "return (yA < 0) ? xA : xB;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 224,
+    "precode": "return (yA <  0) ? xB : xA;",
+    "aftercode": "return (yA <= 0) ? xB : xA;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 238,
+    "precode": "targetY = (weightA * yA - weightB * REDUCTION_FACTOR * yB) / (weightA + weightB);",
+    "aftercode": "targetY = (weightA * yA + weightB * REDUCTION_FACTOR * yB) / (weightA + weightB);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 244,
+    "precode": "targetY = (weightB * yB - weightA * REDUCTION_FACTOR * yA) / (weightA + weightB);",
+    "aftercode": "targetY = (weightB * yB + weightA * REDUCTION_FACTOR * yA) / (weightA + weightB);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 260,
+    "precode": "if (!((nextX > xA) && (nextX < xB))) {",
+    "aftercode": "if ((nextX > xA) && (nextX < xB)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 266,
+    "precode": "if (signChangeIndex - start >= end - signChangeIndex) {",
+    "aftercode": "if (signChangeIndex - start > end - signChangeIndex) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 279,
+    "precode": "} while (Double.isNaN(nextX) && (end - start > 1));",
+    "aftercode": "} while (Double.isNaN(nextX) && (end - start > 0));",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 283,
+    "precode": "nextX = xA + 0.5 * (xB - xA);",
+    "aftercode": "nextX = xA + 0.1 * (xB - xA);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 289,
+    "precode": "final double nextY = computeObjectiveValue(nextX);",
+    "aftercode": "final double nextY = -computeObjectiveValue(nextX);",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 290,
+    "precode": "if (Precision.equals(nextY, 0.0, 1)) {",
+    "aftercode": "if (!Precision.equals(nextY, 0.0, 1)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 296,
+    "precode": "if ((nbPoints > 2) && (end - start != nbPoints)) {",
+    "aftercode": "if ((nbPoints < 2) && (end - start != nbPoints)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 305,
+    "precode": "} else  if (nbPoints == x.length) {",
+    "aftercode": "} else  if (nbPoints != x.length) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 311,
+    "precode": "if (signChangeIndex >= (x.length + 1) / 2) {",
+    "aftercode": "if (signChangeIndex > (x.length + 1) / 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+    "line": 329,
+    "precode": "if (nextY * yA <= 0) {",
+    "aftercode": "if (nextY * yA >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  }
+]

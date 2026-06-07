@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 316,
+    "precode": "double u1u1 = u1.getNormSq();",
+    "aftercode": "double u1u1 = u1.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 317,
+    "precode": "double u2u2 = u2.getNormSq();",
+    "aftercode": "double u2u2 = u2.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 318,
+    "precode": "double v1v1 = v1.getNormSq();",
+    "aftercode": "double v1v1 = v1.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 319,
+    "precode": "double v2v2 = v2.getNormSq();",
+    "aftercode": "double v2v2 = v2.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 320,
+    "precode": "if ((u1u1 == 0) || (u2u2 == 0) || (v1v1 == 0) || (v2v2 == 0)) {",
+    "aftercode": "if ((u1u1 == 0) && (u2u2 == 0) && (v1v1 == 0) && (v2v2 == 0)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 325,
+    "precode": "v1 = new Vector3D(FastMath.sqrt(u1u1 / v1v1), v1);",
+    "aftercode": "v1 = new Vector3D(FastMath.sqrt(v1v1 / u1u1), v1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 330,
+    "precode": "double coeffU = u1u2 / u1u1;",
+    "aftercode": "double coeffU = u1u1 / u1u2;",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 331,
+    "precode": "double coeffV = v1v2 / u1u1;",
+    "aftercode": "double coeffV = v1v2 / v1v1;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 332,
+    "precode": "double beta   = FastMath.sqrt((u2u2 - u1u2 * coeffU) / (v2v2 - v1v2 * coeffV));",
+    "aftercode": "double beta   = FastMath.sqrt((u2u2 - u1u2 * coeffV) / (v2v2 - v1v2 * coeffU));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 333,
+    "precode": "double alpha  = coeffU - beta * coeffV;",
+    "aftercode": "double alpha  = coeffU + beta * coeffV;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 339,
+    "precode": "Vector3D v1Su1 = v1.subtract(u1);",
+    "aftercode": "Vector3D v1Su1 = u1.subtract(v1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 340,
+    "precode": "Vector3D v2Su2 = v2.subtract(u2);",
+    "aftercode": "Vector3D v2Su2 = u2.subtract(v2);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 343,
+    "precode": "double c       = k.dotProduct(u3);",
+    "aftercode": "double c       = k.dotProduct(u1);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 345,
+    "precode": "if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {",
+    "aftercode": "if (c >= inPlaneThreshold * k.getNorm() * u3.getNorm()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 349,
+    "precode": "Vector3D v3Su3 = v3.subtract(u3);",
+    "aftercode": "Vector3D v3Su3 = u3.subtract(v3);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 351,
+    "precode": "Vector3D u2Prime = u1.crossProduct(u3);",
+    "aftercode": "Vector3D u2Prime = u3.crossProduct(u1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 354,
+    "precode": "if (c <= inPlaneThreshold * k.getNorm() * u2Prime.getNorm()) {",
+    "aftercode": "if (c >= inPlaneThreshold * k.getNorm() * u2Prime.getNorm()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 357,
+    "precode": "k = v2Su2.crossProduct(v3Su3);;",
+    "aftercode": "k = v3Su3.crossProduct(v2Su2);;",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 358,
+    "precode": "c = k.dotProduct(u2.crossProduct(u3));;",
+    "aftercode": "c = k.dotProduct(u3.crossProduct(u2));;",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 360,
+    "precode": "if (c <= 0) {",
+    "aftercode": "if (c < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 371,
+    "precode": "uRef = u2;",
+    "aftercode": "uRef = u3;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 372,
+    "precode": "vRef = v2;",
+    "aftercode": "vRef = v3;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 379,
+    "precode": "c = FastMath.sqrt(c);",
+    "aftercode": "c = FastMath.sqrt(Math.abs(c));",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 380,
+    "precode": "double inv = 1.0 / (c + c);",
+    "aftercode": "double inv = 1.0 / (c - c);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 381,
+    "precode": "q1 = inv * k.getX();",
+    "aftercode": "q1 = inv * k.getY();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 382,
+    "precode": "q2 = inv * k.getY();",
+    "aftercode": "q2 = inv * k.getZ();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 383,
+    "precode": "q3 = inv * k.getZ();",
+    "aftercode": "q3 = inv * k.getX();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 386,
+    "precode": "k = new Vector3D(uRef.getY() * q3 - uRef.getZ() * q2,",
+    "aftercode": "k = new Vector3D(uRef.getY() * q3 + uRef.getZ() * q2,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 387,
+    "precode": "uRef.getZ() * q1 - uRef.getX() * q3,",
+    "aftercode": "uRef.getZ() * q1 + uRef.getX() * q3,",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 388,
+    "precode": "uRef.getX() * q2 - uRef.getY() * q1);",
+    "aftercode": "uRef.getX() * q2 + uRef.getY() * q1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 389,
+    "precode": "q0 = vRef.dotProduct(k) / (2 * k.getNormSq());",
+    "aftercode": "q0 = vRef.dotProduct(k) / (2 * k.getNorm());",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 316,
+    "precode": "double u1u1 = u1.getNormSq();",
+    "aftercode": "double u1u1 = 0.0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 317,
+    "precode": "double u2u2 = u2.getNormSq();",
+    "aftercode": "double u2u2 = 0.0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 318,
+    "precode": "double v1v1 = v1.getNormSq();",
+    "aftercode": "double v1v1 = 0.0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 319,
+    "precode": "double v2v2 = v2.getNormSq();",
+    "aftercode": "double v2v2 = 0.0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 320,
+    "precode": "if ((u1u1 == 0) || (u2u2 == 0) || (v1v1 == 0) || (v2v2 == 0)) {",
+    "aftercode": "if ((u1u1 != 0) || (u2u2 != 0) || (v1v1 != 0) || (v2v2 != 0)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 325,
+    "precode": "v1 = new Vector3D(FastMath.sqrt(u1u1 / v1v1), v1);",
+    "aftercode": "v1 = new Vector3D(u1u1 / v1v1, v1);",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 330,
+    "precode": "double coeffU = u1u2 / u1u1;",
+    "aftercode": "double coeffU = u1u2 * u1u1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 331,
+    "precode": "double coeffV = v1v2 / u1u1;",
+    "aftercode": "double coeffV = v1v2 * u1u1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 333,
+    "precode": "double alpha  = coeffU - beta * coeffV;",
+    "aftercode": "double alpha  = coeffU * beta * coeffV;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 340,
+    "precode": "Vector3D v2Su2 = v2.subtract(u2);",
+    "aftercode": "Vector3D v2Su2 = v2.add(u2);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 343,
+    "precode": "double c       = k.dotProduct(u3);",
+    "aftercode": "double c       = k.dotProduct(u1);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 345,
+    "precode": "if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {",
+    "aftercode": "if (c < inPlaneThreshold * k.getNorm() * u3.getNorm()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 351,
+    "precode": "Vector3D u2Prime = u1.crossProduct(u3);",
+    "aftercode": "Vector3D u2Prime = u1.crossProduct(u2);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 354,
+    "precode": "if (c <= inPlaneThreshold * k.getNorm() * u2Prime.getNorm()) {",
+    "aftercode": "if (c < inPlaneThreshold * k.getNorm() * u2Prime.getNorm()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 357,
+    "precode": "k = v2Su2.crossProduct(v3Su3);;",
+    "aftercode": "k = v2Su2.add(v3Su3);;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 360,
+    "precode": "if (c <= 0) {",
+    "aftercode": "if (c >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 371,
+    "precode": "uRef = u2;",
+    "aftercode": "uRef = u1;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 372,
+    "precode": "vRef = v2;",
+    "aftercode": "vRef = v1;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 379,
+    "precode": "c = FastMath.sqrt(c);",
+    "aftercode": "c = c;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 380,
+    "precode": "double inv = 1.0 / (c + c);",
+    "aftercode": "double inv = 1.0 / (c * c);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 381,
+    "precode": "q1 = inv * k.getX();",
+    "aftercode": "q1 = inv * k.getX();",
+    "rule": "Null Return",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 382,
+    "precode": "q2 = inv * k.getY();",
+    "aftercode": "q2 = inv * k.getY();",
+    "rule": "Null Return",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 383,
+    "precode": "q3 = inv * k.getZ();",
+    "aftercode": "q3 = inv * k.getZ();",
+    "rule": "Null Return",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 386,
+    "precode": "k = new Vector3D(uRef.getY() * q3 - uRef.getZ() * q2,",
+    "aftercode": "k = new Vector3D(uRef.getY() * q3 - uRef.getZ() * q1,",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 387,
+    "precode": "uRef.getZ() * q1 - uRef.getX() * q3,",
+    "aftercode": "uRef.getZ() * q1 - uRef.getX() * q2,",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 388,
+    "precode": "uRef.getX() * q2 - uRef.getY() * q1);",
+    "aftercode": "uRef.getX() * q2 - uRef.getY() * q3);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 389,
+    "precode": "q0 = vRef.dotProduct(k) / (2 * k.getNormSq());",
+    "aftercode": "q0 = vRef.dotProduct(k) / (2 * k.getNorm());",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 316,
+    "precode": "double u1u1 = u1.getNormSq();",
+    "aftercode": "double u1u1 = u1.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 317,
+    "precode": "double u2u2 = u2.getNormSq();",
+    "aftercode": "double u2u2 = u2.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 318,
+    "precode": "double v1v1 = v1.getNormSq();",
+    "aftercode": "double v1v1 = v1.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 319,
+    "precode": "double v2v2 = v2.getNormSq();",
+    "aftercode": "double v2v2 = v2.getNorm();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.62,
+    "dublicate": true
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 332,
+    "precode": "double beta   = FastMath.sqrt((u2u2 - u1u2 * coeffU) / (v2v2 - v1v2 * coeffV));",
+    "aftercode": "double beta   = FastMath.sqrt((u2u2 - u1u2 * coeffU) / (v2v2 + v1v2 * coeffV));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 339,
+    "precode": "Vector3D v1Su1 = v1.subtract(u1);",
+    "aftercode": "Vector3D v1Su1 = v1.add(u1);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 349,
+    "precode": "Vector3D v3Su3 = v3.subtract(u3);",
+    "aftercode": "Vector3D v3Su3 = v3.add(u3);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java",
+    "line": 380,
+    "precode": "double inv = 1.0 / (c + c);",
+    "aftercode": "double inv = 1.0 / (c + 1.0);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  }
+]

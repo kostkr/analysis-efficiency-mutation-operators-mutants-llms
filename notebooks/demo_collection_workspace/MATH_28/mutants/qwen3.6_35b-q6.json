@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 93,
+    "precode": "double minRatio = Double.MAX_VALUE;",
+    "aftercode": "double minRatio = Double.MIN_VALUE;",
+    "rule": "Math Transform",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 98,
+    "precode": "if (Precision.compareTo(entry, 0d, maxUlps) > 0) {",
+    "aftercode": "if (Precision.compareTo(entry, 0d, maxUlps) >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 99,
+    "precode": "final double ratio = rhs / entry;",
+    "aftercode": "final double ratio = entry / rhs;",
+    "rule": "Math Transform",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 102,
+    "precode": "final int cmp = Double.compare(ratio, minRatio);",
+    "aftercode": "final int cmp = Double.compare(minRatio, ratio);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 103,
+    "precode": "if (cmp == 0) {",
+    "aftercode": "if (cmp != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 105,
+    "precode": "} else if (cmp < 0) {",
+    "aftercode": "} else if (cmp <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 105,
+    "precode": "} else if (cmp < 0) {",
+    "aftercode": "} else if (cmp > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 113,
+    "precode": "if (minRatioPositions.size() == 0) {",
+    "aftercode": "if (minRatioPositions.size() > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 115,
+    "precode": "} else if (minRatioPositions.size() > 1) {",
+    "aftercode": "} else if (minRatioPositions.size() >= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 119,
+    "precode": "if (tableau.getNumArtificialVariables() > 0) {",
+    "aftercode": "if (tableau.getNumArtificialVariables() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 122,
+    "precode": "int column = i + tableau.getArtificialVariableOffset();",
+    "aftercode": "int column = i - tableau.getArtificialVariableOffset();",
+    "rule": "Math Transform",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 124,
+    "precode": "if (Precision.equals(entry, 1d, maxUlps) && row.equals(tableau.getBasicRow(column))) {",
+    "aftercode": "if (Precision.equals(entry, 1d, maxUlps) || row.equals(tableau.getBasicRow(column))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 124,
+    "precode": "if (Precision.equals(entry, 1d, maxUlps) && row.equals(tableau.getBasicRow(column))) {",
+    "aftercode": "if (!Precision.equals(entry, 1d, maxUlps) && row.equals(tableau.getBasicRow(column))) {",
+    "rule": "Negation",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 140,
+    "precode": "if (getIterations() < getMaxIterations() / 2) {",
+    "aftercode": "if (getIterations() <= getMaxIterations() / 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 142,
+    "precode": "int minIndex = tableau.getWidth();",
+    "aftercode": "int minIndex = 0;",
+    "rule": "Math Transform",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 145,
+    "precode": "for (; i < tableau.getWidth() - 1 && minRow != row; i++) {",
+    "aftercode": "for (; i <= tableau.getWidth() - 1 && minRow != row; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 146,
+    "precode": "if (row == tableau.getBasicRow(i)) {",
+    "aftercode": "if (row != tableau.getBasicRow(i)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 147,
+    "precode": "if (i < minIndex) {",
+    "aftercode": "if (i <= minIndex) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 154,
+    "precode": "return minRow;",
+    "aftercode": "return null;",
+    "rule": "Return Value",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java",
+    "line": 157,
+    "precode": "return minRatioPositions.get(0);",
+    "aftercode": "return minRatioPositions.get(minRatioPositions.size() - 1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  }
+]

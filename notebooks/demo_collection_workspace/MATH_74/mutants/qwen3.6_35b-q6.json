@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 200,
+    "precode": "final boolean forward = t > t0;",
+    "aftercode": "final boolean forward = t >= t0;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 205,
+    "precode": "System.arraycopy(y0, 0, y, 0, y0.length);",
+    "aftercode": "System.arraycopy(y0, 0, y, 1, y0.length);",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 207,
+    "precode": "final double[][] yDotK = new double[stages][y0.length];",
+    "aftercode": "final double[][] yDotK = new double[stages + 1][y0.length];",
+    "rule": "Array Size Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 212,
+    "precode": "if (requiresDenseOutput() || (! eventsHandlersManager.isEmpty())) {",
+    "aftercode": "if (requiresDenseOutput() && (! eventsHandlersManager.isEmpty())) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 214,
+    "precode": "rki.reinitialize(this, yTmp, yDotK, forward);",
+    "aftercode": "rki.reinitialize(this, y, yDotK, forward);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 237,
+    "precode": "for (boolean loop = true; loop;) {",
+    "aftercode": "for (boolean loop = true; !loop;) {",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 246,
+    "precode": "if (vecAbsoluteTolerance == null) {",
+    "aftercode": "if (vecAbsoluteTolerance != null) {",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 248,
+    "precode": "scale[i] = scalAbsoluteTolerance + scalRelativeTolerance * Math.abs(y[i]);",
+    "aftercode": "scale[i] = scalAbsoluteTolerance - scalRelativeTolerance * Math.abs(y[i]);",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 252,
+    "precode": "scale[i] = vecAbsoluteTolerance[i] + vecRelativeTolerance[i] * Math.abs(y[i]);",
+    "aftercode": "scale[i] = vecAbsoluteTolerance[i] - vecRelativeTolerance[i] * Math.abs(y[i]);",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 263,
+    "precode": "for (int k = 1; k < stages; ++k) {",
+    "aftercode": "for (int k = 1; k <= stages; ++k) {",
+    "rule": "Loop Boundary Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 266,
+    "precode": "double sum = a[k-1][0] * yDotK[0][j];",
+    "aftercode": "double sum = a[k-1][0] * yDotK[1][j];",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 267,
+    "precode": "for (int l = 1; l < k; ++l) {",
+    "aftercode": "for (int l = 1; l <= k; ++l) {",
+    "rule": "Loop Boundary Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 268,
+    "precode": "sum += a[k-1][l] * yDotK[l][j];",
+    "aftercode": "sum += a[k-1][l] * yDotK[l-1][j];",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 273,
+    "precode": "computeDerivatives(stepStart + c[k-1] * stepSize, yTmp, yDotK[k]);",
+    "aftercode": "computeDerivatives(stepStart + c[k] * stepSize, yTmp, yDotK[k]);",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 280,
+    "precode": "for (int l = 1; l < stages; ++l) {",
+    "aftercode": "for (int l = 1; l <= stages; ++l) {",
+    "rule": "Loop Boundary Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 281,
+    "precode": "sum    += b[l] * yDotK[l][j];",
+    "aftercode": "sum    += b[l-1] * yDotK[l][j];",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 288,
+    "precode": "if (error <= 1.0) {",
+    "aftercode": "if (error < 1.0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 291,
+    "precode": "interpolator.storeTime(stepStart + stepSize);",
+    "aftercode": "interpolator.storeTime(stepStart + stepSize * 2);",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 294,
+    "precode": "if (Math.abs(dt) <= Math.ulp(stepStart)) {",
+    "aftercode": "if (Math.abs(dt) < Math.ulp(stepStart)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 299,
+    "precode": "hNew = dt;",
+    "aftercode": "hNew = -dt;",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 308,
+    "precode": "final double factor =",
+    "aftercode": "final double factor = -1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 311,
+    "precode": "hNew = filterStep(stepSize * factor, forward, false);",
+    "aftercode": "hNew = filterStep(stepSize * factor, !forward, false);",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 318,
+    "precode": "System.arraycopy(yTmp, 0, y, 0, y0.length);",
+    "aftercode": "System.arraycopy(yTmp, 0, y, 0, yTmp.length);",
+    "rule": "Array Length Swap",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 320,
+    "precode": "lastStep = manager.stop();",
+    "aftercode": "lastStep = !manager.stop();",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 325,
+    "precode": "handler.handleStep(interpolator, lastStep);",
+    "aftercode": "handler.handleStep(interpolator, !lastStep);",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 331,
+    "precode": "System.arraycopy(yDotK[stages - 1], 0, yDotK[0], 0, y0.length);",
+    "aftercode": "System.arraycopy(yDotK[stages - 1], 0, yDotK[1], 0, y0.length);",
+    "rule": "Array Index Shift",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 334,
+    "precode": "if (manager.reset(stepStart, y) && ! lastStep) {",
+    "aftercode": "if (manager.reset(stepStart, y) || ! lastStep) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 344,
+    "precode": "stepSize = filterStep(stepSize, forward, true);",
+    "aftercode": "stepSize = filterStep(stepSize, forward, false);",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 350,
+    "precode": "final double  scaledH    = stepSize * factor;",
+    "aftercode": "final double  scaledH    = stepSize / factor;",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 352,
+    "precode": "final boolean nextIsLast = forward ? (nextT >= t) : (nextT <= t);",
+    "aftercode": "final boolean nextIsLast = forward ? (nextT > t) : (nextT < t);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java",
+    "line": 359,
+    "precode": "resetInternalState();",
+    "aftercode": "resetInternalState(); resetInternalState();",
+    "rule": "Duplicate Statement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  }
+]

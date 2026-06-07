@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 130,
+    "precode": "double x0 = getMin();",
+    "aftercode": "double x0 = getMax();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 131,
+    "precode": "double x1 = getMax();",
+    "aftercode": "double x1 = getMin();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 138,
+    "precode": "if (f0 == 0.0) {",
+    "aftercode": "if (f0 != 0.0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 141,
+    "precode": "if (f1 == 0.0) {",
+    "aftercode": "if (f1 != 0.0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 160,
+    "precode": "final double x = x1 - ((f1 * (x1 - x0)) / (f1 - f0));",
+    "aftercode": "final double x = x1 - ((f1 * (x0 - x1)) / (f1 - f0));",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 166,
+    "precode": "if (fx == 0.0) {",
+    "aftercode": "if (fx != 0.0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 171,
+    "precode": "if (f1 * fx < 0) {",
+    "aftercode": "if (f1 * fx <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 174,
+    "precode": "x0 = x1;",
+    "aftercode": "x0 = x;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 175,
+    "precode": "f0 = f1;",
+    "aftercode": "f0 = fx;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 176,
+    "precode": "inverted = !inverted;",
+    "aftercode": "inverted = inverted;",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 180,
+    "precode": "f0 *= 0.5;",
+    "aftercode": "f0 *= 2.0;",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 183,
+    "precode": "f0 *= f1 / (f1 + fx);",
+    "aftercode": "f0 *= f1 / (f1 - fx);",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 186,
+    "precode": "if (x == x1) {",
+    "aftercode": "if (x != x1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 187,
+    "precode": "final double delta = FastMath.max(rtol * FastMath.abs(x1),",
+    "aftercode": "final double delta = FastMath.min(rtol * FastMath.abs(x1),",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 191,
+    "precode": "x0 = 0.5 * (x0 + x1 - delta);",
+    "aftercode": "x0 = 0.5 * (x0 + x1 + delta);",
+    "rule": "Math Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 201,
+    "precode": "x1 = x;",
+    "aftercode": "x1 = x0;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 202,
+    "precode": "f1 = fx;",
+    "aftercode": "f1 = f0;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 207,
+    "precode": "if (FastMath.abs(f1) <= ftol) {",
+    "aftercode": "if (FastMath.abs(f1) < ftol) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 212,
+    "precode": "if (inverted) {",
+    "aftercode": "if (!inverted) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 217,
+    "precode": "if (!inverted) {",
+    "aftercode": "if (inverted) {",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 222,
+    "precode": "if (f1 <= 0) {",
+    "aftercode": "if (f1 < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 227,
+    "precode": "if (f1 >= 0) {",
+    "aftercode": "if (f1 > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 238,
+    "precode": "if (FastMath.abs(x1 - x0) < FastMath.max(rtol * FastMath.abs(x1),",
+    "aftercode": "if (FastMath.abs(x1 - x0) <= FastMath.max(rtol * FastMath.abs(x1),",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 244,
+    "precode": "return inverted ? x1 : x0;",
+    "aftercode": "return inverted ? x0 : x1;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 246,
+    "precode": "return inverted ? x0 : x1;",
+    "aftercode": "return inverted ? x1 : x0;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 248,
+    "precode": "return (f1 <= 0) ? x1 : x0;",
+    "aftercode": "return (f1 <= 0) ? x0 : x1;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java",
+    "line": 250,
+    "precode": "return (f1 >= 0) ? x1 : x0;",
+    "aftercode": "return (f1 >= 0) ? x0 : x1;",
+    "rule": "Conditional Expression Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  }
+]
