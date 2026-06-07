@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 89,
+    "precode": "if (parent != null) {",
+    "aftercode": "if (parent == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 90,
+    "precode": "oldVal = parent.get(this.key); // trust the container more",
+    "aftercode": "oldVal = this.key;",
+    "rule": "Assignment",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 91,
+    "precode": "int i = parent.indexOfKey(this.key);",
+    "aftercode": "int i = parent.indexOfKey(val);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 92,
+    "precode": "if (i != Attributes.NotFound)",
+    "aftercode": "if (i == Attributes.NotFound)",
+    "rule": "Negation",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 92,
+    "precode": "if (i != Attributes.NotFound)",
+    "aftercode": "if (i >= Attributes.NotFound)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 93,
+    "precode": "parent.vals[i] = val;",
+    "aftercode": "parent.vals[i] = oldVal;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 93,
+    "precode": "parent.vals[i] = val;",
+    "aftercode": "// parent.vals[i] = val;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 95,
+    "precode": "this.val = val;",
+    "aftercode": "this.val = oldVal;",
+    "rule": "Assignment",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 95,
+    "precode": "this.val = val;",
+    "aftercode": "this.val = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 96,
+    "precode": "return Attributes.checkNotNull(oldVal);",
+    "aftercode": "return Attributes.checkNotNull(this.val);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/Attribute.java",
+    "line": 96,
+    "precode": "return Attributes.checkNotNull(oldVal);",
+    "aftercode": "return oldVal;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.07,
+    "dublicate": false
+  }
+]

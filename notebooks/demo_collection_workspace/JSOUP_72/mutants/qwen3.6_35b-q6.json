@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 425,
+    "precode": "if (count > maxStringCacheLen)",
+    "aftercode": "if (count >= maxStringCacheLen)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 427,
+    "precode": "if (count < 1)",
+    "aftercode": "if (count <= 1)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 433,
+    "precode": "for (int i = 0; i < count; i++) {",
+    "aftercode": "for (int i = 0; i <= count; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 434,
+    "precode": "hash = 31 * hash + charBuf[offset++];",
+    "aftercode": "hash = 31 * hash - charBuf[offset++];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 434,
+    "precode": "hash = 31 * hash + charBuf[offset++];",
+    "aftercode": "hash = 31 * hash * charBuf[offset++];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 438,
+    "precode": "final int index = hash & stringCache.length - 1;",
+    "aftercode": "final int index = hash ^ stringCache.length - 1;",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 438,
+    "precode": "final int index = hash & stringCache.length - 1;",
+    "aftercode": "final int index = hash | stringCache.length - 1;",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 439,
+    "precode": "String cached = stringCache[index];",
+    "aftercode": "String cached = stringCache[index + 1];",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 441,
+    "precode": "if (cached == null) { // miss, add",
+    "aftercode": "if (cached != null) { // miss, add",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 442,
+    "precode": "cached = new String(charBuf, start, count);",
+    "aftercode": "cached = new String(charBuf, start, count + 1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 445,
+    "precode": "if (rangeEquals(charBuf, start, count, cached)) { // hit",
+    "aftercode": "if (!rangeEquals(charBuf, start, count, cached)) { // hit",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 448,
+    "precode": "cached = new String(charBuf, start, count);",
+    "aftercode": "cached = new String(charBuf, start, count - 1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 449,
+    "precode": "stringCache[index] = cached; // update the cache, as recently used strings are more likely to show up again",
+    "aftercode": "stringCache[index + 1] = cached; // update the cache, as recently used strings are more likely to show up again",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 426,
+    "precode": "return new String(charBuf, start, count);",
+    "aftercode": "return new String(charBuf, start, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 428,
+    "precode": "return \"\";",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 431,
+    "precode": "int hash = 0;",
+    "aftercode": "int hash = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 432,
+    "precode": "int offset = start;",
+    "aftercode": "int offset = start + 1;",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 434,
+    "precode": "hash = 31 * hash + charBuf[offset++];",
+    "aftercode": "hash = 31 * hash + charBuf[offset];",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 438,
+    "precode": "final int index = hash & stringCache.length - 1;",
+    "aftercode": "final int index = hash & stringCache.length;",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 443,
+    "precode": "stringCache[index] = cached;",
+    "aftercode": "stringCache[index] = null;",
+    "rule": "Field Assignment",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 446,
+    "precode": "return cached;",
+    "aftercode": "return new String(charBuf, start, count);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 452,
+    "precode": "return cached;",
+    "aftercode": "return new String(charBuf, start, count);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 434,
+    "precode": "hash = 31 * hash + charBuf[offset++];",
+    "aftercode": "hash = 31 * hash;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 442,
+    "precode": "cached = new String(charBuf, start, count);",
+    "aftercode": "cached = String.valueOf(charBuf);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 448,
+    "precode": "cached = new String(charBuf, start, count);",
+    "aftercode": "cached = String.valueOf(charBuf);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 425,
+    "precode": "if (count > maxStringCacheLen)",
+    "aftercode": "if (count == maxStringCacheLen)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 427,
+    "precode": "if (count < 1)",
+    "aftercode": "if (count > 1)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 433,
+    "precode": "for (int i = 0; i < count; i++) {",
+    "aftercode": "for (int i = 1; i < count; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 434,
+    "precode": "hash = 31 * hash + charBuf[offset++];",
+    "aftercode": "hash = 31 * hash + charBuf[--offset];",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 438,
+    "precode": "final int index = hash & stringCache.length - 1;",
+    "aftercode": "final int index = hash % stringCache.length;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 441,
+    "precode": "if (cached == null) { // miss, add",
+    "aftercode": "if (cached != null) { // miss, add",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  }
+]

@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 132,
+    "precode": "return Character.getType(c) == 16 && (c == 8203 || c == 8204 || c == 8205 || c == 173);",
+    "aftercode": "return Character.getType(c) == 16 || (c == 8203 || c == 8204 || c == 8205 || c == 173);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 4.83,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 132,
+    "precode": "return Character.getType(c) == 16 && (c == 8203 || c == 8204 || c == 8205 || c == 173);",
+    "aftercode": "return Character.getType(c) != 16 && (c == 8203 || c == 8204 || c == 8205 || c == 173);",
+    "rule": "Equality Operator",
+    "gen_time_s": 4.83,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 132,
+    "precode": "return Character.getType(c) == 16 && (c == 8203 || c == 8204 || c == 8205 || c == 173);",
+    "aftercode": "return Character.getType(c) == 16 && (c == 8203 || c == 8204 || c == 8205 || c != 173);",
+    "rule": "Equality Operator",
+    "gen_time_s": 4.83,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 132,
+    "precode": "return Character.getType(c) == 16 && (c == 8203 || c == 8204 || c == 8205 || c == 173);",
+    "aftercode": "return Character.getType(c) == 16 && (c == 8203 && c == 8204 && c == 8205 && c == 173);",
+    "rule": "Boolean Literal",
+    "gen_time_s": 4.83,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < len; i+= Character.charCount(c)) {",
+    "aftercode": "for (int i = 0; i <= len; i+= Character.charCount(c)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < len; i+= Character.charCount(c)) {",
+    "aftercode": "for (int i = 0; i < len; i++) {",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 161,
+    "precode": "c = string.codePointAt(i);",
+    "aftercode": "c = string.codePointAt(i + 1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 161,
+    "precode": "c = string.codePointAt(i);",
+    "aftercode": "c = string.charAt(i);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 162,
+    "precode": "if (isActuallyWhitespace(c)) {",
+    "aftercode": "if (!isActuallyWhitespace(c)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 163,
+    "precode": "if ((stripLeading && !reachedNonWhite) || lastWasWhite)",
+    "aftercode": "if ((stripLeading && !reachedNonWhite) && lastWasWhite)",
+    "rule": "Boolean Operator",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 163,
+    "precode": "if ((stripLeading && !reachedNonWhite) || lastWasWhite)",
+    "aftercode": "if ((stripLeading || !reachedNonWhite) || lastWasWhite)",
+    "rule": "Boolean Operator",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 163,
+    "precode": "if ((stripLeading && !reachedNonWhite) || lastWasWhite)",
+    "aftercode": "if ((stripLeading && reachedNonWhite) || lastWasWhite)",
+    "rule": "Negation",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 164,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 165,
+    "precode": "accum.append(' ');",
+    "aftercode": "accum.append('  ');",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 165,
+    "precode": "accum.append(' ');",
+    "aftercode": "accum.append('');",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 166,
+    "precode": "lastWasWhite = true;",
+    "aftercode": "lastWasWhite = false;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 168,
+    "precode": "else if (!isInvisibleChar(c)) {",
+    "aftercode": "else if (isInvisibleChar(c)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 169,
+    "precode": "accum.appendCodePoint(c);",
+    "aftercode": "accum.appendCodePoint(c + 1);",
+    "rule": "Argument Modification",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 170,
+    "precode": "lastWasWhite = false;",
+    "aftercode": "lastWasWhite = true;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 171,
+    "precode": "reachedNonWhite = true;",
+    "aftercode": "reachedNonWhite = false;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 155,
+    "precode": "boolean lastWasWhite = false;",
+    "aftercode": "boolean lastWasWhite = true;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 156,
+    "precode": "boolean reachedNonWhite = false;",
+    "aftercode": "boolean reachedNonWhite = true;",
+    "rule": "Boolean Literal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 160,
+    "precode": "for (int i = 0; i < len; i+= Character.charCount(c)) {",
+    "aftercode": "for (int i = 1; i < len; i+= Character.charCount(c)) {",
+    "rule": "Initializer",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 168,
+    "precode": "else if (!isInvisibleChar(c)) {",
+    "aftercode": "if (!isInvisibleChar(c)) {",
+    "rule": "Control Flow",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/helper/StringUtil.java",
+    "line": 162,
+    "precode": "if (isActuallyWhitespace(c)) {",
+    "aftercode": "if (isActuallyWhitespace(c) || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  }
+]

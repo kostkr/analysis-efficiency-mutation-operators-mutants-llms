@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 97,
+    "precode": "if (input == null) // empty body",
+    "aftercode": "if (input != null) // empty body",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 106,
+    "precode": "ByteBuffer firstBytes = readToByteBuffer(input, firstReadBufferSize - 1); // -1 because we read one more to see if completed. First read is < buffer size, so can't be invalid.",
+    "aftercode": "ByteBuffer firstBytes = readToByteBuffer(input, firstReadBufferSize + 1); // -1 because we read one more to see if completed. First read is < buffer size, so can't be invalid.",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 107,
+    "precode": "fullyRead = input.read() == -1;",
+    "aftercode": "fullyRead = input.read() != -1;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 112,
+    "precode": "if (bomCharset != null)",
+    "aftercode": "if (bomCharset == null)",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 115,
+    "precode": "if (charsetName == null) { // determine from meta. safe first parse as UTF-8",
+    "aftercode": "if (charsetName != null) { // determine from meta. safe first parse as UTF-8",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 120,
+    "precode": "Elements metaElements = doc.select(\"meta[http-equiv=content-type], meta[charset]\");",
+    "aftercode": "Elements metaElements = doc.select(\"meta[http-equiv=content-type]\");",
+    "rule": "Method Call Argument Removal",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 132,
+    "precode": "if (foundCharset == null && doc.childNodeSize() > 0) {",
+    "aftercode": "if (foundCharset != null && doc.childNodeSize() > 0) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 135,
+    "precode": "if (first instanceof XmlDeclaration)",
+    "aftercode": "if (!(first instanceof XmlDeclaration))",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 137,
+    "precode": "else if (first instanceof Comment) {",
+    "aftercode": "else if (!(first instanceof Comment)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 139,
+    "precode": "if (comment.isXmlDeclaration())",
+    "aftercode": "if (!comment.isXmlDeclaration())",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 143,
+    "precode": "if (decl.name().equalsIgnoreCase(\"xml\"))",
+    "aftercode": "if (!decl.name().equalsIgnoreCase(\"xml\"))",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 148,
+    "precode": "if (foundCharset != null && !foundCharset.equalsIgnoreCase(defaultCharset)) { // need to re-decode. (case insensitive check here to match how validate works)",
+    "aftercode": "if (foundCharset == null && !foundCharset.equalsIgnoreCase(defaultCharset)) { // need to re-decode. (case insensitive check here to match how validate works)",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 152,
+    "precode": "} else if (!fullyRead) {",
+    "aftercode": "} else if (fullyRead) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 156,
+    "precode": "Validate.notEmpty(charsetName, \"Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML\");",
+    "aftercode": "Validate.isEmpty(charsetName, \"Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 159,
+    "precode": "if (charsetName == null)",
+    "aftercode": "if (charsetName != null)",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 165,
+    "precode": "doc = parser.parseInput(reader, baseUri);",
+    "aftercode": "doc = parser.parseInput(baseUri, reader);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 168,
+    "precode": "throw e.ioException();",
+    "aftercode": "throw new RuntimeException(e);",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 172,
+    "precode": "input.close();",
+    "aftercode": "input = null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.72,
+    "dublicate": false
+  }
+]

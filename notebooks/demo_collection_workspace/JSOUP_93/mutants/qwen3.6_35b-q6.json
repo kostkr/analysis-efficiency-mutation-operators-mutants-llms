@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 83,
+    "precode": "if (!el.tag().isFormSubmittable()) continue; // contents are form listable, superset of submitable",
+    "aftercode": "if (el.tag().isFormSubmittable()) continue; // contents are form listable, superset of submitable",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 84,
+    "precode": "if (el.hasAttr(\"disabled\")) continue; // skip disabled form inputs",
+    "aftercode": "if (!el.hasAttr(\"disabled\")) continue; // skip disabled form inputs",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 86,
+    "precode": "if (name.length() == 0) continue;",
+    "aftercode": "if (name.length() != 0) continue;",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 89,
+    "precode": "if (type.equalsIgnoreCase(\"button\")) continue; // browsers don't submit these",
+    "aftercode": "if (!type.equalsIgnoreCase(\"button\")) continue; // browsers don't submit these",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 91,
+    "precode": "if (\"select\".equals(el.normalName())) {",
+    "aftercode": "if (!\"select\".equals(el.normalName())) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 93,
+    "precode": "boolean set = false;",
+    "aftercode": "boolean set = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 96,
+    "precode": "set = true;",
+    "aftercode": "set = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 98,
+    "precode": "if (!set) {",
+    "aftercode": "if (set) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 100,
+    "precode": "if (option != null)",
+    "aftercode": "if (option == null)",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 103,
+    "precode": "else if (\"checkbox\".equalsIgnoreCase(type) || \"radio\".equalsIgnoreCase(type)) {",
+    "aftercode": "else if (\"checkbox\".equalsIgnoreCase(type) && \"radio\".equalsIgnoreCase(type)) {",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 105,
+    "precode": "if (el.hasAttr(\"checked\")) {",
+    "aftercode": "if (!el.hasAttr(\"checked\")) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 106,
+    "precode": "final String val = el.val().length() >  0 ? el.val() : \"on\";",
+    "aftercode": "final String val = el.val().length() <= 0 ? el.val() : \"on\";",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 110,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, el.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, null));",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 92,
+    "precode": "Elements options = el.select(\"option[selected]\");",
+    "aftercode": "Elements options = el.select(\"option\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 99,
+    "precode": "Element option = el.select(\"option\").first();",
+    "aftercode": "Element option = el.select(\"option\").last();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 85,
+    "precode": "String name = el.attr(\"name\");",
+    "aftercode": "String name = el.attr(\"id\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 87,
+    "precode": "String type = el.attr(\"type\");",
+    "aftercode": "String type = el.attr(\"class\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 95,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, option.toString()));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 79,
+    "precode": "ArrayList<Connection.KeyVal> data = new ArrayList<>();",
+    "aftercode": "ArrayList<Connection.KeyVal> data = new LinkedList<>();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 106,
+    "precode": "final String val = el.val().length() >  0 ? el.val() : \"on\";",
+    "aftercode": "final String val = el.val().length() >  0 ? \"on\" : el.val();",
+    "rule": "Conditional Operator Swap",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 96,
+    "precode": "set = true;",
+    "aftercode": "if (true) set = true;",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 101,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "aftercode": "if (true) data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 94,
+    "precode": "for (Element option: options) {",
+    "aftercode": "for (Element option: options) { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 105,
+    "precode": "if (el.hasAttr(\"checked\")) {",
+    "aftercode": "if (el.hasAttr(\"checked\")) { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 107,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, val));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, val)); if (true) {}",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 82,
+    "precode": "for (Element el: elements) {",
+    "aftercode": "for (Element el: elements) { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 83,
+    "precode": "if (!el.tag().isFormSubmittable()) continue; // contents are form listable, superset of submitable",
+    "aftercode": "if (!el.tag().isFormSubmittable()) continue; // contents are form listable, superset of submitable if (true) {}",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 84,
+    "precode": "if (el.hasAttr(\"disabled\")) continue; // skip disabled form inputs",
+    "aftercode": "if (el.hasAttr(\"disabled\")) continue; // skip disabled form inputs if (true) {}",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 86,
+    "precode": "if (name.length() == 0) continue;",
+    "aftercode": "if (name.length() == 0) continue; if (true) {}",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 89,
+    "precode": "if (type.equalsIgnoreCase(\"button\")) continue; // browsers don't submit these",
+    "aftercode": "if (type.equalsIgnoreCase(\"button\")) continue; // browsers don't submit these if (true) {}",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 91,
+    "precode": "if (\"select\".equals(el.normalName())) {",
+    "aftercode": "if (\"select\".equals(el.normalName())) { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 98,
+    "precode": "if (!set) {",
+    "aftercode": "if (!set) { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 100,
+    "precode": "if (option != null)",
+    "aftercode": "if (option != null) if (true) continue;",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 103,
+    "precode": "else if (\"checkbox\".equalsIgnoreCase(type) || \"radio\".equalsIgnoreCase(type)) {",
+    "aftercode": "else if (\"checkbox\".equalsIgnoreCase(type) || \"radio\".equalsIgnoreCase(type)) { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 109,
+    "precode": "} else {",
+    "aftercode": "} else { if (true) continue; }",
+    "rule": "Empty Block Insertion",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 113,
+    "precode": "return data;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  }
+]

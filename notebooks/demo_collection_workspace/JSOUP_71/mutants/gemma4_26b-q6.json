@@ -1,0 +1,1032 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 761,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 763,
+    "precode": "List<TextNode> textNodes = element.textNodes();",
+    "aftercode": "List<TextNode> textNodes = Collections.emptyList();",
+    "rule": "Empty Collection Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 764,
+    "precode": "for (TextNode textNode : textNodes) {",
+    "aftercode": "for (TextNode textNode : new ArrayList<TextNode>()) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 765,
+    "precode": "PseudoTextElement pel = new PseudoTextElement(",
+    "aftercode": "PseudoTextElement pel = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 766,
+    "precode": "org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), element.attributes());",
+    "aftercode": "org.jsoup.parser.Tag.valueOf(element.tagName()), null, element.attributes());",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 767,
+    "precode": "textNode.replaceWith(pel);",
+    "aftercode": "// textNode.replaceWith(pel);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 768,
+    "precode": "pel.appendChild(textNode);",
+    "aftercode": "// pel.appendChild(textNode);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 768,
+    "precode": "pel.appendChild(textNode);",
+    "aftercode": "textNode.appendChild(pel);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 770,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 760,
+    "precode": "if (element instanceof PseudoTextElement)",
+    "aftercode": "if (!(element instanceof PseudoTextElement))",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 763,
+    "precode": "List<TextNode> textNodes = element.textNodes();",
+    "aftercode": "List<TextNode> textNodes = element.childNodes().stream().filter(n -> n instanceof TextNode).collect(Collectors.toList());",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 764,
+    "precode": "for (TextNode textNode : textNodes) {",
+    "aftercode": "for (int i = 0; i < textNodes.size(); i++) {",
+    "rule": "Loop Type Change",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 766,
+    "precode": "org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), element.attributes());",
+    "aftercode": "org.jsoup.parser.Tag.valueOf(\"\" ), element.baseUri(), element.attributes());",
+    "rule": "Constant Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 775,
+    "precode": "return \":matchText\";",
+    "aftercode": "return \"\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 775,
+    "precode": "return \":matchText\";",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 775,
+    "precode": "return \":matchText\";",
+    "aftercode": "return \"matchText\";",
+    "rule": "String Content Alteration",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 760,
+    "precode": "if (element instanceof PseudoTextElement)",
+    "aftercode": "if (!(element instanceof PseudoTextElement))",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 760,
+    "precode": "if (element instanceof PseudoTextElement)",
+    "aftercode": "if (element != null)",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 761,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 763,
+    "precode": "List<TextNode> textNodes = element.textNodes();",
+    "aftercode": "List<TextNode> textNodes = new ArrayList<>();",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 764,
+    "precode": "for (TextNode textNode : textNodes) {",
+    "aftercode": "for (TextNode textNode : new ArrayList<>()) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 765,
+    "precode": "PseudoTextElement pel = new PseudoTextElement(",
+    "aftercode": "PseudoTextElement pel = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 766,
+    "precode": "org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), element.attributes());",
+    "aftercode": "org.jsoup.parser.Tag.valueOf(\"\"), element.baseUri(), element.attributes());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 766,
+    "precode": "org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), element.attributes());",
+    "aftercode": "org.jsoup.parser.Tag.valueOf(element.tagName()), \"\", element.attributes());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 766,
+    "precode": "org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), element.attributes());",
+    "aftercode": "org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 767,
+    "precode": "textNode.replaceWith(pel);",
+    "aftercode": "// textNode.replaceWith(pel);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 767,
+    "precode": "textNode.replaceWith(pel);",
+    "aftercode": "pel.replaceWith(textNode);",
+    "rule": "Method Call Reversal",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 768,
+    "precode": "pel.appendChild(textNode);",
+    "aftercode": "// pel.appendChild(textNode);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 768,
+    "precode": "pel.appendChild(textNode);",
+    "aftercode": "textNode.appendChild(pel);",
+    "rule": "Method Call Reversal",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 770,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 764,
+    "precode": "for (TextNode textNode : textNodes) {",
+    "aftercode": "for (int i = 0; i < textNodes.size(); i++) {",
+    "rule": "Loop Type Change",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 765,
+    "precode": "PseudoTextElement pel = new PseudoTextElement(",
+    "aftercode": "PseudoTextElement pel = new PseudoTextElement(null, element.baseUri(), element.attributes());",
+    "rule": "Constructor Argument Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 763,
+    "precode": "List<TextNode> textNodes = element.textNodes();",
+    "aftercode": "List<TextNode> textNodes = element.childNodes().stream().filter(n -> n instanceof TextNode).map(n -> (TextNode)n).collect(Collectors.toList());",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 775,
+    "precode": "return \":matchText\";",
+    "aftercode": "return \"\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 775,
+    "precode": "return \":matchText\";",
+    "aftercode": "return \"matchText\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 760,
+    "precode": "if (element instanceof PseudoTextElement)",
+    "aftercode": "if (element == null)",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 764,
+    "precode": "for (TextNode textNode : textNodes) {",
+    "aftercode": "if (textNodes.isEmpty()) {",
+    "rule": "Loop to Conditional",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/select/Evaluator.java",
+    "line": 768,
+    "precode": "pel.appendChild(textNode);",
+    "aftercode": "pel.appendChild(null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 149,
+    "precode": "if (tq.matchChomp(\"#\"))",
+    "aftercode": "if (!tq.matchChomp(\"#\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 151,
+    "precode": "else if (tq.matchChomp(\".\"))",
+    "aftercode": "else if (!tq.matchChomp(\".\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 153,
+    "precode": "else if (tq.matchesWord() || tq.matches(\"*|\"))",
+    "aftercode": "else if (tq.matchesWord() && tq.matches(\"*|\"))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 155,
+    "precode": "else if (tq.matches(\"[\"))",
+    "aftercode": "else if (!tq.matches(\"[\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 157,
+    "precode": "else if (tq.matchChomp(\"*\"))",
+    "aftercode": "else if (!tq.matchChomp(\"*\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 159,
+    "precode": "else if (tq.matchChomp(\":lt(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":lt(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 161,
+    "precode": "else if (tq.matchChomp(\":gt(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":gt(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 163,
+    "precode": "else if (tq.matchChomp(\":eq(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":eq(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 165,
+    "precode": "else if (tq.matches(\":has(\"))",
+    "aftercode": "else if (!tq.matches(\":has(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 167,
+    "precode": "else if (tq.matches(\":contains(\"))",
+    "aftercode": "else if (!tq.matches(\":contains(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 168,
+    "precode": "contains(false);",
+    "aftercode": "contains(true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 169,
+    "precode": "else if (tq.matches(\":containsOwn(\"))",
+    "aftercode": "else if (!tq.matches(\":containsOwn(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 170,
+    "precode": "contains(true);",
+    "aftercode": "contains(false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 171,
+    "precode": "else if (tq.matches(\":containsData(\"))",
+    "aftercode": "else if (!tq.matches(\":containsData(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 173,
+    "precode": "else if (tq.matches(\":matches(\"))",
+    "aftercode": "else if (!tq.matches(\":matches(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 174,
+    "precode": "matches(false);",
+    "aftercode": "matches(true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 175,
+    "precode": "else if (tq.matches(\":matchesOwn(\"))",
+    "aftercode": "else if (!tq.matches(\":matchesOwn(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 176,
+    "precode": "matches(true);",
+    "aftercode": "matches(false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 177,
+    "precode": "else if (tq.matches(\":not(\"))",
+    "aftercode": "else if (!tq.matches(\":not(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 179,
+    "precode": "else if (tq.matchChomp(\":nth-child(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":nth-child(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 180,
+    "precode": "cssNthChild(false, false);",
+    "aftercode": "cssNthChild(true, false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 181,
+    "precode": "else if (tq.matchChomp(\":nth-last-child(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":nth-last-child(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 182,
+    "precode": "cssNthChild(true, false);",
+    "aftercode": "cssNthChild(false, false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 183,
+    "precode": "else if (tq.matchChomp(\":nth-of-type(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":nth-of-type(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 184,
+    "precode": "cssNthChild(false, true);",
+    "aftercode": "cssNthChild(true, true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 185,
+    "precode": "else if (tq.matchChomp(\":nth-last-of-type(\"))",
+    "aftercode": "else if (!tq.matchChomp(\":nth-last-of-type(\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 186,
+    "precode": "cssNthChild(true, true);",
+    "aftercode": "cssNthChild(false, true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 187,
+    "precode": "else if (tq.matchChomp(\":first-child\"))",
+    "aftercode": "else if (!tq.matchChomp(\":first-child\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 189,
+    "precode": "else if (tq.matchChomp(\":last-child\"))",
+    "aftercode": "else if (!tq.matchChomp(\":last-child\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 191,
+    "precode": "else if (tq.matchChomp(\":first-of-type\"))",
+    "aftercode": "else if (!tq.matchChomp(\":first-of-type\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 193,
+    "precode": "else if (tq.matchChomp(\":last-of-type\"))",
+    "aftercode": "else if (!tq.matchChomp(\":last-of-type\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 195,
+    "precode": "else if (tq.matchChomp(\":only-child\"))",
+    "aftercode": "else if (!tq.matchChomp(\":only-child\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 197,
+    "precode": "else if (tq.matchChomp(\":only-of-type\"))",
+    "aftercode": "else if (!tq.matchChomp(\":only-of-type\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 199,
+    "precode": "else if (tq.matchChomp(\":empty\"))",
+    "aftercode": "else if (!tq.matchChomp(\":empty\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 201,
+    "precode": "else if (tq.matchChomp(\":root\"))",
+    "aftercode": "else if (!tq.matchChomp(\":root\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 203,
+    "precode": "else if (tq.matchChomp(\":matchText\"))",
+    "aftercode": "else if (!tq.matchChomp(\":matchText\"))",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 150,
+    "precode": "byId();",
+    "aftercode": "// byId();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 152,
+    "precode": "byClass();",
+    "aftercode": "// byClass();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 154,
+    "precode": "byTag();",
+    "aftercode": "// byTag();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 156,
+    "precode": "byAttribute();",
+    "aftercode": "// byAttribute();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 158,
+    "precode": "allElements();",
+    "aftercode": "// allElements();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 160,
+    "precode": "indexLessThan();",
+    "aftercode": "// indexLessThan();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 162,
+    "precode": "indexGreaterThan();",
+    "aftercode": "// indexGreaterThan();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 164,
+    "precode": "indexEquals();",
+    "aftercode": "// indexEquals();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 166,
+    "precode": "has();",
+    "aftercode": "// has();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 172,
+    "precode": "containsData();",
+    "aftercode": "// containsData();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 174,
+    "precode": "matches(false);",
+    "aftercode": "matches(true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 178,
+    "precode": "not();",
+    "aftercode": "// not();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 180,
+    "precode": "cssNthChild(false, false);",
+    "aftercode": "cssNthChild(true, true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 182,
+    "precode": "cssNthChild(true, false);",
+    "aftercode": "cssNthChild(false, true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 184,
+    "precode": "cssNthChild(false, true);",
+    "aftercode": "cssNthChild(true, false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 186,
+    "precode": "cssNthChild(true, true);",
+    "aftercode": "cssNthChild(false, false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 188,
+    "precode": "evals.add(new Evaluator.IsFirstChild());",
+    "aftercode": "evals.remove(new Evaluator.IsFirstChild());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 190,
+    "precode": "evals.add(new Evaluator.IsLastChild());",
+    "aftercode": "evals.remove(new Evaluator.IsLastChild());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 192,
+    "precode": "evals.add(new Evaluator.IsFirstOfType());",
+    "aftercode": "evals.remove(new Evaluator.IsFirstOfType());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 194,
+    "precode": "evals.add(new Evaluator.IsLastOfType());",
+    "aftercode": "evals.remove(new Evaluator.IsLastOfType());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 196,
+    "precode": "evals.add(new Evaluator.IsOnlyChild());",
+    "aftercode": "evals.remove(new Evaluator.IsOnlyChild());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 198,
+    "precode": "evals.add(new Evaluator.IsOnlyOfType());",
+    "aftercode": "evals.remove(new Evaluator.IsOnlyOfType());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 200,
+    "precode": "evals.add(new Evaluator.IsEmpty());",
+    "aftercode": "evals.remove(new Evaluator.IsEmpty());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 202,
+    "precode": "evals.add(new Evaluator.IsRoot());",
+    "aftercode": "evals.remove(new Evaluator.IsRoot());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 204,
+    "precode": "evals.add(new Evaluator.MatchText());",
+    "aftercode": "evals.remove(new Evaluator.MatchText());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 206,
+    "precode": "throw new Selector.SelectorParseException(\"Could not parse query '%s': unexpected token at '%s'\", query, tq.remainder());",
+    "aftercode": "// throw new Selector.SelectorParseException(\"Could not parse query '%s': unexpected token at '%s'\", query, tq.remainder());",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 153,
+    "precode": "else if (tq.matchesWord() || tq.matches(\"*|\"))",
+    "aftercode": "else if (tq.matchesWord() || true)",
+    "rule": "Conditionals Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 153,
+    "precode": "else if (tq.matchesWord() || tq.matches(\"*|\"))",
+    "aftercode": "else if (tq.matchesWord() || false)",
+    "rule": "Conditionals Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/jsoup/select/QueryParser.java",
+    "line": 153,
+    "precode": "else if (tq.matchesWord() || tq.matches(\"*|\"))",
+    "aftercode": "else if (true || tq.matches(\"*|\"))",
+    "rule": "Conditionals Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/UncheckedIOException.java",
+    "line": 11,
+    "precode": "super(new IOException(message));",
+    "aftercode": "super(new IOException());",
+    "rule": "Argument Removal",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/UncheckedIOException.java",
+    "line": 11,
+    "precode": "super(new IOException(message));",
+    "aftercode": "super(new RuntimeException(message));",
+    "rule": "Type Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/UncheckedIOException.java",
+    "line": 11,
+    "precode": "super(new IOException(message));",
+    "aftercode": "super(new IOException(\"\"));",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 31,
+    "precode": "Validate.notNull(input);",
+    "aftercode": "// Validate.notNull(input);",
+    "rule": "Removed Statement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 32,
+    "precode": "Validate.isTrue(input.markSupported());",
+    "aftercode": "Validate.isTrue(!input.markSupported());",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 33,
+    "precode": "reader = input;",
+    "aftercode": "reader = null;",
+    "rule": "Assignment to Null",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 34,
+    "precode": "charBuf = new char[sz > maxBufferLen ? maxBufferLen : sz];",
+    "aftercode": "charBuf = new char[sz >= maxBufferLen ? maxBufferLen : sz];",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 34,
+    "precode": "charBuf = new char[sz > maxBufferLen ? maxBufferLen : sz];",
+    "aftercode": "charBuf = new char[sz > maxBufferLen ? sz : maxBufferLen];",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 34,
+    "precode": "charBuf = new char[sz > maxBufferLen ? maxBufferLen : sz];",
+    "aftercode": "charBuf = new char[sz > maxBufferLen ? maxBufferLen : 0];",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 35,
+    "precode": "bufferUp();",
+    "aftercode": "// bufferUp();",
+    "rule": "Removed Statement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 37,
+    "precode": "if (isBinary()) {",
+    "aftercode": "if (!isBinary()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 37,
+    "precode": "if (isBinary()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional True",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 38,
+    "precode": "throw new UncheckedIOException(\"Input is binary and unsupported\");",
+    "aftercode": "// throw new UncheckedIOException(\"Input is binary and unsupported\");",
+    "rule": "Removed Statement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 34,
+    "precode": "charBuf = new char[sz > maxBufferLen ? maxBufferLen : sz];",
+    "aftercode": "charBuf = new char[sz > maxBufferLen ? maxBufferLen : sz + 1];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 462,
+    "precode": "int nullsSeen = 0;",
+    "aftercode": "int nullsSeen = 1;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 464,
+    "precode": "for (int i = bufPos; i < bufLength; i++) {",
+    "aftercode": "for (int i = bufPos + 1; i < bufLength; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 464,
+    "precode": "for (int i = bufPos; i < bufLength; i++) {",
+    "aftercode": "for (int i = bufPos; i <= bufLength; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 464,
+    "precode": "for (int i = bufPos; i < bufLength; i++) {",
+    "aftercode": "for (int i = bufPos; i > bufLength; i++) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 465,
+    "precode": "if (charBuf[i] == '\\0')",
+    "aftercode": "if (charBuf[i] != '\\0')",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 466,
+    "precode": "nullsSeen++;",
+    "aftercode": "nullsSeen--;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 466,
+    "precode": "nullsSeen++;",
+    "aftercode": "nullsSeen += 0;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 469,
+    "precode": "return nullsSeen >= numNullsConsideredBinary;",
+    "aftercode": "return nullsSeen > numNullsConsideredBinary;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 469,
+    "precode": "return nullsSeen >= numNullsConsideredBinary;",
+    "aftercode": "return nullsSeen <= numNullsConsideredBinary;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 469,
+    "precode": "return nullsSeen >= numNullsConsideredBinary;",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 455,
+    "precode": "private static final int numNullsConsideredBinary = 10; // conservative",
+    "aftercode": "private static final int numNullsConsideredBinary = 11; // conservative",
+    "rule": "Integer Literal Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 455,
+    "precode": "private static final int numNullsConsideredBinary = 10; // conservative",
+    "aftercode": "private static final int numNullsConsideredBinary = 9; // conservative",
+    "rule": "Integer Literal Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 455,
+    "precode": "private static final int numNullsConsideredBinary = 10; // conservative",
+    "aftercode": "private static final int numNullsConsideredBinary = 0; // conservative",
+    "rule": "Integer Literal Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 455,
+    "precode": "private static final int numNullsConsideredBinary = 10; // conservative",
+    "aftercode": "private static final int numNullsConsideredBinary = -10; // conservative",
+    "rule": "Integer Literal Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 455,
+    "precode": "private static final int numNullsConsideredBinary = 10; // conservative",
+    "aftercode": "private static final int numNullsConsideredBinary = Integer.MAX_VALUE; // conservative",
+    "rule": "Integer Literal Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  }
+]

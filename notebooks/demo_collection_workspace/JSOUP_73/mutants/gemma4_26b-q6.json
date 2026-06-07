@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 78,
+    "precode": "this.doc = doc;",
+    "aftercode": "// this.doc = doc;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 79,
+    "precode": "this.namespacesStack.push(new HashMap<String, String>());",
+    "aftercode": "this.namespacesStack.push(new HashMap<String, String>(0));",
+    "rule": "Empty Collection Initialization",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 79,
+    "precode": "this.namespacesStack.push(new HashMap<String, String>());",
+    "aftercode": "this.namespacesStack.add(new HashMap<String, String>());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 79,
+    "precode": "this.namespacesStack.push(new HashMap<String, String>());",
+    "aftercode": "this.namespacesStack.push(new TreeMap<String, String>());",
+    "rule": "Implementation Replacement",
+    "gen_time_s": 1.6,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 83,
+    "precode": "namespacesStack.push(new HashMap<>(namespacesStack.peek())); // inherit from above on the stack",
+    "aftercode": "namespacesStack.push(new HashMap<>()); // inherit from above on the stack",
+    "rule": "MapContentReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 84,
+    "precode": "if (source instanceof org.jsoup.nodes.Element) {",
+    "aftercode": "if (!(source instanceof org.jsoup.nodes.Element)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 87,
+    "precode": "String prefix = updateNamespaces(sourceEl);",
+    "aftercode": "String prefix = null;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 88,
+    "precode": "String namespace = namespacesStack.peek().get(prefix);",
+    "aftercode": "String namespace = namespacesStack.pop().get(prefix);",
+    "rule": "StackManipulation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 90,
+    "precode": "Element el = doc.createElementNS(namespace, sourceEl.tagName());",
+    "aftercode": "Element el = doc.createElementNS(null, sourceEl.tagName());",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 91,
+    "precode": "copyAttributes(sourceEl, el);",
+    "aftercode": "// copyAttributes(sourceEl, el);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 92,
+    "precode": "if (dest == null) { // sets up the root",
+    "aftercode": "if (dest != null) { // sets up the root",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 93,
+    "precode": "doc.appendChild(el);",
+    "aftercode": "el.appendChild(el);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 95,
+    "precode": "dest.appendChild(el);",
+    "aftercode": "el.appendChild(el);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 97,
+    "precode": "dest = el; // descend",
+    "aftercode": "// dest = el; // descend",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 98,
+    "precode": "} else if (source instanceof org.jsoup.nodes.TextNode) {",
+    "aftercode": "} else if (!(source instanceof org.jsoup.nodes.TextNode)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 100,
+    "precode": "Text text = doc.createTextNode(sourceText.getWholeText());",
+    "aftercode": "Text text = doc.createTextNode(\"\");",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 101,
+    "precode": "dest.appendChild(text);",
+    "aftercode": "text.appendChild(text);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 102,
+    "precode": "} else if (source instanceof org.jsoup.nodes.Comment) {",
+    "aftercode": "} else if (source instanceof org.jsoup.nodes.TextNode) {",
+    "rule": "TypeReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 104,
+    "precode": "Comment comment = doc.createComment(sourceComment.getData());",
+    "aftercode": "Comment comment = doc.createComment(\"\");",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 105,
+    "precode": "dest.appendChild(comment);",
+    "aftercode": "comment.appendChild(comment);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 106,
+    "precode": "} else if (source instanceof org.jsoup.nodes.DataNode) {",
+    "aftercode": "} else if (source instanceof org.jsoup.nodes.Comment) {",
+    "rule": "TypeReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 108,
+    "precode": "Text node = doc.createTextNode(sourceData.getWholeData());",
+    "aftercode": "Text node = doc.createTextNode(sourceData.toString());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 109,
+    "precode": "dest.appendChild(node);",
+    "aftercode": "node.appendChild(node);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 83,
+    "precode": "namespacesStack.push(new HashMap<>(namespacesStack.peek())); // inherit from above on the stack",
+    "aftercode": "namespacesStack.push(namespacesStack.peek()); // inherit from above on the stack",
+    "rule": "ShallowCopyRemoval",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 88,
+    "precode": "String namespace = namespacesStack.peek().get(prefix);",
+    "aftercode": "String namespace = namespacesStack.peek().getOrDefault(prefix, \"\");",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 90,
+    "precode": "Element el = doc.createElementNS(namespace, sourceEl.tagName());",
+    "aftercode": "Element el = doc.createElementNS(namespace, \"div\");",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 92,
+    "precode": "if (dest == null) { // sets up the root",
+    "aftercode": "if (false) { // sets up the root",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 92,
+    "precode": "if (dest == null) { // sets up the root",
+    "aftercode": "if (true) { // sets up the root",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 97,
+    "precode": "dest = el; // descend",
+    "aftercode": "dest = null; // descend",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 100,
+    "precode": "Text text = doc.createTextNode(sourceText.getWholeText());",
+    "aftercode": "Text text = doc.createTextNode(sourceText.getText());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 104,
+    "precode": "Comment comment = doc.createComment(sourceComment.getData());",
+    "aftercode": "Comment comment = doc.createComment(sourceComment.toString());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 108,
+    "precode": "Text node = doc.createTextNode(sourceData.getWholeData());",
+    "aftercode": "Text node = doc.createTextNode(sourceData.getData());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 83,
+    "precode": "namespacesStack.push(new HashMap<>(namespacesStack.peek())); // inherit from above on the stack",
+    "aftercode": "namespacesStack.push(new HashMap<>(namespacesStack.pop())); // inherit from above on the stack",
+    "rule": "StackManipulation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 95,
+    "precode": "dest.appendChild(el);",
+    "aftercode": "doc.appendChild(el);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 101,
+    "precode": "dest.appendChild(text);",
+    "aftercode": "doc.appendChild(text);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 116,
+    "precode": "if (source instanceof org.jsoup.nodes.Element && dest.getParentNode() instanceof Element) {",
+    "aftercode": "if (source instanceof org.jsoup.nodes.Element || dest.getParentNode() instanceof Element) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 116,
+    "precode": "if (source instanceof org.jsoup.nodes.Element && dest.getParentNode() instanceof Element) {",
+    "aftercode": "if (source instanceof org.jsoup.nodes.Element) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 117,
+    "precode": "dest = (Element) dest.getParentNode(); // undescend. cromulent.",
+    "aftercode": "dest = (Element) dest; // undescend. cromulent.",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 117,
+    "precode": "dest = (Element) dest.getParentNode(); // undescend. cromulent.",
+    "aftercode": "dest = (Element) dest.parentNode(); // undescend. cromulent.",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 119,
+    "precode": "namespacesStack.pop();",
+    "aftercode": "// namespacesStack.pop();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 119,
+    "precode": "namespacesStack.pop();",
+    "aftercode": "namespacesStack.peek();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 138,
+    "precode": "for (Attribute attr : attributes) {",
+    "aftercode": "for (Attribute attr : new Attributes()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 139,
+    "precode": "String key = attr.getKey();",
+    "aftercode": "String key = \"\";",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 141,
+    "precode": "if (key.equals(xmlnsKey)) {",
+    "aftercode": "if (!key.equals(xmlnsKey)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 141,
+    "precode": "if (key.equals(xmlnsKey)) {",
+    "aftercode": "if (key.contains(xmlnsKey)) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 142,
+    "precode": "prefix = \"\";",
+    "aftercode": "prefix = \" \";",
+    "rule": "String Literal Change",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 143,
+    "precode": "else if (key.startsWith(xmlnsPrefix)) {",
+    "aftercode": "else if (key.contains(xmlnsPrefix)) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 143,
+    "precode": "else if (key.startsWith(xmlnsPrefix)) {",
+    "aftercode": "else if (key.endsWith(xmlnsPrefix)) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 144,
+    "precode": "prefix = key.substring(xmlnsPrefix.length());",
+    "aftercode": "prefix = key.substring(xmlnsPrefix.length() - 1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 144,
+    "precode": "prefix = key.substring(xmlnsPrefix.length());",
+    "aftercode": "prefix = key.substring(0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 146,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 148,
+    "precode": "namespacesStack.peek().put(prefix, attr.getValue());",
+    "aftercode": "namespacesStack.peek().put(attr.getValue(), prefix);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 148,
+    "precode": "namespacesStack.peek().put(prefix, attr.getValue());",
+    "aftercode": "namespacesStack.peek().remove(prefix);",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 152,
+    "precode": "int pos = el.tagName().indexOf(\":\");",
+    "aftercode": "int pos = el.tagName().lastIndexOf(\":\");",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 152,
+    "precode": "int pos = el.tagName().indexOf(\":\");",
+    "aftercode": "int pos = -1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 153,
+    "precode": "return pos > 0 ? el.tagName().substring(0, pos) : \"\";",
+    "aftercode": "return pos >= 0 ? el.tagName().substring(0, pos) : \"\";",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 153,
+    "precode": "return pos > 0 ? el.tagName().substring(0, pos) : \"\";",
+    "aftercode": "return pos > 0 ? el.tagName().substring(0, pos) : \"prefix\";",
+    "rule": "String Literal Change",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 153,
+    "precode": "return pos > 0 ? el.tagName().substring(0, pos) : \"\";",
+    "aftercode": "return pos > 0 ? el.tagName().substring(1, pos) : \"\";",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 141,
+    "precode": "if (key.equals(xmlnsKey)) {",
+    "aftercode": "if (key == xmlnsKey) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 148,
+    "precode": "namespacesStack.peek().put(prefix, attr.getValue());",
+    "aftercode": "namespacesStack.peek().put(prefix, \"\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 137,
+    "precode": "Attributes attributes = el.attributes();",
+    "aftercode": "Attributes attributes = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 153,
+    "precode": "return pos > 0 ? el.tagName().substring(0, pos) : \"\";",
+    "aftercode": "return pos > 0 ? el.tagName().substring(0, pos + 1) : \"\";",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 74,
+    "precode": "private final Stack<HashMap<String, String>> namespacesStack = new Stack<>(); // stack of namespaces, prefix => urn",
+    "aftercode": "private final Stack<HashMap<String, String>> namespacesStack = new LinkedList<>(); // stack of namespaces, prefix => urn",
+    "rule": "Replacement of Collection Implementation",
+    "gen_time_s": 1.9,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 74,
+    "precode": "private final Stack<HashMap<String, String>> namespacesStack = new Stack<>(); // stack of namespaces, prefix => urn",
+    "aftercode": "private final Stack<HashMap<String, String>> namespacesStack = new Stack<String>(); // stack of namespaces, prefix => urn",
+    "rule": "Type Parameter Mismatch",
+    "gen_time_s": 1.9,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 74,
+    "precode": "private final Stack<HashMap<String, String>> namespacesStack = new Stack<>(); // stack of namespaces, prefix => urn",
+    "aftercode": "private Stack<HashMap<String, String>> namespacesStack = new Stack<>(); // stack of namespaces, prefix => urn",
+    "rule": "Removed Final Modifier",
+    "gen_time_s": 1.9,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 75,
+    "precode": "private Element dest;",
+    "aftercode": "private Element dest = null;",
+    "rule": "Initialization Change",
+    "gen_time_s": 1.9,
+    "dublicate": false
+  }
+]

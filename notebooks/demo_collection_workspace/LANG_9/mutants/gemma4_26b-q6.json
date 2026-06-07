@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 116,
+    "precode": "thisYear= Calendar.getInstance(timeZone, locale).get(Calendar.YEAR);",
+    "aftercode": "thisYear= Calendar.getInstance(timeZone, locale).get(Calendar.MONTH);",
+    "rule": "WrongFieldSelection",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 118,
+    "precode": "nameValues= new ConcurrentHashMap<Integer, KeyValue[]>();",
+    "aftercode": "nameValues= new HashMap<Integer, KeyValue[]>();",
+    "rule": "TypeSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 121,
+    "precode": "List<Strategy> collector = new ArrayList<Strategy>();",
+    "aftercode": "List<Strategy> collector = new LinkedList<Strategy>();",
+    "rule": "ImplementationSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 123,
+    "precode": "Matcher patternMatcher= formatPattern.matcher(pattern);",
+    "aftercode": "Matcher patternMatcher= pattern.matcher(formatPattern);",
+    "rule": "ArgumentSwap",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 124,
+    "precode": "if(!patternMatcher.lookingAt()) {",
+    "aftercode": "if(patternMatcher.lookingAt()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 125,
+    "precode": "throw new IllegalArgumentException(\"Invalid pattern\");",
+    "aftercode": "return;",
+    "rule": "ExceptionRemoval",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 128,
+    "precode": "currentFormatField= patternMatcher.group();",
+    "aftercode": "currentFormatField= patternMatcher.start();",
+    "rule": "MethodCallSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 129,
+    "precode": "Strategy currentStrategy= getStrategy(currentFormatField);",
+    "aftercode": "Strategy currentStrategy= null;",
+    "rule": "ValueSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 130,
+    "precode": "for(;;) {",
+    "aftercode": "for(i=0; i<1; i++) {",
+    "rule": "LoopReplacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 131,
+    "precode": "patternMatcher.region(patternMatcher.end(), patternMatcher.regionEnd());",
+    "aftercode": "patternMatcher.region(patternMatcher.start(), patternMatcher.regionEnd());",
+    "rule": "BoundaryError",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 132,
+    "precode": "if(!patternMatcher.lookingAt()) {",
+    "aftercode": "if(patternMatcher.lookingAt()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 133,
+    "precode": "nextStrategy = null;",
+    "aftercode": "nextStrategy = currentStrategy;",
+    "rule": "ValueSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 136,
+    "precode": "String nextFormatField= patternMatcher.group();",
+    "aftercode": "String nextFormatField= patternMatcher.group(0);",
+    "rule": "ArgumentSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 137,
+    "precode": "nextStrategy = getStrategy(nextFormatField);",
+    "aftercode": "nextStrategy = getStrategy(currentFormatField);",
+    "rule": "VariableSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 138,
+    "precode": "if(currentStrategy.addRegex(this, regex)) {",
+    "aftercode": "if(!currentStrategy.addRegex(this, regex)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 139,
+    "precode": "collector.add(currentStrategy);",
+    "aftercode": "collector.remove(currentStrategy);",
+    "rule": "MethodCallSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 141,
+    "precode": "currentFormatField= nextFormatField;",
+    "aftercode": "currentFormatField= currentFormatField;",
+    "rule": "NoOp",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 142,
+    "precode": "currentStrategy= nextStrategy;",
+    "aftercode": "currentStrategy= currentStrategy;",
+    "rule": "NoOp",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 144,
+    "precode": "if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {",
+    "aftercode": "if (patternMatcher.regionStart() == patternMatcher.regionEnd()) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 145,
+    "precode": "throw new IllegalArgumentException(\"Failed to parse \\\"\"+pattern+\"\\\" ; gave up at index \"+patternMatcher.regionStart());",
+    "aftercode": "throw new RuntimeException(\"Error\");",
+    "rule": "ExceptionTypeChange",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 147,
+    "precode": "if(currentStrategy.addRegex(this, regex)) {",
+    "aftercode": "if(true) {",
+    "rule": "ConditionTrue",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 148,
+    "precode": "collector.add(currentStrategy);",
+    "aftercode": "collector.add(nextStrategy);",
+    "rule": "VariableSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 151,
+    "precode": "strategies= collector.toArray(new Strategy[collector.size()]);",
+    "aftercode": "strategies= collector.toArray(new Strategy[0]);",
+    "rule": "ArraySizeMutation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 152,
+    "precode": "parsePattern= Pattern.compile(regex.toString());",
+    "aftercode": "parsePattern= Pattern.compile(regex.toString(), Pattern.CASE_INSENSITIVE);",
+    "rule": "FlagAddition",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 138,
+    "precode": "if(currentStrategy.addRegex(this, regex)) {",
+    "aftercode": "if(currentStrategy.addRegex(this, null)) {",
+    "rule": "NullArgument",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 120,
+    "precode": "StringBuilder regex= new StringBuilder();",
+    "aftercode": "StringBuilder regex= new StringBuilder(\" \");",
+    "rule": "InitialValueMutation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 130,
+    "precode": "for(;;) {",
+    "aftercode": "for(;;) break;",
+    "rule": "LoopRemoval",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 139,
+    "precode": "collector.add(currentStrategy);",
+    "aftercode": "collector.add(regex.toString());",
+    "rule": "TypeMismatchMutation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 144,
+    "precode": "if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {",
+    "aftercode": "if (patternMatcher.regionStart() < patternMatcher.regionEnd()) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 116,
+    "precode": "thisYear= Calendar.getInstance(timeZone, locale).get(Calendar.YEAR);",
+    "aftercode": "thisYear= Calendar.getInstance(timeZone, locale).get(Calendar.WEEK_OF_YEAR);",
+    "rule": "WrongFieldSelection",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 128,
+    "precode": "currentFormatField= patternMatcher.group();",
+    "aftercode": "currentFormatField= patternMatcher.group(1);",
+    "rule": "IndexOutOfBoundsMutation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 137,
+    "precode": "nextStrategy = getStrategy(nextFormatField);",
+    "aftercode": "nextStrategy = getStrategy(\"\");",
+    "rule": "EmptyArgument",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 151,
+    "precode": "strategies= collector.toArray(new Strategy[collector.size()]);",
+    "aftercode": "strategies= collector.toArray(new Object[0]);",
+    "rule": "TypeMismatchMutation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 124,
+    "precode": "if(!patternMatcher.lookingAt()) {",
+    "aftercode": "if(patternMatcher.find()) {",
+    "rule": "MethodCallSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 133,
+    "precode": "nextStrategy = null;",
+    "aftercode": "nextStrategy = currentStrategy;",
+    "rule": "ValueSubstitution",
+    "gen_time_s": 1.18,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 147,
+    "precode": "if(currentStrategy.addRegex(this, regex)) {",
+    "aftercode": "if(currentStrategy.addRegex(this, regex) == false) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 121,
+    "precode": "List<Strategy> collector = new ArrayList<Strategy>();",
+    "aftercode": "List<Strategy> collector = null;",
+    "rule": "NullAssignment",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDateParser.java",
+    "line": 131,
+    "precode": "patternMatcher.region(patternMatcher.end(), patternMatcher.regionEnd());",
+    "aftercode": "patternMatcher.region(patternMatcher.start(), patternMatcher.regionEnd());",
+    "rule": "BoundaryError",
+    "gen_time_s": 1.18,
+    "dublicate": true
+  }
+]

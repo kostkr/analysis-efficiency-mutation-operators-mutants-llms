@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 673,
+    "precode": "if (node instanceof Document) {",
+    "aftercode": "if (!(node instanceof Document)) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 674,
+    "precode": "node = ((Document) node).getDocumentElement();",
+    "aftercode": "node = ((Document) node).getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 677,
+    "precode": "Element element = (Element) node;",
+    "aftercode": "Element element = (Element) node.getParentNode();",
+    "rule": "Argument Swap / Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 679,
+    "precode": "String uri = element.getNamespaceURI();",
+    "aftercode": "String uri = element.getTagName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 680,
+    "precode": "if (uri == null) {",
+    "aftercode": "if (uri != null) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 681,
+    "precode": "String prefix = getPrefix(node);",
+    "aftercode": "String prefix = getPrefix(element);",
+    "rule": "Variable/Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 682,
+    "precode": "String qname = prefix == null ? \"xmlns\" : \"xmlns:\" + prefix;",
+    "aftercode": "String qname = prefix == null ? \"xmlns:\" : \"xmlns\" + prefix;",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 684,
+    "precode": "Node aNode = node;",
+    "aftercode": "Node aNode = node.getNextSibling();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 685,
+    "precode": "while (aNode != null) {",
+    "aftercode": "while (aNode == null) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 686,
+    "precode": "if (aNode.getNodeType() == Node.ELEMENT_NODE) {",
+    "aftercode": "if (aNode.getNodeType() != Node.ELEMENT_NODE) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 687,
+    "precode": "Attr attr = ((Element) aNode).getAttributeNode(qname);",
+    "aftercode": "Attr attr = ((Element) aNode).getAttributeNodeNS(qname, \"\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 688,
+    "precode": "if (attr != null) {",
+    "aftercode": "if (attr == null) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 689,
+    "precode": "uri = attr.getValue();",
+    "aftercode": "uri = attr.getNodeName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 690,
+    "precode": "break;",
+    "aftercode": "continue;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 693,
+    "precode": "aNode = aNode.getParentNode();",
+    "aftercode": "aNode = aNode.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 696,
+    "precode": "return \"\".equals(uri) ? null : uri;",
+    "aftercode": "return uri == null ? null : uri;",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 673,
+    "precode": "if (node instanceof Document) {",
+    "aftercode": "if (node instanceof Element) {",
+    "rule": "Type Check Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 682,
+    "precode": "String qname = prefix == null ? \"xmlns\" : \"xmlns:\" + prefix;",
+    "aftercode": "String qname = prefix == null ? \"xmlns\" : \"xmlns:\" + node.getNodeName();",
+    "rule": "Variable/Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 686,
+    "precode": "if (aNode.getNodeType() == Node.ELEMENT_NODE) {",
+    "aftercode": "if (aNode.getNodeType() == Node.ATTRIBUTE_NODE) {",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 687,
+    "precode": "Attr attr = ((Element) aNode).getAttributeNode(qname);",
+    "aftercode": "Attr attr = ((Element) aNode).getAttribute(qname);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 696,
+    "precode": "return \"\".equals(uri) ? null : uri;",
+    "aftercode": "return \"null\".equals(uri) ? null : uri;",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 674,
+    "precode": "node = ((Document) node).getDocumentElement();",
+    "aftercode": "node = ((Document) node).getDoctype();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 681,
+    "precode": "String prefix = getPrefix(node);",
+    "aftercode": "String prefix = getPrefix(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 689,
+    "precode": "uri = attr.getValue();",
+    "aftercode": "uri = attr.getOwnerElement();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 696,
+    "precode": "return \"\".equals(uri) ? null : uri;",
+    "aftercode": "return uri == null ? \"\" : uri;",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+    "line": 677,
+    "precode": "Element element = (Element) node;",
+    "aftercode": "Element element = (Element) node.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  }
+]

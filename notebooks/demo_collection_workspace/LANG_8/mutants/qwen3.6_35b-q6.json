@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1109,
+    "precode": "mLocale = locale;",
+    "aftercode": "mLocale = timeZone;",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1110,
+    "precode": "mStyle = style;",
+    "aftercode": "mStyle = locale.hashCode();",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1112,
+    "precode": "mStandard = getTimeZoneDisplay(timeZone, false, style, locale);",
+    "aftercode": "mStandard = getTimeZoneDisplay(timeZone, true, style, locale);",
+    "rule": "Boolean Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1113,
+    "precode": "mDaylight = getTimeZoneDisplay(timeZone, true, style, locale);",
+    "aftercode": "mDaylight = getTimeZoneDisplay(timeZone, false, style, locale);",
+    "rule": "Boolean Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1112,
+    "precode": "mStandard = getTimeZoneDisplay(timeZone, false, style, locale);",
+    "aftercode": "mStandard = getTimeZoneDisplay(null, false, style, locale);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1113,
+    "precode": "mDaylight = getTimeZoneDisplay(timeZone, true, style, locale);",
+    "aftercode": "mDaylight = getTimeZoneDisplay(timeZone, true, style, null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1112,
+    "precode": "mStandard = getTimeZoneDisplay(timeZone, false, style, locale);",
+    "aftercode": "mStandard = getTimeZoneDisplay(timeZone, false, locale, style);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1133,
+    "precode": "if (zone.useDaylightTime()",
+    "aftercode": "if (!zone.useDaylightTime()",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1134,
+    "precode": "&& calendar.get(Calendar.DST_OFFSET) != 0) {",
+    "aftercode": "&& calendar.get(Calendar.DST_OFFSET) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1135,
+    "precode": "buffer.append(getTimeZoneDisplay(zone, true, mStyle, mLocale));",
+    "aftercode": "buffer.append(getTimeZoneDisplay(zone, false, mStyle, mLocale));",
+    "rule": "Argument Swap / Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1137,
+    "precode": "buffer.append(getTimeZoneDisplay(zone, false, mStyle, mLocale));",
+    "aftercode": "buffer.append(getTimeZoneDisplay(zone, true, mStyle, mLocale));",
+    "rule": "Argument Swap / Constant Change",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1133,
+    "precode": "if (zone.useDaylightTime()",
+    "aftercode": "if (zone.useDaylightTime() == false",
+    "rule": "Equality Comparison",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1134,
+    "precode": "&& calendar.get(Calendar.DST_OFFSET) != 0) {",
+    "aftercode": "&& calendar.get(Calendar.DST_OFFSET) != 1) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1134,
+    "precode": "&& calendar.get(Calendar.DST_OFFSET) != 0) {",
+    "aftercode": "|| calendar.get(Calendar.DST_OFFSET) != 0) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1135,
+    "precode": "buffer.append(getTimeZoneDisplay(zone, true, mStyle, mLocale));",
+    "aftercode": "buffer.append(getTimeZoneDisplay(zone, true, mStyle, mLocale)); // no-op comment mutation",
+    "rule": "No-Op (Comment Out)",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1132,
+    "precode": "TimeZone zone = calendar.getTimeZone();",
+    "aftercode": "TimeZone zone = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.66,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1096,
+    "precode": "private final Locale mLocale;",
+    "aftercode": "private Locale mLocale;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1097,
+    "precode": "private final int mStyle;",
+    "aftercode": "private final double mStyle;",
+    "rule": "Type Change",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1098,
+    "precode": "private final String mStandard;",
+    "aftercode": "private final String mStandard = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+    "line": 1099,
+    "precode": "private final String mDaylight;",
+    "aftercode": "private final String mDaylight = \"\";",
+    "rule": "Null/Empty String Change",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  }
+]

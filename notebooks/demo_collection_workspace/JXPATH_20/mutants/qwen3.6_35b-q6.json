@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 72,
+    "precode": "left = reduce(left);",
+    "aftercode": "left = reduce(right);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 73,
+    "precode": "right = reduce(right);",
+    "aftercode": "right = reduce(left);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 75,
+    "precode": "if (left instanceof InitialContext) {",
+    "aftercode": "if (!(left instanceof InitialContext)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 78,
+    "precode": "if (right instanceof InitialContext) {",
+    "aftercode": "if (!(right instanceof InitialContext)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 81,
+    "precode": "if (left instanceof Iterator && right instanceof Iterator) {",
+    "aftercode": "if (left instanceof Iterator || right instanceof Iterator) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 84,
+    "precode": "if (left instanceof Iterator) {",
+    "aftercode": "if (!(left instanceof Iterator)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 87,
+    "precode": "if (right instanceof Iterator) {",
+    "aftercode": "if (!(right instanceof Iterator)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 88,
+    "precode": "return containsMatch(left, (Iterator) right);",
+    "aftercode": "return containsMatch(right, (Iterator) left);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 90,
+    "precode": "double ld = InfoSetUtil.doubleValue(left);",
+    "aftercode": "double ld = InfoSetUtil.doubleValue(right);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 91,
+    "precode": "if (Double.isNaN(ld)) {",
+    "aftercode": "if (!Double.isNaN(ld)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 92,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 94,
+    "precode": "double rd = InfoSetUtil.doubleValue(right);",
+    "aftercode": "double rd = InfoSetUtil.doubleValue(left);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 95,
+    "precode": "if (Double.isNaN(rd)) {",
+    "aftercode": "if (!Double.isNaN(rd)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 96,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(ld != rd ? 0 : ld < rd ? -1 : 1);",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(ld == rd ? 0 : ld > rd ? -1 : 1);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(ld == rd ? 1 : ld < rd ? -1 : 0);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 76,
+    "precode": "((InitialContext) left).reset();",
+    "aftercode": "((InitialContext) left).close();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 79,
+    "precode": "((InitialContext) right).reset();",
+    "aftercode": "((InitialContext) right).close();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 82,
+    "precode": "return findMatch((Iterator) left, (Iterator) right);",
+    "aftercode": "return findMatch((Iterator) right, (Iterator) left);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 85,
+    "precode": "return containsMatch((Iterator) left, right);",
+    "aftercode": "return containsMatch(right, (Iterator) left);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 90,
+    "precode": "double ld = InfoSetUtil.doubleValue(left);",
+    "aftercode": "double ld = 0.0;",
+    "rule": "Literal Replacer",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 94,
+    "precode": "double rd = InfoSetUtil.doubleValue(right);",
+    "aftercode": "double rd = 0.0;",
+    "rule": "Literal Replacer",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 72,
+    "precode": "left = reduce(left);",
+    "aftercode": "left = null;",
+    "rule": "Literal Replacer",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 73,
+    "precode": "right = reduce(right);",
+    "aftercode": "right = null;",
+    "rule": "Literal Replacer",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? 1 : -1);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 0);",
+    "rule": "Literal Replacer",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(ld == rd ? -1 : ld < rd ? -1 : 1);",
+    "rule": "Literal Replacer",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 98,
+    "precode": "return evaluateCompare(ld == rd ? 0 : ld < rd ? -1 : 1);",
+    "aftercode": "return evaluateCompare(1);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 141,
+    "precode": "if (compute(value, element)) {",
+    "aftercode": "if (!compute(value, element)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 142,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 145,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 140,
+    "precode": "while (it.hasNext()) {",
+    "aftercode": "while (!it.hasNext()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 141,
+    "precode": "if (compute(value, element)) {",
+    "aftercode": "if (compute(element, value)) {",
+    "rule": "Parameter Swapping",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 142,
+    "precode": "return true;",
+    "aftercode": "return compute(value, element);",
+    "rule": "Conditional Boundary Change",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 140,
+    "precode": "while (it.hasNext()) {",
+    "aftercode": "while (it.next() != null) {",
+    "rule": "Iterator Mutator",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 141,
+    "precode": "if (compute(value, element)) {",
+    "aftercode": "if (compute(null, element)) {",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+    "line": 142,
+    "precode": "return true;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.07,
+    "dublicate": false
+  }
+]
