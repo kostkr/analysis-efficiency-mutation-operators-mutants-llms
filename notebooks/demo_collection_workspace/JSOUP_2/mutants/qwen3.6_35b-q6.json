@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 118,
+    "precode": "String tagName = tq.consumeWord();",
+    "aftercode": "String tagName = \"\";",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 120,
+    "precode": "if (tagName.length() == 0) { // doesn't look like a start tag after all; put < back on stack and handle as text",
+    "aftercode": "if (tagName.length() > 0) { // doesn't look like a start tag after all; put < back on stack and handle as text",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 120,
+    "precode": "if (tagName.length() == 0) { // doesn't look like a start tag after all; put < back on stack and handle as text",
+    "aftercode": "if (tagName.length() != 0) { // doesn't look like a start tag after all; put < back on stack and handle as text",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 127,
+    "precode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.isEmpty()) {",
+    "aftercode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") || !tq.isEmpty()) {",
+    "rule": "Boolean Literal Interchange",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 127,
+    "precode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.isEmpty()) {",
+    "aftercode": "while (tq.matchesAny(\"<\", \"/>\", \">\") && !tq.isEmpty()) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 128,
+    "precode": "Attribute attribute = parseAttribute();",
+    "aftercode": "Attribute attribute = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 130,
+    "precode": "if (attribute != null)",
+    "aftercode": "if (attribute == null)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 133,
+    "precode": "Tag tag = Tag.valueOf(tagName);",
+    "aftercode": "Tag tag = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 136,
+    "precode": "boolean isEmptyElement = tag.isEmpty(); // empty element if empty tag (e.g. img) or self-closed el (<div/>",
+    "aftercode": "boolean isEmptyElement = true; // empty element if empty tag (e.g. img) or self-closed el (<div/>",
+    "rule": "Boolean Literal Interchange",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 137,
+    "precode": "if (tq.matchChomp(\"/>\")) { // close empty element or tag",
+    "aftercode": "if (!tq.matchChomp(\"/>\")) { // close empty element or tag",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 138,
+    "precode": "isEmptyElement = true;",
+    "aftercode": "isEmptyElement = false;",
+    "rule": "Boolean Literal Interchange",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 140,
+    "precode": "tq.matchChomp(\">\");",
+    "aftercode": "tq.matchChomp(\"\");",
+    "rule": "String Literal Interchange",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 145,
+    "precode": "if (tag.isData()) {",
+    "aftercode": "if (!tag.isData()) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 146,
+    "precode": "String data = tq.chompTo(\"</\" + tagName);",
+    "aftercode": "String data = \"\";",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 147,
+    "precode": "tq.chompTo(\">\");",
+    "aftercode": "tq.chompTo(\"\");",
+    "rule": "String Literal Interchange",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 151,
+    "precode": "if (tag.equals(titleTag) || tag.equals(textareaTag)) // want to show as text, but not contain inside tags (so not a data tag?)",
+    "aftercode": "if (tag.equals(titleTag) && tag.equals(textareaTag)) // want to show as text, but not contain inside tags (so not a data tag?)",
+    "rule": "Boolean Literal Interchange",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 151,
+    "precode": "if (tag.equals(titleTag) || tag.equals(textareaTag)) // want to show as text, but not contain inside tags (so not a data tag?)",
+    "aftercode": "if (!tag.equals(titleTag) || !tag.equals(textareaTag)) // want to show as text, but not contain inside tags (so not a data tag?)",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 152,
+    "precode": "dataNode = TextNode.createFromEncoded(data, baseUri);",
+    "aftercode": "dataNode = new TextNode(data, baseUri);",
+    "rule": "Method Return Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 154,
+    "precode": "dataNode = new DataNode(data, baseUri); // data not encoded but raw (for \" in script)",
+    "aftercode": "dataNode = new TextNode(data, baseUri); // data not encoded but raw (for \" in script)",
+    "rule": "Method Return Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 155,
+    "precode": "child.appendChild(dataNode);",
+    "aftercode": "child.removeChild(dataNode);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 159,
+    "precode": "if (child.tagName().equals(\"base\")) {",
+    "aftercode": "if (!child.tagName().equals(\"base\")) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 161,
+    "precode": "if (href.length() != 0) { // ignore <base target> etc",
+    "aftercode": "if (href.length() == 0) { // ignore <base target> etc",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 162,
+    "precode": "baseUri = href;",
+    "aftercode": "baseUri = \"\";",
+    "rule": "Variable Assignment Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 163,
+    "precode": "doc.setBaseUri(href); // set on the doc so doc.createElement(Tag) will get updated base",
+    "aftercode": "doc.setBaseUri(\"\"); // set on the doc so doc.createElement(Tag) will get updated base",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 157,
+    "precode": "Validate.notEmpty(attributeKey);",
+    "aftercode": "Validate.isEmpty(attributeKey);",
+    "rule": "Inverted Condition",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 160,
+    "precode": "if (!hasAttr(attributeKey)) {",
+    "aftercode": "if (hasAttr(attributeKey)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 166,
+    "precode": "base = new URL(baseUri);",
+    "aftercode": "base = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 169,
+    "precode": "URL abs = new URL(relUrl);",
+    "aftercode": "URL abs = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 170,
+    "precode": "return abs.toExternalForm();",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 173,
+    "precode": "if (relUrl.startsWith(\"?\"))",
+    "aftercode": "if (relUrl.startsWith(\"#\"))",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 174,
+    "precode": "relUrl = base.getPath() + relUrl;",
+    "aftercode": "relUrl = relUrl + base.getPath();",
+    "rule": "Operand Swap",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 175,
+    "precode": "URL abs = new URL(base, relUrl);",
+    "aftercode": "URL abs = new URL(relUrl, base);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 176,
+    "precode": "return abs.toExternalForm();",
+    "aftercode": "return abs.toString();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 178,
+    "precode": "return \"\";",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 159,
+    "precode": "String relUrl = attr(attributeKey);",
+    "aftercode": "String relUrl = \"\";",
+    "rule": "Constant Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 161,
+    "precode": "return \"\"; // nothing to make absolute with",
+    "aftercode": "return null; // nothing to make absolute with",
+    "rule": "Null Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 166,
+    "precode": "base = new URL(baseUri);",
+    "aftercode": "base = new URL(\"\");",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 169,
+    "precode": "URL abs = new URL(relUrl);",
+    "aftercode": "URL abs = new URL(\"\");",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 175,
+    "precode": "URL abs = new URL(base, relUrl);",
+    "aftercode": "URL abs = new URL(base, \"\");",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 157,
+    "precode": "Validate.notEmpty(attributeKey);",
+    "aftercode": "Validate.notNull(attributeKey);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 160,
+    "precode": "if (!hasAttr(attributeKey)) {",
+    "aftercode": "if (hasAttr(attributeKey) == false) {",
+    "rule": "Redundant Equality",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 173,
+    "precode": "if (relUrl.startsWith(\"?\"))",
+    "aftercode": "if (relUrl.startsWith(\"\"))",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 174,
+    "precode": "relUrl = base.getPath() + relUrl;",
+    "aftercode": "relUrl = \"\";",
+    "rule": "Constant Return",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 176,
+    "precode": "return abs.toExternalForm();",
+    "aftercode": "return abs.toString();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.08,
+    "dublicate": true
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 166,
+    "precode": "base = new URL(baseUri);",
+    "aftercode": "base = new URL(baseUri, relUrl);",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 169,
+    "precode": "URL abs = new URL(relUrl);",
+    "aftercode": "URL abs = new URL(baseUri, relUrl);",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 175,
+    "precode": "URL abs = new URL(base, relUrl);",
+    "aftercode": "URL abs = new URL(baseUri, relUrl);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 170,
+    "precode": "return abs.toExternalForm();",
+    "aftercode": "return abs.toExternalForm().trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 176,
+    "precode": "return abs.toExternalForm();",
+    "aftercode": "return abs.toExternalForm().trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 159,
+    "precode": "String relUrl = attr(attributeKey);",
+    "aftercode": "String relUrl = attr(attributeKey).trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  }
+]

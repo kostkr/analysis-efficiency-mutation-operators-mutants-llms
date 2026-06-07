@@ -48,14 +48,16 @@
     - [5.3.1 LLM New Mutant Rate](#llm-new-mutant-rate) (DONE)
     - [5.3.2 Real Bug Detection Rate](#real-bug-detection-rate) (DONE)
     - [5.3.3 Average Ochiai Rate](#average-ochiai-rate) (DONE)
-    - [5.3.4 Coupling Rate](#coupling-rate) (DONE)
-    - [5.3.5 Average Mutant Generation Time](#average-mutant-generation-time) (DONE)
-    - [5.3.6 Cost per Useful Mutant](#cost-per-useful-mutant) (DONE)
+    - [5.3.4 High Average Ochiai Rate](#high-average-ochiai-rate) (DONE)
+    - [5.3.4 High Ochiai Mutant Rate](#high-ochiai-mutant-rate) (DONE)
+    - [5.3.5 Coupling Rate](#coupling-rate) (DONE)
+    - [5.3.6 Average Mutant Generation Time](#average-mutant-generation-time) (DONE)
+    - [5.3.7 Cost per Useful Mutant](#cost-per-useful-mutant) (DONE)
   - [5.4 Cel pracy i pytania badawcze](#cel-pracy-i-pytania-badawcze) (DONE)
 
 - [6 Założenia eksperymentu i metodyka](#założenia-eksperymentu-i-metodyka) (TO DO)
-  - [6.1 Przebieg eksperymentu](#przebieg-eksperymentu) (TO DO)
-  - [6.2 Generacja mutantów - LLM i PIT](#generacja-mutantów---llm-i-pit) (TO DO)
+  - [6.1 Generacja mutantów](#generacja-mutantów) (TO DO)
+  - [6.2 Przebieg eksperymentu](#przebieg-eksperymentu) (TO DO)
   - [6.3 Weryfikacja mutantów i zbieranie wyników](#weryfikacja-mutantów-i-zbieranie-wyników) (TO DO)
 
 - [7 Analiza wyników i wnioski](#analiza-wyników-i-wnioski) (TO DO)
@@ -508,7 +510,7 @@ Wysoka wartość RBDR oznacza, że dla wielu rzeczywistych defektów istnieją m
 #### Average Ochiai Rate
 
 *Average Ochiai Rate* (AOR) mierzy, w jakim stopniu mutanty pokrywają się z profilami testowymi rzeczywistych defektów.
-Kluczowym elementem oceny jest porównanie dwóch zbiorów testów: profilu mutanta oraz profilu defektu.
+Kluczowym aspektem oceny jest porównanie dwóch zbiorów testów: profilu mutanta oraz profilu defektu.
 W przeciwieństwie do `RBDR`, który jest metryką binarną, `AOR` odzwierciedla stopień tej zależności.
 Im większa część testów wykrywających defekt znajduje się również w profilu mutanta, tym wyższa jest wartość tej metryki.
 
@@ -517,6 +519,30 @@ AOR = średnia(liczba wspólnych testów nieprzechodzących / pierwiastek z (lic
 ```
 
 Wyższa wartość `AOR` oznacza, że profile niepowodzeń mutantów są bardziej zbliżone do profili testowych rzeczywistych defektów.
+
+#### High Average Ochiai Rate
+
+*High Average Ochiai Rate* (HAOR) mierzy, dla jakiej części defektów średnia wartość współczynnika Ochiai przekracza ustalony próg 0.8.
+Kluczowym aspektem tej metryki jest identyfikacja defektów, dla których większość mutantów wykazuje wysokie podobieństwo do rzeczywistych błędów, co oznacza, że zbiór mutantów dobrze odwzorowuje ich zachowanie.
+W przeciwieństwie do AOR, który uśrednia wartości Ochiai dla wszystkich defektów, HAOR pokazuje odsetek defektów, które spełniają kryterium wysokiej zgodności.
+
+```
+HAOR = liczba defektów, dla których średni Ochiai ≥ próg / liczba wszystkich defektów
+```
+
+Wyższa wartość `HAOR` oznacza, że dla większej części defektów wygenerowany zbiór mutantów jest bardzo podobny do rzeczywistych defektów.
+
+#### High Ochiai Mutant Rate
+
+*High Ochiai Mutant Rate* (HOMR) mierzy odsetek mutantów wartość współczynnika Ochiai przekracza ustalony próg 0.8.
+Kluczowym aspektem tej metryki jest identyfikacja mutantów, które indywidualnie wykazują wysoki stopień podobieństwa do rzeczywistych błędów.
+W przeciwieństwie do AOR oraz HAOR, które analizują podobieństwo na poziomie defektów, HOMR pozwala określić, jaka część wygenerowanych mutantów reprezentuje rzeczywiste błędy, pomijając te mutanty, które nie odzwierciedlają zachowania rzeczywistych defektów.
+
+```
+HOMR = liczba mutantów, dla których Ochiai ≥ próg / liczba wszystkich użytecznych mutantów
+```
+
+Wyższa wartość `HOMR` oznacza, że większa część wygenerowanych mutantów wykazuje wysokie podobieństwo do rzeczywistych błędów.
 
 #### Coupling Rate
 
@@ -582,17 +608,19 @@ Wskaźniki kosztowe, takie jak *Average Mutant Generation Time* (AMGT) i *Cost p
 
 Poniższa tabela zbiera wszystkie wskaźniki w formie zestawienia:
 
-| Metryka                        | Skrót   | Co mierzy                                                                 | Powiązane RQ |
-|--------------------------------|---------|---------------------------------------------------------------------------|--------------|
-| LLM New Mutant Rate            | LLM-NMR | Odsetek mutantów LLM bez odpowiednika wśród mutantów klasycznych          | RQ1          |
-| Real Bug Detection Rate        | RBDR    | Odsetek defektów, dla których istnieje co najmniej jeden powiązany mutant | RQ2          |
-| Average Ochiai Rate            | AOR     | Średni stopień podobieństwa profili testowych mutanta i defektu           | RQ2          |
-| Coupling Rate                  | CR      | Odsetek mutantów powiązanych z profilem odpowiadającego im defektu        | RQ2          |
-| Compilability Mutation Rate    | CMR     | Odsetek wygenerowanych mutantów, które przeszły kompilację                | RQ3          |
-| Duplication Mutation Rate      | DMR     | Odsetek duplikatów syntaktycznych wśród kompilowalnych mutantów           | RQ3          |
-| Equivalent Mutation Rate       | EMR     | Odsetek mutantów przeżywających pełny zestaw testów                       | RQ3          |
-| Average Mutant Generation Time | AMGT    | Średni czas wytworzenia jednego mutanta                                   | RQ3          |
-| Cost per Useful Mutant         | CPUM    | Efektywny koszt uzyskania jednego użytecznego mutanta                     | RQ3          |
+| Metryka                        | Skrót   | Co mierzy                                                                      | Powiązane RQ |
+|--------------------------------|---------|--------------------------------------------------------------------------------|--------------|
+| LLM New Mutant Rate            | LLM-NMR | Odsetek mutantów LLM bez odpowiednika wśród mutantów klasycznych               | RQ1          |
+| Real Bug Detection Rate        | RBDR    | Odsetek defektów, dla których istnieje co najmniej jeden powiązany mutant      | RQ2          |
+| Average Ochiai Rate            | AOR     | Średni stopień podobieństwa profili testowych mutanta i defektu                | RQ2          |
+| High Average Ochiai Rate       | HAOR    | Odsetek defektów, dla których wartość średniej Ochiai przekracza ustalony próg | RQ2          |
+| High Ochiai Mutant Rate        | HOMR    | Odsetek mutantów, dla których wartość Ochiai przekracza ustalony próg          | RQ2          |
+| Coupling Rate                  | CR      | Odsetek mutantów powiązanych z profilem odpowiadającego im defektu             | RQ2          |
+| Compilability Mutation Rate    | CMR     | Odsetek wygenerowanych mutantów, które przeszły kompilację                     | RQ3          |
+| Duplication Mutation Rate      | DMR     | Odsetek duplikatów syntaktycznych wśród kompilowalnych mutantów                | RQ3          |
+| Equivalent Mutation Rate       | EMR     | Odsetek mutantów przeżywających pełny zestaw testów                            | RQ3          |
+| Average Mutant Generation Time | AMGT    | Średni czas wytworzenia jednego mutanta                                        | RQ3          |
+| Cost per Useful Mutant         | CPUM    | Efektywny koszt uzyskania jednego użytecznego mutanta                          | RQ3          |
 
 Pytania badawcze są wzajemnie uzupełniające: RQ1 bada różnorodność, RQ2 bada realizm, RQ3 bada efektywność procesu generacji.
 
@@ -604,6 +632,16 @@ Celem tego eksperymentu jest porównanie efektywności mutantów wygenerowanych 
 W związku z tym dla każdego analizowanego defektu [3] generowany jest zbiór mutantów, na których są uruchomione testy, które stanowią podstawę dla dalszych obliczeń i interpretacji metryk.
 Podczas uruchamiania testów dla każdego mutanta są zbierane wyniki testów, czas potrzebny dla generacji, uruchomienia wraz z informacją o niepowodzeniu kompilacji, błędy wykonania kodu oraz duplikatach mutantów.
 Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić koszt, jakość, podobieństwo do rzeczywistych defektów oraz ocenić efektywność różnych podejść w analizie testów dla wytwarzania oprogramowania.
+
+### Generacja mutantów
+
+[//]: # (Generacja mutantów w niniejszym badaniu jest ograniczona do tych metod programu, które są bezpośrednio związane z analizowanym defektem, tj. do fragmentów kodu objętych rzeczywistą poprawką lub pozostających z nią w bezpośrednim związku semantycznym. Takie zawężenie zakresu analizy pozwala skupić proces mutacji na miejscach istotnych z punktu widzenia rzeczywistych błędów oraz zapewnia porównywalność wyników pomiędzy podejściem klasycznym i podejściem opartym na dużych modelach językowych. W podejściu klasycznym wykorzystywane jest narzędzie PIT, przy czym zastosowano modyfikację oryginalnego kodu źródłowego tego narzędzia, umożliwiającą rejestrowanie konkretnych zmian generowanych przez operator mutacji. Rozszerzenie to jest niezbędne z dwóch powodów: po pierwsze, pozwala odtworzyć mutanta w tej samej reprezentacji, w jakiej zapisywane są mutanty wygenerowane przez modele językowe, a po drugie, umożliwia późniejsze wykrywanie mutantów nowych względem zbioru klasycznego oraz porównywanie efektywności obu sposobów generowania. W celu zapewnienia rzetelnego porównania wykorzystywane są wyłącznie wcześniej zdefiniowane operatory mutacji, stanowiące reprezentatywną grupę przekształceń dla analizowanego typu błędów; ograniczenie to redukuje wpływ operatorów skrajnie rzadkich lub mało informatywnych i ułatwia interpretację wyników.)
+
+[//]: # (W podejściu opartym na LLM generacja odbywa się z wykorzystaniem lokalnego serwera Ollama, uruchamiającego gotowe, spakowane i zoptymalizowane warianty modeli przeznaczone do lokalnej inferencji. W eksperymentach zastosowano modele batiai/gemma4-26b:q6 oraz batiai/qwen3.6-35b:q6, udostępniane przez BatiAI jako kwantyzowane wersje modeli bazowych zbudowane bezpośrednio z oficjalnych wag BF16 odpowiednio od Google i Alibaba. Model Gemma 4 26B-A4B-it jest architekturą typu MoE, obejmującą 26 miliardów parametrów łącznych i około 3,8 miliarda parametrów aktywowanych na token; w wariancie Ollama jest dostarczany jako model tekstowy, natomiast tag q6 korzysta z kwantyzacji Q6_K, traktowanej jako wariant najwyższej jakości spośród lokalnie oferowanych kwantyzacji dla tego modelu. Strona modelu podaje również, że wariant q6 wymaga co najmniej komputera klasy 36 GB+ RAM dla komfortowego uruchomienia, a na konfiguracji Mac z 48 GB zunifikowanej pamięci osiąga około 48–50 tokenów na sekundę. [ollama.com])
+
+[//]: # (Analogicznie, model Qwen 3.6 35B-A3B jest udostępniany w Ollama jako lokalna, tekstowa wersja modelu bazowego z oficjalnych wag Alibaba BF16, również przygotowana przez BatiAI. Jest to model typu MoE o 35 miliardach parametrów całkowitych, z czego około 3 miliardy są aktywowane na token, co pozwala osiągnąć korzystny kompromis między zdolnościami modelu a kosztem obliczeniowym. Warianty IQ3 i IQ4 tej rodziny są opisane jako kwantyzacje kalibrowane metodą imatrix, natomiast Q6_K stanowi wariant wysokobitowy, określany jako zbliżony jakością do BF16 i rekomendowany dla środowisk dysponujących co najmniej 36 GB pamięci zunifikowanej. Producent podkreśla ponadto, że model ten został zoptymalizowany pod zastosowania związane z agentic coding, wspiera narzędzia i tryb „thinking”, oferuje kontekst 256K tokenów, a według przytoczonych benchmarków BF16 przewyższa wcześniejszy model Qwen 3.5 35B-A3B m.in. w SWE-bench Verified &#40;73.4 vs 70.0&#41; oraz Terminal-Bench 2.0 &#40;51.5 vs 40.5&#41;. [ollama.com])
+
+[//]: # (Zastosowanie lokalnych, skwantyzowanych modeli w Ollama ma w tym kontekście znaczenie metodologiczne: pozwala mierzyć nie tylko jakość generowanych mutantów, ale także praktyczny koszt ich wytwarzania w realistycznym środowisku wykonawczym. Z tego względu ocena efektywności procesu generowania mutantów będzie prowadzona na powszechnie dostępnej konfiguracji sprzętowej reprezentującej współczesny komputer deweloperski, tj. Mac mini z układem M4 Pro, 14-rdzeniowym CPU, 20-rdzeniowym GPU oraz 48 GB pamięci zunifikowanej. Taki dobór platformy ma na celu możliwie wierne odzwierciedlenie warunków, w których lokalne modele językowe mogą być realnie wykorzystywane w codziennej pracy programistycznej.)
 
 ### Przebieg eksperymentu
 
@@ -625,10 +663,6 @@ Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić kosz
 
 [//]: # ()
 
-### Generacja mutantów - LLM i PIT
-
-[//]: # (Generacja mutantów jest ograniczona do tych metod programu, które są bezpośrednio związane z analizowanym defektem. Oznacza to, że badanie nie obejmuje całego projektu, lecz tylko te miejsca, w których rzeczywisty błąd został poprawiony lub z którymi ta poprawka bezpośrednio się wiąże. W podejściu klasycznym wykorzystywane jest narzędzie PIT, zmodyfikowane w taki sposób, aby oprócz samego wygenerowania mutanta można było także odtworzyć konkretną zmianę w kodzie. Dzięki temu każdy mutant klasyczny może być zapisany w tej samej postaci co mutant wygenerowany przez model językowy. W podejściu opartym na LLM każda wybrana metoda jest przekazywana do modelu wraz z potrzebnym kontekstem, a model zwraca propozycje pojedynczych zmian, które mają przypominać realistyczne błędy programistyczne. Oba sposoby generowania prowadzą więc do utworzenia porównywalnych zbiorów mutantów, opisanych w jednolitej formie i gotowych do dalszego sprawdzenia.)
-
 ### Weryfikacja mutantów i zbieranie wyników
 
 [//]: # (Aby ograniczyć ryzyko błędu, po wygenerowaniu mutantów wykonywana jest ich dodatkowa weryfikacja. Najpierw sprawdzane jest, czy każda zaproponowana zmiana rzeczywiście pasuje do badanego fragmentu programu i czy może zostać poprawnie użyta w dalszej części eksperymentu. Następnie dla zaakceptowanych mutantów uruchamiane są testy, a wyniki są zapisywane w taki sposób, aby dla każdego mutanta było wiadomo, czy przeszedł etap sprawdzenia, czy program działał poprawnie po wprowadzeniu zmiany oraz które testy zakończyły się niepowodzeniem. Na tej podstawie wyznaczane są później wszystkie metryki używane w analizie. Równolegle tworzona jest także lista nowych mutantów wygenerowanych przez LLM, czyli takich zmian, które nie mają odpowiednika wśród mutantów klasycznych. Po zakończeniu całego procesu sprawdzana jest kompletność i spójność zgromadzonych danych, tak aby dalsza analiza opierała się wyłącznie na wynikach nadających się do rzetelnego porównania.)
@@ -643,18 +677,11 @@ Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić kosz
 
 > ✏️ **Wskazówka do pisania:** W tej części wprowadź czytelnika w dane, na których opiera się dalsza analiza. Napisz krótko, ile defektów i mutantów objęto badaniem, a następnie odwołuj się już tylko do poniższej tabeli. Nie opisuj tutaj interpretacji szczegółowych, ponieważ to należy do kolejnych podrozdziałów. Po tabeli dodaj 2–4 zdania ogólnego komentarza o skali eksperymentu i o tym, czy zebrany materiał jest wystarczający do odpowiedzi na pytania badawcze.
 
-| Metryka                              | LLM | PIT |
-|--------------------------------------|-----|-----|
-| Liczba wygenerowanych mutantów       |     |     |
-| Liczba mutantów po walidacji         |     |     |
-| Liczba mutantów użytecznych          |     |     |
-| Odsetek mutantów nowych względem PIT |     | -   |
-| RBDR                                 |     |     |
-| Średnia Ochiai                       |     |     |
-| Mediana Ochiai                       |     |     |
-| Coupling Rate                        |     |     |
-| Średni czas generacji mutanta        |     |     |
-| Koszt jednego użytecznego mutanta    |     |     |
+Type    | CMR    | DMR   | EMR    | Mut.Score | LLM-NMR | RBDR   | AOR    | CR     | HAOR  | HOMR  | AMGT s  | CPUM s
+--------+--------+-------+--------+-----------+---------+--------+--------+--------+-------+-------+---------+--------
+classic | 96.03% | 0.17% | 35.15% | 64.85%    | NA      | 97.13% | 23.08% | 26.84% | 2.01% | 3.82% | 16.7229 | 17.8869
+gemma4  | 87.43% | 9.75% | 31.39% | 68.61%    | 36.12%  | 97.99% | 24.55% | 35.01% | 1.72% | 7.03% | 18.2927 | 23.4888
+qwen3.6 | 90.25% | 8.91% | 29.94% | 70.06%    | 39.99%  | 97.71% | 25.45% | 35.76% | 3.72% | 7.10% | 17.8122 | 22.2399
 
 > ✏️ **Jak napisać komentarz pod tabelą:** Najpierw wskaż, które różnice są największe. Następnie zaznacz, że ta tabela stanowi wspólną podstawę dla odpowiedzi na RQ1, RQ2 i RQ3. Nie powtarzaj już tych samych wartości w formie kolejnych tabel w dalszych sekcjach, tylko odwołuj się do danych zestawionych tutaj.
 
@@ -726,3 +753,7 @@ URL: https://www.st.cs.uni-saarland.de/edu/recommendation-systems/papers/Hints_o
 
 [6] LLMorpheus: Mutation Testing using Large Language Models.
 URL: https://arxiv.org/html/2404.09952v2#S1
+
+[7] Ollama: Local LLMs
+https://ollama.com/batiai/gemma4-26b:q6
+https://ollama.com/batiai/qwen3.6-35b:q6

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 40,
+    "precode": "Validate.notNull(dirtyDocument);",
+    "aftercode": "Validate.isNull(dirtyDocument);",
+    "rule": "Void Method Call Replacement",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 42,
+    "precode": "Document clean = Document.createShell(dirtyDocument.baseUri());",
+    "aftercode": "Document clean = Document.createShell(dirtyDocument);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 43,
+    "precode": "if (dirtyDocument.body() != null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "aftercode": "if (dirtyDocument.body() == null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 43,
+    "precode": "if (dirtyDocument.body() != null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "aftercode": "if (dirtyDocument.body() != null && dirtyDocument.body() != null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "rule": "Boolean Literal Negation",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 44,
+    "precode": "copySafeNodes(dirtyDocument.body(), clean.body());",
+    "aftercode": "copySafeNodes(clean.body(), dirtyDocument.body());",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 44,
+    "precode": "copySafeNodes(dirtyDocument.body(), clean.body());",
+    "aftercode": "copySafeNodes(dirtyDocument.body(), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 44,
+    "precode": "copySafeNodes(dirtyDocument.body(), clean.body());",
+    "aftercode": "copySafeNodes(null, clean.body());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 46,
+    "precode": "return clean;",
+    "aftercode": "return dirtyDocument;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 42,
+    "precode": "Document clean = Document.createShell(dirtyDocument.baseUri());",
+    "aftercode": "Document clean = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.63,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 363,
+    "precode": "new NodeTraversor(new OuterHtmlVisitor(accum, getOutputSettings())).traverse(this);",
+    "aftercode": "new NodeTraversor(new OuterHtmlVisitor(accum, getOutputSettings())).traverse(null);",
+    "rule": "Parameter Pass",
+    "gen_time_s": 3.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 363,
+    "precode": "new NodeTraversor(new OuterHtmlVisitor(accum, getOutputSettings())).traverse(this);",
+    "aftercode": "new NodeTraversor(new OuterHtmlVisitor(null, getOutputSettings())).traverse(this);",
+    "rule": "Argument Removal",
+    "gen_time_s": 3.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 363,
+    "precode": "new NodeTraversor(new OuterHtmlVisitor(accum, getOutputSettings())).traverse(this);",
+    "aftercode": "new OuterHtmlVisitor(accum, getOutputSettings()).traverse(this);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 3.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 368,
+    "precode": "return ownerDocument() != null ? ownerDocument().outputSettings() : (new Document(\" \")).outputSettings();",
+    "aftercode": "return ownerDocument() == null ? ownerDocument().outputSettings() : (new Document(\" \")).outputSettings();",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 3.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 368,
+    "precode": "return ownerDocument() != null ? ownerDocument().outputSettings() : (new Document(\" \")).outputSettings();",
+    "aftercode": "return ownerDocument() != null ? (new Document(\" \")).outputSettings() : ownerDocument().outputSettings();",
+    "rule": "Return Value Negation",
+    "gen_time_s": 3.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Node.java",
+    "line": 368,
+    "precode": "return ownerDocument() != null ? ownerDocument().outputSettings() : (new Document(\" \")).outputSettings();",
+    "aftercode": "return ownerDocument() != null ? null : (new Document(\" \")).outputSettings();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 3.52,
+    "dublicate": false
+  }
+]

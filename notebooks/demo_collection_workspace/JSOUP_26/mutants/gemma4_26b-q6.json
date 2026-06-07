@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 40,
+    "precode": "Validate.notNull(dirtyDocument);",
+    "aftercode": "// Validate.notNull(dirtyDocument);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 42,
+    "precode": "Document clean = Document.createShell(dirtyDocument.baseUri());",
+    "aftercode": "Document clean = Document.createShell(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 42,
+    "precode": "Document clean = Document.createShell(dirtyDocument.baseUri());",
+    "aftercode": "Document clean = Document.createShell(\"\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 43,
+    "precode": "if (dirtyDocument.body() != null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "aftercode": "if (dirtyDocument.body() == null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 43,
+    "precode": "if (dirtyDocument.body() != null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "aftercode": "if (true) // frameset documents won't have a body. the clean doc will have empty body.",
+    "rule": "Conditional True",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 43,
+    "precode": "if (dirtyDocument.body() != null) // frameset documents won't have a body. the clean doc will have empty body.",
+    "aftercode": "if (false) // frameset documents won't have a body. the clean doc will have empty body.",
+    "rule": "Conditional False",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 44,
+    "precode": "copySafeNodes(dirtyDocument.body(), clean.body());",
+    "aftercode": "copySafeNodes(clean.body(), dirtyDocument.body());",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 44,
+    "precode": "copySafeNodes(dirtyDocument.body(), clean.body());",
+    "aftercode": "// copySafeNodes(dirtyDocument.body(), clean.body());",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 46,
+    "precode": "return clean;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.42,
+    "dublicate": false
+  }
+]

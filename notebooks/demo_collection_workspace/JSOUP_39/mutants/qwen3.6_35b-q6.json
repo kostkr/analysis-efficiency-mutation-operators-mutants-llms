@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 81,
+    "precode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(defaultCharset).encode(byteData).toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 83,
+    "precode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").first();",
+    "aftercode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").last();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 87,
+    "precode": "foundCharset = getCharsetFromContentType(meta.attr(\"content\"));",
+    "aftercode": "foundCharset = getCharsetFromContentType(meta.attr(\"name\"));",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 90,
+    "precode": "if (Charset.isSupported(meta.attr(\"charset\"))) {",
+    "aftercode": "if (!Charset.isSupported(meta.attr(\"charset\"))) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 91,
+    "precode": "foundCharset = meta.attr(\"charset\");",
+    "aftercode": "foundCharset = meta.attr(\"http-equiv\");",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 98,
+    "precode": "foundCharset = meta.attr(\"charset\");",
+    "aftercode": "foundCharset = meta.attr(\"content\");",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 101,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() > 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 102,
+    "precode": "foundCharset = foundCharset.trim().replaceAll(\"[\\\"']\", \"\");",
+    "aftercode": "foundCharset = foundCharset.trim().replaceAll(\"[\\\"']\", \" \");",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "charsetName = foundCharset;",
+    "aftercode": "charsetName = defaultCharset;",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 105,
+    "precode": "docData = Charset.forName(foundCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(foundCharset).encode(byteData).toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 111,
+    "precode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(charsetName).encode(byteData).toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 114,
+    "precode": "if (docData.length() > 0 && docData.charAt(0) == 65279) {",
+    "aftercode": "if (docData.length() >= 0 && docData.charAt(0) == 65279) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 114,
+    "precode": "if (docData.length() > 0 && docData.charAt(0) == 65279) {",
+    "aftercode": "if (docData.length() > 0 && docData.charAt(0) != 65279) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 116,
+    "precode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(defaultCharset).encode(byteData).toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 117,
+    "precode": "docData = docData.substring(1);",
+    "aftercode": "docData = docData.substring(0);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 117,
+    "precode": "docData = docData.substring(1);",
+    "aftercode": "docData = docData.substring(2);",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 118,
+    "precode": "charsetName = defaultCharset;",
+    "aftercode": "charsetName = null;",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 122,
+    "precode": "doc = parser.parseInput(docData, baseUri);",
+    "aftercode": "doc = parser.parseInput(baseUri, docData);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 123,
+    "precode": "doc.outputSettings().charset(charsetName);",
+    "aftercode": "doc.outputSettings().charset(defaultCharset);",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 123,
+    "precode": "doc.outputSettings().charset(charsetName);",
+    "aftercode": "doc.outputSettings().encoding(charsetName);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.61,
+    "dublicate": false
+  }
+]

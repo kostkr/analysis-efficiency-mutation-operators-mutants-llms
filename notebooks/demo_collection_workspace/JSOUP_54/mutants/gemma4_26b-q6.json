@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 123,
+    "precode": "for (Attribute attribute : source.attributes()) {",
+    "aftercode": "for (Attribute attribute : new java.util.ArrayList<>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 125,
+    "precode": "String key = attribute.getKey().replaceAll(\"[^-a-zA-Z0-9_:.]\", \"\");",
+    "aftercode": "String key = attribute.getKey().replaceAll(\"[^-a-zA-Z0-9_:.]\", \"a\");",
+    "rule": "Replacement Value Change",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 125,
+    "precode": "String key = attribute.getKey().replaceAll(\"[^-a-zA-Z0-9_:.]\", \"\");",
+    "aftercode": "String key = attribute.getKey().replaceAll(\"[^-a-zA-Z0-9_:.]\", \"\");",
+    "rule": "Regex Character Removal",
+    "gen_time_s": 1.62,
+    "dublicate": true
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 126,
+    "precode": "if (key.matches(\"[a-zA-Z_:]{1}[-a-zA-Z0-9_:.]*\"))",
+    "aftercode": "if (key.matches(\"[a-zA-Z_:]{0}[-a-zA-Z0-9_:.]*\"))",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 126,
+    "precode": "if (key.matches(\"[a-zA-Z_:]{1}[-a-zA-Z0-9_:.]*\"))",
+    "aftercode": "if (true)",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 126,
+    "precode": "if (key.matches(\"[a-zA-Z_:]{1}[-a-zA-Z0-9_:.]*\"))",
+    "aftercode": "if (!key.matches(\"[a-zA-Z_:]{1}[-a-zA-Z0-9_:.]*\"))",
+    "rule": "Negation",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 127,
+    "precode": "el.setAttribute(key, attribute.getValue());",
+    "aftercode": "el.setAttribute(attribute.getKey(), attribute.getValue());",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/W3CDom.java",
+    "line": 127,
+    "precode": "el.setAttribute(key, attribute.getValue());",
+    "aftercode": "el.setAttribute(key, \"\");",
+    "rule": "Value Erasure",
+    "gen_time_s": 1.62,
+    "dublicate": false
+  }
+]

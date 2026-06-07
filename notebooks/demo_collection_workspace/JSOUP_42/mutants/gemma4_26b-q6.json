@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 75,
+    "precode": "ArrayList<Connection.KeyVal> data = new ArrayList<Connection.KeyVal>();",
+    "aftercode": "ArrayList<Connection.KeyVal> data = new LinkedList<Connection.KeyVal>();",
+    "rule": "Replace Implementation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 79,
+    "precode": "if (!el.tag().isFormSubmittable()) continue;",
+    "aftercode": "if (el.tag().isFormSubmittable()) continue;",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 80,
+    "precode": "if (el.hasAttr(\"disabled\")) continue;",
+    "aftercode": "if (!el.hasAttr(\"disabled\")) continue;",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 82,
+    "precode": "if (name.length() == 0) continue;",
+    "aftercode": "if (name.length() > 0) continue;",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 82,
+    "precode": "if (name.length() == 0) continue;",
+    "aftercode": "if (name.length() <= 0) continue;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 85,
+    "precode": "if (\"select\".equals(el.tagName())) {",
+    "aftercode": "if (\"select\".equalsIgnoreCase(el.tagName())) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 86,
+    "precode": "Elements options = el.select(\"option[selected]\");",
+    "aftercode": "Elements options = el.select(\"option\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 87,
+    "precode": "boolean set = false;",
+    "aftercode": "boolean set = true;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 89,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(\"\", option.val()));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 92,
+    "precode": "if (!set) {",
+    "aftercode": "if (set) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 93,
+    "precode": "Element option = el.select(\"option\").first();",
+    "aftercode": "Element option = el.select(\"option\").last();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 94,
+    "precode": "if (option != null)",
+    "aftercode": "if (option == null)",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 95,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(option.val(), name));",
+    "rule": "Argument Order",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 97,
+    "precode": "} else if (\"checkbox\".equalsIgnoreCase(type) || \"radio\".equalsIgnoreCase(type)) {",
+    "aftercode": "} else if (\"checkbox\".equalsIgnoreCase(type) && \"radio\".equalsIgnoreCase(type)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 97,
+    "precode": "} else if (\"checkbox\".equalsIgnoreCase(type) || \"radio\".equalsIgnoreCase(type)) {",
+    "aftercode": "} else if (\"checkbox\".equalsIgnoreCase(type)) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 99,
+    "precode": "if (el.hasAttr(\"checked\")) {",
+    "aftercode": "if (!el.hasAttr(\"checked\")) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 100,
+    "precode": "final String val = el.val().length() > 0 ? el.val() : \"on\";",
+    "aftercode": "final String val = el.val().length() >= 0 ? el.val() : \"on\";",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 100,
+    "precode": "final String val = el.val().length() > 0 ? el.val() : \"on\";",
+    "aftercode": "final String val = el.val().length() > 0 ? \"\" : \"on\";",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 100,
+    "precode": "final String val = el.val().length() > 0 ? el.val() : \"on\";",
+    "aftercode": "final String val = el.val().length() > 0 ? el.val() : \"\";",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 101,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, val));",
+    "aftercode": "data.remove(HttpConnection.KeyVal.create(name, val));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 104,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, el.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(el.val(), name));",
+    "rule": "Argument Order",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 104,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, el.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, \"\"));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 78,
+    "precode": "for (Element el: elements) {",
+    "aftercode": "for (Element el: new ArrayList<Element>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 78,
+    "precode": "for (Element el: elements) {",
+    "aftercode": "for (int i = 0; i < elements.size(); i++) {",
+    "rule": "Loop Transformation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 81,
+    "precode": "String name = el.attr(\"name\");",
+    "aftercode": "String name = el.attr(\"id\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 83,
+    "precode": "String type = el.attr(\"type\");",
+    "aftercode": "String type = \"\";",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 86,
+    "precode": "Elements options = el.select(\"option[selected]\");",
+    "aftercode": "Elements options = el.select(\"option[not-selected]\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 89,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, option.tagName()));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 90,
+    "precode": "set = true;",
+    "aftercode": "set = false;",
+    "rule": "Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 95,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, option.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, \"\"));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 101,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, val));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, \"on\"));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 104,
+    "precode": "data.add(HttpConnection.KeyVal.create(name, el.val()));",
+    "aftercode": "data.add(HttpConnection.KeyVal.create(name, el.attr(\"value\")));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 75,
+    "precode": "ArrayList<Connection.KeyVal> data = new ArrayList<Connection.KeyVal>();",
+    "aftercode": "ArrayList<Connection.KeyVal> data = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 107,
+    "precode": "return data;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/nodes/FormElement.java",
+    "line": 82,
+    "precode": "if (name.length() == 0) continue;",
+    "aftercode": "if (name.length() < 0) continue;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  }
+]

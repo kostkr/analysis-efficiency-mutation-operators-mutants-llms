@@ -287,6 +287,38 @@ class CalculateMetricsTest(unittest.TestCase):
         self.assertAlmostEqual(metrics.rbdr or 0.0, 0.5)
         self.assertAlmostEqual(metrics.aor or 0.0, 0.5)
 
+    def test_high_ochiai_mutant_rate_counts_mutants_above_threshold(self) -> None:
+        tmp, workspace = self.make_bug_workspace(
+            {
+                "classic.json": [
+                    self.mutant(1, "return 2;", line=1),
+                    self.mutant(2, "return 3;", line=2),
+                ],
+                "gemma4_model.json": [
+                    self.mutant(1, "return 4;", line=1),
+                    self.mutant(2, "return 5;", line=2),
+                ],
+            },
+            {
+                "classic.json": [
+                    self.result(1, failing_tests=["T1"]),
+                    self.result(2, failing_tests=["T2"]),
+                ],
+                "gemma4_model.json": [
+                    self.result(1, failing_tests=["T1", "T2"]),
+                    self.result(2, failing_tests=[]),
+                ],
+            },
+            bug_profile=["T1", "T2"],
+        )
+        with tmp:
+            bug = cm.load_bugs(workspace, ())[0]
+            metrics = cm.calculate_metrics("BUG_1", "gemma4", (bug,))
+
+        self.assertEqual(metrics.profile_ready, 2)
+        self.assertEqual(metrics.high_ochiai_mutants, 1)
+        self.assertAlmostEqual(metrics.high_ochiai_mutant_rate or 0.0, 0.5)
+
     def test_llm_nmr_uses_same_line_exact_test_set_matching_including_empty_profile(self) -> None:
         tmp, workspace = self.make_bug_workspace(
             {
@@ -383,6 +415,47 @@ class CalculateMetricsTest(unittest.TestCase):
         self.assertEqual(metrics.useful, 1)
         self.assertEqual(metrics.new_mutants, 0)
         self.assertAlmostEqual(metrics.llm_nmr or 0.0, 0.0)
+
+    def test_aggregate_llm_nmr_skips_bugs_without_classic_mutants(self) -> None:
+        tmp = tempfile.TemporaryDirectory()
+        workspace = Path(tmp.name)
+        self.write_bug_workspace(
+            workspace,
+            "BUG_1",
+            {
+                "classic.json": [
+                    self.mutant(1, "return 2;", line=1),
+                    self.mutant(2, "return 3;", line=2),
+                ],
+                "gemma4_model.json": [
+                    self.mutant(1, "return 2;", line=1),
+                    self.mutant(2, "return 9;", line=2),
+                ],
+            },
+            {
+                "classic.json": [
+                    self.result(1, failing_tests=["T1"]),
+                    self.result(2, failing_tests=["T2"]),
+                ],
+                "gemma4_model.json": [
+                    self.result(1, failing_tests=["T1"]),
+                    self.result(2, failing_tests=["T9"]),
+                ],
+            },
+        )
+        self.write_bug_workspace(
+            workspace,
+            "BUG_2",
+            {"gemma4_model.json": [self.mutant(1, "return 4;", line=1)]},
+            {"gemma4_model.json": [self.result(1, failing_tests=["T3"])]},
+            bug_profile=["T3"],
+        )
+        with tmp:
+            bugs = cm.load_bugs(workspace, ())
+            metrics = cm.calculate_metrics("ALL_SELECTED", "gemma4", bugs)
+
+        self.assertEqual(metrics.new_mutants, 1)
+        self.assertAlmostEqual(metrics.llm_nmr or 0.0, 0.5)
 
     def test_llm_validation_keeps_all_records_and_marks_duplicates(self) -> None:
         job = GeneratorJob(
@@ -484,5 +557,3 @@ class CalculateMetricsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-

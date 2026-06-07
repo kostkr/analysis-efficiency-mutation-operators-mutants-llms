@@ -1,0 +1,432 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 114,
+    "precode": "NodeTraversor traversor = new NodeTraversor(cleaningVisitor);",
+    "aftercode": "NodeTraversor traversor = (org.jsoup.select.NodeTraversor) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.87,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 115,
+    "precode": "traversor.traverse(source);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { traversor.traverse(source); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.87,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 116,
+    "precode": "return cleaningVisitor.numDiscarded;",
+    "aftercode": "return (cleaningVisitor.numDiscarded) == 0 ? 0 : 0;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.87,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 31,
+    "precode": "Validate.notNull(whitelist);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { Validate.notNull(whitelist); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 32,
+    "precode": "this.whitelist = whitelist;",
+    "aftercode": "this.whitelist = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 73,
+    "precode": "private int numDiscarded = 0;",
+    "aftercode": "private int numDiscarded = 1;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 65,
+    "precode": "int numDiscarded = copySafeNodes(dirtyDocument.body(), clean.body());",
+    "aftercode": "int numDiscarded = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 78,
+    "precode": "this.root = root;",
+    "aftercode": "this.root = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "this.destination = destination;",
+    "aftercode": "this.destination = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = (org.jsoup.nodes.TextNode) null;",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 91,
+    "precode": "numDiscarded += meta.numAttribsDiscarded;",
+    "aftercode": "numDiscarded -= meta.numAttribsDiscarded;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 94,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded-+;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 101,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded-+;",
+    "rule": "Math",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 83,
+    "precode": "if (source instanceof Element) {",
+    "aftercode": "if (!(source instanceof Element)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (!(whitelist.isSafeTag(sourceEl.tagName()))) { // safe, clone and copy safe attrs",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (source == root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (!(source instanceof TextNode)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (whitelist.isSafeTag((java.lang.String) null)) { // safe, clone and copy safe attrs",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (false) { // safe, clone and copy safe attrs",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "destination.appendChild(destChild);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { destination.appendChild(destChild); }",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = new TextNode((java.lang.String) null, source.baseUri());",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = new TextNode(sourceText.getWholeText(), (java.lang.String) null);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 99,
+    "precode": "destination.appendChild(destText);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { destination.appendChild(destText); }",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 83,
+    "precode": "if (source instanceof Element) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (false) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 83,
+    "precode": "if (source instanceof Element) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (true) { // safe, clone and copy safe attrs",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (true) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 66,
+    "precode": "return numDiscarded == 0;",
+    "aftercode": "return numDiscarded =null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 92,
+    "precode": "destination = destChild;",
+    "aftercode": "destination = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "destination.appendChild(destChild);",
+    "aftercode": ";",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 99,
+    "precode": "destination.appendChild(destText);",
+    "aftercode": ";",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element && whitelist.isSafeTag((java.lang.String) null)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element && false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = (Element) null; // would have descended, so pop destination stack",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = null; // would have descended, so pop destination stack",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = destination; // would have descended, so pop destination stack",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 143,
+    "precode": "this.el = el;",
+    "aftercode": "this.el = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 144,
+    "precode": "this.numAttribsDiscarded = numAttribsDiscarded;",
+    "aftercode": "this.numAttribsDiscarded = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.02,
+    "dublicate": false
+  }
+]

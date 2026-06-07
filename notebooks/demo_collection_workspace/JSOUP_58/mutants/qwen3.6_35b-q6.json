@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/Jsoup.java",
+    "line": 250,
+    "precode": "return new Cleaner(whitelist).isValidBodyHtml(bodyHtml);",
+    "aftercode": "return new Cleaner(null).isValidBodyHtml(bodyHtml);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/Jsoup.java",
+    "line": 250,
+    "precode": "return new Cleaner(whitelist).isValidBodyHtml(bodyHtml);",
+    "aftercode": "return false;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/Jsoup.java",
+    "line": 250,
+    "precode": "return new Cleaner(whitelist).isValidBodyHtml(bodyHtml);",
+    "aftercode": "return new Cleaner(whitelist).isClean(bodyHtml);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 130,
+    "precode": "HtmlTreeBuilder treeBuilder = new HtmlTreeBuilder();",
+    "aftercode": "HtmlTreeBuilder treeBuilder = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 131,
+    "precode": "return treeBuilder.parseFragment(fragmentHtml, context, baseUri, errorList, treeBuilder.defaultSettings());",
+    "aftercode": "return treeBuilder.parseFragment(context, fragmentHtml, baseUri, errorList, treeBuilder.defaultSettings());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 131,
+    "precode": "return treeBuilder.parseFragment(fragmentHtml, context, baseUri, errorList, treeBuilder.defaultSettings());",
+    "aftercode": "return treeBuilder.parseFragment(fragmentHtml, context, baseUri, errorList, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 131,
+    "precode": "return treeBuilder.parseFragment(fragmentHtml, context, baseUri, errorList, treeBuilder.defaultSettings());",
+    "aftercode": "return new ArrayList<>();",
+    "rule": "Empty Return Value",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "return numDiscarded == 0",
+    "aftercode": "return numDiscarded != 0",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "return numDiscarded == 0",
+    "aftercode": "return numDiscarded > 0",
+    "rule": "Greater Than",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "return numDiscarded == 0",
+    "aftercode": "return numDiscarded < 0",
+    "rule": "Less Than",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 80,
+    "precode": "&& dirtyDocument.head().childNodes().size() == 0;",
+    "aftercode": "|| dirtyDocument.head().childNodes().size() == 0;",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 80,
+    "precode": "&& dirtyDocument.head().childNodes().size() == 0;",
+    "aftercode": "&& dirtyDocument.head().childNodes().size() > 0;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 80,
+    "precode": "&& dirtyDocument.head().childNodes().size() == 0;",
+    "aftercode": "&& dirtyDocument.head().childNodes().size() >= 0;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 80,
+    "precode": "&& dirtyDocument.head().childNodes().size() == 0;",
+    "aftercode": "&& dirtyDocument.head().childNodes().size() < 0;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 80,
+    "precode": "&& dirtyDocument.head().childNodes().size() == 0;",
+    "aftercode": "&& dirtyDocument.head().childNodes().size() != 0;",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.37,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 87,
+    "precode": "List<Node> nodes = Parser.parseFragment(bodyHtml, dirty.body(), \"\", errorList);",
+    "aftercode": "List<Node> nodes = Parser.parseFragment(bodyHtml, clean.body(), \"\", errorList);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 88,
+    "precode": "dirty.body().insertChildren(0, nodes);",
+    "aftercode": "clean.body().insertChildren(0, nodes);",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "int numDiscarded = copySafeNodes(dirty.body(), clean.body());",
+    "aftercode": "int numDiscarded = copySafeNodes(clean.body(), dirty.body());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 90,
+    "precode": "return numDiscarded == 0 && errorList.size() == 0;",
+    "aftercode": "return numDiscarded == 0 || errorList.size() == 0;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 90,
+    "precode": "return numDiscarded == 0 && errorList.size() == 0;",
+    "aftercode": "return numDiscarded > 0 && errorList.size() == 0;",
+    "rule": "Negation",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 90,
+    "precode": "return numDiscarded == 0 && errorList.size() == 0;",
+    "aftercode": "return numDiscarded == 0 && errorList.size() > 0;",
+    "rule": "Negation",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "int numDiscarded = copySafeNodes(dirty.body(), clean.body());",
+    "aftercode": "int numDiscarded = copySafeNodes(dirty.body(), dirty.body());",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 87,
+    "precode": "List<Node> nodes = Parser.parseFragment(bodyHtml, dirty.body(), \"\", errorList);",
+    "aftercode": "List<Node> nodes = Parser.parseFragment(bodyHtml, dirty.body(), \"<script>\", errorList);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "int numDiscarded = copySafeNodes(dirty.body(), clean.body());",
+    "aftercode": "int numDiscarded = copySafeNodes(null, clean.body());",
+    "rule": "Null Injection",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 198,
+    "precode": "return lastStartTag.tagName;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 198,
+    "precode": "return lastStartTag.tagName;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 198,
+    "precode": "return lastStartTag.tagName;",
+    "aftercode": "return lastStartTag.tagName.toUpperCase();",
+    "rule": "String Mutator",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 215,
+    "precode": "if (r.matches('/')) {",
+    "aftercode": "if (!r.matches('/')) {",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 218,
+    "precode": "} else if (r.matchesLetter() && !r.containsIgnoreCase(\"</\" + t.appropriateEndTagName())) {",
+    "aftercode": "} else if (r.matchesLetter() || !r.containsIgnoreCase(\"</\" + t.appropriateEndTagName())) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 218,
+    "precode": "} else if (r.matchesLetter() && !r.containsIgnoreCase(\"</\" + t.appropriateEndTagName())) {",
+    "aftercode": "} else if (r.matchesLetter() && r.containsIgnoreCase(\"</\" + t.appropriateEndTagName())) {",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 221,
+    "precode": "t.tagPending = new Token.EndTag(t.appropriateEndTagName());",
+    "aftercode": "t.tagPending = new Token.StartTag(t.appropriateEndTagName());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 223,
+    "precode": "r.unconsume(); // undo \"<\"",
+    "aftercode": "r.consumed(); // forward instead of backward",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 224,
+    "precode": "t.transition(Data);",
+    "aftercode": "t.transition(Text);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 226,
+    "precode": "t.emit(\"<\");",
+    "aftercode": "t.emit(\"\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 227,
+    "precode": "t.transition(Rcdata);",
+    "aftercode": "t.transition(Data);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 216,
+    "precode": "t.createTempBuffer();",
+    "aftercode": "t.destroyTempBuffer();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 217,
+    "precode": "t.advanceTransition(RCDATAEndTagOpen);",
+    "aftercode": "t.advanceTransition(Data);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 222,
+    "precode": "t.emitTagPending();",
+    "aftercode": "t.resetTagPending();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 218,
+    "precode": "} else if (r.matchesLetter() && !r.containsIgnoreCase(\"</\" + t.appropriateEndTagName())) {",
+    "aftercode": "} else if (r.matchesDigit() && !r.containsIgnoreCase(\"</\" + t.appropriateEndTagName())) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 221,
+    "precode": "t.tagPending = new Token.EndTag(t.appropriateEndTagName());",
+    "aftercode": "t.tagPending = new Token.Comment(t.appropriateEndTagName());",
+    "rule": "Class Instantiation Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 226,
+    "precode": "t.emit(\"<\");",
+    "aftercode": "t.emit(\">\" );",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 215,
+    "precode": "if (r.matches('/')) {",
+    "aftercode": "if (r.matches('\\'')) {",
+    "rule": "Character Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/TokeniserState.java",
+    "line": 224,
+    "precode": "t.transition(Data);",
+    "aftercode": "t.transition(EOF);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  }
+]

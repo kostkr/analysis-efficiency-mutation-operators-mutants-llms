@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 159,
+    "precode": "if (startTag.isSelfClosing()) {",
+    "aftercode": "if (!startTag.isSelfClosing()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 161,
+    "precode": "stack.add(el);",
+    "aftercode": "stack.remove(el);",
+    "rule": "Remove Call / Void Call",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 162,
+    "precode": "tokeniser.transition(TokeniserState.Data); // handles <script />, otherwise needs breakout steps from script data",
+    "aftercode": "tokeniser.transition(TokeniserState.Initial); // handles <script />, otherwise needs breakout steps from script data",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 163,
+    "precode": "tokeniser.emit(new Token.EndTag(el.tagName()));  // ensure we get out of whatever state we are in. emitted for yielded processing",
+    "aftercode": "tokeniser.emit(new Token.StartTag(el.tagName()));  // ensure we get out of whatever state we are in. emitted for yielded processing",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 163,
+    "precode": "tokeniser.emit(new Token.EndTag(el.tagName()));  // ensure we get out of whatever state we are in. emitted for yielded processing",
+    "aftercode": "tokeniser.emit(new Token.Comment(el.tagName()));  // ensure we get out of whatever state we are in. emitted for yielded processing",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 164,
+    "precode": "return el;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 164,
+    "precode": "return el;",
+    "aftercode": "return stack.peek();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 167,
+    "precode": "Element el = new Element(Tag.valueOf(startTag.name()), baseUri, startTag.attributes);",
+    "aftercode": "Element el = new Element(Tag.valueOf(startTag.name()), baseUri, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 168,
+    "precode": "insert(el);",
+    "aftercode": "insert(el, false);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 168,
+    "precode": "insert(el);",
+    "aftercode": "insert(el, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 169,
+    "precode": "return el;",
+    "aftercode": "return new Element(Tag.valueOf(\"\"), baseUri, Attributes.empty());",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 160,
+    "precode": "Element el = insertEmpty(startTag);",
+    "aftercode": "Element el = insertEmpty(startTag, false);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 160,
+    "precode": "Element el = insertEmpty(startTag);",
+    "aftercode": "Element el = insertEmpty(startTag, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 162,
+    "precode": "tokeniser.transition(TokeniserState.Data); // handles <script />, otherwise needs breakout steps from script data",
+    "aftercode": "tokeniser.transition(null); // handles <script />, otherwise needs breakout steps from script data",
+    "rule": "Null Argument",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 167,
+    "precode": "Element el = new Element(Tag.valueOf(startTag.name()), baseUri, startTag.attributes);",
+    "aftercode": "Element el = new Element(Tag.valueOf(startTag.name()), null, startTag.attributes);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.43,
+    "dublicate": false
+  }
+]

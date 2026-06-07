@@ -1,0 +1,722 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 222,
+    "precode": "Tag tag = Tag.valueOf(startTag.name(), settings);",
+    "aftercode": "Tag tag = Tag.valueOf(settings, startTag.name());",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 223,
+    "precode": "Element el = new Element(tag, baseUri, startTag.attributes);",
+    "aftercode": "Element el = new Element(tag, startTag.attributes, baseUri);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 223,
+    "precode": "Element el = new Element(tag, baseUri, startTag.attributes);",
+    "aftercode": "Element el = new Element(baseUri, tag, startTag.attributes);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 225,
+    "precode": "if (startTag.isSelfClosing()) {",
+    "aftercode": "if (!startTag.isSelfClosing()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 226,
+    "precode": "if (tag.isKnownTag()) {",
+    "aftercode": "if (!tag.isKnownTag()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 227,
+    "precode": "if (!tag.isEmpty())",
+    "aftercode": "if (tag.isEmpty())",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 227,
+    "precode": "if (!tag.isEmpty())",
+    "aftercode": "if (tag.isEmpty() && true)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 224,
+    "precode": "insertNode(el);",
+    "aftercode": "insertNode(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 224,
+    "precode": "insertNode(el);",
+    "aftercode": "insertNode(new Element(Tag.valueOf(\"body\"), baseUri, Attributes.getInstance()));",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 231,
+    "precode": "tag.setSelfClosing();",
+    "aftercode": "tag.setSelfClosing(); // no-op comment injected",
+    "rule": "Statement Delete",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 228,
+    "precode": "tokeniser.error(\"Tag cannot be self closing; not a void tag\");",
+    "aftercode": "tokeniser.warn(\"Tag cannot be self closing; not a void tag\");",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 228,
+    "precode": "tokeniser.error(\"Tag cannot be self closing; not a void tag\");",
+    "aftercode": "tokeniser.error(\"Tag is self closing; not a void tag\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 222,
+    "precode": "Tag tag = Tag.valueOf(startTag.name(), settings);",
+    "aftercode": "Tag tag = Tag.valueOf(startTag.name(), null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+    "line": 226,
+    "precode": "if (tag.isKnownTag()) {",
+    "aftercode": "if (tag.isKnownTag() && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 43,
+    "precode": "while (!isEmitPending)",
+    "aftercode": "while (isEmitPending)",
+    "rule": "Negation",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 47,
+    "precode": "if (charsBuilder.length() > 0) {",
+    "aftercode": "if (charsBuilder.length() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 47,
+    "precode": "if (charsBuilder.length() > 0) {",
+    "aftercode": "if (charsBuilder.length() < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 48,
+    "precode": "String str = charsBuilder.toString();",
+    "aftercode": "String str = charsBuilder.toString().trim();",
+    "rule": "Method Call Insertion",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 49,
+    "precode": "charsBuilder.delete(0, charsBuilder.length());",
+    "aftercode": "charsBuilder.delete(0, 0);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 49,
+    "precode": "charsBuilder.delete(0, charsBuilder.length());",
+    "aftercode": "charsBuilder.clear();",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 50,
+    "precode": "charsString = null;",
+    "aftercode": "charsString = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 51,
+    "precode": "return charPending.data(str);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 52,
+    "precode": "} else if (charsString != null) {",
+    "aftercode": "} else if (charsString == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 53,
+    "precode": "Token token = charPending.data(charsString);",
+    "aftercode": "Token token = charPending.data(charsString + \"\");",
+    "rule": "Method Call Insertion",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 54,
+    "precode": "charsString = null;",
+    "aftercode": "charsString = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 55,
+    "precode": "return token;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 57,
+    "precode": "isEmitPending = false;",
+    "aftercode": "isEmitPending = true;",
+    "rule": "Value Mutation",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 58,
+    "precode": "return emitPending;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 43,
+    "precode": "while (!isEmitPending)",
+    "aftercode": "while (false)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 47,
+    "precode": "if (charsBuilder.length() > 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 52,
+    "precode": "} else if (charsString != null) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 48,
+    "precode": "String str = charsBuilder.toString();",
+    "aftercode": "String str = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 53,
+    "precode": "Token token = charPending.data(charsString);",
+    "aftercode": "Token token = charPending.data(null);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 63,
+    "precode": "Validate.isFalse(isEmitPending, \"There is an unread token pending!\");",
+    "aftercode": "Validate.isTrue(isEmitPending, \"There is an unread token pending!\");",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 65,
+    "precode": "emitPending = token;",
+    "aftercode": "emitPending = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 66,
+    "precode": "isEmitPending = true;",
+    "aftercode": "isEmitPending = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 68,
+    "precode": "if (token.type == Token.TokenType.StartTag) {",
+    "aftercode": "if (token.type != Token.TokenType.StartTag) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 69,
+    "precode": "Token.StartTag startTag = (Token.StartTag) token;",
+    "aftercode": "Token.StartTag startTag = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 70,
+    "precode": "lastStartTag = startTag.tagName;",
+    "aftercode": "lastStartTag = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 71,
+    "precode": "} else if (token.type == Token.TokenType.EndTag) {",
+    "aftercode": "} else if (token.type != Token.TokenType.EndTag) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 72,
+    "precode": "Token.EndTag endTag = (Token.EndTag) token;",
+    "aftercode": "Token.EndTag endTag = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 73,
+    "precode": "if (endTag.attributes != null)",
+    "aftercode": "if (endTag.attributes == null)",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 73,
+    "precode": "if (endTag.attributes != null)",
+    "aftercode": "if (endTag.attributes != null && true)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 74,
+    "precode": "error(\"Attributes incorrectly present on end tag\");",
+    "aftercode": "error(\"Attributes correctly present on end tag\");",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 63,
+    "precode": "Validate.isFalse(isEmitPending, \"There is an unread token pending!\");",
+    "aftercode": "Validate.isFalse(isEmitPending, \"There is a pending token!\");",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 65,
+    "precode": "emitPending = token;",
+    "aftercode": "emitPending = token; // comment",
+    "rule": "Comment Insertion",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 66,
+    "precode": "isEmitPending = true;",
+    "aftercode": "isEmitPending = !isEmitPending;",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 70,
+    "precode": "lastStartTag = startTag.tagName;",
+    "aftercode": "lastStartTag = startTag.tagName; lastStartTag = null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 43,
+    "precode": "while (!isEmitPending)",
+    "aftercode": "while (isEmitPending)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 47,
+    "precode": "if (charsBuilder.length() > 0) {",
+    "aftercode": "if (charsBuilder.length() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 47,
+    "precode": "if (charsBuilder.length() > 0) {",
+    "aftercode": "if (charsBuilder.length() == 0) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 47,
+    "precode": "if (charsBuilder.length() > 0) {",
+    "aftercode": "if (charsBuilder.length() < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 52,
+    "precode": "else if (charsString != null) {",
+    "aftercode": "else if (charsString == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 57,
+    "precode": "isEmitPending = false;",
+    "aftercode": "isEmitPending = true;",
+    "rule": "Boolean Argument Change",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 63,
+    "precode": "Validate.isFalse(isEmitPending, \"There is an unread token pending!\");",
+    "aftercode": "Validate.isTrue(isEmitPending, \"There is an unread token pending!\");",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 68,
+    "precode": "if (token.type == Token.TokenType.StartTag) {",
+    "aftercode": "if (token.type != Token.TokenType.StartTag) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 68,
+    "precode": "if (token.type == Token.TokenType.StartTag) {",
+    "aftercode": "if (token.type == Token.TokenType.EndTag) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 71,
+    "precode": "} else if (token.type == Token.TokenType.EndTag) {",
+    "aftercode": "} else if (token.type != Token.TokenType.EndTag) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 71,
+    "precode": "} else if (token.type == Token.TokenType.EndTag) {",
+    "aftercode": "} else if (token.type == Token.TokenType.StartTag) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 73,
+    "precode": "if (endTag.attributes != null)",
+    "aftercode": "if (endTag.attributes == null)",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 81,
+    "precode": "if (charsString == null) {",
+    "aftercode": "if (charsString != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 85,
+    "precode": "if (charsBuilder.length() == 0) { // switching to string builder as more than one emit before read",
+    "aftercode": "if (charsBuilder.length() > 0) { // switching to string builder as more than one emit before read",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 85,
+    "precode": "if (charsBuilder.length() == 0) { // switching to string builder as more than one emit before read",
+    "aftercode": "if (charsBuilder.length() >= 0) { // switching to string builder as more than one emit before read",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 86,
+    "precode": "charsBuilder.append(charsString);",
+    "aftercode": "charsBuilder.delete(0, charsBuilder.length());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 86,
+    "precode": "charsBuilder.append(charsString);",
+    "aftercode": "charsBuilder.insert(0, charsString);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 88,
+    "precode": "charsBuilder.append(str);",
+    "aftercode": "charsBuilder.insert(0, str);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 88,
+    "precode": "charsBuilder.append(str);",
+    "aftercode": "charsBuilder.delete(0, charsBuilder.length());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 93,
+    "precode": "emit(String.valueOf(chars));",
+    "aftercode": "emit(new String(chars));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 97,
+    "precode": "emit(new String(codepoints, 0, codepoints.length));",
+    "aftercode": "emit(new String(codepoints, 1, codepoints.length));",
+    "rule": "Argument Change",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 97,
+    "precode": "emit(new String(codepoints, 0, codepoints.length));",
+    "aftercode": "emit(new String(codepoints, 0, 0));",
+    "rule": "Argument Change",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 97,
+    "precode": "emit(new String(codepoints, 0, codepoints.length));",
+    "aftercode": "emit(new String(codepoints, codepoints.length, 0));",
+    "rule": "Argument Change",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 101,
+    "precode": "emit(String.valueOf(c));",
+    "aftercode": "emit(Character.toString(c));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  }
+]

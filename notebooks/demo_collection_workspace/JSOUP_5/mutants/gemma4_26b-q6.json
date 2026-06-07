@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 182,
+    "precode": "tq.consumeWhitespace();",
+    "aftercode": "// tq.consumeWhitespace();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 183,
+    "precode": "String key = tq.consumeAttributeKey();",
+    "aftercode": "String key = \"\";",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 184,
+    "precode": "String value = \"\";",
+    "aftercode": "String value = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 186,
+    "precode": "if (tq.matchChomp(\"=\")) {",
+    "aftercode": "if (!tq.matchChomp(\"=\")) {",
+    "rule": "Negation",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 189,
+    "precode": "if (tq.matchChomp(SQ)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 190,
+    "precode": "value = tq.chompTo(SQ);",
+    "aftercode": "value = \"\";",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 191,
+    "precode": "} else if (tq.matchChomp(DQ)) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 192,
+    "precode": "value = tq.chompTo(DQ);",
+    "aftercode": "value = tq.chompTo(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 194,
+    "precode": "StringBuilder valueAccum = new StringBuilder();",
+    "aftercode": "StringBuilder valueAccum = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 196,
+    "precode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace() && !tq.isEmpty()) {",
+    "aftercode": "while (tq.matchesAny(\"<\", \"/>\", \">\") || tq.matchesWhitespace() || !tq.isEmpty()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 196,
+    "precode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace() && !tq.isEmpty()) {",
+    "aftercode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 197,
+    "precode": "valueAccum.append(tq.consume());",
+    "aftercode": "valueAccum.append(\"\");",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 199,
+    "precode": "value = valueAccum.toString();",
+    "aftercode": "value = valueAccum.length() > 0 ? valueAccum.toString() : \"\";",
+    "rule": "Conditional Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 201,
+    "precode": "tq.consumeWhitespace();",
+    "aftercode": "// tq.consumeWhitespace();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 203,
+    "precode": "if (key.length() != 0)",
+    "aftercode": "if (key.length() == 0)",
+    "rule": "Negation",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 203,
+    "precode": "if (key.length() != 0)",
+    "aftercode": "if (key.length() > 0)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 204,
+    "precode": "return Attribute.createFromEncoded(key, value);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 206,
+    "precode": "if (value.length() == 0) // no key, no val; unknown char, keep popping so not get stuck",
+    "aftercode": "if (value.length() != 0) // no key, no val; unknown char, keep popping so not get stuck",
+    "rule": "Negation",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 207,
+    "precode": "tq.advance();",
+    "aftercode": "// tq.advance();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 209,
+    "precode": "return null;",
+    "aftercode": "return Attribute.createFromEncoded(key, value);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 186,
+    "precode": "if (tq.matchChomp(\"=\")) {",
+    "aftercode": "if (tq.matchChomp(\" \")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 196,
+    "precode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace() && !tq.isEmpty()) {",
+    "aftercode": "while (tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace() && !tq.isEmpty()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 203,
+    "precode": "if (key.length() != 0)",
+    "aftercode": "if (key.length() >= 0)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 184,
+    "precode": "String value = \"\";",
+    "aftercode": "String value = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.4,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 190,
+    "precode": "value = tq.chompTo(SQ);",
+    "aftercode": "value = tq.chompTo(DQ);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 192,
+    "precode": "value = tq.chompTo(DQ);",
+    "aftercode": "value = tq.chompTo(SQ);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 196,
+    "precode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace() && !tq.isEmpty()) {",
+    "aftercode": "while (!tq.matchesAny(\"<\", \"/>\", \">\") && !tq.matchesWhitespace() && !tq.isEmpty()) {",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": true
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 206,
+    "precode": "if (value.length() == 0)",
+    "aftercode": "if (value.length() <= 0)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 207,
+    "precode": "tq.advance();",
+    "aftercode": "tq.advance(1);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 183,
+    "precode": "String key = tq.consumeAttributeKey();",
+    "aftercode": "String key = tq.consumeWhitespace();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 204,
+    "precode": "return Attribute.createFromEncoded(key, value);",
+    "aftercode": "return Attribute.createFromEncoded(\"\", value);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  }
+]

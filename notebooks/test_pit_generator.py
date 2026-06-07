@@ -6,7 +6,9 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from defect4j.generators import PITConfig
+from defect4j.generators.base import GeneratorJob
 from defect4j.generators.pit.generator import PITGenerator
+from defect4j.generators.pit.xml_parser import PITClassicEntry
 
 
 class _FakeD4J:
@@ -55,6 +57,32 @@ class PITGeneratorBuildTest(unittest.TestCase):
                 generator._ensure_custom_pitest_available()
 
         self.assertIn("stdout failure details", str(ctx.exception))
+
+    def test_entries_for_job_filters_to_method_bounds(self) -> None:
+        generator = PITGenerator(PITConfig(), d4j=object())
+        job = GeneratorJob(
+            project="JSOUP",
+            bug_id=55,
+            container_path="/tmp/JSOUP_55_f",
+            host_path="",
+            filepath="src/main/java/org/jsoup/Example.java",
+            class_fqn="org.jsoup.Example",
+            method_name="example",
+            method_source="",
+            method_start=10,
+            method_end=30,
+            changed_lines=[12, 18],
+        )
+        entries = [
+            PITClassicEntry(job.filepath, 11, "a", "b", "rule"),
+            PITClassicEntry(job.filepath, 12, "a", "c", "rule"),
+            PITClassicEntry(job.filepath, 18, "a", "d", "rule"),
+            PITClassicEntry(job.filepath, 25, "a", "e", "rule"),
+        ]
+
+        filtered = generator._entries_for_job(entries, job)
+
+        self.assertEqual([11, 12, 18, 25], [entry.line for entry in filtered])
 
 
 if __name__ == "__main__":

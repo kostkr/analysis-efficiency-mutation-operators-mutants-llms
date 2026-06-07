@@ -41,7 +41,8 @@ CHAPTER_5_METRICS = (
     "RBDR",
     "AOR",
     "CR",
-    "High-Ochiai Bug Rate",
+    "HAOR",
+    "HOMR",
     "AMGT",
     "CPUM",
 )
@@ -112,6 +113,7 @@ class TypeMetrics:
     total_time_s: float
     detected_bugs: int
     high_ochiai_bugs: int
+    high_ochiai_mutants: int
     new_mutants: int | None
     cmr: float | None
     dmr: float | None
@@ -122,6 +124,7 @@ class TypeMetrics:
     aor: float | None
     cr: float | None
     high_ochiai_bug_rate: float | None
+    high_ochiai_mutant_rate: float | None
     amgt: float | None
     cpum: float | None
     warnings: tuple[str, ...]
@@ -431,6 +434,7 @@ def calculate_metrics(
     profile_ready = useful
     warnings: list[str] = []
     per_bug_ochiai_values: list[float] = []
+    high_ochiai_mutants = 0
     linked = 0
     detected_bugs = 0
 
@@ -449,6 +453,8 @@ def calculate_metrics(
         bug_ochiai_values: list[float] = []
         for obs in bug_profile_ready:
             failing = failing_tests(obs)
+            if ochiai(failing, bug_tests) >= 0.8:
+                high_ochiai_mutants += 1
             if failing & bug_tests:
                 linked += 1
                 bug_detected = True
@@ -505,6 +511,7 @@ def calculate_metrics(
         total_time_s=total_time_s,
         detected_bugs=detected_bugs,
         high_ochiai_bugs=high_ochiai_bugs,
+        high_ochiai_mutants=high_ochiai_mutants,
         new_mutants=new_mutants,
         cmr=safe_div(compiled, generated),
         dmr=safe_div(duplicates, compiled),
@@ -515,6 +522,7 @@ def calculate_metrics(
         aor=statistics.fmean(per_bug_ochiai_values) if per_bug_ochiai_values else None,
         cr=safe_div(linked, len(profile_ready)),
         high_ochiai_bug_rate=safe_div(high_ochiai_bugs, len(bugs)),
+        high_ochiai_mutant_rate=safe_div(high_ochiai_mutants, len(profile_ready)),
         amgt=safe_div(total_time_s, generated),
         cpum=safe_div(total_time_s, len(useful)),
         warnings=tuple(warnings),
@@ -530,8 +538,7 @@ def calculate_llm_nmr(
 
     warnings: list[str] = []
     new_mutants = 0
-    final_count = 0
-    comparison_ready = True
+    comparable_final_count = 0
 
     for bug in bugs:
         classic_final = [
@@ -544,14 +551,14 @@ def calculate_llm_nmr(
             for obs in bug.observations
             if obs.mutant_type == mutant_type and is_final_metric_mutant(obs)
         ]
-        final_count += len(target_final)
 
         if not target_final:
             continue
         if not classic_final:
             warnings.append(f"{bug.key}/{mutant_type}: cannot compute LLM-NMR without classic mutants")
-            comparison_ready = False
             continue
+
+        comparable_final_count += len(target_final)
 
         classic_by_line: dict[tuple[str, int], list[Observation]] = {}
         for obs in classic_final:
@@ -576,9 +583,9 @@ def calculate_llm_nmr(
             if not syntactic_match and not test_profile_match:
                 new_mutants += 1
 
-    if new_mutants > final_count:
+    if new_mutants > comparable_final_count:
         warnings.append(f"{mutant_type}: new mutant count exceeds useful mutant count")
-    llm_nmr = safe_div(new_mutants, final_count) if comparison_ready else None
+    llm_nmr = safe_div(new_mutants, comparable_final_count) if comparable_final_count else None
     if llm_nmr is not None and not (0.0 <= llm_nmr <= 1.0):
         warnings.append(f"{mutant_type}: LLM-NMR outside [0, 1]")
     return new_mutants, llm_nmr, warnings
@@ -609,13 +616,13 @@ def print_report(
 
     print("\nAggregate chapter 5 metrics")
     print_table(
-        ["Type", "CMR", "DMR", "EMR*", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HOBR", "AMGT s", "CPUM s"],
+        ["Type", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
         [metrics_row(item) for item in aggregate_metrics],
     )
 
     print("\nPer-bug chapter 5 metrics")
     print_table(
-        ["Bug", "Type", "CMR", "DMR", "EMR*", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HOBR", "AMGT s", "CPUM s"],
+        ["Bug", "Type", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
         [metrics_row(item, include_scope=True) for item in per_bug_metrics],
     )
 
@@ -657,6 +664,7 @@ def metrics_row(metrics: TypeMetrics, include_scope: bool = False) -> list[str]:
         format_percent(metrics.aor),
         format_percent(metrics.cr),
         format_percent(metrics.high_ochiai_bug_rate),
+        format_percent(metrics.high_ochiai_mutant_rate),
         format_seconds(metrics.amgt),
         format_seconds(metrics.cpum),
     ]
@@ -699,7 +707,7 @@ def readiness_warnings(
     if any(has_complete_profile(obs) and has_explicit_partial_profile_marker(obs) for obs in non_duplicate):
         warnings.append(
             f"{bug.key}/{mutant_type}: result records contain partial test profiles; "
-            "rerun collection before treating RBDR/AOR/CR/HOBR as final"
+            "rerun collection before treating RBDR/AOR/CR/HAOR as final"
         )
     return warnings
 
@@ -765,7 +773,8 @@ def build_verdict(
             "RBDR": item.rbdr,
             "AOR": item.aor,
             "CR": item.cr,
-            "High-Ochiai Bug Rate": item.high_ochiai_bug_rate,
+            "HAOR": item.high_ochiai_bug_rate,
+            "HOMR": item.high_ochiai_mutant_rate,
             "AMGT": item.amgt,
             "CPUM": item.cpum,
         }
@@ -814,6 +823,7 @@ def metrics_to_dict(metrics: TypeMetrics) -> dict[str, Any]:
             "profile_ready": metrics.profile_ready,
             "detected_bugs": metrics.detected_bugs,
             "high_ochiai_bugs": metrics.high_ochiai_bugs,
+            "high_ochiai_mutants": metrics.high_ochiai_mutants,
             "new_mutants": metrics.new_mutants,
             "generation_time_s": metrics.generation_time_s,
             "execution_time_s": metrics.execution_time_s,
@@ -828,7 +838,8 @@ def metrics_to_dict(metrics: TypeMetrics) -> dict[str, Any]:
             "RBDR": metrics.rbdr,
             "AOR": metrics.aor,
             "CR": metrics.cr,
-            "High-Ochiai Bug Rate": metrics.high_ochiai_bug_rate,
+            "HAOR": metrics.high_ochiai_bug_rate,
+            "HOMR": metrics.high_ochiai_mutant_rate,
             "AMGT": metrics.amgt,
             "CPUM": metrics.cpum,
         },

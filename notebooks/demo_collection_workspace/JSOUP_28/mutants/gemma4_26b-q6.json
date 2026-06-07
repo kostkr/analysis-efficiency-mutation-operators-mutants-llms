@@ -1,0 +1,802 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 63,
+    "precode": "return base.containsKey(name);",
+    "aftercode": "return !base.containsKey(name);",
+    "rule": "Negation",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 63,
+    "precode": "return base.containsKey(name);",
+    "aftercode": "return base.containsValue(name);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 63,
+    "precode": "return base.containsKey(name);",
+    "aftercode": "return base.isEmpty();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 107,
+    "precode": "return Parser.unescapeEntities(string, strict);",
+    "aftercode": "return Parser.unescapeEntities(string, !strict);",
+    "rule": "Boolean Inversion",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 107,
+    "precode": "return Parser.unescapeEntities(string, strict);",
+    "aftercode": "return Parser.unescapeEntities(string, false);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 107,
+    "precode": "return Parser.unescapeEntities(string, strict);",
+    "aftercode": "return Parser.unescapeEntities(null, strict);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 1.66,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 134,
+    "precode": "Tokeniser tokeniser = new Tokeniser(new CharacterReader(string), ParseErrorList.noTracking());",
+    "aftercode": "Tokeniser tokeniser = new Tokeniser(new CharacterReader(string), ParseErrorList.tracking());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 135,
+    "precode": "return tokeniser.unescapeEntities(inAttribute);",
+    "aftercode": "return tokeniser.unescapeEntities(!inAttribute);",
+    "rule": "Boolean Inversion",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 135,
+    "precode": "return tokeniser.unescapeEntities(inAttribute);",
+    "aftercode": "return tokeniser.unescapeEntities(false);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 134,
+    "precode": "Tokeniser tokeniser = new Tokeniser(new CharacterReader(string), ParseErrorList.noTracking());",
+    "aftercode": "Tokeniser tokeniser = new Tokeniser(new CharacterReader(\"\"), ParseErrorList.noTracking());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.78,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 103,
+    "precode": "if (additionalAllowedCharacter != null && additionalAllowedCharacter == reader.current())",
+    "aftercode": "if (additionalAllowedCharacter != null || additionalAllowedCharacter == reader.current())",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 103,
+    "precode": "if (additionalAllowedCharacter != null && additionalAllowedCharacter == reader.current())",
+    "aftercode": "if (additionalAllowedCharacter != null && !additionalAllowedCharacter.equals(reader.current()))",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 105,
+    "precode": "if (reader.matchesAny('\\t', '\\n', '\\r', '\\f', ' ', '<', '&'))",
+    "aftercode": "if (reader.matchesAny('\\t', '\\n', '\\r', '\\f', ' ', '<'))",
+    "rule": "Removed Operand",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 109,
+    "precode": "if (reader.matchConsume(\"#\")) { // numbered",
+    "aftercode": "if (!reader.matchConsume(\"#\")) { // numbered",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 110,
+    "precode": "boolean isHexMode = reader.matchConsumeIgnoreCase(\"X\");",
+    "aftercode": "boolean isHexMode = !reader.matchConsumeIgnoreCase(\"X\");",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 111,
+    "precode": "String numRef = isHexMode ? reader.consumeHexSequence() : reader.consumeDigitSequence();",
+    "aftercode": "String numRef = isHexMode ? reader.consumeDigitSequence() : reader.consumeHexSequence();",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 112,
+    "precode": "if (numRef.length() == 0) { // didn't match anything",
+    "aftercode": "if (numRef.length() != 0) { // didn't match anything",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 112,
+    "precode": "if (numRef.length() == 0) { // didn't match anything",
+    "aftercode": "if (numRef.length() <= 0) { // didn't match anything",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 117,
+    "precode": "if (!reader.matchConsume(\";\"))",
+    "aftercode": "if (reader.matchConsume(\";\"))",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 121,
+    "precode": "int base = isHexMode ? 16 : 10;",
+    "aftercode": "int base = isHexMode ? 10 : 16;",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 122,
+    "precode": "charval = Integer.valueOf(numRef, base);",
+    "aftercode": "charval = Integer.valueOf(numRef, 10);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 125,
+    "precode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "aftercode": "if (charval == -1 && (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 125,
+    "precode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "aftercode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval >= 0x10FFFF) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 125,
+    "precode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "aftercode": "if (charval == -1 || (charval > 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 125,
+    "precode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "aftercode": "if (charval == -1 || (charval >= 0xD800 || charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 136,
+    "precode": "boolean looksLegit = reader.matches(';');",
+    "aftercode": "boolean looksLegit = !reader.matches(';');",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 138,
+    "precode": "boolean found = (Entities.isBaseNamedEntity(nameRef) || (Entities.isNamedEntity(nameRef) && looksLegit));",
+    "aftercode": "boolean found = (Entities.isBaseNamedEntity(nameRef) && (Entities.isNamedEntity(nameRef) && looksLegit));",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 138,
+    "precode": "boolean found = (Entities.isBaseNamedEntity(nameRef) || (Entities.isNamedEntity(nameRef) && looksLegit));",
+    "aftercode": "boolean found = (Entities.isBaseNamedEntity(nameRef) || (Entities.isNamedEntity(nameRef) || looksLegit));",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 140,
+    "precode": "if (!found) {",
+    "aftercode": "if (found) {",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 142,
+    "precode": "if (looksLegit) // named with semicolon",
+    "aftercode": "if (!looksLegit) // named with semicolon",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 146,
+    "precode": "if (inAttribute && (reader.matchesLetter() || reader.matchesDigit() || reader.matchesAny('=', '-', '_'))) {",
+    "aftercode": "if (inAttribute || (reader.matchesLetter() || reader.matchesDigit() || reader.matchesAny('=', '-', '_'))) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 146,
+    "precode": "if (inAttribute && (reader.matchesLetter() || reader.matchesDigit() || reader.matchesAny('=', '-', '_'))) {",
+    "aftercode": "if (inAttribute && (reader.matchesLetter() && reader.matchesDigit() && reader.matchesAny('=', '-', '_'))) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 146,
+    "precode": "if (inAttribute && (reader.matchesLetter() || reader.matchesDigit() || reader.matchesAny('=', '-', '_'))) {",
+    "aftercode": "if (inAttribute && (reader.matchesLetter() || reader.matchesDigit() || !reader.matchesAny('=', '-', '_'))) {",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 151,
+    "precode": "if (!reader.matchConsume(\";\"))",
+    "aftercode": "if (reader.matchConsume(\";\"))",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 102,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 104,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 106,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 115,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 127,
+    "precode": "return replacementChar;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 131,
+    "precode": "return (char) charval;",
+    "aftercode": "return (char) 0;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 144,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 149,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 153,
+    "precode": "return Entities.getCharacterByName(nameRef);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 101,
+    "precode": "if (reader.isEmpty())",
+    "aftercode": "if (!reader.isEmpty())",
+    "rule": "Negation",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 103,
+    "precode": "if (additionalAllowedCharacter != null && additionalAllowedCharacter == reader.current())",
+    "aftercode": "if (additionalAllowedCharacter == null && additionalAllowedCharacter == reader.current())",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 109,
+    "precode": "if (reader.matchConsume(\"#\")) { // numbered",
+    "aftercode": "if (reader.matchConsume(\"&\")) { // numbered",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 112,
+    "precode": "if (numRef.length() == 0) { // didn't match anything",
+    "aftercode": "if (numRef.length() > 0) { // didn't match anything",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 117,
+    "precode": "if (!reader.matchConsume(\";\"))",
+    "aftercode": "if (!reader.matchConsume(\"#\"))",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 121,
+    "precode": "int base = isHexMode ? 16 : 10;",
+    "aftercode": "int base = isHexMode ? 16 : 16;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 125,
+    "precode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "aftercode": "if (charval == -1 || (charval >= 0xD800 && charval < 0xDFFF) || charval > 0x10FFFF) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 125,
+    "precode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval > 0x10FFFF) {",
+    "aftercode": "if (charval == -1 || (charval >= 0xD800 && charval <= 0xDFFF) || charval < 0x10FFFF) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 138,
+    "precode": "boolean found = (Entities.isBaseNamedEntity(nameRef) || (Entities.isNamedEntity(nameRef) && looksLegit));",
+    "aftercode": "boolean found = (Entities.isBaseNamedEntity(nameRef) || (Entities.isNamedEntity(nameRef) || looksLegit));",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 146,
+    "precode": "if (inAttribute && (reader.matchesLetter() || reader.matchesDigit() || reader.matchesAny('=', '-', '_'))) {",
+    "aftercode": "if (inAttribute && (reader.matchesLetter() || reader.matchesDigit() || reader.matchesAny('=', '-', 'A'))) {",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 105,
+    "precode": "if (reader.matchesAny('\\t', '\\n', '\\r', '\\f', ' ', '<', '&'))",
+    "aftercode": "if (reader.matchesAny('\\t', '\\n', '\\r', '\\f', ' ', '<', 'A'))",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 110,
+    "precode": "boolean isHexMode = reader.matchConsumeIgnoreCase(\"X\");",
+    "aftercode": "boolean isHexMode = reader.matchConsume(\"X\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 113,
+    "precode": "characterReferenceError(\"numeric reference with no numerals\");",
+    "aftercode": "// characterReferenceError(\"numeric reference with no numerals\");",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 118,
+    "precode": "characterReferenceError(\"missing semicolon\"); // missing semi",
+    "aftercode": "// characterReferenceError(\"missing semicolon\"); // missing semi",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 126,
+    "precode": "characterReferenceError(\"character outside of valid range\");",
+    "aftercode": "// characterReferenceError(\"character outside of valid range\");",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 143,
+    "precode": "characterReferenceError(String.format(\"invalid named referenece '%s'\", nameRef));",
+    "aftercode": "// characterReferenceError(String.format(\"invalid named referenece '%s'\", nameRef));",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 152,
+    "precode": "characterReferenceError(\"missing semicolon\"); // missing semi",
+    "aftercode": "// characterReferenceError(\"missing semicolon\"); // missing semi",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 108,
+    "precode": "reader.mark();",
+    "aftercode": "// reader.mark();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 114,
+    "precode": "reader.rewindToMark();",
+    "aftercode": "// reader.rewindToMark();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 135,
+    "precode": "String nameRef = reader.consumeLetterThenDigitSequence();",
+    "aftercode": "String nameRef = \"\";",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 141,
+    "precode": "reader.rewindToMark();",
+    "aftercode": "// reader.rewindToMark();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 148,
+    "precode": "reader.rewindToMark();",
+    "aftercode": "// reader.rewindToMark();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.41,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 231,
+    "precode": "while (!reader.isEmpty()) {",
+    "aftercode": "while (reader.isEmpty()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 231,
+    "precode": "while (!reader.isEmpty()) {",
+    "aftercode": "while (true) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 232,
+    "precode": "builder.append(reader.consumeTo('&'));",
+    "aftercode": "builder.append(reader.consumeTo(' '));",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 233,
+    "precode": "if (reader.matches('&')) {",
+    "aftercode": "if (!reader.matches('&')) {",
+    "rule": "Negation",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 233,
+    "precode": "if (reader.matches('&')) {",
+    "aftercode": "if (reader.matches(' ')) {",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 234,
+    "precode": "reader.consume();",
+    "aftercode": "// reader.consume();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 235,
+    "precode": "Character c = consumeCharacterReference(null, inAttribute);",
+    "aftercode": "Character c = consumeCharacterReference(null, false);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 235,
+    "precode": "Character c = consumeCharacterReference(null, inAttribute);",
+    "aftercode": "Character c = consumeCharacterReference(inAttribute, null);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 236,
+    "precode": "if (c == null)",
+    "aftercode": "if (c != null)",
+    "rule": "Negation",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 236,
+    "precode": "if (c == null)",
+    "aftercode": "if (c == ' ')",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 237,
+    "precode": "builder.append('&');",
+    "aftercode": "builder.append(' ');",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 239,
+    "precode": "builder.append(c);",
+    "aftercode": "builder.append(null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 239,
+    "precode": "builder.append(c);",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 242,
+    "precode": "return builder.toString();",
+    "aftercode": "return builder.toString().trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 1.05,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/jsoup/parser/Tokeniser.java",
+    "line": 232,
+    "precode": "builder.append(reader.consumeTo('&'));",
+    "aftercode": "builder.append(reader.consumeTo('&'));",
+    "rule": "No-op (Redundant append)",
+    "gen_time_s": 1.05,
+    "dublicate": true
+  }
+]

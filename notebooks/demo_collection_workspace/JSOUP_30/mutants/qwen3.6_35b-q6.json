@@ -1,0 +1,762 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 78,
+    "precode": "this.root = root;",
+    "aftercode": "this.root = destination;",
+    "rule": "Parameter Assignment",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "this.destination = destination;",
+    "aftercode": "this.destination = root;",
+    "rule": "Parameter Assignment",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 78,
+    "precode": "this.root = root;",
+    "aftercode": "this.root = null;",
+    "rule": "Null Return/Assignment",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "this.destination = destination;",
+    "aftercode": "this.destination = null;",
+    "rule": "Null Return/Assignment",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (!whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 87,
+    "precode": "ElementMeta meta = createSafeElement(sourceEl);",
+    "aftercode": "ElementMeta meta = createSafeElement(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 88,
+    "precode": "Element destChild = meta.el;",
+    "aftercode": "Element destChild = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "destination.appendChild(destChild);",
+    "aftercode": "destination.insertBefore(destChild, null);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 91,
+    "precode": "numDiscarded += meta.numAttribsDiscarded;",
+    "aftercode": "numDiscarded -= meta.numAttribsDiscarded;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 92,
+    "precode": "destination = destChild;",
+    "aftercode": "destination = sourceEl;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (source == root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (source != null) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 94,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded--;",
+    "rule": "Increment/Decrement Operator Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 94,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded += 2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (source instanceof Element) {",
+    "rule": "Instanceof Type Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 97,
+    "precode": "TextNode sourceText = (TextNode) source;",
+    "aftercode": "TextNode sourceText = null;",
+    "rule": "Null Argument",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = new TextNode(\"\", source.baseUri());",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = new TextNode(sourceText.getWholeText(), null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 99,
+    "precode": "destination.appendChild(destText);",
+    "aftercode": "destination.removeChild(destText);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 101,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded--;",
+    "rule": "Increment/Decrement Operator Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 83,
+    "precode": "if (source instanceof Element) {",
+    "aftercode": "if (!(source instanceof Element)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 84,
+    "precode": "Element sourceEl = (Element) source;",
+    "aftercode": "Element sourceEl = null;",
+    "rule": "Null Argument",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (whitelist.isSafeTag(null)) { // safe, clone and copy safe attrs",
+    "rule": "Null Argument",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (source != null) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (source != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.tagName());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element || whitelist.isSafeTag(source.nodeName())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.8,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element && !whitelist.isSafeTag(source.nodeName())) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.8,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "rule": "Empty Block",
+    "gen_time_s": 2.8,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = destination.next(); // would have descended, so pop destination stack",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.8,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = destination.child(); // would have descended, so pop destination stack",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.8,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 114,
+    "precode": "NodeTraversor traversor = new NodeTraversor(cleaningVisitor);",
+    "aftercode": "NodeTraversor traversor = new NodeTraversor(dest);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 115,
+    "precode": "traversor.traverse(source);",
+    "aftercode": "traversor.traverse(dest);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 115,
+    "precode": "traversor.traverse(source);",
+    "aftercode": "traversor.traverse(null);",
+    "rule": "Null Substitution",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 116,
+    "precode": "return cleaningVisitor.numDiscarded;",
+    "aftercode": "return 0;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 116,
+    "precode": "return cleaningVisitor.numDiscarded;",
+    "aftercode": "return -cleaningVisitor.numDiscarded;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 113,
+    "precode": "CleaningVisitor cleaningVisitor = new CleaningVisitor(source, dest);",
+    "aftercode": "CleaningVisitor cleaningVisitor = new CleaningVisitor(dest, source);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 83,
+    "precode": "if (source instanceof Element) {",
+    "aftercode": "if (!(source instanceof Element)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (!whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (source == root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (!(source instanceof TextNode)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 91,
+    "precode": "numDiscarded += meta.numAttribsDiscarded;",
+    "aftercode": "numDiscarded -= meta.numAttribsDiscarded;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 91,
+    "precode": "numDiscarded += meta.numAttribsDiscarded;",
+    "aftercode": "numDiscarded = meta.numAttribsDiscarded;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 94,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded--;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 94,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded+=2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 101,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded--;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 101,
+    "precode": "numDiscarded++;",
+    "aftercode": "numDiscarded+=2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "destination.appendChild(destChild);",
+    "aftercode": "destination.prependChild(destChild);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "destination.appendChild(destChild);",
+    "aftercode": "destination.removeChild(destChild);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 92,
+    "precode": "destination = destChild;",
+    "aftercode": "destination = root;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 92,
+    "precode": "destination = destChild;",
+    "aftercode": "destination = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 98,
+    "precode": "TextNode destText = new TextNode(sourceText.getWholeText(), source.baseUri());",
+    "aftercode": "TextNode destText = new TextNode(\"\", source.baseUri());",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 99,
+    "precode": "destination.appendChild(destText);",
+    "aftercode": "destination.prependChild(destText);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element || whitelist.isSafeTag(source.nodeName())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (source instanceof Element && !whitelist.isSafeTag(source.nodeName())) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = destination.child(0); // would have descended, so pop destination stack",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "destination = destination.nextSibling(); // would have descended, so pop destination stack",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 78,
+    "precode": "this.root = root;",
+    "aftercode": "this.root = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 79,
+    "precode": "this.destination = destination;",
+    "aftercode": "this.destination = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 87,
+    "precode": "ElementMeta meta = createSafeElement(sourceEl);",
+    "aftercode": "ElementMeta meta = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 88,
+    "precode": "Element destChild = meta.el;",
+    "aftercode": "Element destChild = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 97,
+    "precode": "TextNode sourceText = (TextNode) source;",
+    "aftercode": "TextNode sourceText = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": true
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 108,
+    "precode": "}",
+    "aftercode": "// destination = destination.parent(); // would have descended, so pop destination stack\n}",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 89,
+    "precode": "destination.appendChild(destChild);",
+    "aftercode": "// destination.appendChild(destChild);",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 92,
+    "precode": "destination = destChild;",
+    "aftercode": "// destination = destChild;",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 99,
+    "precode": "destination.appendChild(destText);",
+    "aftercode": "// destination.appendChild(destText);",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 91,
+    "precode": "numDiscarded += meta.numAttribsDiscarded;",
+    "aftercode": "// numDiscarded += meta.numAttribsDiscarded;",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 94,
+    "precode": "numDiscarded++;",
+    "aftercode": "// numDiscarded++;",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 101,
+    "precode": "numDiscarded++;",
+    "aftercode": "// numDiscarded++;",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 107,
+    "precode": "destination = destination.parent(); // would have descended, so pop destination stack",
+    "aftercode": "// destination = destination.parent(); // would have descended, so pop destination stack",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 86,
+    "precode": "if (whitelist.isSafeTag(sourceEl.tagName())) { // safe, clone and copy safe attrs",
+    "aftercode": "if (false) { // safe, clone and copy safe attrs",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 93,
+    "precode": "} else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.",
+    "aftercode": "} else if (false) { // not a safe tag, so don't add. don't count root against discarded.",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 96,
+    "precode": "} else if (source instanceof TextNode) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 106,
+    "precode": "if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {",
+    "aftercode": "if (false) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 84,
+    "precode": "Element sourceEl = (Element) source;",
+    "aftercode": "Element sourceEl = (Element) null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/jsoup/safety/Cleaner.java",
+    "line": 109,
+    "precode": "}",
+    "aftercode": "return;",
+    "rule": "Return Statement Replacement",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  }
+]

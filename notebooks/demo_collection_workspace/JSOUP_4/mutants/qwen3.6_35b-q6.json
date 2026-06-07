@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 48,
+    "precode": "if (!string.contains(\"&\"))",
+    "aftercode": "if (string.contains(\"&\"))",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 51,
+    "precode": "Matcher m = unescapePattern.matcher(string); // &(#(x|X)?([0-9a-fA-F]+)|[a-zA-Z]+);?",
+    "aftercode": "Matcher m = unescapePattern.matcher(null); // &(#(x|X)?([0-9a-fA-F]+)|[a-zA-Z]+);?",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 52,
+    "precode": "StringBuffer accum = new StringBuffer(string.length()); // pity matcher can't use stringbuilder, avoid syncs",
+    "aftercode": "StringBuffer accum = new StringBuffer(); // pity matcher can't use stringbuilder, avoid syncs",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 56,
+    "precode": "String num = m.group(3);",
+    "aftercode": "String num = m.group(2);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 57,
+    "precode": "if (num != null) {",
+    "aftercode": "if (num == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 59,
+    "precode": "int base = m.group(2) != null ? 16 : 10; // 2 is hex indicator",
+    "aftercode": "int base = m.group(2) != null ? 10 : 16; // 2 is hex indicator",
+    "rule": "Conditional Operator Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 60,
+    "precode": "charval = Integer.valueOf(num, base);",
+    "aftercode": "charval = Integer.parseInt(num, base);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 61,
+    "precode": "} catch (NumberFormatException e) {",
+    "aftercode": "} catch (IllegalArgumentException e) {",
+    "rule": "Exception Type Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 64,
+    "precode": "String name = m.group(1);",
+    "aftercode": "String name = m.group(2);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 65,
+    "precode": "if (full.containsKey(name))",
+    "aftercode": "if (!full.containsKey(name))",
+    "rule": "Negation Inversion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 66,
+    "precode": "charval = full.get(name);",
+    "aftercode": "charval = full.get(name).intValue();",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 69,
+    "precode": "if (charval != -1 || charval > 0xFFFF) { // out of range",
+    "aftercode": "if (charval != -1 && charval > 0xFFFF) { // out of range",
+    "rule": "Logical Operator Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 70,
+    "precode": "String c = Character.toString((char) charval);",
+    "aftercode": "String c = String.valueOf((char) charval);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 71,
+    "precode": "m.appendReplacement(accum, c);",
+    "aftercode": "m.appendReplacement(accum, \"\");",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 73,
+    "precode": "m.appendReplacement(accum, m.group(0)); // replace with original string",
+    "aftercode": "m.appendReplacement(accum, \"\"); // replace with original string",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 76,
+    "precode": "m.appendTail(accum);",
+    "aftercode": "m.appendReplacement(accum, \"\");",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 48,
+    "precode": "if (!string.contains(\"&\"))",
+    "aftercode": "if (!string.contains(\"&amp;\"))",
+    "rule": "String Literal Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 59,
+    "precode": "int base = m.group(2) != null ? 16 : 10; // 2 is hex indicator",
+    "aftercode": "int base = m.group(2) != null ? 16 : 2; // 2 is hex indicator",
+    "rule": "Numeric Literal Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 69,
+    "precode": "if (charval != -1 || charval > 0xFFFF) { // out of range",
+    "aftercode": "if (charval != -1 || charval >= 0xFFFF) { // out of range",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 70,
+    "precode": "String c = Character.toString((char) charval);",
+    "aftercode": "String c = Character.toString((char) (charval + 1));",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 55,
+    "precode": "int charval = -1;",
+    "aftercode": "int charval = 0;",
+    "rule": "Numeric Literal Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 59,
+    "precode": "int base = m.group(2) != null ? 16 : 10; // 2 is hex indicator",
+    "aftercode": "int base = m.group(2) != null ? 2 : 10; // 2 is hex indicator",
+    "rule": "Numeric Literal Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 69,
+    "precode": "if (charval != -1 || charval > 0xFFFF) { // out of range",
+    "aftercode": "if (charval != -1 || charval < 0xFFFF) { // out of range",
+    "rule": "Relational Operator Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 66,
+    "precode": "charval = full.get(name);",
+    "aftercode": "charval = full.get(name).charValue();",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 56,
+    "precode": "String num = m.group(3);",
+    "aftercode": "String num = m.group(4);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 64,
+    "precode": "String name = m.group(1);",
+    "aftercode": "String name = m.group(0);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 71,
+    "precode": "m.appendReplacement(accum, c);",
+    "aftercode": "m.appendReplacement(accum, c + \"\");",
+    "rule": "String Concatenation Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 73,
+    "precode": "m.appendReplacement(accum, m.group(0)); // replace with original string",
+    "aftercode": "m.appendReplacement(accum, m.group(0).toUpperCase()); // replace with original string",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 52,
+    "precode": "StringBuffer accum = new StringBuffer(string.length()); // pity matcher can't use stringbuilder, avoid syncs",
+    "aftercode": "StringBuffer accum = new StringBuffer(string.length() + 1); // pity matcher can't use stringbuilder, avoid syncs",
+    "rule": "Arithmetic Operator Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 60,
+    "precode": "charval = Integer.valueOf(num, base);",
+    "aftercode": "charval = Integer.decode(num);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 69,
+    "precode": "if (charval != -1 || charval > 0xFFFF) { // out of range",
+    "aftercode": "if (charval == -1 || charval > 0xFFFF) { // out of range",
+    "rule": "Equality Operator Mutation",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 76,
+    "precode": "m.appendTail(accum);",
+    "aftercode": "accum.append(m.group(0));",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2234,
+    "precode": "Character c = Character.valueOf((char) ((Integer) entity[1]).intValue());",
+    "aftercode": "Character c = Character.valueOf((char) ((Integer) entity[0]).intValue());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2235,
+    "precode": "baseByVal.put(c, ((String) entity[0]));",
+    "aftercode": "baseByVal.put(((String) entity[0]), c);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2238,
+    "precode": "Character c = Character.valueOf((char) ((Integer) entity[1]).intValue());",
+    "aftercode": "Character c = Character.valueOf((char) ((Integer) entity[0]).intValue());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2239,
+    "precode": "full.put((String) entity[0], c);",
+    "aftercode": "full.put(c, (String) entity[0]);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2240,
+    "precode": "fullByVal.put(c, ((String) entity[0]));",
+    "aftercode": "fullByVal.put(((String) entity[0]), c);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2235,
+    "precode": "baseByVal.put(c, ((String) entity[0]));",
+    "aftercode": "baseByVal.put(c, null);",
+    "rule": "Null Return",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2239,
+    "precode": "full.put((String) entity[0], c);",
+    "aftercode": "full.put(null, c);",
+    "rule": "Null Return",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2240,
+    "precode": "fullByVal.put(c, ((String) entity[0]));",
+    "aftercode": "fullByVal.put(c, null);",
+    "rule": "Null Return",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2238,
+    "precode": "Character c = Character.valueOf((char) ((Integer) entity[1]).intValue());",
+    "aftercode": "Character c = Character.valueOf((char) ((Integer) entity[1]).intValue() + 1);",
+    "rule": "Increment Operator",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/nodes/Entities.java",
+    "line": 2234,
+    "precode": "Character c = Character.valueOf((char) ((Integer) entity[1]).intValue());",
+    "aftercode": "Character c = Character.valueOf((char) ((Integer) entity[1]).intValue() - 1);",
+    "rule": "Decrement Operator",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  }
+]

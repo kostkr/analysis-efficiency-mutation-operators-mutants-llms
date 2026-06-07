@@ -1,0 +1,342 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 637,
+    "precode": "List<Class<?>> parents = new ArrayList<Class<?>>();",
+    "aftercode": "List<Class<?>> parents = new LinkedList<Class<?>>();",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 638,
+    "precode": "parents.add(mixInCls);",
+    "aftercode": "// parents.add(mixInCls);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 639,
+    "precode": "ClassUtil.findSuperTypes(mixInCls, targetClass, parents);",
+    "aftercode": "ClassUtil.findSuperTypes(targetClass, mixInCls, parents);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 640,
+    "precode": "for (Class<?> mixin : parents) {",
+    "aftercode": "for (Class<?> mixin : new ArrayList<Class<?>>()) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 641,
+    "precode": "for (Method m : mixin.getDeclaredMethods()) {",
+    "aftercode": "for (Method m : mixin.getMethods()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 642,
+    "precode": "if (!_isIncludableMemberMethod(m)) {",
+    "aftercode": "if (_isIncludableMemberMethod(m)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 642,
+    "precode": "if (!_isIncludableMemberMethod(m)) {",
+    "aftercode": "if (m == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 643,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 645,
+    "precode": "AnnotatedMethod am = methods.find(m);",
+    "aftercode": "AnnotatedMethod am = mixIns.find(m);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 645,
+    "precode": "AnnotatedMethod am = methods.find(m);",
+    "aftercode": "AnnotatedMethod am = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 650,
+    "precode": "if (am != null) {",
+    "aftercode": "if (am == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 650,
+    "precode": "if (am != null) {",
+    "aftercode": "if (am != null && false) {",
+    "rule": "Condition Weakening",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 651,
+    "precode": "_addMixUnders(m, am);",
+    "aftercode": "// _addMixUnders(m, am);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 658,
+    "precode": "am = mixIns.find(m);",
+    "aftercode": "am = methods.find(m);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 658,
+    "precode": "am = mixIns.find(m);",
+    "aftercode": "am = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 659,
+    "precode": "if (am != null) {",
+    "aftercode": "if (am == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 660,
+    "precode": "_addMixUnders(m, am);",
+    "aftercode": "_addMixUnders(am, m);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 662,
+    "precode": "mixIns.add(_constructMethod(m));",
+    "aftercode": "mixIns.add(null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 662,
+    "precode": "mixIns.add(_constructMethod(m));",
+    "aftercode": "// mixIns.add(_constructMethod(m));",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 640,
+    "precode": "for (Class<?> mixin : parents) {",
+    "aftercode": "for (int i = 0; i < parents.size(); i++) {",
+    "rule": "Loop Transformation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 638,
+    "precode": "parents.add(mixInCls);",
+    "aftercode": "parents.add(null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 642,
+    "precode": "if (!_isIncludableMemberMethod(m)) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 642,
+    "precode": "if (!_isIncludableMemberMethod(m)) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 650,
+    "precode": "if (am != null) {",
+    "aftercode": "if (am != null && true) {",
+    "rule": "Condition Tautology",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 659,
+    "precode": "if (am != null) {",
+    "aftercode": "if (am != null && true) {",
+    "rule": "Condition Tautology",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 641,
+    "precode": "for (Method m : mixin.getDeclaredMethods()) {",
+    "aftercode": "for (Method m : mixin.getDeclaredFields()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 637,
+    "precode": "List<Class<?>> parents = new ArrayList<Class<?>>();",
+    "aftercode": "List<Class<?>> parents = new ArrayList<>();",
+    "rule": "Type Inference Change",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 651,
+    "precode": "_addMixUnders(m, am);",
+    "aftercode": "_addMixUnders(m, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 660,
+    "precode": "_addMixUnders(m, am);",
+    "aftercode": "_addMixUnders(m, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 662,
+    "precode": "mixIns.add(_constructMethod(m));",
+    "aftercode": "mixIns.add(_constructMethod(null));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 639,
+    "precode": "ClassUtil.findSuperTypes(mixInCls, targetClass, parents);",
+    "aftercode": "ClassUtil.findSuperTypes(mixInCls, targetClass, new ArrayList<>());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 645,
+    "precode": "AnnotatedMethod am = methods.find(m);",
+    "aftercode": "AnnotatedMethod am = methods.get(m);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 658,
+    "precode": "am = mixIns.find(m);",
+    "aftercode": "am = mixIns.get(m);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+    "line": 640,
+    "precode": "for (Class<?> mixin : parents) {",
+    "aftercode": "for (Class<?> mixin : parents.subList(1, parents.size())) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  }
+]

@@ -147,7 +147,7 @@ class SourceFinder:
     def _ensure_checkout(
         self, project: str, bug_id: int, version: str, path: str
     ) -> None:
-        out, _, _ = self.d4j.exec(f'test -d "{path}" && echo ok')
+        out, _, _ = self.d4j.exec(f'test -d "{path}" && test -f "{path}/build.xml" && echo ok')
         if "ok" not in out:
             self.d4j.checkout(project, bug_id, version, dest=path, timeout=180)
 
@@ -398,4 +398,3 @@ def _parse_diff_fixed_lines(diff: str) -> list[int]:
             cur_line += 1  # context line
 
     return sorted(set(lines_out))
-

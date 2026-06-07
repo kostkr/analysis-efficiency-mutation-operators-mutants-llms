@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 84,
+    "precode": "char startChar = seq.charAt(0);",
+    "aftercode": "char startChar = seq.charAt(1);",
+    "rule": "Array Index Out Of Bounds",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 85,
+    "precode": "for (int offset = pos; offset < length; offset++) {",
+    "aftercode": "for (int offset = pos + 1; offset < length; offset++) {",
+    "rule": "Offset Increment",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 85,
+    "precode": "for (int offset = pos; offset < length; offset++) {",
+    "aftercode": "for (int offset = pos; offset <= length; offset++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 87,
+    "precode": "if (startChar != input[offset])",
+    "aftercode": "if (startChar == input[offset])",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 88,
+    "precode": "while(++offset < length && startChar != input[offset]);",
+    "aftercode": "while(++offset <= length && startChar != input[offset]);",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 88,
+    "precode": "while(++offset < length && startChar != input[offset]);",
+    "aftercode": "while(++offset < length && startChar == input[offset]);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 89,
+    "precode": "int i = offset + 1;",
+    "aftercode": "int i = offset;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 90,
+    "precode": "int last = i + seq.length()-1;",
+    "aftercode": "int last = i + seq.length();",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 91,
+    "precode": "if (offset < length && last <= length) {",
+    "aftercode": "if (offset <= length && last <= length) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 91,
+    "precode": "if (offset < length && last <= length) {",
+    "aftercode": "if (offset < length && last < length) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 91,
+    "precode": "if (offset < length && last <= length) {",
+    "aftercode": "if (offset < length || last <= length) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 92,
+    "precode": "for (int j = 1; i < last && seq.charAt(j) == input[i]; i++, j++);",
+    "aftercode": "for (int j = 1; i < last && seq.charAt(j) != input[i]; i++, j++);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 92,
+    "precode": "for (int j = 1; i < last && seq.charAt(j) == input[i]; i++, j++);",
+    "aftercode": "for (int j = 0; i < last && seq.charAt(j) == input[i]; i++, j++);",
+    "rule": "Loop Variable Initialization",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 92,
+    "precode": "for (int j = 1; i < last && seq.charAt(j) == input[i]; i++, j++);",
+    "aftercode": "for (int j = 1; i <= last && seq.charAt(j) == input[i]; i++, j++);",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 93,
+    "precode": "if (i == last) // found full sequence",
+    "aftercode": "if (i > last) // found full sequence",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 93,
+    "precode": "if (i == last) // found full sequence",
+    "aftercode": "if (i != last) // found full sequence",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/parser/CharacterReader.java",
+    "line": 94,
+    "precode": "return offset - pos;",
+    "aftercode": "return offset + pos;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,612 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 94,
+    "precode": "byte[] bom = new byte[4];",
+    "aftercode": "byte[] bom = new byte[3];",
+    "rule": "Array Size Mutation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 97,
+    "precode": "if (bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF ||",
+    "aftercode": "if (bom[0] == 0x00 || bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF ||",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 97,
+    "precode": "if (bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF ||",
+    "aftercode": "if (bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF &&",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 98,
+    "precode": "bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE && bom[2] == 0x00 && bom[3] == 0x00) {",
+    "aftercode": "bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE && bom[2] == 0x00 && bom[3] != 0x00) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 99,
+    "precode": "charsetName = \"UTF-32\"; // and I hope it's on your system",
+    "aftercode": "charsetName = \"UTF-8\"; // and I hope it's on your system",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 100,
+    "precode": "} else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF ||",
+    "aftercode": "} else if (bom[0] == (byte) 0xFE || bom[1] == (byte) 0xFF ||",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 101,
+    "precode": "bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE) {",
+    "aftercode": "bom[0] == (byte) 0xFF && bom[1] != (byte) 0xFE) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 102,
+    "precode": "charsetName = \"UTF-16\"; // in all Javas",
+    "aftercode": "charsetName = \"UTF-16BE\"; // in all Javas",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {",
+    "aftercode": "} else if (bom[0] == (byte) 0xEF || bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 105,
+    "precode": "byteData.position(3); // 16 and 32 decoders consume the BOM to determine be/le; utf-8 should be consumed",
+    "aftercode": "byteData.position(0); // 16 and 32 decoders consume the BOM to determine be/le; utf-8 should be consumed",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 108,
+    "precode": "if (charsetName == null) { // determine from meta. safe parse as UTF-8",
+    "aftercode": "if (charsetName != null) { // determine from meta. safe parse as UTF-8",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 110,
+    "precode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(\"UTF-8\").decode(byteData).toString();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 112,
+    "precode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").first();",
+    "aftercode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").last();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 113,
+    "precode": "if (meta != null) { // if not found, will keep utf-8 as best attempt",
+    "aftercode": "if (meta == null) { // if not found, will keep utf-8 as best attempt",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 115,
+    "precode": "if (meta.hasAttr(\"http-equiv\")) {",
+    "aftercode": "if (!meta.hasAttr(\"http-equiv\")) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 116,
+    "precode": "foundCharset = getCharsetFromContentType(meta.attr(\"content\"));",
+    "aftercode": "foundCharset = getCharsetFromContentType(\"\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 118,
+    "precode": "if (foundCharset == null && meta.hasAttr(\"charset\")) {",
+    "aftercode": "if (foundCharset != null && meta.hasAttr(\"charset\")) {",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 118,
+    "precode": "if (foundCharset == null && meta.hasAttr(\"charset\")) {",
+    "aftercode": "if (foundCharset == null || meta.hasAttr(\"charset\")) {",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 120,
+    "precode": "if (Charset.isSupported(meta.attr(\"charset\"))) {",
+    "aftercode": "if (!Charset.isSupported(meta.attr(\"charset\"))) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 121,
+    "precode": "foundCharset = meta.attr(\"charset\");",
+    "aftercode": "foundCharset = \"UTF-8\";",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() == 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() != 0 && foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 129,
+    "precode": "foundCharset = foundCharset.trim().replaceAll(\"[\"']\", \"\");",
+    "aftercode": "foundCharset = foundCharset.trim().replaceAll(\"[\"']\", \"X\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 131,
+    "precode": "byteData.rewind();",
+    "aftercode": "byteData.position(0);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 132,
+    "precode": "docData = Charset.forName(foundCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(foundCharset).decode(byteData).toLowerCase().toString();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 137,
+    "precode": "Validate.notEmpty(charsetName, \"Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML\");",
+    "aftercode": "Validate.notEmpty(\"\", \"Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML\");",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 138,
+    "precode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(charsetName).decode(byteData).toString().trim();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 140,
+    "precode": "if (doc == null) {",
+    "aftercode": "if (doc != null) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 142,
+    "precode": "doc.outputSettings().charset(charsetName);",
+    "aftercode": "doc.outputSettings().charset(defaultCharset);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 95,
+    "precode": "byteData.get(bom);",
+    "aftercode": "byteData.get(new byte[bom.length]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 96,
+    "precode": "byteData.rewind();",
+    "aftercode": "// byteData.rewind();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 105,
+    "precode": "byteData.position(3); // 16 and 32 decoders consume the BOM to determine be/le; utf-8 should be consumed",
+    "aftercode": "byteData.position(4); // 16 and 32 decoders consume the BOM to determine be/le; utf-8 should be consumed",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() != 0 && foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 131,
+    "precode": "byteData.rewind();",
+    "aftercode": "byteData.mark();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 138,
+    "precode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 142,
+    "precode": "doc.outputSettings().charset(charsetName);",
+    "aftercode": "doc.outputSettings().charset(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 97,
+    "precode": "bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF ||",
+    "aftercode": "bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0x00 ||",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 100,
+    "precode": "} else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF ||",
+    "aftercode": "} else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF &&",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {",
+    "aftercode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0x00) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 108,
+    "precode": "if (charsetName == null) { // determine from meta. safe parse as UTF-8",
+    "aftercode": "if (charsetName == \"UTF-8\") { // determine from meta. safe parse as UTF-8",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 112,
+    "precode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").first();",
+    "aftercode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").get(0);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 118,
+    "precode": "if (foundCharset == null && meta.hasAttr(\"charset\")) {",
+    "aftercode": "if (foundCharset == null || meta.hasAttr(\"charset\")) {",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() > 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 129,
+    "precode": "foundCharset = foundCharset.trim().replaceAll(\"[\"']\", \"\");",
+    "aftercode": "foundCharset = foundCharset.trim().replaceAll(\"[\"']\", \"\");",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 132,
+    "precode": "docData = Charset.forName(foundCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(foundCharset).decode(byteData).toString();",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 138,
+    "precode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 93,
+    "precode": "byteData.mark();",
+    "aftercode": "byteData.reset();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 95,
+    "precode": "byteData.get(bom);",
+    "aftercode": "byteData.get(bom, 0, 4);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {",
+    "aftercode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] != (byte) 0xBF) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 110,
+    "precode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 116,
+    "precode": "foundCharset = getCharsetFromContentType(meta.attr(\"content\"));",
+    "aftercode": "foundCharset = getCharsetFromContentType(meta.attr(\"http-equiv\"));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 120,
+    "precode": "if (Charset.isSupported(meta.attr(\"charset\"))) {",
+    "aftercode": "if (Charset.isSupported(\"UTF-8\")) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() != 0 && foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 133,
+    "precode": "doc = null;",
+    "aftercode": "doc = parser.parseInput(docData, baseUri);",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 141,
+    "precode": "doc = parser.parseInput(docData, baseUri);",
+    "aftercode": "doc = parser.parseInput(docData, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 142,
+    "precode": "doc.outputSettings().charset(charsetName);",
+    "aftercode": "doc.outputSettings().charset(charsetName);",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 97,
+    "precode": "bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF ||",
+    "aftercode": "bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF &&",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 98,
+    "precode": "bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE && bom[2] == 0x00 && bom[3] == 0x00) {",
+    "aftercode": "bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE && bom[2] == 0x00 && bom[3] == 0x00) {",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 100,
+    "precode": "} else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF ||",
+    "aftercode": "} else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF ||",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {",
+    "aftercode": "} else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "No-op",
+    "gen_time_s": 1.7,
+    "dublicate": true
+  }
+]

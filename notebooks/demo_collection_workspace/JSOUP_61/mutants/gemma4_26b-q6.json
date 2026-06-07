@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1092,
+    "precode": "final String classAttr = attributes.getIgnoreCase(\"class\");",
+    "aftercode": "final String classAttr = attributes.get(\"class\");",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1093,
+    "precode": "final int len = classAttr.length();",
+    "aftercode": "final int len = 0;",
+    "rule": "VariableValueReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1094,
+    "precode": "final int wantLen = className.length();",
+    "aftercode": "final int wantLen = 0;",
+    "rule": "VariableValueReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1096,
+    "precode": "if (len == 0 || len < wantLen) {",
+    "aftercode": "if (len == 0 && len < wantLen) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1096,
+    "precode": "if (len == 0 || len < wantLen) {",
+    "aftercode": "if (len <= 0 || len < wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1096,
+    "precode": "if (len == 0 || len < wantLen) {",
+    "aftercode": "if (len == 0 || len <= wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1101,
+    "precode": "if (len == wantLen) {",
+    "aftercode": "if (len <= wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1101,
+    "precode": "if (len == wantLen) {",
+    "aftercode": "if (len >= wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1102,
+    "precode": "return className.equalsIgnoreCase(classAttr);",
+    "aftercode": "return className.equals(classAttr);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1102,
+    "precode": "return className.equalsIgnoreCase(classAttr);",
+    "aftercode": "return !className.equalsIgnoreCase(classAttr);",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1108,
+    "precode": "for (int i = 0; i < len; i++) {",
+    "aftercode": "for (int i = 0; i <= len; i++) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1108,
+    "precode": "for (int i = 0; i < len; i++) {",
+    "aftercode": "for (int i = 1; i < len; i++) {",
+    "rule": "IncrementReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1109,
+    "precode": "if (Character.isWhitespace(classAttr.charAt(i))) {",
+    "aftercode": "if (!Character.isWhitespace(classAttr.charAt(i))) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1110,
+    "precode": "if (inClass) {",
+    "aftercode": "if (!inClass) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1112,
+    "precode": "if (i - start == wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "aftercode": "if (i - start == wantLen || classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1112,
+    "precode": "if (i - start == wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "aftercode": "if (i - start != wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1112,
+    "precode": "if (i - start == wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "aftercode": "if (i - start == wantLen && classAttr.regionMatches(false, start, className, 0, wantLen)) {",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1113,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1115,
+    "precode": "inClass = false;",
+    "aftercode": "inClass = true;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1118,
+    "precode": "if (!inClass) {",
+    "aftercode": "if (inClass) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1121,
+    "precode": "start = i;",
+    "aftercode": "start = i + 1;",
+    "rule": "IncrementReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1121,
+    "precode": "start = i;",
+    "aftercode": "start = 0;",
+    "rule": "VariableValueReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1128,
+    "precode": "return classAttr.regionMatches(true, start, className, 0, wantLen);",
+    "aftercode": "return classAttr.regionMatches(false, start, className, 0, wantLen);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1128,
+    "precode": "return classAttr.regionMatches(true, start, className, 0, wantLen);",
+    "aftercode": "return !classAttr.regionMatches(true, start, className, 0, wantLen);",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1127,
+    "precode": "if (inClass && len - start == wantLen) {",
+    "aftercode": "if (inClass || len - start == wantLen) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1127,
+    "precode": "if (inClass && len - start == wantLen) {",
+    "aftercode": "if (inClass && len - start != wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1131,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1093,
+    "precode": "final int len = classAttr.length();",
+    "aftercode": "final int len = classAttr.length() - 1;",
+    "rule": "ArithmeticOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1108,
+    "precode": "for (int i = 0; i < len; i++) {",
+    "aftercode": "for (int i = 0; i < len - 1; i++) {",
+    "rule": "BoundaryCondition",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1112,
+    "precode": "if (i - start == wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "aftercode": "if (i - start >= wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1127,
+    "precode": "if (inClass && len - start == wantLen) {",
+    "aftercode": "if (inClass && len - start >= wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1096,
+    "precode": "if (len == 0 || len < wantLen) {",
+    "aftercode": "if (len < 0 || len < wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1102,
+    "precode": "return className.equalsIgnoreCase(classAttr);",
+    "aftercode": "return className.contains(classAttr);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1109,
+    "precode": "if (Character.isWhitespace(classAttr.charAt(i))) {",
+    "aftercode": "if (Character.isLetter(classAttr.charAt(i))) {",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1112,
+    "precode": "if (i - start == wantLen && classAttr.regionMatches(true, start, className, 0, wantLen)) {",
+    "aftercode": "if (i - start == wantLen && classAttr.regionMatches(true, start, className, 0, i - start)) {",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1128,
+    "precode": "return classAttr.regionMatches(true, start, className, 0, wantLen);",
+    "aftercode": "return classAttr.regionMatches(true, start, className, 0, len);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1096,
+    "precode": "if (len == 0 || len < wantLen) {",
+    "aftercode": "if (len == 0 || len <= wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1101,
+    "precode": "if (len == wantLen) {",
+    "aftercode": "if (len > wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1118,
+    "precode": "if (!inClass) {",
+    "aftercode": "if (inClass) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1127,
+    "precode": "if (inClass && len - start == wantLen) {",
+    "aftercode": "if (inClass && len - start > wantLen) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 1108,
+    "precode": "for (int i = 0; i < len; i++) {",
+    "aftercode": "for (int i = 0; i < len; i++) {",
+    "rule": "NoOp",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  }
+]

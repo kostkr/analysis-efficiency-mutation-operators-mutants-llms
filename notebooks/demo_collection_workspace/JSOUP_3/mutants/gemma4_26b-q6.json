@@ -1,0 +1,1942 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 268,
+    "precode": "Validate.notNull(html);",
+    "aftercode": "// Validate.notNull(html);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 270,
+    "precode": "Element fragment = Parser.parseBodyFragmentRelaxed(html, baseUri()).body();",
+    "aftercode": "Element fragment = Parser.parseBodyFragmentRelaxed(html, baseUri());",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 271,
+    "precode": "for (Node node : fragment.childNodes()) {",
+    "aftercode": "for (Node node : fragment.childNodes()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": true
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 271,
+    "precode": "for (Node node : fragment.childNodes()) {",
+    "aftercode": "for (Node node : new ArrayList<>()) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 272,
+    "precode": "node.parentNode = null;",
+    "aftercode": "// node.parentNode = null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 272,
+    "precode": "node.parentNode = null;",
+    "aftercode": "node.parentNode = node;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 273,
+    "precode": "appendChild(node);",
+    "aftercode": "// appendChild(node);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 273,
+    "precode": "appendChild(node);",
+    "aftercode": "append(node);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 275,
+    "precode": "return this;",
+    "aftercode": "return fragment;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 275,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 285,
+    "precode": "Validate.notNull(html);",
+    "aftercode": "// Validate.notNull(html);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 287,
+    "precode": "Element fragment = Parser.parseBodyFragmentRelaxed(html, baseUri()).body();",
+    "aftercode": "Element fragment = Parser.parseBodyFragmentRelaxed(html, baseUri());",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 289,
+    "precode": "for (int i = nodes.size() - 1; i >= 0; i--) {",
+    "aftercode": "for (int i = nodes.size() - 1; i > 0; i--) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 289,
+    "precode": "for (int i = nodes.size() - 1; i >= 0; i--) {",
+    "aftercode": "for (int i = nodes.size(); i >= 0; i--) {",
+    "rule": "Off-by-one Error",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 289,
+    "precode": "for (int i = nodes.size() - 1; i >= 0; i--) {",
+    "aftercode": "for (int i = nodes.size() - 1; i >= 0; i++) {",
+    "rule": "Loop Increment/Decrement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 290,
+    "precode": "Node node = nodes.get(i);",
+    "aftercode": "Node node = nodes.get(0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 291,
+    "precode": "node.parentNode = null;",
+    "aftercode": "// node.parentNode = null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 291,
+    "precode": "node.parentNode = null;",
+    "aftercode": "node.parentNode = node;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 292,
+    "precode": "prependChild(node);",
+    "aftercode": "appendChild(node);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 292,
+    "precode": "prependChild(node);",
+    "aftercode": "// prependChild(node);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 294,
+    "precode": "return this;",
+    "aftercode": "return fragment;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 288,
+    "precode": "List<Node> nodes = fragment.childNodes();",
+    "aftercode": "List<Node> nodes = fragment.childNodes();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 312,
+    "precode": "Validate.notEmpty(html);",
+    "aftercode": "// Validate.notEmpty(html);",
+    "rule": "Removed Statement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 314,
+    "precode": "Element wrapBody = Parser.parseBodyFragmentRelaxed(html, baseUri).body();",
+    "aftercode": "Element wrapBody = Parser.parseBodyFragmentRelaxed(html, baseUri);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 315,
+    "precode": "Elements wrapChildren = wrapBody.children();",
+    "aftercode": "Elements wrapChildren = wrapBody.childNodes();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 316,
+    "precode": "Element wrap = wrapChildren.first();",
+    "aftercode": "Element wrap = wrapChildren.last();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 317,
+    "precode": "if (wrap == null) // nothing to wrap with; noop",
+    "aftercode": "if (wrap != null) // nothing to wrap with; noop",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 318,
+    "precode": "return null;",
+    "aftercode": "return wrap;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 320,
+    "precode": "Element deepest = getDeepChild(wrap);",
+    "aftercode": "Element deepest = wrap;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 321,
+    "precode": "parentNode.replaceChild(this, wrap);",
+    "aftercode": "parentNode.replaceChild(wrap, this);",
+    "rule": "Argument Order Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 322,
+    "precode": "deepest.addChild(this);",
+    "aftercode": "deepest.addChild(wrap);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 325,
+    "precode": "if (wrapChildren.size() > 1) {",
+    "aftercode": "if (wrapChildren.size() >= 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 325,
+    "precode": "if (wrapChildren.size() > 1) {",
+    "aftercode": "if (wrapChildren.size() > 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 326,
+    "precode": "for (int i = 1; i < wrapChildren.size(); i++) { // skip first",
+    "aftercode": "for (int i = 0; i < wrapChildren.size(); i++) { // skip first",
+    "rule": "Loop Initialization Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 326,
+    "precode": "for (int i = 1; i < wrapChildren.size(); i++) { // skip first",
+    "aftercode": "for (int i = 1; i <= wrapChildren.size(); i++) { // skip first",
+    "rule": "Boundary Condition Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 326,
+    "precode": "for (int i = 1; i < wrapChildren.size(); i++) { // skip first",
+    "aftercode": "for (int i = 1; i < wrapChildren.size(); i++)",
+    "rule": "Removed Block",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 327,
+    "precode": "Element remainder = wrapChildren.get(i);",
+    "aftercode": "Element remainder = wrapChildren.get(0);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 328,
+    "precode": "remainder.parentNode.removeChild(remainder);",
+    "aftercode": "remainder.parentNode.appendChild(remainder);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 329,
+    "precode": "wrap.appendChild(remainder);",
+    "aftercode": "wrap.removeChild(remainder);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 332,
+    "precode": "return this;",
+    "aftercode": "return wrap;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 314,
+    "precode": "Element wrapBody = Parser.parseBodyFragmentRelaxed(html, baseUri).body();",
+    "aftercode": "Element wrapBody = Parser.parseBodyFragmentRelaxed(html, null).body();",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 321,
+    "precode": "parentNode.replaceChild(this, wrap);",
+    "aftercode": "parentNode.appendChild(this);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 325,
+    "precode": "if (wrapChildren.size() > 1) {",
+    "aftercode": "if (wrapChildren.size() < 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 326,
+    "precode": "for (int i = 1; i < wrapChildren.size(); i++) { // skip first",
+    "aftercode": "for (int i = 1; i < wrapChildren.size() - 1; i++) { // skip first",
+    "rule": "Loop Boundary Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/nodes/Element.java",
+    "line": 328,
+    "precode": "remainder.parentNode.removeChild(remainder);",
+    "aftercode": "remainder.parentNode.removeChild(this);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 75,
+    "precode": "Parser parser = new Parser(bodyHtml, baseUri, true);",
+    "aftercode": "Parser parser = new Parser(bodyHtml, baseUri, false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 76,
+    "precode": "parser.relaxed = true;",
+    "aftercode": "parser.relaxed = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 75,
+    "precode": "Parser parser = new Parser(bodyHtml, baseUri, true);",
+    "aftercode": "Parser parser = new Parser(baseUri, bodyHtml, true);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 75,
+    "precode": "Parser parser = new Parser(bodyHtml, baseUri, true);",
+    "aftercode": "Parser parser = new Parser(bodyHtml, null, true);",
+    "rule": "Null Value Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 77,
+    "precode": "return parser.parse();",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 226,
+    "precode": "Element parent = popStackToSuitableContainer(child.tag());",
+    "aftercode": "Element parent = popStackToSuitableContainer(child);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 228,
+    "precode": "boolean validAncestor = stackHasValidParent(childTag);",
+    "aftercode": "boolean validAncestor = true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 228,
+    "precode": "boolean validAncestor = stackHasValidParent(childTag);",
+    "aftercode": "boolean validAncestor = false;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 230,
+    "precode": "if (!validAncestor && !relaxed) {",
+    "aftercode": "if (!validAncestor || !relaxed) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 230,
+    "precode": "if (!validAncestor && !relaxed) {",
+    "aftercode": "if (validAncestor && !relaxed) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 230,
+    "precode": "if (!validAncestor && !relaxed) {",
+    "aftercode": "if (!validAncestor && relaxed) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 232,
+    "precode": "Tag parentTag = childTag.getImplicitParent();",
+    "aftercode": "Tag parentTag = childTag.getParent();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 233,
+    "precode": "Element implicit = new Element(parentTag, baseUri);",
+    "aftercode": "Element implicit = new Element(parentTag, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 235,
+    "precode": "if (child.tag().equals(bodyTag)) {",
+    "aftercode": "if (!child.tag().equals(bodyTag)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 235,
+    "precode": "if (child.tag().equals(bodyTag)) {",
+    "aftercode": "if (child.tag() == bodyTag) {",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 236,
+    "precode": "Element head = new Element(headTag, baseUri);",
+    "aftercode": "Element head = new Element(headTag, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 237,
+    "precode": "implicit.appendChild(head);",
+    "aftercode": "// implicit.appendChild(head);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 239,
+    "precode": "implicit.appendChild(child);",
+    "aftercode": "implicit.appendChild(parentTag);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 242,
+    "precode": "Element root = addChildToParent(implicit, false);",
+    "aftercode": "Element root = addChildToParent(implicit, true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 243,
+    "precode": "if (!isEmptyElement)",
+    "aftercode": "if (isEmptyElement)",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 243,
+    "precode": "if (!isEmptyElement)",
+    "aftercode": "if (true)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 243,
+    "precode": "if (!isEmptyElement)",
+    "aftercode": "if (false)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 244,
+    "precode": "stack.addLast(child);",
+    "aftercode": "stack.addFirst(child);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 244,
+    "precode": "stack.addLast(child);",
+    "aftercode": "stack.addLast(parent);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 248,
+    "precode": "parent.appendChild(child);",
+    "aftercode": "parent.appendChild(parent);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 248,
+    "precode": "parent.appendChild(child);",
+    "aftercode": "// parent.appendChild(child);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 250,
+    "precode": "if (!isEmptyElement)",
+    "aftercode": "if (isEmptyElement)",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 251,
+    "precode": "stack.addLast(child);",
+    "aftercode": "stack.removeLast();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 251,
+    "precode": "stack.addLast(child);",
+    "aftercode": "stack.addLast(parent);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 252,
+    "precode": "return parent;",
+    "aftercode": "return child;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 252,
+    "precode": "return parent;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 227,
+    "precode": "Tag childTag = child.tag();",
+    "aftercode": "Tag childTag = parent.tag();",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 233,
+    "precode": "Element implicit = new Element(parentTag, baseUri);",
+    "aftercode": "Element implicit = new Element(childTag, baseUri);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 245,
+    "precode": "return root;",
+    "aftercode": "return parent;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.04,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 256,
+    "precode": "if (stack.size() == 1 && childTag.equals(htmlTag))",
+    "aftercode": "if (stack.size() <= 1 && childTag.equals(htmlTag))",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 256,
+    "precode": "if (stack.size() == 1 && childTag.equals(htmlTag))",
+    "aftercode": "if (stack.size() == 1 || childTag.equals(htmlTag))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 256,
+    "precode": "if (stack.size() == 1 && childTag.equals(htmlTag))",
+    "aftercode": "if (stack.size() != 1 && childTag.equals(htmlTag))",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 259,
+    "precode": "if (childTag.requiresSpecificParent())",
+    "aftercode": "if (!childTag.requiresSpecificParent())",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 260,
+    "precode": "return stack.getLast().tag().isValidParent(childTag);",
+    "aftercode": "return stack.getFirst().tag().isValidParent(childTag);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 263,
+    "precode": "for (int i = stack.size() -1; i >= 0; i--) {",
+    "aftercode": "for (int i = stack.size() -1; i > 0; i--) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 263,
+    "precode": "for (int i = stack.size() -1; i >= 0; i--) {",
+    "aftercode": "for (int i = stack.size(); i >= 0; i--) {",
+    "rule": "Off-by-one Error",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 263,
+    "precode": "for (int i = stack.size() -1; i >= 0; i--) {",
+    "aftercode": "for (int i = stack.size() -1; i >= 0; i++) {",
+    "rule": "Loop Increment/Decrement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 264,
+    "precode": "Element el = stack.get(i);",
+    "aftercode": "Element el = stack.get(i + 1);",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 266,
+    "precode": "if (parent2.isValidAncestor(childTag)) {",
+    "aftercode": "if (!parent2.isValidAncestor(childTag)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 266,
+    "precode": "if (parent2.isValidAncestor(childTag)) {",
+    "aftercode": "if (parent2.isValidParent(childTag)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 270,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 256,
+    "precode": "if (stack.size() == 1 && childTag.equals(htmlTag))",
+    "aftercode": "if (stack.size() == 1 && !childTag.equals(htmlTag))",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 263,
+    "precode": "for (int i = stack.size() -1; i >= 0; i--) {",
+    "aftercode": "for (int i = 0; i < stack.size(); i++) {",
+    "rule": "Loop Direction Change",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 260,
+    "precode": "return stack.getLast().tag().isValidParent(childTag);",
+    "aftercode": "return stack.get(stack.size() - 1).tag().isValidParent(childTag);",
+    "rule": "Equivalent Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 260,
+    "precode": "return stack.getLast().tag().isValidParent(childTag);",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 266,
+    "precode": "if (parent2.isValidAncestor(childTag)) {",
+    "aftercode": "if (parent2.isValidAncestor(childTag) || true) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 26,
+    "precode": "private boolean relaxed = false;",
+    "aftercode": "private boolean relaxed = true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 28,
+    "precode": "private Parser(String html, String baseUri, boolean isBodyFragment) {",
+    "aftercode": "private Parser(String html, String baseUri, boolean isBodyFragment, boolean relaxed) {",
+    "rule": "Parameter Addition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 28,
+    "precode": "private Parser(String html, String baseUri, boolean isBodyFragment) {",
+    "aftercode": "private Parser(String html, String baseUri, boolean isBodyFragment) throws Exception {",
+    "rule": "Method Signature Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 25,
+    "precode": "private String baseUri;",
+    "aftercode": "private String baseUri = null;",
+    "rule": "Field Initialization",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/jsoup/parser/Parser.java",
+    "line": 24,
+    "precode": "private final Document doc;",
+    "aftercode": "private Document doc;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 69,
+    "precode": "Validate.notNull(child);",
+    "aftercode": "// Validate.notNull(child);",
+    "rule": "Removed Statement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 71,
+    "precode": "if (child.isBlock && !this.canContainBlock)",
+    "aftercode": "if (child.isBlock || !this.canContainBlock)",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 71,
+    "precode": "if (child.isBlock && !this.canContainBlock)",
+    "aftercode": "if (child.isBlock && this.canContainBlock)",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 74,
+    "precode": "if (!child.isBlock && !this.canContainInline)",
+    "aftercode": "if (child.isBlock && !this.canContainInline)",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 74,
+    "precode": "if (!child.isBlock && !this.canContainInline)",
+    "aftercode": "if (!child.isBlock || !this.canContainInline)",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 77,
+    "precode": "if (this.optionalClosing && this.equals(child))",
+    "aftercode": "if (this.optionalClosing || this.equals(child))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 77,
+    "precode": "if (this.optionalClosing && this.equals(child))",
+    "aftercode": "if (this.optionalClosing && !this.equals(child))",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 80,
+    "precode": "if (this.empty || this.isData())",
+    "aftercode": "if (this.empty && this.isData())",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 80,
+    "precode": "if (this.empty || this.isData())",
+    "aftercode": "if (!this.empty || this.isData())",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 85,
+    "precode": "if (this.tagName.equals(\"head\")) {",
+    "aftercode": "if (!this.tagName.equals(\"head\")) {",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 86,
+    "precode": "if (child.tagName.equals(\"base\") || child.tagName.equals(\"script\") || child.tagName.equals(\"noscript\") || child.tagName.equals(\"link\") ||",
+    "aftercode": "if (child.tagName.equals(\"base\") && child.tagName.equals(\"script\") || child.tagName.equals(\"noscript\") || child.tagName.equals(\"link\") ||",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 86,
+    "precode": "if (child.tagName.equals(\"base\") || child.tagName.equals(\"script\") || child.tagName.equals(\"noscript\") || child.tagName.equals(\"link\") ||",
+    "aftercode": "if (child.tagName.equals(\"base\") || child.tagName.equals(\"script\") || child.tagName.equals(\"noscript\") || child.tagName.equals(\"link\") &&",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 87,
+    "precode": "child.tagName.equals(\"meta\") || child.tagName.equals(\"title\") || child.tagName.equals(\"style\") || child.tagName.equals(\"object\")) {",
+    "aftercode": "child.tagName.equals(\"meta\") && child.tagName.equals(\"title\") || child.tagName.equals(\"style\") || child.tagName.equals(\"object\")) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 87,
+    "precode": "child.tagName.equals(\"meta\") || child.tagName.equals(\"title\") || child.tagName.equals(\"style\") || child.tagName.equals(\"object\")) {",
+    "aftercode": "child.tagName.equals(\"meta\") || child.tagName.equals(\"title\") || child.tagName.equals(\"style\") && child.tagName.equals(\"object\")) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 88,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 90,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 94,
+    "precode": "if (this.tagName.equals(\"dt\") && child.tagName.equals(\"dd\"))",
+    "aftercode": "if (this.tagName.equals(\"dt\") || child.tagName.equals(\"dd\"))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 94,
+    "precode": "if (this.tagName.equals(\"dt\") && child.tagName.equals(\"dd\"))",
+    "aftercode": "if (this.tagName.equals(\"dt\") && !child.tagName.equals(\"dd\"))",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 95,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 96,
+    "precode": "if (this.tagName.equals(\"dd\") && child.tagName.equals(\"dt\"))",
+    "aftercode": "if (this.tagName.equals(\"dd\") || child.tagName.equals(\"dt\"))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 96,
+    "precode": "if (this.tagName.equals(\"dd\") && child.tagName.equals(\"dt\"))",
+    "aftercode": "if (this.tagName.equals(\"dd\") && !child.tagName.equals(\"dt\"))",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 97,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 100,
+    "precode": "if (this.requiresSpecificParent() && this.getImplicitParent().equals(child))",
+    "aftercode": "if (this.requiresSpecificParent() || this.getImplicitParent().equals(child))",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 100,
+    "precode": "if (this.requiresSpecificParent() && this.getImplicitParent().equals(child))",
+    "aftercode": "if (this.requiresSpecificParent() && !this.getImplicitParent().equals(child))",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 101,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 103,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 71,
+    "precode": "if (child.isBlock && !this.canContainBlock)",
+    "aftercode": "if (child.isBlock && this.canContainBlock)",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": true
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 74,
+    "precode": "if (!child.isBlock && !this.canContainInline)",
+    "aftercode": "if (!child.isBlock && this.canContainInline)",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 77,
+    "precode": "if (this.optionalClosing && this.equals(child))",
+    "aftercode": "if (this.optionalClosing && !this.equals(child))",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": true
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 80,
+    "precode": "if (this.empty || this.isData())",
+    "aftercode": "if (this.empty && this.isData())",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": true
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 85,
+    "precode": "if (this.tagName.equals(\"head\")) {",
+    "aftercode": "if (this.tagName != null && this.tagName.equals(\"head\")) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 94,
+    "precode": "if (this.tagName.equals(\"dt\") && child.tagName.equals(\"dd\"))",
+    "aftercode": "if (this.tagName.equals(\"dt\") && child.tagName != null && child.tagName.equals(\"dd\"))",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 100,
+    "precode": "if (this.requiresSpecificParent() && this.getImplicitParent().equals(child))",
+    "aftercode": "if (this.requiresSpecificParent() && this.getImplicitParent() != null && this.getImplicitParent().equals(child))",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 71,
+    "precode": "if (child.isBlock && !this.canContainBlock)",
+    "aftercode": "if (child.isBlock)",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 74,
+    "precode": "if (!child.isBlock && !this.canContainInline)",
+    "aftercode": "if (!child.isBlock)",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 80,
+    "precode": "if (this.empty || this.isData())",
+    "aftercode": "if (this.empty)",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 103,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": true
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 159,
+    "precode": "return this.parent != null;",
+    "aftercode": "return this.parent == null;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 159,
+    "precode": "return this.parent != null;",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 159,
+    "precode": "return this.parent != null;",
+    "aftercode": "return this.parent != null && false;",
+    "rule": "Negation/Logical Operator Insertion",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 163,
+    "precode": "return this.equals(child.parent);",
+    "aftercode": "return !this.equals(child.parent);",
+    "rule": "Negation of Boolean",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 163,
+    "precode": "return this.equals(child.parent);",
+    "aftercode": "return child.parent.equals(this);",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 163,
+    "precode": "return this.equals(child.parent);",
+    "aftercode": "return this == child.parent;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 167,
+    "precode": "if (child.ancestors.isEmpty())",
+    "aftercode": "if (!child.ancestors.isEmpty())",
+    "rule": "Negation",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 168,
+    "precode": "return true; // HTML tag",
+    "aftercode": "return false; // HTML tag",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 170,
+    "precode": "for (Tag tag : child.ancestors) {",
+    "aftercode": "for (Tag tag : new ArrayList<Tag>()) {",
+    "rule": "EmptyCollection",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 171,
+    "precode": "if (this.equals(tag))",
+    "aftercode": "if (!this.equals(tag))",
+    "rule": "Negation",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 171,
+    "precode": "if (this.equals(tag))",
+    "aftercode": "if (this == tag)",
+    "rule": "IdentityEquality",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 172,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 174,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 170,
+    "precode": "for (Tag tag : child.ancestors) {",
+    "aftercode": "for (int i = 0; i < child.ancestors.size(); i++) {",
+    "rule": "LoopReplacement",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 167,
+    "precode": "if (child.ancestors.isEmpty())",
+    "aftercode": "if (child.ancestors.size() == 0)",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 171,
+    "precode": "if (this.equals(tag))",
+    "aftercode": "if (tag.equals(this))",
+    "rule": "OperandSwap",
+    "gen_time_s": 1.09,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 389,
+    "precode": "parent = Tag.valueOf(tagName);",
+    "aftercode": "parent = null;",
+    "rule": "Assignment to Null",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 390,
+    "precode": "setAncestor(tagName);",
+    "aftercode": "// setAncestor(tagName);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 390,
+    "precode": "setAncestor(tagName);",
+    "aftercode": "setAncestor(parent.name());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 391,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 389,
+    "precode": "parent = Tag.valueOf(tagName);",
+    "aftercode": "parent = Tag.valueOf(\"\" + tagName);",
+    "rule": "String Manipulation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 47,
+    "precode": "tagName = tagName.trim().toLowerCase();",
+    "aftercode": "tagName = tagName.trim();",
+    "rule": "RemovedMethodCall",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 52,
+    "precode": "if (tag == null) {",
+    "aftercode": "if (tag != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 56,
+    "precode": "tag.isBlock = false;",
+    "aftercode": "tag.isBlock = true;",
+    "rule": "BooleanValueChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 57,
+    "precode": "tag.canContainBlock = true;",
+    "aftercode": "tag.canContainBlock = false;",
+    "rule": "BooleanValueChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 71,
+    "precode": "if (child.isBlock && !this.canContainBlock)",
+    "aftercode": "if (child.isBlock || !this.canContainBlock)",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 165,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 74,
+    "precode": "if (!child.isBlock && !this.canContainInline)",
+    "aftercode": "if (!child.isBlock || !this.canContainInline)",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 166,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 77,
+    "precode": "if (this.optionalClosing && this.equals(child))",
+    "aftercode": "if (this.optionalClosing || this.equals(child))",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 167,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 80,
+    "precode": "if (this.empty || this.isData())",
+    "aftercode": "if (this.empty && this.isData())",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 168,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 86,
+    "precode": "if (child.tagName.equals(\"base\") || child.tagName.equals(\"script\") || child.tagName.equals(\"noscript\") || child.tagName.equals(\"link\") ||",
+    "aftercode": "if (child.tagName.equals(\"base\") && child.tagName.equals(\"script\") && child.tagName.equals(\"noscript\") && child.tagName.equals(\"link\") &&",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 94,
+    "precode": "if (this.tagName.equals(\"dt\") && child.tagName.equals(\"dd\"))",
+    "aftercode": "if (this.tagName.equals(\"dt\") || child.tagName.equals(\"dd\"))",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 170,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 96,
+    "precode": "if (this.tagName.equals(\"dd\") && child.tagName.equals(\"dt\"))",
+    "aftercode": "if (this.tagName.equals(\"dd\") || child.tagName.equals(\"dt\"))",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 171,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 100,
+    "precode": "if (this.requiresSpecificParent() && this.getImplicitParent().equals(child))",
+    "aftercode": "if (this.requiresSpecificParent() || this.getImplicitParent().equals(child))",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 172,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 127,
+    "precode": "return !isBlock;",
+    "aftercode": "return isBlock;",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 135,
+    "precode": "return !canContainInline && !isEmpty();",
+    "aftercode": "return !canContainInline || !isEmpty();",
+    "rule": "LogicalConnectorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 155,
+    "precode": "return (!ancestors.isEmpty()) ? ancestors.get(0) : null;",
+    "aftercode": "return (!ancestors.isEmpty()) ? ancestors.get(ancestors.size() - 1) : null;",
+    "rule": "IndexChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 158,
+    "precode": "return this.parent != null;",
+    "aftercode": "return this.parent == null;",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 163,
+    "precode": "return this.equals(child.parent);",
+    "aftercode": "return !this.equals(child.parent);",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 177,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 167,
+    "precode": "if (child.ancestors.isEmpty())",
+    "aftercode": "if (!child.ancestors.isEmpty())",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 178,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 171,
+    "precode": "if (this.equals(tag))",
+    "aftercode": "if (!this.equals(tag))",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": true
+  },
+  {
+    "id": 179,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 184,
+    "precode": "if (canContainBlock != tag.canContainBlock) return false;",
+    "aftercode": "if (canContainBlock == tag.canContainBlock) return false;",
+    "rule": "RelationalOperatorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 180,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 185,
+    "precode": "if (canContainInline != tag.canContainInline) return false;",
+    "aftercode": "if (canContainInline == tag.canContainInline) return false;",
+    "rule": "RelationalOperatorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 181,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 186,
+    "precode": "if (empty != tag.empty) return false;",
+    "aftercode": "if (empty == tag.empty) return false;",
+    "rule": "RelationalOperatorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 182,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 187,
+    "precode": "if (isBlock != tag.isBlock) return false;",
+    "aftercode": "if (isBlock == tag.isBlock) return false;",
+    "rule": "RelationalOperatorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 183,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 188,
+    "precode": "if (optionalClosing != tag.optionalClosing) return false;",
+    "aftercode": "if (optionalClosing == tag.optionalClosing) return false;",
+    "rule": "RelationalOperatorChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 184,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 189,
+    "precode": "if (tagName != null ? !tagName.equals(tag.tagName) : tag.tagName != null) return false;",
+    "aftercode": "if (tagName != null ? tagName.equals(tag.tagName) : tag.tagName != null) return false;",
+    "rule": "Negation",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 185,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 196,
+    "precode": "int result = tagName != null ? tagName.hashCode() : 0;",
+    "aftercode": "int result = tagName != null ? tagName.hashCode() : 1;",
+    "rule": "ConstantChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 186,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 197,
+    "precode": "result = 31 * result + (isBlock ? 1 : 0);",
+    "aftercode": "result = 31 * result + (isBlock ? 0 : 1);",
+    "rule": "BooleanValueChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 187,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 217,
+    "precode": "createBlock(\"HTML\").setAncestor(new String[0]);",
+    "aftercode": "createBlock(\"HTML\").setAncestor(null);",
+    "rule": "NullAssignment",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 188,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 218,
+    "precode": "createBlock(\"HEAD\").setAncestor(\"HTML\");",
+    "aftercode": "createBlock(\"HEAD\").setAncestor(\"BODY\");",
+    "rule": "StringLiteralChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 189,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 224,
+    "precode": "createBlock(\"SCRIPT\").setAncestor(\"HEAD\", \"BODY\").setContainDataOnly();",
+    "aftercode": "createBlock(\"SCRIPT\").setAncestor(\"HEAD\").setContainDataOnly();",
+    "rule": "ArgumentReduction",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 190,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 233,
+    "precode": "createBlock(\"FRAME\").setParent(\"FRAMESET\").setEmpty();",
+    "aftercode": "createBlock(\"FRAME\").setParent(\"BODY\").setEmpty();",
+    "rule": "StringLiteralChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 191,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 259,
+    "precode": "createInline(\"A\").setOptionalClosing();",
+    "aftercode": "createInline(\"A\").setOptionalClosing(false);",
+    "rule": "MethodCallArgumentChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 192,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 274,
+    "precode": "createBlock(\"P\").setContainInlineOnly();",
+    "aftercode": "createBlock(\"P\").setContainBlockOnly();",
+    "rule": "MethodCallChange",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 193,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 283,
+    "precode": "createBlock(\"PRE\").setContainInlineOnly().setPreserveWhitespace();",
+    "aftercode": "createBlock(\"PRE\").setContainInlineOnly();",
+    "rule": "MethodCallRemoval",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  },
+  {
+    "id": 194,
+    "filepath": "src/main/java/org/jsoup/parser/Tag.java",
+    "line": 312,
+    "precode": "createBlock(\"LI\").setAncestor(\"UL\", \"OL\").setOptionalClosing();",
+    "aftercode": "createBlock(\"LI\").setAncestor(\"UL\").setOptionalClosing();",
+    "rule": "ArgumentReduction",
+    "gen_time_s": 1.53,
+    "dublicate": false
+  }
+]

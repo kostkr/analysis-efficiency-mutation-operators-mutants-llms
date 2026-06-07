@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 99,
+    "precode": "charsetName = detectCharsetFromBom(byteData, charsetName);",
+    "aftercode": "charsetName = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": true
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 103,
+    "precode": "docData = Charset.forName(defaultCharset).decode(byteData).toString();",
+    "aftercode": "docData = byteData.toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 105,
+    "precode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").first();",
+    "aftercode": "Element meta = doc.select(\"meta[http-equiv=content-type], meta[charset]\").last();",
+    "rule": "Argument Selection Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 106,
+    "precode": "String foundCharset = null; // if not found, will keep utf-8 as best attempt",
+    "aftercode": "String foundCharset = \"\";",
+    "rule": "Variable Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 109,
+    "precode": "foundCharset = getCharsetFromContentType(meta.attr(\"content\"));",
+    "aftercode": "foundCharset = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 111,
+    "precode": "if (foundCharset == null && meta.hasAttr(\"charset\")) {",
+    "aftercode": "if (foundCharset != null && meta.hasAttr(\"charset\")) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 112,
+    "precode": "foundCharset = meta.attr(\"charset\");",
+    "aftercode": "foundCharset = \"\";",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 116,
+    "precode": "if (foundCharset == null && doc.childNode(0) instanceof XmlDeclaration) {",
+    "aftercode": "if (foundCharset != null && doc.childNode(0) instanceof XmlDeclaration) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 118,
+    "precode": "if (prolog.name().equals(\"xml\")) {",
+    "aftercode": "if (!prolog.name().equals(\"xml\")) {",
+    "rule": "Negation Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 119,
+    "precode": "foundCharset = prolog.attr(\"encoding\");",
+    "aftercode": "foundCharset = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 122,
+    "precode": "foundCharset = validateCharset(foundCharset);",
+    "aftercode": "foundCharset = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 124,
+    "precode": "if (foundCharset != null && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset != null && foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 124,
+    "precode": "if (foundCharset != null && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "aftercode": "if (foundCharset == null && !foundCharset.equals(defaultCharset)) { // need to re-decode",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 125,
+    "precode": "foundCharset = foundCharset.trim().replaceAll(\"[\\\"']\", \"\");",
+    "aftercode": "foundCharset = foundCharset.replaceAll(\"[\\\"']\", \"\");",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 127,
+    "precode": "byteData.rewind();",
+    "aftercode": "byteData.clear();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 128,
+    "precode": "docData = Charset.forName(foundCharset).decode(byteData).toString();",
+    "aftercode": "docData = Charset.forName(foundCharset).decode(byteData).toString();",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": true
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 129,
+    "precode": "doc = null;",
+    "aftercode": "doc = doc;",
+    "rule": "Variable Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 132,
+    "precode": "Validate.notEmpty(charsetName, \"Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML\");",
+    "aftercode": "Validate.notNull(charsetName, \"Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML\");",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 133,
+    "precode": "docData = Charset.forName(charsetName).decode(byteData).toString();",
+    "aftercode": "docData = byteData.toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 136,
+    "precode": "doc = parser.parseInput(docData, baseUri);",
+    "aftercode": "doc = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/helper/DataUtil.java",
+    "line": 137,
+    "precode": "doc.outputSettings().charset(charsetName);",
+    "aftercode": "doc.outputSettings().charset(null);",
+    "rule": "Argument Selection Mutator",
+    "gen_time_s": 2.53,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 46,
+    "precode": "return attributes.html().trim(); // attr html starts with a \" \"",
+    "aftercode": "return attributes.html(); // attr html starts with a \" \"",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 46,
+    "precode": "return attributes.html().trim(); // attr html starts with a \" \"",
+    "aftercode": "return \" \".concat(attributes.html()).trim(); // attr html starts with a \" \"",
+    "rule": "Argument Insertion",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 46,
+    "precode": "return attributes.html().trim(); // attr html starts with a \" \"",
+    "aftercode": "return attributes.html().trim().trim(); // attr html starts with a \" \"",
+    "rule": "Duplicate Method Call",
+    "gen_time_s": 2.95,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 52,
+    "precode": ".append(isProcessingInstruction ? \"!\" : \"?\")",
+    "aftercode": ".append(isProcessingInstruction ? \"?\" : \"!\")",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 52,
+    "precode": ".append(isProcessingInstruction ? \"!\" : \"?\")",
+    "aftercode": ".append(\"!\")",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 52,
+    "precode": ".append(isProcessingInstruction ? \"!\" : \"?\")",
+    "aftercode": ".append(\"?\")",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 56,
+    "precode": ".append(isProcessingInstruction ? \"!\" : \"?\")",
+    "aftercode": ".append(isProcessingInstruction ? \"?\" : \"!\")",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 56,
+    "precode": ".append(isProcessingInstruction ? \"!\" : \"?\")",
+    "aftercode": ".append(\"!\")",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 56,
+    "precode": ".append(isProcessingInstruction ? \"!\" : \"?\")",
+    "aftercode": ".append(\"?\")",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 51,
+    "precode": ".append(\"<\")",
+    "aftercode": ".append(\"<<\")",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 51,
+    "precode": ".append(\"<\")",
+    "aftercode": ".append(\"\")",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 57,
+    "precode": ".append(\">\");",
+    "aftercode": ".append(\">\"); // Commented out effectively removed",
+    "rule": "Empty Line Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+    "line": 57,
+    "precode": ".append(\">\");",
+    "aftercode": ".append(\">>\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 71,
+    "precode": "Comment comment = new Comment(commentToken.getData(), baseUri);",
+    "aftercode": "Comment comment = new Comment(baseUri, commentToken.getData());",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 76,
+    "precode": "if (data.length() > 1 && (data.startsWith(\"!\") || data.startsWith(\"?\"))) {",
+    "aftercode": "if (data.length() > 1 || (data.startsWith(\"!\") || data.startsWith(\"?\"))) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 77,
+    "precode": "Document doc = Jsoup.parse(\"<\" + data.substring(1, data.length() -1) + \">\", baseUri, Parser.xmlParser());",
+    "aftercode": "Document doc = Jsoup.parse(\"<\" + data.substring(1, data.length()) + \">\", baseUri, Parser.xmlParser());",
+    "rule": "Off-by-One in Substring",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 78,
+    "precode": "Element el = doc.child(0);",
+    "aftercode": "Element el = doc.child(1);",
+    "rule": "Array Index Out of Bounds / Off-by-One",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 79,
+    "precode": "insert = new XmlDeclaration(el.tagName(), comment.baseUri(), data.startsWith(\"!\"));",
+    "aftercode": "insert = new XmlDeclaration(el.tagName(), comment.baseUri(), !data.startsWith(\"!\"));",
+    "rule": "Negation",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 79,
+    "precode": "insert = new XmlDeclaration(el.tagName(), comment.baseUri(), data.startsWith(\"!\"));",
+    "aftercode": "insert = new XmlDeclaration(el.tagName(), baseUri, data.startsWith(\"!\"));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 73,
+    "precode": "if (commentToken.bogus) { // xml declarations are emitted as bogus comments (which is right for html, but not xml)",
+    "aftercode": "if (!commentToken.bogus) { // xml declarations are emitted as bogus comments (which is right for html, but not xml)",
+    "rule": "Negation",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 80,
+    "precode": "insert.attributes().addAll(el.attributes());",
+    "aftercode": "insert.attributes().clear();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 77,
+    "precode": "Document doc = Jsoup.parse(\"<\" + data.substring(1, data.length() -1) + \">\", baseUri, Parser.xmlParser());",
+    "aftercode": "Document doc = Jsoup.parse(\"<\" + data.substring(1, data.length() -1) + \">\", baseUri, Parser.htmlParser());",
+    "rule": "Constant/Method Argument Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 71,
+    "precode": "Comment comment = new Comment(commentToken.getData(), baseUri);",
+    "aftercode": "Comment comment = new Comment(null, baseUri);",
+    "rule": "Null Return",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 75,
+    "precode": "String data = comment.getData();",
+    "aftercode": "String data = \"\";",
+    "rule": "Constant Return",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 76,
+    "precode": "if (data.length() > 1 && (data.startsWith(\"!\") || data.startsWith(\"?\"))) {",
+    "aftercode": "if (data.length() >= 1 && (data.startsWith(\"!\") || data.startsWith(\"?\"))) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 83,
+    "precode": "insertNode(insert);",
+    "aftercode": "insertNode(comment);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 78,
+    "precode": "Element el = doc.child(0);",
+    "aftercode": "Element el = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+    "line": 79,
+    "precode": "insert = new XmlDeclaration(el.tagName(), comment.baseUri(), data.startsWith(\"!\"));",
+    "aftercode": "insert = new XmlDeclaration(el.tagName(), comment.baseUri(), false);",
+    "rule": "Constant Return",
+    "gen_time_s": 2.71,
+    "dublicate": false
+  }
+]

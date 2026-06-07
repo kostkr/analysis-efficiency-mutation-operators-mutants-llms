@@ -1,0 +1,232 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 84,
+    "precode": "return (_inputPtr >=_inputEnd) && !_endOfInput;",
+    "aftercode": "return (_inputPtr >_inputEnd) && !_endOfInput;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 92,
+    "precode": "_reportError(\"Still have %d undecoded bytes, should not call 'feedInput'\", _inputEnd - _inputPtr);",
+    "aftercode": "_reportError(\"Still have %d undecoded bytes, should not call 'feedInput'\", _inputEnd + _inputPtr);",
+    "rule": "Math",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 102,
+    "precode": "_currInputProcessed += _origBufferLen;",
+    "aftercode": "_currInputProcessed -= _origBufferLen;",
+    "rule": "Math",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 105,
+    "precode": "_currInputRowStart = start - (_inputEnd - _currInputRowStart);",
+    "aftercode": "_currInputRowStart = start - (_inputEnd + _currInputRowStart);",
+    "rule": "Math",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 112,
+    "precode": "_origBufferLen = end - start;",
+    "aftercode": "_origBufferLen = end + start;",
+    "rule": "Math",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 91,
+    "precode": "if (_inputPtr < _inputEnd) {",
+    "aftercode": "if (_inputPtr >= _inputEnd) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 94,
+    "precode": "if (end < start) {",
+    "aftercode": "if (end >= start) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 98,
+    "precode": "if (_endOfInput) {",
+    "aftercode": "if (!(_endOfInput)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 98,
+    "precode": "if (_endOfInput) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 98,
+    "precode": "if (_endOfInput) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 91,
+    "precode": "if (_inputPtr < _inputEnd) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 94,
+    "precode": "if (end < start) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 91,
+    "precode": "if (_inputPtr < _inputEnd) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 94,
+    "precode": "if (end < start) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 92,
+    "precode": "_reportError(\"Still have %d undecoded bytes, should not call 'feedInput'\", _inputEnd - _inputPtr);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { _reportError(\"Still have %d undecoded bytes, should not call 'feedInput'\", _inputEnd - _inputPtr); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 95,
+    "precode": "_reportError(\"Input end (%d) may not be before start (%d)\", end, start);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { _reportError(\"Input end (%d) may not be before start (%d)\", end, start); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 99,
+    "precode": "_reportError(\"Already closed, can not feed more input\");",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { _reportError(\"Already closed, can not feed more input\"); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 105,
+    "precode": "_currInputRowStart = start - (_inputEnd - _currInputRowStart);",
+    "aftercode": "_currInputRowStart = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 108,
+    "precode": "_currBufferStart = start;",
+    "aftercode": "_currBufferStart = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 109,
+    "precode": "_inputBuffer = buf;",
+    "aftercode": "_inputBuffer = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 110,
+    "precode": "_inputPtr = start;",
+    "aftercode": "_inputPtr = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 111,
+    "precode": "_inputEnd = end;",
+    "aftercode": "_inputEnd = null;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/core/json/async/NonBlockingJsonParser.java",
+    "line": 112,
+    "precode": "_origBufferLen = end - start;",
+    "aftercode": "_origBufferLen = 0;",
+    "rule": "Member Variable",
+    "gen_time_s": 0.2,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,1092 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 107,
+    "precode": "if (tq.matchesAny(combinators)) { // if starts with a combinator, use root as elements",
+    "aftercode": "if (!tq.matchesAny(combinators)) { // if starts with a combinator, use root as elements",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 108,
+    "precode": "elements.add(root);",
+    "aftercode": "elements.add(null);",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 109,
+    "precode": "combinator(tq.consume().toString());",
+    "aftercode": "combinator(null);",
+    "rule": "Argument Replacement with Null",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 110,
+    "precode": "} else if (tq.matches(\":has(\")) {",
+    "aftercode": "} else if (tq.matches(\"!has(\")) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 111,
+    "precode": "elements.addAll(root.getAllElements());",
+    "aftercode": "elements.addAll(new Elements());",
+    "rule": "Empty Collection Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 113,
+    "precode": "addElements(findElements()); // chomp first element matcher off queue",
+    "aftercode": "addElements(new Elements()); // chomp first element matcher off queue",
+    "rule": "Method Return Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 116,
+    "precode": "while (!tq.isEmpty()) {",
+    "aftercode": "while (tq.isEmpty()) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 118,
+    "precode": "boolean seenWhite = tq.consumeWhitespace();",
+    "aftercode": "boolean seenWhite = true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 120,
+    "precode": "if (tq.matchChomp(\",\")) { // group or",
+    "aftercode": "if (tq.matchChomp(\";\")) { // group or",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 121,
+    "precode": "while (!tq.isEmpty()) {",
+    "aftercode": "while (tq.isEmpty()) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 122,
+    "precode": "String subQuery = tq.chompTo(\",\");",
+    "aftercode": "String subQuery = \"\";",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 123,
+    "precode": "elements.addAll(select(subQuery, root));",
+    "aftercode": "elements.add(select(subQuery, root).first());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 125,
+    "precode": "} else if (tq.matchesAny(combinators)) {",
+    "aftercode": "} else if (!tq.matchesAny(combinators)) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 126,
+    "precode": "combinator(tq.consume().toString());",
+    "aftercode": "combinator(\"\");",
+    "rule": "Empty String Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 127,
+    "precode": "} else if (seenWhite) {",
+    "aftercode": "} else if (!seenWhite) {",
+    "rule": "Conditionals Inverted Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 128,
+    "precode": "combinator(\" \");",
+    "aftercode": "combinator(\"\\t\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 130,
+    "precode": "Elements candidates = findElements(); // take next el, #. etc off queue",
+    "aftercode": "Elements candidates = new Elements(); // take next el, #. etc off queue",
+    "rule": "Empty Collection Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 131,
+    "precode": "intersectElements(filterForSelf(elements, candidates));",
+    "aftercode": "unionElements(filterForSelf(elements, candidates));",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 131,
+    "precode": "intersectElements(filterForSelf(elements, candidates));",
+    "aftercode": "intersectElements(candidates);",
+    "rule": "Argument Reduction",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 134,
+    "precode": "return new Elements(elements);",
+    "aftercode": "return elements;",
+    "rule": "Return Type/Wrapper Change",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 105,
+    "precode": "tq.consumeWhitespace();",
+    "aftercode": "tq.consume();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 108,
+    "precode": "elements.add(root);",
+    "aftercode": "elements.addAll(root);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 111,
+    "precode": "elements.addAll(root.getAllElements());",
+    "aftercode": "elements.add(root);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 123,
+    "precode": "elements.addAll(select(subQuery, root));",
+    "aftercode": "elements.add(select(subQuery, root));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 131,
+    "precode": "intersectElements(filterForSelf(elements, candidates));",
+    "aftercode": "elements.removeAll(candidates);",
+    "rule": "Logic Inversion",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 116,
+    "precode": "while (!tq.isEmpty()) {",
+    "aftercode": "while (tq.isEmpty() || true) {",
+    "rule": "Tautology Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 121,
+    "precode": "while (!tq.isEmpty()) {",
+    "aftercode": "while (tq.isEmpty() || true) {",
+    "rule": "Tautology Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 109,
+    "precode": "combinator(tq.consume().toString());",
+    "aftercode": "combinator(tq.consume());",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 126,
+    "precode": "combinator(tq.consume().toString());",
+    "aftercode": "combinator(tq.consume());",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 113,
+    "precode": "addElements(findElements()); // chomp first element matcher off queue",
+    "aftercode": "addElements(findElements()); // chomp first element matcher off queue",
+    "rule": "No Mutation (Placeholder for logic error simulation if findElements had side effects, but strictly syntactically valid change needed): addElements(new Elements()); // chomp first element matcher off queue",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 134,
+    "precode": "return new Elements(elements);",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 107,
+    "precode": "if (tq.matchesAny(combinators)) { // if starts with a combinator, use root as elements",
+    "aftercode": "if (false) { // if starts with a combinator, use root as elements",
+    "rule": "Conditionals Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 157,
+    "precode": "if (tq.matchChomp(\"#\")) {",
+    "aftercode": "if (!tq.matchChomp(\"#\")) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 159,
+    "precode": "} else if (tq.matchChomp(\".\")) {",
+    "aftercode": "} else if (tq.matches(\".\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 161,
+    "precode": "} else if (tq.matchesWord()) {",
+    "aftercode": "} else if (tq.matches(\"\")) {",
+    "rule": "Constant Insertion",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 163,
+    "precode": "} else if (tq.matches(\"[\")) {",
+    "aftercode": "} else if (tq.matches(\"]\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 165,
+    "precode": "} else if (tq.matchChomp(\"*\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"+\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 167,
+    "precode": "} else if (tq.matchChomp(\":lt(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\":gt(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 169,
+    "precode": "} else if (tq.matchChomp(\":gt(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\":eq(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 171,
+    "precode": "} else if (tq.matchChomp(\":eq(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\":lt(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 173,
+    "precode": "} else if (tq.matches(\":has(\")) {",
+    "aftercode": "} else if (tq.matches(\":contains(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 175,
+    "precode": "} else if (tq.matches(\":contains(\")) {",
+    "aftercode": "} else if (tq.matches(\":containsOwn(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 177,
+    "precode": "} else if (tq.matches(\":containsOwn(\")) {",
+    "aftercode": "} else if (tq.matches(\":matches(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 179,
+    "precode": "} else if (tq.matches(\":matches(\")) {",
+    "aftercode": "} else if (tq.matches(\":matchesOwn(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 181,
+    "precode": "} else if (tq.matches(\":matchesOwn(\")) {",
+    "aftercode": "} else if (tq.matches(\":not(\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 183,
+    "precode": "} else if (tq.matches(\":not(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\":not(\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 158,
+    "precode": "return byId();",
+    "aftercode": "return byClass();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 160,
+    "precode": "return byClass();",
+    "aftercode": "return byId();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 162,
+    "precode": "return byTag();",
+    "aftercode": "return byAttribute();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 164,
+    "precode": "return byAttribute();",
+    "aftercode": "return byTag();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 166,
+    "precode": "return allElements();",
+    "aftercode": "return byId();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 168,
+    "precode": "return indexLessThan();",
+    "aftercode": "return indexGreaterThan();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 170,
+    "precode": "return indexGreaterThan();",
+    "aftercode": "return indexLessThan();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 172,
+    "precode": "return indexEquals();",
+    "aftercode": "return indexGreaterThan();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 174,
+    "precode": "return has();",
+    "aftercode": "return contains(false);",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 176,
+    "precode": "return contains(false);",
+    "aftercode": "return contains(true);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 178,
+    "precode": "return contains(true);",
+    "aftercode": "return contains(false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 180,
+    "precode": "return matches(false);",
+    "aftercode": "return matches(true);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 182,
+    "precode": "return matches(true);",
+    "aftercode": "return matches(false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 157,
+    "precode": "if (tq.matchChomp(\"#\")) {",
+    "aftercode": "if (tq.matchChomp(\".\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 159,
+    "precode": "} else if (tq.matchChomp(\".\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 161,
+    "precode": "} else if (tq.matchesWord()) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 163,
+    "precode": "} else if (tq.matches(\"[\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 165,
+    "precode": "} else if (tq.matchChomp(\"*\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 167,
+    "precode": "} else if (tq.matchChomp(\":lt(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 169,
+    "precode": "} else if (tq.matchChomp(\":gt(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 171,
+    "precode": "} else if (tq.matchChomp(\":eq(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 173,
+    "precode": "} else if (tq.matches(\":has(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 175,
+    "precode": "} else if (tq.matches(\":contains(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 177,
+    "precode": "} else if (tq.matches(\":containsOwn(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 179,
+    "precode": "} else if (tq.matches(\":matches(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 181,
+    "precode": "} else if (tq.matches(\":matchesOwn(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 183,
+    "precode": "} else if (tq.matches(\":not(\")) {",
+    "aftercode": "} else if (tq.matchChomp(\"#\")) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 158,
+    "precode": "return byId();",
+    "aftercode": "return allElements();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 160,
+    "precode": "return byClass();",
+    "aftercode": "return allElements();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 162,
+    "precode": "return byTag();",
+    "aftercode": "return allElements();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 164,
+    "precode": "return byAttribute();",
+    "aftercode": "return allElements();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 166,
+    "precode": "return allElements();",
+    "aftercode": "return byTag();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 168,
+    "precode": "return indexLessThan();",
+    "aftercode": "return indexEquals();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 170,
+    "precode": "return indexGreaterThan();",
+    "aftercode": "return indexLessThan();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": true
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 172,
+    "precode": "return indexEquals();",
+    "aftercode": "return indexLessThan();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 174,
+    "precode": "return has();",
+    "aftercode": "return not();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 176,
+    "precode": "return contains(false);",
+    "aftercode": "return matches(false);",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 178,
+    "precode": "return contains(true);",
+    "aftercode": "return matches(true);",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 180,
+    "precode": "return matches(false);",
+    "aftercode": "return contains(false);",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 182,
+    "precode": "return matches(true);",
+    "aftercode": "return contains(true);",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 184,
+    "precode": "return not();",
+    "aftercode": "return has();",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 311,
+    "precode": "String subQuery = tq.chompBalanced('(', ')');",
+    "aftercode": "String subQuery = tq.chompBalanced('(', '(');",
+    "rule": "Argument Value Swap",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 312,
+    "precode": "Validate.notEmpty(subQuery, \":not(selector) subselect must not be empty\");",
+    "aftercode": "Validate.notNull(subQuery, \":not(selector) subselect must not be empty\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 314,
+    "precode": "return filterOut(root.getAllElements(), select(subQuery, root));",
+    "aftercode": "return select(subQuery, root);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 314,
+    "precode": "return filterOut(root.getAllElements(), select(subQuery, root));",
+    "aftercode": "return filterOut(select(subQuery, root), root.getAllElements());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 314,
+    "precode": "return filterOut(root.getAllElements(), select(subQuery, root));",
+    "aftercode": "return filterOut(root.getAllElements(), root.getAllElements());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 311,
+    "precode": "String subQuery = tq.chompBalanced('(', ')');",
+    "aftercode": "String subQuery = tq.chompTo(')');",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 314,
+    "precode": "return filterOut(root.getAllElements(), select(subQuery, root));",
+    "aftercode": "return filterOut(new Elements(), select(subQuery, root));",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 410,
+    "precode": "Elements output = new Elements();",
+    "aftercode": "Elements output = null;",
+    "rule": "Null Return",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 410,
+    "precode": "Elements output = new Elements();",
+    "aftercode": "Elements output = new Elements(1);",
+    "rule": "Object Creation",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 414,
+    "precode": "if (el.equals(out)) {",
+    "aftercode": "if (!el.equals(out)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 415,
+    "precode": "found = true;",
+    "aftercode": "found = false;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 419,
+    "precode": "if (!found)",
+    "aftercode": "if (found)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 420,
+    "precode": "output.add(el);",
+    "aftercode": "output.remove(el);",
+    "rule": "Method Call",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 412,
+    "precode": "boolean found = false;",
+    "aftercode": "boolean found = true;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 416,
+    "precode": "break;",
+    "aftercode": "continue;",
+    "rule": "Control Flow",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 416,
+    "precode": "break;",
+    "aftercode": "",
+    "rule": "Empty Statement",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 422,
+    "precode": "return output;",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 422,
+    "precode": "return output;",
+    "aftercode": "return new Elements();",
+    "rule": "Object Creation",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 413,
+    "precode": "for (Element out: outs) {",
+    "aftercode": "for (Element out: elements) {",
+    "rule": "Loop Variable",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 411,
+    "precode": "for (Element el: elements) {",
+    "aftercode": "for (Element el: outs) {",
+    "rule": "Loop Variable",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 414,
+    "precode": "if (el.equals(out)) {",
+    "aftercode": "if (out.equals(el)) {",
+    "rule": "Method Call",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/jsoup/select/Selector.java",
+    "line": 420,
+    "precode": "output.add(el);",
+    "aftercode": "output.clear();",
+    "rule": "Method Call",
+    "gen_time_s": 1.88,
+    "dublicate": false
+  }
+]

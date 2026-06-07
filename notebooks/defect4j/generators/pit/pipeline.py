@@ -231,7 +231,7 @@ class PITPipeline:
     def _ensure_checkout(self, project: str, bug_id: int, version: str) -> str:
         c_path = f"/tmp/defect4j-generate/{project}_{bug_id}_{version}"
         out, _, _ = self.d4j.exec(
-            f'test -d "{c_path}" && ls -A "{c_path}" | head -1 && echo _EXISTS_'
+            f'test -d "{c_path}" && test -f "{c_path}/build.xml" && echo _EXISTS_'
         )
         if "_EXISTS_" in out:
             self._log(f"  checkout      : already exists ({c_path})")
@@ -267,4 +267,3 @@ class PITPipeline:
     def _log(self, msg: str) -> None:
         if self.verbose:
             print(msg, flush=True)
-
