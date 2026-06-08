@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1133,
+    "precode": "if (1.5 * work[pingPong] < work[4 * (n - 1) + pingPong]) {",
+    "aftercode": "if (1.5 * work[pingPong] <= work[4 * (n - 1) + pingPong]) {",
+    "rule": "Relational Operator Boundary",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1133,
+    "precode": "if (1.5 * work[pingPong] < work[4 * (n - 1) + pingPong]) {",
+    "aftercode": "if (1.5 * work[pingPong] > work[4 * (n - 1) + pingPong]) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1133,
+    "precode": "if (1.5 * work[pingPong] < work[4 * (n - 1) + pingPong]) {",
+    "aftercode": "if (1.5 * work[pingPong] < work[4 * n + pingPong]) {",
+    "rule": "Off-by-one Error",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1136,
+    "precode": "for (int i = 0; i < j; i += 4) {",
+    "aftercode": "for (int i = 0; i <= j; i += 4) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1136,
+    "precode": "for (int i = 0; i < j; i += 4) {",
+    "aftercode": "for (int i = 1; i < j; i += 4) {",
+    "rule": "Initialization Change",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1136,
+    "precode": "for (int i = 0; i < j; i += 4) {",
+    "aftercode": "for (int i = 0; i < j; i += 1) {",
+    "rule": "Increment Change",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1137,
+    "precode": "for (int k = 0; k < 4; k += step) {",
+    "aftercode": "for (int k = 0; k <= 4; k += step) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1137,
+    "precode": "for (int k = 0; k < 4; k += step) {",
+    "aftercode": "for (int k = 1; k < 4; k += step) {",
+    "rule": "Initialization Change",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1137,
+    "precode": "for (int k = 0; k < 4; k += step) {",
+    "aftercode": "for (int k = 0; k < 4; k++) {",
+    "rule": "Increment Change",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1139,
+    "precode": "work[i + k] = work[j - k];",
+    "aftercode": "work[i + k] = work[j + k];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1139,
+    "precode": "work[i + k] = work[j - k];",
+    "aftercode": "work[i + k] = work[j];",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1140,
+    "precode": "work[j - k] = tmp;",
+    "aftercode": "work[j - k] = work[i + k];",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1142,
+    "precode": "j -= 4;",
+    "aftercode": "j -= 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1142,
+    "precode": "j -= 4;",
+    "aftercode": "j += 4;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1142,
+    "precode": "j -= 4;",
+    "aftercode": "j = 4;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1145,
+    "precode": "}",
+    "aftercode": "return true;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.4,
+    "dublicate": false
+  }
+]

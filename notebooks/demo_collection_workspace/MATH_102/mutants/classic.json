@@ -1,0 +1,642 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 66,
+    "precode": "if ((expected.length < 2) || (expected.length != observed.length)) {",
+    "aftercode": "if ((expected.length <= 2) || (expected.length != observed.length)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 66,
+    "precode": "if ((expected.length < 2) || (expected.length != observed.length)) {",
+    "aftercode": "if ((expected.length < 3) || (expected.length != observed.length)) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 86,
+    "precode": "double sumSq = 0.0d;",
+    "aftercode": "double sumSq = 1.0d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 87,
+    "precode": "double dev = 0.0d;",
+    "aftercode": "double dev = 1.0d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 76,
+    "precode": "for (int i = 0; i < observed.length; i++) {",
+    "aftercode": "for (int i = 1; i < observed.length; i++) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 80,
+    "precode": "double ratio = 1.0d;",
+    "aftercode": "double ratio = 2.0d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 75,
+    "precode": "double sumObserved = 0d;",
+    "aftercode": "double sumObserved = 1d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 88,
+    "precode": "for (int i = 0; i < observed.length; i++) {",
+    "aftercode": "for (int i = 1; i < observed.length; i++) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 77,
+    "precode": "sumExpected += expected[i];",
+    "aftercode": "sumExpected -= expected[i];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 78,
+    "precode": "sumObserved += observed[i];",
+    "aftercode": "sumObserved -= observed[i];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 82,
+    "precode": "if (Math.abs(sumExpected - sumObserved) > 10E-6) {",
+    "aftercode": "if (Math.abs(sumExpected + sumObserved) > 10E-6) {",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 83,
+    "precode": "ratio = sumObserved / sumExpected;",
+    "aftercode": "ratio = sumObserved * sumExpected;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 90,
+    "precode": "dev = ((double) observed[i] - ratio * expected[i]);",
+    "aftercode": "dev = ((double) observed[i] - ratio / expected[i]);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 90,
+    "precode": "dev = ((double) observed[i] - ratio * expected[i]);",
+    "aftercode": "dev = ((double) observed[i] + ratio * expected[i]);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 91,
+    "precode": "sumSq += dev * dev / (ratio * expected[i]);",
+    "aftercode": "sumSq += dev * dev / (ratio / expected[i]);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 91,
+    "precode": "sumSq += dev * dev / (ratio * expected[i]);",
+    "aftercode": "sumSq += dev * dev * (ratio * expected[i]);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 91,
+    "precode": "sumSq += dev * dev / (ratio * expected[i]);",
+    "aftercode": "sumSq -= dev * dev / (ratio * expected[i]);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 93,
+    "precode": "dev = ((double) observed[i] - expected[i]);",
+    "aftercode": "dev = ((double) observed[i] + expected[i]);",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 94,
+    "precode": "sumSq += dev * dev / expected[i];",
+    "aftercode": "sumSq += dev / dev / expected[i];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 94,
+    "precode": "sumSq += dev * dev / expected[i];",
+    "aftercode": "sumSq += dev * dev * expected[i];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 94,
+    "precode": "sumSq += dev * dev / expected[i];",
+    "aftercode": "sumSq -= dev * dev / expected[i];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 66,
+    "precode": "if ((expected.length < 2) || (expected.length != observed.length)) {",
+    "aftercode": "if ((expected.length < 2) || (expected.length == observed.length)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 66,
+    "precode": "if ((expected.length < 2) || (expected.length != observed.length)) {",
+    "aftercode": "if ((expected.length >= 2) || (expected.length != observed.length)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 82,
+    "precode": "if (Math.abs(sumExpected - sumObserved) > 10E-6) {",
+    "aftercode": "if (Math.abs(sumExpected - sumObserved) <= 10E-6) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 88,
+    "precode": "for (int i = 0; i < observed.length; i++) {",
+    "aftercode": "for (int i = 0; i >= observed.length; i++) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 76,
+    "precode": "for (int i = 0; i < observed.length; i++) {",
+    "aftercode": "for (int i = 0; i >= observed.length; i++) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 89,
+    "precode": "if (rescale) {",
+    "aftercode": "if (!(rescale)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 70,
+    "precode": "if (!isPositive(expected) || !isNonNegative(observed)) {",
+    "aftercode": "if (!false || !isNonNegative(observed)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 70,
+    "precode": "if (!isPositive(expected) || !isNonNegative(observed)) {",
+    "aftercode": "if (!isPositive(expected) || !false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 82,
+    "precode": "if (Math.abs(sumExpected - sumObserved) > 10E-6) {",
+    "aftercode": "if (0.0d > 10E-6) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 66,
+    "precode": "if ((expected.length < 2) || (expected.length != observed.length)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 70,
+    "precode": "if (!isPositive(expected) || !isNonNegative(observed)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 89,
+    "precode": "if (rescale) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 66,
+    "precode": "if ((expected.length < 2) || (expected.length != observed.length)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 70,
+    "precode": "if (!isPositive(expected) || !isNonNegative(observed)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 89,
+    "precode": "if (rescale) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 82,
+    "precode": "if (Math.abs(sumExpected - sumObserved) > 10E-6) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 82,
+    "precode": "if (Math.abs(sumExpected - sumObserved) > 10E-6) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 97,
+    "precode": "return sumSq;",
+    "aftercode": "return (sumSq) == 0 ? 0.0d : 0.0d;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 151,
+    "precode": "int nCols = counts[0].length;",
+    "aftercode": "int nCols = counts[1].length;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 156,
+    "precode": "double total = 0.0d;",
+    "aftercode": "double total = 1.0d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 157,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 1; row < nRows; row++) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 158,
+    "precode": "for (int col = 0; col < nCols; col++) {",
+    "aftercode": "for (int col = 1; col < nCols; col++) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 166,
+    "precode": "double sumSq = 0.0d;",
+    "aftercode": "double sumSq = 1.0d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 167,
+    "precode": "double expected = 0.0d;",
+    "aftercode": "double expected = 1.0d;",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 168,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 1; row < nRows; row++) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 169,
+    "precode": "for (int col = 0; col < nCols; col++) {",
+    "aftercode": "for (int col = 1; col < nCols; col++) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 159,
+    "precode": "rowSum[row] += (double) counts[row][col];",
+    "aftercode": "rowSum[row] -= (double) counts[row][col];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 160,
+    "precode": "colSum[col] += (double) counts[row][col];",
+    "aftercode": "colSum[col] -= (double) counts[row][col];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 161,
+    "precode": "total += (double) counts[row][col];",
+    "aftercode": "total -= (double) counts[row][col];",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 170,
+    "precode": "expected = (rowSum[row] * colSum[col]) / total;",
+    "aftercode": "expected = (rowSum[row] / colSum[col]) / total;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 170,
+    "precode": "expected = (rowSum[row] * colSum[col]) / total;",
+    "aftercode": "expected = (rowSum[row] * colSum[col]) * total;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 171,
+    "precode": "sumSq += (((double) counts[row][col] - expected) *",
+    "aftercode": "sumSq += (((double) counts[row][col] + expected) *",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 171,
+    "precode": "sumSq += (((double) counts[row][col] - expected) *",
+    "aftercode": "sumSq += (((double) counts[row][col] - expected) /",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 172,
+    "precode": "((double) counts[row][col] - expected)) / expected;",
+    "aftercode": "((double) counts[row][col] - expected)) * expected;",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 171,
+    "precode": "sumSq += (((double) counts[row][col] - expected) *",
+    "aftercode": "sumSq -= (((double) counts[row][col] - expected) *",
+    "rule": "Math",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 157,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 0; row >= nRows; row++) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 158,
+    "precode": "for (int col = 0; col < nCols; col++) {",
+    "aftercode": "for (int col = 0; col >= nCols; col++) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 168,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 0; row >= nRows; row++) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 169,
+    "precode": "for (int col = 0; col < nCols; col++) {",
+    "aftercode": "for (int col = 0; col >= nCols; col++) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 135,
+    "precode": "if ((alpha <= 0) || (alpha > 0.5)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 135,
+    "precode": "if ((alpha <= 0) || (alpha > 0.5)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 149,
+    "precode": "checkArray(counts);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { checkArray(counts); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java",
+    "line": 175,
+    "precode": "return sumSq;",
+    "aftercode": "return (sumSq) == 0 ? 0.0d : 0.0d;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.06,
+    "dublicate": false
+  }
+]

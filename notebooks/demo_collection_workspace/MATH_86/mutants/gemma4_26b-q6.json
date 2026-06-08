@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 99,
+    "precode": "if (!matrix.isSquare()) {",
+    "aftercode": "if (matrix.isSquare()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 104,
+    "precode": "final int order = matrix.getRowDimension();",
+    "aftercode": "final int order = matrix.getColumnDimension();",
+    "rule": "Operand Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 110,
+    "precode": "for (int i = 0; i < order; ++i) {",
+    "aftercode": "for (int i = 1; i < order; ++i) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 110,
+    "precode": "for (int i = 0; i < order; ++i) {",
+    "aftercode": "for (int i = 0; i <= order; ++i) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 115,
+    "precode": "for (int j = i + 1; j < order; ++j) {",
+    "aftercode": "for (int j = i; j < order; ++j) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 115,
+    "precode": "for (int j = i + 1; j < order; ++j) {",
+    "aftercode": "for (int j = i + 1; j <= order; ++j) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 120,
+    "precode": "relativeSymmetryThreshold * Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "aftercode": "relativeSymmetryThreshold * Math.min(Math.abs(lIJ), Math.abs(lJI));",
+    "rule": "Operand Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 120,
+    "precode": "relativeSymmetryThreshold * Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "aftercode": "relativeSymmetryThreshold + Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 121,
+    "precode": "if (Math.abs(lIJ - lJI) > maxDelta) {",
+    "aftercode": "if (Math.abs(lIJ - lJI) >= maxDelta) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 121,
+    "precode": "if (Math.abs(lIJ - lJI) > maxDelta) {",
+    "aftercode": "if (Math.abs(lIJ - lJI) < maxDelta) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 124,
+    "precode": "lJ[i] = 0;",
+    "aftercode": "lJ[i] = 1;",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 129,
+    "precode": "for (int i = 0; i < order; ++i) {",
+    "aftercode": "for (int i = 0; i <= order; ++i) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 134,
+    "precode": "if (ltI[i] < absolutePositivityThreshold) {",
+    "aftercode": "if (ltI[i] <= absolutePositivityThreshold) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 134,
+    "precode": "if (ltI[i] < absolutePositivityThreshold) {",
+    "aftercode": "if (ltI[i] > absolutePositivityThreshold) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 138,
+    "precode": "ltI[i] = Math.sqrt(ltI[i]);",
+    "aftercode": "ltI[i] = Math.abs(ltI[i]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 139,
+    "precode": "final double inverse = 1.0 / ltI[i];",
+    "aftercode": "final double inverse = 1.0 * ltI[i];",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 141,
+    "precode": "for (int q = order - 1; q > i; --q) {",
+    "aftercode": "for (int q = order - 1; q >= i; --q) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 141,
+    "precode": "for (int q = order - 1; q > i; --q) {",
+    "aftercode": "for (int q = order; q > i; --q) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 142,
+    "precode": "ltI[q] *= inverse;",
+    "aftercode": "ltI[q] /= inverse;",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 144,
+    "precode": "for (int p = q; p < order; ++p) {",
+    "aftercode": "for (int p = q + 1; p < order; ++p) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 144,
+    "precode": "for (int p = q; p < order; ++p) {",
+    "aftercode": "for (int p = q; p <= order; ++p) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] += ltI[q] * ltI[p];",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] -= ltI[q] / ltI[p];",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 120,
+    "precode": "relativeSymmetryThreshold * Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "aftercode": "relativeSymmetryThreshold * Math.max(lIJ, lJI);",
+    "rule": "Removal of Math.abs",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 134,
+    "precode": "if (ltI[i] < absolutePositivityThreshold) {",
+    "aftercode": "if (ltI[i] < 0) {",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 138,
+    "precode": "ltI[i] = Math.sqrt(ltI[i]);",
+    "aftercode": "ltI[i] = ltI[i];",
+    "rule": "Removal of Math.sqrt",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 117,
+    "precode": "final double lIJ = lI[j];",
+    "aftercode": "final double lIJ = lI[i];",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 118,
+    "precode": "final double lJI = lJ[i];",
+    "aftercode": "final double lJI = lJ[j];",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 124,
+    "precode": "lJ[i] = 0;",
+    "aftercode": "lJ[j] = 0;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 142,
+    "precode": "ltI[q] *= inverse;",
+    "aftercode": "ltI[q] = inverse;",
+    "rule": "Assignment Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] = ltI[q] * ltI[p];",
+    "rule": "Assignment Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 105,
+    "precode": "lTData   = matrix.getData();",
+    "aftercode": "lTData   = matrix.getArray();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 106,
+    "precode": "cachedL  = null;",
+    "aftercode": "cachedL  = new double[order];",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 121,
+    "precode": "if (Math.abs(lIJ - lJI) > maxDelta) {",
+    "aftercode": "if (Math.abs(lIJ + lJI) > maxDelta) {",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 141,
+    "precode": "for (int q = order - 1; q > i; --q) {",
+    "aftercode": "for (int q = order - 1; q > i; ++q) {",
+    "rule": "Increment/Decrement Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 144,
+    "precode": "for (int p = q; p < order; ++p) {",
+    "aftercode": "for (int p = 0; p < order; ++p) {",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 120,
+    "precode": "relativeSymmetryThreshold * Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "aftercode": "relativeSymmetryThreshold * Math.abs(lIJ - lJI);",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 139,
+    "precode": "final double inverse = 1.0 / ltI[i];",
+    "aftercode": "final double inverse = 1.0 / Math.abs(ltI[i]);",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 112,
+    "precode": "final double[] lI = lTData[i];",
+    "aftercode": "final double[] lI = lTData[j];",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 116,
+    "precode": "final double[] lJ = lTData[j];",
+    "aftercode": "final double[] lJ = lTData[i];",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 104,
+    "precode": "final int order = matrix.getRowDimension();",
+    "aftercode": "final int order = 0;",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 121,
+    "precode": "if (Math.abs(lIJ - lJI) > maxDelta) {",
+    "aftercode": "if (Math.abs(lIJ - lJI) < maxDelta) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 134,
+    "precode": "if (ltI[i] < absolutePositivityThreshold) {",
+    "aftercode": "if (ltI[i] < 0.0) {",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] -= ltI[q] + ltI[p];",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] -= ltI[q] - ltI[p];",
+    "rule": "Arithmetic Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 120,
+    "precode": "relativeSymmetryThreshold * Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "aftercode": "1.0 * Math.max(Math.abs(lIJ), Math.abs(lJI));",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 141,
+    "precode": "for (int q = order - 1; q > i; --q) {",
+    "aftercode": "for (int q = order - 1; q > 0; --q) {",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 115,
+    "precode": "for (int j = i + 1; j < order; ++j) {",
+    "aftercode": "for (int j = 0; j < order; ++j) {",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 100,
+    "precode": "throw new NonSquareMatrixException(matrix.getRowDimension(),",
+    "aftercode": "throw new NonSquareMatrixException(0, 0);",
+    "rule": "Value Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 138,
+    "precode": "ltI[i] = Math.sqrt(ltI[i]);",
+    "aftercode": "ltI[i] = Math.pow(ltI[i], 2);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 142,
+    "precode": "ltI[q] *= inverse;",
+    "aftercode": "ltI[q] = ltI[q] * inverse;",
+    "rule": "No Change",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] -= ltI[q] * ltI[q];",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 145,
+    "precode": "ltQ[p] -= ltI[q] * ltI[p];",
+    "aftercode": "ltQ[p] -= ltI[p] * ltI[p];",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 134,
+    "precode": "if (ltI[i] < absolutePositivityThreshold) {",
+    "aftercode": "if (ltI[i] <= absolutePositivityThreshold) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 121,
+    "precode": "if (Math.abs(lIJ - lJI) > maxDelta) {",
+    "aftercode": "if (Math.abs(lIJ - lJI) >= maxDelta) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 115,
+    "precode": "for (int j = i + 1; j < order; ++j) {",
+    "aftercode": "for (int j = i + 1; j <= order; ++j) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 144,
+    "precode": "for (int p = q; p < order; ++p) {",
+    "aftercode": "for (int p = q; p <= order; ++p) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 141,
+    "precode": "for (int q = order - 1; q > i; --q) {",
+    "aftercode": "for (int q = order - 1; q >= i; --q) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 110,
+    "precode": "for (int i = 0; i < order; ++i) {",
+    "aftercode": "for (int i = 0; i <= order; ++i) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java",
+    "line": 99,
+    "precode": "if (!matrix.isSquare()) {",
+    "aftercode": "if (matrix.isSquare()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.35,
+    "dublicate": true
+  }
+]

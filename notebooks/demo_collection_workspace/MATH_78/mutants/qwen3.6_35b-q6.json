@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 174,
+    "precode": "final int    n  = Math.max(1, (int) Math.ceil(Math.abs(t1 - t0) / maxCheckInterval));",
+    "aftercode": "final int    n  = Math.min(1, (int) Math.ceil(Math.abs(t1 - t0) / maxCheckInterval));",
+    "rule": "Math Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 179,
+    "precode": "double tb = t0 + (interpolator.isForward() ? convergence : -convergence);",
+    "aftercode": "double tb = t0 + (interpolator.isForward() ? -convergence : convergence);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 183,
+    "precode": "tb += h;",
+    "aftercode": "tb -= h;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 188,
+    "precode": "if (g0Positive ^ (gb >= 0)) {",
+    "aftercode": "if (g0Positive ^ (gb > 0)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 191,
+    "precode": "if (ga * gb > 0) {",
+    "aftercode": "if (ga * gb >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 199,
+    "precode": "final double epsilon = (forward ? 0.25 : -0.25) * convergence;",
+    "aftercode": "final double epsilon = (forward ? -0.25 : 0.25) * convergence;",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 200,
+    "precode": "for (int k = 0; (k < 4) && (ga * gb > 0); ++k) {",
+    "aftercode": "for (int k = 0; (k <= 4) && (ga * gb > 0); ++k) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 201,
+    "precode": "ta += epsilon;",
+    "aftercode": "ta -= epsilon;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 205,
+    "precode": "if (ga * gb > 0) {",
+    "aftercode": "if (ga * gb >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 212,
+    "precode": "increasing = gb >= ga;",
+    "aftercode": "increasing = gb > ga;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 229,
+    "precode": "final double root = (ta <= tb) ? solver.solve(f, ta, tb) : solver.solve(f, tb, ta);",
+    "aftercode": "final double root = (ta < tb) ? solver.solve(f, ta, tb) : solver.solve(f, tb, ta);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 230,
+    "precode": "if ((Math.abs(root - ta) <= convergence) &&",
+    "aftercode": "if ((Math.abs(root - ta) < convergence) &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 231,
+    "precode": "(Math.abs(root - previousEventTime) <= convergence)) {",
+    "aftercode": "(Math.abs(root - previousEventTime) < convergence)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 233,
+    "precode": "ta = tb;",
+    "aftercode": "ta = t0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 234,
+    "precode": "ga = gb;",
+    "aftercode": "ga = g0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 235,
+    "precode": "} else if (Double.isNaN(previousEventTime) ||",
+    "aftercode": "} else if (!Double.isNaN(previousEventTime) ||",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 236,
+    "precode": "(Math.abs(previousEventTime - root) > convergence)) {",
+    "aftercode": "(Math.abs(previousEventTime - root) >= convergence)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 238,
+    "precode": "if (pendingEvent && (Math.abs(t1 - pendingEventTime) <= convergence)) {",
+    "aftercode": "if (pendingEvent && (Math.abs(t1 - pendingEventTime) < convergence)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 243,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 247,
+    "precode": "pendingEvent = true;",
+    "aftercode": "pendingEvent = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 248,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 253,
+    "precode": "ta = tb;",
+    "aftercode": "ta = t0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 254,
+    "precode": "ga = gb;",
+    "aftercode": "ga = g0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 260,
+    "precode": "pendingEvent     = false;",
+    "aftercode": "pendingEvent     = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 262,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 266,
+    "precode": "if ((cause != null) && (cause instanceof DerivativeException)) {",
+    "aftercode": "if ((cause == null) || (cause instanceof DerivativeException)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 268,
+    "precode": "} else if ((cause != null) && (cause instanceof EventException)) {",
+    "aftercode": "} else if ((cause == null) || (cause instanceof EventException)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  }
+]

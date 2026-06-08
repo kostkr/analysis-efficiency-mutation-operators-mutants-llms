@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 274,
+    "precode": "for (int i = getNumObjectiveFunctions(); i < getHeight(); i++) {",
+    "aftercode": "for (int i = 0; i < getHeight(); i++) {",
+    "rule": "Removed loop initialization offset",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 274,
+    "precode": "for (int i = getNumObjectiveFunctions(); i < getHeight(); i++) {",
+    "aftercode": "for (int i = getNumObjectiveFunctions(); i <= getHeight(); i++) {",
+    "rule": "Boundary Condition (Off-by-one)",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 275,
+    "precode": "if (MathUtils.equals(getEntry(i, col), 1.0, epsilon) && (row == null)) {",
+    "aftercode": "if (MathUtils.equals(getEntry(i, col), 1.0, epsilon) || (row == null)) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 275,
+    "precode": "if (MathUtils.equals(getEntry(i, col), 1.0, epsilon) && (row == null)) {",
+    "aftercode": "if (MathUtils.equals(getEntry(i, col), 1.0, epsilon)) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 276,
+    "precode": "row = i;",
+    "aftercode": "row = i + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 277,
+    "precode": "} else if (!MathUtils.equals(getEntry(i, col), 0.0, epsilon)) {",
+    "aftercode": "} else if (MathUtils.equals(getEntry(i, col), 0.0, epsilon)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 277,
+    "precode": "} else if (!MathUtils.equals(getEntry(i, col), 0.0, epsilon)) {",
+    "aftercode": "} else if (!MathUtils.equals(getEntry(i, col), 1.0, epsilon)) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 278,
+    "precode": "return null;",
+    "aftercode": "return row;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 274,
+    "precode": "for (int i = getNumObjectiveFunctions(); i < getHeight(); i++) {",
+    "aftercode": "for (int i = getNumObjectiveFunctions(); i > getHeight(); i++) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 275,
+    "precode": "if (MathUtils.equals(getEntry(i, col), 1.0, epsilon) && (row == null)) {",
+    "aftercode": "if (MathUtils.equals(getEntry(i, col), 0.0, epsilon) && (row == null)) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java",
+    "line": 281,
+    "precode": "return row;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  }
+]

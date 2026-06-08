@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 986,
+    "precode": "if (v.length != this.getColumnDimension()) {",
+    "aftercode": "if (v.length <= this.getColumnDimension()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 986,
+    "precode": "if (v.length != this.getColumnDimension()) {",
+    "aftercode": "if (v.length > this.getColumnDimension()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 986,
+    "precode": "if (v.length != this.getColumnDimension()) {",
+    "aftercode": "if (v.length == this.getColumnDimension()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 992,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 0; row <= nRows; row++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 992,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 1; row < nRows; row++) {",
+    "rule": "Index Offset",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 993,
+    "precode": "BigDecimal sum = ZERO;",
+    "aftercode": "BigDecimal sum = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 994,
+    "precode": "for (int i = 0; i < nCols; i++) {",
+    "aftercode": "for (int i = 0; i <= nCols; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 994,
+    "precode": "for (int i = 0; i < nCols; i++) {",
+    "aftercode": "for (int i = 1; i < nCols; i++) {",
+    "rule": "Index Offset",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 995,
+    "precode": "sum = sum.add(data[row][i].multiply(v[i]));",
+    "aftercode": "sum = sum.subtract(data[row][i].multiply(v[i]));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 995,
+    "precode": "sum = sum.add(data[row][i].multiply(v[i]));",
+    "aftercode": "sum = sum.add(data[row][i].divide(v[i]));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 995,
+    "precode": "sum = sum.add(data[row][i].multiply(v[i]));",
+    "aftercode": "sum = sum.add(data[row][i].multiply(v[0]));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 995,
+    "precode": "sum = sum.add(data[row][i].multiply(v[i]));",
+    "aftercode": "sum = sum.add(data[0][i].multiply(v[i]));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 995,
+    "precode": "sum = sum.add(data[row][i].multiply(v[i]));",
+    "aftercode": "sum = sum.add(data[row][i].multiply(v[i]).add(ZERO));",
+    "rule": "No-op Insertion",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 991,
+    "precode": "final BigDecimal[] out = new BigDecimal[nRows];",
+    "aftercode": "final BigDecimal[] out = new BigDecimal[nCols];",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 997,
+    "precode": "out[row] = sum;",
+    "aftercode": "out[0] = sum;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/math/linear/BigMatrixImpl.java",
+    "line": 997,
+    "precode": "out[row] = sum;",
+    "aftercode": "out[row] = ZERO;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 776,
+    "precode": "if (v.length != nCols) {",
+    "aftercode": "if (v.length <= nCols) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 776,
+    "precode": "if (v.length != nCols) {",
+    "aftercode": "if (v.length < nCols) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 776,
+    "precode": "if (v.length != nCols) {",
+    "aftercode": "if (v.length != 0) {",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 779,
+    "precode": "final double[] out = new double[nRows];",
+    "aftercode": "final double[] out = new double[nCols];",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 780,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 1; row < nRows; row++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 780,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 0; row <= nRows; row++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 780,
+    "precode": "for (int row = 0; row < nRows; row++) {",
+    "aftercode": "for (int row = 0; row < nRows - 1; row++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 782,
+    "precode": "double sum = 0;",
+    "aftercode": "double sum = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 783,
+    "precode": "for (int i = 0; i < nCols; i++) {",
+    "aftercode": "for (int i = 1; i < nCols; i++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 783,
+    "precode": "for (int i = 0; i < nCols; i++) {",
+    "aftercode": "for (int i = 0; i <= nCols; i++) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 783,
+    "precode": "for (int i = 0; i < nCols; i++) {",
+    "aftercode": "for (int i = 0; i < nRows; i++) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 784,
+    "precode": "sum += dataRow[i] * v[i];",
+    "aftercode": "sum += dataRow[i] / v[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 784,
+    "precode": "sum += dataRow[i] * v[i];",
+    "aftercode": "sum -= dataRow[i] * v[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 784,
+    "precode": "sum += dataRow[i] * v[i];",
+    "aftercode": "sum += dataRow[i] + v[i];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 784,
+    "precode": "sum += dataRow[i] * v[i];",
+    "aftercode": "sum += dataRow[i];",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 784,
+    "precode": "sum += dataRow[i] * v[i];",
+    "aftercode": "sum += v[i];",
+    "rule": "Operand Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/math/linear/RealMatrixImpl.java",
+    "line": 786,
+    "precode": "out[row] = sum;",
+    "aftercode": "out[row] = 0;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  }
+]

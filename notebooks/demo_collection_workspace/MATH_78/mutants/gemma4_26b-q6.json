@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 174,
+    "precode": "final int    n  = Math.max(1, (int) Math.ceil(Math.abs(t1 - t0) / maxCheckInterval));",
+    "aftercode": "final int    n  = Math.max(0, (int) Math.ceil(Math.abs(t1 - t0) / maxCheckInterval));",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 175,
+    "precode": "final double h  = (t1 - t0) / n;",
+    "aftercode": "final double h  = (t1 - t0) / (n + 1);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 179,
+    "precode": "double tb = t0 + (interpolator.isForward() ? convergence : -convergence);",
+    "aftercode": "double tb = t0 + (interpolator.isForward() ? convergence : convergence);",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 180,
+    "precode": "for (int i = 0; i < n; ++i) {",
+    "aftercode": "for (int i = 0; i <= n; ++i) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 183,
+    "precode": "tb += h;",
+    "aftercode": "tb -= h;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 188,
+    "precode": "if (g0Positive ^ (gb >= 0)) {",
+    "aftercode": "if (g0Positive ^ (gb > 0)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 191,
+    "precode": "if (ga * gb > 0) {",
+    "aftercode": "if (ga * gb >= 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 199,
+    "precode": "final double epsilon = (forward ? 0.25 : -0.25) * convergence;",
+    "aftercode": "final double epsilon = (forward ? 0.25 : 0.25) * convergence;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 200,
+    "precode": "for (int k = 0; (k < 4) && (ga * gb > 0); ++k) {",
+    "aftercode": "for (int k = 0; (k < 4) || (ga * gb > 0); ++k) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 200,
+    "precode": "for (int k = 0; (k < 4) && (ga * gb > 0); ++k) {",
+    "aftercode": "for (int k = 1; (k < 4) && (ga * gb > 0); ++k) {",
+    "rule": "Increment",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 205,
+    "precode": "if (ga * gb > 0) {",
+    "aftercode": "if (ga * gb < 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 212,
+    "precode": "increasing = gb >= ga;",
+    "aftercode": "increasing = gb > ga;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 227,
+    "precode": "solver.setAbsoluteAccuracy(convergence);",
+    "aftercode": "solver.setAbsoluteAccuracy(0.0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 228,
+    "precode": "solver.setMaximalIterationCount(maxIterationCount);",
+    "aftercode": "solver.setMaximalIterationCount(maxIterationCount + 1);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 229,
+    "precode": "final double root = (ta <= tb) ? solver.solve(f, ta, tb) : solver.solve(f, tb, ta);",
+    "aftercode": "final double root = (ta < tb) ? solver.solve(f, ta, tb) : solver.solve(f, tb, ta);",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 230,
+    "precode": "if ((Math.abs(root - ta) <= convergence) &&",
+    "aftercode": "if ((Math.abs(root - ta) < convergence) &&",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 231,
+    "precode": "(Math.abs(root - previousEventTime) <= convergence)) {",
+    "aftercode": "(Math.abs(root - previousEventTime) < convergence)) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 235,
+    "precode": "} else if (Double.isNaN(previousEventTime) ||",
+    "aftercode": "} else if (Double.isNaN(previousEventTime) &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 236,
+    "precode": "(Math.abs(previousEventTime - root) > convergence)) {",
+    "aftercode": "(Math.abs(previousEventTime - root) >= convergence)) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 238,
+    "precode": "if (pendingEvent && (Math.abs(t1 - pendingEventTime) <= convergence)) {",
+    "aftercode": "if (pendingEvent && (Math.abs(t1 - pendingEventTime) < convergence)) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 238,
+    "precode": "if (pendingEvent && (Math.abs(t1 - pendingEventTime) <= convergence)) {",
+    "aftercode": "if (pendingEvent || (Math.abs(t1 - pendingEventTime) <= convergence)) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 247,
+    "precode": "pendingEvent = true;",
+    "aftercode": "pendingEvent = false;",
+    "rule": "Assignment",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 260,
+    "precode": "pendingEvent     = false;",
+    "aftercode": "pendingEvent     = true;",
+    "rule": "Assignment",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 261,
+    "precode": "pendingEventTime = Double.NaN;",
+    "aftercode": "pendingEventTime = 0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/ode/events/EventState.java",
+    "line": 267,
+    "precode": "throw (DerivativeException) cause;",
+    "aftercode": "throw (EventException) cause;",
+    "rule": "Type Casting",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  }
+]

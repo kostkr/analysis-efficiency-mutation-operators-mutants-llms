@@ -1,0 +1,1612 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 572,
+    "precode": "final int lowerStart = 4 * m;",
+    "aftercode": "final int lowerStart = 5 * m;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 573,
+    "precode": "final int upperStart = 5 * m;",
+    "aftercode": "final int upperStart = 4 * m;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 574,
+    "precode": "lowerSpectra = Double.POSITIVE_INFINITY;",
+    "aftercode": "lowerSpectra = Double.NEGATIVE_INFINITY;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 575,
+    "precode": "upperSpectra = Double.NEGATIVE_INFINITY;",
+    "aftercode": "upperSpectra = Double.POSITIVE_INFINITY;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 576,
+    "precode": "double eMax = 0;",
+    "aftercode": "double eMax = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 579,
+    "precode": "for (int i = 0; i < m - 1; ++i) {",
+    "aftercode": "for (int i = 0; i <= m - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 579,
+    "precode": "for (int i = 0; i < m - 1; ++i) {",
+    "aftercode": "for (int i = 1; i < m - 1; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 579,
+    "precode": "for (int i = 0; i < m - 1; ++i) {",
+    "aftercode": "for (int i = 0; i < m; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 581,
+    "precode": "final double dCurrent = main[i];",
+    "aftercode": "final double dCurrent = main[i + 1];",
+    "rule": "Array Index Offset",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 583,
+    "precode": "eCurrent = Math.abs(secondary[i]);",
+    "aftercode": "eCurrent = secondary[i];",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 584,
+    "precode": "eMax = Math.max(eMax, eCurrent);",
+    "aftercode": "eMax = Math.min(eMax, eCurrent);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 585,
+    "precode": "final double radius = ePrevious + eCurrent;",
+    "aftercode": "final double radius = ePrevious - eCurrent;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 585,
+    "precode": "final double radius = ePrevious + eCurrent;",
+    "aftercode": "final double radius = ePrevious * eCurrent;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 587,
+    "precode": "final double lower = dCurrent - radius;",
+    "aftercode": "final double lower = dCurrent + radius;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 589,
+    "precode": "lowerSpectra = Math.min(lowerSpectra, lower);",
+    "aftercode": "lowerSpectra = Math.max(lowerSpectra, lower);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 591,
+    "precode": "final double upper = dCurrent + radius;",
+    "aftercode": "final double upper = dCurrent - radius;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 593,
+    "precode": "upperSpectra = Math.max(upperSpectra, upper);",
+    "aftercode": "upperSpectra = Math.min(upperSpectra, upper);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 597,
+    "precode": "final double dCurrent = main[m - 1];",
+    "aftercode": "final double dCurrent = main[m];",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 598,
+    "precode": "final double lower = dCurrent - eCurrent;",
+    "aftercode": "final double lower = dCurrent + eCurrent;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 600,
+    "precode": "lowerSpectra = Math.min(lowerSpectra, lower);",
+    "aftercode": "lowerSpectra = lower;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 601,
+    "precode": "final double upper = dCurrent + eCurrent;",
+    "aftercode": "final double upper = dCurrent - eCurrent;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 603,
+    "precode": "upperSpectra = Math.max(upperSpectra, upper);",
+    "aftercode": "upperSpectra = upper;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 604,
+    "precode": "minPivot = MathUtils.SAFE_MIN * Math.max(1.0, eMax * eMax);",
+    "aftercode": "minPivot = MathUtils.SAFE_MIN * Math.min(1.0, eMax * eMax);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 604,
+    "precode": "minPivot = MathUtils.SAFE_MIN * Math.max(1.0, eMax * eMax);",
+    "aftercode": "minPivot = MathUtils.SAFE_MIN * Math.max(1.0, eMax);",
+    "rule": "Variable Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 572,
+    "precode": "final int lowerStart = 4 * m;",
+    "aftercode": "final int lowerStart = 4 + m;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 573,
+    "precode": "final int upperStart = 5 * m;",
+    "aftercode": "final int upperStart = 5 + m;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 576,
+    "precode": "double eMax = 0;",
+    "aftercode": "double eMax = -0.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 578,
+    "precode": "double eCurrent = 0;",
+    "aftercode": "double eCurrent = 1.0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 583,
+    "precode": "eCurrent = Math.abs(secondary[i]);",
+    "aftercode": "eCurrent = Math.abs(main[i]);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 584,
+    "precode": "eMax = Math.max(eMax, eCurrent);",
+    "aftercode": "eMax = eCurrent;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 587,
+    "precode": "final double lower = dCurrent - radius;",
+    "aftercode": "final double lower = radius - dCurrent;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 591,
+    "precode": "final double upper = dCurrent + radius;",
+    "aftercode": "final double upper = radius + dCurrent;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 598,
+    "precode": "final double lower = dCurrent - eCurrent;",
+    "aftercode": "final double lower = eCurrent - dCurrent;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 601,
+    "precode": "final double upper = dCurrent + eCurrent;",
+    "aftercode": "final double upper = eCurrent + dCurrent;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 604,
+    "precode": "minPivot = MathUtils.SAFE_MIN * Math.max(1.0, eMax * eMax);",
+    "aftercode": "minPivot = MathUtils.SAFE_MIN / Math.max(1.0, eMax * eMax);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 588,
+    "precode": "work[lowerStart + i] = lower;",
+    "aftercode": "work[lowerStart - i] = lower;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 592,
+    "precode": "work[upperStart + i] = upper;",
+    "aftercode": "work[upperStart - i] = upper;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 599,
+    "precode": "work[lowerStart + m - 1] = lower;",
+    "aftercode": "work[lowerStart + m] = lower;",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 602,
+    "precode": "work[upperStart + m - 1] = upper;",
+    "aftercode": "work[upperStart + m] = upper;",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 828,
+    "precode": "for (int i = 0; i < n - 1; ++i) {",
+    "aftercode": "for (int i = 0; i <= n - 1; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 828,
+    "precode": "for (int i = 0; i < n - 1; ++i) {",
+    "aftercode": "for (int i = 0; i < n - 2; ++i) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 830,
+    "precode": "final double ei = work[fourI + 2];",
+    "aftercode": "final double ei = work[fourI + 1];",
+    "rule": "Array Index",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 834,
+    "precode": "if (sumOffDiag == 0) {",
+    "aftercode": "if (sumOffDiag != 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 834,
+    "precode": "if (sumOffDiag == 0) {",
+    "aftercode": "if (sumOffDiag >= 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 840,
+    "precode": "flipIfWarranted(n, 2);",
+    "aftercode": "flipIfWarranted(n, 1);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 846,
+    "precode": "tType = 0;",
+    "aftercode": "tType = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 847,
+    "precode": "dMin1 = 0;",
+    "aftercode": "dMin1 = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 857,
+    "precode": "while (n0 > 0) {",
+    "aftercode": "while (n0 >= 0) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 857,
+    "precode": "while (n0 > 0) {",
+    "aftercode": "while (n0 < 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 860,
+    "precode": "sigma    = (n0 == n) ? 0 : -work[4 * n0 - 2];",
+    "aftercode": "sigma    = (n0 == n) ? 0 : work[4 * n0 - 2];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 864,
+    "precode": "double offDiagMin = (i0 == n0) ? 0 : work[4 * n0 - 6];",
+    "aftercode": "double offDiagMin = (i0 != n0) ? 0 : work[4 * n0 - 6];",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 867,
+    "precode": "double diagMin    = diagMax;",
+    "aftercode": "double diagMin    = 0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 869,
+    "precode": "for (int i = 4 * (n0 - 2); i >= 0; i -= 4) {",
+    "aftercode": "for (int i = 4 * (n0 - 2); i > 0; i -= 4) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 869,
+    "precode": "for (int i = 4 * (n0 - 2); i >= 0; i -= 4) {",
+    "aftercode": "for (int i = 4 * (n0 - 2); i >= 0; i += 4) {",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 870,
+    "precode": "if (work[i + 2] <= 0) {",
+    "aftercode": "if (work[i + 2] < 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 870,
+    "precode": "if (work[i + 2] <= 0) {",
+    "aftercode": "if (work[i + 2] >= 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 871,
+    "precode": "i0 = 1 + i / 4;",
+    "aftercode": "i0 = i / 4;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 874,
+    "precode": "if (diagMin >= 4 * offDiagMax) {",
+    "aftercode": "if (diagMin > 4 * offDiagMax) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 874,
+    "precode": "if (diagMin >= 4 * offDiagMax) {",
+    "aftercode": "if (diagMin <= 4 * offDiagMax) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 875,
+    "precode": "diagMin    = Math.min(diagMin, work[i + 4]);",
+    "aftercode": "diagMin    = Math.max(diagMin, work[i + 4]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 876,
+    "precode": "offDiagMax = Math.max(offDiagMax, work[i + 2]);",
+    "aftercode": "offDiagMax = Math.min(offDiagMax, work[i + 2]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 878,
+    "precode": "diagMax    = Math.max(diagMax, work[i] + work[i + 2]);",
+    "aftercode": "diagMax    = Math.max(diagMax, work[i] - work[i + 2]);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 879,
+    "precode": "offDiagMin = Math.min(offDiagMin, work[i + 2]);",
+    "aftercode": "offDiagMin = Math.max(offDiagMin, work[i + 2]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 884,
+    "precode": "dMin = -Math.max(0, diagMin - 2 * Math.sqrt(diagMin * offDiagMax));",
+    "aftercode": "dMin = Math.max(0, diagMin - 2 * Math.sqrt(diagMin * offDiagMax));",
+    "rule": "Unary Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 887,
+    "precode": "int maxIter = 30 * (n0 - i0);",
+    "aftercode": "int maxIter = 30 * (n0 + i0);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 888,
+    "precode": "for (int k = 0; i0 < n0; ++k) {",
+    "aftercode": "for (int k = 0; i0 <= n0; ++k) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 889,
+    "precode": "if (k >= maxIter) {",
+    "aftercode": "if (k > maxIter) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 894,
+    "precode": "n0 = goodStep(i0, n0);",
+    "aftercode": "n0 = goodStep(i0, n0 + 1);",
+    "rule": "Variable Modification",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 895,
+    "precode": "pingPong = 1 - pingPong;",
+    "aftercode": "pingPong = 1 + pingPong;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 899,
+    "precode": "if ((pingPong == 0) && (n0 - i0 > 3) &&",
+    "aftercode": "if ((pingPong == 0) || (n0 - i0 > 3) &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 900,
+    "precode": "(work[4 * n0 - 1] <= TOLERANCE_2 * diagMax) &&",
+    "aftercode": "(work[4 * n0 - 1] < TOLERANCE_2 * diagMax) &&",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 901,
+    "precode": "(work[4 * n0 - 2] <= TOLERANCE_2 * sigma)) {",
+    "aftercode": "(work[4 * n0 - 2] < TOLERANCE_2 * sigma)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 902,
+    "precode": "int split  = i0 - 1;",
+    "aftercode": "int split  = i0 + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 903,
+    "precode": "diagMax    = work[4 * i0];",
+    "aftercode": "diagMax    = work[4 * i0 + 1];",
+    "rule": "Array Index",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 906,
+    "precode": "for (int i = 4 * i0; i < 4 * n0 - 16; i += 4) {",
+    "aftercode": "for (int i = 4 * i0; i <= 4 * n0 - 16; i += 4) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 907,
+    "precode": "if ((work[i + 3] <= TOLERANCE_2 * work[i]) ||",
+    "aftercode": "if ((work[i + 3] < TOLERANCE_2 * work[i]) ||",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 908,
+    "precode": "(work[i + 2] <= TOLERANCE_2 * sigma)) {",
+    "aftercode": "(work[i + 2] < TOLERANCE_2 * sigma)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 910,
+    "precode": "work[i + 2]  = -sigma;",
+    "aftercode": "work[i + 2]  = sigma;",
+    "rule": "Unary Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 911,
+    "precode": "split        = i / 4;",
+    "aftercode": "split        = i + 4;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 916,
+    "precode": "diagMax      = Math.max(diagMax, work[i + 4]);",
+    "aftercode": "diagMax      = Math.min(diagMax, work[i + 4]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 917,
+    "precode": "offDiagMin   = Math.min(offDiagMin, work[i + 2]);",
+    "aftercode": "offDiagMin   = Math.max(offDiagMin, work[i + 2]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 918,
+    "precode": "previousEMin = Math.min(previousEMin, work[i + 3]);",
+    "aftercode": "previousEMin = Math.max(previousEMin, work[i + 3]);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 923,
+    "precode": "i0 = split + 1;",
+    "aftercode": "i0 = split;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1439,
+    "precode": "if (dMin <= 0.0) {",
+    "aftercode": "if (dMin < 0.0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1440,
+    "precode": "tau = -dMin;",
+    "aftercode": "tau = dMin;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1445,
+    "precode": "int nn = 4 * end + pingPong - 1;",
+    "aftercode": "int nn = 4 * end + pingPong;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1449,
+    "precode": "if (dMin == dN || dMin == dN1) {",
+    "aftercode": "if (dMin == dN && dMin == dN1) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1457,
+    "precode": "final double gap2 = dMin2 - a2 - dMin2 * 0.25;",
+    "aftercode": "final double gap2 = dMin2 - a2 + dMin2 * 0.25;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1458,
+    "precode": "final double gap1 = a2 - dN - ((gap2 > 0.0 && gap2 > b2) ? (b2 / gap2) * b2 : (b1 + b2));",
+    "aftercode": "final double gap1 = a2 - dN - ((gap2 >= 0.0 && gap2 > b2) ? (b2 / gap2) * b2 : (b1 + b2));",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1459,
+    "precode": "if (gap1 > 0.0 && gap1 > b1) {",
+    "aftercode": "if (gap1 >= 0.0 && gap1 > b1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1460,
+    "precode": "tau   = Math.max(dN - (b1 / gap1) * b1, 0.5 * dMin);",
+    "aftercode": "tau   = Math.min(dN - (b1 / gap1) * b1, 0.5 * dMin);",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1464,
+    "precode": "if (dN > b1) {",
+    "aftercode": "if (dN >= b1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1467,
+    "precode": "if (a2 > (b1 + b2)) {",
+    "aftercode": "if (a2 >= (b1 + b2)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1468,
+    "precode": "s = Math.min(s, a2 - (b1 + b2));",
+    "aftercode": "s = Math.max(s, a2 - (b1 + b2));",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1470,
+    "precode": "tau   = Math.max(s, 0.333 * dMin);",
+    "aftercode": "tau   = Math.min(s, 0.333 * dMin);",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1476,
+    "precode": "double s = 0.25 * dMin;",
+    "aftercode": "double s = 0.25 / dMin;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1482,
+    "precode": "if (work[nn - 5]  >  work[nn - 7]) {",
+    "aftercode": "if (work[nn - 5]  >=  work[nn - 7]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1485,
+    "precode": "b2 = work[nn - 5] / work[nn - 7];",
+    "aftercode": "b2 = work[nn - 5] * work[nn - 7];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1489,
+    "precode": "b2 = work[np - 2];",
+    "aftercode": "b2 = work[np + 2];",
+    "rule": "Array Index",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1491,
+    "precode": "if (work[np - 4]  >  work[np - 2]) {",
+    "aftercode": "if (work[np - 4]  <  work[np - 2]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1494,
+    "precode": "a2 = work[np - 4] / work[np - 2];",
+    "aftercode": "a2 = work[np - 4] * work[np - 2];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1495,
+    "precode": "if (work[nn - 9]  >  work[nn - 11]) {",
+    "aftercode": "if (work[nn - 9]  <=  work[nn - 11]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1498,
+    "precode": "b2 = work[nn - 9] / work[nn - 11];",
+    "aftercode": "b2 = work[nn - 11] / work[nn - 9];",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1503,
+    "precode": "a2 = a2 + b2;",
+    "aftercode": "a2 = a2 - b2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1504,
+    "precode": "for (int i4 = np; i4 >= 4 * start + 2 + pingPong; i4 -= 4) {",
+    "aftercode": "for (int i4 = np; i4 > 4 * start + 2 + pingPong; i4 -= 4) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1505,
+    "precode": "if(b2 == 0.0) {",
+    "aftercode": "if(b2 != 0.0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1512,
+    "precode": "b2 = b2 * (work[i4] / work[i4 - 2]);",
+    "aftercode": "b2 = b2 / (work[i4] / work[i4 - 2]);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1513,
+    "precode": "a2 = a2 + b2;",
+    "aftercode": "a2 += b2;",
+    "rule": "Assignment Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1514,
+    "precode": "if (100 * Math.max(b2, b1) < a2 || cnst1 < a2) {",
+    "aftercode": "if (100 * Math.max(b2, b1) < a2 && cnst1 < a2) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1518,
+    "precode": "a2 = cnst3 * a2;",
+    "aftercode": "a2 = cnst3 / a2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1521,
+    "precode": "if (a2 < cnst1) {",
+    "aftercode": "if (a2 <= cnst1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1522,
+    "precode": "s = gam * (1 - Math.sqrt(a2)) / (1 + a2);",
+    "aftercode": "s = gam * (1 + Math.sqrt(a2)) / (1 + a2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1531,
+    "precode": "double s = 0.25 * dMin;",
+    "aftercode": "double s = 0.25 + dMin;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1538,
+    "precode": "if (work[np - 8] > b2 || work[np - 4] > b1) {",
+    "aftercode": "if (work[np - 8] > b2 && work[np - 4] > b1) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1541,
+    "precode": "double a2 = (work[np - 8] / b2) * (1 + work[np - 4] / b1);",
+    "aftercode": "double a2 = (work[np - 8] / b2) * (1 - work[np - 4] / b1);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1544,
+    "precode": "if (end - start > 3) {",
+    "aftercode": "if (end - start >= 3) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1545,
+    "precode": "b2 = work[nn - 13] / work[nn - 15];",
+    "aftercode": "b2 = work[nn - 13] * work[nn - 15];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1546,
+    "precode": "a2 = a2 + b2;",
+    "aftercode": "a2 = a2 - b2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1552,
+    "precode": "if (work[i4]  >  work[i4 - 2]) {",
+    "aftercode": "if (work[i4]  <  work[i4 - 2]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1555,
+    "precode": "b2 = b2 * (work[i4] / work[i4 - 2]);",
+    "aftercode": "b2 = b2 * (work[i4 - 2] / work[i4]);",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1556,
+    "precode": "a2 = a2 + b2;",
+    "aftercode": "a2 = a2 + b1;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1557,
+    "precode": "if (100 * Math.max(b2, b1) < a2 || cnst1 < a2)  {",
+    "aftercode": "if (100 * Math.max(b2, b1) < a2 || cnst1 > a2)  {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1561,
+    "precode": "a2 = cnst3 * a2;",
+    "aftercode": "a2 = cnst3 + a2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1564,
+    "precode": "if (a2 < cnst1) {",
+    "aftercode": "if (a2 > cnst1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1565,
+    "precode": "tau = gam * (1 - Math.sqrt(a2)) / (1 + a2);",
+    "aftercode": "tau = gam * (1 - Math.sqrt(a2)) * (1 + a2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1574,
+    "precode": "g += 0.333 * (1 - g);",
+    "aftercode": "g -= 0.333 * (1 - g);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1576,
+    "precode": "g = 0.25 * 0.333;",
+    "aftercode": "g = 0.25 / 0.333;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1578,
+    "precode": "g = 0.25;",
+    "aftercode": "g = 0.251;",
+    "rule": "Scalar Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1580,
+    "precode": "tau   = g * dMin;",
+    "aftercode": "tau   = g / dMin;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1591,
+    "precode": "double s = 0.333 * dMin1;",
+    "aftercode": "double s = 0.333 + dMin1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1592,
+    "precode": "if (work[nn - 5] > work[nn - 7]) {",
+    "aftercode": "if (work[nn - 5] >= work[nn - 7]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1595,
+    "precode": "double b1 = work[nn - 5] / work[nn - 7];",
+    "aftercode": "double b1 = work[nn - 7] / work[nn - 5];",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1597,
+    "precode": "if (b2 != 0.0) {",
+    "aftercode": "if (b2 == 0.0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1600,
+    "precode": "if (work[i4] > work[i4 - 2]) {",
+    "aftercode": "if (work[i4] < work[i4 - 2]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1603,
+    "precode": "b1 = b1 * (work[i4] / work[i4 - 2]);",
+    "aftercode": "b1 = b1 / (work[i4] / work[i4 - 2]);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1604,
+    "precode": "b2 = b2 + b1;",
+    "aftercode": "b2 = b2 - b1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1605,
+    "precode": "if (100 * Math.max(b1, oldB1) < b2) {",
+    "aftercode": "if (100 * Math.max(b1, oldB1) > b2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1610,
+    "precode": "b2 = Math.sqrt(cnst3 * b2);",
+    "aftercode": "b2 = Math.sqrt(cnst3 / b2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1611,
+    "precode": "final double a2 = dMin1 / (1 + b2 * b2);",
+    "aftercode": "final double a2 = dMin1 * (1 + b2 * b2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1612,
+    "precode": "final double gap2 = 0.5 * dMin2 - a2;",
+    "aftercode": "final double gap2 = 0.5 * dMin2 + a2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1613,
+    "precode": "if (gap2 > 0.0 && gap2 > b2 * a2) {",
+    "aftercode": "if (gap2 >= 0.0 && gap2 > b2 * a2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1614,
+    "precode": "tau = Math.max(s, a2 * (1 - cnst2 * a2 * (b2 / gap2) * b2));",
+    "aftercode": "tau = Math.min(s, a2 * (1 - cnst2 * a2 * (b2 / gap2) * b2));",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1616,
+    "precode": "tau = Math.max(s, a2 * (1 - cnst2 * b2));",
+    "aftercode": "tau = Math.min(s, a2 * (1 - cnst2 * b2));",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1622,
+    "precode": "tau = 0.25 * dMin1;",
+    "aftercode": "tau = 0.25 + dMin1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1623,
+    "precode": "if (dMin1 == dN1) {",
+    "aftercode": "if (dMin1 != dN1) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1624,
+    "precode": "tau = 0.5 * dMin1;",
+    "aftercode": "tau = 0.5 / dMin1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1633,
+    "precode": "if (dMin2 == dN2 && 2 * work[nn - 5] < work[nn - 7]) {",
+    "aftercode": "if (dMin2 == dN2 && 2 * work[nn - 5] > work[nn - 7]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1635,
+    "precode": "final double s = 0.333 * dMin2;",
+    "aftercode": "final double s = 0.333 + dMin2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1636,
+    "precode": "if (work[nn - 5] > work[nn - 7]) {",
+    "aftercode": "if (work[nn - 5] <= work[nn - 7]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1639,
+    "precode": "double b1 = work[nn - 5] / work[nn - 7];",
+    "aftercode": "double b1 = work[nn - 7] / work[nn - 5];",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1643,
+    "precode": "if (work[i4] > work[i4 - 2]) {",
+    "aftercode": "if (work[i4] < work[i4 - 2]) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1646,
+    "precode": "b1 *= work[i4] / work[i4 - 2];",
+    "aftercode": "b1 /= work[i4] / work[i4 - 2];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1647,
+    "precode": "b2 += b1;",
+    "aftercode": "b2 -= b1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1648,
+    "precode": "if (100 * b1 < b2) {",
+    "aftercode": "if (100 * b1 > b2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1654,
+    "precode": "final double a2 = dMin2 / (1 + b2 * b2);",
+    "aftercode": "final double a2 = dMin2 * (1 + b2 * b2);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1655,
+    "precode": "final double gap2 = work[nn - 7] + work[nn - 9] -",
+    "aftercode": "final double gap2 = work[nn - 7] - work[nn - 9] -",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1657,
+    "precode": "if (gap2 > 0.0 && gap2 > b2 * a2) {",
+    "aftercode": "if (gap2 >= 0.0 && gap2 > b2 * a2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1658,
+    "precode": "tau = Math.max(s, a2 * (1 - cnst2 * a2 * (b2 / gap2) * b2));",
+    "aftercode": "tau = Math.min(s, a2 * (1 - cnst2 * a2 * (b2 / gap2) * b2));",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1660,
+    "precode": "tau = Math.max(s, a2 * (1 - cnst2 * b2));",
+    "aftercode": "tau = Math.min(s, a2 * (1 - cnst2 * b2));",
+    "rule": "Math Function Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1663,
+    "precode": "tau   = 0.25 * dMin2;",
+    "aftercode": "tau   = 0.25 + dMin2;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java",
+    "line": 1669,
+    "precode": "tau   = 0.0;",
+    "aftercode": "tau   = 1.0;",
+    "rule": "Scalar Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  }
+]

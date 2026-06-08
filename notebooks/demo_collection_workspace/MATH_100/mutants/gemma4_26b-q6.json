@@ -1,0 +1,472 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 162,
+    "precode": "updateJacobian();",
+    "aftercode": "//          updateJacobian();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 165,
+    "precode": "final int rows = problem.getMeasurements().length;",
+    "aftercode": "final int rows = problem.getMeasurements().length - 1;",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 166,
+    "precode": "final int cols = problem.getUnboundParameters().length;",
+    "aftercode": "final int cols = problem.getUnboundParameters().length - 1;",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 167,
+    "precode": "final int max  = cols * rows;",
+    "aftercode": "final int max  = cols + rows;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 168,
+    "precode": "double[][] jTj = new double[cols][cols];",
+    "aftercode": "double[][] jTj = new double[cols][rows];",
+    "rule": "Array Dimension Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 169,
+    "precode": "for (int i = 0; i < cols; ++i) {",
+    "aftercode": "for (int i = 1; i < cols; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 169,
+    "precode": "for (int i = 0; i < cols; ++i) {",
+    "aftercode": "for (int i = 0; i <= cols; ++i) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 170,
+    "precode": "for (int j = i; j < cols; ++j) {",
+    "aftercode": "for (int j = 0; j < cols; ++j) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 170,
+    "precode": "for (int j = i; j < cols; ++j) {",
+    "aftercode": "for (int j = i + 1; j < cols; ++j) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 170,
+    "precode": "for (int j = i; j < cols; ++j) {",
+    "aftercode": "for (int j = i; j <= cols; ++j) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 171,
+    "precode": "double sum = 0;",
+    "aftercode": "double sum = 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 172,
+    "precode": "for (int k = 0; k < max; k += cols) {",
+    "aftercode": "for (int k = 0; k <= max; k += cols) {",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 172,
+    "precode": "for (int k = 0; k < max; k += cols) {",
+    "aftercode": "for (int k = 0; k < max; k++) {",
+    "rule": "Increment Operator Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 172,
+    "precode": "for (int k = 0; k < max; k += cols) {",
+    "aftercode": "for (int k = 1; k < max; k += cols) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 173,
+    "precode": "sum += jacobian[k + i] * jacobian[k + j];",
+    "aftercode": "sum += jacobian[k + i] + jacobian[k + j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 173,
+    "precode": "sum += jacobian[k + i] * jacobian[k + j];",
+    "aftercode": "sum -= jacobian[k + i] * jacobian[k + j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 173,
+    "precode": "sum += jacobian[k + i] * jacobian[k + j];",
+    "aftercode": "sum += jacobian[k + i] * jacobian[k + i];",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 173,
+    "precode": "sum += jacobian[k + i] * jacobian[k + j];",
+    "aftercode": "sum += jacobian[k + j] * jacobian[k + j];",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 175,
+    "precode": "jTj[i][j] = sum;",
+    "aftercode": "jTj[i][j] = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 176,
+    "precode": "jTj[j][i] = sum;",
+    "aftercode": "// jTj[j][i] = sum;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 176,
+    "precode": "jTj[j][i] = sum;",
+    "aftercode": "jTj[j][j] = sum;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return new RealMatrixImpl(jTj).getData();",
+    "rule": "Method Call Deletion",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return new RealMatrixImpl(jTj).inverse().transpose().getData();",
+    "rule": "Method Call Insertion",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return new RealMatrixImpl(jTj).transpose().inverse().getData();",
+    "rule": "Method Call Reordering",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 183,
+    "precode": "} catch (InvalidMatrixException ime) {",
+    "aftercode": "} catch (Exception ime) {",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 184,
+    "precode": "throw new EstimationException(\"unable to compute covariances: singular problem\",",
+    "aftercode": "throw new EstimationException(\"unable to compute covariances: singular problem\", new Object[1]);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 184,
+    "precode": "throw new EstimationException(\"unable to compute covariances: singular problem\",",
+    "aftercode": "throw new RuntimeException(\"unable to compute covariances: singular problem\",",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 165,
+    "precode": "final int rows = problem.getMeasurements().length;",
+    "aftercode": "final int rows = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 166,
+    "precode": "final int cols = problem.getUnboundParameters().length;",
+    "aftercode": "final int cols = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 175,
+    "precode": "jTj[i][j] = sum;",
+    "aftercode": "jTj[i][i] = sum;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 176,
+    "precode": "jTj[j][i] = sum;",
+    "aftercode": "jTj[i][i] = sum;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.32,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 203,
+    "precode": "if (m <= p) {",
+    "aftercode": "if (m < p) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 203,
+    "precode": "if (m <= p) {",
+    "aftercode": "if (m < p) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 203,
+    "precode": "if (m <= p) {",
+    "aftercode": "if (m <= p - 1) {",
+    "rule": "Boundary Value",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 207,
+    "precode": "double[] errors = new double[problem.getUnboundParameters().length];",
+    "aftercode": "double[] errors = new double[problem.getMeasurements().length];",
+    "rule": "Array Size Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = Math.sqrt(getChiSquare(problem) / (m + p));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = Math.sqrt(getChiSquare(problem) / m;",
+    "rule": "Partial Expression Removal",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = getChiSquare(problem) / (m - p);",
+    "rule": "Function Call Removal",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p + 1));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 210,
+    "precode": "for (int i = 0; i < errors.length; ++i) {",
+    "aftercode": "for (int i = 0; i <= errors.length; ++i) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 210,
+    "precode": "for (int i = 0; i < errors.length; ++i) {",
+    "aftercode": "for (int i = 1; i < errors.length; ++i) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 210,
+    "precode": "for (int i = 0; i < errors.length; ++i) {",
+    "aftercode": "for (int i = 0; i < errors.length - 1; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = Math.sqrt(covar[i][i]) / c;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = Math.sqrt(covar[i][i]);",
+    "rule": "Variable Removal",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = Math.sqrt(covar[i][0]) * c;",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = Math.sqrt(covar[0][i]) * c;",
+    "rule": "Index Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = Math.sqrt(covar[i][i]) + c;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.44,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return (org.apache.commons.math.linear.RealMatrixImpl) null.inverse().getData();",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 169,
+    "precode": "for (int i = 0; i < cols; ++i) {",
+    "aftercode": "for (int i = 1; i < cols; ++i) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 172,
+    "precode": "for (int k = 0; k < max; k += cols) {",
+    "aftercode": "for (int k = 1; k < max; k += cols) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 167,
+    "precode": "final int max  = cols * rows;",
+    "aftercode": "final int max  = cols / rows;",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 173,
+    "precode": "sum += jacobian[k + i] * jacobian[k + j];",
+    "aftercode": "sum -= jacobian[k + i] * jacobian[k + j];",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 173,
+    "precode": "sum += jacobian[k + i] * jacobian[k + j];",
+    "aftercode": "sum += jacobian[k + i] / jacobian[k + j];",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 172,
+    "precode": "for (int k = 0; k < max; k += cols) {",
+    "aftercode": "for (int k = 0; k < max; k -= cols) {",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 169,
+    "precode": "for (int i = 0; i < cols; ++i) {",
+    "aftercode": "for (int i = 0; i >= cols; ++i) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 170,
+    "precode": "for (int j = i; j < cols; ++j) {",
+    "aftercode": "for (int j = i; j >= cols; ++j) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 172,
+    "precode": "for (int k = 0; k < max; k += cols) {",
+    "aftercode": "for (int k = 0; k >= max; k += cols) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 165,
+    "precode": "final int rows = problem.getMeasurements().length;",
+    "aftercode": "final int rows = ((org.apache.commons.math.estimation.WeightedMeasurement[]) null).length;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 166,
+    "precode": "final int cols = problem.getUnboundParameters().length;",
+    "aftercode": "final int cols = ((org.apache.commons.math.estimation.EstimatedParameter[]) null).length;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return new ((org.apache.commons.math.linear.RealMatrix) null).getData();",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return new (double[][]) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 162,
+    "precode": "updateJacobian();",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { updateJacobian(); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 182,
+    "precode": "return new RealMatrixImpl(jTj).inverse().getData();",
+    "aftercode": "return (new RealMatrixImpl(jTj).inverse().getData()) == null ? null : null;",
+    "rule": "Null Returns",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 205,
+    "precode": "new Object[] { new Integer(m), new Integer(p)});",
+    "aftercode": "new Object[] { (java.lang.Integer) null, new Integer(p)});",
+    "rule": "Constructor Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 210,
+    "precode": "for (int i = 0; i < errors.length; ++i) {",
+    "aftercode": "for (int i = 1; i < errors.length; ++i) {",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = Math.sqrt(getChiSquare(problem) / (m + p));",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = Math.sqrt(getChiSquare(problem) * (m - p));",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = Math.sqrt(covar[i][i]) / c;",
+    "rule": "Math",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 203,
+    "precode": "if (m <= p) {",
+    "aftercode": "if (m > p) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 210,
+    "precode": "for (int i = 0; i < errors.length; ++i) {",
+    "aftercode": "for (int i = 0; i >= errors.length; ++i) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 201,
+    "precode": "int m = problem.getMeasurements().length;",
+    "aftercode": "int m = ((org.apache.commons.math.estimation.WeightedMeasurement[]) null).length;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 202,
+    "precode": "int p = problem.getUnboundParameters().length;",
+    "aftercode": "int p = ((org.apache.commons.math.estimation.EstimatedParameter[]) null).length;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 207,
+    "precode": "double[] errors = new double[problem.getUnboundParameters().length];",
+    "aftercode": "double[] errors = new double[((org.apache.commons.math.estimation.EstimatedParameter[]) null).length];",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = Math.sqrt(0.0d / (m - p));",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 208,
+    "precode": "final double c = Math.sqrt(getChiSquare(problem) / (m - p));",
+    "aftercode": "final double c = 0.0d;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 209,
+    "precode": "double[][] covar = getCovariances(problem);",
+    "aftercode": "double[][] covar = (double[][]) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 211,
+    "precode": "errors[i] = Math.sqrt(covar[i][i]) * c;",
+    "aftercode": "errors[i] = 0.0d * c;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 203,
+    "precode": "if (m <= p) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 203,
+    "precode": "if (m <= p) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/java/org/apache/commons/math/estimation/AbstractEstimator.java",
+    "line": 213,
+    "precode": "return errors;",
+    "aftercode": "return (errors) == null ? null : null;",
+    "rule": "Null Returns",
+    "gen_time_s": 0.11,
+    "dublicate": false
+  }
+]

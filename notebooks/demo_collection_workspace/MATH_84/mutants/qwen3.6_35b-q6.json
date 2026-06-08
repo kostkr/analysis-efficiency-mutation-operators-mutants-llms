@@ -1,0 +1,472 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 70,
+    "precode": "final RealPointValuePair[] original = simplex;",
+    "aftercode": "final RealPointValuePair[] original = new RealPointValuePair[simplex.length];",
+    "rule": "Array Creation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 71,
+    "precode": "final RealPointValuePair best = original[0];",
+    "aftercode": "final RealPointValuePair best = original[1];",
+    "rule": "Index Offset",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 74,
+    "precode": "final RealPointValuePair reflected = evaluateNewSimplex(original, 1.0, comparator);",
+    "aftercode": "final RealPointValuePair reflected = evaluateNewSimplex(original, -1.0, comparator);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 75,
+    "precode": "if (comparator.compare(reflected, best) < 0) {",
+    "aftercode": "if (comparator.compare(reflected, best) <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 78,
+    "precode": "final RealPointValuePair[] reflectedSimplex = simplex;",
+    "aftercode": "final RealPointValuePair[] reflectedSimplex = original;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 79,
+    "precode": "final RealPointValuePair expanded = evaluateNewSimplex(original, khi, comparator);",
+    "aftercode": "final RealPointValuePair expanded = evaluateNewSimplex(original, 1.0, comparator);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 80,
+    "precode": "if (comparator.compare(reflected, expanded) <= 0) {",
+    "aftercode": "if (comparator.compare(reflected, expanded) < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 82,
+    "precode": "simplex = reflectedSimplex;",
+    "aftercode": "simplex = original;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 90,
+    "precode": "final RealPointValuePair contracted = evaluateNewSimplex(original, gamma, comparator);",
+    "aftercode": "final RealPointValuePair contracted = evaluateNewSimplex(original, 0.5, comparator);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 91,
+    "precode": "if (comparator.compare(contracted, best) < 0) {",
+    "aftercode": "if (comparator.compare(contracted, best) <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 99,
+    "precode": "for (int i = 0; i < simplex.length; ++i) {",
+    "aftercode": "for (int i = 0; i <= simplex.length; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 100,
+    "precode": "converged &= checker.converged(iter, original[i], simplex[i]);",
+    "aftercode": "converged |= checker.converged(iter, original[i], simplex[i]);",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 100,
+    "precode": "converged &= checker.converged(iter, original[i], simplex[i]);",
+    "aftercode": "converged &= checker.converged(iter, simplex[i], original[i]);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 102,
+    "precode": "if (converged) {",
+    "aftercode": "if (!converged) {",
+    "rule": "Negation",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 67,
+    "precode": "incrementIterationsCounter();",
+    "aftercode": "incrementIterationsCounter(); incrementIterationsCounter();",
+    "rule": "Double Statement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 67,
+    "precode": "incrementIterationsCounter();",
+    "aftercode": "// incrementIterationsCounter();",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 71,
+    "precode": "final RealPointValuePair best = original[0];",
+    "aftercode": "final RealPointValuePair best = original[simplex.length - 1];",
+    "rule": "Index Offset",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 75,
+    "precode": "if (comparator.compare(reflected, best) < 0) {",
+    "aftercode": "if (comparator.compare(best, reflected) < 0) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 80,
+    "precode": "if (comparator.compare(reflected, expanded) <= 0) {",
+    "aftercode": "if (comparator.compare(expanded, reflected) <= 0) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 91,
+    "precode": "if (comparator.compare(contracted, best) < 0) {",
+    "aftercode": "if (comparator.compare(best, contracted) < 0) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 74,
+    "precode": "final RealPointValuePair reflected = evaluateNewSimplex(original, 1.0, comparator);",
+    "aftercode": "final RealPointValuePair reflected = evaluateNewSimplex(original, 0.0, comparator);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 79,
+    "precode": "final RealPointValuePair expanded = evaluateNewSimplex(original, khi, comparator);",
+    "aftercode": "final RealPointValuePair expanded = evaluateNewSimplex(original, 2.0, comparator);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 90,
+    "precode": "final RealPointValuePair contracted = evaluateNewSimplex(original, gamma, comparator);",
+    "aftercode": "final RealPointValuePair contracted = evaluateNewSimplex(original, -gamma, comparator);",
+    "rule": "Unary Operator Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 99,
+    "precode": "for (int i = 0; i < simplex.length; ++i) {",
+    "aftercode": "for (int i = 1; i < simplex.length; ++i) {",
+    "rule": "Loop Offset",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 99,
+    "precode": "for (int i = 0; i < simplex.length; ++i) {",
+    "aftercode": "for (int i = 0; i < simplex.length - 1; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 100,
+    "precode": "converged &= checker.converged(iter, original[i], simplex[i]);",
+    "aftercode": "converged &= checker.converged(iter + 1, original[i], simplex[i]);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 100,
+    "precode": "converged &= checker.converged(iter, original[i], simplex[i]);",
+    "aftercode": "converged &= checker.converged(iter, original[i], original[i]);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 100,
+    "precode": "converged &= checker.converged(iter, original[i], simplex[i]);",
+    "aftercode": "converged &= checker.converged(iter, simplex[i], simplex[i]);",
+    "rule": "Argument Value Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 64,
+    "precode": "final RealConvergenceChecker checker = getConvergenceChecker();",
+    "aftercode": "final RealConvergenceChecker checker = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 70,
+    "precode": "final RealPointValuePair[] original = simplex;",
+    "aftercode": "final RealPointValuePair[] original = simplex.clone();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 75,
+    "precode": "if (comparator.compare(reflected, best) < 0) {",
+    "aftercode": "if (comparator.compare(reflected, best) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 80,
+    "precode": "if (comparator.compare(reflected, expanded) <= 0) {",
+    "aftercode": "if (comparator.compare(reflected, expanded) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 91,
+    "precode": "if (comparator.compare(contracted, best) < 0) {",
+    "aftercode": "if (comparator.compare(contracted, best) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 82,
+    "precode": "simplex = reflectedSimplex;",
+    "aftercode": "simplex = simplex.clone();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 99,
+    "precode": "for (int i = 0; i < simplex.length; ++i) {",
+    "aftercode": "for (int i = 0; i < simplex.length; i += 2) {",
+    "rule": "Loop Step Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 100,
+    "precode": "converged &= checker.converged(iter, original[i], simplex[i]);",
+    "aftercode": "converged &= (converged && checker.converged(iter, original[i], simplex[i]));",
+    "rule": "Redundant Expression",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 102,
+    "precode": "if (converged) {",
+    "aftercode": "if (converged && true) {",
+    "rule": "Redundant Expression",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 67,
+    "precode": "incrementIterationsCounter();",
+    "aftercode": "return;",
+    "rule": "Early Return",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 85,
+    "precode": "return;",
+    "aftercode": "simplex = original;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 93,
+    "precode": "return;",
+    "aftercode": "simplex = original;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 103,
+    "precode": "return;",
+    "aftercode": "simplex = original;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 74,
+    "precode": "final RealPointValuePair reflected = evaluateNewSimplex(original, 1.0, comparator);",
+    "aftercode": "final RealPointValuePair reflected = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 79,
+    "precode": "final RealPointValuePair expanded = evaluateNewSimplex(original, khi, comparator);",
+    "aftercode": "final RealPointValuePair expanded = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 90,
+    "precode": "final RealPointValuePair contracted = evaluateNewSimplex(original, gamma, comparator);",
+    "aftercode": "final RealPointValuePair contracted = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 75,
+    "precode": "if (comparator.compare(reflected, best) < 0) {",
+    "aftercode": "if (true) {",
+    "rule": "True Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 91,
+    "precode": "if (comparator.compare(contracted, best) < 0) {",
+    "aftercode": "if (true) {",
+    "rule": "True Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java",
+    "line": 102,
+    "precode": "if (converged) {",
+    "aftercode": "if (true) {",
+    "rule": "True Condition",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  }
+]

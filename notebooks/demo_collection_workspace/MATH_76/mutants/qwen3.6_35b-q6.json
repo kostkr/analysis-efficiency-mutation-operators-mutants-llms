@@ -1,0 +1,942 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 156,
+    "precode": "if (cachedU == null) {",
+    "aftercode": "if (cachedU != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 158,
+    "precode": "final int p = singularValues.length;",
+    "aftercode": "final int p = singularValues.length + 1;",
+    "rule": "Mathematical Value",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 159,
+    "precode": "if (m >= n) {",
+    "aftercode": "if (m > n) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 162,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, n - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, n, 0, p - 1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 164,
+    "precode": "final double[][] wData = new double[m][p];",
+    "aftercode": "final double[][] wData = new double[m + 1][p];",
+    "rule": "Array Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 165,
+    "precode": "double[] ei1 = eData[0];",
+    "aftercode": "double[] ei1 = eData[1];",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 166,
+    "precode": "for (int i = 0; i < p; ++i) {",
+    "aftercode": "for (int i = 1; i < p; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 168,
+    "precode": "final double mi = mainBidiagonal[i];",
+    "aftercode": "final double mi = mainBidiagonal[i + 1];",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 169,
+    "precode": "final double[] ei0 = ei1;",
+    "aftercode": "final double[] ei0 = eData[i];",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 171,
+    "precode": "if (i < n - 1) {",
+    "aftercode": "if (i <= n - 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 172,
+    "precode": "ei1 = eData[i + 1];",
+    "aftercode": "ei1 = eData[i];",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 173,
+    "precode": "final double si = secondaryBidiagonal[i];",
+    "aftercode": "final double si = secondaryBidiagonal[i + 1];",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 174,
+    "precode": "for (int j = 0; j < p; ++j) {",
+    "aftercode": "for (int j = 0; j <= p; ++j) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 175,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei0[j] + si * ei1[j]) * singularValues[j];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 178,
+    "precode": "for (int j = 0; j < p; ++j) {",
+    "aftercode": "for (int j = 1; j < p; ++j) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 179,
+    "precode": "wi[j] = mi * ei0[j] / singularValues[j];",
+    "aftercode": "wi[j] = mi * ei0[j] * singularValues[j];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 184,
+    "precode": "for (int i = p; i < m; ++i) {",
+    "aftercode": "for (int i = p; i <= m; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 185,
+    "precode": "wData[i] = new double[p];",
+    "aftercode": "wData[i] = new double[p + 1];",
+    "rule": "Array Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 188,
+    "precode": "transformer.getU().multiply(MatrixUtils.createRealMatrix(wData));",
+    "aftercode": "transformer.getU().divide(MatrixUtils.createRealMatrix(wData));",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 192,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, m - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, m, 0, p - 1);",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 193,
+    "precode": "cachedU = transformer.getU().multiply(e);",
+    "aftercode": "cachedU = transformer.getU().divide(e);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 199,
+    "precode": "return cachedU;",
+    "aftercode": "return null;",
+    "rule": "Return Value",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 161,
+    "precode": "final RealMatrix e =",
+    "aftercode": "final RealMatrix e = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 163,
+    "precode": "final double[][] eData = e.getData();",
+    "aftercode": "final double[][] eData = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 170,
+    "precode": "final double[] wi  = wData[i];",
+    "aftercode": "final double[] wi  = new double[p];",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 158,
+    "precode": "final int p = singularValues.length;",
+    "aftercode": "final int p = 0;",
+    "rule": "Mathematical Value",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 166,
+    "precode": "for (int i = 0; i < p; ++i) {",
+    "aftercode": "for (int i = 0; i <= p; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 171,
+    "precode": "if (i < n - 1) {",
+    "aftercode": "if (i < n) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 184,
+    "precode": "for (int i = p; i < m; ++i) {",
+    "aftercode": "for (int i = 0; i < m; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 193,
+    "precode": "cachedU = transformer.getU().multiply(e);",
+    "aftercode": "cachedU = e.multiply(transformer.getU());",
+    "rule": "Method Call Order",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 175,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei1[j] + si * ei0[j]) / singularValues[j];",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 169,
+    "precode": "final double[] ei0 = ei1;",
+    "aftercode": "final double[] ei0 = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 172,
+    "precode": "ei1 = eData[i + 1];",
+    "aftercode": "ei1 = eData[i - 1];",
+    "rule": "Argument Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 188,
+    "precode": "cachedU =",
+    "aftercode": "cachedU = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 199,
+    "precode": "return cachedU;",
+    "aftercode": "return transformer.getU();",
+    "rule": "Return Value",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 159,
+    "precode": "if (m >= n) {",
+    "aftercode": "if (m <= n) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 162,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, n - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, p - 1, 0, n - 1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 175,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei0[j] - si * ei1[j]) / singularValues[j];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 179,
+    "precode": "wi[j] = mi * ei0[j] / singularValues[j];",
+    "aftercode": "wi[j] = mi * ei0[j] * singularValues[j];",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.39,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 185,
+    "precode": "wData[i] = new double[p];",
+    "aftercode": "wData[i] = new double[0];",
+    "rule": "Array Index",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 192,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, m - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, p - 1, 0, m - 1);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 188,
+    "precode": "transformer.getU().multiply(MatrixUtils.createRealMatrix(wData));",
+    "aftercode": "MatrixUtils.createRealMatrix(wData).multiply(transformer.getU());",
+    "rule": "Method Call Order",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 165,
+    "precode": "double[] ei1 = eData[0];",
+    "aftercode": "double[] ei1 = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 173,
+    "precode": "final double si = secondaryBidiagonal[i];",
+    "aftercode": "final double si = 0.0;",
+    "rule": "Mathematical Value",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 168,
+    "precode": "final double mi = mainBidiagonal[i];",
+    "aftercode": "final double mi = 0.0;",
+    "rule": "Mathematical Value",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 199,
+    "precode": "return cachedU;",
+    "aftercode": "return transformer.getU();",
+    "rule": "Return Value",
+    "gen_time_s": 2.39,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 242,
+    "precode": "if (m >= n) {",
+    "aftercode": "if (m > n) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 242,
+    "precode": "if (m >= n) {",
+    "aftercode": "if (m <= n) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 245,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, n - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, n, 0, p - 1);",
+    "rule": "Argument Index Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 245,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, n - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, n - 1, 0, p);",
+    "rule": "Argument Index Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 251,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, m - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, m, 0, p - 1);",
+    "rule": "Argument Index Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 251,
+    "precode": "eigenDecomposition.getV().getSubMatrix(0, m - 1, 0, p - 1);",
+    "aftercode": "eigenDecomposition.getV().getSubMatrix(0, m - 1, 0, p);",
+    "rule": "Argument Index Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 255,
+    "precode": "for (int i = 0; i < p; ++i) {",
+    "aftercode": "for (int i = 0; i <= p; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 255,
+    "precode": "for (int i = 0; i < p; ++i) {",
+    "aftercode": "for (int i = 1; i < p; ++i) {",
+    "rule": "Loop Lower Limit",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 259,
+    "precode": "if (i < m - 1) {",
+    "aftercode": "if (i <= m - 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 259,
+    "precode": "if (i < m - 1) {",
+    "aftercode": "if (i < m) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 260,
+    "precode": "ei1 = eData[i + 1];",
+    "aftercode": "ei1 = eData[i + 2];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 262,
+    "precode": "for (int j = 0; j < p; ++j) {",
+    "aftercode": "for (int j = 0; j <= p; ++j) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 262,
+    "precode": "for (int j = 0; j < p; ++j) {",
+    "aftercode": "for (int j = 1; j < p; ++j) {",
+    "rule": "Loop Lower Limit",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 263,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei0[j] - si * ei1[j]) / singularValues[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 263,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei0[j] + si * ei1[j]) * singularValues[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 263,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 266,
+    "precode": "for (int j = 0; j < p; ++j) {",
+    "aftercode": "for (int j = 0; j <= p; ++j) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 267,
+    "precode": "wi[j] = mi * ei0[j] / singularValues[j];",
+    "aftercode": "wi[j] = mi * ei0[j] * singularValues[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 267,
+    "precode": "wi[j] = mi * ei0[j] / singularValues[j];",
+    "aftercode": "wi[j] = mi * ei0[j] / 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 271,
+    "precode": "for (int i = p; i < n; ++i) {",
+    "aftercode": "for (int i = p; i <= n; ++i) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 271,
+    "precode": "for (int i = p; i < n; ++i) {",
+    "aftercode": "for (int i = p + 1; i < n; ++i) {",
+    "rule": "Loop Lower Limit",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 272,
+    "precode": "wData[i] = new double[p];",
+    "aftercode": "wData[i] = new double[p + 1];",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 275,
+    "precode": "transformer.getV().multiply(MatrixUtils.createRealMatrix(wData));",
+    "aftercode": "transformer.getV().divide(MatrixUtils.createRealMatrix(wData));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 275,
+    "precode": "transformer.getV().multiply(MatrixUtils.createRealMatrix(wData));",
+    "aftercode": "MatrixUtils.createRealMatrix(wData).multiply(transformer.getV());",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 246,
+    "precode": "cachedV = transformer.getV().multiply(e);",
+    "aftercode": "cachedV = transformer.getV().divide(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 246,
+    "precode": "cachedV = transformer.getV().multiply(e);",
+    "aftercode": "cachedV = e.multiply(transformer.getV());",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 241,
+    "precode": "final int p = singularValues.length;",
+    "aftercode": "final int p = singularValues.length + 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 253,
+    "precode": "final double[][] wData = new double[n][p];",
+    "aftercode": "final double[][] wData = new double[n + 1][p];",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 253,
+    "precode": "final double[][] wData = new double[n][p];",
+    "aftercode": "final double[][] wData = new double[n][p + 1];",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 256,
+    "precode": "final double mi = mainBidiagonal[i];",
+    "aftercode": "final double mi = mainBidiagonal[i + 1];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 261,
+    "precode": "final double si = secondaryBidiagonal[i];",
+    "aftercode": "final double si = secondaryBidiagonal[i + 1];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 263,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi * ei1[j] + si * ei0[j]) / singularValues[j];",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 267,
+    "precode": "wi[j] = mi * ei0[j] / singularValues[j];",
+    "aftercode": "wi[j] = mi * ei0[j];",
+    "rule": "Remove Statement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 257,
+    "precode": "final double[] ei0 = ei1;",
+    "aftercode": "final double[] ei0 = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 260,
+    "precode": "ei1 = eData[i + 1];",
+    "aftercode": "ei1 = eData[i];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 274,
+    "precode": "cachedV =",
+    "aftercode": "cachedV = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 281,
+    "precode": "return cachedV;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 239,
+    "precode": "if (cachedV == null) {",
+    "aftercode": "if (cachedV != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 239,
+    "precode": "if (cachedV == null) {",
+    "aftercode": "if (cachedV == null && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 244,
+    "precode": "final RealMatrix e =",
+    "aftercode": "final RealMatrix e = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 250,
+    "precode": "final RealMatrix e =",
+    "aftercode": "final RealMatrix e = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 252,
+    "precode": "final double[][] eData = e.getData();",
+    "aftercode": "final double[][] eData = e.getTranspose().getData();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 275,
+    "precode": "transformer.getV().multiply(MatrixUtils.createRealMatrix(wData));",
+    "aftercode": "transformer.getV().add(MatrixUtils.createRealMatrix(wData));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 246,
+    "precode": "cachedV = transformer.getV().multiply(e);",
+    "aftercode": "cachedV = transformer.getV().add(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 263,
+    "precode": "wi[j] = (mi * ei0[j] + si * ei1[j]) / singularValues[j];",
+    "aftercode": "wi[j] = (mi + ei0[j] + si + ei1[j]) / singularValues[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 267,
+    "precode": "wi[j] = mi * ei0[j] / singularValues[j];",
+    "aftercode": "wi[j] = mi + ei0[j] / singularValues[j];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 242,
+    "precode": "if (m >= n) {",
+    "aftercode": "if (m != n) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java",
+    "line": 259,
+    "precode": "if (i < m - 1) {",
+    "aftercode": "if (i > m - 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.47,
+    "dublicate": false
+  }
+]
