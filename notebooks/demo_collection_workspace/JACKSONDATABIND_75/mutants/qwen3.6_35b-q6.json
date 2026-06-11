@@ -1,0 +1,522 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 85,
+    "precode": "EnumValues v = EnumValues.constructFromName(config, (Class<Enum<?>>) enumClass);",
+    "aftercode": "EnumValues v = EnumValues.constructFromToString(config, (Class<Enum<?>>) enumClass);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 86,
+    "precode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, true, null);",
+    "aftercode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, false, null);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 87,
+    "precode": "return new EnumSerializer(v, serializeAsIndex);",
+    "aftercode": "return new EnumSerializer(v, !serializeAsIndex);",
+    "rule": "Negation of Argument",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 87,
+    "precode": "return new EnumSerializer(v, serializeAsIndex);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 85,
+    "precode": "EnumValues v = EnumValues.constructFromName(config, (Class<Enum<?>>) enumClass);",
+    "aftercode": "EnumValues v = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 86,
+    "precode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, true, null);",
+    "aftercode": "Boolean serializeAsIndex = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 86,
+    "precode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, true, null);",
+    "aftercode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, true, format);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 85,
+    "precode": "EnumValues v = EnumValues.constructFromName(config, (Class<Enum<?>>) enumClass);",
+    "aftercode": "EnumValues v = EnumValues.constructFromName(config, enumClass);",
+    "rule": "Cast Removal",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 86,
+    "precode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, true, null);",
+    "aftercode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(config, format, true, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 87,
+    "precode": "return new EnumSerializer(v, serializeAsIndex);",
+    "aftercode": "return new EnumSerializer(null, serializeAsIndex);",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 87,
+    "precode": "return new EnumSerializer(v, serializeAsIndex);",
+    "aftercode": "return new EnumSerializer(v, null);",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.64,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 99,
+    "precode": "if (property != null) {",
+    "aftercode": "if (property == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 102,
+    "precode": "if (format != null) {",
+    "aftercode": "if (format == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 103,
+    "precode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(property.getType().getRawClass(),",
+    "aftercode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(property.getType().getRawClass(),",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 104,
+    "precode": "format, false, _serializeAsIndex);",
+    "aftercode": "format, true, _serializeAsIndex);",
+    "rule": "Literal Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 105,
+    "precode": "if (serializeAsIndex != _serializeAsIndex) {",
+    "aftercode": "if (serializeAsIndex == _serializeAsIndex) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 106,
+    "precode": "return new EnumSerializer(_values, serializeAsIndex);",
+    "aftercode": "return new EnumSerializer(_values, false);",
+    "rule": "Literal Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 110,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 100,
+    "precode": "JsonFormat.Value format = findFormatOverrides(serializers,",
+    "aftercode": "JsonFormat.Value format = findFormatOverrides(null,",
+    "rule": "Argument Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 101,
+    "precode": "property, handledType());",
+    "aftercode": "property, null);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 106,
+    "precode": "return new EnumSerializer(_values, serializeAsIndex);",
+    "aftercode": "return new EnumSerializer(null, serializeAsIndex);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 99,
+    "precode": "if (property != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 102,
+    "precode": "if (format != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 105,
+    "precode": "if (serializeAsIndex != _serializeAsIndex) {",
+    "aftercode": "if (serializeAsIndex != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 106,
+    "precode": "return new EnumSerializer(_values, serializeAsIndex);",
+    "aftercode": "return this;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 100,
+    "precode": "JsonFormat.Value format = findFormatOverrides(serializers,",
+    "aftercode": "JsonFormat.Value format = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 103,
+    "precode": "Boolean serializeAsIndex = _isShapeWrittenUsingIndex(property.getType().getRawClass(),",
+    "aftercode": "Boolean serializeAsIndex = Boolean.FALSE;",
+    "rule": "Literal Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 220,
+    "precode": "JsonFormat.Shape shape = (format == null) ? null : format.getShape();",
+    "aftercode": "JsonFormat.Shape shape = (format != null) ? null : format.getShape();",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 220,
+    "precode": "JsonFormat.Shape shape = (format == null) ? null : format.getShape();",
+    "aftercode": "JsonFormat.Shape shape = (format == null) ? format.getShape() : null;",
+    "rule": "Ternary Operand Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 221,
+    "precode": "if (shape == null) {",
+    "aftercode": "if (shape != null) {",
+    "rule": "Equality Check Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 225,
+    "precode": "if (shape == Shape.ANY || shape == Shape.SCALAR) {",
+    "aftercode": "if (shape == Shape.ANY && shape == Shape.SCALAR) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 225,
+    "precode": "if (shape == Shape.ANY || shape == Shape.SCALAR) {",
+    "aftercode": "if (shape != Shape.ANY || shape != Shape.SCALAR) {",
+    "rule": "Equality Check Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 226,
+    "precode": "return defaultValue;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 229,
+    "precode": "if (shape == Shape.STRING || shape == Shape.NATURAL) {",
+    "aftercode": "if (shape == Shape.STRING && shape == Shape.NATURAL) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 229,
+    "precode": "if (shape == Shape.STRING || shape == Shape.NATURAL) {",
+    "aftercode": "if (shape != Shape.STRING || shape != Shape.NATURAL) {",
+    "rule": "Equality Check Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 230,
+    "precode": "return Boolean.FALSE;",
+    "aftercode": "return Boolean.TRUE;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 233,
+    "precode": "if (shape.isNumeric() || (shape == Shape.ARRAY)) {",
+    "aftercode": "if (shape.isNumeric() && (shape == Shape.ARRAY)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 233,
+    "precode": "if (shape.isNumeric() || (shape == Shape.ARRAY)) {",
+    "aftercode": "if (!shape.isNumeric() || (shape == Shape.ARRAY)) {",
+    "rule": "Negation Insertion",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 234,
+    "precode": "return Boolean.TRUE;",
+    "aftercode": "return Boolean.FALSE;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 237,
+    "precode": "throw new IllegalArgumentException(String.format(",
+    "aftercode": "throw new UnsupportedOperationException(String.format(",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 220,
+    "precode": "JsonFormat.Shape shape = (format == null) ? null : format.getShape();",
+    "aftercode": "JsonFormat.Shape shape = (format == null) ? Shape.ANY : format.getShape();",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 221,
+    "precode": "if (shape == null) {",
+    "aftercode": "if (shape != null) {",
+    "rule": "Equality Check Negation",
+    "gen_time_s": 2.33,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 222,
+    "precode": "return defaultValue;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 225,
+    "precode": "if (shape == Shape.ANY || shape == Shape.SCALAR) {",
+    "aftercode": "if (shape == Shape.STRING || shape == Shape.NATURAL) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 226,
+    "precode": "return defaultValue;",
+    "aftercode": "return Boolean.FALSE;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 229,
+    "precode": "if (shape == Shape.STRING || shape == Shape.NATURAL) {",
+    "aftercode": "if (shape == Shape.ANY || shape == Shape.SCALAR) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 230,
+    "precode": "return Boolean.FALSE;",
+    "aftercode": "return defaultValue;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 233,
+    "precode": "if (shape.isNumeric() || (shape == Shape.ARRAY)) {",
+    "aftercode": "if (shape.isNumeric() || (shape == Shape.OBJECT)) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 234,
+    "precode": "return Boolean.TRUE;",
+    "aftercode": "return defaultValue;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 237,
+    "precode": "throw new IllegalArgumentException(String.format(",
+    "aftercode": "return null;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 220,
+    "precode": "JsonFormat.Shape shape = (format == null) ? null : format.getShape();",
+    "aftercode": "JsonFormat.Shape shape = format.getShape();",
+    "rule": "Null Check Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/EnumSerializer.java",
+    "line": 239,
+    "precode": "shape, enumClass.getName(), (fromClass? \"class\" : \"property\")));",
+    "aftercode": "shape, enumClass.getName(), (fromClass? \"property\" : \"class\")));",
+    "rule": "Ternary Operand Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  }
+]

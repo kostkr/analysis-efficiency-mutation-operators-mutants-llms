@@ -1,0 +1,1762 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JavaType.java",
+    "line": 302,
+    "precode": "public final boolean isJavaLangObject() { return _class == Object.class; }",
+    "aftercode": "public final boolean isJavaLangObject() { return _class != Object.class; }",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 134,
+    "precode": "JsonSerializer<?> ser = findSerializerFromAnnotation(prov, beanDesc.getClassInfo());",
+    "aftercode": "JsonSerializer<?> ser = null;",
+    "rule": "Void Function Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 135,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (ser == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 136,
+    "precode": "return (JsonSerializer<Object>) ser;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 141,
+    "precode": "if (type == origType) { // no changes, won't force static typing",
+    "aftercode": "if (type != origType) { // no changes, won't force static typing",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 142,
+    "precode": "staticTyping = false;",
+    "aftercode": "staticTyping = true;",
+    "rule": "Boolean Value Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 144,
+    "precode": "staticTyping = true;",
+    "aftercode": "staticTyping = false;",
+    "rule": "Boolean Value Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 145,
+    "precode": "if (!type.hasRawClass(origType.getRawClass())) {",
+    "aftercode": "if (type.hasRawClass(origType.getRawClass())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 150,
+    "precode": "Converter<Object,Object> conv = beanDesc.findSerializationConverter();",
+    "aftercode": "Converter<Object,Object> conv = null;",
+    "rule": "Void Function Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 151,
+    "precode": "if (conv == null) { // no, simple",
+    "aftercode": "if (conv != null) { // no, simple",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 152,
+    "precode": "return (JsonSerializer<Object>) _createSerializer2(prov, type, beanDesc, staticTyping);",
+    "aftercode": "return (JsonSerializer<Object>) _createSerializer2(prov, type, beanDesc, false);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 154,
+    "precode": "JavaType delegateType = conv.getOutputType(prov.getTypeFactory());",
+    "aftercode": "JavaType delegateType = prov.getTypeFactory();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 157,
+    "precode": "if (!delegateType.hasRawClass(type.getRawClass())) {",
+    "aftercode": "if (delegateType.hasRawClass(type.getRawClass())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 158,
+    "precode": "beanDesc = config.introspect(delegateType);",
+    "aftercode": "beanDesc = config.introspect(type);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 160,
+    "precode": "ser = findSerializerFromAnnotation(prov, beanDesc.getClassInfo());",
+    "aftercode": "ser = null;",
+    "rule": "Void Function Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 163,
+    "precode": "if (ser == null && !delegateType.isJavaLangObject()) {",
+    "aftercode": "if (ser != null && !delegateType.isJavaLangObject()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 163,
+    "precode": "if (ser == null && !delegateType.isJavaLangObject()) {",
+    "aftercode": "if (ser == null || !delegateType.isJavaLangObject()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 163,
+    "precode": "if (ser == null && !delegateType.isJavaLangObject()) {",
+    "aftercode": "if (ser == null && delegateType.isJavaLangObject()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 164,
+    "precode": "ser = _createSerializer2(prov, delegateType, beanDesc, true);",
+    "aftercode": "ser = _createSerializer2(prov, delegateType, beanDesc, false);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 166,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return new StdDelegatingSerializer(null, delegateType, ser);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 133,
+    "precode": "BeanDescription beanDesc = config.introspect(origType);",
+    "aftercode": "BeanDescription beanDesc = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 140,
+    "precode": "JavaType type = modifyTypeByAnnotation(config, beanDesc.getClassInfo(), origType);",
+    "aftercode": "JavaType type = origType;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 146,
+    "precode": "beanDesc = config.introspect(type);",
+    "aftercode": "beanDesc = config.introspect(origType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 152,
+    "precode": "return (JsonSerializer<Object>) _createSerializer2(prov, type, beanDesc, staticTyping);",
+    "aftercode": "return (JsonSerializer<Object>) _createSerializer2(prov, origType, beanDesc, staticTyping);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 154,
+    "precode": "JavaType delegateType = conv.getOutputType(prov.getTypeFactory());",
+    "aftercode": "JavaType delegateType = conv.getOutputType(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 160,
+    "precode": "ser = findSerializerFromAnnotation(prov, beanDesc.getClassInfo());",
+    "aftercode": "ser = findSerializerFromAnnotation(null, beanDesc.getClassInfo());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 164,
+    "precode": "ser = _createSerializer2(prov, delegateType, beanDesc, true);",
+    "aftercode": "ser = _createSerializer2(null, delegateType, beanDesc, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 132,
+    "precode": "final SerializationConfig config = prov.getConfig();",
+    "aftercode": "final SerializationConfig config = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 134,
+    "precode": "JsonSerializer<?> ser = findSerializerFromAnnotation(prov, beanDesc.getClassInfo());",
+    "aftercode": "JsonSerializer<?> ser = findSerializerFromAnnotation(prov, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 140,
+    "precode": "JavaType type = modifyTypeByAnnotation(config, beanDesc.getClassInfo(), origType);",
+    "aftercode": "JavaType type = modifyTypeByAnnotation(null, beanDesc.getClassInfo(), origType);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 145,
+    "precode": "if (!type.hasRawClass(origType.getRawClass())) {",
+    "aftercode": "if (!type.hasRawClass(null)) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 150,
+    "precode": "Converter<Object,Object> conv = beanDesc.findSerializationConverter();",
+    "aftercode": "Converter<Object,Object> conv = beanDesc.findSerializationConverter();",
+    "rule": "No-op Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 154,
+    "precode": "JavaType delegateType = conv.getOutputType(prov.getTypeFactory());",
+    "aftercode": "JavaType delegateType = conv.getOutputType(type.getTypeFactory());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 157,
+    "precode": "if (!delegateType.hasRawClass(type.getRawClass())) {",
+    "aftercode": "if (!delegateType.hasRawClass(delegateType.getRawClass())) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 163,
+    "precode": "if (ser == null && !delegateType.isJavaLangObject()) {",
+    "aftercode": "if (ser == null && delegateType.isJavaLangObject()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 166,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return new StdDelegatingSerializer(conv, type, ser);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 136,
+    "precode": "return (JsonSerializer<Object>) ser;",
+    "aftercode": "return (JsonSerializer<Object>) null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 143,
+    "precode": "// changes; assume static typing; plus, need to re-introspect if class differs",
+    "aftercode": "// changes; assume static typing; plus, need to re-introspect if class differs",
+    "rule": "Comment Removal",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 152,
+    "precode": "return (JsonSerializer<Object>) _createSerializer2(prov, type, beanDesc, staticTyping);",
+    "aftercode": "return (JsonSerializer<Object>) _createSerializer2(prov, type, null, staticTyping);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 158,
+    "precode": "beanDesc = config.introspect(delegateType);",
+    "aftercode": "beanDesc = config.introspect(type);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 164,
+    "precode": "ser = _createSerializer2(prov, delegateType, beanDesc, true);",
+    "aftercode": "ser = _createSerializer2(prov, type, beanDesc, true);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java",
+    "line": 166,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return new StdDelegatingSerializer(conv, type, ser);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 362,
+    "precode": "if (intr != null) {",
+    "aftercode": "if (intr == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 364,
+    "precode": "if (m != null) {",
+    "aftercode": "if (m == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 366,
+    "precode": "if (convDef != null) {",
+    "aftercode": "if (convDef == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 367,
+    "precode": "Converter<Object,Object> conv = provider.converterInstance(prop.getMember(), convDef);",
+    "aftercode": "Converter<Object,Object> conv = provider.converterInstance(prop.getMember(), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 368,
+    "precode": "JavaType delegateType = conv.getOutputType(provider.getTypeFactory());",
+    "aftercode": "JavaType delegateType = conv.getOutputType(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 370,
+    "precode": "JsonSerializer<?> ser = delegateType.isJavaLangObject() ? null",
+    "aftercode": "JsonSerializer<?> ser = delegateType.isJavaLangObject() ? ser : null",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 370,
+    "precode": "JsonSerializer<?> ser = delegateType.isJavaLangObject() ? null",
+    "aftercode": "JsonSerializer<?> ser = delegateType.isJavaLangObject() ? delegateType : null",
+    "rule": "Type Mismatch",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 371,
+    "precode": "provider.findValueSerializer(delegateType, prop);",
+    "aftercode": "provider.findValueSerializer(null, prop);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 371,
+    "precode": "provider.findValueSerializer(delegateType, prop);",
+    "aftercode": "provider.findValueSerializer(delegateType, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 372,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return new StdDelegatingSerializer(null, delegateType, ser);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 372,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return new StdDelegatingSerializer(conv, null, ser);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 372,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return new StdDelegatingSerializer(conv, delegateType, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 376,
+    "precode": "return null;",
+    "aftercode": "return provider;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 361,
+    "precode": "final AnnotationIntrospector intr = provider.getAnnotationIntrospector();",
+    "aftercode": "final AnnotationIntrospector intr = provider.getAnnotationIntrospector(); //",
+    "rule": "Comment Out",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 365,
+    "precode": "Object convDef = intr.findSerializationConverter(m);",
+    "aftercode": "Object convDef = intr.findSerializationConverter(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 370,
+    "precode": "JsonSerializer<?> ser = delegateType.isJavaLangObject() ? null",
+    "aftercode": "JsonSerializer<?> ser = !delegateType.isJavaLangObject() ? null",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 362,
+    "precode": "if (intr != null) {",
+    "aftercode": "if (intr != null && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 364,
+    "precode": "if (m != null) {",
+    "aftercode": "if (m != null && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 366,
+    "precode": "if (convDef != null) {",
+    "aftercode": "if (convDef != null && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 372,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, ser);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java",
+    "line": 368,
+    "precode": "JavaType delegateType = conv.getOutputType(provider.getTypeFactory());",
+    "aftercode": "JavaType delegateType = conv.getOutputType(provider.getTypeFactory());",
+    "rule": "No-op",
+    "gen_time_s": 1.22,
+    "dublicate": true
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 110,
+    "precode": "JsonSerializer<?> delSer = _delegateSerializer;",
+    "aftercode": "JsonSerializer<?> delSer = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 111,
+    "precode": "JavaType delegateType = _delegateType;",
+    "aftercode": "JavaType delegateType = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 113,
+    "precode": "if (delSer == null) {",
+    "aftercode": "if (delSer != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 115,
+    "precode": "if (delegateType == null) {",
+    "aftercode": "if (delegateType != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 116,
+    "precode": "delegateType = _converter.getOutputType(provider.getTypeFactory());",
+    "aftercode": "delegateType = provider.getTypeFactory();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 121,
+    "precode": "if (!delegateType.isJavaLangObject()) {",
+    "aftercode": "if (delegateType.isJavaLangObject()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 122,
+    "precode": "delSer = provider.findValueSerializer(delegateType);",
+    "aftercode": "delSer = provider.findValueSerializer(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 125,
+    "precode": "if (delSer instanceof ContextualSerializer) {",
+    "aftercode": "if (!(delSer instanceof ContextualSerializer)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 126,
+    "precode": "delSer = provider.handleSecondaryContextualization(delSer, property);",
+    "aftercode": "delSer = provider.handleSecondaryContextualization(property, delSer);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 128,
+    "precode": "if (delSer == _delegateSerializer && delegateType == _delegateType) {",
+    "aftercode": "if (delSer == _delegateSerializer || delegateType == _delegateType) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 128,
+    "precode": "if (delSer == _delegateSerializer && delegateType == _delegateType) {",
+    "aftercode": "if (delSer != _delegateSerializer && delegateType == _delegateType) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 128,
+    "precode": "if (delSer == _delegateSerializer && delegateType == _delegateType) {",
+    "aftercode": "if (delSer == _delegateSerializer && delegateType != _delegateType) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 129,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 131,
+    "precode": "return withDelegate(_converter, delegateType, delSer);",
+    "aftercode": "return withDelegate(null, delegateType, delSer);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 131,
+    "precode": "return withDelegate(_converter, delegateType, delSer);",
+    "aftercode": "return withDelegate(_converter, null, delSer);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 131,
+    "precode": "return withDelegate(_converter, delegateType, delSer);",
+    "aftercode": "return withDelegate(_converter, delegateType, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 113,
+    "precode": "if (delSer == null) {",
+    "aftercode": "if (delSer == null && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 125,
+    "precode": "if (delSer instanceof ContextualSerializer) {",
+    "aftercode": "if (delSer instanceof Object) {",
+    "rule": "Type Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 116,
+    "precode": "delegateType = _converter.getOutputType(provider.getTypeFactory());",
+    "aftercode": "delegateType = _converter.getOutputType(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 128,
+    "precode": "if (delSer == _delegateSerializer && delegateType == _delegateType) {",
+    "aftercode": "if (delSer == _delegateSerializer) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 128,
+    "precode": "if (delSer == _delegateSerializer && delegateType == _delegateType) {",
+    "aftercode": "if (delegateType == _delegateType) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 110,
+    "precode": "JsonSerializer<?> delSer = _delegateSerializer;",
+    "aftercode": "JsonSerializer<?> delSer = _delegateType;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 131,
+    "precode": "return withDelegate(_converter, delegateType, delSer);",
+    "aftercode": "return withDelegate(_converter, delegateType, _delegateSerializer);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 122,
+    "precode": "delSer = provider.findValueSerializer(delegateType);",
+    "aftercode": "delSer = provider.findValueSerializer(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 115,
+    "precode": "if (delegateType == null) {",
+    "aftercode": "if (delegateType == null || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 126,
+    "precode": "delSer = provider.handleSecondaryContextualization(delSer, property);",
+    "aftercode": "delSer = provider.handleSecondaryContextualization(null, property);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 158,
+    "precode": "Object delegateValue = convertValue(value);",
+    "aftercode": "Object delegateValue = value;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 160,
+    "precode": "if (delegateValue == null) {",
+    "aftercode": "if (delegateValue != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 160,
+    "precode": "if (delegateValue == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 161,
+    "precode": "provider.defaultSerializeNull(gen);",
+    "aftercode": "// provider.defaultSerializeNull(gen);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 165,
+    "precode": "JsonSerializer<Object> ser = _delegateSerializer;",
+    "aftercode": "JsonSerializer<Object> ser = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 166,
+    "precode": "if (ser == null) {",
+    "aftercode": "if (ser != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 166,
+    "precode": "if (ser == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 167,
+    "precode": "ser = _findSerializer(delegateValue, provider);",
+    "aftercode": "ser = _findSerializer(value, provider);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 169,
+    "precode": "ser.serialize(delegateValue, gen, provider);",
+    "aftercode": "ser.serialize(value, gen, provider);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 169,
+    "precode": "ser.serialize(delegateValue, gen, provider);",
+    "aftercode": "ser.serialize(delegateValue, provider, gen);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 160,
+    "precode": "if (delegateValue == null) {",
+    "aftercode": "if (delegateValue == null && false) {",
+    "rule": "Condition Mutation",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 158,
+    "precode": "Object delegateValue = convertValue(value);",
+    "aftercode": "Object delegateValue = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 167,
+    "precode": "ser = _findSerializer(delegateValue, provider);",
+    "aftercode": "ser = _findSerializer(null, provider);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 165,
+    "precode": "JsonSerializer<Object> ser = _delegateSerializer;",
+    "aftercode": "JsonSerializer<Object> ser = _findSerializer(value, provider);",
+    "rule": "Logic Redundancy",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 161,
+    "precode": "provider.defaultSerializeNull(gen);",
+    "aftercode": "gen.defaultSerializeNull(provider);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.12,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 179,
+    "precode": "Object delegateValue = convertValue(value);",
+    "aftercode": "Object delegateValue = value;",
+    "rule": "RemovedMethodCall",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 180,
+    "precode": "JsonSerializer<Object> ser = _delegateSerializer;",
+    "aftercode": "JsonSerializer<Object> ser = null;",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 181,
+    "precode": "if (ser == null) {",
+    "aftercode": "if (ser != null) {",
+    "rule": "ConditionalNegation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 181,
+    "precode": "if (ser == null) {",
+    "aftercode": "if (ser == null && false) {",
+    "rule": "ConditionObfuscation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 182,
+    "precode": "ser = _findSerializer(value, provider);",
+    "aftercode": "ser = _findSerializer(delegateValue, provider);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 182,
+    "precode": "ser = _findSerializer(value, provider);",
+    "aftercode": "ser = _findSerializer(provider, value);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 184,
+    "precode": "ser.serializeWithType(delegateValue, gen, provider, typeSer);",
+    "aftercode": "ser.serializeWithType(value, gen, provider, typeSer);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 184,
+    "precode": "ser.serializeWithType(delegateValue, gen, provider, typeSer);",
+    "aftercode": "ser.serializeWithType(delegateValue, provider, gen, typeSer);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 184,
+    "precode": "ser.serializeWithType(delegateValue, gen, provider, typeSer);",
+    "aftercode": "ser.serializeWithType(delegateValue, gen, typeSer, provider);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 184,
+    "precode": "ser.serializeWithType(delegateValue, gen, provider, typeSer);",
+    "aftercode": "ser.serializeWithType(delegateValue, gen, provider, null);",
+    "rule": "NullArgument",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 184,
+    "precode": "ser.serializeWithType(delegateValue, gen, provider, typeSer);",
+    "aftercode": "ser.serializeWithType(delegateValue, gen, null, typeSer);",
+    "rule": "NullArgument",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 184,
+    "precode": "ser.serializeWithType(delegateValue, gen, provider, typeSer);",
+    "aftercode": "ser.serializeWithType(delegateValue, null, provider, typeSer);",
+    "rule": "NullArgument",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 180,
+    "precode": "JsonSerializer<Object> ser = _delegateSerializer;",
+    "aftercode": "JsonSerializer<Object> ser = _findSerializer(value, provider);",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 191,
+    "precode": "Object delegateValue = convertValue(value);",
+    "aftercode": "Object delegateValue = value;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 192,
+    "precode": "if (_delegateSerializer == null) { // best we can do for now, too costly to look up",
+    "aftercode": "if (_delegateSerializer != null) { // best we can do for now, too costly to look up",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 193,
+    "precode": "return (value == null);",
+    "aftercode": "return (value != null);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 193,
+    "precode": "return (value == null);",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 193,
+    "precode": "return (value == null);",
+    "aftercode": "return false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 195,
+    "precode": "return _delegateSerializer.isEmpty(delegateValue);",
+    "aftercode": "return _delegateSerializer.isEmpty(value);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 195,
+    "precode": "return _delegateSerializer.isEmpty(delegateValue);",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 195,
+    "precode": "return _delegateSerializer.isEmpty(delegateValue);",
+    "aftercode": "return false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 201,
+    "precode": "Object delegateValue = convertValue(value);",
+    "aftercode": "Object delegateValue = value;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 202,
+    "precode": "if (_delegateSerializer == null) { // best we can do for now, too costly to look up",
+    "aftercode": "if (_delegateSerializer != null) { // best we can do for now, too costly to look up",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 203,
+    "precode": "return (value == null);",
+    "aftercode": "return (value != null);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 203,
+    "precode": "return (value == null);",
+    "aftercode": "return true;",
+    "rule": "True Value Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 203,
+    "precode": "return (value == null);",
+    "aftercode": "return false;",
+    "rule": "False Value Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 205,
+    "precode": "return _delegateSerializer.isEmpty(prov, delegateValue);",
+    "aftercode": "return _delegateSerializer.isEmpty(prov, value);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 205,
+    "precode": "return _delegateSerializer.isEmpty(prov, delegateValue);",
+    "aftercode": "return true;",
+    "rule": "True Value Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 205,
+    "precode": "return _delegateSerializer.isEmpty(prov, delegateValue);",
+    "aftercode": "return false;",
+    "rule": "False Value Replacement",
+    "gen_time_s": 1.17,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 242,
+    "precode": "if (_delegateSerializer != null) {",
+    "aftercode": "if (_delegateSerializer != null && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 242,
+    "precode": "if (_delegateSerializer != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 242,
+    "precode": "if (_delegateSerializer != null) {",
+    "aftercode": "if (_delegateSerializer == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 243,
+    "precode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);",
+    "aftercode": "_delegateSerializer.acceptJsonFormatVisitor(typeHint, visitor);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 243,
+    "precode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);",
+    "aftercode": "_delegateSerializer.acceptJsonFormatVisitor(null, typeHint);",
+    "rule": "Null Parameter",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 243,
+    "precode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);",
+    "aftercode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, null);",
+    "rule": "Null Parameter",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 243,
+    "precode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);",
+    "aftercode": "/* _delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint); */",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 242,
+    "precode": "if (_delegateSerializer != null) {",
+    "aftercode": "if (_delegateSerializer != null) ; {",
+    "rule": "Empty Statement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 243,
+    "precode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);",
+    "aftercode": "visitor.acceptJsonFormatVisitor(_delegateSerializer, typeHint);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 242,
+    "precode": "if (_delegateSerializer != null) {",
+    "aftercode": "if (_delegateSerializer != null) return;",
+    "rule": "Early Return",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 243,
+    "precode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);",
+    "aftercode": "_delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint); //",
+    "rule": "Comment Injection",
+    "gen_time_s": 1.22,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 280,
+    "precode": "return serializers.findValueSerializer(value.getClass());",
+    "aftercode": "return serializers.findValueSerializer(value);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 280,
+    "precode": "return serializers.findValueSerializer(value.getClass());",
+    "aftercode": "return serializers.findSerializer(value.getClass());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 280,
+    "precode": "return serializers.findValueSerializer(value.getClass());",
+    "aftercode": "return serializers.findValueSerializer(value.getClass().getClass());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 280,
+    "precode": "return serializers.findValueSerializer(value.getClass());",
+    "aftercode": "return serializers.findValueSerializer(null);",
+    "rule": "Null Value Substitution",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 280,
+    "precode": "return serializers.findValueSerializer(value.getClass());",
+    "aftercode": "return serializers.findValueSerializer(Object.class);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java",
+    "line": 280,
+    "precode": "return serializers.findValueSerializer(value.getClass());",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 254,
+    "precode": "if (intr != null && prop != null) {",
+    "aftercode": "if (intr != null || prop != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 254,
+    "precode": "if (intr != null && prop != null) {",
+    "aftercode": "if (intr != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 254,
+    "precode": "if (intr != null && prop != null) {",
+    "aftercode": "if (prop != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 256,
+    "precode": "if (m != null) {",
+    "aftercode": "if (m == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 257,
+    "precode": "Object convDef = intr.findSerializationContentConverter(m);",
+    "aftercode": "Object convDef = intr.findSerializationContentConverter(prop);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 258,
+    "precode": "if (convDef != null) {",
+    "aftercode": "if (convDef == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 259,
+    "precode": "Converter<Object,Object> conv = provider.converterInstance(prop.getMember(), convDef);",
+    "aftercode": "Converter<Object,Object> conv = provider.converterInstance(prop, convDef);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 260,
+    "precode": "JavaType delegateType = conv.getOutputType(provider.getTypeFactory());",
+    "aftercode": "JavaType delegateType = conv.getOutputType(null);",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 262,
+    "precode": "if (existingSerializer == null && !delegateType.hasRawClass(Object.class)) {",
+    "aftercode": "if (existingSerializer == null || !delegateType.hasRawClass(Object.class)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 262,
+    "precode": "if (existingSerializer == null && !delegateType.hasRawClass(Object.class)) {",
+    "aftercode": "if (existingSerializer != null && !delegateType.hasRawClass(Object.class)) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 262,
+    "precode": "if (existingSerializer == null && !delegateType.hasRawClass(Object.class)) {",
+    "aftercode": "if (existingSerializer == null && delegateType.hasRawClass(Object.class)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 263,
+    "precode": "existingSerializer = provider.findValueSerializer(delegateType);",
+    "aftercode": "existingSerializer = provider.findValueSerializer(null);",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 265,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, existingSerializer);",
+    "aftercode": "return new StdDelegatingSerializer(conv, delegateType, null);",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 265,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, existingSerializer);",
+    "aftercode": "return existingSerializer;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 269,
+    "precode": "return existingSerializer;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 253,
+    "precode": "final AnnotationIntrospector intr = provider.getAnnotationIntrospector();",
+    "aftercode": "final AnnotationIntrospector intr = null;",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 255,
+    "precode": "AnnotatedMember m = prop.getMember();",
+    "aftercode": "AnnotatedMember m = null;",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 259,
+    "precode": "Converter<Object,Object> conv = provider.converterInstance(prop.getMember(), convDef);",
+    "aftercode": "Converter<Object,Object> conv = provider.converterInstance(prop.getMember(), null);",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 262,
+    "precode": "if (existingSerializer == null && !delegateType.hasRawClass(Object.class)) {",
+    "aftercode": "if (existingSerializer == null && delegateType.hasRawClass(Object.class)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 170,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 263,
+    "precode": "existingSerializer = provider.findValueSerializer(delegateType);",
+    "aftercode": "existingSerializer = provider.findValueSerializer(prop.getType());",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 265,
+    "precode": "return new StdDelegatingSerializer(conv, delegateType, existingSerializer);",
+    "aftercode": "return new StdDelegatingSerializer(conv, null, existingSerializer);",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 257,
+    "precode": "Object convDef = intr.findSerializationContentConverter(m);",
+    "aftercode": "Object convDef = intr.findSerializationContentConverter(null);",
+    "rule": "Null Value Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 262,
+    "precode": "if (existingSerializer == null && !delegateType.hasRawClass(Object.class)) {",
+    "aftercode": "if (existingSerializer == null && !delegateType.hasRawClass(String.class)) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 263,
+    "precode": "existingSerializer = provider.findValueSerializer(delegateType);",
+    "aftercode": "existingSerializer = provider.findValueSerializer(existingSerializer);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 254,
+    "precode": "if (intr != null && prop != null) {",
+    "aftercode": "if (intr != null && prop == null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+    "line": 269,
+    "precode": "return existingSerializer;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  }
+]

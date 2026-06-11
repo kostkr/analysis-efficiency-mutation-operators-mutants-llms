@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 430,
+    "precode": "int offset = getOffsetToAdd(instant);",
+    "aftercode": "int offset = 0;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 431,
+    "precode": "long localInstant = iField.add(instant + offset, value);",
+    "aftercode": "long localInstant = iField.add(instant - offset, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 431,
+    "precode": "long localInstant = iField.add(instant + offset, value);",
+    "aftercode": "long localInstant = iField.add(instant, value);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 432,
+    "precode": "return localInstant - offset;",
+    "aftercode": "return localInstant + offset;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 432,
+    "precode": "return localInstant - offset;",
+    "aftercode": "return localInstant;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 434,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = instant;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 435,
+    "precode": "localInstant = iField.add(localInstant, value);",
+    "aftercode": "localInstant = iField.add(localInstant, -value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 436,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 436,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return localInstant;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 429,
+    "precode": "if (iTimeField) {",
+    "aftercode": "if (!iTimeField) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 429,
+    "precode": "if (iTimeField) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 443,
+    "precode": "long localInstant = iField.add(instant + offset, value);",
+    "aftercode": "long localInstant = iField.add(instant - offset, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 443,
+    "precode": "long localInstant = iField.add(instant + offset, value);",
+    "aftercode": "long localInstant = iField.add(instant, value);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 443,
+    "precode": "long localInstant = iField.add(instant + offset, value);",
+    "aftercode": "long localInstant = iField.add(value + instant, offset);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 444,
+    "precode": "return localInstant - offset;",
+    "aftercode": "return localInstant + offset;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 444,
+    "precode": "return localInstant - offset;",
+    "aftercode": "return localInstant;",
+    "rule": "Constant Substitution",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 446,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = iZone.convertLocalToUTC(instant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 446,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = instant;",
+    "rule": "Statement Removal",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 448,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 448,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(instant, false, localInstant);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 448,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return localInstant;",
+    "rule": "Statement Removal",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 442,
+    "precode": "int offset = getOffsetToAdd(instant);",
+    "aftercode": "int offset = getOffsetToAdd(localInstant);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.44,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 453,
+    "precode": "if (iTimeField) {",
+    "aftercode": "if (!iTimeField) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 454,
+    "precode": "int offset = getOffsetToAdd(instant);",
+    "aftercode": "int offset = 0;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 455,
+    "precode": "long localInstant = iField.addWrapField(instant + offset, value);",
+    "aftercode": "long localInstant = iField.addWrapField(instant - offset, value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 456,
+    "precode": "return localInstant - offset;",
+    "aftercode": "return localInstant + offset;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 458,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = instant;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 459,
+    "precode": "localInstant = iField.addWrapField(localInstant, value);",
+    "aftercode": "localInstant = iField.addWrapField(localInstant, -value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 460,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 455,
+    "precode": "long localInstant = iField.addWrapField(instant + offset, value);",
+    "aftercode": "long localInstant = iField.addWrapField(instant, value);",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 456,
+    "precode": "return localInstant - offset;",
+    "aftercode": "return localInstant;",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 460,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return localInstant;",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 459,
+    "precode": "localInstant = iField.addWrapField(localInstant, value);",
+    "aftercode": "localInstant = localInstant;",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 465,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = iZone.convertLocalToUTC(instant, false, instant);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 466,
+    "precode": "localInstant = iField.set(localInstant, value);",
+    "aftercode": "localInstant = iField.add(localInstant, value);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 467,
+    "precode": "long result = iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "long result = iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Boolean Argument Negation",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 468,
+    "precode": "if (get(result) != value) {",
+    "aftercode": "if (get(result) == value) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 468,
+    "precode": "if (get(result) != value) {",
+    "aftercode": "if (get(result) < value) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 469,
+    "precode": "throw new IllegalFieldValueException(iField.getType(), new Integer(value),",
+    "aftercode": "throw new IllegalArgumentException(iField.getType().toString(), new Integer(value),",
+    "rule": "Class Name Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 471,
+    "precode": "DateTimeFormat.forPattern(\"yyyy-MM-dd'T'HH:mm:ss.SSS\").print(new Instant(localInstant)) +",
+    "aftercode": "DateTimeFormat.forPattern(\"yyyy-MM-dd\").print(new Instant(localInstant)) +",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 471,
+    "precode": "DateTimeFormat.forPattern(\"yyyy-MM-dd'T'HH:mm:ss.SSS\").print(new Instant(localInstant)) +",
+    "aftercode": "DateTimeFormat.forPattern(\"yyyy-MM-dd'T'HH:mm:ss.SSS\").print(new Instant(instant)) +",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 472,
+    "precode": "\"Illegal instant due to time zone offset transition: \" +",
+    "aftercode": "\"Illegal instant due to time zone offset transition: \" + \" \",",
+    "rule": "String Concatenation Removal",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 472,
+    "precode": "\"Illegal instant due to time zone offset transition: \" +",
+    "aftercode": "\"Success: \" +",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 474,
+    "precode": "return result;",
+    "aftercode": "return localInstant;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 474,
+    "precode": "return result;",
+    "aftercode": "return instant;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 479,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = iZone.convertLocalToUTC(instant, false, instant);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.88,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 480,
+    "precode": "localInstant = iField.set(localInstant, text, locale);",
+    "aftercode": "localInstant = iField.set(instant, text, locale);",
+    "rule": "Parameter Value Mutator",
+    "gen_time_s": 2.88,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 481,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertUTCToLocal(localInstant);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.88,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 481,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Boolean Argument Mutator",
+    "gen_time_s": 2.88,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 481,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(instant, false, localInstant);",
+    "rule": "Parameter Value Mutator",
+    "gen_time_s": 2.88,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 480,
+    "precode": "localInstant = iField.set(localInstant, text, locale);",
+    "aftercode": "localInstant = iField.set(localInstant, instant, locale);",
+    "rule": "Parameter Value Mutator",
+    "gen_time_s": 2.88,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 522,
+    "precode": "int offset = getOffsetToAdd(instant);",
+    "aftercode": "int offset = getOffsetToAdd(instant) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 522,
+    "precode": "int offset = getOffsetToAdd(instant);",
+    "aftercode": "int offset = getOffsetToAdd(instant) - 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 523,
+    "precode": "instant = iField.roundFloor(instant + offset);",
+    "aftercode": "instant = iField.roundFloor(instant - offset);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 524,
+    "precode": "return instant - offset;",
+    "aftercode": "return instant + offset;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 524,
+    "precode": "return instant - offset;",
+    "aftercode": "return instant;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 526,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = iZone.convertUTCToLocal(0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 527,
+    "precode": "localInstant = iField.roundFloor(localInstant);",
+    "aftercode": "localInstant = iField.roundCeiling(localInstant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 528,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 528,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return localInstant;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 523,
+    "precode": "instant = iField.roundFloor(instant + offset);",
+    "aftercode": "instant = iField.roundFloor(instant);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 526,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = iZone.convertLocalToUTC(instant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 535,
+    "precode": "instant = iField.roundCeiling(instant + offset);",
+    "aftercode": "instant = iField.roundCeiling(instant - offset);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 536,
+    "precode": "return instant - offset;",
+    "aftercode": "return instant + offset;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 539,
+    "precode": "localInstant = iField.roundCeiling(localInstant);",
+    "aftercode": "localInstant = iField.roundFloor(localInstant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 540,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Boolean Argument Negation",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 535,
+    "precode": "instant = iField.roundCeiling(instant + offset);",
+    "aftercode": "instant = iField.roundFloor(instant + offset);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 536,
+    "precode": "return instant - offset;",
+    "aftercode": "return instant;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 538,
+    "precode": "long localInstant = iZone.convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = instant;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 540,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return localInstant;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 534,
+    "precode": "int offset = getOffsetToAdd(instant);",
+    "aftercode": "int offset = -getOffsetToAdd(instant);",
+    "rule": "Unary Operator Insertion",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 539,
+    "precode": "localInstant = iField.roundCeiling(localInstant);",
+    "aftercode": "localInstant = localInstant;",
+    "rule": "Statement Deletion / No-Op",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/joda/time/chrono/ZonedChronology.java",
+    "line": 540,
+    "precode": "return iZone.convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iZone.convertLocalToUTC(localInstant, false, localInstant);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 938,
+    "precode": "long instantUTC = instantLocal - offsetOriginal;",
+    "aftercode": "long instantUTC = instantLocal + offsetOriginal;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 939,
+    "precode": "int offsetLocalFromOriginal = getOffset(instantUTC);",
+    "aftercode": "int offsetLocalFromOriginal = getOffset(instantLocal);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 940,
+    "precode": "if (offsetLocalFromOriginal == offsetOriginal) {",
+    "aftercode": "if (offsetLocalFromOriginal != offsetOriginal) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 941,
+    "precode": "return instantUTC;",
+    "aftercode": "return instantLocal;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 941,
+    "precode": "return instantUTC;",
+    "aftercode": "return instantUTC - 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 937,
+    "precode": "int offsetOriginal = getOffset(originalInstantUTC);",
+    "aftercode": "int offsetOriginal = getOffset(instantLocal);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 938,
+    "precode": "long instantUTC = instantLocal - offsetOriginal;",
+    "aftercode": "long instantUTC = instantLocal * offsetOriginal;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 943,
+    "precode": "return convertLocalToUTC(instantLocal, strict);",
+    "aftercode": "return convertLocalToUTC(instantLocal, !strict);",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 941,
+    "precode": "return instantUTC;",
+    "aftercode": "return 0;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 72,
+    "precode": "long localInstant = iBase.getZone().convertUTCToLocal(instant);",
+    "aftercode": "long localInstant = iBase.getZone().convertLocalToUTC(instant, false, instant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 73,
+    "precode": "long difference = FieldUtils.safeSubtract(value, get(instant));",
+    "aftercode": "long difference = FieldUtils.safeAdd(value, get(instant));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 74,
+    "precode": "localInstant = getType().getField(iBase.withUTC()).add(localInstant, difference);",
+    "aftercode": "localInstant = getType().getField(iBase.withUTC()).subtract(localInstant, difference);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 74,
+    "precode": "localInstant = getType().getField(iBase.withUTC()).add(localInstant, difference);",
+    "aftercode": "localInstant = getType().getField(iBase.withUTC()).add(difference, localInstant);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 75,
+    "precode": "return iBase.getZone().convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iBase.getZone().convertLocalToUTC(localInstant, true, instant);",
+    "rule": "Literal Value Change",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 75,
+    "precode": "return iBase.getZone().convertLocalToUTC(localInstant, false, instant);",
+    "aftercode": "return iBase.getZone().convertUTCToLocal(localInstant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 73,
+    "precode": "long difference = FieldUtils.safeSubtract(value, get(instant));",
+    "aftercode": "long difference = FieldUtils.safeSubtract(get(instant), value);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/joda/time/field/LenientDateTimeField.java",
+    "line": 74,
+    "precode": "localInstant = getType().getField(iBase.withUTC()).add(localInstant, difference);",
+    "aftercode": "localInstant = localInstant + difference;",
+    "rule": "Library Call Replacement",
+    "gen_time_s": 2.81,
+    "dublicate": false
+  }
+]

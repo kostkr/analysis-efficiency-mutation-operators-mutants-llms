@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 54,
+    "precode": "JsonFormat.Value format = serializers.getAnnotationIntrospector().findFormat((Annotated)property.getMember());",
+    "aftercode": "JsonFormat.Value format = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 54,
+    "precode": "JsonFormat.Value format = serializers.getAnnotationIntrospector().findFormat((Annotated)property.getMember());",
+    "aftercode": "JsonFormat.Value format = serializers.getAnnotationIntrospector().findFormat(null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 58,
+    "precode": "JsonFormat.Shape shape = format.getShape();",
+    "aftercode": "JsonFormat.Shape shape = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 59,
+    "precode": "if (shape.isNumeric()) {",
+    "aftercode": "if (!shape.isNumeric()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 60,
+    "precode": "return withFormat(Boolean.TRUE, null);",
+    "aftercode": "return this;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 63,
+    "precode": "if ((shape == JsonFormat.Shape.STRING) || format.hasPattern()",
+    "aftercode": "if ((shape != JsonFormat.Shape.STRING) || format.hasPattern()",
+    "rule": "Equality Comparison Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 63,
+    "precode": "if ((shape == JsonFormat.Shape.STRING) || format.hasPattern()",
+    "aftercode": "if ((shape == JsonFormat.Shape.STRING) && format.hasPattern()",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 65,
+    "precode": "TimeZone tz = format.getTimeZone();",
+    "aftercode": "TimeZone tz = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 66,
+    "precode": "final String pattern = format.hasPattern()",
+    "aftercode": "final String pattern = format.hasLocale()",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 68,
+    "precode": ": StdDateFormat.DATE_FORMAT_STR_ISO8601;",
+    "aftercode": ": \"yyyy-MM-dd\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 69,
+    "precode": "final Locale loc = format.hasLocale()",
+    "aftercode": "final Locale loc = format.hasPattern()",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 71,
+    "precode": ": serializers.getLocale();",
+    "aftercode": ": Locale.US;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 72,
+    "precode": "SimpleDateFormat df = new SimpleDateFormat(pattern, loc);",
+    "aftercode": "SimpleDateFormat df = new SimpleDateFormat();",
+    "rule": "Constructor Argument Removal",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 72,
+    "precode": "SimpleDateFormat df = new SimpleDateFormat(pattern, loc);",
+    "aftercode": "SimpleDateFormat df = new SimpleDateFormat(loc, pattern);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 73,
+    "precode": "if (tz == null) {",
+    "aftercode": "if (tz != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 74,
+    "precode": "tz = serializers.getTimeZone();",
+    "aftercode": "tz = TimeZone.getDefault();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 76,
+    "precode": "df.setTimeZone(tz);",
+    "aftercode": "df.setTimeZone(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 77,
+    "precode": "return withFormat(Boolean.FALSE, df);",
+    "aftercode": "return withFormat(Boolean.TRUE, df);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 77,
+    "precode": "return withFormat(Boolean.FALSE, df);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 81,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 53,
+    "precode": "if (property != null) {",
+    "aftercode": "if (property == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 55,
+    "precode": "if (format != null) {",
+    "aftercode": "if (format == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 64,
+    "precode": "|| format.hasLocale() || format.hasTimeZone()) {",
+    "aftercode": "|| format.hasLocale() && format.hasTimeZone()) {",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 64,
+    "precode": "|| format.hasTimeZone()) {",
+    "aftercode": "|| format.hasLocale()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 70,
+    "precode": "? format.getLocale()",
+    "aftercode": "? format.getPattern()",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 54,
+    "precode": "JsonFormat.Value format = serializers.getAnnotationIntrospector().findFormat((Annotated)property.getMember());",
+    "aftercode": "JsonFormat.Value format = serializers.getAnnotationIntrospector().findFormat((Annotated)property.getName());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 60,
+    "precode": "return withFormat(Boolean.TRUE, null);",
+    "aftercode": "return withFormat(null, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 77,
+    "precode": "return withFormat(Boolean.FALSE, df);",
+    "aftercode": "return withFormat(Boolean.FALSE, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 74,
+    "precode": "tz = serializers.getTimeZone();",
+    "aftercode": "if (true) { tz = serializers.getTimeZone(); }",
+    "rule": "Empty Block",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 59,
+    "precode": "if (shape.isNumeric()) {",
+    "aftercode": "if (shape == null) {",
+    "rule": "Null Pointer",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 63,
+    "precode": "if ((shape == JsonFormat.Shape.STRING) || format.hasPattern()",
+    "aftercode": "if ((shape == JsonFormat.Shape.NUMBER_INT) || format.hasPattern()",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 68,
+    "precode": ": StdDateFormat.DATE_FORMAT_STR_ISO8601;",
+    "aftercode": ": StdDateFormat.DATE_FORMAT_STR_ISO8601;",
+    "rule": "No-op",
+    "gen_time_s": 2.12,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+    "line": 71,
+    "precode": ": serializers.getLocale();",
+    "aftercode": ": Locale.getDefault();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  }
+]

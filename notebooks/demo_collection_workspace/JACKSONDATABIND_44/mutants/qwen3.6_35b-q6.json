@@ -1,0 +1,482 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 125,
+    "precode": "if (_class == subclass) {",
+    "aftercode": "if (_class != subclass) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 126,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Values",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 132,
+    "precode": "if (!_class.isAssignableFrom(subclass)) {",
+    "aftercode": "if (_class.isAssignableFrom(subclass)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 137,
+    "precode": "return new SimpleType(subclass, _bindings, this, _superInterfaces,",
+    "aftercode": "return new SimpleType(subclass, _bindings, null, _superInterfaces,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 141,
+    "precode": "Class<?> next = subclass.getSuperclass();",
+    "aftercode": "Class<?> next = subclass;",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 142,
+    "precode": "if (next == _class) { // straight up parent class? Great.",
+    "aftercode": "if (next != _class) { // straight up parent class? Great.",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 143,
+    "precode": "return new SimpleType(subclass, _bindings, this,",
+    "aftercode": "return new SimpleType(subclass, _bindings, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 146,
+    "precode": "if ((next != null) && _class.isAssignableFrom(next)) {",
+    "aftercode": "if ((next != null) || _class.isAssignableFrom(next)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 147,
+    "precode": "JavaType superb = _narrow(next);",
+    "aftercode": "JavaType superb = _narrow(subclass);",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 148,
+    "precode": "return new SimpleType(subclass, _bindings, superb,",
+    "aftercode": "return new SimpleType(subclass, _bindings, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 152,
+    "precode": "Class<?>[] nextI = subclass.getInterfaces();",
+    "aftercode": "Class<?>[] nextI = new Class<?>[0];",
+    "rule": "Empty Return",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 154,
+    "precode": "if (iface == _class) { // directly implemented",
+    "aftercode": "if (iface != _class) { // directly implemented",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 155,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return new SimpleType(subclass, _bindings, this,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 158,
+    "precode": "if (_class.isAssignableFrom(iface)) { // indirect, so recurse",
+    "aftercode": "if (!_class.isAssignableFrom(iface)) { // indirect, so recurse",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 159,
+    "precode": "JavaType superb = _narrow(iface);",
+    "aftercode": "JavaType superb = _narrow(subclass);",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 160,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return new SimpleType(subclass, _bindings, superb,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 165,
+    "precode": "throw new IllegalArgumentException(\"Internal error: Can not resolve sub-type for Class \"+subclass.getName()+\" to \"",
+    "aftercode": "return this;",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 147,
+    "precode": "JavaType superb = _narrow(next);",
+    "aftercode": "JavaType superb = null;",
+    "rule": "Empty Return",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 159,
+    "precode": "JavaType superb = _narrow(iface);",
+    "aftercode": "JavaType superb = null;",
+    "rule": "Empty Return",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 137,
+    "precode": "return new SimpleType(subclass, _bindings, this, _superInterfaces,",
+    "aftercode": "return new SimpleType(subclass, _bindings, this, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 143,
+    "precode": "return new SimpleType(subclass, _bindings, this,",
+    "aftercode": "return new SimpleType(subclass, _bindings, this, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 148,
+    "precode": "return new SimpleType(subclass, _bindings, superb,",
+    "aftercode": "return new SimpleType(subclass, _bindings, superb, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 155,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return new SimpleType(subclass, _bindings, null, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 160,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return new SimpleType(subclass, _bindings, null, null,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 125,
+    "precode": "if (_class == subclass) {",
+    "aftercode": "if (subclass == _class) {",
+    "rule": "Equality Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 142,
+    "precode": "if (next == _class) { // straight up parent class? Great.",
+    "aftercode": "if (_class == next) { // straight up parent class? Great.",
+    "rule": "Equality Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 154,
+    "precode": "if (iface == _class) { // directly implemented",
+    "aftercode": "if (_class == iface) { // directly implemented",
+    "rule": "Equality Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 132,
+    "precode": "if (!_class.isAssignableFrom(subclass)) {",
+    "aftercode": "if (!subclass.isAssignableFrom(_class)) {",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 146,
+    "precode": "if ((next != null) && _class.isAssignableFrom(next)) {",
+    "aftercode": "if ((next != null) && next.isAssignableFrom(_class)) {",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 158,
+    "precode": "if (_class.isAssignableFrom(iface)) { // indirect, so recurse",
+    "aftercode": "if (iface.isAssignableFrom(_class)) { // indirect, so recurse",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 141,
+    "precode": "Class<?> next = subclass.getSuperclass();",
+    "aftercode": "Class<?> next = _class.getSuperclass();",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 152,
+    "precode": "Class<?>[] nextI = subclass.getInterfaces();",
+    "aftercode": "Class<?>[] nextI = _class.getInterfaces();",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 147,
+    "precode": "JavaType superb = _narrow(next);",
+    "aftercode": "JavaType superb = _narrow(_class);",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 159,
+    "precode": "JavaType superb = _narrow(iface);",
+    "aftercode": "JavaType superb = _narrow(_class);",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 126,
+    "precode": "return this;",
+    "aftercode": "return new SimpleType(subclass, _bindings, this, _superInterfaces,",
+    "rule": "Return Values",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 143,
+    "precode": "return new SimpleType(subclass, _bindings, this,",
+    "aftercode": "return this;",
+    "rule": "Return Values",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 148,
+    "precode": "return new SimpleType(subclass, _bindings, superb,",
+    "aftercode": "return superb;",
+    "rule": "Return Values",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 155,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return this;",
+    "rule": "Return Values",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 160,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return superb;",
+    "rule": "Return Values",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 137,
+    "precode": "return new SimpleType(subclass, _bindings, this, _superInterfaces,",
+    "aftercode": "return new SimpleType(subclass, _bindings, subclass, _superInterfaces,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 143,
+    "precode": "return new SimpleType(subclass, _bindings, this,",
+    "aftercode": "return new SimpleType(subclass, _bindings, subclass,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 155,
+    "precode": "return new SimpleType(subclass, _bindings, null,",
+    "aftercode": "return new SimpleType(subclass, _bindings, subclass,",
+    "rule": "Arguments Replace",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 165,
+    "precode": "throw new IllegalArgumentException(\"Internal error: Can not resolve sub-type for Class \"+subclass.getName()+\" to \"",
+    "aftercode": "throw new RuntimeException(\"Internal error: Can not resolve sub-type for Class \"+subclass.getName()+\" to \"",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 132,
+    "precode": "if (!_class.isAssignableFrom(subclass)) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Constant",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 142,
+    "precode": "if (next == _class) { // straight up parent class? Great.",
+    "aftercode": "if (false) { // straight up parent class? Great.",
+    "rule": "Conditionals Constant",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 146,
+    "precode": "if ((next != null) && _class.isAssignableFrom(next)) {",
+    "aftercode": "if ((next != null) && false) {",
+    "rule": "Conditionals Constant",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 154,
+    "precode": "if (iface == _class) { // directly implemented",
+    "aftercode": "if (false) { // directly implemented",
+    "rule": "Conditionals Constant",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/SimpleType.java",
+    "line": 158,
+    "precode": "if (_class.isAssignableFrom(iface)) { // indirect, so recurse",
+    "aftercode": "if (true) { // indirect, so recurse",
+    "rule": "Conditionals Constant",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  }
+]

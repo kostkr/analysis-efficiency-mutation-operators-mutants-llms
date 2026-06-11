@@ -1,0 +1,4692 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 176,
+    "precode": "if (subClass.indexOf('<') > 0) {",
+    "aftercode": "if (subClass.indexOf('<') >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 176,
+    "precode": "if (subClass.indexOf('<') > 0) {",
+    "aftercode": "if (subClass.indexOf('<') < 0) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 182,
+    "precode": "if (t.isTypeOrSubTypeOf(baseType.getRawClass())) {",
+    "aftercode": "if (!t.isTypeOrSubTypeOf(baseType.getRawClass())) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 188,
+    "precode": "cls =  getTypeFactory().findClass(subClass);",
+    "aftercode": "cls =  getTypeFactory().findClass(baseType.toString());",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 188,
+    "precode": "cls =  getTypeFactory().findClass(subClass);",
+    "aftercode": "cls =  getTypeFactory().findClass(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 190,
+    "precode": "return null;",
+    "aftercode": "return baseType;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 192,
+    "precode": "throw invalidTypeIdException(baseType, subClass, String.format(",
+    "aftercode": "throw invalidTypeIdException(subClass, baseType, String.format(",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 197,
+    "precode": "if (baseType.isTypeOrSuperTypeOf(cls)) {",
+    "aftercode": "if (cls.isTypeOrSuperTypeOf(baseType)) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 197,
+    "precode": "if (baseType.isTypeOrSuperTypeOf(cls)) {",
+    "aftercode": "if (!baseType.isTypeOrSuperTypeOf(cls)) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 198,
+    "precode": "return getTypeFactory().constructSpecializedType(baseType, cls);",
+    "aftercode": "return getTypeFactory().constructSpecializedType(cls, baseType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 201,
+    "precode": "throw invalidTypeIdException(baseType, subClass, \"Not a subtype\");",
+    "aftercode": "throw invalidTypeIdException(subClass, baseType, \"Not a subtype\");",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 176,
+    "precode": "if (subClass.indexOf('<') > 0) {",
+    "aftercode": "if (subClass.indexOf('<') == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 182,
+    "precode": "if (t.isTypeOrSubTypeOf(baseType.getRawClass())) {",
+    "aftercode": "if (t.getRawClass().equals(baseType.getRawClass())) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 197,
+    "precode": "if (baseType.isTypeOrSuperTypeOf(cls)) {",
+    "aftercode": "if (baseType.equals(cls)) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 181,
+    "precode": "JavaType t = getTypeFactory().constructFromCanonical(subClass);",
+    "aftercode": "JavaType t = getTypeFactory().constructFromCanonical(baseType.toString());",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 183,
+    "precode": "return t;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 198,
+    "precode": "return getTypeFactory().constructSpecializedType(baseType, cls);",
+    "aftercode": "return getTypeFactory().constructSimpleType(cls, null);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 201,
+    "precode": "throw invalidTypeIdException(baseType, subClass, \"Not a subtype\");",
+    "aftercode": "return null;",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 176,
+    "precode": "if (subClass.indexOf('<') > 0) {",
+    "aftercode": "if (subClass.indexOf('>') > 0) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 176,
+    "precode": "if (subClass.indexOf('<') > 0) {",
+    "aftercode": "if (subClass.indexOf('[') > 0) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 182,
+    "precode": "if (t.isTypeOrSubTypeOf(baseType.getRawClass())) {",
+    "aftercode": "if (t.isTypeOrSubTypeOf(cls)) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 197,
+    "precode": "if (baseType.isTypeOrSuperTypeOf(cls)) {",
+    "aftercode": "if (baseType.isTypeOrSubTypeOf(cls)) {",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 192,
+    "precode": "throw invalidTypeIdException(baseType, subClass, String.format(",
+    "aftercode": "throw new JsonMappingException(baseType, subClass, String.format(",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 189,
+    "precode": "return null;",
+    "aftercode": "return baseType;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 189,
+    "precode": "return null;",
+    "aftercode": "return cls;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 181,
+    "precode": "JavaType t = getTypeFactory().constructFromCanonical(subClass);",
+    "aftercode": "JavaType t = getTypeFactory().constructFromType(subClass);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 188,
+    "precode": "cls =  getTypeFactory().findClass(subClass);",
+    "aftercode": "cls =  getTypeFactory().findClass(subClass).asSubclass(Object.class);",
+    "rule": "Method Chaining Insertion",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 198,
+    "precode": "return getTypeFactory().constructSpecializedType(baseType, cls);",
+    "aftercode": "return baseType;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 176,
+    "precode": "if (subClass.indexOf('<') > 0) {",
+    "aftercode": "if (subClass.startsWith(\"<\")) {",
+    "rule": "Logic Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 182,
+    "precode": "if (t.isTypeOrSubTypeOf(baseType.getRawClass())) {",
+    "aftercode": "if (t.isAssignableTo(baseType.getRawClass())) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 197,
+    "precode": "if (baseType.isTypeOrSuperTypeOf(cls)) {",
+    "aftercode": "if (cls.isAssignableFrom(baseType.getRawClass())) {",
+    "rule": "Logic Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 201,
+    "precode": "throw invalidTypeIdException(baseType, subClass, \"Not a subtype\");",
+    "aftercode": "throw invalidTypeIdException(baseType, subClass, \"Not a super type\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DatabindContext.java",
+    "line": 192,
+    "precode": "throw invalidTypeIdException(baseType, subClass, String.format(",
+    "aftercode": "throw invalidTypeIdException(baseType, subClass, \"Error: \" + e.getMessage());",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 709,
+    "precode": "DateFormat df = getDateFormat();",
+    "aftercode": "DateFormat df = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 710,
+    "precode": "return df.parse(dateStr);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 710,
+    "precode": "return df.parse(dateStr);",
+    "aftercode": "return df.parse(dateStr); // mutated",
+    "rule": "Comment Out Code",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 712,
+    "precode": "throw new IllegalArgumentException(String.format(",
+    "aftercode": "return null;",
+    "rule": "Empty Block / Return Null",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 712,
+    "precode": "throw new IllegalArgumentException(String.format(",
+    "aftercode": "return dateStr;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 712,
+    "precode": "throw new IllegalArgumentException(String.format(",
+    "aftercode": "throw new RuntimeException(String.format(",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 712,
+    "precode": "throw new IllegalArgumentException(String.format(",
+    "aftercode": "throw new IllegalArgumentException(\"Failed\");",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 713,
+    "precode": "\"Failed to parse Date value '%s': %s\", dateStr,",
+    "aftercode": "\"Failed to parse Date value '%s'\", dateStr,",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 714,
+    "precode": "ClassUtil.exceptionMessage(e)));",
+    "aftercode": "e.getMessage()));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 708,
+    "precode": "try {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 711,
+    "precode": "} catch (ParseException e) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.04,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1602,
+    "precode": "excMsg = \"N/A\";",
+    "aftercode": "excMsg = null;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1603,
+    "precode": "else if ((excMsg = ClassUtil.exceptionMessage(cause)) == null) {",
+    "aftercode": "else if ((excMsg = ClassUtil.exceptionMessage(cause)) != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1604,
+    "precode": "excMsg = ClassUtil.nameOf(cause.getClass());",
+    "aftercode": "excMsg = cause.getClass().getName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1606,
+    "precode": "String msg = String.format(\"Cannot construct instance of %s, problem: %s\",",
+    "aftercode": "String msg = String.format(\"Cannot construct instance of %s\",",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1606,
+    "precode": "String msg = String.format(\"Cannot construct instance of %s, problem: %s\",",
+    "aftercode": "String msg = String.format(\"Cannot construct instance of %s, cause: %s\",",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1608,
+    "precode": "InvalidDefinitionException e = InvalidDefinitionException.from(_parser, msg, type);",
+    "aftercode": "InvalidDefinitionException e = InvalidDefinitionException.from(_parser, null, type);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1608,
+    "precode": "InvalidDefinitionException e = InvalidDefinitionException.from(_parser, msg, type);",
+    "aftercode": "InvalidDefinitionException e = new InvalidDefinitionException(null);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1609,
+    "precode": "e.initCause(cause);",
+    "aftercode": "e.initCause(null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1609,
+    "precode": "e.initCause(cause);",
+    "aftercode": "// e.initCause(cause);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1601,
+    "precode": "if (cause == null) {",
+    "aftercode": "if (cause != null) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1603,
+    "precode": "else if ((excMsg = ClassUtil.exceptionMessage(cause)) == null) {",
+    "aftercode": "if ((excMsg = ClassUtil.exceptionMessage(cause)) == null) {",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1607,
+    "precode": "ClassUtil.nameOf(instClass), excMsg);",
+    "aftercode": "ClassUtil.nameOf(instClass), null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1607,
+    "precode": "ClassUtil.nameOf(instClass), excMsg);",
+    "aftercode": "instClass.getName(), excMsg);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1600,
+    "precode": "String excMsg;",
+    "aftercode": "String excMsg = \"Unknown\";",
+    "rule": "Variable Initialization Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java",
+    "line": 1605,
+    "precode": "}",
+    "aftercode": "else { excMsg = \"Unknown\"; }",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 338,
+    "precode": "String.format(\"Unexpected IOException (of type %s): %s\",",
+    "aftercode": "String.format(\"Unexpected IOException (of type %s): %s\", \"\",",
+    "rule": "Argument Add",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 338,
+    "precode": "String.format(\"Unexpected IOException (of type %s): %s\",",
+    "aftercode": "String.format(\"Unexpected IOException (of type %s):\",",
+    "rule": "Argument Remove",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 337,
+    "precode": "return new JsonMappingException(null,",
+    "aftercode": "return new JsonMappingException(src,",
+    "rule": "Literal Replace",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 338,
+    "precode": "String.format(\"Unexpected IOException (of type %s): %s\",",
+    "aftercode": "String.format(\"Unexpected IOException (of type %s): %s\", null,",
+    "rule": "Null Insert",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 339,
+    "precode": "src.getClass().getName(),",
+    "aftercode": "src.getClass().getCanonicalName(),",
+    "rule": "Method Replace",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 338,
+    "precode": "String.format(\"Unexpected IOException (of type %s): %s\",",
+    "aftercode": "String.format(\"Unexpected IOException (of type %s): %s\",",
+    "rule": "String Replace",
+    "gen_time_s": 2.52,
+    "dublicate": true
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 377,
+    "precode": "if (src instanceof JsonMappingException) {",
+    "aftercode": "if (!(src instanceof JsonMappingException)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 378,
+    "precode": "jme = (JsonMappingException) src;",
+    "aftercode": "jme = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 381,
+    "precode": "String msg = ClassUtil.exceptionMessage(src);",
+    "aftercode": "String msg = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 383,
+    "precode": "if (msg == null || msg.length() == 0) {",
+    "aftercode": "if (msg != null && msg.length() > 0) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 383,
+    "precode": "if (msg == null || msg.length() == 0) {",
+    "aftercode": "if (msg == null && msg.length() == 0) {",
+    "rule": "Change Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 384,
+    "precode": "msg = \"(was \"+src.getClass().getName()+\")\";",
+    "aftercode": "msg = src.getClass().getName();",
+    "rule": "Remove String Concatenation",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 387,
+    "precode": "Closeable proc = null;",
+    "aftercode": "Closeable proc = src;",
+    "rule": "Return Null/Default",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 388,
+    "precode": "if (src instanceof JsonProcessingException) {",
+    "aftercode": "if (!(src instanceof JsonProcessingException)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 389,
+    "precode": "Object proc0 = ((JsonProcessingException) src).getProcessor();",
+    "aftercode": "Object proc0 = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 390,
+    "precode": "if (proc0 instanceof Closeable) {",
+    "aftercode": "if (!(proc0 instanceof Closeable)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 391,
+    "precode": "proc = (Closeable) proc0;",
+    "aftercode": "proc = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 394,
+    "precode": "jme = new JsonMappingException(proc, msg, src);",
+    "aftercode": "jme = new JsonMappingException(msg, src);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 394,
+    "precode": "jme = new JsonMappingException(proc, msg, src);",
+    "aftercode": "jme = new JsonMappingException(src, msg, proc);",
+    "rule": "Swap Arguments",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 394,
+    "precode": "jme = new JsonMappingException(proc, msg, src);",
+    "aftercode": "jme = new JsonMappingException(null, msg, src);",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 396,
+    "precode": "jme.prependPath(ref);",
+    "aftercode": "jme.setPath(ref);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 396,
+    "precode": "jme.prependPath(ref);",
+    "aftercode": "jme.appendPath(ref);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 397,
+    "precode": "return jme;",
+    "aftercode": "return null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 377,
+    "precode": "if (src instanceof JsonMappingException) {",
+    "aftercode": "if (src != null) {",
+    "rule": "Change Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 383,
+    "precode": "if (msg == null || msg.length() == 0) {",
+    "aftercode": "if (msg == null) {",
+    "rule": "Remove Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 388,
+    "precode": "if (src instanceof JsonProcessingException) {",
+    "aftercode": "if (src != null) {",
+    "rule": "Change Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 390,
+    "precode": "if (proc0 instanceof Closeable) {",
+    "aftercode": "if (proc0 != null) {",
+    "rule": "Change Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 381,
+    "precode": "String msg = ClassUtil.exceptionMessage(src);",
+    "aftercode": "String msg = src.toString();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 394,
+    "precode": "jme = new JsonMappingException(proc, msg, src);",
+    "aftercode": "jme = new JsonMappingException();",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 384,
+    "precode": "msg = \"(was \"+src.getClass().getName()+\")\";",
+    "aftercode": "msg = \"\";",
+    "rule": "Return Null",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/JsonMappingException.java",
+    "line": 396,
+    "precode": "jme.prependPath(ref);",
+    "aftercode": "if (ref != null) jme.prependPath(ref);",
+    "rule": "Add Condition",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1333,
+    "precode": "JavaType fullType = _config.constructType(rawType);",
+    "aftercode": "JavaType fullType = _config.constructType(Object.class);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1336,
+    "precode": "ser = _createUntypedSerializer(fullType);",
+    "aftercode": "ser = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1337,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "Exception Type Broadening",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1340,
+    "precode": "ser = null; // doesn't matter but compiler whines otherwise",
+    "aftercode": "ser = _createUntypedSerializer(fullType);",
+    "rule": "Code Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1341,
+    "precode": "reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "aftercode": "// reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1344,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (ser == null) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1344,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition True",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1346,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(rawType, fullType, ser, this);",
+    "aftercode": "_serializerCache.addAndResolveNonTypedSerializer(fullType, rawType, ser, this);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1346,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(rawType, fullType, ser, this);",
+    "aftercode": "// _serializerCache.addAndResolveNonTypedSerializer(rawType, fullType, ser, this);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1348,
+    "precode": "return ser;",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1348,
+    "precode": "return ser;",
+    "aftercode": "return _createUntypedSerializer(fullType);",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1333,
+    "precode": "JavaType fullType = _config.constructType(rawType);",
+    "aftercode": "JavaType fullType = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1337,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition False",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1334,
+    "precode": "JsonSerializer<Object> ser;",
+    "aftercode": "JsonSerializer<Object> ser = null;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1336,
+    "precode": "ser = _createUntypedSerializer(fullType);",
+    "aftercode": "ser = _createUntypedSerializer(null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1341,
+    "precode": "reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "aftercode": "reportMappingProblem(null, null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1346,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(rawType, fullType, ser, this);",
+    "aftercode": "_serializerCache.addAndResolveNonTypedSerializer(null, null, null, null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1333,
+    "precode": "JavaType fullType = _config.constructType(rawType);",
+    "aftercode": "JavaType fullType = _config.constructType((Class<?>) null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1336,
+    "precode": "ser = _createUntypedSerializer(fullType);",
+    "aftercode": "throw new RuntimeException(\"Mock Exception\");",
+    "rule": "Exception Throw",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1348,
+    "precode": "return ser;",
+    "aftercode": "return (JsonSerializer<Object>) new Object();",
+    "rule": "Type Cast Mutation",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1356,
+    "precode": "ser = _createUntypedSerializer(type);",
+    "aftercode": "ser = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1356,
+    "precode": "ser = _createUntypedSerializer(type);",
+    "aftercode": "ser = _createUntypedSerializer(null);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1360,
+    "precode": "ser = null;",
+    "aftercode": "ser = _createUntypedSerializer(type);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1361,
+    "precode": "reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "aftercode": "// reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "rule": "Comment Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1361,
+    "precode": "reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "aftercode": "reportMappingProblem(iae, \"\");",
+    "rule": "Literal Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1364,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (ser == null) {",
+    "rule": "Condition Boundary Mutation",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1364,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary Mutation",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1364,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary Mutation",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1366,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(type, ser, this);",
+    "aftercode": "_serializerCache.addAndResolveNonTypedSerializer(type, null, this);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1366,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(type, ser, this);",
+    "aftercode": "// _serializerCache.addAndResolveNonTypedSerializer(type, ser, this);",
+    "rule": "Comment Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1366,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(type, ser, this);",
+    "aftercode": "_serializerCache.addAndResolveNonTypedSerializer(null, ser, this);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1366,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(type, ser, this);",
+    "aftercode": "_serializerCache.addAndResolveNonTypedSerializer(type, ser, null);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1368,
+    "precode": "return ser;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1356,
+    "precode": "ser = _createUntypedSerializer(type);",
+    "aftercode": "ser = _createUntypedSerializer(type);",
+    "rule": "No Op Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": true
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1360,
+    "precode": "ser = null;",
+    "aftercode": "// ser = null;",
+    "rule": "Comment Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1366,
+    "precode": "_serializerCache.addAndResolveNonTypedSerializer(type, ser, this);",
+    "aftercode": "_serializerCache.addAndResolveNonTypedSerializer(ser, type, this);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1357,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (Exception iae) {",
+    "rule": "Exception Type Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1361,
+    "precode": "reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));",
+    "aftercode": "reportMappingProblem(iae, iae.getMessage());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/SerializerProvider.java",
+    "line": 1364,
+    "precode": "if (ser != null) {",
+    "aftercode": "if (ser != null && ser != null) {",
+    "rule": "Boolean Literal Insertion",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1559,
+    "precode": "BeanDescription bean = config.introspectClassAnnotations(baseType.getRawClass());",
+    "aftercode": "BeanDescription bean = config.introspectClassAnnotations(baseType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1560,
+    "precode": "AnnotatedClass ac = bean.getClassInfo();",
+    "aftercode": "AnnotatedClass ac = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1561,
+    "precode": "AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "aftercode": "AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "rule": "No-Op",
+    "gen_time_s": 2.34,
+    "dublicate": true
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1562,
+    "precode": "TypeResolverBuilder<?> b = ai.findTypeResolver(config, ac, baseType);",
+    "aftercode": "TypeResolverBuilder<?> b = ai.findTypeResolver(config, baseType, ac);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1567,
+    "precode": "if (b == null) {",
+    "aftercode": "if (b != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1568,
+    "precode": "b = config.getDefaultTyper(baseType);",
+    "aftercode": "b = config.getDefaultTyper(null);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1569,
+    "precode": "if (b == null) {",
+    "aftercode": "if (b != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1570,
+    "precode": "return null;",
+    "aftercode": "return b;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1573,
+    "precode": "subtypes = config.getSubtypeResolver().collectAndResolveSubtypesByTypeId(config, ac);",
+    "aftercode": "subtypes = new ArrayList<>();",
+    "rule": "Collection Initialization",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1577,
+    "precode": "if ((b.getDefaultImpl() == null) && baseType.isAbstract()) {",
+    "aftercode": "if ((b.getDefaultImpl() != null) && baseType.isAbstract()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1577,
+    "precode": "if ((b.getDefaultImpl() == null) && baseType.isAbstract()) {",
+    "aftercode": "if ((b.getDefaultImpl() == null) || baseType.isAbstract()) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1578,
+    "precode": "JavaType defaultType = mapAbstractType(config, baseType);",
+    "aftercode": "JavaType defaultType = baseType;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1579,
+    "precode": "if ((defaultType != null) && !defaultType.hasRawClass(baseType.getRawClass())) {",
+    "aftercode": "if ((defaultType != null) && defaultType.hasRawClass(baseType.getRawClass())) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1579,
+    "precode": "if ((defaultType != null) && !defaultType.hasRawClass(baseType.getRawClass())) {",
+    "aftercode": "if ((defaultType == null) && !defaultType.hasRawClass(baseType.getRawClass())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1580,
+    "precode": "b = b.defaultImpl(defaultType.getRawClass());",
+    "aftercode": "b = defaultType;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1586,
+    "precode": "return b.buildTypeDeserializer(config, baseType, subtypes);",
+    "aftercode": "return b.buildTypeDeserializer(config, subtypes, baseType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1586,
+    "precode": "return b.buildTypeDeserializer(config, baseType, subtypes);",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1587,
+    "precode": "} catch (IllegalArgumentException e0) {",
+    "aftercode": "} catch (Exception e0) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1588,
+    "precode": "InvalidDefinitionException e = InvalidDefinitionException.from((JsonParser) null,",
+    "aftercode": "InvalidDefinitionException e = InvalidDefinitionException.from(parser,",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1589,
+    "precode": "ClassUtil.exceptionMessage(e0), baseType);",
+    "aftercode": "e0.getMessage(), baseType);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1590,
+    "precode": "e.initCause(e0);",
+    "aftercode": "e.initCause(null);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1591,
+    "precode": "throw e;",
+    "aftercode": "throw e0;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1559,
+    "precode": "BeanDescription bean = config.introspectClassAnnotations(baseType.getRawClass());",
+    "aftercode": "BeanDescription bean = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1562,
+    "precode": "TypeResolverBuilder<?> b = ai.findTypeResolver(config, ac, baseType);",
+    "aftercode": "TypeResolverBuilder<?> b = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1566,
+    "precode": "Collection<NamedType> subtypes = null;",
+    "aftercode": "Collection<NamedType> subtypes = new ArrayList<>();",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1573,
+    "precode": "subtypes = config.getSubtypeResolver().collectAndResolveSubtypesByTypeId(config, ac);",
+    "aftercode": "subtypes = config.getSubtypeResolver().collectAndResolveSubtypesByTypeId(null, ac);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1578,
+    "precode": "JavaType defaultType = mapAbstractType(config, baseType);",
+    "aftercode": "JavaType defaultType = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1579,
+    "precode": "if ((defaultType != null) && !defaultType.hasRawClass(baseType.getRawClass())) {",
+    "aftercode": "if ((defaultType != null) || !defaultType.hasRawClass(baseType.getRawClass())) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1580,
+    "precode": "b = b.defaultImpl(defaultType.getRawClass());",
+    "aftercode": "b = b.defaultImpl(null);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1586,
+    "precode": "return b.buildTypeDeserializer(config, baseType, subtypes);",
+    "aftercode": "return b.buildTypeDeserializer(null, baseType, subtypes);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1588,
+    "precode": "InvalidDefinitionException e = InvalidDefinitionException.from((JsonParser) null,",
+    "aftercode": "InvalidDefinitionException e = null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1589,
+    "precode": "ClassUtil.exceptionMessage(e0), baseType);",
+    "aftercode": "e0.toString(), baseType);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1590,
+    "precode": "e.initCause(e0);",
+    "aftercode": "e.initCause(new RuntimeException());",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1591,
+    "precode": "throw e;",
+    "aftercode": "return null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1569,
+    "precode": "if (b == null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1577,
+    "precode": "if ((b.getDefaultImpl() == null) && baseType.isAbstract()) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java",
+    "line": 1579,
+    "precode": "if ((defaultType != null) && !defaultType.hasRawClass(baseType.getRawClass())) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 214,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "aftercode": "valueInstantiator = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 216,
+    "precode": "return new ErrorThrowingDeserializer(error);",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 221,
+    "precode": "throw InvalidDefinitionException.from(ctxt.getParser(),",
+    "aftercode": "throw ctxt.getParser();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 225,
+    "precode": "BeanDeserializerBuilder builder = constructBeanDeserializerBuilder(ctxt, beanDesc);",
+    "aftercode": "BeanDeserializerBuilder builder = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 226,
+    "precode": "builder.setValueInstantiator(valueInstantiator);",
+    "aftercode": "builder.setValueInstantiator(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 228,
+    "precode": "addBeanProps(ctxt, beanDesc, builder);",
+    "aftercode": "addBeanProps(ctxt, builder, beanDesc);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 229,
+    "precode": "addObjectIdReader(ctxt, beanDesc, builder);",
+    "aftercode": "addObjectIdReader(beanDesc, ctxt, builder);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 232,
+    "precode": "addBackReferenceProperties(ctxt, beanDesc, builder);",
+    "aftercode": "addBackReferenceProperties(beanDesc, ctxt, builder);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 233,
+    "precode": "addInjectables(ctxt, beanDesc, builder);",
+    "aftercode": "addInjectables(ctxt, builder, beanDesc);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 235,
+    "precode": "final DeserializationConfig config = ctxt.getConfig();",
+    "aftercode": "final DeserializationConfig config = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 177,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 236,
+    "precode": "if (_factoryConfig.hasDeserializerModifiers()) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 178,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 238,
+    "precode": "builder = mod.updateBuilder(config, beanDesc, builder);",
+    "aftercode": "builder = builder;",
+    "rule": "Empty Block",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 179,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 243,
+    "precode": "if (type.isAbstract() && !valueInstantiator.canInstantiate()) {",
+    "aftercode": "if (type.isAbstract() || !valueInstantiator.canInstantiate()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 180,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 243,
+    "precode": "if (type.isAbstract() && !valueInstantiator.canInstantiate()) {",
+    "aftercode": "if (!type.isAbstract() && !valueInstantiator.canInstantiate()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 181,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 244,
+    "precode": "deserializer = builder.buildAbstract();",
+    "aftercode": "deserializer = builder.build();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 182,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 246,
+    "precode": "deserializer = builder.build();",
+    "aftercode": "deserializer = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 183,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 250,
+    "precode": "if (_factoryConfig.hasDeserializerModifiers()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 184,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 252,
+    "precode": "deserializer = mod.modifyDeserializer(config, beanDesc, deserializer);",
+    "aftercode": "deserializer = deserializer;",
+    "rule": "Empty Block",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 185,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 255,
+    "precode": "return (JsonDeserializer<Object>) deserializer;",
+    "aftercode": "return null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 186,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 214,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "aftercode": "valueInstantiator = findValueInstantiator(beanDesc, ctxt);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 187,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 221,
+    "precode": "throw InvalidDefinitionException.from(ctxt.getParser(),",
+    "aftercode": "throw null;",
+    "rule": "Null Throw",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 188,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 223,
+    "precode": "beanDesc, null);",
+    "aftercode": "null, beanDesc);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 189,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 228,
+    "precode": "addBeanProps(ctxt, beanDesc, builder);",
+    "aftercode": "addBeanProps(null, beanDesc, builder);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 190,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 229,
+    "precode": "addObjectIdReader(ctxt, beanDesc, builder);",
+    "aftercode": "addObjectIdReader(ctxt, null, builder);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 191,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 232,
+    "precode": "addBackReferenceProperties(ctxt, beanDesc, builder);",
+    "aftercode": "addBackReferenceProperties(ctxt, beanDesc, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 192,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 233,
+    "precode": "addInjectables(ctxt, beanDesc, builder);",
+    "aftercode": "addInjectables(null, beanDesc, builder);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 193,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 238,
+    "precode": "builder = mod.updateBuilder(config, beanDesc, builder);",
+    "aftercode": "builder = mod.updateBuilder(null, beanDesc, builder);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 194,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 252,
+    "precode": "deserializer = mod.modifyDeserializer(config, beanDesc, deserializer);",
+    "aftercode": "deserializer = mod.modifyDeserializer(null, beanDesc, deserializer);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 195,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 236,
+    "precode": "if (_factoryConfig.hasDeserializerModifiers()) {",
+    "aftercode": "if (_factoryConfig == null) {",
+    "rule": "Null Check",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 196,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 250,
+    "precode": "if (_factoryConfig.hasDeserializerModifiers()) {",
+    "aftercode": "if (_factoryConfig == null) {",
+    "rule": "Null Check",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 197,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 237,
+    "precode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "aftercode": "for (BeanDeserializerModifier mod : new ArrayList<>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 198,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 251,
+    "precode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "aftercode": "for (BeanDeserializerModifier mod : new ArrayList<>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 199,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 243,
+    "precode": "if (type.isAbstract() && !valueInstantiator.canInstantiate()) {",
+    "aftercode": "if (type.isAbstract() && valueInstantiator.canInstantiate()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 200,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 244,
+    "precode": "deserializer = builder.buildAbstract();",
+    "aftercode": "deserializer = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 201,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 226,
+    "precode": "builder.setValueInstantiator(valueInstantiator);",
+    "aftercode": "builder.setValueInstantiator(valueInstantiator);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 202,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 214,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "aftercode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 203,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 225,
+    "precode": "BeanDeserializerBuilder builder = constructBeanDeserializerBuilder(ctxt, beanDesc);",
+    "aftercode": "BeanDeserializerBuilder builder = constructBeanDeserializerBuilder(ctxt, beanDesc);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 204,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 235,
+    "precode": "final DeserializationConfig config = ctxt.getConfig();",
+    "aftercode": "final DeserializationConfig config = ctxt.getConfig();",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 205,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 246,
+    "precode": "deserializer = builder.build();",
+    "aftercode": "deserializer = builder.build();",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 206,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 216,
+    "precode": "return new ErrorThrowingDeserializer(error);",
+    "aftercode": "return new ErrorThrowingDeserializer(error);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 207,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 238,
+    "precode": "builder = mod.updateBuilder(config, beanDesc, builder);",
+    "aftercode": "builder = mod.updateBuilder(config, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 208,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 252,
+    "precode": "deserializer = mod.modifyDeserializer(config, beanDesc, deserializer);",
+    "aftercode": "deserializer = mod.modifyDeserializer(config, beanDesc, deserializer);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 209,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 214,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "aftercode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 210,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 221,
+    "precode": "throw InvalidDefinitionException.from(ctxt.getParser(),",
+    "aftercode": "throw InvalidDefinitionException.from(ctxt.getParser(),",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 211,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 228,
+    "precode": "addBeanProps(ctxt, beanDesc, builder);",
+    "aftercode": "addBeanProps(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 212,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 229,
+    "precode": "addObjectIdReader(ctxt, beanDesc, builder);",
+    "aftercode": "addObjectIdReader(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 213,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 232,
+    "precode": "addBackReferenceProperties(ctxt, beanDesc, builder);",
+    "aftercode": "addBackReferenceProperties(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 214,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 233,
+    "precode": "addInjectables(ctxt, beanDesc, builder);",
+    "aftercode": "addInjectables(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 215,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 255,
+    "precode": "return (JsonDeserializer<Object>) deserializer;",
+    "aftercode": "return (JsonDeserializer<Object>) deserializer;",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 216,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 214,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "aftercode": "valueInstantiator = findValueInstantiator(ctxt, beanDesc);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 217,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 221,
+    "precode": "throw InvalidDefinitionException.from(ctxt.getParser(),",
+    "aftercode": "throw InvalidDefinitionException.from(ctxt.getParser(),",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 218,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 228,
+    "precode": "addBeanProps(ctxt, beanDesc, builder);",
+    "aftercode": "addBeanProps(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 219,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 229,
+    "precode": "addObjectIdReader(ctxt, beanDesc, builder);",
+    "aftercode": "addObjectIdReader(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 220,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 232,
+    "precode": "addBackReferenceProperties(ctxt, beanDesc, builder);",
+    "aftercode": "addBackReferenceProperties(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 221,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 233,
+    "precode": "addInjectables(ctxt, beanDesc, builder);",
+    "aftercode": "addInjectables(ctxt, beanDesc, builder);",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 222,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 255,
+    "precode": "return (JsonDeserializer<Object>) deserializer;",
+    "aftercode": "return (JsonDeserializer<Object>) deserializer;",
+    "rule": "Identity Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 223,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 273,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, builderDesc);",
+    "aftercode": "valueInstantiator = null;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 224,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 275,
+    "precode": "return new ErrorThrowingDeserializer(error);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 225,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 284,
+    "precode": "final DeserializationConfig config = ctxt.getConfig();",
+    "aftercode": "final DeserializationConfig config = null;",
+    "rule": "Variable Assignment Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 226,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 285,
+    "precode": "BeanDeserializerBuilder builder = constructBeanDeserializerBuilder(ctxt, builderDesc);",
+    "aftercode": "BeanDeserializerBuilder builder = null;",
+    "rule": "Variable Assignment Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 227,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 286,
+    "precode": "builder.setValueInstantiator(valueInstantiator);",
+    "aftercode": "builder.setValueInstantiator(null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 228,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 288,
+    "precode": "addBeanProps(ctxt, builderDesc, builder);",
+    "aftercode": "addBeanProps(null, builderDesc, builder);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 229,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 289,
+    "precode": "addObjectIdReader(ctxt, builderDesc, builder);",
+    "aftercode": "addObjectIdReader(null, builderDesc, builder);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 230,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 292,
+    "precode": "addBackReferenceProperties(ctxt, builderDesc, builder);",
+    "aftercode": "addBackReferenceProperties(null, builderDesc, builder);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 231,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 293,
+    "precode": "addInjectables(ctxt, builderDesc, builder);",
+    "aftercode": "addInjectables(null, builderDesc, builder);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 232,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 295,
+    "precode": "JsonPOJOBuilder.Value builderConfig = builderDesc.findPOJOBuilderConfig();",
+    "aftercode": "JsonPOJOBuilder.Value builderConfig = null;",
+    "rule": "Variable Assignment Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 233,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 296,
+    "precode": "final String buildMethodName = (builderConfig == null) ?",
+    "aftercode": "final String buildMethodName = (builderConfig != null) ?",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 234,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 300,
+    "precode": "AnnotatedMethod buildMethod = builderDesc.findMethod(buildMethodName, null);",
+    "aftercode": "AnnotatedMethod buildMethod = null;",
+    "rule": "Variable Assignment Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 235,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 301,
+    "precode": "if (buildMethod != null) { // note: can't yet throw error; may be given build method",
+    "aftercode": "if (buildMethod == null) { // note: can't yet throw error; may be given build method",
+    "rule": "Condition Boundary Mutation",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 236,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 302,
+    "precode": "if (config.canOverrideAccessModifiers()) {",
+    "aftercode": "if (config == null) {",
+    "rule": "Condition Boundary Mutation",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 237,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 303,
+    "precode": "ClassUtil.checkAndFixAccess(buildMethod.getMember(), config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "ClassUtil.checkAndFixAccess(buildMethod.getMember(), false);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 238,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 306,
+    "precode": "builder.setPOJOBuilder(buildMethod, builderConfig);",
+    "aftercode": "builder.setPOJOBuilder(null, builderConfig);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 239,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 308,
+    "precode": "if (_factoryConfig.hasDeserializerModifiers()) {",
+    "aftercode": "if (!_factoryConfig.hasDeserializerModifiers()) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 240,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 309,
+    "precode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "aftercode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "rule": "Loop Bound Mutation",
+    "gen_time_s": 2.45,
+    "dublicate": true
+  },
+  {
+    "id": 241,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 310,
+    "precode": "builder = mod.updateBuilder(config, builderDesc, builder);",
+    "aftercode": "builder = mod.updateBuilder(null, builderDesc, builder);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 242,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 313,
+    "precode": "JsonDeserializer<?> deserializer = builder.buildBuilderBased(",
+    "aftercode": "JsonDeserializer<?> deserializer = null;",
+    "rule": "Variable Assignment Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 243,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 317,
+    "precode": "if (_factoryConfig.hasDeserializerModifiers()) {",
+    "aftercode": "if (!_factoryConfig.hasDeserializerModifiers()) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 244,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 318,
+    "precode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "aftercode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "rule": "Loop Bound Mutation",
+    "gen_time_s": 2.45,
+    "dublicate": true
+  },
+  {
+    "id": 245,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 319,
+    "precode": "deserializer = mod.modifyDeserializer(config, builderDesc, deserializer);",
+    "aftercode": "deserializer = mod.modifyDeserializer(null, builderDesc, deserializer);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 246,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 322,
+    "precode": "return (JsonDeserializer<Object>) deserializer;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 247,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 273,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, builderDesc);",
+    "aftercode": "valueInstantiator = findValueInstantiator(null, builderDesc);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 248,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 273,
+    "precode": "valueInstantiator = findValueInstantiator(ctxt, builderDesc);",
+    "aftercode": "valueInstantiator = findValueInstantiator(ctxt, null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 249,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 303,
+    "precode": "ClassUtil.checkAndFixAccess(buildMethod.getMember(), config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "ClassUtil.checkAndFixAccess(null, config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 250,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 310,
+    "precode": "builder = mod.updateBuilder(config, builderDesc, builder);",
+    "aftercode": "builder = mod.updateBuilder(config, null, builder);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 251,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 310,
+    "precode": "builder = mod.updateBuilder(config, builderDesc, builder);",
+    "aftercode": "builder = mod.updateBuilder(config, builderDesc, null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 252,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 319,
+    "precode": "deserializer = mod.modifyDeserializer(config, builderDesc, deserializer);",
+    "aftercode": "deserializer = mod.modifyDeserializer(config, null, deserializer);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 253,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 319,
+    "precode": "deserializer = mod.modifyDeserializer(config, builderDesc, deserializer);",
+    "aftercode": "deserializer = mod.modifyDeserializer(config, builderDesc, null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 254,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 264,
+    "precode": "deser = _createDeserializer(ctxt, factory, type);",
+    "aftercode": "deser = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 255,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 264,
+    "precode": "deser = _createDeserializer(ctxt, factory, type);",
+    "aftercode": "deser = _createDeserializer(type, factory, ctxt);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 256,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 270,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser != null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 257,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 277,
+    "precode": "boolean addToCache = !_hasCustomHandlers(type) && deser.isCachable();",
+    "aftercode": "boolean addToCache = !_hasCustomHandlers(type) || deser.isCachable();",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 258,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 277,
+    "precode": "boolean addToCache = !_hasCustomHandlers(type) && deser.isCachable();",
+    "aftercode": "boolean addToCache = _hasCustomHandlers(type) && deser.isCachable();",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 259,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 277,
+    "precode": "boolean addToCache = !_hasCustomHandlers(type) && deser.isCachable();",
+    "aftercode": "boolean addToCache = true;",
+    "rule": "Boolean Literal Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 260,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 291,
+    "precode": "if (deser instanceof ResolvableDeserializer) {",
+    "aftercode": "if (!(deser instanceof ResolvableDeserializer)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 261,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 291,
+    "precode": "if (deser instanceof ResolvableDeserializer) {",
+    "aftercode": "if (deser != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 262,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 296,
+    "precode": "if (addToCache) {",
+    "aftercode": "if (!addToCache) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 263,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 296,
+    "precode": "if (addToCache) {",
+    "aftercode": "if (true) {",
+    "rule": "Boolean Literal Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 264,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 297,
+    "precode": "_cachedDeserializers.put(type, deser);",
+    "aftercode": "_cachedDeserializers.remove(type);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 265,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 297,
+    "precode": "_cachedDeserializers.put(type, deser);",
+    "aftercode": "_cachedDeserializers.put(deser, type);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 266,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 297,
+    "precode": "_cachedDeserializers.put(type, deser);",
+    "aftercode": "// _cachedDeserializers.put(type, deser);",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 267,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 292,
+    "precode": "_incompleteDeserializers.put(type, deser);",
+    "aftercode": "_incompleteDeserializers.remove(type, deser);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 268,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 293,
+    "precode": "((ResolvableDeserializer)deser).resolve(ctxt);",
+    "aftercode": "((ResolvableDeserializer)deser).resolve(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 269,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 293,
+    "precode": "((ResolvableDeserializer)deser).resolve(ctxt);",
+    "aftercode": "if (deser != null) ((ResolvableDeserializer)deser).resolve(ctxt);",
+    "rule": "Empty Block Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 270,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 294,
+    "precode": "_incompleteDeserializers.remove(type);",
+    "aftercode": "_incompleteDeserializers.clear();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 271,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 294,
+    "precode": "_incompleteDeserializers.remove(type);",
+    "aftercode": "_incompleteDeserializers.put(type, deser);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 272,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 268,
+    "precode": "throw JsonMappingException.from(ctxt, ClassUtil.exceptionMessage(iae), iae);",
+    "aftercode": "throw iae;",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 273,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 268,
+    "precode": "throw JsonMappingException.from(ctxt, ClassUtil.exceptionMessage(iae), iae);",
+    "aftercode": "throw new RuntimeException(iae);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 274,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 265,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "Catch Clause Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 275,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 265,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (NullPointerException npe) {",
+    "rule": "Catch Clause Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 276,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 263,
+    "precode": "try {",
+    "aftercode": "try { throw new RuntimeException();",
+    "rule": "Empty Block Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 277,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 271,
+    "precode": "return null;",
+    "aftercode": "return deser;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 278,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 271,
+    "precode": "return null;",
+    "aftercode": "return _cachedDeserializers.get(type);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 279,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 299,
+    "precode": "return deser;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 280,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 299,
+    "precode": "return deser;",
+    "aftercode": "return _createDeserializer(ctxt, factory, type);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 281,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 277,
+    "precode": "boolean addToCache = !_hasCustomHandlers(type) && deser.isCachable();",
+    "aftercode": "boolean addToCache = !_hasCustomHandlers(type) && !deser.isCachable();",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 282,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 277,
+    "precode": "boolean addToCache = !_hasCustomHandlers(type) && deser.isCachable();",
+    "aftercode": "boolean addToCache = !_hasCustomHandlers(type);",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 283,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 291,
+    "precode": "if (deser instanceof ResolvableDeserializer) {",
+    "aftercode": "if (true) {",
+    "rule": "Boolean Literal Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 284,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 291,
+    "precode": "if (deser instanceof ResolvableDeserializer) {",
+    "aftercode": "if (false) {",
+    "rule": "Boolean Literal Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 285,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 292,
+    "precode": "_incompleteDeserializers.put(type, deser);",
+    "aftercode": "_incompleteDeserializers.put(deser, type);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 286,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 293,
+    "precode": "((ResolvableDeserializer)deser).resolve(ctxt);",
+    "aftercode": "((ResolvableDeserializer)deser).resolve(ctxt);",
+    "rule": "No Change",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 287,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 293,
+    "precode": "((ResolvableDeserializer)deser).resolve(ctxt);",
+    "aftercode": "ctxt.resolve(deser);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 288,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 294,
+    "precode": "_incompleteDeserializers.remove(type);",
+    "aftercode": "_incompleteDeserializers.remove(deser);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 289,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 296,
+    "precode": "if (addToCache) {",
+    "aftercode": "if (addToCache == false) {",
+    "rule": "Equality Operator Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 290,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 297,
+    "precode": "_cachedDeserializers.put(type, deser);",
+    "aftercode": "_cachedDeserializers.put(type, deser);",
+    "rule": "No Change",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 291,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 264,
+    "precode": "deser = _createDeserializer(ctxt, factory, type);",
+    "aftercode": "deser = _createDeserializer(ctxt, factory, type);",
+    "rule": "No Change",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 292,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 268,
+    "precode": "throw JsonMappingException.from(ctxt, ClassUtil.exceptionMessage(iae), iae);",
+    "aftercode": "throw JsonMappingException.from(ctxt, \"\", iae);",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 293,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 270,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser != null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 294,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 291,
+    "precode": "if (deser instanceof ResolvableDeserializer) {",
+    "aftercode": "if (deser instanceof BeanDeserializer) {",
+    "rule": "Instanceof Mutator",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 295,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 296,
+    "precode": "if (addToCache) {",
+    "aftercode": "if (addToCache) {",
+    "rule": "No Change",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 296,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java",
+    "line": 299,
+    "precode": "return deser;",
+    "aftercode": "return deser;",
+    "rule": "No Change",
+    "gen_time_s": 2.23,
+    "dublicate": true
+  },
+  {
+    "id": 297,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 197,
+    "precode": "if (e instanceof IllegalArgumentException) {",
+    "aftercode": "if (e instanceof IllegalStateException) {",
+    "rule": "Exception Type",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 298,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 198,
+    "precode": "String actType = ClassUtil.classNameOf(value);",
+    "aftercode": "String actType = ClassUtil.classNameOf(e);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 299,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 199,
+    "precode": "StringBuilder msg = new StringBuilder(\"Problem deserializing \\\"any\\\" property '\").append(propName);",
+    "aftercode": "StringBuilder msg = new StringBuilder(\"Problem serializing \\\"any\\\" property '\").append(propName);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 300,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 200,
+    "precode": "msg.append(\"' of class \"+getClassName()+\" (expected type: \").append(_type);",
+    "aftercode": "msg.append(\"' of class \"+getClassName()+\" (actual type: \").append(_type);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 301,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 201,
+    "precode": "msg.append(\"; actual type: \").append(actType).append(\")\");",
+    "aftercode": "msg.append(\"; expected type: \").append(actType).append(\")\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 302,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 202,
+    "precode": "String origMsg = ClassUtil.exceptionMessage(e);",
+    "aftercode": "String origMsg = ClassUtil.exceptionMessage(t);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 303,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 203,
+    "precode": "if (origMsg != null) {",
+    "aftercode": "if (origMsg == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 304,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 204,
+    "precode": "msg.append(\", problem: \").append(origMsg);",
+    "aftercode": "msg.append(\", error: \").append(origMsg);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 305,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 206,
+    "precode": "msg.append(\" (no error message provided)\");",
+    "aftercode": "msg.append(\" (unknown error)\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 306,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 208,
+    "precode": "throw new JsonMappingException(null, msg.toString(), e);",
+    "aftercode": "throw new JsonMappingException(null, msg.toString(), null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 307,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 210,
+    "precode": "ClassUtil.throwIfIOE(e);",
+    "aftercode": "ClassUtil.throwIfRTE(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 308,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 211,
+    "precode": "ClassUtil.throwIfRTE(e);",
+    "aftercode": "ClassUtil.throwIfIOE(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 309,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 213,
+    "precode": "Throwable t = ClassUtil.getRootCause(e);",
+    "aftercode": "Throwable t = ClassUtil.getSuppressed(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 310,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 214,
+    "precode": "throw new JsonMappingException(null, ClassUtil.exceptionMessage(t), t);",
+    "aftercode": "throw new JsonMappingException(null, ClassUtil.exceptionMessage(e), t);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 311,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 199,
+    "precode": "StringBuilder msg = new StringBuilder(\"Problem deserializing \\\"any\\\" property '\").append(propName);",
+    "aftercode": "StringBuilder msg = new StringBuilder();",
+    "rule": "Object Creation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 312,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 200,
+    "precode": "msg.append(\"' of class \"+getClassName()+\" (expected type: \").append(_type);",
+    "aftercode": "msg.append(\"'\");",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 313,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 201,
+    "precode": "msg.append(\"; actual type: \").append(actType).append(\")\");",
+    "aftercode": "msg.append(\";\");",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 314,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 208,
+    "precode": "throw new JsonMappingException(null, msg.toString(), e);",
+    "aftercode": "throw new JsonMappingException(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 315,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 197,
+    "precode": "if (e instanceof IllegalArgumentException) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Value",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 316,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 203,
+    "precode": "if (origMsg != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Value",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 317,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 205,
+    "precode": "} else {",
+    "aftercode": "} if (false) {",
+    "rule": "Condition Value",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 318,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableAnyProperty.java",
+    "line": 210,
+    "precode": "ClassUtil.throwIfIOE(e);",
+    "aftercode": "ClassUtil.throwIfNull(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 319,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 582,
+    "precode": "if (e instanceof IllegalArgumentException) {",
+    "aftercode": "if (e instanceof IllegalStateException) {",
+    "rule": "Instanceof Type Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 320,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 584,
+    "precode": "StringBuilder msg = new StringBuilder(\"Problem deserializing property '\")",
+    "aftercode": "StringBuilder msg = new StringBuilder(\"Problem serializing property '\")",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 321,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 585,
+    "precode": ".append(getName())",
+    "aftercode": ".append(getType())",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 322,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 586,
+    "precode": ".append(\"' (expected type: \")",
+    "aftercode": ".append(\"' (actual type: \")",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 323,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 587,
+    "precode": ".append(getType())",
+    "aftercode": ".append(getName())",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 324,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 588,
+    "precode": ".append(\"; actual type: \")",
+    "aftercode": ".append(\"; expected type: \")",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 325,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 590,
+    "precode": "String origMsg = ClassUtil.exceptionMessage(e);",
+    "aftercode": "String origMsg = ClassUtil.exceptionMessage(value);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 326,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 591,
+    "precode": "if (origMsg != null) {",
+    "aftercode": "if (origMsg == null) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 327,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 592,
+    "precode": "msg.append(\", problem: \")",
+    "aftercode": "msg.append(\", error: \")",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 328,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 594,
+    "precode": "} else {",
+    "aftercode": "} if (true) {",
+    "rule": "Control Flow Insertion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 329,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 595,
+    "precode": "msg.append(\" (no error message provided)\");",
+    "aftercode": "msg.append(\" (unknown error)\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 330,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 597,
+    "precode": "throw JsonMappingException.from(p, msg.toString(), e);",
+    "aftercode": "throw JsonMappingException.from(p, e, msg.toString());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 331,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 597,
+    "precode": "throw JsonMappingException.from(p, msg.toString(), e);",
+    "aftercode": "throw JsonMappingException.from(p, \"Fallback Error\", e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 332,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 597,
+    "precode": "throw JsonMappingException.from(p, msg.toString(), e);",
+    "aftercode": "throw new IOException(msg.toString(), e);",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 333,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 597,
+    "precode": "throw JsonMappingException.from(p, msg.toString(), e);",
+    "aftercode": "throw JsonMappingException.from(p, null, e);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 334,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 597,
+    "precode": "throw JsonMappingException.from(p, msg.toString(), e);",
+    "aftercode": "throw JsonMappingException.from(p, msg.toString(), null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 335,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 599,
+    "precode": "_throwAsIOE(p, e);",
+    "aftercode": "_throwAsIOE(value, e);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 336,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 599,
+    "precode": "_throwAsIOE(p, e);",
+    "aftercode": "_throwAsIOE(p, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 337,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 582,
+    "precode": "if (e instanceof IllegalArgumentException) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Constant True",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 338,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 582,
+    "precode": "if (e instanceof IllegalArgumentException) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Constant False",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 339,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 590,
+    "precode": "String origMsg = ClassUtil.exceptionMessage(e);",
+    "aftercode": "String origMsg = null;",
+    "rule": "Return Value Nulling",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 340,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 607,
+    "precode": "ClassUtil.throwIfIOE(e);",
+    "aftercode": "ClassUtil.throwIfRTE(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 341,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 608,
+    "precode": "ClassUtil.throwIfRTE(e);",
+    "aftercode": "ClassUtil.throwIfIOE(e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 342,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 610,
+    "precode": "Throwable th = ClassUtil.getRootCause(e);",
+    "aftercode": "Throwable th = e;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 343,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 610,
+    "precode": "Throwable th = ClassUtil.getRootCause(e);",
+    "aftercode": "Throwable th = null;",
+    "rule": "Null Return Mutation",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 344,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 611,
+    "precode": "throw JsonMappingException.from(p, ClassUtil.exceptionMessage(th), th);",
+    "aftercode": "throw JsonMappingException.from(p, \"Unknown error\", th);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 345,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 611,
+    "precode": "throw JsonMappingException.from(p, ClassUtil.exceptionMessage(th), th);",
+    "aftercode": "throw JsonMappingException.from(p, ClassUtil.exceptionMessage(th), null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 346,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 611,
+    "precode": "throw JsonMappingException.from(p, ClassUtil.exceptionMessage(th), th);",
+    "aftercode": "throw e;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 347,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/SettableBeanProperty.java",
+    "line": 607,
+    "precode": "ClassUtil.throwIfIOE(e);",
+    "aftercode": "// ClassUtil.throwIfIOE(e);",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.35,
+    "dublicate": false
+  },
+  {
+    "id": 348,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 519,
+    "precode": "if (_isEmptyOrTextualNull(value)) {",
+    "aftercode": "if (!_isEmptyOrTextualNull(value)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 349,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 520,
+    "precode": "return (java.util.Date) getNullValue(ctxt);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 350,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 520,
+    "precode": "return (java.util.Date) getNullValue(ctxt);",
+    "aftercode": "return (java.util.Date) ctxt.parseDate(value);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 351,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 522,
+    "precode": "return ctxt.parseDate(value);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 352,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 522,
+    "precode": "return ctxt.parseDate(value);",
+    "aftercode": "return (java.util.Date) getNullValue(ctxt);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 353,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 523,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "Exception Handler",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 354,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 523,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (NullPointerException npe) {",
+    "rule": "Exception Handler",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 355,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 524,
+    "precode": "return (java.util.Date) ctxt.handleWeirdStringValue(_valueClass, value,",
+    "aftercode": "return (java.util.Date) ctxt.handleWeirdStringNumber(_valueClass, value,",
+    "rule": "Method Name Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 356,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 524,
+    "precode": "return (java.util.Date) ctxt.handleWeirdStringValue(_valueClass, value,",
+    "aftercode": "return ctxt.handleWeirdStringValue(_valueClass, value,",
+    "rule": "Argument List Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 357,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 526,
+    "precode": "ClassUtil.exceptionMessage(iae));",
+    "aftercode": "iae.getMessage());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 358,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 526,
+    "precode": "ClassUtil.exceptionMessage(iae));",
+    "aftercode": "\"unexpected error\"));",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 359,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 519,
+    "precode": "if (_isEmptyOrTextualNull(value)) {",
+    "aftercode": "if (_isEmptyOrTextualNull(value) || value == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 360,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 522,
+    "precode": "return ctxt.parseDate(value);",
+    "aftercode": "return ctxt.parseDate(\"\");",
+    "rule": "Argument List Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 361,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 524,
+    "precode": "return (java.util.Date) ctxt.handleWeirdStringValue(_valueClass, value,",
+    "aftercode": "return ctxt.handleWeirdStringValue(_valueClass, value,",
+    "rule": "Return Type Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": true
+  },
+  {
+    "id": 362,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdDeserializer.java",
+    "line": 517,
+    "precode": "try {",
+    "aftercode": "// try {",
+    "rule": "Block Comment Mutator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 363,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 124,
+    "precode": "if (key == null) { // is this even legal call?",
+    "aftercode": "if (key != null) { // is this even legal call?",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 364,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 125,
+    "precode": "return null;",
+    "aftercode": "return key;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 365,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 128,
+    "precode": "Object result = _parse(key, ctxt);",
+    "aftercode": "Object result = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 366,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 129,
+    "precode": "if (result != null) {",
+    "aftercode": "if (result == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 367,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 130,
+    "precode": "return result;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 368,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 132,
+    "precode": "} catch (Exception re) {",
+    "aftercode": "} catch (RuntimeException re) {",
+    "rule": "Exception Handler",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 369,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 133,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"not a valid representation, problem: (%s) %s\",",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 370,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 134,
+    "precode": "re.getClass().getName(),",
+    "aftercode": "re.getMessage(),",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 371,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 137,
+    "precode": "if (_keyClass.isEnum() && ctxt.getConfig().isEnabled(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)) {",
+    "aftercode": "if (_keyClass.isEnum() || ctxt.getConfig().isEnabled(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 372,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 138,
+    "precode": "return null;",
+    "aftercode": "return _keyClass;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 373,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 140,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"not a valid representation\");",
+    "aftercode": "return key;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 374,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 128,
+    "precode": "Object result = _parse(key, ctxt);",
+    "aftercode": "Object result = _parse(key, null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 375,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 133,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"not a valid representation, problem: (%s) %s\",",
+    "aftercode": "return ctxt.handleWeirdKey(null, key, \"not a valid representation, problem: (%s) %s\",",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 376,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 133,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"not a valid representation, problem: (%s) %s\",",
+    "aftercode": "return ctxt.handleWeirdKey(_keyClass, null, \"not a valid representation, problem: (%s) %s\",",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 377,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 140,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"not a valid representation\");",
+    "aftercode": "return ctxt.handleWeirdKey(_keyClass, key, \"valid representation\");",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 378,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 124,
+    "precode": "if (key == null) { // is this even legal call?",
+    "aftercode": "if (key.length() == 0) { // is this even legal call?",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 379,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 137,
+    "precode": "if (_keyClass.isEnum() && ctxt.getConfig().isEnabled(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)) {",
+    "aftercode": "if (_keyClass.isEnum() && !ctxt.getConfig().isEnabled(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 380,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 130,
+    "precode": "return result;",
+    "aftercode": "throw re;",
+    "rule": "Exception Thrower",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 381,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 125,
+    "precode": "return null;",
+    "aftercode": "return \"\";",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 382,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 134,
+    "precode": "re.getClass().getName(),",
+    "aftercode": "\"unknown\",",
+    "rule": "String Literal Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 383,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 128,
+    "precode": "Object result = _parse(key, ctxt);",
+    "aftercode": "Object result = _parse(null, ctxt);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 384,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 262,
+    "precode": "ClassUtil.exceptionMessage(e));",
+    "aftercode": "ClassUtil.exceptionMessage(null));",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 385,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 261,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"problem: %s\",",
+    "aftercode": "return ctxt.handleWeirdKey(_keyClass, key, \"unknown: %s\",",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 386,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 262,
+    "precode": "ClassUtil.exceptionMessage(e));",
+    "aftercode": "ClassUtil.exceptionMessage(e).toString());",
+    "rule": "Type Coercion",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 387,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java",
+    "line": 261,
+    "precode": "return ctxt.handleWeirdKey(_keyClass, key, \"problem: %s\",",
+    "aftercode": "return ctxt.handleWeirdKey(_keyClass, key, \"problem: %d\",",
+    "rule": "Format String Modifier",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 388,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 450,
+    "precode": "for (Throwable curr = t; curr != null; curr = curr.getCause()) {",
+    "aftercode": "for (Throwable curr = t; curr != null; curr = curr) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 389,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 450,
+    "precode": "for (Throwable curr = t; curr != null; curr = curr.getCause()) {",
+    "aftercode": "for (Throwable curr = t; curr == null; curr = curr.getCause()) {",
+    "rule": "Loop Condition Negation",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 390,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 451,
+    "precode": "if (curr instanceof JsonMappingException) {",
+    "aftercode": "if (!(curr instanceof JsonMappingException)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 391,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 451,
+    "precode": "if (curr instanceof JsonMappingException) {",
+    "aftercode": "if (curr == null) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 392,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 452,
+    "precode": "return (JsonMappingException) curr;",
+    "aftercode": "return (JsonMappingException) t;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 393,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 452,
+    "precode": "return (JsonMappingException) curr;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 394,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 455,
+    "precode": "return new JsonMappingException(null,",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 395,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 456,
+    "precode": "\"Instantiation of \"+getValueTypeDesc()+\" value failed: \"+ClassUtil.exceptionMessage(t), t);",
+    "aftercode": "\"Instantiation of \"+getValueTypeDesc()+\" value failed: \"+ClassUtil.exceptionMessage(t), null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 396,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 456,
+    "precode": "\"Instantiation of \"+getValueTypeDesc()+\" value failed: \"+ClassUtil.exceptionMessage(t), t);",
+    "aftercode": "\"Instantiation of \"+getValueTypeDesc()+\" value failed: \"+ClassUtil.exceptionMessage(t), t);",
+    "rule": "No Mutation",
+    "gen_time_s": 2.51,
+    "dublicate": true
+  },
+  {
+    "id": 397,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 450,
+    "precode": "for (Throwable curr = t; curr != null; curr = curr.getCause()) {",
+    "aftercode": "for (Throwable curr = t; curr != null; curr = t.getCause()) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 398,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 451,
+    "precode": "if (curr instanceof JsonMappingException) {",
+    "aftercode": "if (curr instanceof Throwable) {",
+    "rule": "Class Type Change",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 399,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+    "line": 455,
+    "precode": "return new JsonMappingException(null,",
+    "aftercode": "throw new JsonMappingException(null,",
+    "rule": "Return to Throw",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 400,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 346,
+    "precode": "AnnotatedConstructor ac = _classInfo.getDefaultConstructor();",
+    "aftercode": "AnnotatedConstructor ac = null;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 401,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 347,
+    "precode": "if (ac == null) {",
+    "aftercode": "if (ac != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 402,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 350,
+    "precode": "if (fixAccess) {",
+    "aftercode": "if (!fixAccess) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 403,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 351,
+    "precode": "ac.fixAccess(_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "ac.fixAccess(!_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "rule": "Boolean Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 404,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 351,
+    "precode": "ac.fixAccess(_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "ac.fixAccess(false);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 405,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 354,
+    "precode": "return ac.getAnnotated().newInstance();",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 406,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 356,
+    "precode": "Throwable t = e;",
+    "aftercode": "Throwable t = null;",
+    "rule": "Variable Initialization Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 407,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 357,
+    "precode": "while (t.getCause() != null) {",
+    "aftercode": "while (t.getCause() == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 408,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 358,
+    "precode": "t = t.getCause();",
+    "aftercode": "t = t;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 409,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 360,
+    "precode": "ClassUtil.throwIfError(t);",
+    "aftercode": "// ClassUtil.throwIfError(t);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 410,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 361,
+    "precode": "ClassUtil.throwIfRTE(t);",
+    "aftercode": "// ClassUtil.throwIfRTE(t);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 411,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 362,
+    "precode": "throw new IllegalArgumentException(\"Failed to instantiate bean of type \"",
+    "aftercode": "throw new RuntimeException(\"Failed to instantiate bean of type \"",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 412,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 363,
+    "precode": "+_classInfo.getAnnotated().getName()+\": (\"+t.getClass().getName()+\") \"",
+    "aftercode": "+_classInfo.getAnnotated().getName()+\": (\"+t.getClass().getName()+\") UNEXPECTED \"",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 413,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 364,
+    "precode": "+ClassUtil.exceptionMessage(t), t);",
+    "aftercode": "+ClassUtil.exceptionMessage(t), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 414,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 346,
+    "precode": "AnnotatedConstructor ac = _classInfo.getDefaultConstructor();",
+    "aftercode": "AnnotatedConstructor ac = _classInfo.getConstructors().get(0);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 415,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 351,
+    "precode": "ac.fixAccess(_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "_config.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS);",
+    "rule": "Statement Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 416,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 354,
+    "precode": "return ac.getAnnotated().newInstance();",
+    "aftercode": "return ac.getAnnotated();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 417,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 357,
+    "precode": "while (t.getCause() != null) {",
+    "aftercode": "while (t != null && t.getCause() != null) {",
+    "rule": "Null Check Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 418,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 360,
+    "precode": "ClassUtil.throwIfError(t);",
+    "aftercode": "if (t instanceof Error) throw (Error) t;",
+    "rule": "Logic Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 419,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 361,
+    "precode": "ClassUtil.throwIfRTE(t);",
+    "aftercode": "if (t instanceof RuntimeException) throw (RuntimeException) t;",
+    "rule": "Logic Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 420,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 362,
+    "precode": "throw new IllegalArgumentException(\"Failed to instantiate bean of type \"",
+    "aftercode": "throw new IllegalStateException(\"Failed to instantiate bean of type \"",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 421,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+    "line": 348,
+    "precode": "return null;",
+    "aftercode": "return ac;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 422,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 162,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 423,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 167,
+    "precode": "return filter.equals(null);",
+    "aftercode": "return !filter.equals(null);",
+    "rule": "Boolean Literal Negation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 424,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 173,
+    "precode": "return false; // never gets here",
+    "aftercode": "return true; // never gets here",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 425,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 161,
+    "precode": "if (filter == null) {",
+    "aftercode": "if (filter != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 426,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 169,
+    "precode": "String msg = String.format(",
+    "aftercode": "String msg = \"\";",
+    "rule": "String Literal Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 427,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 172,
+    "precode": "reportBadDefinition(filter.getClass(), msg, t);",
+    "aftercode": "reportBadDefinition(null, msg, t);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 428,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 171,
+    "precode": "filter.getClass().getName(), t.getClass().getName(), ClassUtil.exceptionMessage(t));",
+    "aftercode": "filter.getClass().getSimpleName(), t.getClass().getSimpleName(), ClassUtil.exceptionMessage(t));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 429,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 167,
+    "precode": "return filter.equals(null);",
+    "aftercode": "return null.equals(filter);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 430,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 172,
+    "precode": "reportBadDefinition(filter.getClass(), msg, t);",
+    "aftercode": "reportBadDefinition(filter.getClass(), null, t);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 431,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 166,
+    "precode": "try {",
+    "aftercode": "try (AutoCloseable ignored = null) {",
+    "rule": "Resource Leak",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 432,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 170,
+    "precode": "\"Problem determining whether filter of type '%s' should filter out `null` values: (%s) %s\",",
+    "aftercode": "\"Problem determining whether filter of type '%s' should filter out `null` values: %s %s\",",
+    "rule": "String Literal Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 433,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 168,
+    "precode": "} catch (Throwable t) {",
+    "aftercode": "} catch (RuntimeException t) {",
+    "rule": "Exception Type Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 434,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 167,
+    "precode": "return filter.equals(null);",
+    "aftercode": "return filter.hashCode() == null.hashCode();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 435,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 172,
+    "precode": "reportBadDefinition(filter.getClass(), msg, t);",
+    "aftercode": "reportBadDefinition(filter.getClass(), msg, null);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 436,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 171,
+    "precode": "filter.getClass().getName(), t.getClass().getName(), ClassUtil.exceptionMessage(t));",
+    "aftercode": "filter.getClass().getName(), \"Unknown\", ClassUtil.exceptionMessage(t));",
+    "rule": "String Literal Mutation",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 437,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 167,
+    "precode": "return filter.equals(null);",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 438,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 173,
+    "precode": "return false; // never gets here",
+    "aftercode": "return -1;",
+    "rule": "Syntax Error/Compilation Failure (if type allows) or Return Value Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 439,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 502,
+    "precode": "if (e instanceof IOException) {",
+    "aftercode": "if (!(e instanceof IOException)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 440,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 503,
+    "precode": "return (IOException) e;",
+    "aftercode": "return e;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 441,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 505,
+    "precode": "String msg = ClassUtil.exceptionMessage(e);",
+    "aftercode": "String msg = \"\";",
+    "rule": "Literal Injection",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 442,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 506,
+    "precode": "if (msg == null) {",
+    "aftercode": "if (msg != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 443,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 507,
+    "precode": "msg = \"[no message for \"+e.getClass().getName()+\"]\";",
+    "aftercode": "msg = \"\";",
+    "rule": "Literal Injection",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 444,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 509,
+    "precode": "return new JsonMappingException(g, msg, e);",
+    "aftercode": "return new JsonMappingException(g, msg, null);",
+    "rule": "Argument Swap/Removal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 445,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 509,
+    "precode": "return new JsonMappingException(g, msg, e);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 446,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 505,
+    "precode": "String msg = ClassUtil.exceptionMessage(e);",
+    "aftercode": "String msg = ClassUtil.exceptionMessage(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 447,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 502,
+    "precode": "if (e instanceof IOException) {",
+    "aftercode": "if (e instanceof RuntimeException) {",
+    "rule": "Type Change",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 448,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+    "line": 509,
+    "precode": "return new JsonMappingException(g, msg, e);",
+    "aftercode": "return new JsonMappingException(null, msg, e);",
+    "rule": "Argument Swap/Removal",
+    "gen_time_s": 2.22,
+    "dublicate": false
+  },
+  {
+    "id": 449,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 100,
+    "precode": "serializationType = findSerializationType(am, defaultUseStaticTyping, declaredType);",
+    "aftercode": "serializationType = findSerializationType(am, !defaultUseStaticTyping, declaredType);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 450,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 102,
+    "precode": "if (propDef == null) {",
+    "aftercode": "if (propDef != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 451,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 109,
+    "precode": "if (contentTypeSer != null) {",
+    "aftercode": "if (contentTypeSer == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 452,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 113,
+    "precode": "if (serializationType == null) {",
+    "aftercode": "if (serializationType != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 453,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 119,
+    "precode": "if (ct == null) {",
+    "aftercode": "if (ct != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 454,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 131,
+    "precode": "JavaType actualType = (serializationType == null) ? declaredType : serializationType;",
+    "aftercode": "JavaType actualType = (serializationType == null) ? serializationType : declaredType;",
+    "rule": "Swap Then/Else",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 455,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 135,
+    "precode": "if (accessor == null) {",
+    "aftercode": "if (accessor != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 456,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 153,
+    "precode": "if (inclusion == JsonInclude.Include.USE_DEFAULTS) { // should not occur but...",
+    "aftercode": "if (inclusion != JsonInclude.Include.USE_DEFAULTS) { // should not occur but...",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 457,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 169,
+    "precode": "if (_useRealPropertyDefaults && (defaultBean = getDefaultBean()) != null) {",
+    "aftercode": "if (_useRealPropertyDefaults || (defaultBean = getDefaultBean()) != null) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 458,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 171,
+    "precode": "if (prov.isEnabled(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS)) {",
+    "aftercode": "if (!prov.isEnabled(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 459,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 183,
+    "precode": "if (valueToSuppress == null) {",
+    "aftercode": "if (valueToSuppress != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 460,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 186,
+    "precode": "if (valueToSuppress.getClass().isArray()) {",
+    "aftercode": "if (!valueToSuppress.getClass().isArray()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 461,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 195,
+    "precode": "if (actualType.isReferenceType()) {",
+    "aftercode": "if (!actualType.isReferenceType()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 462,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 207,
+    "precode": "if (valueToSuppress == null) { // is this legal?",
+    "aftercode": "if (valueToSuppress != null) { // is this legal?",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 463,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 219,
+    "precode": "if (actualType.isContainerType()",
+    "aftercode": "if (!actualType.isContainerType()",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 464,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java",
+    "line": 754,
+    "precode": "if (t instanceof JsonProcessingException) {",
+    "aftercode": "if (!(t instanceof JsonProcessingException)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 465,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java",
+    "line": 755,
+    "precode": "return ((JsonProcessingException) t).getOriginalMessage();",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 466,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java",
+    "line": 757,
+    "precode": "return t.getMessage();",
+    "aftercode": "return t.getLocalizedMessage();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 467,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java",
+    "line": 754,
+    "precode": "if (t instanceof JsonProcessingException) {",
+    "aftercode": "if (t instanceof RuntimeException) {",
+    "rule": "Type Change",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 468,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java",
+    "line": 755,
+    "precode": "return ((JsonProcessingException) t).getOriginalMessage();",
+    "aftercode": "return ((JsonProcessingException) t).getMessage();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 469,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java",
+    "line": 757,
+    "precode": "return t.getMessage();",
+    "aftercode": "return \"\";",
+    "rule": "Empty String Return",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  }
+]

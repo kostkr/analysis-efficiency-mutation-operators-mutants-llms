@@ -79,7 +79,7 @@ class LLMConfig:
     model: str = ""
     output_name: str = ""
     endpoint: str = "http://127.0.0.1:11434/api/generate"
-    timeout_s: int = 1800
+    timeout_s: int = 360
     temperature: float | None = None
     keep_alive: str = "1m"
     code_element: str = "any single-line code element in the shown method"

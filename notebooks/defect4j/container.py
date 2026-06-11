@@ -30,7 +30,7 @@ if TYPE_CHECKING:
     from .mutant import Mutant
 
 
-MUTANT_TEST_TIMEOUT_CAP_S = 60
+MUTANT_TEST_TIMEOUT_CAP_S = 120
 MUTANT_TEST_TIMEOUT_PER_RELEVANT_TEST_S = 0.038
 PODMAN_EXEC_MAX_ATTEMPTS = 3
 _PODMAN_EXEC_RETRY_SNIPPETS = (
@@ -294,7 +294,12 @@ class Defects4J:
         Raises subprocess.TimeoutExpired on timeout.
         """
         t = timeout or self.timeout_default
-        cmd = "export LANG=C.UTF-8 LC_ALL=C.UTF-8; " + bash_cmd
+        cmd = (
+            "export LANG=C.UTF-8 LC_ALL=C.UTF-8 LC_CTYPE=C.UTF-8 "
+            "JAVA_TOOL_OPTIONS='-Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8' "
+            "ANT_OPTS='-Dfile.encoding=UTF-8' MAVEN_OPTS='-Dfile.encoding=UTF-8'; "
+            + bash_cmd
+        )
         semaphore = self._exec_semaphore
         if semaphore is None and self.exec_max_concurrency is not None:
             semaphore = threading.BoundedSemaphore(max(1, int(self.exec_max_concurrency)))
@@ -652,62 +657,96 @@ for sig in (signal.SIGTERM, signal.SIGKILL):
 
     def relevant_test_profile(self, container_path: str, timeout: int = 600) -> dict[str, Any]:
         """Run a clean ``defects4j test -r`` once and return the authoritative suite profile."""
-        t0 = time.perf_counter()
-        out, err, rc = self.exec(
-            f"cd {container_path} && "
-            f"{self.wrap_with_checkout_temp(container_path, 'rm -f all_tests failing_tests && defects4j test -r')}",
-            timeout=timeout,
-        )
-        run_time_s = round(time.perf_counter() - t0, 2)
-        all_raw, _, _ = self.exec(
-            f"cat {container_path}/all_tests 2>/dev/null || true",
-        )
-        failing_raw, _, _ = self.exec(
-            f"cat {container_path}/failing_tests 2>/dev/null || true",
-        )
-        all_tests = sorted(_parse_all_tests_file(all_raw))
-        failing_tests = _collect_failing_tests(failing_raw=failing_raw, output_raw=out)
-
-        if rc != 0 and not failing_tests:
-            msg = (err.strip() or out.strip() or "defects4j test -r failed")[:400]
-            raise RuntimeError(
-                f"clean relevant-suite run failed for {container_path}:\n{msg}"
+        def _run_once() -> tuple[str, str, int, float, list[str], list[str]]:
+            t0 = time.perf_counter()
+            out, err, rc = self.exec(
+                f"cd {container_path} && "
+                f"{self.wrap_with_checkout_temp(container_path, 'rm -f all_tests failing_tests && defects4j test -r')}",
+                timeout=timeout,
             )
+            run_time_s = round(time.perf_counter() - t0, 2)
+            all_raw, _, _ = self.exec(
+                f"cat {container_path}/all_tests 2>/dev/null || true",
+            )
+            failing_raw, _, _ = self.exec(
+                f"cat {container_path}/failing_tests 2>/dev/null || true",
+            )
+            all_tests = sorted(_parse_all_tests_file(all_raw))
+            failing_tests = _collect_failing_tests(failing_raw=failing_raw, output_raw=out)
+            return out, err, rc, run_time_s, all_tests, failing_tests
 
-        relevant_test_classes = self.export(container_path, "tests.relevant")
-        return {
-            "mode": "relevant",
-            "source": "defects4j test -r",
-            "run_time_s": run_time_s,
-            "relevant_test_classes": relevant_test_classes,
-            "all_tests": all_tests,
-            "failing_tests": failing_tests,
-        }
+        out = err = ""
+        rc = 1
+        run_time_s = 0.0
+        all_tests: list[str] = []
+        failing_tests: list[str] = []
+        try:
+            out, err, rc, run_time_s, all_tests, failing_tests = _run_once()
+            if rc != 0 and not failing_tests:
+                # Recreate the checkout once before surfacing a clean-suite failure.
+                self.reset_checkout(container_path, timeout=min(timeout, 60))
+                out, err, rc, run_time_s, all_tests, failing_tests = _run_once()
+                if rc != 0 and not failing_tests:
+                    msg = (err.strip() or out.strip() or "defects4j test -r failed")[:400]
+                    raise RuntimeError(
+                        f"clean relevant-suite run failed for {container_path}:\n{msg}"
+                    )
+
+            relevant_test_classes = self.export(container_path, "tests.relevant")
+            return {
+                "mode": "relevant",
+                "source": "defects4j test -r",
+                "run_time_s": run_time_s,
+                "relevant_test_classes": relevant_test_classes,
+                "all_tests": all_tests,
+                "failing_tests": failing_tests,
+            }
+        finally:
+            try:
+                self.reset_checkout(container_path, timeout=min(timeout, 60))
+            except Exception:
+                pass
 
     def warm_relevant_suite(self, container_path: str, timeout: int = 600) -> float:
         """Run one clean warmup ``defects4j test -r`` that is excluded from mutant timings."""
-        t0 = time.perf_counter()
-        out, err, rc = self.exec(
-            f"cd {container_path} && "
-            f"{self.wrap_with_checkout_temp(container_path, 'rm -f all_tests failing_tests && defects4j test -r')}",
-            timeout=timeout,
-        )
-        run_time_s = round(time.perf_counter() - t0, 2)
-        failing_raw, _, _ = self.exec(
-            f"cat {container_path}/failing_tests 2>/dev/null || true",
-        )
-        failing_tests = _collect_failing_tests(failing_raw=failing_raw, output_raw=out)
+        def _run_once() -> tuple[str, str, int, float, list[str]]:
+            t0 = time.perf_counter()
+            out, err, rc = self.exec(
+                f"cd {container_path} && "
+                f"{self.wrap_with_checkout_temp(container_path, 'rm -f all_tests failing_tests && defects4j test -r')}",
+                timeout=timeout,
+            )
+            run_time_s = round(time.perf_counter() - t0, 2)
+            failing_raw, _, _ = self.exec(
+                f"cat {container_path}/failing_tests 2>/dev/null || true",
+            )
+            failing_tests = _collect_failing_tests(failing_raw=failing_raw, output_raw=out)
+            return out, err, rc, run_time_s, failing_tests
 
-        if rc != 0 and not failing_tests:
-            msg = (err.strip() or out.strip() or "defects4j test -r warmup failed")[:400]
-            raise RuntimeError(
-                f"relevant-suite warmup failed for {container_path}:\n{msg}"
-            )
-        if failing_tests:
-            raise RuntimeError(
-                f"relevant-suite warmup is not clean for {container_path}: {failing_tests}"
-            )
-        return run_time_s
+        out = err = ""
+        rc = 1
+        run_time_s = 0.0
+        failing_tests: list[str] = []
+        try:
+            out, err, rc, run_time_s, failing_tests = _run_once()
+            if rc != 0 and not failing_tests:
+                self.reset_checkout(container_path, timeout=min(timeout, 60))
+                out, err, rc, run_time_s, failing_tests = _run_once()
+                if rc != 0 and not failing_tests:
+                    msg = (err.strip() or out.strip() or "defects4j test -r warmup failed")[:400]
+                    raise RuntimeError(
+                        f"relevant-suite warmup failed for {container_path}:\n{msg}"
+                    )
+            if failing_tests:
+                raise RuntimeError(
+                    f"relevant-suite warmup is not clean for {container_path}: {failing_tests}"
+                )
+            return run_time_s
+        finally:
+            try:
+                self.reset_checkout(container_path, timeout=min(timeout, 60))
+            except Exception:
+                pass
 
     def run_mutant_relevant(
         self,
@@ -1184,9 +1223,15 @@ class ParallelCheckoutPool:
         self._available.put(checkout)
 
     def reset_workspace(self, checkout: ContainerCheckout, timeout: int = 300) -> None:
-        """Restore one worker checkout from the shared clean base checkout."""
+        """Restore one worker checkout in place; fall back to a full copy only if needed."""
         self.d4j.kill_processes_under_path(checkout.container_path, timeout=min(timeout, 30))
-        self._copy_checkout(self.base_container_path, checkout.container_path)
+        try:
+            self.d4j.reset_checkout(checkout.container_path, timeout=timeout)
+            return
+        except Exception:
+            # If the worker checkout itself is broken (for example after a partial
+            # failed restore), rebuild it from the shared base checkout as a fallback.
+            self._copy_checkout(self.base_container_path, checkout.container_path)
 
     def cleanup(self) -> None:
         """Delete all worker checkout copies created by this pool."""

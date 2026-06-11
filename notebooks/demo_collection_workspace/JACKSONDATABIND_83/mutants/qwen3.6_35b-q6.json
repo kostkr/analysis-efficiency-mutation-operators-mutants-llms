@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 108,
+    "precode": "String text = p.getValueAsString();",
+    "aftercode": "String text = p.getValueAsString(\"default\");",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 109,
+    "precode": "if (text != null) { // has String representation",
+    "aftercode": "if (text == null) { // has String representation",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.length() != 0 || (text = text.trim()).length() == 0) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.length() == 0 && (text = text.trim()).length() == 0) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 112,
+    "precode": "return _deserializeFromEmptyString();",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 119,
+    "precode": "return _deserialize(text, ctxt);",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 119,
+    "precode": "return _deserialize(text, ctxt);",
+    "aftercode": "return _deserialize(ctxt, text);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 120,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (NullPointerException iae) {",
+    "rule": "Exception Type Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 122,
+    "precode": "} catch (MalformedURLException me) {",
+    "aftercode": "} catch (IOException me) {",
+    "rule": "Exception Type Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 125,
+    "precode": "String msg = \"not a valid textual representation\";",
+    "aftercode": "String msg = \"\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 126,
+    "precode": "if (cause != null) {",
+    "aftercode": "if (cause == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 128,
+    "precode": "if (m2 != null) {",
+    "aftercode": "if (m2 == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 129,
+    "precode": "msg = msg + \", problem: \"+m2;",
+    "aftercode": "msg = msg + \", problem: \";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 133,
+    "precode": "JsonMappingException e = ctxt.weirdStringException(text, _valueClass, msg);",
+    "aftercode": "JsonMappingException e = ctxt.weirdStringException(null, _valueClass, msg);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 133,
+    "precode": "JsonMappingException e = ctxt.weirdStringException(text, _valueClass, msg);",
+    "aftercode": "JsonMappingException e = ctxt.weirdStringException(text, null, msg);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 134,
+    "precode": "if (cause != null) {",
+    "aftercode": "if (cause == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 135,
+    "precode": "e.initCause(cause);",
+    "aftercode": "e.initCause(null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 137,
+    "precode": "throw e;",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 140,
+    "precode": "JsonToken t = p.getCurrentToken();",
+    "aftercode": "JsonToken t = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 142,
+    "precode": "if (t == JsonToken.START_ARRAY) {",
+    "aftercode": "if (t != JsonToken.START_ARRAY) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 143,
+    "precode": "return _deserializeFromArray(p, ctxt);",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 145,
+    "precode": "if (t == JsonToken.VALUE_EMBEDDED_OBJECT) {",
+    "aftercode": "if (t != JsonToken.VALUE_EMBEDDED_OBJECT) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 147,
+    "precode": "Object ob = p.getEmbeddedObject();",
+    "aftercode": "Object ob = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 148,
+    "precode": "if (ob == null) {",
+    "aftercode": "if (ob != null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 149,
+    "precode": "return null;",
+    "aftercode": "return _deserializeEmbedded(ob, ctxt);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 151,
+    "precode": "if (_valueClass.isAssignableFrom(ob.getClass())) {",
+    "aftercode": "if (!_valueClass.isAssignableFrom(ob.getClass())) {",
+    "rule": "Negation",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 152,
+    "precode": "return (T) ob;",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 154,
+    "precode": "return _deserializeEmbedded(ob, ctxt);",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 156,
+    "precode": "return (T) ctxt.handleUnexpectedToken(_valueClass, p);",
+    "aftercode": "return null;",
+    "rule": "Return Value Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.length() >= 0 || (text = text.trim()).length() == 0) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.length() == 0 || (text = text.trim()).length() != 0) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.length() == 0 || (text = text.trim()).length() <= 0) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 129,
+    "precode": "msg = msg + \", problem: \"+m2;",
+    "aftercode": "msg = msg - \", problem: \"+m2;",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 133,
+    "precode": "JsonMappingException e = ctxt.weirdStringException(text, _valueClass, msg);",
+    "aftercode": "JsonMappingException e = ctxt.weirdStringException(text, _valueClass, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 133,
+    "precode": "JsonMappingException e = ctxt.weirdStringException(text, _valueClass, msg);",
+    "aftercode": "JsonMappingException e = ctxt.weirdStringException(text, _valueClass, \"error\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 151,
+    "precode": "if (_valueClass.isAssignableFrom(ob.getClass())) {",
+    "aftercode": "if (_valueClass.isInstance(ob)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 108,
+    "precode": "String text = p.getValueAsString();",
+    "aftercode": "String text = \"\";",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 119,
+    "precode": "return _deserialize(text, ctxt);",
+    "aftercode": "return _deserialize(\"\", ctxt);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 120,
+    "precode": "} catch (IllegalArgumentException iae) {",
+    "aftercode": "} catch (Exception iae) {",
+    "rule": "Exception Type Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 122,
+    "precode": "} catch (MalformedURLException me) {",
+    "aftercode": "} catch (Exception me) {",
+    "rule": "Exception Type Substitution",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 125,
+    "precode": "String msg = \"not a valid textual representation\";",
+    "aftercode": "String msg = \"error\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 129,
+    "precode": "msg = msg + \", problem: \"+m2;",
+    "aftercode": "msg = m2 + \", problem: \"+msg;",
+    "rule": "Operand Swap",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 135,
+    "precode": "e.initCause(cause);",
+    "aftercode": "e.setCause(cause);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 137,
+    "precode": "throw e;",
+    "aftercode": "throw new RuntimeException(e);",
+    "rule": "Exception Wrapping",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 140,
+    "precode": "JsonToken t = p.getCurrentToken();",
+    "aftercode": "JsonToken t = p.nextToken();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 142,
+    "precode": "if (t == JsonToken.START_ARRAY) {",
+    "aftercode": "if (t.equals(JsonToken.START_ARRAY)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 145,
+    "precode": "if (t == JsonToken.VALUE_EMBEDDED_OBJECT) {",
+    "aftercode": "if (t.equals(JsonToken.VALUE_EMBEDDED_OBJECT)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 147,
+    "precode": "Object ob = p.getEmbeddedObject();",
+    "aftercode": "Object ob = p.getObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 151,
+    "precode": "if (_valueClass.isAssignableFrom(ob.getClass())) {",
+    "aftercode": "if (_valueClass.isAssignableFrom(ob.getClass()) && ob != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 156,
+    "precode": "return (T) ctxt.handleUnexpectedToken(_valueClass, p);",
+    "aftercode": "return (T) ctxt.handleUnexpectedToken(p, _valueClass);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 112,
+    "precode": "return _deserializeFromEmptyString();",
+    "aftercode": "return _deserializeFromEmptyString(text);",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 143,
+    "precode": "return _deserializeFromArray(p, ctxt);",
+    "aftercode": "return _deserializeFromArray(ctxt, p);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 154,
+    "precode": "return _deserializeEmbedded(ob, ctxt);",
+    "aftercode": "return _deserializeEmbedded(ctxt, ob);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.isEmpty() || (text = text.trim()).length() == 0) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java",
+    "line": 110,
+    "precode": "if (text.length() == 0 || (text = text.trim()).length() == 0) {",
+    "aftercode": "if (text.length() <= 0 || (text = text.trim()).length() == 0) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.42,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 602,
+    "precode": "TypeBindings bindings = (contextClass == null)",
+    "aftercode": "TypeBindings bindings = (contextClass != null)",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 603,
+    "precode": "TypeBindings bindings = (contextClass == null) ? TypeBindings.emptyBindings() : constructType(contextClass).getBindings();",
+    "aftercode": "TypeBindings bindings = (contextClass == null) ? TypeBindings.emptyBindings() : constructType(null).getBindings();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 603,
+    "precode": "TypeBindings bindings = (contextClass == null) ? TypeBindings.emptyBindings() : constructType(contextClass).getBindings();",
+    "aftercode": "TypeBindings bindings = (contextClass == null) ? TypeBindings.emptyBindings() : constructType(contextClass).getBindings();",
+    "rule": "Null Assignment (simulated by returning emptyBindings even if not null)",
+    "gen_time_s": 2.01,
+    "dublicate": true
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 603,
+    "precode": "TypeBindings bindings = (contextClass == null) ? TypeBindings.emptyBindings() : constructType(contextClass).getBindings();",
+    "aftercode": "TypeBindings bindings = (contextClass == null) ? TypeBindings.emptyBindings() : constructType(contextClass);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 604,
+    "precode": "return _fromAny(null, type, bindings);",
+    "aftercode": "return _fromAny(type, type, bindings);",
+    "rule": "Parameter Substitution",
+    "gen_time_s": 2.01,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 612,
+    "precode": "TypeBindings bindings = (contextType == null)",
+    "aftercode": "TypeBindings bindings = (contextType != null)",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 613,
+    "precode": "? TypeBindings.emptyBindings() : contextType.getBindings();",
+    "aftercode": "? contextType.getBindings() : TypeBindings.emptyBindings();",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 614,
+    "precode": "return _fromAny(null, type, bindings);",
+    "aftercode": "return _fromAny(type, type, bindings);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 614,
+    "precode": "return _fromAny(null, type, bindings);",
+    "aftercode": "return _fromAny(null, bindings, type);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 614,
+    "precode": "return _fromAny(null, type, bindings);",
+    "aftercode": "return _fromAny(null, type, null);",
+    "rule": "Null Constant Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  }
+]

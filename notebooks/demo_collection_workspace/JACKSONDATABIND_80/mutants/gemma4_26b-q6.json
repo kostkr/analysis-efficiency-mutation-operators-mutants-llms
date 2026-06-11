@@ -1,0 +1,782 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 63,
+    "precode": "Class<?> rawBase = (baseType == null) ? property.getRawType() : baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = (baseType != null) ? property.getRawType() : baseType.getRawClass();",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 65,
+    "precode": "HashMap<NamedType, NamedType> collected = new HashMap<NamedType, NamedType>();",
+    "aftercode": "HashMap<NamedType, NamedType> collected = new LinkedHashMap<NamedType, NamedType>();",
+    "rule": "Map Implementation Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 67,
+    "precode": "if (_registeredSubtypes != null) {",
+    "aftercode": "if (_registeredSubtypes != null && false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 67,
+    "precode": "if (_registeredSubtypes != null) {",
+    "aftercode": "if (_registeredSubtypes == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 68,
+    "precode": "for (NamedType subtype : _registeredSubtypes) {",
+    "aftercode": "for (NamedType subtype : new ArrayList<NamedType>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 70,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (!rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 70,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (subtype.getType().isAssignableFrom(rawBase)) { // yes",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 71,
+    "precode": "AnnotatedClass curr = AnnotatedClassResolver.resolveWithoutSuperTypes(config, subtype.getType());",
+    "aftercode": "AnnotatedClass curr = AnnotatedClassResolver.resolveWithoutSuperTypes(config, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 73,
+    "precode": "_collectAndResolve(curr, subtype, config, ai, collected);",
+    "aftercode": "_collectAndResolve(null, subtype, config, ai, collected);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 73,
+    "precode": "_collectAndResolve(curr, subtype, config, ai, collected);",
+    "aftercode": "_collectAndResolve(curr, subtype, config, null, collected);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 79,
+    "precode": "if (property != null) {",
+    "aftercode": "if (property == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 80,
+    "precode": "Collection<NamedType> st = ai.findSubtypes(property);",
+    "aftercode": "Collection<NamedType> st = ai.findSubtypes(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 81,
+    "precode": "if (st != null) {",
+    "aftercode": "if (st == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 82,
+    "precode": "for (NamedType nt : st) {",
+    "aftercode": "for (NamedType nt : new ArrayList<NamedType>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 83,
+    "precode": "AnnotatedClass ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, nt.getType());",
+    "aftercode": "AnnotatedClass ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 85,
+    "precode": "_collectAndResolve(ac, nt, config, ai, collected);",
+    "aftercode": "_collectAndResolve(ac, null, config, ai, collected);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 90,
+    "precode": "NamedType rootType = new NamedType(rawBase, null);",
+    "aftercode": "NamedType rootType = new NamedType(null, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 91,
+    "precode": "AnnotatedClass ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, rawBase);",
+    "aftercode": "AnnotatedClass ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 94,
+    "precode": "_collectAndResolve(ac, rootType, config, ai, collected);",
+    "aftercode": "_collectAndResolve(null, rootType, config, ai, collected);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 96,
+    "precode": "return new ArrayList<NamedType>(collected.values());",
+    "aftercode": "return new ArrayList<NamedType>(collected.keySet());",
+    "rule": "Map Method Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 96,
+    "precode": "return new ArrayList<NamedType>(collected.values());",
+    "aftercode": "return new ArrayList<NamedType>(collected.entrySet());",
+    "rule": "Type Mismatch Mutation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 63,
+    "precode": "Class<?> rawBase = (baseType == null) ? property.getRawType() : baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = (baseType == null) ? null : baseType.getRawClass();",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 70,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (true) { // yes",
+    "rule": "Condition Constant",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 70,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (false) { // yes",
+    "rule": "Condition Constant",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 79,
+    "precode": "if (property != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Constant",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 81,
+    "precode": "if (st != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Constant",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 96,
+    "precode": "return new ArrayList<NamedType>(collected.values());",
+    "aftercode": "return new ArrayList<NamedType>(collected.values().toArray(new NamedType[0]));",
+    "rule": "Redundant Wrap",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 65,
+    "precode": "HashMap<NamedType, NamedType> collected = new HashMap<NamedType, NamedType>();",
+    "aftercode": "HashMap<NamedType, NamedType> collected = new HashMap<NamedType, NamedType>(0);",
+    "rule": "Initial Capacity Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 63,
+    "precode": "Class<?> rawBase = (baseType == null) ? property.getRawType() : baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = (baseType == null) ? property.getRawType() : property.getRawType();",
+    "rule": "Ternary Logic Error",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 90,
+    "precode": "NamedType rootType = new NamedType(rawBase, null);",
+    "aftercode": "NamedType rootType = new NamedType(null, rawBase);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 73,
+    "precode": "_collectAndResolve(curr, subtype, config, ai, collected);",
+    "aftercode": "_collectAndResolve(curr, subtype, config, ai, new HashMap<NamedType, NamedType>());",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 85,
+    "precode": "_collectAndResolve(ac, nt, config, ai, collected);",
+    "aftercode": "_collectAndResolve(ac, nt, config, ai, new HashMap<NamedType, NamedType>());",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 94,
+    "precode": "_collectAndResolve(ac, rootType, config, ai, collected);",
+    "aftercode": "_collectAndResolve(ac, rootType, config, ai, new HashMap<NamedType, NamedType>());",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 68,
+    "precode": "for (NamedType subtype : _registeredSubtypes) {",
+    "aftercode": "for (NamedType subtype : _registeredSubtypes.toArray()) {",
+    "rule": "Collection Iteration Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 82,
+    "precode": "for (NamedType nt : st) {",
+    "aftercode": "for (NamedType nt : st.toArray()) {",
+    "rule": "Collection Iteration Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 63,
+    "precode": "Class<?> rawBase = (baseType == null) ? property.getRawType() : baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = (baseType == null) ? property.getRawType() : baseType.getClass();",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 96,
+    "precode": "return new ArrayList<NamedType>(collected.values());",
+    "aftercode": "return new ArrayList<NamedType>(collected.values());",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 61,
+    "precode": "final AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "aftercode": "final AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 70,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (rawBase.isAssignableFrom(subtype.getClass())) { // yes",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 134,
+    "precode": "Class<?> rawBase = baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = baseType.getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 137,
+    "precode": "Set<Class<?>> typesHandled = new HashSet<Class<?>>();",
+    "aftercode": "Set<Class<?>> typesHandled = new LinkedHashSet<Class<?>>();",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 138,
+    "precode": "Map<String,NamedType> byName = new LinkedHashMap<String,NamedType>();",
+    "aftercode": "Map<String,NamedType> byName = new HashMap<String,NamedType>();",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 141,
+    "precode": "NamedType rootType = new NamedType(rawBase, null);",
+    "aftercode": "NamedType rootType = new NamedType(rawBase, rawBase.getName());",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 142,
+    "precode": "AnnotatedClass ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config,",
+    "aftercode": "AnnotatedClass ac = AnnotatedClassResolver.resolveWithSuperTypes(config,",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 144,
+    "precode": "_collectAndResolveByTypeId(ac, rootType, config, typesHandled, byName);",
+    "aftercode": "_collectAndResolveByTypeId(ac, rootType, config, byName, typesHandled);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 147,
+    "precode": "if (property != null) {",
+    "aftercode": "if (property == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 148,
+    "precode": "Collection<NamedType> st = ai.findSubtypes(property);",
+    "aftercode": "Collection<NamedType> st = ai.findSubtypes(config);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 149,
+    "precode": "if (st != null) {",
+    "aftercode": "if (st == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 150,
+    "precode": "for (NamedType nt : st) {",
+    "aftercode": "for (NamedType nt : byName.values()) {",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 151,
+    "precode": "ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, nt.getType());",
+    "aftercode": "ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, nt.getRawClass());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 152,
+    "precode": "_collectAndResolveByTypeId(ac, nt, config, typesHandled, byName);",
+    "aftercode": "_collectAndResolveByTypeId(ac, nt, config, byName, typesHandled);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 157,
+    "precode": "if (_registeredSubtypes != null) {",
+    "aftercode": "if (_registeredSubtypes == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 158,
+    "precode": "for (NamedType subtype : _registeredSubtypes) {",
+    "aftercode": "for (NamedType subtype : typesHandled) {",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 160,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (!rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 160,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (subtype.getType().isAssignableFrom(rawBase)) { // yes",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 161,
+    "precode": "AnnotatedClass curr = AnnotatedClassResolver.resolveWithoutSuperTypes(config,",
+    "aftercode": "AnnotatedClass curr = AnnotatedClassResolver.resolveWithoutSuperTypes(null,",
+    "rule": "Null Constant",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 163,
+    "precode": "_collectAndResolveByTypeId(curr, subtype, config, typesHandled, byName);",
+    "aftercode": "_collectAndResolveByTypeId(subtype, curr, config, typesHandled, byName);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 167,
+    "precode": "return _combineNamedAndUnnamed(rawBase, typesHandled, byName);",
+    "aftercode": "return _combineNamedAndUnnamed(null, typesHandled, byName);",
+    "rule": "Null Constant",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 167,
+    "precode": "return _combineNamedAndUnnamed(rawBase, typesHandled, byName);",
+    "aftercode": "return _combineNamedAndUnnamed(rawBase, byName, typesHandled);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 137,
+    "precode": "Set<Class<?>> typesHandled = new HashSet<Class<?>>();",
+    "aftercode": "Set<Class<?>> typesHandled = Collections.emptySet();",
+    "rule": "Immutable Collection",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 148,
+    "precode": "Collection<NamedType> st = ai.findSubtypes(property);",
+    "aftercode": "Collection<NamedType> st = new ArrayList<NamedType>();",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 158,
+    "precode": "for (NamedType subtype : _registeredSubtypes) {",
+    "aftercode": "for (NamedType subtype : new ArrayList<NamedType>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 133,
+    "precode": "final AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "aftercode": "final AnnotationIntrospector ai = config.getAnnotationIntrospector(); //",
+    "rule": "Commented Code",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 134,
+    "precode": "Class<?> rawBase = baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = baseType.getRawClass(); //",
+    "rule": "Commented Code",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 160,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (rawBase.isAssignableFrom(subtype.getType())) { // no",
+    "rule": "Comment Modification",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 147,
+    "precode": "if (property != null) {",
+    "aftercode": "if (property != null && false) {",
+    "rule": "Conditional Removal",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 157,
+    "precode": "if (_registeredSubtypes != null) {",
+    "aftercode": "if (_registeredSubtypes != null && false) {",
+    "rule": "Conditional Removal",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 138,
+    "precode": "Map<String,NamedType> byName = new LinkedHashMap<String,NamedType>();",
+    "aftercode": "Map<String,NamedType> byName = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 141,
+    "precode": "NamedType rootType = new NamedType(rawBase, null);",
+    "aftercode": "NamedType rootType = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 144,
+    "precode": "_collectAndResolveByTypeId(ac, rootType, config, typesHandled, byName);",
+    "aftercode": "return null;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 167,
+    "precode": "return _combineNamedAndUnnamed(rawBase, typesHandled, byName);",
+    "aftercode": "return new ArrayList<NamedType>();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 133,
+    "precode": "final AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "aftercode": "AnnotationIntrospector ai = config.getAnnotationIntrospector();",
+    "rule": "Final Modifier Removal",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 150,
+    "precode": "for (NamedType nt : st) {",
+    "aftercode": "for (NamedType nt : st) { //",
+    "rule": "Commented Code",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 152,
+    "precode": "_collectAndResolveByTypeId(ac, nt, config, typesHandled, byName);",
+    "aftercode": "_collectAndResolveByTypeId(null, nt, config, typesHandled, byName);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 163,
+    "precode": "_collectAndResolveByTypeId(curr, subtype, config, typesHandled, byName);",
+    "aftercode": "_collectAndResolveByTypeId(curr, subtype, null, typesHandled, byName);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 134,
+    "precode": "Class<?> rawBase = baseType.getRawClass();",
+    "aftercode": "Class<?> rawBase = (Class<?>) baseType.getRawClass();",
+    "rule": "Cast Addition",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 160,
+    "precode": "if (rawBase.isAssignableFrom(subtype.getType())) { // yes",
+    "aftercode": "if (subtype.getType() != null) { // yes",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+    "line": 151,
+    "precode": "ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, nt.getType());",
+    "aftercode": "ac = AnnotatedClassResolver.resolveWithoutSuperTypes(config, nt.getType()); //",
+    "rule": "Commented Code",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  }
+]

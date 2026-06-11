@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 225,
+    "precode": "JsonParser p2 = _tokens[index].asParser(p);",
+    "aftercode": "JsonParser p2 = _tokens[0].asParser(p);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 226,
+    "precode": "JsonToken t = p2.nextToken();",
+    "aftercode": "JsonToken t = p2.currentToken();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 228,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t != JsonToken.VALUE_NULL) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 228,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 229,
+    "precode": "return null;",
+    "aftercode": "return p2;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 232,
+    "precode": "TokenBuffer merged = new TokenBuffer(p);",
+    "aftercode": "TokenBuffer merged = new TokenBuffer(p2);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 233,
+    "precode": "merged.writeStartArray();",
+    "aftercode": "// merged.writeStartArray();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 234,
+    "precode": "merged.writeString(typeId);",
+    "aftercode": "merged.writeString(\"\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 234,
+    "precode": "merged.writeString(typeId);",
+    "aftercode": "merged.writeNumber(0);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 235,
+    "precode": "merged.copyCurrentStructure(p2);",
+    "aftercode": "merged.copyCurrentStructure(p);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 236,
+    "precode": "merged.writeEndArray();",
+    "aftercode": "merged.writeEndObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 239,
+    "precode": "JsonParser mp = merged.asParser(p);",
+    "aftercode": "JsonParser mp = merged.asParser(p2);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 240,
+    "precode": "mp.nextToken();",
+    "aftercode": "// mp.nextToken();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 240,
+    "precode": "mp.nextToken();",
+    "aftercode": "mp.skipChildren();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 241,
+    "precode": "return _properties[index].getProperty().deserialize(mp, ctxt);",
+    "aftercode": "return _properties[0].getProperty().deserialize(mp, ctxt);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 241,
+    "precode": "return _properties[index].getProperty().deserialize(mp, ctxt);",
+    "aftercode": "return _properties[index].getProperty().deserialize(p, ctxt);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 241,
+    "precode": "return _properties[index].getProperty().deserialize(mp, ctxt);",
+    "aftercode": "return _properties[index].getProperty().deserialize(mp, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 228,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t == JsonToken.VALUE_STRING) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 233,
+    "precode": "merged.writeStartArray();",
+    "aftercode": "merged.writeStartObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 235,
+    "precode": "merged.copyCurrentStructure(p2);",
+    "aftercode": "merged.writeEndArray();",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 241,
+    "precode": "return _properties[index].getProperty().deserialize(mp, ctxt);",
+    "aftercode": "return _properties[index].getProperty().deserialize(mp, ctxt);",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.13,
+    "dublicate": true
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 251,
+    "precode": "JsonParser p2 = _tokens[index].asParser(p);",
+    "aftercode": "JsonParser p2 = _tokens[index - 1].asParser(p);",
+    "rule": "Array Index Offset",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 252,
+    "precode": "JsonToken t = p2.nextToken();",
+    "aftercode": "JsonToken t = p2.currentToken();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 254,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t != JsonToken.VALUE_NULL) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 254,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t == JsonToken.VALUE_STRING) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 255,
+    "precode": "_properties[index].getProperty().set(bean, null);",
+    "aftercode": "_properties[index].getProperty().set(bean, bean);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 255,
+    "precode": "_properties[index].getProperty().set(bean, null);",
+    "aftercode": "_properties[index].getProperty().set(null, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 258,
+    "precode": "TokenBuffer merged = new TokenBuffer(p);",
+    "aftercode": "TokenBuffer merged = new TokenBuffer(p2);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 259,
+    "precode": "merged.writeStartArray();",
+    "aftercode": "merged.writeEndArray();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 260,
+    "precode": "merged.writeString(typeId);",
+    "aftercode": "merged.writeNumber(typeId);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 260,
+    "precode": "merged.writeString(typeId);",
+    "aftercode": "merged.writeString(\"\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 262,
+    "precode": "merged.copyCurrentStructure(p2);",
+    "aftercode": "merged.copyCurrentStructure(p);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 263,
+    "precode": "merged.writeEndArray();",
+    "aftercode": "merged.writeStartArray();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 265,
+    "precode": "JsonParser mp = merged.asParser(p);",
+    "aftercode": "JsonParser mp = merged.asParser(p2);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 266,
+    "precode": "mp.nextToken();",
+    "aftercode": "// mp.nextToken();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 267,
+    "precode": "_properties[index].getProperty().deserializeAndSet(mp, ctxt, bean);",
+    "aftercode": "_properties[index].getProperty().deserializeAndSet(mp, ctxt, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 267,
+    "precode": "_properties[index].getProperty().deserializeAndSet(mp, ctxt, bean);",
+    "aftercode": "_properties[index].getProperty().deserializeAndSet(p, ctxt, bean);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 251,
+    "precode": "JsonParser p2 = _tokens[index].asParser(p);",
+    "aftercode": "JsonParser p2 = _tokens[index].asParser(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 254,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t == null) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 255,
+    "precode": "_properties[index].getProperty().set(bean, null);",
+    "aftercode": "_properties[index].getProperty().set(bean, \"\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 259,
+    "precode": "merged.writeStartArray();",
+    "aftercode": "merged.writeFieldName(\"array\");",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 262,
+    "precode": "merged.copyCurrentStructure(p2);",
+    "aftercode": "merged.writeEndObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 265,
+    "precode": "JsonParser mp = merged.asParser(p);",
+    "aftercode": "JsonParser mp = merged.asParser(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 266,
+    "precode": "mp.nextToken();",
+    "aftercode": "mp.skipChildren();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java",
+    "line": 251,
+    "precode": "JsonParser p2 = _tokens[index].asParser(p);",
+    "aftercode": "JsonParser p2 = _tokens[index].asParser(p);",
+    "rule": "No-op (Identity)",
+    "gen_time_s": 1.18,
+    "dublicate": true
+  }
+]

@@ -1,0 +1,522 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 571,
+    "precode": "PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);",
+    "aftercode": "PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 573,
+    "precode": "TokenBuffer tokens = new TokenBuffer(p, ctxt);",
+    "aftercode": "TokenBuffer tokens = new TokenBuffer(null, ctxt);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 573,
+    "precode": "TokenBuffer tokens = new TokenBuffer(p, ctxt);",
+    "aftercode": "TokenBuffer tokens = new TokenBuffer(p, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 574,
+    "precode": "tokens.writeStartObject();",
+    "aftercode": "tokens.writeEndObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 577,
+    "precode": "for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {",
+    "aftercode": "for (; t != JsonToken.FIELD_NAME; t = p.nextToken()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 579,
+    "precode": "p.nextToken(); // to point to value",
+    "aftercode": "// p.nextToken(); // to point to value",
+    "rule": "Comment Out",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 581,
+    "precode": "SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);",
+    "aftercode": "SettableBeanProperty creatorProp = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 583,
+    "precode": "buffer.assignParameter(creatorProp, creatorProp.deserialize(p, ctxt));",
+    "aftercode": "buffer.assignParameter(creatorProp, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 587,
+    "precode": "if (buffer.readIdProperty(propName)) {",
+    "aftercode": "if (!buffer.readIdProperty(propName)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 591,
+    "precode": "SettableBeanProperty prop = _beanProperties.find(propName);",
+    "aftercode": "SettableBeanProperty prop = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 593,
+    "precode": "buffer.bufferProperty(prop, prop.deserialize(p, ctxt));",
+    "aftercode": "buffer.bufferProperty(prop, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 596,
+    "precode": "if (_ignorableProps != null && _ignorableProps.contains(propName)) {",
+    "aftercode": "if (_ignorableProps == null || _ignorableProps.contains(propName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 596,
+    "precode": "if (_ignorableProps != null && _ignorableProps.contains(propName)) {",
+    "aftercode": "if (_ignorableProps != null || _ignorableProps.contains(propName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 600,
+    "precode": "tokens.writeFieldName(propName);",
+    "aftercode": "tokens.writeFieldName(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 601,
+    "precode": "tokens.copyCurrentStructure(p);",
+    "aftercode": "tokens.copyCurrentToken(p);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 603,
+    "precode": "if (_anySetter != null) {",
+    "aftercode": "if (_anySetter == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 604,
+    "precode": "buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));",
+    "aftercode": "buffer.bufferAnyProperty(null, propName, _anySetter.deserialize(p, ctxt));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 612,
+    "precode": "bean = creator.build(ctxt, buffer);",
+    "aftercode": "bean = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 614,
+    "precode": "return wrapInstantiationProblem(e, ctxt);",
+    "aftercode": "throw (Exception) e;",
+    "rule": "Exception Handling Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 616,
+    "precode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 571,
+    "precode": "PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);",
+    "aftercode": "PropertyValueBuffer buffer = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 577,
+    "precode": "for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {",
+    "aftercode": "for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {",
+    "rule": "No Mutation (Placeholder for logic change not applicable here)",
+    "gen_time_s": 2.28,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 582,
+    "precode": "if (creatorProp != null) {",
+    "aftercode": "if (creatorProp == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 584,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 588,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 592,
+    "precode": "if (prop != null) {",
+    "aftercode": "if (prop == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 594,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 598,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 613,
+    "precode": "} catch (Exception e) {",
+    "aftercode": "} catch (RuntimeException e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 560,
+    "precode": "protected Object deserializeUsingPropertyBasedWithUnwrapped(JsonParser p,",
+    "aftercode": "private Object deserializeUsingPropertyBasedWithUnwrapped(JsonParser p,",
+    "rule": "Access Modifier Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 574,
+    "precode": "tokens.writeStartObject();",
+    "aftercode": "tokens.writeNumber(0);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 583,
+    "precode": "buffer.assignParameter(creatorProp, creatorProp.deserialize(p, ctxt));",
+    "aftercode": "buffer.assignParameter(null, creatorProp.deserialize(p, ctxt));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 593,
+    "precode": "buffer.bufferProperty(prop, prop.deserialize(p, ctxt));",
+    "aftercode": "buffer.bufferProperty(null, prop.deserialize(p, ctxt));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 604,
+    "precode": "buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));",
+    "aftercode": "buffer.bufferAnyProperty(_anySetter, null, _anySetter.deserialize(p, ctxt));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 604,
+    "precode": "buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));",
+    "aftercode": "buffer.bufferAnyProperty(_anySetter, propName, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 577,
+    "precode": "for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {",
+    "aftercode": "for (; t == JsonToken.FIELD_NAME; ) {",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 591,
+    "precode": "SettableBeanProperty prop = _beanProperties.find(propName);",
+    "aftercode": "SettableBeanProperty prop = _beanProperties.find(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 600,
+    "precode": "tokens.writeFieldName(propName);",
+    "aftercode": "tokens.writeEndObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 601,
+    "precode": "tokens.copyCurrentStructure(p);",
+    "aftercode": "tokens.copyCurrentToken(p);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 612,
+    "precode": "bean = creator.build(ctxt, buffer);",
+    "aftercode": "bean = creator.build(null, buffer);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 612,
+    "precode": "bean = creator.build(ctxt, buffer);",
+    "aftercode": "bean = creator.build(ctxt, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 616,
+    "precode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);",
+    "aftercode": "return _unwrappedPropertyHandler.processUnwrapped(null, ctxt, bean, tokens);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 616,
+    "precode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);",
+    "aftercode": "return _unwrappedPropertyHandler.processUnwrapped(p, null, bean, tokens);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 616,
+    "precode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);",
+    "aftercode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, null, tokens);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 616,
+    "precode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);",
+    "aftercode": "return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 587,
+    "precode": "if (buffer.readIdProperty(propName)) {",
+    "aftercode": "if (buffer.readIdProperty(null)) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 597,
+    "precode": "handleIgnoredProperty(p, ctxt, handledType(), propName);",
+    "aftercode": "handleIgnoredProperty(null, ctxt, handledType(), propName);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 597,
+    "precode": "handleIgnoredProperty(p, ctxt, handledType(), propName);",
+    "aftercode": "handleIgnoredProperty(p, null, handledType(), propName);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 597,
+    "precode": "handleIgnoredProperty(p, ctxt, handledType(), propName);",
+    "aftercode": "handleIgnoredProperty(p, ctxt, null, propName);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 597,
+    "precode": "handleIgnoredProperty(p, ctxt, handledType(), propName);",
+    "aftercode": "handleIgnoredProperty(p, ctxt, handledType(), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 614,
+    "precode": "return wrapInstantiationProblem(e, ctxt);",
+    "aftercode": "return wrapInstantiationProblem(null, ctxt);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BuilderBasedDeserializer.java",
+    "line": 614,
+    "precode": "return wrapInstantiationProblem(e, ctxt);",
+    "aftercode": "return wrapInstantiationProblem(e, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  }
+]

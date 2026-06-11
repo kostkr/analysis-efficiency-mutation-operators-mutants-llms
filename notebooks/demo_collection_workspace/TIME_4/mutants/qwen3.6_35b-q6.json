@@ -1,0 +1,512 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 430,
+    "precode": "int index = indexOf(fieldType);",
+    "aftercode": "int index = -1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 432,
+    "precode": "DateTimeFieldType[] newTypes = new DateTimeFieldType[iTypes.length + 1];",
+    "aftercode": "DateTimeFieldType[] newTypes = new DateTimeFieldType[iTypes.length];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 433,
+    "precode": "int[] newValues = new int[newTypes.length];",
+    "aftercode": "int[] newValues = new int[newTypes.length - 1];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 437,
+    "precode": "DurationField unitField = fieldType.getDurationType().getField(iChronology);",
+    "aftercode": "DurationField unitField = fieldType.getDurationType().getField(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 438,
+    "precode": "if (unitField.isSupported()) {",
+    "aftercode": "if (!unitField.isSupported()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 439,
+    "precode": "for (; i < iTypes.length; i++) {",
+    "aftercode": "for (; i <= iTypes.length; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 441,
+    "precode": "DurationField loopUnitField = loopType.getDurationType().getField(iChronology);",
+    "aftercode": "DurationField loopUnitField = loopType.getDurationType().getField(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 442,
+    "precode": "if (loopUnitField.isSupported()) {",
+    "aftercode": "if (!loopUnitField.isSupported()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 443,
+    "precode": "int compare = unitField.compareTo(loopUnitField);",
+    "aftercode": "int compare = loopUnitField.compareTo(unitField);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 444,
+    "precode": "if (compare > 0) {",
+    "aftercode": "if (compare >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 446,
+    "precode": "else if (compare == 0) {",
+    "aftercode": "else if (compare != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 447,
+    "precode": "DurationField rangeField = fieldType.getRangeDurationType().getField(iChronology);",
+    "aftercode": "DurationField rangeField = fieldType.getRangeDurationType().getField(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 448,
+    "precode": "DurationField loopRangeField = loopType.getRangeDurationType().getField(iChronology);",
+    "aftercode": "DurationField loopRangeField = loopType.getRangeDurationType().getField(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 449,
+    "precode": "if (rangeField.compareTo(loopRangeField) > 0) {",
+    "aftercode": "if (rangeField.compareTo(loopRangeField) >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 456,
+    "precode": "System.arraycopy(iTypes, 0, newTypes, 0, i);",
+    "aftercode": "System.arraycopy(iTypes, 0, newTypes, 0, i - 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 457,
+    "precode": "System.arraycopy(iValues, 0, newValues, 0, i);",
+    "aftercode": "System.arraycopy(iValues, 0, newValues, 0, i - 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 460,
+    "precode": "System.arraycopy(iTypes, i, newTypes, i + 1, newTypes.length - i - 1);",
+    "aftercode": "System.arraycopy(iTypes, i, newTypes, i, newTypes.length - i - 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 461,
+    "precode": "System.arraycopy(iValues, i, newValues, i + 1, newValues.length - i - 1);",
+    "aftercode": "System.arraycopy(iValues, i, newValues, i, newValues.length - i - 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 464,
+    "precode": "Partial newPartial = new Partial(newTypes, newValues, iChronology);",
+    "aftercode": "Partial newPartial = new Partial(iTypes, iValues, iChronology);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 465,
+    "precode": "iChronology.validate(newPartial, newValues);",
+    "aftercode": "iChronology.validate(this, newValues);",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 468,
+    "precode": "if (value == getValue(index)) {",
+    "aftercode": "if (value != getValue(index)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 469,
+    "precode": "return this;",
+    "aftercode": "return newPartial;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 471,
+    "precode": "int[] newValues = getValues();",
+    "aftercode": "int[] newValues = iValues.clone();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 472,
+    "precode": "newValues = getField(index).set(this, index, newValues, value);",
+    "aftercode": "newValues = getField(index).set(this, index, newValues, 0);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 473,
+    "precode": "return new Partial(this, newValues);",
+    "aftercode": "return new Partial(this, iValues);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 428,
+    "precode": "throw new IllegalArgumentException(\"The field type must not be null\");",
+    "aftercode": "throw new NullPointerException(\"The field type must not be null\");",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 444,
+    "precode": "if (compare > 0) {",
+    "aftercode": "if (compare >= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 449,
+    "precode": "if (rangeField.compareTo(loopRangeField) > 0) {",
+    "aftercode": "if (rangeField.compareTo(loopRangeField) >= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 437,
+    "precode": "DurationField unitField = fieldType.getDurationType().getField(iChronology);",
+    "aftercode": "DurationField unitField = iChronology.getField(fieldType.getDurationType());",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 441,
+    "precode": "DurationField loopUnitField = loopType.getDurationType().getField(iChronology);",
+    "aftercode": "DurationField loopUnitField = iChronology.getField(loopType.getDurationType());",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 447,
+    "precode": "DurationField rangeField = fieldType.getRangeDurationType().getField(iChronology);",
+    "aftercode": "DurationField rangeField = iChronology.getField(fieldType.getRangeDurationType());",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 448,
+    "precode": "DurationField loopRangeField = loopType.getRangeDurationType().getField(iChronology);",
+    "aftercode": "DurationField loopRangeField = iChronology.getField(loopType.getRangeDurationType());",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 432,
+    "precode": "DateTimeFieldType[] newTypes = new DateTimeFieldType[iTypes.length + 1];",
+    "aftercode": "DateTimeFieldType[] newTypes = new DateTimeFieldType[iTypes.length + 2];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 433,
+    "precode": "int[] newValues = new int[newTypes.length];",
+    "aftercode": "int[] newValues = new int[newTypes.length + 1];",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 439,
+    "precode": "for (; i < iTypes.length; i++) {",
+    "aftercode": "for (; i < iTypes.length - 1; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 456,
+    "precode": "System.arraycopy(iTypes, 0, newTypes, 0, i);",
+    "aftercode": "System.arraycopy(iTypes, 0, newTypes, 0, i + 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 457,
+    "precode": "System.arraycopy(iValues, 0, newValues, 0, i);",
+    "aftercode": "System.arraycopy(iValues, 0, newValues, 0, i + 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 460,
+    "precode": "System.arraycopy(iTypes, i, newTypes, i + 1, newTypes.length - i - 1);",
+    "aftercode": "System.arraycopy(iTypes, i, newTypes, i + 1, newTypes.length - i);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 461,
+    "precode": "System.arraycopy(iValues, i, newValues, i + 1, newValues.length - i - 1);",
+    "aftercode": "System.arraycopy(iValues, i, newValues, i + 1, newValues.length - i);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 464,
+    "precode": "Partial newPartial = new Partial(newTypes, newValues, iChronology);",
+    "aftercode": "Partial newPartial = new Partial(newTypes, newValues, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 469,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 473,
+    "precode": "return new Partial(this, newValues);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 430,
+    "precode": "int index = indexOf(fieldType);",
+    "aftercode": "int index = iTypes.length;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 438,
+    "precode": "if (unitField.isSupported()) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 442,
+    "precode": "if (loopUnitField.isSupported()) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 444,
+    "precode": "if (compare > 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 449,
+    "precode": "if (rangeField.compareTo(loopRangeField) > 0) {",
+    "aftercode": "if (false) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 468,
+    "precode": "if (value == getValue(index)) {",
+    "aftercode": "if (true) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 428,
+    "precode": "throw new IllegalArgumentException(\"The field type must not be null\");",
+    "aftercode": "return this;",
+    "rule": "Exception Handler Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 431,
+    "precode": "if (index == -1) {",
+    "aftercode": "if (index != -1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/joda/time/Partial.java",
+    "line": 437,
+    "precode": "DurationField unitField = fieldType.getDurationType().getField(iChronology);",
+    "aftercode": "DurationField unitField = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  }
+]

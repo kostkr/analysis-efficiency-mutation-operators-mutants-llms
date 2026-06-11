@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1167,
+    "precode": "long instantBefore = instant - 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "aftercode": "long instantBefore = instant + 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1168,
+    "precode": "long instantAfter = instant + 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "aftercode": "long instantAfter = instant - 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1171,
+    "precode": "if (offsetBefore <= offsetAfter) {",
+    "aftercode": "if (offsetBefore < offsetAfter) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1171,
+    "precode": "if (offsetBefore <= offsetAfter) {",
+    "aftercode": "if (offsetBefore <= offsetAfter + 1) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1172,
+    "precode": "return instant;  // not an overlap (less than is a gap, equal is normal case)",
+    "aftercode": "return instantBefore;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1176,
+    "precode": "long diff = offsetBefore - offsetAfter;",
+    "aftercode": "long diff = offsetBefore + offsetAfter;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1178,
+    "precode": "long overlapStart = transition - diff;",
+    "aftercode": "long overlapStart = transition + diff;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1179,
+    "precode": "long overlapEnd = transition + diff;",
+    "aftercode": "long overlapEnd = transition - diff;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant <= overlapStart || instant >= overlapEnd) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant < overlapStart && instant >= overlapEnd) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant < overlapStart || instant > overlapEnd) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1181,
+    "precode": "return instant;  // not an overlap",
+    "aftercode": "return overlapStart;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1185,
+    "precode": "long afterStart = instant - overlapStart;",
+    "aftercode": "long afterStart = instant + overlapStart;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1186,
+    "precode": "if (afterStart >= diff) {",
+    "aftercode": "if (afterStart > diff) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1186,
+    "precode": "if (afterStart >= diff) {",
+    "aftercode": "if (afterStart <= diff) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1188,
+    "precode": "return earlierOrLater ? instant : instant - diff;",
+    "aftercode": "return earlierOrLater ? instant - diff : instant;",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1188,
+    "precode": "return earlierOrLater ? instant : instant - diff;",
+    "aftercode": "return earlierOrLater ? instant + diff : instant;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1188,
+    "precode": "return earlierOrLater ? instant : instant - diff;",
+    "aftercode": "return !earlierOrLater ? instant : instant - diff;",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1191,
+    "precode": "return earlierOrLater ? instant + diff : instant;",
+    "aftercode": "return earlierOrLater ? instant : instant + diff;",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1191,
+    "precode": "return earlierOrLater ? instant + diff : instant;",
+    "aftercode": "return earlierOrLater ? instant - diff : instant;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1191,
+    "precode": "return earlierOrLater ? instant + diff : instant;",
+    "aftercode": "return !earlierOrLater ? instant : instant + diff;",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1167,
+    "precode": "long instantBefore = instant - 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "aftercode": "long instantBefore = instant - 2 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1168,
+    "precode": "long instantAfter = instant + 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "aftercode": "long instantAfter = instant + 4 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1176,
+    "precode": "long diff = offsetBefore - offsetAfter;",
+    "aftercode": "long diff = offsetAfter - offsetBefore;",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1177,
+    "precode": "long transition = nextTransition(instantBefore);",
+    "aftercode": "long transition = nextTransition(instantAfter);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant < overlapStart || instant < overlapEnd) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1186,
+    "precode": "if (afterStart >= diff) {",
+    "aftercode": "if (afterStart >= 0) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1188,
+    "precode": "return earlierOrLater ? instant : instant - diff;",
+    "aftercode": "return earlierOrLater ? instant : instant;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1191,
+    "precode": "return earlierOrLater ? instant + diff : instant;",
+    "aftercode": "return earlierOrLater ? instant : instant;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1171,
+    "precode": "if (offsetBefore <= offsetAfter) {",
+    "aftercode": "if (offsetBefore >= offsetAfter) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant > overlapStart || instant < overlapEnd) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]

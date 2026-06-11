@@ -1,0 +1,1132 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 190,
+    "precode": "zone = DateTimeUtils.getZone(zone);",
+    "aftercode": "zone = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 190,
+    "precode": "zone = DateTimeUtils.getZone(zone);",
+    "aftercode": "zone = zone;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 193,
+    "precode": "cutoverInstant = DEFAULT_CUTOVER;",
+    "aftercode": "cutoverInstant = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 193,
+    "precode": "cutoverInstant = DEFAULT_CUTOVER;",
+    "aftercode": "cutoverInstant = Instant.FROM_EPOCH;",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 195,
+    "precode": "cutoverInstant = gregorianCutover.toInstant();",
+    "aftercode": "cutoverInstant = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 196,
+    "precode": "LocalDate cutoverDate = new LocalDate(cutoverInstant.getMillis(), GregorianChronology.getInstance(zone));",
+    "aftercode": "LocalDate cutoverDate = new LocalDate(0, GregorianChronology.getInstance(zone));",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 197,
+    "precode": "if (cutoverDate.getYear() <= 0) {",
+    "aftercode": "if (cutoverDate.getYear() < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 197,
+    "precode": "if (cutoverDate.getYear() <= 0) {",
+    "aftercode": "if (cutoverDate.getYear() >= 0) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 197,
+    "precode": "if (cutoverDate.getYear() <= 0) {",
+    "aftercode": "if (cutoverDate.getYear() > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 198,
+    "precode": "throw new IllegalArgumentException(\"Cutover too early. Must be on or after 0001-01-01.\");",
+    "aftercode": "// throw new IllegalArgumentException(\"Cutover too early. Must be on or after 0001-01-01.\");",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 203,
+    "precode": "ArrayList<GJChronology> chronos = cCache.get(zone);",
+    "aftercode": "ArrayList<GJChronology> chronos = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 203,
+    "precode": "ArrayList<GJChronology> chronos = cCache.get(zone);",
+    "aftercode": "ArrayList<GJChronology> chronos = new ArrayList<GJChronology>();",
+    "rule": "Object Creation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 206,
+    "precode": "chronos = new ArrayList<GJChronology>(2);",
+    "aftercode": "chronos = new ArrayList<GJChronology>();",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 206,
+    "precode": "chronos = new ArrayList<GJChronology>(2);",
+    "aftercode": "chronos = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 207,
+    "precode": "cCache.put(zone, chronos);",
+    "aftercode": "cCache.put(null, chronos);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 207,
+    "precode": "cCache.put(zone, chronos);",
+    "aftercode": "// cCache.put(zone, chronos);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 209,
+    "precode": "for (int i = chronos.size(); --i >= 0;) {",
+    "aftercode": "for (int i = chronos.size(); i >= 0; --i) {",
+    "rule": "Loop Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 209,
+    "precode": "for (int i = chronos.size(); --i >= 0;) {",
+    "aftercode": "for (int i = 0; i < chronos.size(); i++) {",
+    "rule": "Loop Inversion",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 210,
+    "precode": "chrono = chronos.get(i);",
+    "aftercode": "chrono = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 211,
+    "precode": "if (minDaysInFirstWeek == chrono.getMinimumDaysInFirstWeek() &&",
+    "aftercode": "if (minDaysInFirstWeek != chrono.getMinimumDaysInFirstWeek() &&",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 211,
+    "precode": "if (minDaysInFirstWeek == chrono.getMinimumDaysInFirstWeek() &&",
+    "aftercode": "if (minDaysInFirstWeek == chrono.getMinimumDaysInFirstWeek() ||",
+    "rule": "Boolean Operator",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 212,
+    "precode": "cutoverInstant.equals(chrono.getGregorianCutover())) {",
+    "aftercode": "!cutoverInstant.equals(chrono.getGregorianCutover())) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 212,
+    "precode": "cutoverInstant.equals(chrono.getGregorianCutover())) {",
+    "aftercode": "cutoverInstant.hashCode() == chrono.getGregorianCutover().hashCode()) {",
+    "rule": "Equality Check",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 214,
+    "precode": "return chrono;",
+    "aftercode": "return null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 214,
+    "precode": "return chrono;",
+    "aftercode": "break;",
+    "rule": "Control Flow",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 218,
+    "precode": "if (zone == DateTimeZone.UTC) {",
+    "aftercode": "if (zone != DateTimeZone.UTC) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 218,
+    "precode": "if (zone == DateTimeZone.UTC) {",
+    "aftercode": "if (zone.equals(DateTimeZone.UTC)) {",
+    "rule": "Equality Check",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 219,
+    "precode": "chrono = new GJChronology",
+    "aftercode": "chrono = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 220,
+    "precode": "(JulianChronology.getInstance(zone, minDaysInFirstWeek),",
+    "aftercode": "(null,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 221,
+    "precode": "GregorianChronology.getInstance(zone, minDaysInFirstWeek),",
+    "aftercode": "null,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 222,
+    "precode": "cutoverInstant);",
+    "aftercode": "null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 224,
+    "precode": "chrono = getInstance(DateTimeZone.UTC, cutoverInstant, minDaysInFirstWeek);",
+    "aftercode": "chrono = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 224,
+    "precode": "chrono = getInstance(DateTimeZone.UTC, cutoverInstant, minDaysInFirstWeek);",
+    "aftercode": "chrono = getInstance(zone, cutoverInstant, minDaysInFirstWeek);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 225,
+    "precode": "chrono = new GJChronology",
+    "aftercode": "chrono = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 226,
+    "precode": "(ZonedChronology.getInstance(chrono, zone),",
+    "aftercode": "(null,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 227,
+    "precode": "chrono.iJulianChronology,",
+    "aftercode": "null,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 228,
+    "precode": "chrono.iGregorianChronology,",
+    "aftercode": "null,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 229,
+    "precode": "chrono.iCutoverInstant);",
+    "aftercode": "null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 231,
+    "precode": "chronos.add(chrono);",
+    "aftercode": "// chronos.add(chrono);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 231,
+    "precode": "chronos.add(chrono);",
+    "aftercode": "chronos.add(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 233,
+    "precode": "return chrono;",
+    "aftercode": "return null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 233,
+    "precode": "return chrono;",
+    "aftercode": "return new GJChronology();",
+    "rule": "Object Creation",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 187,
+    "precode": "ReadableInstant gregorianCutover,",
+    "aftercode": "null gregorianCutover,",
+    "rule": "Syntax Error",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 188,
+    "precode": "int minDaysInFirstWeek) {",
+    "aftercode": "int minDaysInFirstWeek) {",
+    "rule": "No Change",
+    "gen_time_s": 2.24,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 189,
+    "precode": "",
+    "aftercode": "return null;",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 204,
+    "precode": "ArrayList<GJChronology> chronos = cCache.get(zone);",
+    "aftercode": "ArrayList<GJChronology> chronos = cCache.get(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 215,
+    "precode": "}",
+    "aftercode": "return null;",
+    "rule": "Control Flow",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 216,
+    "precode": "}",
+    "aftercode": "break;",
+    "rule": "Control Flow",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 978,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 978,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 978,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant < iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 978,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant == iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 980,
+    "precode": "if (instant < iCutover) {",
+    "aftercode": "if (instant <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 980,
+    "precode": "if (instant < iCutover) {",
+    "aftercode": "if (instant > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 980,
+    "precode": "if (instant < iCutover) {",
+    "aftercode": "if (instant >= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 982,
+    "precode": "if (instant + iGapDuration < iCutover) {",
+    "aftercode": "if (instant + iGapDuration <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 982,
+    "precode": "if (instant + iGapDuration < iCutover) {",
+    "aftercode": "if (instant + iGapDuration > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 982,
+    "precode": "if (instant + iGapDuration < iCutover) {",
+    "aftercode": "if (instant + iGapDuration >= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 986,
+    "precode": "instant = iGregorianChronology.weekyear().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.weekyear().add(instant, 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 986,
+    "precode": "instant = iGregorianChronology.weekyear().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.weekyear().add(instant, 0);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 985,
+    "precode": "if (wyear <= 0) {",
+    "aftercode": "if (wyear < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 985,
+    "precode": "if (wyear <= 0) {",
+    "aftercode": "if (wyear > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 985,
+    "precode": "if (wyear <= 0) {",
+    "aftercode": "if (wyear >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 991,
+    "precode": "instant = iGregorianChronology.year().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.year().add(instant, 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 991,
+    "precode": "instant = iGregorianChronology.year().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.year().add(instant, 0);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 990,
+    "precode": "if (year <= 0) {",
+    "aftercode": "if (year < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 990,
+    "precode": "if (year <= 0) {",
+    "aftercode": "if (year > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 990,
+    "precode": "if (year <= 0) {",
+    "aftercode": "if (year >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 998,
+    "precode": "instant = iJulianField.add(instant, value);",
+    "aftercode": "instant = iJulianField.add(instant, -value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 999,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 999,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant < iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 999,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1001,
+    "precode": "if (instant - iGapDuration >= iCutover) {",
+    "aftercode": "if (instant - iGapDuration > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1001,
+    "precode": "if (instant - iGapDuration >= iCutover) {",
+    "aftercode": "if (instant - iGapDuration < iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1001,
+    "precode": "if (instant - iGapDuration >= iCutover) {",
+    "aftercode": "if (instant - iGapDuration <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 979,
+    "precode": "instant = iGregorianField.add(instant, value);",
+    "aftercode": "instant = iJulianField.add(instant, value);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 998,
+    "precode": "instant = iJulianField.add(instant, value);",
+    "aftercode": "instant = iGregorianField.add(instant, value);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 984,
+    "precode": "int wyear = iGregorianChronology.weekyear().get(instant);",
+    "aftercode": "int wyear = iGregorianChronology.weekyear().get(instant) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 989,
+    "precode": "int year = iGregorianChronology.year().get(instant);",
+    "aftercode": "int year = iGregorianChronology.year().get(instant) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 994,
+    "precode": "instant = gregorianToJulian(instant);",
+    "aftercode": "instant = julianToGregorian(instant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1003,
+    "precode": "instant = julianToGregorian(instant);",
+    "aftercode": "instant = gregorianToJulian(instant);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.39,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1012,
+    "precode": "instant = iGregorianField.add(instant, value);",
+    "aftercode": "instant = iGregorianField.add(instant, -value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1013,
+    "precode": "if (instant < iCutover) {",
+    "aftercode": "if (instant >= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1015,
+    "precode": "if (instant + iGapDuration < iCutover) {",
+    "aftercode": "if (instant + iGapDuration <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1017,
+    "precode": "int wyear = iGregorianChronology.weekyear().get(instant);",
+    "aftercode": "int wyear = iGregorianChronology.weekyear().get(instant) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1018,
+    "precode": "if (wyear <= 0) {",
+    "aftercode": "if (wyear < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1019,
+    "precode": "instant = iGregorianChronology.weekyear().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.weekyear().add(instant, 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1022,
+    "precode": "int year = iGregorianChronology.year().get(instant);",
+    "aftercode": "int year = iGregorianChronology.year().get(instant) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1023,
+    "precode": "if (year <= 0) {",
+    "aftercode": "if (year < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1024,
+    "precode": "instant = iGregorianChronology.year().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.year().add(instant, 1);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1031,
+    "precode": "instant = iJulianField.add(instant, value);",
+    "aftercode": "instant = iJulianField.add(instant, -value);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1032,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant < iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1034,
+    "precode": "if (instant - iGapDuration >= iCutover) {",
+    "aftercode": "if (instant - iGapDuration <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1011,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1013,
+    "precode": "if (instant < iCutover) {",
+    "aftercode": "if (instant <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1015,
+    "precode": "if (instant + iGapDuration < iCutover) {",
+    "aftercode": "if (instant + iGapDuration <= iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": true
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1018,
+    "precode": "if (wyear <= 0) {",
+    "aftercode": "if (wyear < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": true
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1023,
+    "precode": "if (year <= 0) {",
+    "aftercode": "if (year < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": true
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1032,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant > iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1034,
+    "precode": "if (instant - iGapDuration >= iCutover) {",
+    "aftercode": "if (instant - iGapDuration < iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1012,
+    "precode": "instant = iGregorianField.add(instant, value);",
+    "aftercode": "instant = iGregorianField.add(instant, 0);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1031,
+    "precode": "instant = iJulianField.add(instant, value);",
+    "aftercode": "instant = iJulianField.add(instant, 0);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1017,
+    "precode": "int wyear = iGregorianChronology.weekyear().get(instant);",
+    "aftercode": "int wyear = iGregorianChronology.weekyear().get(instant) - 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1022,
+    "precode": "int year = iGregorianChronology.year().get(instant);",
+    "aftercode": "int year = iGregorianChronology.year().get(instant) - 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1019,
+    "precode": "instant = iGregorianChronology.weekyear().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.weekyear().add(instant, 0);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1024,
+    "precode": "instant = iGregorianChronology.year().add(instant, -1);",
+    "aftercode": "instant = iGregorianChronology.year().add(instant, 0);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1013,
+    "precode": "if (instant < iCutover) {",
+    "aftercode": "if (instant == iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1032,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant == iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1015,
+    "precode": "if (instant + iGapDuration < iCutover) {",
+    "aftercode": "if (instant + iGapDuration == iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1034,
+    "precode": "if (instant - iGapDuration >= iCutover) {",
+    "aftercode": "if (instant - iGapDuration == iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1018,
+    "precode": "if (wyear <= 0) {",
+    "aftercode": "if (wyear == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1023,
+    "precode": "if (year <= 0) {",
+    "aftercode": "if (year == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/org/joda/time/chrono/GJChronology.java",
+    "line": 1011,
+    "precode": "if (instant >= iCutover) {",
+    "aftercode": "if (instant == iCutover) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.49,
+    "dublicate": false
+  }
+]

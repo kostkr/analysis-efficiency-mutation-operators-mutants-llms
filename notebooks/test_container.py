@@ -92,6 +92,53 @@ class _RetryCheckoutDefects4J(Defects4J):
         return "", "", 0
 
 
+class _RetryProfileDefects4J(Defects4J):
+    def __init__(self) -> None:
+        super().__init__(container="fake", workspace="/workspace")
+        self.exec_calls: list[str] = []
+        self.reset_calls: list[tuple[str, int]] = []
+        self.test_runs = 0
+
+    def exec(self, bash_cmd: str, timeout: int | None = None):
+        self.exec_calls.append(bash_cmd)
+        if "defects4j test -r" in bash_cmd:
+            self.test_runs += 1
+            if self.test_runs == 1:
+                return "Running ant (compile.tests)\nFAIL", "temporary failure", 1
+            return "Failing tests: 0\n", "", 0
+        if "cat /tmp/checkout/all_tests" in bash_cmd:
+            return "testA(pkg.SampleTest)\n", "", 0
+        if "cat /tmp/checkout/failing_tests" in bash_cmd:
+            return "", "", 0
+        if "defects4j export -p tests.relevant" in bash_cmd:
+            return "pkg.SampleTest\n", "", 0
+        return "", "", 0
+
+    def reset_checkout(self, container_path: str, timeout: int = 60) -> None:
+        self.reset_calls.append((container_path, timeout))
+
+
+class _WorkspaceResetDefects4J(Defects4J):
+    def __init__(self, *, reset_ok: bool) -> None:
+        super().__init__(container="fake", workspace="/workspace")
+        self.reset_ok = reset_ok
+        self.exec_calls: list[str] = []
+
+    def exec(self, bash_cmd: str, timeout: int | None = None):
+        self.exec_calls.append(bash_cmd)
+        if "kill_processes_under_path" in bash_cmd:
+            return "", "", 0
+        if "git reset --hard -q HEAD" in bash_cmd and "git clean -ffdxq" in bash_cmd:
+            if self.reset_ok:
+                return "", "", 0
+            return "", "git reset failed", 1
+        if "defects4j checkout -p" in bash_cmd:
+            return "", "", 0
+        if "tar -C" in bash_cmd:
+            return "", "", 0
+        return "", "", 0
+
+
 class ContainerParsingTest(unittest.TestCase):
     def test_parse_failing_tests_output_accepts_both_defects4j_formats(self) -> None:
         raw = """
@@ -341,6 +388,36 @@ class ContainerTempIsolationTest(unittest.TestCase):
 
         cmd = next(cmd for cmd, _ in d4j.exec_calls if "defects4j test -r" in cmd)
         self.assertIn("/tmp/defect4j-copilot-tmp/tmp_checkout", cmd)
+
+    def test_relevant_test_profile_retries_and_cleans_checkout(self) -> None:
+        d4j = _RetryProfileDefects4J()
+
+        profile = d4j.relevant_test_profile("/tmp/checkout", timeout=60)
+
+        self.assertEqual(d4j.test_runs, 2)
+        self.assertEqual(profile["all_tests"], ["pkg.SampleTest::testA"])
+        self.assertEqual(profile["failing_tests"], [])
+        self.assertEqual(d4j.reset_calls, [("/tmp/checkout", 60), ("/tmp/checkout", 60)])
+
+    def test_reset_workspace_prefers_fast_git_reset(self) -> None:
+        d4j = _WorkspaceResetDefects4J(reset_ok=True)
+        pool = d4j.parallel_checkouts("JacksonDatabind", 24, "/workspace", 1)
+        checkout = type("Checkout", (), {"container_path": "/tmp/worker", "worker_id": 1})()
+
+        pool.reset_workspace(checkout)
+
+        self.assertTrue(any("git reset --hard -q HEAD" in cmd for cmd in d4j.exec_calls))
+        self.assertFalse(any("tar -C" in cmd for cmd in d4j.exec_calls))
+
+    def test_reset_workspace_falls_back_to_base_copy_when_fast_reset_fails(self) -> None:
+        d4j = _WorkspaceResetDefects4J(reset_ok=False)
+        pool = d4j.parallel_checkouts("JacksonDatabind", 24, "/workspace", 1)
+        checkout = type("Checkout", (), {"container_path": "/tmp/worker", "worker_id": 1})()
+
+        pool.reset_workspace(checkout)
+
+        self.assertTrue(any("git reset --hard -q HEAD" in cmd for cmd in d4j.exec_calls))
+        self.assertTrue(any("tar -C" in cmd for cmd in d4j.exec_calls))
 
     def test_checkout_retries_on_clean_path(self) -> None:
         d4j = _RetryCheckoutDefects4J()

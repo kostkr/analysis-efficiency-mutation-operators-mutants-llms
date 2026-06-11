@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1472,
+    "precode": "if (t == JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {",
+    "aftercode": "if (t == JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY && t == JsonToken.END_OBJECT) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1472,
+    "precode": "if (t == JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {",
+    "aftercode": "if (t == JsonToken.VALUE_NULL && t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1472,
+    "precode": "if (t == JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {",
+    "aftercode": "if (t == JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY || t != JsonToken.END_OBJECT) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1472,
+    "precode": "if (t == JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {",
+    "aftercode": "if (t != JsonToken.VALUE_NULL || t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1473,
+    "precode": "result = NullNode.instance;",
+    "aftercode": "result = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1475,
+    "precode": "DeserializationContext ctxt = createDeserializationContext(jp, _config);",
+    "aftercode": "DeserializationContext ctxt = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1476,
+    "precode": "JsonDeserializer<Object> deser = _findTreeDeserializer(ctxt);",
+    "aftercode": "JsonDeserializer<Object> deser = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1477,
+    "precode": "if (_unwrapRoot) {",
+    "aftercode": "if (!_unwrapRoot) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1478,
+    "precode": "result = (JsonNode) _unwrapAndDeserialize(jp, ctxt, JSON_NODE_TYPE, deser);",
+    "aftercode": "result = (JsonNode) deser.deserialize(jp, ctxt);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1480,
+    "precode": "result = (JsonNode) deser.deserialize(jp, ctxt);",
+    "aftercode": "result = (JsonNode) _unwrapAndDeserialize(jp, ctxt, JSON_NODE_TYPE, deser);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1480,
+    "precode": "result = (JsonNode) deser.deserialize(jp, ctxt);",
+    "aftercode": "result = (JsonNode) deser.deserialize(ctxt, jp);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1484,
+    "precode": "jp.clearCurrentToken();",
+    "aftercode": "// jp.clearCurrentToken();",
+    "rule": "Empty Line Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1484,
+    "precode": "jp.clearCurrentToken();",
+    "aftercode": "jp.nextToken();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1485,
+    "precode": "return result;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1471,
+    "precode": "JsonToken t = _initForReading(jp);",
+    "aftercode": "JsonToken t = JsonToken.START_OBJECT;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1471,
+    "precode": "JsonToken t = _initForReading(jp);",
+    "aftercode": "JsonToken t = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1476,
+    "precode": "JsonDeserializer<Object> deser = _findTreeDeserializer(ctxt);",
+    "aftercode": "JsonDeserializer<Object> deser = _findTreeDeserializer(null);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1475,
+    "precode": "DeserializationContext ctxt = createDeserializationContext(jp, _config);",
+    "aftercode": "DeserializationContext ctxt = createDeserializationContext(null, _config);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1475,
+    "precode": "DeserializationContext ctxt = createDeserializationContext(jp, _config);",
+    "aftercode": "DeserializationContext ctxt = createDeserializationContext(jp, null);",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.55,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1580,
+    "precode": "JsonDeserializer<Object> deser = _rootDeserializers.get(JSON_NODE_TYPE);",
+    "aftercode": "JsonDeserializer<Object> deser = _rootDeserializers.get(OTHER_TYPE);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1581,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1583,
+    "precode": "deser = ctxt.findRootValueDeserializer(JSON_NODE_TYPE);",
+    "aftercode": "deser = ctxt.findRootValueDeserializer(OTHER_TYPE);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1584,
+    "precode": "if (deser == null) { // can this happen?",
+    "aftercode": "if (deser != null) { // can this happen?",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1585,
+    "precode": "throw new JsonMappingException(\"Can not find a deserializer for type \"+JSON_NODE_TYPE);",
+    "aftercode": "throw new JsonMappingException(\"Can not find a deserializer for type \"+OTHER_TYPE);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1587,
+    "precode": "_rootDeserializers.put(JSON_NODE_TYPE, deser);",
+    "aftercode": "_rootDeserializers.put(OTHER_TYPE, deser);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1587,
+    "precode": "_rootDeserializers.put(JSON_NODE_TYPE, deser);",
+    "aftercode": "_rootDeserializers.put(JSON_NODE_TYPE, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1580,
+    "precode": "JsonDeserializer<Object> deser = _rootDeserializers.get(JSON_NODE_TYPE);",
+    "aftercode": "JsonDeserializer<Object> deser = _rootDeserializers.get(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1583,
+    "precode": "deser = ctxt.findRootValueDeserializer(JSON_NODE_TYPE);",
+    "aftercode": "deser = ctxt.findRootValueDeserializer(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1585,
+    "precode": "throw new JsonMappingException(\"Can not find a deserializer for type \"+JSON_NODE_TYPE);",
+    "aftercode": "throw new JsonMappingException(\"Can not find a deserializer for type \"+null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1585,
+    "precode": "throw new JsonMappingException(\"Can not find a deserializer for type \"+JSON_NODE_TYPE);",
+    "aftercode": "return null;",
+    "rule": "Exception Removal",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1589,
+    "precode": "return deser;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1589,
+    "precode": "return deser;",
+    "aftercode": "return _rootDeserializers.get(JSON_NODE_TYPE);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+    "line": 1583,
+    "precode": "deser = ctxt.findRootValueDeserializer(JSON_NODE_TYPE);",
+    "aftercode": "deser = deser;",
+    "rule": "Assignment Removal",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  }
+]

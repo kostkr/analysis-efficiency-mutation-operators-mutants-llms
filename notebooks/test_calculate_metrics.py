@@ -3,6 +3,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -603,6 +604,61 @@ class CalculateMetricsTest(unittest.TestCase):
             bug = cm.load_bugs(workspace, ())[0]
 
         self.assertEqual(bug.input_mutant_count, 3)
+
+
+class LLMGeneratorTimeoutTest(unittest.TestCase):
+    class _FakeStreamResponse:
+        def __init__(self, lines: list[bytes]) -> None:
+            self._lines = list(lines)
+            self.closed = False
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            self.closed = True
+            return False
+
+        def readline(self) -> bytes:
+            if self._lines:
+                return self._lines.pop(0)
+            return b""
+
+    def test_streaming_generation_respects_total_timeout(self) -> None:
+        job = GeneratorJob(
+            project="BUG",
+            bug_id=1,
+            container_path="/tmp/BUG_1_f",
+            host_path="",
+            filepath="Example.java",
+            class_fqn="Example",
+            method_name="example",
+            method_source="public int example() {\n    return 1;\n}",
+            method_start=10,
+            method_end=12,
+            changed_lines=[11],
+        )
+        generator = LLMGenerator(LLMConfig(model="demo", timeout_s=1))
+        response = self._FakeStreamResponse(
+            [
+                b'{"response":"[","done":false}\n',
+                b'{"response":"{\\"line\\":11,\\"precode\\":\\"return 1;\\",\\"aftercode\\":\\"return 2;\\",\\"rule\\":\\"Replace\\"}","done":false}\n',
+            ]
+        )
+
+        monotonic_calls = {"count": 0}
+
+        def fake_monotonic() -> float:
+            monotonic_calls["count"] += 1
+            return 0.0 if monotonic_calls["count"] <= 2 else 2.0
+
+        with patch("defect4j.generators.llm.generator.request.urlopen", return_value=response), \
+             patch("defect4j.generators.llm.generator.time.monotonic", side_effect=fake_monotonic):
+            with self.assertRaises(RuntimeError) as ctx:
+                generator.generate_batch(job, requested=2)
+
+        self.assertIn("LLM generation timed out", str(ctx.exception))
+        self.assertTrue(response.closed)
 
 
 if __name__ == "__main__":

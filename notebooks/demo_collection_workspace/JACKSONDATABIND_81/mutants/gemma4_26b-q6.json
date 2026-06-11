@@ -1,0 +1,1182 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 742,
+    "precode": "JavaType type = baseType;",
+    "aftercode": "JavaType type = null;",
+    "rule": "AssignmentToNull",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 749,
+    "precode": "final Class<?> serClass = (jsonSer == null) ? null : _classIfExplicit(jsonSer.as());",
+    "aftercode": "final Class<?> serClass = (jsonSer != null) ? null : _classIfExplicit(jsonSer.as());",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 751,
+    "precode": "if (type.hasRawClass(serClass)) {",
+    "aftercode": "if (!type.hasRawClass(serClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 754,
+    "precode": "type = type.withStaticTyping();",
+    "aftercode": "type = type;",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 760,
+    "precode": "if (serClass.isAssignableFrom(currRaw)) { // common case",
+    "aftercode": "if (!serClass.isAssignableFrom(currRaw)) { // common case",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 761,
+    "precode": "type = tf.constructGeneralizedType(type, serClass);",
+    "aftercode": "type = tf.constructGeneralizedType(type, type);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 762,
+    "precode": "} else if (currRaw.isAssignableFrom(serClass)) { // specialization, ok as well",
+    "aftercode": "} else if (serClass.isAssignableFrom(currRaw)) { // specialization, ok as well",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 763,
+    "precode": "type = tf.constructSpecializedType(type, serClass);",
+    "aftercode": "type = tf.constructSpecializedType(serClass, type);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 764,
+    "precode": "} else if (_primitiveAndWrapper(currRaw, serClass)) {",
+    "aftercode": "} else if (!_primitiveAndWrapper(currRaw, serClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 766,
+    "precode": "type = type.withStaticTyping();",
+    "aftercode": "type = type.withStaticTyping(null);",
+    "rule": "ArgumentAddition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 768,
+    "precode": "throw new JsonMappingException(null,",
+    "aftercode": "throw new JsonMappingException(type,",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 783,
+    "precode": "if (type.isMapLikeType()) {",
+    "aftercode": "if (!type.isMapLikeType()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 785,
+    "precode": "final Class<?> keyClass = (jsonSer == null) ? null : _classIfExplicit(jsonSer.keyAs());",
+    "aftercode": "final Class<?> keyClass = (jsonSer == null) ? jsonSer.keyAs() : null;",
+    "rule": "TernaryOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 787,
+    "precode": "if (keyType.hasRawClass(keyClass)) {",
+    "aftercode": "if (keyType.hasRawClass(null)) {",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 788,
+    "precode": "keyType = keyType.withStaticTyping();",
+    "aftercode": "keyType = keyType;",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 795,
+    "precode": "if (keyClass.isAssignableFrom(currRaw)) { // common case",
+    "aftercode": "if (currRaw.isAssignableFrom(keyClass)) { // common case",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 796,
+    "precode": "keyType = tf.constructGeneralizedType(keyType, keyClass);",
+    "aftercode": "keyType = tf.constructGeneralizedType(keyClass, keyType);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 797,
+    "precode": "} else if (currRaw.isAssignableFrom(keyClass)) { // specialization, ok as well",
+    "aftercode": "} else if (keyClass.isAssignableFrom(currRaw)) { // specialization, ok as well",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 798,
+    "precode": "keyType = tf.constructSpecializedType(keyType, keyClass);",
+    "aftercode": "keyType = tf.constructSpecializedType(keyClass, keyType);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 799,
+    "precode": "} else if (_primitiveAndWrapper(currRaw, keyClass)) {",
+    "aftercode": "} else if (!_primitiveAndWrapper(currRaw, keyClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 801,
+    "precode": "keyType = keyType.withStaticTyping();",
+    "aftercode": "keyType = keyType.withStaticTyping(keyClass);",
+    "rule": "ArgumentAddition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 803,
+    "precode": "throw new JsonMappingException(null,",
+    "aftercode": "throw new JsonMappingException(keyType,",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 814,
+    "precode": "type = ((MapLikeType) type).withKeyType(keyType);",
+    "aftercode": "type = ((MapLikeType) type).withKeyType(null);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 818,
+    "precode": "JavaType contentType = type.getContentType();",
+    "aftercode": "JavaType contentType = null;",
+    "rule": "AssignmentToNull",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 819,
+    "precode": "if (contentType != null) { // collection[like], map[like], array, reference",
+    "aftercode": "if (contentType == null) { // collection[like], map[like], array, reference",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 821,
+    "precode": "final Class<?> contentClass = (jsonSer == null) ? null : _classIfExplicit(jsonSer.contentAs());",
+    "aftercode": "final Class<?> contentClass = (jsonSer != null) ? null : _classIfExplicit(jsonSer.contentAs());",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 823,
+    "precode": "if (contentType.hasRawClass(contentClass)) {",
+    "aftercode": "if (!contentType.hasRawClass(contentClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 824,
+    "precode": "contentType = contentType.withStaticTyping();",
+    "aftercode": "contentType = contentType;",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 831,
+    "precode": "if (contentClass.isAssignableFrom(currRaw)) { // common case",
+    "aftercode": "if (!contentClass.isAssignableFrom(currRaw)) { // common case",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 832,
+    "precode": "contentType = tf.constructGeneralizedType(contentType, contentClass);",
+    "aftercode": "contentType = tf.constructGeneralizedType(contentClass, contentType);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 833,
+    "precode": "} else if (currRaw.isAssignableFrom(contentClass)) { // specialization, ok as well",
+    "aftercode": "} else if (contentClass.isAssignableFrom(currRaw)) { // specialization, ok as well",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 834,
+    "precode": "contentType = tf.constructSpecializedType(contentType, contentClass);",
+    "aftercode": "contentType = tf.constructSpecializedType(contentClass, contentType);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 835,
+    "precode": "} else if (_primitiveAndWrapper(currRaw, contentClass)) {",
+    "aftercode": "} else if (!_primitiveAndWrapper(currRaw, contentClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 837,
+    "precode": "contentType = contentType.withStaticTyping();",
+    "aftercode": "contentType = contentType.withStaticTyping(contentClass);",
+    "rule": "ArgumentAddition",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 839,
+    "precode": "throw new JsonMappingException(null,",
+    "aftercode": "throw new JsonMappingException(contentType,",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 850,
+    "precode": "type = type.withContentType(contentType);",
+    "aftercode": "type = type.withContentType(null);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 853,
+    "precode": "return type;",
+    "aftercode": "return null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1118,
+    "precode": "JavaType type = baseType;",
+    "aftercode": "JavaType type = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1124,
+    "precode": "final Class<?> valueClass = (jsonDeser == null) ? null : _classIfExplicit(jsonDeser.as());",
+    "aftercode": "final Class<?> valueClass = (jsonDeser != null) ? null : _classIfExplicit(jsonDeser.as());",
+    "rule": "Conditional Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if ((valueClass != null) || !type.hasRawClass(valueClass)",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if ((valueClass != null) && type.hasRawClass(valueClass)",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& _primitiveAndWrapper(type, valueClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1128,
+    "precode": "type = tf.constructSpecializedType(type, valueClass);",
+    "aftercode": "type = tf.constructSpecializedType(valueClass, type);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1130,
+    "precode": "throw new JsonMappingException(null,",
+    "aftercode": "throw new JsonMappingException(\"\",",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1139,
+    "precode": "if (type.isMapLikeType()) {",
+    "aftercode": "if (!type.isMapLikeType()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1141,
+    "precode": "final Class<?> keyClass = (jsonDeser == null) ? null : _classIfExplicit(jsonDeser.keyAs());",
+    "aftercode": "final Class<?> keyClass = (jsonDeser == null) ? _classIfExplicit(jsonDeser.keyAs()) : null;",
+    "rule": "Conditional Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1142,
+    "precode": "if ((keyClass != null)",
+    "aftercode": "if ((keyClass == null)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1143,
+    "precode": "&& !_primitiveAndWrapper(keyType, keyClass)) {",
+    "aftercode": "&& _primitiveAndWrapper(keyType, keyClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1145,
+    "precode": "keyType = tf.constructSpecializedType(keyType, keyClass);",
+    "aftercode": "keyType = tf.constructSpecializedType(keyClass, keyType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1146,
+    "precode": "type = ((MapLikeType) type).withKeyType(keyType);",
+    "aftercode": "type = ((MapLikeType) type).withKeyType(null);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1148,
+    "precode": "throw new JsonMappingException(null,",
+    "aftercode": "throw new RuntimeException(null,",
+    "rule": "Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1155,
+    "precode": "JavaType contentType = type.getContentType();",
+    "aftercode": "JavaType contentType = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1156,
+    "precode": "if (contentType != null) { // collection[like], map[like], array, reference",
+    "aftercode": "if (contentType == null) { // collection[like], map[like], array, reference",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1158,
+    "precode": "final Class<?> contentClass = (jsonDeser == null) ? null : _classIfExplicit(jsonDeser.contentAs());",
+    "aftercode": "final Class<?> contentClass = (jsonDeser != null) ? null : _classIfExplicit(jsonDeser.contentAs());",
+    "rule": "Conditional Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1159,
+    "precode": "if ((contentClass != null)",
+    "aftercode": "if ((contentClass == null)",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1160,
+    "precode": "&& !_primitiveAndWrapper(contentType, contentClass)) {",
+    "aftercode": "&& _primitiveAndWrapper(contentType, contentClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1162,
+    "precode": "contentType = tf.constructSpecializedType(contentType, contentClass);",
+    "aftercode": "contentType = tf.constructSpecializedType(contentClass, contentType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1163,
+    "precode": "type = type.withContentType(contentType);",
+    "aftercode": "type = type.withContentType(null);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1172,
+    "precode": "return type;",
+    "aftercode": "return null;",
+    "rule": "Return Value",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if ((valueClass != null) && type.hasRawClass(valueClass)",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1139,
+    "precode": "if (type.isMapLikeType()) {",
+    "aftercode": "if (type != null && type.isMapLikeType()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1156,
+    "precode": "if (contentType != null) {",
+    "aftercode": "if (contentType != null && contentType.isWritable()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1128,
+    "precode": "type = tf.constructSpecializedType(type, valueClass);",
+    "aftercode": "type = tf.constructSpecializedType(type, null);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1145,
+    "precode": "keyType = tf.constructSpecializedType(keyType, keyClass);",
+    "aftercode": "keyType = tf.constructSpecializedType(keyType, null);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1162,
+    "precode": "contentType = tf.constructSpecializedType(contentType, contentClass);",
+    "aftercode": "contentType = tf.constructSpecializedType(contentType, null);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1142,
+    "precode": "if ((keyClass != null)",
+    "aftercode": "if (keyClass != null",
+    "rule": "Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1159,
+    "precode": "if ((contentClass != null)",
+    "aftercode": "if (contentClass != null",
+    "rule": "Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(type, valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1139,
+    "precode": "if (type.isMapLikeType()) {",
+    "aftercode": "if (type.isMapLikeType())",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1156,
+    "precode": "if (contentType != null) {",
+    "aftercode": "if (contentType != null)",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1124,
+    "precode": "final Class<?> valueClass = (jsonDeser == null) ? null : _classIfExplicit(jsonDeser.as());",
+    "aftercode": "final Class<?> valueClass = (jsonDeser == null) ? _classIfExplicit(jsonDeser.as()) : null;",
+    "rule": "Conditional Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1141,
+    "precode": "final Class<?> keyClass = (jsonDeser == null) ? null : _classIfExplicit(jsonDeser.keyAs());",
+    "aftercode": "final Class<?> keyClass = (jsonDeser == null) ? _classIfExplicit(jsonDeser.keyAs()) : null;",
+    "rule": "Conditional Operator",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1158,
+    "precode": "final Class<?> contentClass = (jsonDeser == null) ? null : _classIfExplicit(jsonDeser.contentAs());",
+    "aftercode": "final Class<?> contentClass = (jsonDeser == null) ? _classIfExplicit(jsonDeser.contentAs()) : null;",
+    "rule": "Conditional Operator",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1142,
+    "precode": "if ((keyClass != null)",
+    "aftercode": "if (keyClass != null)",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1159,
+    "precode": "if ((contentClass != null)",
+    "aftercode": "if (contentClass != null)",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(type, valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1143,
+    "precode": "&& !_primitiveAndWrapper(keyType, keyClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(keyType, keyClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1160,
+    "precode": "&& !_primitiveAndWrapper(contentType, contentClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(contentType, contentClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(type, valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1143,
+    "precode": "&& !_primitiveAndWrapper(keyType, keyClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(keyType, keyClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1160,
+    "precode": "&& !_primitiveAndWrapper(contentType, contentClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(contentType, contentClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(type, valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1143,
+    "precode": "&& !_primitiveAndWrapper(keyType, keyClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(keyType, keyClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1160,
+    "precode": "&& !_primitiveAndWrapper(contentType, contentClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(contentType, contentClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(type, valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1143,
+    "precode": "&& !_primitiveAndWrapper(keyType, keyClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(keyType, keyClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1160,
+    "precode": "&& !_primitiveAndWrapper(contentType, contentClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(contentType, contentClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1125,
+    "precode": "if ((valueClass != null) && !type.hasRawClass(valueClass)",
+    "aftercode": "if (valueClass != null && !type.hasRawClass(valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1126,
+    "precode": "&& !_primitiveAndWrapper(type, valueClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(type, valueClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1143,
+    "precode": "&& !_primitiveAndWrapper(keyType, keyClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(keyType, keyClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1160,
+    "precode": "&& !_primitiveAndWrapper(contentType, contentClass)) {",
+    "aftercode": "&& !_primitiveAndWrapper(contentType, contentClass))",
+    "rule": "Redundant Parentheses",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1469,
+    "precode": "return baseType == ClassUtil.primitiveType(refinement);",
+    "aftercode": "return baseType != ClassUtil.primitiveType(refinement);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1472,
+    "precode": "return refinement == ClassUtil.primitiveType(baseType);",
+    "aftercode": "return refinement != ClassUtil.primitiveType(baseType);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1468,
+    "precode": "if (baseType.isPrimitive()) {",
+    "aftercode": "if (!baseType.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1471,
+    "precode": "if (refinement.isPrimitive()) {",
+    "aftercode": "if (!refinement.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1474,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1469,
+    "precode": "return baseType == ClassUtil.primitiveType(refinement);",
+    "aftercode": "return baseType.equals(ClassUtil.primitiveType(refinement));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1472,
+    "precode": "return refinement == ClassUtil.primitiveType(baseType);",
+    "aftercode": "return refinement.equals(ClassUtil.primitiveType(baseType));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1468,
+    "precode": "if (baseType.isPrimitive()) {",
+    "aftercode": "if (baseType == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1471,
+    "precode": "if (refinement.isPrimitive()) {",
+    "aftercode": "if (refinement == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1474,
+    "precode": "return false;",
+    "aftercode": "return baseType == refinement;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1479,
+    "precode": "if (baseType.isPrimitive()) {",
+    "aftercode": "if (!baseType.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1480,
+    "precode": "return baseType.hasRawClass(ClassUtil.primitiveType(refinement));",
+    "aftercode": "return !baseType.hasRawClass(ClassUtil.primitiveType(refinement));",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1482,
+    "precode": "if (refinement.isPrimitive()) {",
+    "aftercode": "if (!refinement.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1483,
+    "precode": "return refinement == ClassUtil.primitiveType(baseType.getRawClass());",
+    "aftercode": "return refinement != ClassUtil.primitiveType(baseType.getRawClass());",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1483,
+    "precode": "return refinement == ClassUtil.primitiveType(baseType.getRawClass());",
+    "aftercode": "return refinement.equals(ClassUtil.primitiveType(baseType.getRawClass()));",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1485,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1480,
+    "precode": "return baseType.hasRawClass(ClassUtil.primitiveType(refinement));",
+    "aftercode": "return baseType.hasRawClass(refinement);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1483,
+    "precode": "return refinement == ClassUtil.primitiveType(baseType.getRawClass());",
+    "aftercode": "return refinement == baseType.getRawClass();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1479,
+    "precode": "if (baseType.isPrimitive()) {",
+    "aftercode": "if (baseType != null && baseType.isPrimitive()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+    "line": 1483,
+    "precode": "return refinement == ClassUtil.primitiveType(baseType.getRawClass());",
+    "aftercode": "return refinement == ClassUtil.primitiveType(refinement);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.31,
+    "dublicate": false
+  }
+]

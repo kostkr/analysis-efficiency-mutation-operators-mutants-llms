@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 883,
+    "precode": "final long instantAdjusted = instantLocal - offsetLocal;",
+    "aftercode": "final long instantAdjusted = instantLocal + offsetLocal;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 886,
+    "precode": "if (offsetLocal != offsetAdjusted) {",
+    "aftercode": "if (offsetLocal == offsetAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 889,
+    "precode": "if ((offsetLocal - offsetAdjusted) < 0) {",
+    "aftercode": "if ((offsetLocal - offsetAdjusted) <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 893,
+    "precode": "long nextLocal = nextTransition(instantAdjusted);",
+    "aftercode": "long nextLocal = nextTransition(instantLocal);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 894,
+    "precode": "long nextAdjusted = nextTransition(instantLocal - offsetAdjusted);",
+    "aftercode": "long nextAdjusted = nextTransition(instantLocal + offsetAdjusted);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 895,
+    "precode": "if (nextLocal != nextAdjusted) {",
+    "aftercode": "if (nextLocal == nextAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 899,
+    "precode": "} else if (offsetLocal > 0) {",
+    "aftercode": "} else if (offsetLocal >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 901,
+    "precode": "if (prev < instantAdjusted) {",
+    "aftercode": "if (prev <= instantAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 902,
+    "precode": "int offsetPrev = getOffset(prev);",
+    "aftercode": "int offsetPrev = getOffset(instantAdjusted);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 903,
+    "precode": "int diff = offsetPrev - offsetLocal;",
+    "aftercode": "int diff = offsetLocal - offsetPrev;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 904,
+    "precode": "if (instantAdjusted - prev <= diff) {",
+    "aftercode": "if (instantAdjusted - prev < diff) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 905,
+    "precode": "return offsetPrev;",
+    "aftercode": "return offsetLocal;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 909,
+    "precode": "return offsetAdjusted;",
+    "aftercode": "return offsetLocal;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 881,
+    "precode": "final int offsetLocal = getOffset(instantLocal);",
+    "aftercode": "final int offsetLocal = getOffset(instantLocal - 1);",
+    "rule": "Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 884,
+    "precode": "final int offsetAdjusted = getOffset(instantAdjusted);",
+    "aftercode": "final int offsetAdjusted = getOffset(instantAdjusted + 1);",
+    "rule": "Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 883,
+    "precode": "final long instantAdjusted = instantLocal - offsetLocal;",
+    "aftercode": "final long instantAdjusted = instantLocal;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 889,
+    "precode": "if ((offsetLocal - offsetAdjusted) < 0) {",
+    "aftercode": "if ((offsetLocal - offsetAdjusted) > 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 895,
+    "precode": "if (nextLocal != nextAdjusted) {",
+    "aftercode": "if (nextLocal < nextAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 901,
+    "precode": "if (prev < instantAdjusted) {",
+    "aftercode": "if (prev > instantAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 904,
+    "precode": "if (instantAdjusted - prev <= diff) {",
+    "aftercode": "if (instantAdjusted - prev >= diff) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 899,
+    "precode": "} else if (offsetLocal > 0) {",
+    "aftercode": "} else if (offsetLocal < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 902,
+    "precode": "int offsetPrev = getOffset(prev);",
+    "aftercode": "int offsetPrev = getOffset(prev + 1);",
+    "rule": "Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 903,
+    "precode": "int diff = offsetPrev - offsetLocal;",
+    "aftercode": "int diff = offsetPrev + offsetLocal;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 883,
+    "precode": "final long instantAdjusted = instantLocal - offsetLocal;",
+    "aftercode": "final long instantAdjusted = instantLocal * offsetLocal;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 889,
+    "precode": "if ((offsetLocal - offsetAdjusted) < 0) {",
+    "aftercode": "if ((offsetLocal + offsetAdjusted) < 0) {",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 894,
+    "precode": "long nextAdjusted = nextTransition(instantLocal - offsetAdjusted);",
+    "aftercode": "long nextAdjusted = nextTransition(instantLocal);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 901,
+    "precode": "if (prev < instantAdjusted) {",
+    "aftercode": "if (prev != instantAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 904,
+    "precode": "if (instantAdjusted - prev <= diff) {",
+    "aftercode": "if (instantAdjusted - prev >= diff) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 905,
+    "precode": "return offsetPrev;",
+    "aftercode": "return 0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 909,
+    "precode": "return offsetAdjusted;",
+    "aftercode": "return 0;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 886,
+    "precode": "if (offsetLocal != offsetAdjusted) {",
+    "aftercode": "if (offsetLocal <= offsetAdjusted) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 899,
+    "precode": "} else if (offsetLocal > 0) {",
+    "aftercode": "} else if (offsetLocal == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  }
+]

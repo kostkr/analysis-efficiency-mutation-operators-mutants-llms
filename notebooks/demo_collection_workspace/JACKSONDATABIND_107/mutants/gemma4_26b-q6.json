@@ -1,0 +1,572 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 149,
+    "precode": "JsonDeserializer<Object> deser = _deserializers.get(typeId);",
+    "aftercode": "JsonDeserializer<Object> deser = _deserializers.remove(typeId);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 150,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 156,
+    "precode": "JavaType type = _idResolver.typeFromId(ctxt, typeId);",
+    "aftercode": "JavaType type = _idResolver.typeFromId(ctxt, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 157,
+    "precode": "if (type == null) {",
+    "aftercode": "if (type != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 159,
+    "precode": "deser = _findDefaultImplDeserializer(ctxt);",
+    "aftercode": "deser = _findDefaultImplDeserializer(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 160,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 162,
+    "precode": "JavaType actual = _handleUnknownTypeId(ctxt, typeId);",
+    "aftercode": "JavaType actual = _handleUnknownTypeId(null, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 163,
+    "precode": "if (actual == null) { // what should this be taken to mean?",
+    "aftercode": "if (actual != null) { // what should this be taken to mean?",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 165,
+    "precode": "return NullifyingDeserializer.instance;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 168,
+    "precode": "deser = ctxt.findContextualValueDeserializer(actual, _property);",
+    "aftercode": "deser = ctxt.findContextualValueDeserializer(null, _property);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 179,
+    "precode": "if ((_baseType != null)",
+    "aftercode": "if (_baseType == null)",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 180,
+    "precode": "&& _baseType.getClass() == type.getClass()) {",
+    "aftercode": "&& _baseType.getClass() != type.getClass()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 190,
+    "precode": "if (!type.hasGenericTypes()) {",
+    "aftercode": "if (type.hasGenericTypes()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 191,
+    "precode": "type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass());",
+    "aftercode": "type = ctxt.getTypeFactory().constructSpecializedType(null, type.getRawClass());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 194,
+    "precode": "deser = ctxt.findContextualValueDeserializer(type, _property);",
+    "aftercode": "deser = ctxt.findContextualValueDeserializer(null, _property);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 196,
+    "precode": "_deserializers.put(typeId, deser);",
+    "aftercode": "_deserializers.put(null, deser);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 198,
+    "precode": "return deser;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 150,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser == null && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 157,
+    "precode": "if (type == null) {",
+    "aftercode": "if (type == null || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 160,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser == null || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 163,
+    "precode": "if (actual == null) { // what should this be taken to mean?",
+    "aftercode": "if (actual == null || true) { // what should this be taken to mean?",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 179,
+    "precode": "if ((_baseType != null)",
+    "aftercode": "if ((_baseType != null) && true)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 180,
+    "precode": "&& _baseType.getClass() == type.getClass()) {",
+    "aftercode": "&& _baseType.getClass() == type.getClass() && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 190,
+    "precode": "if (!type.hasGenericTypes()) {",
+    "aftercode": "if (!type.hasGenericTypes() && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 149,
+    "precode": "JsonDeserializer<Object> deser = _deserializers.get(typeId);",
+    "aftercode": "JsonDeserializer<Object> deser = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 156,
+    "precode": "JavaType type = _idResolver.typeFromId(ctxt, typeId);",
+    "aftercode": "JavaType type = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 162,
+    "precode": "JavaType actual = _handleUnknownTypeId(ctxt, typeId);",
+    "aftercode": "JavaType actual = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 168,
+    "precode": "deser = ctxt.findContextualValueDeserializer(actual, _property);",
+    "aftercode": "deser = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 191,
+    "precode": "type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass());",
+    "aftercode": "type = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 194,
+    "precode": "deser = ctxt.findContextualValueDeserializer(type, _property);",
+    "aftercode": "deser = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 196,
+    "precode": "_deserializers.put(typeId, deser);",
+    "aftercode": "// _deserializers.put(typeId, deser);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 150,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser == null) return null;",
+    "rule": "Statement Insertion",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 157,
+    "precode": "if (type == null) {",
+    "aftercode": "if (type == null) return null;",
+    "rule": "Statement Insertion",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 160,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser == null) return null;",
+    "rule": "Statement Insertion",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 179,
+    "precode": "if ((_baseType != null)",
+    "aftercode": "if (true && (_baseType != null)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 180,
+    "precode": "&& _baseType.getClass() == type.getClass()) {",
+    "aftercode": "&& _baseType.getClass() != type.getClass()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 190,
+    "precode": "if (!type.hasGenericTypes()) {",
+    "aftercode": "if (type.hasGenericTypes()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 191,
+    "precode": "type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass());",
+    "aftercode": "type = ctxt.getTypeFactory().constructSpecializedType(type, type.getRawClass());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 196,
+    "precode": "_deserializers.put(typeId, deser);",
+    "aftercode": "_deserializers.put(typeId, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 149,
+    "precode": "JsonDeserializer<Object> deser = _deserializers.get(typeId);",
+    "aftercode": "JsonDeserializer<Object> deser = _deserializers.get(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 156,
+    "precode": "JavaType type = _idResolver.typeFromId(ctxt, typeId);",
+    "aftercode": "JavaType type = _idResolver.typeFromId(null, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 159,
+    "precode": "deser = _findDefaultImplDeserializer(ctxt);",
+    "aftercode": "deser = _findDefaultImplDeserializer(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 162,
+    "precode": "JavaType actual = _handleUnknownTypeId(ctxt, typeId);",
+    "aftercode": "JavaType actual = _handleUnknownTypeId(typeId, ctxt);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 168,
+    "precode": "deser = ctxt.findContextualValueDeserializer(actual, _property);",
+    "aftercode": "deser = ctxt.findContextualValueDeserializer(_property, actual);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 191,
+    "precode": "type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass());",
+    "aftercode": "type = ctxt.getTypeFactory().constructSpecializedType(type.getRawClass(), _baseType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 194,
+    "precode": "deser = ctxt.findContextualValueDeserializer(type, _property);",
+    "aftercode": "deser = ctxt.findContextualValueDeserializer(_property, type);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 150,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser == null) { } else {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 157,
+    "precode": "if (type == null) {",
+    "aftercode": "if (type == null) { } else {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 160,
+    "precode": "if (deser == null) {",
+    "aftercode": "if (deser == null) { } else {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 163,
+    "precode": "if (actual == null) { // what should this be taken to mean?",
+    "aftercode": "if (actual == null) { } else {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 179,
+    "precode": "if ((_baseType != null)",
+    "aftercode": "if ((_baseType != null) || true)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 190,
+    "precode": "if (!type.hasGenericTypes()) {",
+    "aftercode": "if (!type.hasGenericTypes() || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 196,
+    "precode": "_deserializers.put(typeId, deser);",
+    "aftercode": "_deserializers.put(typeId, deser); //",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 149,
+    "precode": "JsonDeserializer<Object> deser = _deserializers.get(typeId);",
+    "aftercode": "JsonDeserializer<Object> deser = _deserializers.get(typeId) == null ? null : _deserializers.get(typeId);",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 156,
+    "precode": "JavaType type = _idResolver.typeFromId(ctxt, typeId);",
+    "aftercode": "JavaType type = _idResolver.typeFromId(ctxt, typeId) == null ? null : _idResolver.typeFromId(ctxt, typeId);",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 162,
+    "precode": "JavaType actual = _handleUnknownTypeId(ctxt, typeId);",
+    "aftercode": "JavaType actual = _handleUnknownTypeId(ctxt, typeId) == null ? null : _handleUnknownTypeId(ctxt, typeId);",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java",
+    "line": 191,
+    "precode": "type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass());",
+    "aftercode": "type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass()); //",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 702,
+    "precode": "if (instant == null) {",
+    "aftercode": "if (instant != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 706,
+    "precode": "long instantMillis = instant.getMillis();",
+    "aftercode": "long instantMillis = instant.getMillis() + 1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 707,
+    "precode": "Chronology chrono = instant.getChronology();",
+    "aftercode": "Chronology chrono = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 708,
+    "precode": "int defaultYear = DateTimeUtils.getChronology(chrono).year().get(instantMillis);",
+    "aftercode": "int defaultYear = DateTimeUtils.getChronology(chrono).year().get(instantMillis) - 1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 709,
+    "precode": "long instantLocal = instantMillis + chrono.getZone().getOffset(instantMillis);",
+    "aftercode": "long instantLocal = instantMillis - chrono.getZone().getOffset(instantMillis);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 710,
+    "precode": "chrono = selectChronology(chrono);",
+    "aftercode": "chrono = chrono;",
+    "rule": "Remove Call",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 712,
+    "precode": "DateTimeParserBucket bucket = new DateTimeParserBucket(",
+    "aftercode": "DateTimeParserBucket bucket = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 714,
+    "precode": "int newPos = parser.parseInto(bucket, text, position);",
+    "aftercode": "int newPos = position;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 715,
+    "precode": "instant.setMillis(bucket.computeMillis(false, text));",
+    "aftercode": "instant.setMillis(bucket.computeMillis(true, text));",
+    "rule": "Argument Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 716,
+    "precode": "if (iOffsetParsed && bucket.getOffsetInteger() != null) {",
+    "aftercode": "if (iOffsetParsed || bucket.getOffsetInteger() != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 716,
+    "precode": "if (iOffsetParsed && bucket.getOffsetInteger() != null) {",
+    "aftercode": "if (iOffsetParsed && bucket.getOffsetInteger() == null) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 717,
+    "precode": "int parsedOffset = bucket.getOffsetInteger();",
+    "aftercode": "int parsedOffset = 0;",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 718,
+    "precode": "DateTimeZone parsedZone = DateTimeZone.forOffsetMillis(parsedOffset);",
+    "aftercode": "DateTimeZone parsedZone = DateTimeZone.UTC;",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 719,
+    "precode": "chrono = chrono.withZone(parsedZone);",
+    "aftercode": "chrono = chrono;",
+    "rule": "Remove Call",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 720,
+    "precode": "} else if (bucket.getZone() != null) {",
+    "aftercode": "} else if (bucket.getZone() == null) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 721,
+    "precode": "chrono = chrono.withZone(bucket.getZone());",
+    "aftercode": "chrono = chrono;",
+    "rule": "Remove Call",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 723,
+    "precode": "instant.setChronology(chrono);",
+    "aftercode": "instant.setChronology(null);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 724,
+    "precode": "if (iZone != null) {",
+    "aftercode": "if (iZone == null) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 725,
+    "precode": "instant.setZone(iZone);",
+    "aftercode": "instant.setZone(null);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 727,
+    "precode": "return newPos;",
+    "aftercode": "return -1;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 708,
+    "precode": "int defaultYear = DateTimeUtils.getChronology(chrono).year().get(instantMillis);",
+    "aftercode": "int defaultYear = 1970;",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 713,
+    "precode": "instantLocal, chrono, iLocale, iPivotYear, defaultYear);",
+    "aftercode": "instantLocal, chrono, null, iPivotYear, defaultYear);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 714,
+    "precode": "int newPos = parser.parseInto(bucket, text, position);",
+    "aftercode": "int newPos = parser.parseInto(null, text, position);",
+    "rule": "Argument Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 715,
+    "precode": "instant.setMillis(bucket.computeMillis(false, text));",
+    "aftercode": "instant.setMillis(0L);",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 723,
+    "precode": "instant.setChronology(chrono);",
+    "aftercode": "// instant.setChronology(chrono);",
+    "rule": "Remove Call",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 725,
+    "precode": "instant.setZone(iZone);",
+    "aftercode": "// instant.setZone(iZone);",
+    "rule": "Remove Call",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 703,
+    "precode": "throw new IllegalArgumentException(\"Instant must not be null\");",
+    "aftercode": "throw new NullPointerException(\"Instant must not be null\");",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 709,
+    "precode": "long instantLocal = instantMillis + chrono.getZone().getOffset(instantMillis);",
+    "aftercode": "long instantLocal = instantMillis * 2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/format/DateTimeFormatter.java",
+    "line": 720,
+    "precode": "} else if (bucket.getZone() != null) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  }
+]

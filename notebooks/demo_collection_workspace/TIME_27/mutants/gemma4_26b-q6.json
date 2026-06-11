@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 795,
+    "precode": "if (notPrinter && notParser) {",
+    "aftercode": "if (notPrinter || notParser) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 798,
+    "precode": "int size = elementPairs.size();",
+    "aftercode": "int size = 0;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 799,
+    "precode": "if (size >= 2 && elementPairs.get(0) instanceof Separator) {",
+    "aftercode": "if (size > 2 && elementPairs.get(0) instanceof Separator) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 799,
+    "precode": "if (size >= 2 && elementPairs.get(0) instanceof Separator) {",
+    "aftercode": "if (size >= 2 || elementPairs.get(0) instanceof Separator) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 801,
+    "precode": "if (sep.iAfterParser == null && sep.iAfterPrinter == null) {",
+    "aftercode": "if (sep.iAfterParser == null || sep.iAfterPrinter == null) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 802,
+    "precode": "PeriodFormatter f = toFormatter(elementPairs.subList(2, size), notPrinter, notParser);",
+    "aftercode": "PeriodFormatter f = toFormatter(elementPairs.subList(1, size), notPrinter, notParser);",
+    "rule": "Index Offset Error",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 802,
+    "precode": "PeriodFormatter f = toFormatter(elementPairs.subList(2, size), notPrinter, notParser);",
+    "aftercode": "PeriodFormatter f = toFormatter(elementPairs.subList(2, size), true, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 803,
+    "precode": "sep = sep.finish(f.getPrinter(), f.getParser());",
+    "aftercode": "sep = sep.finish(f.getPrinter(), null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 803,
+    "precode": "sep = sep.finish(f.getPrinter(), f.getParser());",
+    "aftercode": "sep = sep.finish(null, f.getParser());",
+    "rule": "Argument Nullification",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 804,
+    "precode": "return new PeriodFormatter(sep, sep);",
+    "aftercode": "return new PeriodFormatter(sep, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 804,
+    "precode": "return new PeriodFormatter(sep, sep);",
+    "aftercode": "return new PeriodFormatter(null, sep);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 807,
+    "precode": "Object[] comp = createComposite(elementPairs);",
+    "aftercode": "Object[] comp = createComposite(new ArrayList<>());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 808,
+    "precode": "if (notPrinter) {",
+    "aftercode": "if (!notPrinter) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 809,
+    "precode": "return new PeriodFormatter(null, (PeriodParser) comp[1]);",
+    "aftercode": "return new PeriodFormatter(null, (PeriodParser) comp[0]);",
+    "rule": "Array Index Error",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 810,
+    "precode": "} else if (notParser) {",
+    "aftercode": "} else if (!notParser) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 811,
+    "precode": "return new PeriodFormatter((PeriodPrinter) comp[0], null);",
+    "aftercode": "return new PeriodFormatter((PeriodPrinter) comp[1], null);",
+    "rule": "Array Index Error",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 813,
+    "precode": "return new PeriodFormatter((PeriodPrinter) comp[0], (PeriodParser) comp[1]);",
+    "aftercode": "return new PeriodFormatter((PeriodPrinter) comp[1], (PeriodParser) comp[0]);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 813,
+    "precode": "return new PeriodFormatter((PeriodPrinter) comp[0], (PeriodParser) comp[1]);",
+    "aftercode": "return new PeriodFormatter((PeriodPrinter) comp[0], null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 813,
+    "precode": "return new PeriodFormatter((PeriodPrinter) comp[0], (PeriodParser) comp[1]);",
+    "aftercode": "return new PeriodFormatter(null, (PeriodParser) comp[1]);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 799,
+    "precode": "if (size >= 2 && elementPairs.get(0) instanceof Separator) {",
+    "aftercode": "if (size >= 2 && elementPairs.get(0) != null) {",
+    "rule": "Type Check Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 801,
+    "precode": "if (sep.iAfterParser == null && sep.iAfterPrinter == null) {",
+    "aftercode": "if (sep.iAfterParser != null && sep.iAfterPrinter != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/format/PeriodFormatterBuilder.java",
+    "line": 803,
+    "precode": "sep = sep.finish(f.getPrinter(), f.getParser());",
+    "aftercode": "sep = sep.finish(f.getParser(), f.getPrinter());",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  }
+]

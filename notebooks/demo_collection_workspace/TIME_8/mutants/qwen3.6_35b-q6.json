@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 273,
+    "precode": "if (hoursOffset == 0 && minutesOffset == 0) {",
+    "aftercode": "if (hoursOffset == 0 || minutesOffset == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 276,
+    "precode": "if (hoursOffset < -23 || hoursOffset > 23) {",
+    "aftercode": "if (hoursOffset <= -23 || hoursOffset > 23) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 276,
+    "precode": "if (hoursOffset < -23 || hoursOffset > 23) {",
+    "aftercode": "if (hoursOffset < -23 || hoursOffset >= 23) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 279,
+    "precode": "if (minutesOffset < -59 || minutesOffset > 59) {",
+    "aftercode": "if (minutesOffset <= -59 || minutesOffset > 59) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 279,
+    "precode": "if (minutesOffset < -59 || minutesOffset > 59) {",
+    "aftercode": "if (minutesOffset < -59 || minutesOffset >= 59) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 282,
+    "precode": "if (hoursOffset > 0 && minutesOffset < 0) {",
+    "aftercode": "if (hoursOffset > 0 || minutesOffset < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 288,
+    "precode": "if (hoursInMinutes < 0) {",
+    "aftercode": "if (hoursInMinutes <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 289,
+    "precode": "minutesOffset = hoursInMinutes - Math.abs(minutesOffset);",
+    "aftercode": "minutesOffset = hoursInMinutes + Math.abs(minutesOffset);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 291,
+    "precode": "minutesOffset = hoursInMinutes + minutesOffset;",
+    "aftercode": "minutesOffset = hoursInMinutes - minutesOffset;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 287,
+    "precode": "int hoursInMinutes = hoursOffset * 60;",
+    "aftercode": "int hoursInMinutes = hoursOffset / 60;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 293,
+    "precode": "offset = FieldUtils.safeMultiply(minutesOffset, DateTimeConstants.MILLIS_PER_MINUTE);",
+    "aftercode": "offset = FieldUtils.safeMultiply(minutesOffset, DateTimeConstants.MILLIS_PER_HOUR);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 293,
+    "precode": "offset = FieldUtils.safeMultiply(minutesOffset, DateTimeConstants.MILLIS_PER_MINUTE);",
+    "aftercode": "offset = minutesOffset * DateTimeConstants.MILLIS_PER_MINUTE;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 274,
+    "precode": "return DateTimeZone.UTC;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 297,
+    "precode": "return forOffsetMillis(offset);",
+    "aftercode": "return forOffsetMillis(-offset);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 289,
+    "precode": "minutesOffset = hoursInMinutes - Math.abs(minutesOffset);",
+    "aftercode": "minutesOffset = hoursInMinutes - minutesOffset;",
+    "rule": "Math Function Removal",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 276,
+    "precode": "if (hoursOffset < -23 || hoursOffset > 23) {",
+    "aftercode": "if (hoursOffset < -24 || hoursOffset > 24) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 279,
+    "precode": "if (minutesOffset < -59 || minutesOffset > 59) {",
+    "aftercode": "if (minutesOffset < -60 || minutesOffset > 60) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 282,
+    "precode": "if (hoursOffset > 0 && minutesOffset < 0) {",
+    "aftercode": "if (hoursOffset >= 0 && minutesOffset < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 282,
+    "precode": "if (hoursOffset > 0 && minutesOffset < 0) {",
+    "aftercode": "if (hoursOffset > 0 && minutesOffset <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 290,
+    "precode": "} else {",
+    "aftercode": "if (hoursInMinutes == 0) {",
+    "rule": "Conditionals Introduction",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 291,
+    "precode": "minutesOffset = hoursInMinutes + minutesOffset;",
+    "aftercode": "minutesOffset = hoursInMinutes + minutesOffset; // comment",
+    "rule": "Comment Removal",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 273,
+    "precode": "if (hoursOffset == 0 && minutesOffset == 0) {",
+    "aftercode": "if (hoursOffset != 0 && minutesOffset == 0) {",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 276,
+    "precode": "if (hoursOffset < -23 || hoursOffset > 23) {",
+    "aftercode": "if (hoursOffset > -23 && hoursOffset < 23) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 279,
+    "precode": "if (minutesOffset < -59 || minutesOffset > 59) {",
+    "aftercode": "if (minutesOffset > -59 && minutesOffset < 59) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 282,
+    "precode": "if (hoursOffset > 0 && minutesOffset < 0) {",
+    "aftercode": "if (hoursOffset < 0 || minutesOffset >= 0) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 288,
+    "precode": "if (hoursInMinutes < 0) {",
+    "aftercode": "if (hoursInMinutes > 0) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 293,
+    "precode": "offset = FieldUtils.safeMultiply(minutesOffset, DateTimeConstants.MILLIS_PER_MINUTE);",
+    "aftercode": "offset = 0;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 297,
+    "precode": "return forOffsetMillis(offset);",
+    "aftercode": "return forOffsetMillis(0);",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  }
+]

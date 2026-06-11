@@ -94,6 +94,7 @@ class LLMGenerator(BaseGenerator):
 
     def _chat(self, system: str, user: str) -> str:
         prompt = user.strip() if not system.strip() else f"{system}\n\n{user}".strip()
+        deadline = time.monotonic() + float(self.config.timeout_s)
         payload: dict[str, object] = {
             "model": self.config.model,
             "prompt": prompt,
@@ -135,7 +136,16 @@ class LLMGenerator(BaseGenerator):
                 final_meta: dict[str, object] = {}
                 last_progress_log = time.perf_counter()
                 progress_logged = False
-                for raw_line in response:
+                while True:
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0:
+                        raise RuntimeError(f"LLM generation timed out after {self.config.timeout_s}s")
+                    sock = getattr(getattr(getattr(response, "fp", None), "raw", None), "_sock", None)
+                    if sock is not None and hasattr(sock, "settimeout"):
+                        sock.settimeout(remaining)
+                    raw_line = response.readline()
+                    if not raw_line:
+                        break
                     line = raw_line.decode("utf-8", errors="ignore").strip()
                     if not line:
                         continue
@@ -192,4 +202,3 @@ def model_stem(model: str) -> str:
         cleaned.append(char if char.isalnum() or char in {"-", "_", "."} else "_")
     stem = "".join(cleaned).strip("._")
     return stem or "llm"
-

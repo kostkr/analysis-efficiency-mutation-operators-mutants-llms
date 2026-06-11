@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant <= overlapStart || instant >= overlapEnd) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1167,
+    "precode": "long instantBefore = instant - 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "aftercode": "long instantBefore = instant + 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1168,
+    "precode": "long instantAfter = instant + 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "aftercode": "long instantAfter = instant - 3 * DateTimeConstants.MILLIS_PER_HOUR;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1176,
+    "precode": "long diff = offsetBefore - offsetAfter;",
+    "aftercode": "long diff = offsetBefore + offsetAfter;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1178,
+    "precode": "long overlapStart = transition - diff;",
+    "aftercode": "long overlapStart = transition + diff;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1179,
+    "precode": "long overlapEnd = transition + diff;",
+    "aftercode": "long overlapEnd = transition - diff;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1185,
+    "precode": "long afterStart = instant - overlapStart;",
+    "aftercode": "long afterStart = instant + overlapStart;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1188,
+    "precode": "return earlierOrLater ? instant : instant - diff;",
+    "aftercode": "return earlierOrLater ? instant : instant + diff;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1191,
+    "precode": "return earlierOrLater ? instant + diff : instant;",
+    "aftercode": "return earlierOrLater ? instant - diff : instant;",
+    "rule": "Math",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1171,
+    "precode": "if (offsetBefore <= offsetAfter) {",
+    "aftercode": "if (offsetBefore > offsetAfter) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (instant >= overlapStart || instant >= overlapEnd) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1186,
+    "precode": "if (afterStart >= diff) {",
+    "aftercode": "if (afterStart < diff) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1169,
+    "precode": "long offsetBefore = getOffset(instantBefore);",
+    "aftercode": "long offsetBefore = 0;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1170,
+    "precode": "long offsetAfter = getOffset(instantAfter);",
+    "aftercode": "long offsetAfter = 0;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1177,
+    "precode": "long transition = nextTransition(instantBefore);",
+    "aftercode": "long transition = 0L;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1171,
+    "precode": "if (offsetBefore <= offsetAfter) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1171,
+    "precode": "if (offsetBefore <= offsetAfter) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1180,
+    "precode": "if (instant < overlapStart || instant >= overlapEnd) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1186,
+    "precode": "if (afterStart >= diff) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1186,
+    "precode": "if (afterStart >= diff) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1177,
+    "precode": "long transition = nextTransition(instantBefore);",
+    "aftercode": "long transition = instantBefore;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1172,
+    "precode": "return instant;  // not an overlap (less than is a gap, equal is normal case)",
+    "aftercode": "return (instant) == 0 ? 0L : 0L;  // not an overlap (less than is a gap, equal is normal case)",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1181,
+    "precode": "return instant;  // not an overlap",
+    "aftercode": "return (instant) == 0 ? 0L : 0L;  // not an overlap",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1188,
+    "precode": "return earlierOrLater ? instant : instant - diff;",
+    "aftercode": "return (earlierOrLater ? instant : instant - diff) == 0 ? 0L : 0L;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/DateTimeZone.java",
+    "line": 1191,
+    "precode": "return earlierOrLater ? instant + diff : instant;",
+    "aftercode": "return (earlierOrLater ? instant + diff : instant) == 0 ? 0L : 0L;",
+    "rule": "Primitive Returns",
+    "gen_time_s": 0.38,
+    "dublicate": false
+  }
+]

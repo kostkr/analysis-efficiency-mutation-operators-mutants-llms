@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 90,
+    "precode": "if (start == null || end == null) {",
+    "aftercode": "if (start == null && end == null) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 90,
+    "precode": "if (start == null || end == null) {",
+    "aftercode": "if (start == null) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 93,
+    "precode": "if (start.size() != end.size()) {",
+    "aftercode": "if (start.size() <= end.size()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 93,
+    "precode": "if (start.size() != end.size()) {",
+    "aftercode": "if (start.size() == end.size()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 96,
+    "precode": "for (int i = 0, isize = start.size(); i < isize; i++) {",
+    "aftercode": "for (int i = 0, isize = start.size(); i <= isize; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 96,
+    "precode": "for (int i = 0, isize = start.size(); i < isize; i++) {",
+    "aftercode": "for (int i = 1, isize = start.size(); i < isize; i++) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 97,
+    "precode": "if (start.getFieldType(i) != end.getFieldType(i)) {",
+    "aftercode": "if (start.getFieldType(i) == end.getFieldType(i)) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 101,
+    "precode": "if (DateTimeUtils.isContiguous(start) == false) {",
+    "aftercode": "if (DateTimeUtils.isContiguous(start) == true) {",
+    "rule": "Negation",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 101,
+    "precode": "if (DateTimeUtils.isContiguous(start) == false) {",
+    "aftercode": "if (DateTimeUtils.isContiguous(start)) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 104,
+    "precode": "Chronology chrono = DateTimeUtils.getChronology(start.getChronology()).withUTC();",
+    "aftercode": "Chronology chrono = DateTimeUtils.getChronology(start.getChronology());",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 105,
+    "precode": "int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(end, START_1972));",
+    "aftercode": "int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(start, START_1972));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 105,
+    "precode": "int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(end, START_1972));",
+    "aftercode": "int[] values = chrono.get(zeroInstance, chrono.set(end, START_1972), chrono.set(end, START_1972));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 106,
+    "precode": "return values[0];",
+    "aftercode": "return values[1];",
+    "rule": "Array Index Offset",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 93,
+    "precode": "if (start.size() != end.size()) {",
+    "aftercode": "if (start.size() > end.size()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 96,
+    "precode": "for (int i = 0, isize = start.size(); i < isize; i++) {",
+    "aftercode": "for (int i = 0, isize = start.size(); i < isize; i--) {",
+    "rule": "Loop Increment/Decrement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 101,
+    "precode": "if (DateTimeUtils.isContiguous(start) == false) {",
+    "aftercode": "if (DateTimeUtils.isContiguous(end) == false) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 104,
+    "precode": "Chronology chrono = DateTimeUtils.getChronology(start.getChronology()).withUTC();",
+    "aftercode": "Chronology chrono = DateTimeUtils.getChronology(end.getChronology()).withUTC();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 105,
+    "precode": "int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(end, START_1972));",
+    "aftercode": "int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(end, START_1972));",
+    "rule": "No-op (Identity Mutation)",
+    "gen_time_s": 1.52,
+    "dublicate": true
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 90,
+    "precode": "if (start == null || end == null) {",
+    "aftercode": "if (start != null || end != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.52,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 50,
+    "precode": "private static final long serialVersionUID = 9386874258972L;",
+    "aftercode": "private static final long serialVersionUID = 9386874258971L;",
+    "rule": "Scalar Variable Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 52,
+    "precode": "private static final long START_1972 = 2L * 365L * 86400L * 1000L;",
+    "aftercode": "private static final long START_1972 = 1L * 365L * 86400L * 1000L;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 52,
+    "precode": "private static final long START_1972 = 2L * 365L * 86400L * 1000L;",
+    "aftercode": "private static final long START_1972 = 2L * 365L * 86400L * 1001L;",
+    "rule": "Operand Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 52,
+    "precode": "private static final long START_1972 = 2L * 365L * 86400L * 1000L;",
+    "aftercode": "private static final long START_1972 = 2L * 366L * 86400L * 1000L;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+    "line": 52,
+    "precode": "private static final long START_1972 = 2L * 365L * 86400L * 1000L;",
+    "aftercode": "private static final long START_1972 = 2L * 365L * 86400L;",
+    "rule": "Removal of Operand",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 101,
+    "precode": "return prov.reportBadPropertyDefinition(_beanDesc, propDef, e.getMessage());",
+    "aftercode": "return prov.reportBadPropertyDefinition(_beanDesc, propDef, \"error\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 105,
+    "precode": "if (contentTypeSer != null) {",
+    "aftercode": "if (contentTypeSer != null && false) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 110,
+    "precode": "if (serializationType == null) {",
+    "aftercode": "if (serializationType != null) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 112,
+    "precode": "serializationType = declaredType;",
+    "aftercode": "serializationType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 114,
+    "precode": "JavaType ct = serializationType.getContentType();",
+    "aftercode": "JavaType ct = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 116,
+    "precode": "if (ct == null) {",
+    "aftercode": "if (ct != null) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 120,
+    "precode": "serializationType = serializationType.withContentTypeHandler(contentTypeSer);",
+    "aftercode": "serializationType = serializationType;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 125,
+    "precode": "boolean suppressNulls = false;",
+    "aftercode": "boolean suppressNulls = true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 128,
+    "precode": "JavaType actualType = (serializationType == null) ? declaredType : serializationType;",
+    "aftercode": "JavaType actualType = (serializationType != null) ? declaredType : serializationType;",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 133,
+    "precode": "JsonInclude.Value inclV = _config.getDefaultPropertyInclusion(actualType.getRawClass(),",
+    "aftercode": "JsonInclude.Value inclV = _config.getDefaultPropertyInclusion(null,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 138,
+    "precode": "inclV = inclV.withOverrides(propDef.findInclusion());",
+    "aftercode": "inclV = inclV;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 141,
+    "precode": "if (inclusion == JsonInclude.Include.USE_DEFAULTS) {",
+    "aftercode": "if (inclusion != JsonInclude.Include.USE_DEFAULTS) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 142,
+    "precode": "inclusion = JsonInclude.Include.ALWAYS;",
+    "aftercode": "inclusion = JsonInclude.Include.USE_DEFAULTS;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 158,
+    "precode": "if (_useRealPropertyDefaults && (defaultBean = getDefaultBean()) != null) {",
+    "aftercode": "if (_useRealPropertyDefaults || (defaultBean = getDefaultBean()) != null) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 160,
+    "precode": "if (prov.isEnabled(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS)) {",
+    "aftercode": "if (!prov.isEnabled(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS)) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 164,
+    "precode": "valueToSuppress = am.getValue(defaultBean);",
+    "aftercode": "valueToSuppress = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 169,
+    "precode": "valueToSuppress = getDefaultValue(actualType);",
+    "aftercode": "valueToSuppress = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 170,
+    "precode": "suppressNulls = true;",
+    "aftercode": "suppressNulls = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 172,
+    "precode": "if (valueToSuppress == null) {",
+    "aftercode": "if (valueToSuppress != null) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 173,
+    "precode": "suppressNulls = true;",
+    "aftercode": "suppressNulls = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 175,
+    "precode": "if (valueToSuppress.getClass().isArray()) {",
+    "aftercode": "if (!valueToSuppress.getClass().isArray()) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 176,
+    "precode": "valueToSuppress = ArrayBuilders.getArrayComparator(valueToSuppress);",
+    "aftercode": "valueToSuppress = valueToSuppress;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 182,
+    "precode": "suppressNulls = true;",
+    "aftercode": "suppressNulls = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 184,
+    "precode": "if (actualType.isReferenceType()) {",
+    "aftercode": "if (!actualType.isReferenceType()) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 185,
+    "precode": "valueToSuppress = BeanPropertyWriter.MARKER_FOR_EMPTY;",
+    "aftercode": "valueToSuppress = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 189,
+    "precode": "suppressNulls = true;",
+    "aftercode": "suppressNulls = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 192,
+    "precode": "valueToSuppress = BeanPropertyWriter.MARKER_FOR_EMPTY;",
+    "aftercode": "valueToSuppress = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 195,
+    "precode": "suppressNulls = true;",
+    "aftercode": "suppressNulls = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 200,
+    "precode": "if (actualType.isContainerType()",
+    "aftercode": "if (!actualType.isContainerType()",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 201,
+    "precode": "&& !_config.isEnabled(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS)) {",
+    "aftercode": "&& _config.isEnabled(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS)) {",
+    "rule": "Logical Connector Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 202,
+    "precode": "valueToSuppress = BeanPropertyWriter.MARKER_FOR_EMPTY;",
+    "aftercode": "valueToSuppress = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 208,
+    "precode": "ser, typeSer, serializationType, suppressNulls, valueToSuppress);",
+    "aftercode": "ser, typeSer, serializationType, false, valueToSuppress);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 212,
+    "precode": "if (serDef != null) {",
+    "aftercode": "if (serDef == null) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 213,
+    "precode": "bpw.assignNullSerializer(prov.serializerInstance(am, serDef));",
+    "aftercode": "bpw.assignNullSerializer(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 217,
+    "precode": "if (unwrapper != null) {",
+    "aftercode": "if (unwrapper == null) {",
+    "rule": "Conditionals Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java",
+    "line": 218,
+    "precode": "bpw = bpw.unwrappingWriter(unwrapper);",
+    "aftercode": "bpw = bpw;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  }
+]

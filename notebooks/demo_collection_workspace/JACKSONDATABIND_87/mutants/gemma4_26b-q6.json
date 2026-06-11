@@ -1,0 +1,582 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 451,
+    "precode": "if (len <= 10 && Character.isDigit(c)) {",
+    "aftercode": "if (len < 10 && Character.isDigit(c)) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 451,
+    "precode": "if (len <= 10 && Character.isDigit(c)) {",
+    "aftercode": "if (len <= 10 || Character.isDigit(c)) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 458,
+    "precode": "} else if (c == 'Z') {",
+    "aftercode": "} else if (c != 'Z') {",
+    "rule": "Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 466,
+    "precode": "df = _formatISO8601_z = _cloneFormat(DATE_FORMAT_ISO8601_Z, formatStr, DEFAULT_TIMEZONE, _locale, _lenient);",
+    "aftercode": "df = _formatISO8601_z = _cloneFormat(DATE_FORMAT_ISO8601_Z, formatStr, _timezone, _locale, _lenient);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 469,
+    "precode": "if (dateStr.charAt(len-4) == ':') {",
+    "aftercode": "if (dateStr.charAt(len-4) != ':') {",
+    "rule": "Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 471,
+    "precode": "sb.insert(len-1, \".000\");",
+    "aftercode": "sb.insert(len-1, \"\");",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 478,
+    "precode": "if (c == ':') { // remove optional colon",
+    "aftercode": "if (c != ':') { // remove optional colon",
+    "rule": "Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 481,
+    "precode": "sb.delete(len-3, len-2);",
+    "aftercode": "sb.delete(len-3, len-1);",
+    "rule": "Boundary Error",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 483,
+    "precode": "dateStr = sb.toString();",
+    "aftercode": "dateStr = sb.substring(0, len-3);",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 485,
+    "precode": "dateStr += \"00\";",
+    "aftercode": "dateStr += \"0\";",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 490,
+    "precode": "int timeLen = len - dateStr.lastIndexOf('T') - 6;",
+    "aftercode": "int timeLen = len - dateStr.lastIndexOf('T') - 5;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 491,
+    "precode": "if (timeLen < 12) { // 8 for hh:mm:ss, 4 for .sss",
+    "aftercode": "if (timeLen <= 12) { // 8 for hh:mm:ss, 4 for .sss",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 492,
+    "precode": "int offset = len - 5; // insertion offset, before tz-offset",
+    "aftercode": "int offset = len - 4; // insertion offset, before tz-offset",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 496,
+    "precode": "sb.insert(offset, '0'); break;",
+    "aftercode": "sb.insert(offset, '1'); break;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 498,
+    "precode": "sb.insert(offset, \"00\"); break;",
+    "aftercode": "sb.insert(offset, \"0\"); break;",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 500,
+    "precode": "sb.insert(offset, \"000\"); break;",
+    "aftercode": "sb.insert(offset, \"00\"); break;",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 502,
+    "precode": "sb.insert(offset, \".000\"); break;",
+    "aftercode": "sb.insert(offset, \".00\"); break;",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 506,
+    "precode": "sb.insert(offset, \"00.000\");",
+    "aftercode": "sb.insert(offset, \"00.00\");",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 508,
+    "precode": "sb.insert(offset, \":00.000\");",
+    "aftercode": "sb.insert(offset, \":00.00\");",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 515,
+    "precode": "df = _formatISO8601 = _cloneFormat(DATE_FORMAT_ISO8601, formatStr, _timezone, _locale, _lenient);",
+    "aftercode": "df = _formatISO8601 = _cloneFormat(DATE_FORMAT_ISO8601, formatStr, DEFAULT_TIMEZONE, _locale, _lenient);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 520,
+    "precode": "int timeLen = len - dateStr.lastIndexOf('T') - 1;",
+    "aftercode": "int timeLen = len - dateStr.lastIndexOf('T') + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 522,
+    "precode": "if (timeLen < 12) { // missing, or partial",
+    "aftercode": "if (timeLen < 11) { // missing, or partial",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 525,
+    "precode": "case 11: sb.append('0');",
+    "aftercode": "case 11: sb.append('1');",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 527,
+    "precode": "case 9: sb.append('0');",
+    "aftercode": "case 9: sb.append('1');",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 530,
+    "precode": "sb.append(\".000\");",
+    "aftercode": "sb.append(\".00\");",
+    "rule": "String Literal",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 540,
+    "precode": "df = _formatISO8601_noTz = _cloneFormat(DATE_FORMAT_ISO8601_NO_TZ, formatStr, _timezone, _locale, _lenient);",
+    "aftercode": "df = _formatISO8601_noTz = _cloneFormat(DATE_FORMAT_ISO8601_NO_TZ, formatStr, DEFAULT_TIMEZONE, _locale, _lenient);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 547,
+    "precode": "if (dt == null) {",
+    "aftercode": "if (dt != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.7,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 599,
+    "precode": "_formatRFC1123 = null;",
+    "aftercode": "_formatRFC1123 = _formatRFC1123;",
+    "rule": "Assignment to self",
+    "gen_time_s": 1.34,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 600,
+    "precode": "_formatISO8601 = null;",
+    "aftercode": "_formatISO8601 = \"\";",
+    "rule": "Null to Empty String",
+    "gen_time_s": 1.34,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 601,
+    "precode": "_formatISO8601_z = null;",
+    "aftercode": "_formatISO8601_z = null;",
+    "rule": "No mutation (skipped line)",
+    "gen_time_s": 1.34,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 602,
+    "precode": "_formatISO8601_noTz = null;",
+    "aftercode": "_formatISO8601_noTz = null;",
+    "rule": "Statement deletion",
+    "gen_time_s": 1.34,
+    "dublicate": true
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 604,
+    "precode": "_formatPlain = null;",
+    "aftercode": "_formatPlain = null;",
+    "rule": "Void Method Body",
+    "gen_time_s": 1.34,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 599,
+    "precode": "_formatRFC1123 = null;",
+    "aftercode": "_formatRFC1123 = new Object();",
+    "rule": "Null to Object",
+    "gen_time_s": 1.34,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 600,
+    "precode": "_formatISO8601 = null;",
+    "aftercode": "_formatISO8601 = null;",
+    "rule": "Partial clearing",
+    "gen_time_s": 1.34,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 605,
+    "precode": "}",
+    "aftercode": "}",
+    "rule": "Indentation/Structure change",
+    "gen_time_s": 1.34,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 47,
+    "precode": "protected final static String DATE_FORMAT_STR_ISO8601_NO_TZ = \"yyyy-MM-dd'T'HH:mm:ss.SSS\";",
+    "aftercode": "protected final static String DATE_FORMAT_STR_ISO8601_NO_TZ = \"yyyy-MM-dd'T'HH:mm:ss.SS\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 52,
+    "precode": "protected final static String DATE_FORMAT_STR_PLAIN = \"yyyy-MM-dd\";",
+    "aftercode": "protected final static String DATE_FORMAT_STR_PLAIN = \"yyyy-MM-dd'T'HH:mm:ss\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 58,
+    "precode": "protected final static String DATE_FORMAT_STR_RFC1123 = \"EEE, dd MMM yyyy HH:mm:ss zzz\";",
+    "aftercode": "protected final static String DATE_FORMAT_STR_RFC1123 = \"EEE, dd MMM HH:mm:ss zzz\";",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 64,
+    "precode": "DATE_FORMAT_STR_ISO8601,",
+    "aftercode": "null,",
+    "rule": "Array Element Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 65,
+    "precode": "DATE_FORMAT_STR_ISO8601_Z,",
+    "aftercode": "null,",
+    "rule": "Array Element Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 66,
+    "precode": "DATE_FORMAT_STR_ISO8601_NO_TZ,",
+    "aftercode": "null,",
+    "rule": "Array Element Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 67,
+    "precode": "DATE_FORMAT_STR_RFC1123,",
+    "aftercode": "null,",
+    "rule": "Array Element Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 68,
+    "precode": "DATE_FORMAT_STR_PLAIN",
+    "aftercode": "null",
+    "rule": "Array Element Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 77,
+    "precode": "DEFAULT_TIMEZONE = TimeZone.getTimeZone(\"UTC\"); // since 2.7",
+    "aftercode": "DEFAULT_TIMEZONE = TimeZone.getTimeZone(\"GMT\"); // since 2.7",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 80,
+    "precode": "private final static Locale DEFAULT_LOCALE = Locale.US;",
+    "aftercode": "private final static Locale DEFAULT_LOCALE = Locale.UK;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 99,
+    "precode": "DATE_FORMAT_RFC1123 = new SimpleDateFormat(DATE_FORMAT_STR_RFC1123, DEFAULT_LOCALE);",
+    "aftercode": "DATE_FORMAT_RFC1123 = new SimpleDateFormat(DATE_FORMAT_STR_RFC1123, Locale.ROOT);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 100,
+    "precode": "DATE_FORMAT_RFC1123.setTimeZone(DEFAULT_TIMEZONE);",
+    "aftercode": "DATE_FORMAT_RFC1123.setTimeZone(TimeZone.getDefault());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 101,
+    "precode": "DATE_FORMAT_ISO8601 = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601, DEFAULT_LOCALE);",
+    "aftercode": "DATE_FORMAT_ISO8601 = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601, Locale.ROOT);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 102,
+    "precode": "DATE_FORMAT_ISO8601.setTimeZone(DEFAULT_TIMEZONE);",
+    "aftercode": "DATE_FORMAT_ISO8601.setTimeZone(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 103,
+    "precode": "DATE_FORMAT_ISO8601_Z = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601_Z, DEFAULT_LOCALE);",
+    "aftercode": "DATE_FORMAT_ISO8601_Z = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601_Z, Locale.ROOT);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 104,
+    "precode": "DATE_FORMAT_ISO8601_Z.setTimeZone(DEFAULT_TIMEZONE);",
+    "aftercode": "DATE_FORMAT_ISO8601_Z.setTimeZone(TimeZone.getTimeZone(\"UTC\"));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 105,
+    "precode": "DATE_FORMAT_ISO8601_NO_TZ = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601_NO_TZ, DEFAULT_LOCALE);",
+    "aftercode": "DATE_FORMAT_ISO8601_NO_TZ = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601_NO_TZ, Locale.ROOT);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 106,
+    "precode": "DATE_FORMAT_ISO8601_NO_TZ.setTimeZone(DEFAULT_TIMEZONE);",
+    "aftercode": "DATE_FORMAT_ISO8601_NO_TZ.setTimeZone(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 107,
+    "precode": "DATE_FORMAT_PLAIN = new SimpleDateFormat(DATE_FORMAT_STR_PLAIN, DEFAULT_LOCALE);",
+    "aftercode": "DATE_FORMAT_PLAIN = new SimpleDateFormat(DATE_FORMAT_STR_PLAIN, Locale.ROOT);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 108,
+    "precode": "DATE_FORMAT_PLAIN.setTimeZone(DEFAULT_TIMEZONE);",
+    "aftercode": "DATE_FORMAT_PLAIN.setTimeZone(TimeZone.getDefault());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 114,
+    "precode": "public final static StdDateFormat instance = new StdDateFormat();",
+    "aftercode": "public final static StdDateFormat instance = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 122,
+    "precode": "protected final Locale _locale;",
+    "aftercode": "protected Locale _locale;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java",
+    "line": 132,
+    "precode": "protected Boolean _lenient;",
+    "aftercode": "protected boolean _lenient;",
+    "rule": "Type Change",
+    "gen_time_s": 1.65,
+    "dublicate": false
+  }
+]

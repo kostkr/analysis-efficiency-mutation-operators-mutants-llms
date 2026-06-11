@@ -1,0 +1,1832 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 204,
+    "precode": "value = _accessorMethod.getValue(bean);",
+    "aftercode": "value = _accessorMethod.getValue(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 206,
+    "precode": "if (value == null) {",
+    "aftercode": "if (value != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 207,
+    "precode": "provider.defaultSerializeNull(gen);",
+    "aftercode": "provider.defaultSerializeNull(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 208,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Remove Return",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 211,
+    "precode": "if (ser == null) { // no serializer yet? Need to fetch",
+    "aftercode": "if (ser != null) { // no serializer yet? Need to fetch",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 213,
+    "precode": "ser = provider.findValueSerializer(value.getClass(), _property);",
+    "aftercode": "ser = provider.findValueSerializer(null, _property);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 218,
+    "precode": "if (_forceTypeInformation) {",
+    "aftercode": "if (!_forceTypeInformation) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 219,
+    "precode": "typeSer0.writeTypePrefixForScalar(bean, gen);",
+    "aftercode": "typeSer0.writeTypePrefixForScalar(null, gen);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 220,
+    "precode": "ser.serialize(value, gen, provider);",
+    "aftercode": "ser.serialize(null, gen, provider);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 221,
+    "precode": "typeSer0.writeTypeSuffixForScalar(bean, gen);",
+    "aftercode": "typeSer0.writeTypeSuffixForScalar(null, gen);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 222,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Remove Return",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 228,
+    "precode": "TypeSerializerRerouter rr = new TypeSerializerRerouter(typeSer0, bean);",
+    "aftercode": "TypeSerializerRerouter rr = new TypeSerializerRerouter(null, bean);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 229,
+    "precode": "ser.serializeWithType(value, gen, provider, rr);",
+    "aftercode": "ser.serializeWithType(null, gen, provider, rr);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 230,
+    "precode": "} catch (IOException ioe) {",
+    "aftercode": "} catch (IOException | Exception ioe) {",
+    "rule": "Exception Handler Change",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 231,
+    "precode": "throw ioe;",
+    "aftercode": "throw new RuntimeException(ioe);",
+    "rule": "Exception Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 235,
+    "precode": "while (t instanceof InvocationTargetException && t.getCause() != null) {",
+    "aftercode": "while (t instanceof InvocationTargetException || t.getCause() != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 236,
+    "precode": "t = t.getCause();",
+    "aftercode": "t = t;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 239,
+    "precode": "if (t instanceof Error) {",
+    "aftercode": "if (!(t instanceof Error)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 240,
+    "precode": "throw (Error) t;",
+    "aftercode": "throw (RuntimeException) t;",
+    "rule": "Type Cast",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 243,
+    "precode": "throw JsonMappingException.wrapWithPath(t, bean, _accessorMethod.getName() + \"()\");",
+    "aftercode": "throw JsonMappingException.wrapWithPath(null, bean, _accessorMethod.getName() + \"()\");",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 373,
+    "precode": "_typeSerializer = ts;",
+    "aftercode": "_typeSerializer = ob;",
+    "rule": "Parameter Assignment Swap",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 374,
+    "precode": "_forObject = ob;",
+    "aftercode": "_forObject = ts;",
+    "rule": "Parameter Assignment Swap",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 373,
+    "precode": "_typeSerializer = ts;",
+    "aftercode": "if (ts != null) _typeSerializer = ts;",
+    "rule": "Null Check Insertion",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 374,
+    "precode": "_forObject = ob;",
+    "aftercode": "if (ob != null) _forObject = ob;",
+    "rule": "Null Check Insertion",
+    "gen_time_s": 2.28,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 379,
+    "precode": "throw new UnsupportedOperationException();",
+    "aftercode": "return null;",
+    "rule": "Exception Removal",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 379,
+    "precode": "throw new UnsupportedOperationException();",
+    "aftercode": "return prop.getType();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 379,
+    "precode": "throw new UnsupportedOperationException();",
+    "aftercode": "return forProperty(prop);",
+    "rule": "Self-Call Mutation",
+    "gen_time_s": 2.23,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 384,
+    "precode": "return _typeSerializer.getTypeInclusion();",
+    "aftercode": "return _typeSerializer.getMode();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 384,
+    "precode": "return _typeSerializer.getTypeInclusion();",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 384,
+    "precode": "return _typeSerializer.getTypeInclusion();",
+    "aftercode": "return _typeSerializer.getTypeInclusion().toString();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 389,
+    "precode": "return _typeSerializer.getPropertyName();",
+    "aftercode": "return null;",
+    "rule": "Return Value Negator",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 389,
+    "precode": "return _typeSerializer.getPropertyName();",
+    "aftercode": "return \"\";",
+    "rule": "Empty String Return",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 389,
+    "precode": "return _typeSerializer.getPropertyName();",
+    "aftercode": "return _typeSerializer.getClass().getName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 394,
+    "precode": "return _typeSerializer.getTypeIdResolver();",
+    "aftercode": "return null;",
+    "rule": "Return Values",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 394,
+    "precode": "return _typeSerializer.getTypeIdResolver();",
+    "aftercode": "return _typeSerializer;",
+    "rule": "Return Values",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 394,
+    "precode": "return _typeSerializer.getTypeIdResolver();",
+    "aftercode": "return getTypeIdResolver();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(gen, _forObject);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.98,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(null, gen);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.98,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.98,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(gen, _forObject);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.84,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "gen.writeTypePrefixForObject(_forObject, _typeSerializer);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.84,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen); return;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.84,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(gen, _forObject);",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(null, gen);",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, null);",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "gen.writeTypeSuffixForScalar(_forObject, _typeSerializer);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.87,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.87,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "gen.writeTypeSuffixForScalar(_typeSerializer, _forObject);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.87,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.79,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForObject(gen, _forObject);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.79,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "return;",
+    "rule": "Void Return Replacement",
+    "gen_time_s": 2.79,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForArray(gen, _forObject);",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.01,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 3.01,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 3.01,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(gen, _forObject, type);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 3.06,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 3.06,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "/* _typeSerializer.writeTypePrefixForScalar(_forObject, gen, type); */",
+    "rule": "Void Method Return",
+    "gen_time_s": 3.06,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(gen, _forObject, type);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 3.13,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 3.13,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, _forObject);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 3.13,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(gen, _forObject, type);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "return;",
+    "rule": "Void Return",
+    "gen_time_s": 2.82,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(gen, _forObject, typeId);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypePrefixForScalar(_forObject, _typeSerializer, typeId);",
+    "rule": "Receiver Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(null, gen, typeId);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(gen, _forObject, typeId);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.99,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(null, gen, typeId);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.99,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.99,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForArray(gen, _forObject, typeId);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 3.19,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "if (_typeSerializer != null) _typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "rule": "Null Check Injection",
+    "gen_time_s": 3.19,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "// _typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "rule": "Comment Out",
+    "gen_time_s": 3.19,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForScalar(gen, _forObject, typeId);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 3.21,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 3.21,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 3.21,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 3.11,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "if (_forObject != null) { _typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId); }",
+    "rule": "Null Check Injection",
+    "gen_time_s": 3.11,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForObject(null, gen, typeId);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 3.11,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForArray(gen, _forObject, typeId);",
+    "rule": "Argument Swap",
+    "gen_time_s": 3.21,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForArray(null, gen, typeId);",
+    "rule": "Null Argument",
+    "gen_time_s": 3.21,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "// _typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "rule": "Method Call Deletion",
+    "gen_time_s": 3.21,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 373,
+    "precode": "_typeSerializer = ts;",
+    "aftercode": "_typeSerializer = ob;",
+    "rule": "Parameter Assignment Swap",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 84,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 374,
+    "precode": "_forObject = ob;",
+    "aftercode": "_forObject = ts;",
+    "rule": "Parameter Assignment Swap",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 85,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 384,
+    "precode": "return _typeSerializer.getTypeInclusion();",
+    "aftercode": "return _forObject.getTypeInclusion();",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 389,
+    "precode": "return _typeSerializer.getPropertyName();",
+    "aftercode": "return _forObject.getPropertyName();",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 394,
+    "precode": "return _typeSerializer.getTypeIdResolver();",
+    "aftercode": "return _forObject.getTypeIdResolver();",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(value, gen);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(value, gen);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(value, gen);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForScalar(value, gen);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForObject(value, gen);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForArray(value, gen);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(value, gen, type);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(value, gen, type);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(value, gen, type);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(value, gen, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(value, gen, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForArray(value, gen, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForScalar(value, gen, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForObject(value, gen, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForArray(value, gen, typeId);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 379,
+    "precode": "throw new UnsupportedOperationException();",
+    "aftercode": "return null;",
+    "rule": "Exception to Return Null",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 104,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_forObject.writeTypePrefixForScalar(_typeSerializer, gen);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_forObject.writeTypePrefixForObject(_typeSerializer, gen);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_forObject.writeTypePrefixForArray(_typeSerializer, gen);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "_forObject.writeTypeSuffixForScalar(_typeSerializer, gen);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_forObject.writeTypeSuffixForObject(_typeSerializer, gen);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_forObject.writeTypeSuffixForArray(_typeSerializer, gen);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_forObject.writeTypePrefixForScalar(_typeSerializer, gen, type);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_forObject.writeTypePrefixForObject(_typeSerializer, gen, type);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_forObject.writeTypePrefixForArray(_typeSerializer, gen, type);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_forObject.writeCustomTypePrefixForScalar(_typeSerializer, gen, typeId);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_forObject.writeCustomTypePrefixForObject(_typeSerializer, gen, typeId);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "_forObject.writeCustomTypePrefixForArray(_typeSerializer, gen, typeId);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_forObject.writeCustomTypeSuffixForScalar(_typeSerializer, gen, typeId);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_forObject.writeCustomTypeSuffixForObject(_typeSerializer, gen, typeId);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_forObject.writeCustomTypeSuffixForArray(_typeSerializer, gen, typeId);",
+    "rule": "Method Receiver Swap",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 120,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 122,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForObject(_forObject, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForArray(_forObject, null);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, null, type);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, null, type);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, null, type);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, null, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, null, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, null, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, null, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, null, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, null, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 384,
+    "precode": "return _typeSerializer.getTypeInclusion();",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 135,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 389,
+    "precode": "return _typeSerializer.getPropertyName();",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 136,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 394,
+    "precode": "return _typeSerializer.getTypeIdResolver();",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 137,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 373,
+    "precode": "_typeSerializer = ts;",
+    "aftercode": "_typeSerializer = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 374,
+    "precode": "_forObject = ob;",
+    "aftercode": "_forObject = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "gen.writeTypePrefixForScalar(_forObject);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "gen.writeTypePrefixForObject(_forObject);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "gen.writeTypePrefixForArray(_forObject);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "gen.writeTypeSuffixForScalar(_forObject);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "gen.writeTypeSuffixForObject(_forObject);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "gen.writeTypeSuffixForArray(_forObject);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "gen.writeTypePrefixForScalar(_forObject, type);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "gen.writeTypePrefixForObject(_forObject, type);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "gen.writeTypePrefixForArray(_forObject, type);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypePrefixForScalar(_forObject, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypePrefixForObject(_forObject, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypePrefixForArray(_forObject, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypeSuffixForScalar(_forObject, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypeSuffixForObject(_forObject, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "gen.writeCustomTypeSuffixForArray(_forObject, typeId);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(null, gen);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 155,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(null, gen);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(null, gen);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 157,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForScalar(null, gen);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForObject(null, gen);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForArray(null, gen);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(null, gen, type);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(null, gen, type);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(null, gen, type);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(null, gen, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 164,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(null, gen, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 165,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForArray(null, gen, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForScalar(null, gen, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForObject(null, gen, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 168,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForArray(null, gen, typeId);",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 169,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 399,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 404,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": true
+  },
+  {
+    "id": 171,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 409,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 414,
+    "precode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForScalar(_forObject, gen); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 419,
+    "precode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForObject(_forObject, gen); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 424,
+    "precode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen);",
+    "aftercode": "_typeSerializer.writeTypeSuffixForArray(_forObject, gen); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 428,
+    "precode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForScalar(_forObject, gen, type); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 432,
+    "precode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForObject(_forObject, gen, type); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 177,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 436,
+    "precode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type);",
+    "aftercode": "_typeSerializer.writeTypePrefixForArray(_forObject, gen, type); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 178,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 442,
+    "precode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 179,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 447,
+    "precode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 180,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 452,
+    "precode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 181,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 457,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 182,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 462,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 183,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java",
+    "line": 467,
+    "precode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);",
+    "aftercode": "_typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId); return;",
+    "rule": "Void Return Insertion",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  }
+]

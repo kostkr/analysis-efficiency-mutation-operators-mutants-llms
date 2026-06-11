@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 103,
+    "precode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(type, config, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(beanDesc, config, type);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 104,
+    "precode": "if (custom != null) {",
+    "aftercode": "if (custom == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 111,
+    "precode": "if (type.isThrowable()) {",
+    "aftercode": "if (!type.isThrowable()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 111,
+    "precode": "if (type.isThrowable()) {",
+    "aftercode": "if (type == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 119,
+    "precode": "if (type.isAbstract() && !type.isPrimitive()) {",
+    "aftercode": "if (type.isAbstract() || !type.isPrimitive()) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 119,
+    "precode": "if (type.isAbstract() && !type.isPrimitive()) {",
+    "aftercode": "if (type.isAbstract() && type.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 119,
+    "precode": "if (type.isAbstract() && !type.isPrimitive()) {",
+    "aftercode": "if (type.isAbstract()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 121,
+    "precode": "JavaType concreteType = materializeAbstractType(ctxt, type, beanDesc);",
+    "aftercode": "JavaType concreteType = materializeAbstractType(ctxt, beanDesc, type);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 122,
+    "precode": "if (concreteType != null) {",
+    "aftercode": "if (concreteType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 126,
+    "precode": "beanDesc = config.introspect(concreteType);",
+    "aftercode": "beanDesc = config.introspect(type);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 127,
+    "precode": "return buildBeanDeserializer(ctxt, concreteType, beanDesc);",
+    "aftercode": "return buildBeanDeserializer(ctxt, type, beanDesc);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 133,
+    "precode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(ctxt, beanDesc, type);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 134,
+    "precode": "if (deser != null) {",
+    "aftercode": "if (deser == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 139,
+    "precode": "if (!isPotentialBeanType(type.getRawClass())) {",
+    "aftercode": "if (isPotentialBeanType(type.getRawClass())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 139,
+    "precode": "if (!isPotentialBeanType(type.getRawClass())) {",
+    "aftercode": "if (!isPotentialBeanType(type)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 140,
+    "precode": "return null;",
+    "aftercode": "return deser;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 143,
+    "precode": "checkIllegalTypes(ctxt, type, beanDesc);",
+    "aftercode": "// checkIllegalTypes(ctxt, type, beanDesc);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 145,
+    "precode": "return buildBeanDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "return buildBeanDeserializer(ctxt, beanDesc, type);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 101,
+    "precode": "final DeserializationConfig config = ctxt.getConfig();",
+    "aftercode": "final DeserializationConfig config = ctxt;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 103,
+    "precode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(type, config, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> custom = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 112,
+    "precode": "return buildThrowableDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "return buildBeanDeserializer(ctxt, type, beanDesc);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 121,
+    "precode": "JavaType concreteType = materializeAbstractType(ctxt, type, beanDesc);",
+    "aftercode": "JavaType concreteType = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 127,
+    "precode": "return buildBeanDeserializer(ctxt, concreteType, beanDesc);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 133,
+    "precode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> deser = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 135,
+    "precode": "return deser;",
+    "aftercode": "return custom;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 145,
+    "precode": "return buildBeanDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "return buildBeanDeserializer(ctxt, type, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 104,
+    "precode": "if (custom != null) {",
+    "aftercode": "if (custom != null && false) {",
+    "rule": "Condition Mutation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 119,
+    "precode": "if (type.isAbstract() && !type.isPrimitive()) {",
+    "aftercode": "if (type.isAbstract() && type.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 139,
+    "precode": "if (!isPotentialBeanType(type.getRawClass())) {",
+    "aftercode": "if (!isPotentialBeanType(null)) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 101,
+    "precode": "final DeserializationConfig config = ctxt.getConfig();",
+    "aftercode": "DeserializationConfig config = ctxt.getConfig();",
+    "rule": "Modifier Removal",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 111,
+    "precode": "if (type.isThrowable()) {",
+    "aftercode": "if (type.isThrowable() == false) {",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 122,
+    "precode": "if (concreteType != null) {",
+    "aftercode": "if (concreteType != null && true) {",
+    "rule": "Condition Mutation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 134,
+    "precode": "if (deser != null) {",
+    "aftercode": "if (deser != null && true) {",
+    "rule": "Condition Mutation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 143,
+    "precode": "checkIllegalTypes(ctxt, type, beanDesc);",
+    "aftercode": "checkIllegalTypes(ctxt, type, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 103,
+    "precode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(type, config, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(type, config, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 126,
+    "precode": "beanDesc = config.introspect(concreteType);",
+    "aftercode": "beanDesc = config.introspect(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 133,
+    "precode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(null, type, beanDesc);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 119,
+    "precode": "if (type.isAbstract() && !type.isPrimitive()) {",
+    "aftercode": "if (type.isAbstract() && type.isPrimitive()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 139,
+    "precode": "if (!isPotentialBeanType(type.getRawClass())) {",
+    "aftercode": "if (!isPotentialBeanType(type.getRawClass())) {",
+    "rule": "Empty Body",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 145,
+    "precode": "return buildBeanDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "return buildBeanDeserializer(null, type, beanDesc);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 103,
+    "precode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(type, config, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> custom = _findCustomBeanDeserializer(type, config, beanDesc);",
+    "rule": "No Change",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 111,
+    "precode": "if (type.isThrowable()) {",
+    "aftercode": "if (type.isThrowable()) {",
+    "rule": "No Change",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 127,
+    "precode": "return buildBeanDeserializer(ctxt, concreteType, beanDesc);",
+    "aftercode": "return buildBeanDeserializer(ctxt, concreteType, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 139,
+    "precode": "if (!isPotentialBeanType(type.getRawClass())) {",
+    "aftercode": "if (isPotentialBeanType(type.getRawClass())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 121,
+    "precode": "JavaType concreteType = materializeAbstractType(ctxt, type, beanDesc);",
+    "aftercode": "JavaType concreteType = materializeAbstractType(ctxt, type, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 101,
+    "precode": "final DeserializationConfig config = ctxt.getConfig();",
+    "aftercode": "final DeserializationConfig config = ctxt.getConfig();",
+    "rule": "No Change",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 133,
+    "precode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(ctxt, type, beanDesc);",
+    "aftercode": "JsonDeserializer<Object> deser = (JsonDeserializer<Object>) findStdDeserializer(ctxt, type, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 143,
+    "precode": "checkIllegalTypes(ctxt, type, beanDesc);",
+    "aftercode": "checkIllegalTypes(ctxt, null, beanDesc);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 126,
+    "precode": "beanDesc = config.introspect(concreteType);",
+    "aftercode": "beanDesc = config.introspect(concreteType);",
+    "rule": "No Change",
+    "gen_time_s": 1.27,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 852,
+    "precode": "if (\"TemplatesImpl\".equals(name)) { // [databind#1599]",
+    "aftercode": "if (\"TemplatesImpl\".equalsIgnoreCase(name)) { // [databind#1599]",
+    "rule": "String Equality",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 852,
+    "precode": "if (\"TemplatesImpl\".equals(name)) { // [databind#1599]",
+    "aftercode": "if (true) { // [databind#1599]",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 852,
+    "precode": "if (\"TemplatesImpl\".equals(name)) { // [databind#1599]",
+    "aftercode": "if (!\"TemplatesImpl\".equals(name)) { // [databind#1599]",
+    "rule": "Negation",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 853,
+    "precode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) {",
+    "aftercode": "if (raw.getName().contains(\"com.sun.org.apache.xalan\")) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 853,
+    "precode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) {",
+    "aftercode": "if (raw.getName().endsWith(\"com.sun.org.apache.xalan\")) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 853,
+    "precode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) {",
+    "aftercode": "if (raw.getName().startsWith(\"\")) {",
+    "rule": "String Literal",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 853,
+    "precode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) {",
+    "aftercode": "if (raw.getName().startsWith(\"com.sun.org.apache.apache\")) {",
+    "rule": "String Literal",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 853,
+    "precode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) {",
+    "aftercode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) { false",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 854,
+    "precode": "throw JsonMappingException.from(ctxt,",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 854,
+    "precode": "throw JsonMappingException.from(ctxt,",
+    "aftercode": "throw new JsonMappingException(ctxt, \"error\");",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 850,
+    "precode": "String name = raw.getSimpleName();",
+    "aftercode": "String name = raw.getName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 849,
+    "precode": "Class<?> raw = type.getRawClass();",
+    "aftercode": "Class<?> raw = type.getRawType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 852,
+    "precode": "if (\"TemplatesImpl\".equals(name)) { // [databind#1599]",
+    "aftercode": "if (name.equals(\"TemplatesImpl\")) { // [databind#1599]",
+    "rule": "Null Safety",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 855,
+    "precode": "String.format(\"Illegal type (%s) to deserialize: prevented for security reasons\",",
+    "aftercode": "String.format(\"Illegal type %%s to deserialize: prevented for security reasons\",",
+    "rule": "String Literal",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 853,
+    "precode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) {",
+    "aftercode": "if (raw.getName().startsWith(\"com.sun.org.apache.xalan\")) { true",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 850,
+    "precode": "String name = raw.getSimpleName();",
+    "aftercode": "String name = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 852,
+    "precode": "if (\"TemplatesImpl\".equals(name)) { // [databind#1599]",
+    "aftercode": "if (\"TemplatesImpl\".equals(\"name\")) { // [databind#1599]",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  }
+]

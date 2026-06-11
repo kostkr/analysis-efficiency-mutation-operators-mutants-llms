@@ -1,0 +1,432 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 893,
+    "precode": "if (context == null) {",
+    "aftercode": "if (context != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 895,
+    "precode": "context = new TypeBindings(this, (Class<?>) null);",
+    "aftercode": "context = new TypeBindings(null, (Class<?>) null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 902,
+    "precode": "JavaType actualType = context.findType(name, false);",
+    "aftercode": "JavaType actualType = context.findType(name, true);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 903,
+    "precode": "if (actualType != null) {",
+    "aftercode": "if (actualType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 904,
+    "precode": "return actualType;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 913,
+    "precode": "Type[] bounds = type.getBounds();",
+    "aftercode": "Type[] bounds = type.getSuperclass();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 928,
+    "precode": "context._addPlaceholder(name);",
+    "aftercode": "context._addPlaceholder(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 929,
+    "precode": "return _constructType(bounds[0], context);",
+    "aftercode": "return _constructType(bounds[bounds.length - 1], context);",
+    "rule": "Index Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 891,
+    "precode": "final String name = type.getName();",
+    "aftercode": "final String name = type.getQualifiedName();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 895,
+    "precode": "context = new TypeBindings(this, (Class<?>) null);",
+    "aftercode": "context = new TypeBindings(this, Object.class);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 902,
+    "precode": "JavaType actualType = context.findType(name, false);",
+    "aftercode": "JavaType actualType = context.findType(null, false);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 929,
+    "precode": "return _constructType(bounds[0], context);",
+    "aftercode": "return _constructType(null, context);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 893,
+    "precode": "if (context == null) {",
+    "aftercode": "if (context != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 903,
+    "precode": "if (actualType != null) {",
+    "aftercode": "if (actualType != null) {",
+    "rule": "Empty Body",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 903,
+    "precode": "if (actualType != null) {",
+    "aftercode": "if (actualType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 904,
+    "precode": "return actualType;",
+    "aftercode": "return actualType;",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 928,
+    "precode": "context._addPlaceholder(name);",
+    "aftercode": "context._addPlaceholder(name);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 929,
+    "precode": "return _constructType(bounds[0], context);",
+    "aftercode": "return _constructType(bounds[0], context);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 895,
+    "precode": "context = new TypeBindings(this, (Class<?>) null);",
+    "aftercode": "context = new TypeBindings(this, (Class<?>) null);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 902,
+    "precode": "JavaType actualType = context.findType(name, false);",
+    "aftercode": "JavaType actualType = context.findType(name, false);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 893,
+    "precode": "if (context == null) {",
+    "aftercode": "if (context == null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 903,
+    "precode": "if (actualType != null) {",
+    "aftercode": "if (actualType != null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 891,
+    "precode": "final String name = type.getName();",
+    "aftercode": "final String name = type.getName();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 913,
+    "precode": "Type[] bounds = type.getBounds();",
+    "aftercode": "Type[] bounds = type.getBounds();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 895,
+    "precode": "context = new TypeBindings(this, (Class<?>) null);",
+    "aftercode": "context = new TypeBindings(this, (Class<?>) null);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 902,
+    "precode": "JavaType actualType = context.findType(name, false);",
+    "aftercode": "JavaType actualType = context.findType(name, false);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 904,
+    "precode": "return actualType;",
+    "aftercode": "return actualType;",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 928,
+    "precode": "context._addPlaceholder(name);",
+    "aftercode": "context._addPlaceholder(name);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 929,
+    "precode": "return _constructType(bounds[0], context);",
+    "aftercode": "return _constructType(bounds[0], context);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 893,
+    "precode": "if (context == null) {",
+    "aftercode": "if (context == null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 903,
+    "precode": "if (actualType != null) {",
+    "aftercode": "if (actualType != null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 891,
+    "precode": "final String name = type.getName();",
+    "aftercode": "final String name = type.getName();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 913,
+    "precode": "Type[] bounds = type.getBounds();",
+    "aftercode": "Type[] bounds = type.getBounds();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 895,
+    "precode": "context = new TypeBindings(this, (Class<?>) null);",
+    "aftercode": "context = new TypeBindings(this, (Class<?>) null);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 902,
+    "precode": "JavaType actualType = context.findType(name, false);",
+    "aftercode": "JavaType actualType = context.findType(name, false);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 904,
+    "precode": "return actualType;",
+    "aftercode": "return actualType;",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 928,
+    "precode": "context._addPlaceholder(name);",
+    "aftercode": "context._addPlaceholder(name);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 929,
+    "precode": "return _constructType(bounds[0], context);",
+    "aftercode": "return _constructType(bounds[0], context);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 893,
+    "precode": "if (context == null) {",
+    "aftercode": "if (context == null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 903,
+    "precode": "if (actualType != null) {",
+    "aftercode": "if (actualType != null) {",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 891,
+    "precode": "final String name = type.getName();",
+    "aftercode": "final String name = type.getName();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 913,
+    "precode": "Type[] bounds = type.getBounds();",
+    "aftercode": "Type[] bounds = type.getBounds();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 895,
+    "precode": "context = new TypeBindings(this, (Class<?>) null);",
+    "aftercode": "context = new TypeBindings(this, (Class<?>) null);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  }
+]

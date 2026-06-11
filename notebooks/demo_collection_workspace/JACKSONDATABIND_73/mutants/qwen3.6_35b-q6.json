@@ -1,0 +1,562 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 726,
+    "precode": "final boolean inferMutators = _config.isEnabled(MapperFeature.INFER_PROPERTY_MUTATORS);",
+    "aftercode": "final boolean inferMutators = !_config.isEnabled(MapperFeature.INFER_PROPERTY_MUTATORS);",
+    "rule": "Negation",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 727,
+    "precode": "Iterator<POJOPropertyBuilder> it = props.values().iterator();",
+    "aftercode": "Iterator<POJOPropertyBuilder> it = props.entrySet().iterator();",
+    "rule": "Collection Iterator",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 729,
+    "precode": "while (it.hasNext()) {",
+    "aftercode": "while (it.hasPrevious()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 730,
+    "precode": "POJOPropertyBuilder prop = it.next();",
+    "aftercode": "POJOPropertyBuilder prop = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 732,
+    "precode": "Access acc = prop.removeNonVisible(inferMutators);",
+    "aftercode": "Access acc = Access.AUTO;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 733,
+    "precode": "if (!_forSerialization && (acc == Access.READ_ONLY)) {",
+    "aftercode": "if (_forSerialization && (acc == Access.READ_ONLY)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 733,
+    "precode": "if (!_forSerialization && (acc == Access.READ_ONLY)) {",
+    "aftercode": "if (!_forSerialization && (acc != Access.READ_ONLY)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 733,
+    "precode": "if (!_forSerialization && (acc == Access.READ_ONLY)) {",
+    "aftercode": "if (!_forSerialization || (acc == Access.READ_ONLY)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 733,
+    "precode": "if (!_forSerialization && (acc == Access.READ_ONLY)) {",
+    "aftercode": "if (false && (acc == Access.READ_ONLY)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 734,
+    "precode": "_collectIgnorals(prop.getName());",
+    "aftercode": "_collectIgnorals(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 734,
+    "precode": "_collectIgnorals(prop.getName());",
+    "aftercode": "_collectIgnorals(\"unknown\");",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 734,
+    "precode": "_collectIgnorals(prop.getName());",
+    "aftercode": "if (prop != null) _collectIgnorals(prop.getName());",
+    "rule": "Conditional Insertion",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 734,
+    "precode": "_collectIgnorals(prop.getName());",
+    "aftercode": "_collectIgnorals(prop.getFullName());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java",
+    "line": 727,
+    "precode": "Iterator<POJOPropertyBuilder> it = props.values().iterator();",
+    "aftercode": "Iterator<POJOPropertyBuilder> it = new ArrayList<POJOPropertyBuilder>().iterator();",
+    "rule": "Collection Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 650,
+    "precode": "JsonProperty.Access acc = findAccess();",
+    "aftercode": "JsonProperty.Access acc = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 651,
+    "precode": "if (acc == null) {",
+    "aftercode": "if (acc != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 652,
+    "precode": "acc = JsonProperty.Access.AUTO;",
+    "aftercode": "acc = JsonProperty.Access.READ_ONLY;",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 657,
+    "precode": "_setters = null;",
+    "aftercode": "_setters = _setters;",
+    "rule": "Empty Object/Null Return",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 658,
+    "precode": "_ctorParameters = null;",
+    "aftercode": "_ctorParameters = _ctorParameters;",
+    "rule": "Empty Object/Null Return",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 659,
+    "precode": "if (!_forSerialization) {",
+    "aftercode": "if (_forSerialization) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 660,
+    "precode": "_fields = null;",
+    "aftercode": "_fields = _fields;",
+    "rule": "Empty Object/Null Return",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 668,
+    "precode": "_getters = null;",
+    "aftercode": "_getters = _getters;",
+    "rule": "Empty Object/Null Return",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 669,
+    "precode": "if (_forSerialization) {",
+    "aftercode": "if (!_forSerialization) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 670,
+    "precode": "_fields = null;",
+    "aftercode": "_fields = _fields;",
+    "rule": "Empty Object/Null Return",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 675,
+    "precode": "_getters = _removeNonVisible(_getters);",
+    "aftercode": "_getters = _getters;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 676,
+    "precode": "_ctorParameters = _removeNonVisible(_ctorParameters);",
+    "aftercode": "_ctorParameters = _ctorParameters;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 678,
+    "precode": "if (!inferMutators || (_getters == null)) {",
+    "aftercode": "if (inferMutators && (_getters != null)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 679,
+    "precode": "_fields = _removeNonVisible(_fields);",
+    "aftercode": "_fields = _fields;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 680,
+    "precode": "_setters = _removeNonVisible(_setters);",
+    "aftercode": "_setters = _setters;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 651,
+    "precode": "if (acc == null) {",
+    "aftercode": "if (acc == JsonProperty.Access.AUTO) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 659,
+    "precode": "if (!_forSerialization) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 669,
+    "precode": "if (_forSerialization) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 678,
+    "precode": "if (!inferMutators || (_getters == null)) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 678,
+    "precode": "if (!inferMutators || (_getters == null)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 650,
+    "precode": "JsonProperty.Access acc = findAccess();",
+    "aftercode": "JsonProperty.Access acc = JsonProperty.Access.READ_WRITE;",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 657,
+    "precode": "_setters = null;",
+    "aftercode": "if (_setters != null) _setters.clear();",
+    "rule": "Method Call Extractor",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 658,
+    "precode": "_ctorParameters = null;",
+    "aftercode": "if (_ctorParameters != null) _ctorParameters.clear();",
+    "rule": "Method Call Extractor",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 660,
+    "precode": "_fields = null;",
+    "aftercode": "if (_fields != null) _fields.clear();",
+    "rule": "Method Call Extractor",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 668,
+    "precode": "_getters = null;",
+    "aftercode": "if (_getters != null) _getters.clear();",
+    "rule": "Method Call Extractor",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 670,
+    "precode": "_fields = null;",
+    "aftercode": "if (_fields != null) _fields.clear();",
+    "rule": "Method Call Extractor",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 675,
+    "precode": "_getters = _removeNonVisible(_getters);",
+    "aftercode": "_getters = _removeNonVisible(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 676,
+    "precode": "_ctorParameters = _removeNonVisible(_ctorParameters);",
+    "aftercode": "_ctorParameters = _removeNonVisible(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 679,
+    "precode": "_fields = _removeNonVisible(_fields);",
+    "aftercode": "_fields = _removeNonVisible(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 680,
+    "precode": "_setters = _removeNonVisible(_setters);",
+    "aftercode": "_setters = _removeNonVisible(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 657,
+    "precode": "_setters = null;",
+    "aftercode": "_setters = new ArrayList<>();",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 658,
+    "precode": "_ctorParameters = null;",
+    "aftercode": "_ctorParameters = new ArrayList<>();",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 660,
+    "precode": "_fields = null;",
+    "aftercode": "_fields = new ArrayList<>();",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 668,
+    "precode": "_getters = null;",
+    "aftercode": "_getters = new ArrayList<>();",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 670,
+    "precode": "_fields = null;",
+    "aftercode": "_fields = new ArrayList<>();",
+    "rule": "Value Change",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 675,
+    "precode": "_getters = _removeNonVisible(_getters);",
+    "aftercode": "JsonProperty.Access temp = acc; _getters = _removeNonVisible(_getters); acc = temp;",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 676,
+    "precode": "_ctorParameters = _removeNonVisible(_ctorParameters);",
+    "aftercode": "JsonProperty.Access temp = acc; _ctorParameters = _removeNonVisible(_ctorParameters); acc = temp;",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 679,
+    "precode": "_fields = _removeNonVisible(_fields);",
+    "aftercode": "JsonProperty.Access temp = acc; _fields = _removeNonVisible(_fields); acc = temp;",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 680,
+    "precode": "_setters = _removeNonVisible(_setters);",
+    "aftercode": "JsonProperty.Access temp = acc; _setters = _removeNonVisible(_setters); acc = temp;",
+    "rule": "Side Effect Removal",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 659,
+    "precode": "if (!_forSerialization) {",
+    "aftercode": "if (!_forSerialization && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 669,
+    "precode": "if (_forSerialization) {",
+    "aftercode": "if (_forSerialization && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+    "line": 678,
+    "precode": "if (!inferMutators || (_getters == null)) {",
+    "aftercode": "if ((!inferMutators || (_getters == null)) && true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.16,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 476,
+    "precode": "final boolean isConcrete = !beanDesc.getType().isAbstract();",
+    "aftercode": "final boolean isConcrete = beanDesc.getType().isAbstract();",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 477,
+    "precode": "final SettableBeanProperty[] creatorProps = isConcrete",
+    "aftercode": "final SettableBeanProperty[] creatorProps = !isConcrete",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 480,
+    "precode": "final boolean hasCreatorProps = (creatorProps != null);",
+    "aftercode": "final boolean hasCreatorProps = (creatorProps == null);",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 492,
+    "precode": "boolean ignoreAny = ignorals.getIgnoreUnknown();",
+    "aftercode": "boolean ignoreAny = !ignorals.getIgnoreUnknown();",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 493,
+    "precode": "builder.setIgnoreUnknownProperties(ignoreAny);",
+    "aftercode": "builder.setIgnoreUnknownProperties(!ignoreAny);",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 500,
+    "precode": "ignored = Collections.emptySet();",
+    "aftercode": "ignored = Collections.singleton(",
+    "rule": "Syntax Error (Placeholder for logical replacement)",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 500,
+    "precode": "ignored = Collections.emptySet();",
+    "aftercode": "ignored = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 506,
+    "precode": "if (anySetterMethod != null) {",
+    "aftercode": "if (anySetterMethod == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 511,
+    "precode": "if(anySetterField != null) {",
+    "aftercode": "if(anySetterField == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 517,
+    "precode": "if (anySetterMethod == null && anySetterField == null) {",
+    "aftercode": "if (anySetterMethod == null || anySetterField == null) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 517,
+    "precode": "if (anySetterMethod == null && anySetterField == null) {",
+    "aftercode": "if (anySetterMethod != null && anySetterField != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 517,
+    "precode": "if (anySetterMethod == null && anySetterField == null) {",
+    "aftercode": "if (anySetterMethod != null || anySetterField != null) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 527,
+    "precode": "final boolean useGettersAsSetters = ctxt.isEnabled(MapperFeature.USE_GETTERS_AS_SETTERS)",
+    "aftercode": "final boolean useGettersAsSetters = !ctxt.isEnabled(MapperFeature.USE_GETTERS_AS_SETTERS)",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 536,
+    "precode": "for (BeanDeserializerModifier mod : _factoryConfig.deserializerModifiers()) {",
+    "aftercode": "for (BeanDeserializerModifier mod : new BeanDeserializerModifier[0]) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 548,
+    "precode": "if (propDef.hasSetter()) {",
+    "aftercode": "if (!propDef.hasSetter()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 551,
+    "precode": "} else if (propDef.hasField()) {",
+    "aftercode": "} else if (!propDef.hasField()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 554,
+    "precode": "} else if (useGettersAsSetters && propDef.hasGetter()) {",
+    "aftercode": "} else if (useGettersAsSetters || propDef.hasGetter()) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 554,
+    "precode": "} else if (useGettersAsSetters && propDef.hasGetter()) {",
+    "aftercode": "} else if (useGettersAsSetters && !propDef.hasGetter()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 561,
+    "precode": "if (Collection.class.isAssignableFrom(rawPropertyType)",
+    "aftercode": "if (!Collection.class.isAssignableFrom(rawPropertyType)",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 562,
+    "precode": "|| Map.class.isAssignableFrom(rawPropertyType)) {",
+    "aftercode": "&& Map.class.isAssignableFrom(rawPropertyType)) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 568,
+    "precode": "if (hasCreatorProps && propDef.hasConstructorParameter()) {",
+    "aftercode": "if (hasCreatorProps || propDef.hasConstructorParameter()) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 568,
+    "precode": "if (hasCreatorProps && propDef.hasConstructorParameter()) {",
+    "aftercode": "if (!hasCreatorProps && propDef.hasConstructorParameter()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 576,
+    "precode": "if (creatorProps != null) {",
+    "aftercode": "if (creatorProps == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 578,
+    "precode": "if (name.equals(cp.getName()) && (cp instanceof CreatorProperty)) {",
+    "aftercode": "if (name.equals(cp.getName()) || (cp instanceof CreatorProperty)) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 578,
+    "precode": "if (name.equals(cp.getName()) && (cp instanceof CreatorProperty)) {",
+    "aftercode": "if (name.equals(cp.getName()) && !(cp instanceof CreatorProperty)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 584,
+    "precode": "if (cprop == null) {",
+    "aftercode": "if (cprop != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 594,
+    "precode": "if (prop != null) {",
+    "aftercode": "if (prop == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 602,
+    "precode": "if (prop != null) {",
+    "aftercode": "if (prop == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 606,
+    "precode": "if (!ctxt.isEnabled(MapperFeature.DEFAULT_VIEW_INCLUSION)) {",
+    "aftercode": "if (ctxt.isEnabled(MapperFeature.DEFAULT_VIEW_INCLUSION)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  }
+]

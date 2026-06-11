@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1021,
+    "precode": "if (rawClass == Properties.class) {",
+    "aftercode": "if (rawClass != Properties.class) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1024,
+    "precode": "JavaType[] typeParams = findTypeParameters(rawClass, Map.class);",
+    "aftercode": "JavaType[] typeParams = findTypeParameters(Map.class, rawClass);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1026,
+    "precode": "if (typeParams == null) {",
+    "aftercode": "if (typeParams != null) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1026,
+    "precode": "if (typeParams == null) {",
+    "aftercode": "if (typeParams.length == 0) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1030,
+    "precode": "if (typeParams.length != 2) {",
+    "aftercode": "if (typeParams.length == 2) {",
+    "rule": "Conditionals Inversion",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1030,
+    "precode": "if (typeParams.length != 2) {",
+    "aftercode": "if (typeParams.length <= 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1030,
+    "precode": "if (typeParams.length != 2) {",
+    "aftercode": "if (typeParams.length < 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1031,
+    "precode": "throw new IllegalArgumentException(\"Strange Map type \"+rawClass.getName()+\": can not determine type parameters\");",
+    "aftercode": "throw new IllegalArgumentException(\"Strange Map type \"+rawClass.getName()+\": type params invalid\");",
+    "rule": "String Literal",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1033,
+    "precode": "return MapType.construct(rawClass, typeParams[0], typeParams[1]);",
+    "aftercode": "return MapType.construct(rawClass, typeParams[1], typeParams[0]);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1033,
+    "precode": "return MapType.construct(rawClass, typeParams[0], typeParams[1]);",
+    "aftercode": "return null;",
+    "rule": "Return Value",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1022,
+    "precode": "return MapType.construct(rawClass, CORE_TYPE_STRING, CORE_TYPE_STRING);",
+    "aftercode": "return MapType.construct(rawClass, _unknownType(), _unknownType());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1027,
+    "precode": "return MapType.construct(rawClass, _unknownType(), _unknownType());",
+    "aftercode": "return MapType.construct(rawClass, typeParams[0], typeParams[1]);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1024,
+    "precode": "JavaType[] typeParams = findTypeParameters(rawClass, Map.class);",
+    "aftercode": "JavaType[] typeParams = null;",
+    "rule": "Variable Assignment",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1022,
+    "precode": "return MapType.construct(rawClass, CORE_TYPE_STRING, CORE_TYPE_STRING);",
+    "aftercode": "return MapType.construct(rawClass, null, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1027,
+    "precode": "return MapType.construct(rawClass, _unknownType(), _unknownType());",
+    "aftercode": "return MapType.construct(rawClass, null, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1033,
+    "precode": "return MapType.construct(rawClass, typeParams[0], typeParams[1]);",
+    "aftercode": "return MapType.construct(rawClass, null, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/type/TypeFactory.java",
+    "line": 1021,
+    "precode": "if (rawClass == Properties.class) {",
+    "aftercode": "if (rawClass.equals(Properties.class)) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.5,
+    "dublicate": false
+  }
+]

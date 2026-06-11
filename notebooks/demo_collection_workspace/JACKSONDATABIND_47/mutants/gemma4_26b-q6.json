@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 811,
+    "precode": "if (type.hasRawClass(serClass)) {",
+    "aftercode": "if (!type.hasRawClass(serClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 814,
+    "precode": "type = type.withStaticTyping();",
+    "aftercode": "type = type;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 820,
+    "precode": "if (serClass.isAssignableFrom(currRaw)) { // common case",
+    "aftercode": "if (!serClass.isAssignableFrom(currRaw)) { // common case",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 822,
+    "precode": "} else if (currRaw.isAssignableFrom(serClass)) { // specialization, ok as well",
+    "aftercode": "} else if (!currRaw.isAssignableFrom(serClass)) { // specialization, ok as well",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 823,
+    "precode": "type = tf.constructSpecializedType(type, serClass);",
+    "aftercode": "type = tf.constructGeneralizedType(type, serClass);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 840,
+    "precode": "if (type.isMapLikeType()) {",
+    "aftercode": "if (!type.isMapLikeType()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 844,
+    "precode": "if (keyType.hasRawClass(keyClass)) {",
+    "aftercode": "if (!keyType.hasRawClass(keyClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 845,
+    "precode": "keyType = keyType.withStaticTyping();",
+    "aftercode": "keyType = keyType;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 852,
+    "precode": "if (keyClass.isAssignableFrom(currRaw)) { // common case",
+    "aftercode": "if (!keyClass.isAssignableFrom(currRaw)) { // common case",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 854,
+    "precode": "} else if (currRaw.isAssignableFrom(keyClass)) { // specialization, ok as well",
+    "aftercode": "} else if (!currRaw.isAssignableFrom(keyClass)) { // specialization, ok as well",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 855,
+    "precode": "keyType = tf.constructSpecializedType(type, keyClass);",
+    "aftercode": "keyType = tf.constructGeneralizedType(type, keyClass);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 868,
+    "precode": "type = ((MapLikeType) type).withKeyType(keyType);",
+    "aftercode": "type = type;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 872,
+    "precode": "JavaType contentType = type.getContentType();",
+    "aftercode": "JavaType contentType = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 873,
+    "precode": "if (contentType != null) { // collection[like], map[like], array, reference",
+    "aftercode": "if (contentType == null) { // collection[like], map[like], array, reference",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 877,
+    "precode": "if (contentType.hasRawClass(contentClass)) {",
+    "aftercode": "if (!contentType.hasRawClass(contentClass)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 878,
+    "precode": "contentType = contentType.withStaticTyping();",
+    "aftercode": "contentType = contentType;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 885,
+    "precode": "if (contentClass.isAssignableFrom(currRaw)) { // common case",
+    "aftercode": "if (!contentClass.isAssignableFrom(currRaw)) { // common case",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 887,
+    "precode": "} else if (currRaw.isAssignableFrom(contentClass)) { // specialization, ok as well",
+    "aftercode": "} else if (!currRaw.isAssignableFrom(contentClass)) { // specialization, ok as well",
+    "rule": "Negation",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 888,
+    "precode": "contentType = tf.constructSpecializedType(contentType, contentClass);",
+    "aftercode": "contentType = tf.constructGeneralizedType(contentType, contentClass);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+    "line": 901,
+    "precode": "type = type.withContentType(contentType);",
+    "aftercode": "type = type;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.37,
+    "dublicate": false
+  }
+]

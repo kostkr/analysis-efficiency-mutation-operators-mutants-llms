@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 71,
+    "precode": "final Class<?> raw = type.getRawClass();",
+    "aftercode": "final Class<?> raw = type.getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 72,
+    "precode": "String full = raw.getName();",
+    "aftercode": "String full = raw.getSimpleName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 76,
+    "precode": "if (_cfgIllegalClassNames.contains(full)) {",
+    "aftercode": "if (!_cfgIllegalClassNames.contains(full)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 76,
+    "precode": "if (_cfgIllegalClassNames.contains(full)) {",
+    "aftercode": "if (_cfgIllegalClassNames.isEmpty()) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 83,
+    "precode": "if (!raw.isInterface() && full.startsWith(PREFIX_STRING)) {",
+    "aftercode": "if (raw.isInterface() && full.startsWith(PREFIX_STRING)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 83,
+    "precode": "if (!raw.isInterface() && full.startsWith(PREFIX_STRING)) {",
+    "aftercode": "if (!raw.isInterface() || full.startsWith(PREFIX_STRING)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 83,
+    "precode": "if (!raw.isInterface() && full.startsWith(PREFIX_STRING)) {",
+    "aftercode": "if (!raw.isInterface() && !full.startsWith(PREFIX_STRING)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 84,
+    "precode": "for (Class<?> cls = raw; (cls != null) && (cls != Object.class); cls = cls.getSuperclass()) {",
+    "aftercode": "for (Class<?> cls = raw; (cls != null) || (cls != Object.class); cls = cls.getSuperclass()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 84,
+    "precode": "for (Class<?> cls = raw; (cls != null) && (cls != Object.class); cls = cls.getSuperclass()) {",
+    "aftercode": "for (Class<?> cls = raw; (cls != null) && (cls == Object.class); cls = cls.getSuperclass()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 84,
+    "precode": "for (Class<?> cls = raw; (cls != null) && (cls != Object.class); cls = cls.getSuperclass()) {",
+    "aftercode": "for (Class<?> cls = raw; (cls != null); cls = cls.getSuperclass()) {",
+    "rule": "Loop Boundary Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 85,
+    "precode": "String name = cls.getSimpleName();",
+    "aftercode": "String name = cls.getName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 87,
+    "precode": "if (\"AbstractPointcutAdvisor\".equals(name)",
+    "aftercode": "if (\"AbstractPointcutAdvisor\".equalsIgnoreCase(name)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 87,
+    "precode": "if (\"AbstractPointcutAdvisor\".equals(name)",
+    "aftercode": "if (\"AbstractPointcutAdvisor\" != name)",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 89,
+    "precode": "|| \"AbstractApplicationContext\".equals(name)) {",
+    "aftercode": "&& \"AbstractApplicationContext\".equals(name)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 89,
+    "precode": "|| \"AbstractApplicationContext\".equals(name)) {",
+    "aftercode": "|| \"AbstractApplicationContext\" != name) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 90,
+    "precode": "break main_check;",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 94,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 95,
+    "precode": "} while (false);",
+    "aftercode": "} while (true);",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 97,
+    "precode": "throw JsonMappingException.from(ctxt,",
+    "aftercode": "return JsonMappingException.from(ctxt,",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 98,
+    "precode": "String.format(\"Illegal type (%s) to deserialize: prevented for security reasons\", full));",
+    "aftercode": "String.format(\"Illegal type (%s) to deserialize: prevented for security reasons\", \"\"));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 71,
+    "precode": "final Class<?> raw = type.getRawClass();",
+    "aftercode": "Class<?> raw = type.getRawClass();",
+    "rule": "Modifier Removal",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 76,
+    "precode": "if (_cfgIllegalClassNames.contains(full)) {",
+    "aftercode": "if (_cfgIllegalClassNames.contains(\"\")) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 84,
+    "precode": "cls = cls.getSuperclass()",
+    "aftercode": "cls = cls.getInterfaces()[0]",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 87,
+    "precode": "\"AbstractPointcutAdvisor\".equals(name)",
+    "aftercode": "name.equals(\"AbstractPointcutAdvisor\")",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 89,
+    "precode": "\"AbstractApplicationContext\".equals(name)",
+    "aftercode": "name.equals(\"AbstractApplicationContext\")",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 72,
+    "precode": "String full = raw.getName();",
+    "aftercode": "String full = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 76,
+    "precode": "if (_cfgIllegalClassNames.contains(full)) {",
+    "aftercode": "if (_cfgIllegalClassNames.contains(full) == false) {",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 83,
+    "precode": "!raw.isInterface()",
+    "aftercode": "raw.isInterface()",
+    "rule": "Negation",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 84,
+    "precode": "cls != null",
+    "aftercode": "cls == null",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 84,
+    "precode": "cls != Object.class",
+    "aftercode": "cls == Object.class",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 90,
+    "precode": "break main_check;",
+    "aftercode": "break;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java",
+    "line": 75,
+    "precode": "do {",
+    "aftercode": "while (false) {",
+    "rule": "Loop Replacement",
+    "gen_time_s": 1.15,
+    "dublicate": false
+  }
+]

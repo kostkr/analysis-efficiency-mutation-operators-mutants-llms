@@ -1,0 +1,432 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 278,
+    "precode": "final int mask = (1 << typeIndex);",
+    "aftercode": "final int mask = (1 << (typeIndex + 1));",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 279,
+    "precode": "_hasNonDefaultCreator = true;",
+    "aftercode": "_hasNonDefaultCreator = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 282,
+    "precode": "if (oldOne != null) {",
+    "aftercode": "if (oldOne == null) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 285,
+    "precode": "if ((_explicitCreators & mask) != 0) { // already had explicitly annotated, leave as-is",
+    "aftercode": "if ((_explicitCreators & mask) == 0) { // already had explicitly annotated, leave as-is",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 285,
+    "precode": "if ((_explicitCreators & mask) != 0) { // already had explicitly annotated, leave as-is",
+    "aftercode": "if ((_explicitCreators & mask) != 1) { // already had explicitly annotated, leave as-is",
+    "rule": "Literal Value Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 287,
+    "precode": "if (!explicit) {",
+    "aftercode": "if (explicit) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 294,
+    "precode": "verify = !explicit;",
+    "aftercode": "verify = explicit;",
+    "rule": "Assignment Negation Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 298,
+    "precode": "if (verify && (oldOne.getClass() == newOne.getClass())) {",
+    "aftercode": "if (verify || (oldOne.getClass() == newOne.getClass())) {",
+    "rule": "Boolean Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 298,
+    "precode": "if (verify && (oldOne.getClass() == newOne.getClass())) {",
+    "aftercode": "if (verify && (oldOne.getClass() != newOne.getClass())) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 303,
+    "precode": "if (oldType == newType) {",
+    "aftercode": "if (oldType != newType) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 304,
+    "precode": "throw new IllegalArgumentException(\"Conflicting \"+TYPE_DESCS[typeIndex]",
+    "aftercode": "return;",
+    "rule": "Exception Throw Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 305,
+    "precode": "\"+\" creators: already had explicitly marked \"+oldOne+\", encountered \"+newOne);",
+    "aftercode": "\"+\" creators: already had explicitly marked \"+newOne+\", encountered \"+oldOne);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 308,
+    "precode": "if (newType.isAssignableFrom(oldType)) {",
+    "aftercode": "if (oldType.isAssignableFrom(newType)) {",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 310,
+    "precode": "return;",
+    "aftercode": "_creators[typeIndex] = _fixAccess(newOne);",
+    "rule": "Return Statement Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 315,
+    "precode": "if (explicit) {",
+    "aftercode": "if (!explicit) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 316,
+    "precode": "_explicitCreators |= mask;",
+    "aftercode": "_explicitCreators &= ~mask;",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 318,
+    "precode": "_creators[typeIndex] = _fixAccess(newOne);",
+    "aftercode": "_creators[typeIndex] = _creators[typeIndex];",
+    "rule": "Assignment to Self",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 278,
+    "precode": "final int mask = (1 << typeIndex);",
+    "aftercode": "final int mask = (1 >> typeIndex);",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 280,
+    "precode": "AnnotatedWithParams oldOne = _creators[typeIndex];",
+    "aftercode": "AnnotatedWithParams oldOne = _creators[typeIndex + 1];",
+    "rule": "Index Offset Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 300,
+    "precode": "Class<?> oldType = oldOne.getRawParameterType(0);",
+    "aftercode": "Class<?> oldType = newOne.getRawParameterType(0);",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 301,
+    "precode": "Class<?> newType = newOne.getRawParameterType(0);",
+    "aftercode": "Class<?> newType = oldOne.getRawParameterType(0);",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 287,
+    "precode": "if (!explicit) {",
+    "aftercode": "if (explicit && oldOne != null) {",
+    "rule": "Condition Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 291,
+    "precode": "verify = true;",
+    "aftercode": "verify = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 294,
+    "precode": "verify = !explicit;",
+    "aftercode": "verify = true;",
+    "rule": "Assignment Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 308,
+    "precode": "if (newType.isAssignableFrom(oldType)) {",
+    "aftercode": "if (newType.equals(oldType)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 316,
+    "precode": "_explicitCreators |= mask;",
+    "aftercode": "_explicitCreators ^= mask;",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 318,
+    "precode": "_creators[typeIndex] = _fixAccess(newOne);",
+    "aftercode": "if (_creators[typeIndex] != null) _creators[typeIndex] = _fixAccess(newOne);",
+    "rule": "Conditional Assignment",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 282,
+    "precode": "if (oldOne != null) {",
+    "aftercode": "if (oldOne == null) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 298,
+    "precode": "if (verify && (oldOne.getClass() == newOne.getClass())) {",
+    "aftercode": "if (verify && oldOne.getClass().equals(newOne.getClass())) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 303,
+    "precode": "if (oldType == newType) {",
+    "aftercode": "if (oldType.equals(newType)) {",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 304,
+    "precode": "throw new IllegalArgumentException(\"Conflicting \"+TYPE_DESCS[typeIndex]",
+    "aftercode": "throw new IllegalStateException(\"Conflicting \"+TYPE_DESCS[typeIndex]",
+    "rule": "Exception Type Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 310,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 279,
+    "precode": "_hasNonDefaultCreator = true;",
+    "aftercode": "if (oldOne == null) _hasNonDefaultCreator = true;",
+    "rule": "Conditional Assignment",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 315,
+    "precode": "if (explicit) {",
+    "aftercode": "if (explicit || oldOne == null) {",
+    "rule": "Condition Change",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 318,
+    "precode": "_creators[typeIndex] = _fixAccess(newOne);",
+    "aftercode": "_creators[typeIndex] = newOne;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 285,
+    "precode": "if ((_explicitCreators & mask) != 0) { // already had explicitly annotated, leave as-is",
+    "aftercode": "if ((_explicitCreators | mask) != 0) { // already had explicitly annotated, leave as-is",
+    "rule": "Bitwise Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 298,
+    "precode": "if (verify && (oldOne.getClass() == newOne.getClass())) {",
+    "aftercode": "if (verify && (oldOne.getClass() == newOne.getClass()) && newType != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 308,
+    "precode": "if (newType.isAssignableFrom(oldType)) {",
+    "aftercode": "if (newType.isAssignableFrom(oldType) && oldType != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 316,
+    "precode": "_explicitCreators |= mask;",
+    "aftercode": "if (explicit) _explicitCreators |= mask;",
+    "rule": "Conditional Assignment",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 304,
+    "precode": "throw new IllegalArgumentException(\"Conflicting \"+TYPE_DESCS[typeIndex]",
+    "aftercode": "if (true) throw new IllegalArgumentException(\"Conflicting \"+TYPE_DESCS[typeIndex]",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 310,
+    "precode": "return;",
+    "aftercode": "if (newType.isAssignableFrom(oldType)) return;",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 287,
+    "precode": "if (!explicit) {",
+    "aftercode": "if (!explicit || newOne == null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+    "line": 303,
+    "precode": "if (oldType == newType) {",
+    "aftercode": "if (oldType == newType && oldType != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  }
+]

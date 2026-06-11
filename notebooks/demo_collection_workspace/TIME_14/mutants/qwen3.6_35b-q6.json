@@ -1,0 +1,232 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 206,
+    "precode": "if (valueToAdd == 0) {",
+    "aftercode": "if (valueToAdd != 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 207,
+    "precode": "return values;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 209,
+    "precode": "if (partial.size() > 0 && partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) && fieldIndex == 0) {",
+    "aftercode": "if (partial.size() >= 0 && partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) && fieldIndex == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 209,
+    "precode": "if (partial.size() > 0 && partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) && fieldIndex == 0) {",
+    "aftercode": "if (partial.size() > 0 || partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) && fieldIndex == 0) {",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 209,
+    "precode": "if (partial.size() > 0 && partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) && fieldIndex == 0) {",
+    "aftercode": "if (partial.size() > 0 && partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) || fieldIndex == 0) {",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 211,
+    "precode": "int curMonth0 = partial.getValue(0) - 1;",
+    "aftercode": "int curMonth0 = partial.getValue(0) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 212,
+    "precode": "int newMonth = ((curMonth0 + (valueToAdd % 12) + 12) % 12) + 1;",
+    "aftercode": "int newMonth = ((curMonth0 + (valueToAdd % 12) + 12) % 12) - 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 212,
+    "precode": "int newMonth = ((curMonth0 + (valueToAdd % 12) + 12) % 12) + 1;",
+    "aftercode": "int newMonth = ((curMonth0 + (valueToAdd % 12) - 12) % 12) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 213,
+    "precode": "return set(partial, 0, values, newMonth);",
+    "aftercode": "return set(partial, 0, values, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 215,
+    "precode": "if (DateTimeUtils.isContiguous(partial)) {",
+    "aftercode": "if (!DateTimeUtils.isContiguous(partial)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 217,
+    "precode": "for (int i = 0, isize = partial.size(); i < isize; i++) {",
+    "aftercode": "for (int i = 0, isize = partial.size(); i <= isize; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 217,
+    "precode": "for (int i = 0, isize = partial.size(); i < isize; i++) {",
+    "aftercode": "for (int i = 0, isize = partial.size(); i < isize; i += 2) {",
+    "rule": "Increment/Decrement Operator Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 218,
+    "precode": "instant = partial.getFieldType(i).getField(iChronology).set(instant, values[i]);",
+    "aftercode": "instant = partial.getFieldType(i).getField(iChronology).set(instant, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 218,
+    "precode": "instant = partial.getFieldType(i).getField(iChronology).set(instant, values[i]);",
+    "aftercode": "instant = instant;",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 220,
+    "precode": "instant = add(instant, valueToAdd);",
+    "aftercode": "instant = add(instant, -valueToAdd);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 220,
+    "precode": "instant = add(instant, valueToAdd);",
+    "aftercode": "instant = add(instant, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 221,
+    "precode": "return iChronology.get(partial, instant);",
+    "aftercode": "return iChronology.get(partial, 0);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 221,
+    "precode": "return iChronology.get(partial, instant);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 223,
+    "precode": "return super.add(partial, fieldIndex, values, valueToAdd);",
+    "aftercode": "return super.add(partial, 0, values, valueToAdd);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 223,
+    "precode": "return super.add(partial, fieldIndex, values, valueToAdd);",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 211,
+    "precode": "int curMonth0 = partial.getValue(0) - 1;",
+    "aftercode": "int curMonth0 = partial.getValue(1) - 1;",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 212,
+    "precode": "int newMonth = ((curMonth0 + (valueToAdd % 12) + 12) % 12) + 1;",
+    "aftercode": "int newMonth = ((curMonth0 + (valueToAdd / 12) + 12) % 12) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+    "line": 218,
+    "precode": "instant = partial.getFieldType(i).getField(iChronology).set(instant, values[i]);",
+    "aftercode": "instant = partial.getFieldType(i + 1).getField(iChronology).set(instant, values[i]);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.78,
+    "dublicate": false
+  }
+]

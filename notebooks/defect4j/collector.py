@@ -392,10 +392,18 @@ class DataCollector:
         self._log("  profile  : verifying fixed clean suite and buggy bug profile under `defects4j test -r`…")
         suite_profile = self.d4j.relevant_test_profile(container_path, timeout=test_timeout)
         if suite_profile.get("failing_tests"):
-            raise RuntimeError(
-                f"Fixed checkout {project}-{bug_id} is not clean under defects4j test -r: "
-                f"{suite_profile['failing_tests']}"
+            self._log(
+                f"  profile  : warning: fixed checkout {project}-{bug_id} reported failing tests; "
+                f"recreating checkout once and retrying…"
             )
+            self.d4j.checkout(project, bug_id, version="f", dest=container_path, timeout=180)
+            self.d4j.reset_checkout(container_path)
+            suite_profile = self.d4j.relevant_test_profile(container_path, timeout=test_timeout)
+            if suite_profile.get("failing_tests"):
+                raise RuntimeError(
+                    f"Fixed checkout {project}-{bug_id} is not clean under defects4j test -r: "
+                    f"{suite_profile['failing_tests']}"
+                )
 
         buggy_path = self._ensure_checkout(project, bug_id, version="b")
         buggy_profile = self.d4j.relevant_test_profile(buggy_path, timeout=test_timeout)

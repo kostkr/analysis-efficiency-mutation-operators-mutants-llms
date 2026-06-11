@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 94,
+    "precode": "public int getCreatorIndex() { return _delegate.getCreatorIndex(); }",
+    "aftercode": "public int getCreatorIndex() { return 0; }",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 91,
+    "precode": "public int getPropertyIndex() { return _delegate.getPropertyIndex(); }",
+    "aftercode": "public int getPropertyIndex() { return 0; }",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 94,
+    "precode": "public int getCreatorIndex() { return _delegate.getCreatorIndex(); }",
+    "aftercode": "public int getCreatorIndex() { return -1; }",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 100,
+    "precode": "return _delegate.getAnnotation(acls);",
+    "aftercode": "return null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 103,
+    "precode": "public AnnotatedMember getMember() {  return _delegate.getMember(); }",
+    "aftercode": "public AnnotatedMember getMember() {  return null; }",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 117,
+    "precode": "if (t == JsonToken.VALUE_NULL) {",
+    "aftercode": "if (t != JsonToken.VALUE_NULL) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 118,
+    "precode": "value = _valueDeserializer.getNullValue(ctxt);",
+    "aftercode": "value = null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 119,
+    "precode": "} else if (_valueTypeDeserializer != null) {",
+    "aftercode": "} else if (_valueTypeDeserializer == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 120,
+    "precode": "value = _valueDeserializer.deserializeWithType(jp, ctxt, _valueTypeDeserializer);",
+    "aftercode": "value = _valueDeserializer.deserializeWithType(jp, ctxt, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 123,
+    "precode": "value = _creator.newInstance(bean);",
+    "aftercode": "value = null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 125,
+    "precode": "ClassUtil.unwrapAndThrowAsIAE(e, \"Failed to instantiate class \"+_creator.getDeclaringClass().getName()+\", problem: \"+e.getMessage());",
+    "aftercode": "ClassUtil.unwrapAndThrowAsIAE(e, \"Failed to instantiate class \"+_creator.getDeclaringClass().getName()+\", problem: \"+\"\" );",
+    "rule": "StringLiteralReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 126,
+    "precode": "value = null;",
+    "aftercode": "value = bean;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 128,
+    "precode": "_valueDeserializer.deserialize(jp, ctxt, value);",
+    "aftercode": "// _valueDeserializer.deserialize(jp, ctxt, value);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 130,
+    "precode": "set(bean, value);",
+    "aftercode": "// set(bean, value);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 138,
+    "precode": "return setAndReturn(instance, deserialize(jp, ctxt));",
+    "aftercode": "return deserialize(jp, ctxt);",
+    "rule": "MethodCallRemoval",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 143,
+    "precode": "_delegate.set(instance, value);",
+    "aftercode": "_delegate.set(null, value);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 148,
+    "precode": "return _delegate.setAndReturn(instance, value);",
+    "aftercode": "return null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 159,
+    "precode": "return new InnerClassProperty(this, _annotated);",
+    "aftercode": "return new InnerClassProperty(null, _annotated);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 164,
+    "precode": "if (_annotated != null) {",
+    "aftercode": "if (_annotated == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 165,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "ReturnValueReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java",
+    "line": 167,
+    "precode": "return new InnerClassProperty(this, new AnnotatedConstructor(null, _creator, null, null));",
+    "aftercode": "return new InnerClassProperty(null, new AnnotatedConstructor(null, _creator, null, null));",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  }
+]

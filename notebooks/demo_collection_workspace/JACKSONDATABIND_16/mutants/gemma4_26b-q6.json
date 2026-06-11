@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 108,
+    "precode": "if (_annotations == null) {",
+    "aftercode": "if (_annotations != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 109,
+    "precode": "_annotations = new HashMap<Class<? extends Annotation>,Annotation>();",
+    "aftercode": "_annotations = new LinkedHashMap<Class<? extends Annotation>,Annotation>();",
+    "rule": "Map Implementation Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 111,
+    "precode": "Annotation previous = _annotations.put(ann.annotationType(), ann);",
+    "aftercode": "Annotation previous = _annotations.put(ann.annotationType(), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 112,
+    "precode": "return (previous == null) || !previous.equals(ann);",
+    "aftercode": "return (previous == null) && !previous.equals(ann);",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 112,
+    "precode": "return (previous == null) || !previous.equals(ann);",
+    "aftercode": "return (previous != null) || !previous.equals(ann);",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 112,
+    "precode": "return (previous == null) || !previous.equals(ann);",
+    "aftercode": "return (previous == null) || previous.equals(ann);",
+    "rule": "Negation",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/introspect/AnnotationMap.java",
+    "line": 111,
+    "precode": "Annotation previous = _annotations.put(ann.annotationType(), ann);",
+    "aftercode": "Annotation previous = _annotations.get(ann.annotationType());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.56,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1617,
+    "precode": "type = DateTimeUtils.getPeriodType(type);",
+    "aftercode": "type = type;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1618,
+    "precode": "long millis = getMillis();  // no overflow can happen, even with Integer.MAX_VALUEs",
+    "aftercode": "long millis = 0L;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1619,
+    "precode": "millis += (((long) getSeconds()) * ((long) DateTimeConstants.MILLIS_PER_SECOND));",
+    "aftercode": "millis -= (((long) getSeconds()) * ((long) DateTimeConstants.MILLIS_PER_SECOND));",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1620,
+    "precode": "millis += (((long) getMinutes()) * ((long) DateTimeConstants.MILLIS_PER_MINUTE));",
+    "aftercode": "millis += (((long) getMinutes()) * ((long) DateTimeConstants.MILLIS_PER_SECOND));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1621,
+    "precode": "millis += (((long) getHours()) * ((long) DateTimeConstants.MILLIS_PER_HOUR));",
+    "aftercode": "millis += (((long) getHours()) * ((long) DateTimeConstants.MILLIS_PER_MINUTE));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1622,
+    "precode": "millis += (((long) getDays()) * ((long) DateTimeConstants.MILLIS_PER_DAY));",
+    "aftercode": "millis += (((long) getDays()) * ((long) DateTimeConstants.MILLIS_PER_HOUR));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1623,
+    "precode": "millis += (((long) getWeeks()) * ((long) DateTimeConstants.MILLIS_PER_WEEK));",
+    "aftercode": "millis += (((long) getWeeks()) * ((long) DateTimeConstants.MILLIS_PER_DAY));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1624,
+    "precode": "Period result = new Period(millis, type, ISOChronology.getInstanceUTC());",
+    "aftercode": "Period result = new Period(millis, type, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1627,
+    "precode": "if (years != 0 || months != 0) {",
+    "aftercode": "if (years != 0 && months != 0) {",
+    "rule": "Conditional Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1627,
+    "precode": "if (years != 0 || months != 0) {",
+    "aftercode": "if (years == 0 || months == 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1628,
+    "precode": "long totalMonths = years * 12L + months;",
+    "aftercode": "long totalMonths = years * 12L - months;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1628,
+    "precode": "long totalMonths = years * 12L + months;",
+    "aftercode": "long totalMonths = years * 12L;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1629,
+    "precode": "if (type.isSupported(DurationFieldType.YEARS_TYPE)) {",
+    "aftercode": "if (!type.isSupported(DurationFieldType.YEARS_TYPE)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1630,
+    "precode": "int normalizedYears = FieldUtils.safeToInt(totalMonths / 12);",
+    "aftercode": "int normalizedYears = FieldUtils.safeToInt(totalMonths % 12);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1631,
+    "precode": "result = result.withYears(normalizedYears);",
+    "aftercode": "result = result.withMonths(normalizedYears);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1632,
+    "precode": "totalMonths = totalMonths - (normalizedYears * 12);",
+    "aftercode": "totalMonths = totalMonths + (normalizedYears * 12);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1634,
+    "precode": "if (type.isSupported(DurationFieldType.MONTHS_TYPE)) {",
+    "aftercode": "if (type.isSupported(DurationFieldType.YEARS_TYPE)) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1635,
+    "precode": "int normalizedMonths = FieldUtils.safeToInt(totalMonths);",
+    "aftercode": "int normalizedMonths = FieldUtils.safeToInt(-totalMonths);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1636,
+    "precode": "result = result.withMonths(normalizedMonths);",
+    "aftercode": "result = result.withYears(normalizedMonths);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1637,
+    "precode": "totalMonths = totalMonths - normalizedMonths;",
+    "aftercode": "totalMonths = totalMonths + normalizedMonths;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1639,
+    "precode": "if (totalMonths != 0) {",
+    "aftercode": "if (totalMonths == 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1639,
+    "precode": "if (totalMonths != 0) {",
+    "aftercode": "if (totalMonths > 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1640,
+    "precode": "throw new UnsupportedOperationException(\"Unable to normalize as PeriodType is missing either years or months but period has a month/year amount: \" + toString());",
+    "aftercode": "// throw new UnsupportedOperationException(...);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1628,
+    "precode": "long totalMonths = years * 12L + months;",
+    "aftercode": "long totalMonths = (long) years * 12 + months;",
+    "rule": "Type Casting Change",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1630,
+    "precode": "int normalizedYears = FieldUtils.safeToInt(totalMonths / 12);",
+    "aftercode": "int normalizedYears = (int) (totalMonths / 12);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1619,
+    "precode": "millis += (((long) getSeconds()) * ((long) DateTimeConstants.MILLIS_PER_SECOND));",
+    "aftercode": "millis += (((long) getSeconds()) * (long) DateTimeConstants.MILLIS_PER_SECOND);",
+    "rule": "Redundant Parenthesis Removal",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1632,
+    "precode": "totalMonths = totalMonths - (normalizedYears * 12);",
+    "aftercode": "totalMonths -= (normalizedYears * 12);",
+    "rule": "Assignment Operator Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1625,
+    "precode": "int years = getYears();",
+    "aftercode": "int years = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/org/joda/time/Period.java",
+    "line": 1626,
+    "precode": "int months = getMonths();",
+    "aftercode": "int months = 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.36,
+    "dublicate": false
+  }
+]

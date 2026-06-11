@@ -1,0 +1,532 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 709,
+    "precode": "AnnotatedMember mutator = propDef.getNonConstructorMutator();",
+    "aftercode": "AnnotatedMember mutator = propDef.getConstructorMutator();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 711,
+    "precode": "if (ctxt.canOverrideAccessModifiers()) {",
+    "aftercode": "if (!ctxt.canOverrideAccessModifiers()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 715,
+    "precode": "if ((mutator instanceof AnnotatedField)",
+    "aftercode": "if ((mutator instanceof AnnotatedMethod)",
+    "rule": "Instanceof Type Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 716,
+    "precode": "\"cause\".equals(mutator.getName())) {",
+    "aftercode": "\"message\".equals(mutator.getName())) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 717,
+    "precode": ";",
+    "aftercode": "mutator.fixAccess(false);",
+    "rule": "Statement Insertion",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 719,
+    "precode": "mutator.fixAccess(ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "mutator.fixAccess(!ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "rule": "Boolean Negation",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 723,
+    "precode": "BeanProperty.Std property = new BeanProperty.Std(propDef.getFullName(),",
+    "aftercode": "BeanProperty.Std property = new BeanProperty.Std(null,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 724,
+    "precode": "propType0, propDef.getWrapperName(),",
+    "aftercode": "propType0, null,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 726,
+    "precode": "JavaType type = resolveType(ctxt, beanDesc, propType0, mutator);",
+    "aftercode": "JavaType type = propType0;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 728,
+    "precode": "if (type != propType0) {",
+    "aftercode": "if (type == propType0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 733,
+    "precode": "JsonDeserializer<Object> propDeser = findDeserializerFromAnnotation(ctxt, mutator);",
+    "aftercode": "JsonDeserializer<Object> propDeser = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 734,
+    "precode": "type = modifyTypeByAnnotation(ctxt, mutator, type);",
+    "aftercode": "type = type;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 735,
+    "precode": "TypeDeserializer typeDeser = type.getTypeHandler();",
+    "aftercode": "TypeDeserializer typeDeser = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 737,
+    "precode": "if (mutator instanceof AnnotatedMethod) {",
+    "aftercode": "if (mutator instanceof AnnotatedField) {",
+    "rule": "Instanceof Type Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 738,
+    "precode": "prop = new MethodProperty(propDef, type, typeDeser,",
+    "aftercode": "prop = new FieldProperty(propDef, type, typeDeser,",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 740,
+    "precode": "} else {",
+    "aftercode": "} if (true) {",
+    "rule": "Statement Insertion",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 741,
+    "precode": "prop = new FieldProperty(propDef, type, typeDeser,",
+    "aftercode": "prop = new MethodProperty(propDef, type, typeDeser,",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 744,
+    "precode": "if (propDeser != null) {",
+    "aftercode": "if (propDeser == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 745,
+    "precode": "prop = prop.withValueDeserializer(propDeser);",
+    "aftercode": "prop = prop.withNullValueDeserializer(propDeser);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 748,
+    "precode": "AnnotationIntrospector.ReferenceProperty ref = propDef.findReferenceType();",
+    "aftercode": "AnnotationIntrospector.ReferenceProperty ref = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 749,
+    "precode": "if (ref != null && ref.isManagedReference()) {",
+    "aftercode": "if (ref != null || ref.isManagedReference()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 750,
+    "precode": "prop.setManagedReferenceName(ref.getName());",
+    "aftercode": "prop.setManagedReferenceName(null);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 752,
+    "precode": "ObjectIdInfo objectIdInfo = propDef.findObjectIdInfo();",
+    "aftercode": "ObjectIdInfo objectIdInfo = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 753,
+    "precode": "if(objectIdInfo != null){",
+    "aftercode": "if(objectIdInfo == null){",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 754,
+    "precode": "prop.setObjectIdInfo(objectIdInfo);",
+    "aftercode": "prop.setObjectIdInfo(null);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 709,
+    "precode": "AnnotatedMember mutator = propDef.getNonConstructorMutator();",
+    "aftercode": "AnnotatedMember mutator = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 715,
+    "precode": "if ((mutator instanceof AnnotatedField)",
+    "aftercode": "if ((mutator == null)",
+    "rule": "Null Check",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 716,
+    "precode": "\"cause\".equals(mutator.getName())) {",
+    "aftercode": "\"name\".equals(mutator.getName())) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 719,
+    "precode": "mutator.fixAccess(ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "mutator.fixAccess(true);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 723,
+    "precode": "BeanProperty.Std property = new BeanProperty.Std(propDef.getFullName(),",
+    "aftercode": "BeanProperty property = new BeanProperty.Std(propDef.getFullName(),",
+    "rule": "Type Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 725,
+    "precode": "beanDesc.getClassAnnotations(), mutator, propDef.getMetadata());",
+    "aftercode": "beanDesc.getClassAnnotations(), null, propDef.getMetadata());",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 729,
+    "precode": "property = property.withType(type);",
+    "aftercode": "property = property.withNullType(type);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 733,
+    "precode": "JsonDeserializer<Object> propDeser = findDeserializerFromAnnotation(ctxt, mutator);",
+    "aftercode": "JsonDeserializer<Object> propDeser = findDeserializerFromAnnotation(ctxt, null);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 734,
+    "precode": "type = modifyTypeByAnnotation(ctxt, mutator, type);",
+    "aftercode": "type = modifyTypeByAnnotation(null, mutator, type);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 735,
+    "precode": "TypeDeserializer typeDeser = type.getTypeHandler();",
+    "aftercode": "TypeDeserializer typeDeser = type.getBaseType();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 738,
+    "precode": "prop = new MethodProperty(propDef, type, typeDeser,",
+    "aftercode": "prop = new MethodProperty(null, type, typeDeser,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 739,
+    "precode": "beanDesc.getClassAnnotations(), (AnnotatedMethod) mutator);",
+    "aftercode": "beanDesc.getClassAnnotations(), null);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 741,
+    "precode": "prop = new FieldProperty(propDef, type, typeDeser,",
+    "aftercode": "prop = new FieldProperty(null, type, typeDeser,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 742,
+    "precode": "beanDesc.getClassAnnotations(), (AnnotatedField) mutator);",
+    "aftercode": "beanDesc.getClassAnnotations(), null);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 745,
+    "precode": "prop = prop.withValueDeserializer(propDeser);",
+    "aftercode": "prop = prop.withNullValue(propDeser);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 748,
+    "precode": "AnnotationIntrospector.ReferenceProperty ref = propDef.findReferenceType();",
+    "aftercode": "AnnotationIntrospector.ReferenceProperty ref = propDef.getReferenceType();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 749,
+    "precode": "if (ref != null && ref.isManagedReference()) {",
+    "aftercode": "if (ref != null && ref.isUnmanagedReference()) {",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 750,
+    "precode": "prop.setManagedReferenceName(ref.getName());",
+    "aftercode": "prop.setUnmanagedReferenceName(ref.getName());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 752,
+    "precode": "ObjectIdInfo objectIdInfo = propDef.findObjectIdInfo();",
+    "aftercode": "ObjectIdInfo objectIdInfo = propDef.getObjectIdInfo();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 754,
+    "precode": "prop.setObjectIdInfo(objectIdInfo);",
+    "aftercode": "prop.setNullObjectIdInfo(objectIdInfo);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 709,
+    "precode": "AnnotatedMember mutator = propDef.getNonConstructorMutator();",
+    "aftercode": "AnnotatedMember mutator = propDef.getMutator();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 719,
+    "precode": "mutator.fixAccess(ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));",
+    "aftercode": "mutator.fixAccess(ctxt.isOverridePublicAccessModifiers());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 723,
+    "precode": "BeanProperty.Std property = new BeanProperty.Std(propDef.getFullName(),",
+    "aftercode": "BeanProperty.Std property = new BeanProperty.Std(propDef.getName(),",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 724,
+    "precode": "propType0, propDef.getWrapperName(),",
+    "aftercode": "propType0, propDef.getWrapperId(),",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 725,
+    "precode": "beanDesc.getClassAnnotations(), mutator, propDef.getMetadata());",
+    "aftercode": "beanDesc.getClassAnnotations(), mutator, propDef.getAnnotations());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 733,
+    "precode": "JsonDeserializer<Object> propDeser = findDeserializerFromAnnotation(ctxt, mutator);",
+    "aftercode": "JsonDeserializer<Object> propDeser = findDeserializerFromAnnotation(mutator, ctxt);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 734,
+    "precode": "type = modifyTypeByAnnotation(ctxt, mutator, type);",
+    "aftercode": "type = modifyTypeByAnnotation(mutator, ctxt, type);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java",
+    "line": 745,
+    "precode": "prop = prop.withValueDeserializer(propDeser);",
+    "aftercode": "prop = propDeser.withValueDeserializer(prop);",
+    "rule": "Receiver Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,782 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 87,
+    "precode": "if (id == null) {",
+    "aftercode": "if (id != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 88,
+    "precode": "return null;",
+    "aftercode": "return id;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 91,
+    "precode": "final ObjectIdGenerator.IdKey key = gen.key(id);",
+    "aftercode": "final ObjectIdGenerator.IdKey key = gen.key(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 93,
+    "precode": "if (_objectIds == null) {",
+    "aftercode": "if (_objectIds != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 94,
+    "precode": "_objectIds = new LinkedHashMap<ObjectIdGenerator.IdKey,ReadableObjectId>();",
+    "aftercode": "_objectIds = new HashMap<ObjectIdGenerator.IdKey,ReadableObjectId>();",
+    "rule": "ImplementationChange",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 96,
+    "precode": "ReadableObjectId entry = _objectIds.get(key);",
+    "aftercode": "ReadableObjectId entry = _objectIds.remove(key);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 97,
+    "precode": "if (entry != null) {",
+    "aftercode": "if (entry == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 105,
+    "precode": "if (_objectIdResolvers == null) {",
+    "aftercode": "if (_objectIdResolvers != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 106,
+    "precode": "_objectIdResolvers = new ArrayList<ObjectIdResolver>(8);",
+    "aftercode": "_objectIdResolvers = new ArrayList<ObjectIdResolver>(0);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 108,
+    "precode": "for (ObjectIdResolver res : _objectIdResolvers) {",
+    "aftercode": "for (int i = 0; i < _objectIdResolvers.size(); i++) {",
+    "rule": "LoopTransformation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 109,
+    "precode": "if (res.canUseFor(resolverType)) {",
+    "aftercode": "if (!res.canUseFor(resolverType)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 110,
+    "precode": "resolver = res;",
+    "aftercode": "resolver = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 111,
+    "precode": "break;",
+    "aftercode": "// break;",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 116,
+    "precode": "if (resolver == null) {",
+    "aftercode": "if (resolver != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 117,
+    "precode": "resolver = resolverType.newForDeserialization(this);",
+    "aftercode": "resolver = resolverType.newForDeserialization(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 127,
+    "precode": "_objectIdResolvers.add(resolver);",
+    "aftercode": "_objectIdResolvers.remove(resolver);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 130,
+    "precode": "ReadableObjectId entry = new ReadableObjectId(key);",
+    "aftercode": "ReadableObjectId entry = new ReadableObjectId(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 131,
+    "precode": "entry.setResolver(resolver);",
+    "aftercode": "// entry.setResolver(resolver);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 132,
+    "precode": "_objectIds.put(key, entry);",
+    "aftercode": "_objectIds.put(null, entry);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 133,
+    "precode": "return entry;",
+    "aftercode": "return null;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 94,
+    "precode": "_objectIds = new LinkedHashMap<ObjectIdGenerator.IdKey,ReadableObjectId>();",
+    "aftercode": "_objectIds = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 106,
+    "precode": "_objectIdResolvers = new ArrayList<ObjectIdResolver>(8);",
+    "aftercode": "_objectIdResolvers = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 117,
+    "precode": "resolver = resolverType.newForDeserialization(this);",
+    "aftercode": "resolver = resolverType.newForDeserialization(resolverType);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 97,
+    "precode": "if (entry != null) {",
+    "aftercode": "if (entry != null && false) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 109,
+    "precode": "if (res.canUseFor(resolverType)) {",
+    "aftercode": "if (res.canUseFor(null)) {",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 132,
+    "precode": "_objectIds.put(key, entry);",
+    "aftercode": "_objectIds.put(entry, key);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 91,
+    "precode": "final ObjectIdGenerator.IdKey key = gen.key(id);",
+    "aftercode": "final ObjectIdGenerator.IdKey key = id.hashCode();",
+    "rule": "LogicReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 108,
+    "precode": "for (ObjectIdResolver res : _objectIdResolvers) {",
+    "aftercode": "for (ObjectIdResolver res : new ArrayList<>()) {",
+    "rule": "CollectionReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 117,
+    "precode": "resolver = resolverType.newForDeserialization(this);",
+    "aftercode": "resolver = resolverType.getClass().newInstance();",
+    "rule": "LogicReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 130,
+    "precode": "ReadableObjectId entry = new ReadableObjectId(key);",
+    "aftercode": "ReadableObjectId entry = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 87,
+    "precode": "if (id == null) {",
+    "aftercode": "if (id == null || id.equals(\"null\")) {",
+    "rule": "ConditionExpansion",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 93,
+    "precode": "if (_objectIds == null) {",
+    "aftercode": "if (_objectIds == null || _objectIds.isEmpty()) {",
+    "rule": "ConditionExpansion",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 96,
+    "precode": "ReadableObjectId entry = _objectIds.get(key);",
+    "aftercode": "ReadableObjectId entry = _objectIds.getOrDefault(key, null);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 105,
+    "precode": "if (_objectIdResolvers == null) {",
+    "aftercode": "if (_objectIdResolvers == null || _objectIdResolvers.isEmpty()) {",
+    "rule": "ConditionExpansion",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 116,
+    "precode": "if (resolver == null) {",
+    "aftercode": "if (resolver == null || resolver.canUseFor(resolverType)) {",
+    "rule": "ConditionExpansion",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 132,
+    "precode": "_objectIds.put(key, entry);",
+    "aftercode": "_objectIds.putIfAbsent(key, entry);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 91,
+    "precode": "final ObjectIdGenerator.IdKey key = gen.key(id);",
+    "aftercode": "final ObjectIdGenerator.IdKey key = null;",
+    "rule": "AssignmentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 108,
+    "precode": "for (ObjectIdResolver res : _objectIdResolvers) {",
+    "aftercode": "for (int i = 0; i <= _objectIdResolvers.size(); i++) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 113,
+    "precode": "}",
+    "aftercode": "if (true) { }",
+    "rule": "BlockReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 133,
+    "precode": "return entry;",
+    "aftercode": "return key == null ? null : entry;",
+    "rule": "ConditionalReturn",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 96,
+    "precode": "ReadableObjectId entry = _objectIds.get(key);",
+    "aftercode": "ReadableObjectId entry = _objectIds.get(key == null ? null : key);",
+    "rule": "TernaryReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 109,
+    "precode": "if (res.canUseFor(resolverType)) {",
+    "aftercode": "if (res != null && res.canUseFor(resolverType)) {",
+    "rule": "ConditionExpansion",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 127,
+    "precode": "_objectIdResolvers.add(resolver);",
+    "aftercode": "_objectIdResolvers.add(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 87,
+    "precode": "if (id == null) {",
+    "aftercode": "if (id == null && false) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 94,
+    "precode": "_objectIds = new LinkedHashMap<ObjectIdGenerator.IdKey,ReadableObjectId>();",
+    "aftercode": "_objectIds = new LinkedHashMap<>();",
+    "rule": "TypeInference",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 117,
+    "precode": "resolver = resolverType.newForDeserialization(this);",
+    "aftercode": "resolver = resolverType.newForDeserialization(this); //",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 130,
+    "precode": "ReadableObjectId entry = new ReadableObjectId(key);",
+    "aftercode": "ReadableObjectId entry = new ReadableObjectId(key);",
+    "rule": "NoOp",
+    "gen_time_s": 1.1,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 97,
+    "precode": "if (entry != null) {",
+    "aftercode": "if (entry != null && entry.getResolver() != null) {",
+    "rule": "ConditionExpansion",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 110,
+    "precode": "resolver = res;",
+    "aftercode": "resolver = (ObjectIdResolver) res;",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 111,
+    "precode": "break;",
+    "aftercode": "return;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 132,
+    "precode": "_objectIds.put(key, entry);",
+    "aftercode": "_objectIds.put(key, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 88,
+    "precode": "return null;",
+    "aftercode": "return (ReadableObjectId) null;",
+    "rule": "CastReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 94,
+    "precode": "_objectIds = new LinkedHashMap<ObjectIdGenerator.IdKey,ReadableObjectId>();",
+    "aftercode": "_objectIds = new LinkedHashMap<Object,Object>();",
+    "rule": "TypeInference",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+    "line": 106,
+    "precode": "_objectIdResolvers = new ArrayList<ObjectIdResolver>(8);",
+    "aftercode": "_objectIdResolvers = new ArrayList<ObjectIdResolver>(1);",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.1,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 85,
+    "precode": "Object id = _valueDeserializer.deserialize(jp, ctxt);",
+    "aftercode": "Object id = null;",
+    "rule": "Void Method Call Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 85,
+    "precode": "Object id = _valueDeserializer.deserialize(jp, ctxt);",
+    "aftercode": "Object id = ctxt.getCurrentValue();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 92,
+    "precode": "if (id == null) {",
+    "aftercode": "if (id != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 92,
+    "precode": "if (id == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 92,
+    "precode": "if (id == null) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 93,
+    "precode": "return null;",
+    "aftercode": "return id;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 96,
+    "precode": "ReadableObjectId roid = ctxt.findObjectId(id, _objectIdReader.generator, _objectIdReader.resolver);",
+    "aftercode": "ReadableObjectId roid = ctxt.findObjectId(null, _objectIdReader.generator, _objectIdReader.resolver);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 96,
+    "precode": "ReadableObjectId roid = ctxt.findObjectId(id, _objectIdReader.generator, _objectIdReader.resolver);",
+    "aftercode": "ReadableObjectId roid = ctxt.findObjectId(id, _objectIdReader.generator, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 96,
+    "precode": "ReadableObjectId roid = ctxt.findObjectId(id, _objectIdReader.generator, _objectIdReader.resolver);",
+    "aftercode": "ReadableObjectId roid = ctxt.findObjectId(id, null, _objectIdReader.resolver);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 97,
+    "precode": "roid.bindItem(instance);",
+    "aftercode": "// roid.bindItem(instance);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 97,
+    "precode": "roid.bindItem(instance);",
+    "aftercode": "roid.bindItem(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 99,
+    "precode": "SettableBeanProperty idProp = _objectIdReader.idProperty;",
+    "aftercode": "SettableBeanProperty idProp = null;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 100,
+    "precode": "if (idProp != null) {",
+    "aftercode": "if (idProp == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 100,
+    "precode": "if (idProp != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 100,
+    "precode": "if (idProp != null) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 101,
+    "precode": "return idProp.setAndReturn(instance, id);",
+    "aftercode": "return idProp.setAndReturn(id, instance);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 101,
+    "precode": "return idProp.setAndReturn(instance, id);",
+    "aftercode": "return idProp.setAndReturn(instance, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 101,
+    "precode": "return idProp.setAndReturn(instance, id);",
+    "aftercode": "return idProp.setAndReturn(null, id);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 101,
+    "precode": "return idProp.setAndReturn(instance, id);",
+    "aftercode": "return instance;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 101,
+    "precode": "return idProp.setAndReturn(instance, id);",
+    "aftercode": "idProp.setAndReturn(instance, id); return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 103,
+    "precode": "return instance;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 103,
+    "precode": "return instance;",
+    "aftercode": "return id;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 85,
+    "precode": "Object id = _valueDeserializer.deserialize(jp, ctxt);",
+    "aftercode": "Object id = _valueDeserializer.deserialize(ctxt, jp);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java",
+    "line": 97,
+    "precode": "roid.bindItem(instance);",
+    "aftercode": "instance.bindItem(roid);",
+    "rule": "Method Call Target Replacement",
+    "gen_time_s": 1.13,
+    "dublicate": false
+  }
+]

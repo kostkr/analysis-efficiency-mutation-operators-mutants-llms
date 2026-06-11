@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 138,
+    "precode": "JsonDeserializer<Object> deser = _findDefaultImplDeserializer(ctxt);",
+    "aftercode": "JsonDeserializer<Object> deser = null;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 138,
+    "precode": "JsonDeserializer<Object> deser = _findDefaultImplDeserializer(ctxt);",
+    "aftercode": "JsonDeserializer<Object> deser = _findDefaultImplDeserializer(null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 139,
+    "precode": "if (deser != null) {",
+    "aftercode": "if (deser == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 140,
+    "precode": "if (tb != null) {",
+    "aftercode": "if (tb == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 141,
+    "precode": "tb.writeEndObject();",
+    "aftercode": "tb.writeStartObject();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 142,
+    "precode": "p = tb.asParser(p);",
+    "aftercode": "p = tb.asParser(ctxt);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 144,
+    "precode": "p.nextToken();",
+    "aftercode": "p.nextFieldName();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 146,
+    "precode": "return deser.deserialize(p, ctxt);",
+    "aftercode": "return deser.deserialize(ctxt, p);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 149,
+    "precode": "Object result = TypeDeserializer.deserializeIfNatural(p, ctxt, _baseType);",
+    "aftercode": "Object result = TypeDeserializer.deserializeIfNatural(ctxt, p, _baseType);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 150,
+    "precode": "if (result != null) {",
+    "aftercode": "if (result == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 151,
+    "precode": "return result;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 154,
+    "precode": "if (p.getCurrentToken() == JsonToken.START_ARRAY) {",
+    "aftercode": "if (p.getCurrentToken() != JsonToken.START_ARRAY) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 155,
+    "precode": "return super.deserializeTypedFromAny(p, ctxt);",
+    "aftercode": "return super.deserializeTypedFromAny(ctxt, p);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 156,
+    "precode": "} else if (p.getCurrentToken() == JsonToken.VALUE_STRING) {",
+    "aftercode": "} else if (p.getCurrentToken() != JsonToken.VALUE_STRING) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 157,
+    "precode": "if (ctxt.isEnabled(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)) {",
+    "aftercode": "if (!ctxt.isEnabled(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 158,
+    "precode": "String str = p.getText().trim();",
+    "aftercode": "String str = p.getText();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 159,
+    "precode": "if (str.isEmpty()) {",
+    "aftercode": "if (!str.isEmpty()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 160,
+    "precode": "return null;",
+    "aftercode": "return str;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 164,
+    "precode": "ctxt.reportWrongTokenException(p, JsonToken.FIELD_NAME,",
+    "aftercode": "ctxt.reportWrongTokenException(p, JsonToken.END_OBJECT,",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 165,
+    "precode": "\"missing property '\"+_typePropertyName+\"' that is to contain type id  (for class \"+baseTypeName()+\")\");",
+    "aftercode": "\"missing property '\"+_typePropertyName+\"' that is to contain type id  (for class \"+baseTypeName()+\")\");",
+    "rule": "Comment Insertion",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  },
+  {
+    "id": 21,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 166,
+    "precode": "return null;",
+    "aftercode": "return result;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 139,
+    "precode": "if (deser != null) {",
+    "aftercode": "if (deser != null && tb != null) {",
+    "rule": "Conditionals Introduction",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 140,
+    "precode": "if (tb != null) {",
+    "aftercode": "if (tb != null && deser != null) {",
+    "rule": "Conditionals Introduction",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 144,
+    "precode": "p.nextToken();",
+    "aftercode": "p.nextToken(); p.nextToken();",
+    "rule": "Statement Addition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 158,
+    "precode": "String str = p.getText().trim();",
+    "aftercode": "String str = p.getText().trim().toLowerCase();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 159,
+    "precode": "if (str.isEmpty()) {",
+    "aftercode": "if (str.length() == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 138,
+    "precode": "JsonDeserializer<Object> deser = _findDefaultImplDeserializer(ctxt);",
+    "aftercode": "JsonDeserializer<Object> deser = _findDefaultImplDeserializer(ctxt).deserialize(p, ctxt);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 149,
+    "precode": "Object result = TypeDeserializer.deserializeIfNatural(p, ctxt, _baseType);",
+    "aftercode": "Object result = TypeDeserializer.deserializeIfNatural(p, ctxt, null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 154,
+    "precode": "if (p.getCurrentToken() == JsonToken.START_ARRAY) {",
+    "aftercode": "if (p.getCurrentToken() == JsonToken.START_OBJECT) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 156,
+    "precode": "} else if (p.getCurrentToken() == JsonToken.VALUE_STRING) {",
+    "aftercode": "} else if (p.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 164,
+    "precode": "ctxt.reportWrongTokenException(p, JsonToken.FIELD_NAME,",
+    "aftercode": "ctxt.reportWrongTokenException(p, JsonToken.START_OBJECT,",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 165,
+    "precode": "\"missing property '\"+_typePropertyName+\"' that is to contain type id  (for class \"+baseTypeName()+\")\");",
+    "aftercode": "\"missing property '\"+_typePropertyName+\"' that is to contain type id  (for class \"+baseTypeName()+\")\");",
+    "rule": "String Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java",
+    "line": 166,
+    "precode": "return null;",
+    "aftercode": "return p.getCurrentToken();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.27,
+    "dublicate": false
+  }
+]
