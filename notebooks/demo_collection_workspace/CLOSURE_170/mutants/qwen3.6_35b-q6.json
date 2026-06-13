@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 476,
+    "precode": "numUsesWithinCfgNode = 0;",
+    "aftercode": "numUsesWithinCfgNode = 1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && !n.getString().equals(varName)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() || n.getString().equals(varName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() && (parent.getFirstChild() != n)",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() || (parent.getFirstChild() == n)",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode--;",
+    "rule": "Increment/Decrement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode += 2;",
+    "rule": "Value Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n == ancestor; n = n.getParent()) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n != null; n = n.getParent()) {",
+    "rule": "Loop Condition",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 500,
+    "precode": "if (!n.isAssign()) {",
+    "aftercode": "if (n.isAssign()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 504,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 481,
+    "precode": "public void visit(NodeTraversal t, Node n, Node parent) {",
+    "aftercode": "public void visit(NodeTraversal t, Node n, Node parent) { return; }",
+    "rule": "Empty Block",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && varName.equals(n.getString())) {",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() && (parent.getParent() == n)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 491,
+    "precode": "return;",
+    "aftercode": "numUsesWithinCfgNode++; return;",
+    "rule": "Statement Insertion",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n != null; n = child.getParent()) {",
+    "rule": "Loop Update",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 501,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 476,
+    "precode": "numUsesWithinCfgNode = 0;",
+    "aftercode": "/* numUsesWithinCfgNode = 0; */",
+    "rule": "Comment Out",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign()) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 498,
+    "precode": "private boolean isAssignChain(Node child, Node ancestor) {",
+    "aftercode": "private boolean isAssignChain(Node ancestor, Node child) {",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 508,
+    "precode": "NodeTraversal.traverse(compiler, cfgNode, gatherCb);",
+    "aftercode": "NodeTraversal.traverse(gatherCb, cfgNode, compiler);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 489,
+    "precode": "&& isAssignChain(parent, cfgNode)) {",
+    "aftercode": "&& isAssignChain(cfgNode, parent)) {",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode = numUsesWithinCfgNode + 1;",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && n.getString().equalsIgnoreCase(varName)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = ancestor; n != child; n = n.getParent()) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 500,
+    "precode": "if (!n.isAssign()) {",
+    "aftercode": "if (n.isAssign()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 476,
+    "precode": "numUsesWithinCfgNode = 0;",
+    "aftercode": "numUsesWithinCfgNode = -1;",
+    "rule": "Value Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() && (parent.getLastChild() == n)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 491,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Keyword Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode += 0;",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n != null; n = n.getParent()) {",
+    "rule": "Loop Condition",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 504,
+    "precode": "return true;",
+    "aftercode": "return !true;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && n.getString().hashCode() == varName.hashCode()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() && n == parent.getFirstChild()",
+    "rule": "Operator Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() || n.getString().equals(varName)) {",
+    "rule": "Conditional Operator Change",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() || (parent.getFirstChild() == n)",
+    "rule": "Conditional Operator Change",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() && (parent.getFirstChild() != n)",
+    "rule": "Equality Operator Change",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 489,
+    "precode": "&& isAssignChain(parent, cfgNode)) {",
+    "aftercode": "|| isAssignChain(parent, cfgNode)) {",
+    "rule": "Conditional Operator Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 489,
+    "precode": "&& isAssignChain(parent, cfgNode)) {",
+    "aftercode": "&& !isAssignChain(parent, cfgNode)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 491,
+    "precode": "return;",
+    "aftercode": "return null;",
+    "rule": "Void Return Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 491,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode--;",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode+=2;",
+    "rule": "Arithmetic Operator Change",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode=0;",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && n.getString().isEmpty()) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && n.getString().startsWith(varName)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 488,
+    "precode": "if (parent.isAssign() && (parent.getFirstChild() == n)",
+    "aftercode": "if (parent.isAssign() && (parent.getLastChild() == n)",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 489,
+    "precode": "&& isAssignChain(parent, cfgNode)) {",
+    "aftercode": "&& isAssignChain(cfgNode, parent)) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 493,
+    "precode": "numUsesWithinCfgNode++;",
+    "aftercode": "numUsesWithinCfgNode=1;",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 482,
+    "precode": "if (n.isName() && n.getString().equals(varName)) {",
+    "aftercode": "if (n.isName() && !n.getString().equals(varName)) {",
+    "rule": "Negation Addition",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n == ancestor; n = n.getParent()) {",
+    "rule": "Loop Condition Value",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 500,
+    "precode": "if (!n.isAssign()) {",
+    "aftercode": "if (n.isAssign()) {",
+    "rule": "Negation",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 501,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 504,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n != null; n = n.getParent()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 500,
+    "precode": "if (!n.isAssign()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 503,
+    "precode": "}",
+    "aftercode": "}",
+    "rule": "Empty Block",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java",
+    "line": 499,
+    "precode": "for (Node n = child; n != ancestor; n = n.getParent()) {",
+    "aftercode": "for (Node n = child; n != null; n = null) {",
+    "rule": "Loop Variable Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  }
+]

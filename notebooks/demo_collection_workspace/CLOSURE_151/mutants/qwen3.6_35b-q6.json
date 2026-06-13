@@ -1,0 +1,432 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 394,
+    "precode": "Pattern argPattern = Pattern.compile(\"(--[a-zA-Z_]+)=(.*)\");",
+    "aftercode": "Pattern argPattern = Pattern.compile(\"(--[a-zA-Z_]+)\\\\s*=(.*)\");",
+    "rule": "Argument Add",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 395,
+    "precode": "Pattern quotesPattern = Pattern.compile(\"^['\\\"](.*)['\\\"]$\");",
+    "aftercode": "Pattern quotesPattern = Pattern.compile(\"^['\\\"](.*)['\\\"]$\");",
+    "rule": "No Change",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 396,
+    "precode": "List<String> processedArgs = Lists.newArrayList();",
+    "aftercode": "List<String> processedArgs = new ArrayList<>();",
+    "rule": "Implementation Change",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 397,
+    "precode": "for (String arg : args) {",
+    "aftercode": "for (String arg : args) {",
+    "rule": "No Change",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 398,
+    "precode": "Matcher matcher = argPattern.matcher(arg);",
+    "aftercode": "Matcher matcher = argPattern.matcher(arg);",
+    "rule": "No Change",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 399,
+    "precode": "if (matcher.matches()) {",
+    "aftercode": "if (matcher.find()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "processedArgs.add(matcher.group(1));",
+    "aftercode": "processedArgs.add(matcher.group(2));",
+    "rule": "Group Index Change",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 402,
+    "precode": "String value = matcher.group(2);",
+    "aftercode": "String value = matcher.group(1);",
+    "rule": "Group Index Change",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 403,
+    "precode": "Matcher quotesMatcher = quotesPattern.matcher(value);",
+    "aftercode": "Matcher quotesMatcher = quotesPattern.matcher(arg);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 404,
+    "precode": "if (quotesMatcher.matches()) {",
+    "aftercode": "if (quotesMatcher.find()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 405,
+    "precode": "processedArgs.add(quotesMatcher.group(1));",
+    "aftercode": "processedArgs.add(quotesMatcher.group(0));",
+    "rule": "Group Index Change",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 407,
+    "precode": "processedArgs.add(value);",
+    "aftercode": "processedArgs.add(null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "processedArgs.add(arg);",
+    "aftercode": "processedArgs.add(arg.toUpperCase());",
+    "rule": "Method Call Insertion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 414,
+    "precode": "CmdLineParser parser = new CmdLineParser(flags);",
+    "aftercode": "CmdLineParser parser = new CmdLineParser(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 415,
+    "precode": "isConfigValid = true;",
+    "aftercode": "isConfigValid = false;",
+    "rule": "Boolean Flip",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 417,
+    "precode": "parser.parseArgument(processedArgs.toArray(new String[] {}));",
+    "aftercode": "parser.parseArgument(new String[] {});",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "err.println(e.getMessage());",
+    "aftercode": "err.println(e.toString());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 420,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = true;",
+    "rule": "Boolean Flip",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 423,
+    "precode": "if (flags.version) {",
+    "aftercode": "if (!flags.version) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 424,
+    "precode": "ResourceBundle config = ResourceBundle.getBundle(configResource);",
+    "aftercode": "ResourceBundle config = ResourceBundle.getBundle(configResource, Locale.ROOT);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 427,
+    "precode": "\"Version: \" + config.getString(\"compiler.version\") + \"\\n\" +",
+    "aftercode": "\"Version: \" + config.getString(\"compiler.version\") + \"\\n\" +",
+    "rule": "No Change",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 432,
+    "precode": "if (!isConfigValid || flags.display_help) {",
+    "aftercode": "if (isConfigValid || flags.display_help) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 432,
+    "precode": "if (!isConfigValid || flags.display_help) {",
+    "aftercode": "if (!isConfigValid && flags.display_help) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 433,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = !isConfigValid;",
+    "rule": "Boolean Flip",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 436,
+    "precode": "getCommandLineConfig()",
+    "aftercode": "getCommandLineConfig().setJs(flags.js)",
+    "rule": "Method Call Insertion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 442,
+    "precode": ".setLoggingLevel(flags.logging_level)",
+    "aftercode": ".setLoggingLevel(Level.OFF)",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 444,
+    "precode": ".setJs(flags.js)",
+    "aftercode": ".setJs(new String[0])",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 452,
+    "precode": ".setCodingConvention(flags.third_party ?",
+    "aftercode": ".setCodingConvention(!flags.third_party ?",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 454,
+    "precode": "new ClosureCodingConvention())",
+    "aftercode": "new DefaultCodingConvention())",
+    "rule": "Class Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 467,
+    "precode": ".setOutputManifest(flags.output_manifest);",
+    "aftercode": ".setOutputManifest(null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 303,
+    "precode": "private boolean version = false;",
+    "aftercode": "private boolean version = true;",
+    "rule": "Value Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 303,
+    "precode": "private boolean version = false;",
+    "aftercode": "private boolean version = !false;",
+    "rule": "Negation",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 299,
+    "precode": "private String output_manifest = \"\";",
+    "aftercode": "private String output_manifest = null;",
+    "rule": "Null Injection",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 299,
+    "precode": "private String output_manifest = \"\";",
+    "aftercode": "private String output_manifest = \"default\";",
+    "rule": "Value Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 303,
+    "precode": "private boolean version = false;",
+    "aftercode": "private boolean version = false;",
+    "rule": "Empty Mutation",
+    "gen_time_s": 2.17,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 301,
+    "precode": "@Option(name = \"--version\",",
+    "aftercode": "@Option(name = \"--VERSION\",",
+    "rule": "Identifier Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 303,
+    "precode": "private boolean version = false;",
+    "aftercode": "private String version = \"false\";",
+    "rule": "Type Change",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 368,
+    "precode": "private final Flags flags = new Flags();",
+    "aftercode": "private final Flags flags = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 370,
+    "precode": "private static final String configResource =",
+    "aftercode": "private static final String configResource = \"com.google.javascript.jscomp.parsing.InvalidParserConfig\";",
+    "rule": "Literal Value Substitution",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 371,
+    "precode": "\"com.google.javascript.jscomp.parsing.ParserConfig\";",
+    "aftercode": "\"com.google.javascript.jscomp.parsing.ParserConfig\" + \"\";",
+    "rule": "Literal Value Substitution",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 373,
+    "precode": "private boolean isConfigValid = false;",
+    "aftercode": "private boolean isConfigValid = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 370,
+    "precode": "private static final String configResource =",
+    "aftercode": "private static final String configResource = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 373,
+    "precode": "private boolean isConfigValid = false;",
+    "aftercode": "private boolean isConfigValid = !false;",
+    "rule": "Boolean Argument Change",
+    "gen_time_s": 2.46,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,622 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 691,
+    "precode": "if (!isDirectCallNodeReplacementPossible(fnNode)) {",
+    "aftercode": "if (isDirectCallNodeReplacementPossible(fnNode)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 692,
+    "precode": "return CanInlineResult.NO;",
+    "aftercode": "return CanInlineResult.YES;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 695,
+    "precode": "Node block = fnNode.getLastChild();",
+    "aftercode": "Node block = fnNode.getFirstChild();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 698,
+    "precode": "Node cArg = callNode.getFirstChild().getNext();",
+    "aftercode": "Node cArg = callNode.getFirstChild();",
+    "rule": "Removal",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 703,
+    "precode": "if (!callNode.getFirstChild().isName()) {",
+    "aftercode": "if (callNode.getFirstChild().isName()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 704,
+    "precode": "if (NodeUtil.isFunctionObjectCall(callNode)) {",
+    "aftercode": "if (!NodeUtil.isFunctionObjectCall(callNode)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg == null && !cArg.isThis()) {",
+    "rule": "LogicalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg != null || !cArg.isThis()) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg == null || cArg.isThis()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 707,
+    "precode": "return CanInlineResult.NO;",
+    "aftercode": "return CanInlineResult.YES;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 709,
+    "precode": "cArg = cArg.getNext();",
+    "aftercode": "cArg = cArg.getPrevious();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 712,
+    "precode": "Preconditions.checkState(!NodeUtil.isFunctionObjectApply(callNode));",
+    "aftercode": "Preconditions.checkState(NodeUtil.isFunctionObjectApply(callNode));",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 717,
+    "precode": "Node fnParam = NodeUtil.getFunctionParameters(fnNode).getFirstChild();",
+    "aftercode": "Node fnParam = NodeUtil.getFunctionParameters(fnNode).getLastChild();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 718,
+    "precode": "while (cArg != null || fnParam != null) {",
+    "aftercode": "while (cArg != null && fnParam != null) {",
+    "rule": "LogicalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 720,
+    "precode": "if (fnParam != null) {",
+    "aftercode": "if (fnParam == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 721,
+    "precode": "if (cArg != null) {",
+    "aftercode": "if (cArg == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 725,
+    "precode": "if (NodeUtil.mayEffectMutableState(cArg, compiler)",
+    "aftercode": "if (!NodeUtil.mayEffectMutableState(cArg, compiler)",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 726,
+    "precode": "&& NodeUtil.getNameReferenceCount(",
+    "aftercode": "|| NodeUtil.getNameReferenceCount(",
+    "rule": "LogicalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.getString()) >= 1) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.getString()) < 1) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 728,
+    "precode": "return CanInlineResult.NO;",
+    "aftercode": "return CanInlineResult.YES;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 733,
+    "precode": "fnParam = fnParam.getNext();",
+    "aftercode": "fnParam = fnParam.getPrevious();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 738,
+    "precode": "if (cArg != null) {",
+    "aftercode": "if (cArg == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 739,
+    "precode": "if (NodeUtil.mayHaveSideEffects(cArg, compiler)) {",
+    "aftercode": "if (!NodeUtil.mayHaveSideEffects(cArg, compiler)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 740,
+    "precode": "return CanInlineResult.NO;",
+    "aftercode": "return CanInlineResult.YES;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 742,
+    "precode": "cArg = cArg.getNext();",
+    "aftercode": "cArg = cArg.getPrevious();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 746,
+    "precode": "return CanInlineResult.YES;",
+    "aftercode": "return CanInlineResult.NO;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 718,
+    "precode": "while (cArg != null || fnParam != null) {",
+    "aftercode": "while (cArg != null || fnParam != null) {",
+    "rule": "EmptyBody",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 725,
+    "precode": "if (NodeUtil.mayEffectMutableState(cArg, compiler)",
+    "aftercode": "if (NodeUtil.mayEffectMutableState(cArg, null)",
+    "rule": "ArgumentSubstitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.toString()) > 1) {",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg == null || cArg.isThis()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 698,
+    "precode": "Node cArg = callNode.getFirstChild().getNext();",
+    "aftercode": "Node cArg = callNode.getLastChild().getNext();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 733,
+    "precode": "fnParam = fnParam.getNext();",
+    "aftercode": "fnParam = fnParam.getFirstChild();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 742,
+    "precode": "cArg = cArg.getNext();",
+    "aftercode": "cArg = cArg.getFirstChild();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 704,
+    "precode": "if (NodeUtil.isFunctionObjectCall(callNode)) {",
+    "aftercode": "if (NodeUtil.isFunctionObjectCall(fnNode)) {",
+    "rule": "VariableSubstitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 717,
+    "precode": "Node fnParam = NodeUtil.getFunctionParameters(fnNode).getFirstChild();",
+    "aftercode": "Node fnParam = NodeUtil.getFunctionParameters(callNode).getFirstChild();",
+    "rule": "VariableSubstitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 726,
+    "precode": "&& NodeUtil.getNameReferenceCount(",
+    "aftercode": "&& NodeUtil.getNameReferenceCount(",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.getString()) >= 1) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.getString()) > 0) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 739,
+    "precode": "if (NodeUtil.mayHaveSideEffects(cArg, compiler)) {",
+    "aftercode": "if (NodeUtil.mayHaveSideEffects(cArg, compiler) == null) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 691,
+    "precode": "if (!isDirectCallNodeReplacementPossible(fnNode)) {",
+    "aftercode": "if (isDirectCallNodeReplacementPossible(fnNode) == null) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 703,
+    "precode": "if (!callNode.getFirstChild().isName()) {",
+    "aftercode": "if (callNode.getFirstChild().isName() == null) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 712,
+    "precode": "Preconditions.checkState(!NodeUtil.isFunctionObjectApply(callNode));",
+    "aftercode": "Preconditions.checkState(NodeUtil.isFunctionObjectApply(callNode));",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 725,
+    "precode": "if (NodeUtil.mayEffectMutableState(cArg, compiler)",
+    "aftercode": "if (NodeUtil.mayEffectMutableState(cArg, compiler) == true) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 718,
+    "precode": "while (cArg != null || fnParam != null) {",
+    "aftercode": "while (cArg != null || fnParam != null) {",
+    "rule": "LoopBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 738,
+    "precode": "if (cArg != null) {",
+    "aftercode": "if (cArg != null) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg == null || cArg.isThis()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg != null || !cArg.isThis()) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 706,
+    "precode": "if (cArg == null || !cArg.isThis()) {",
+    "aftercode": "if (cArg == null && !cArg.isThis()) {",
+    "rule": "LogicalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.getString()) > 2) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 727,
+    "precode": "block, fnParam.getString()) > 1) {",
+    "aftercode": "block, fnParam.getString()) > -1) {",
+    "rule": "RelationalOperator",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 739,
+    "precode": "if (NodeUtil.mayHaveSideEffects(cArg, compiler)) {",
+    "aftercode": "if (NodeUtil.mayHaveSideEffects(cArg, compiler) == false) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 746,
+    "precode": "return CanInlineResult.YES;",
+    "aftercode": "return null;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 695,
+    "precode": "Node block = fnNode.getLastChild();",
+    "aftercode": "Node block = fnNode.getPreviousSibling();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 709,
+    "precode": "cArg = cArg.getNext();",
+    "aftercode": "cArg = cArg.getFirstChild();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 733,
+    "precode": "fnParam = fnParam.getNext();",
+    "aftercode": "fnParam = fnParam.getPreviousSibling();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 742,
+    "precode": "cArg = cArg.getNext();",
+    "aftercode": "cArg = cArg.getPreviousSibling();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 704,
+    "precode": "if (NodeUtil.isFunctionObjectCall(callNode)) {",
+    "aftercode": "if (NodeUtil.isFunctionObjectCall(callNode) == false) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 721,
+    "precode": "if (cArg != null) {",
+    "aftercode": "if (cArg != null) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 725,
+    "precode": "if (NodeUtil.mayEffectMutableState(cArg, compiler)",
+    "aftercode": "if (NodeUtil.mayEffectMutableState(cArg, compiler) == true) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 728,
+    "precode": "return CanInlineResult.NO;",
+    "aftercode": "return CanInlineResult.YES;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/FunctionInjector.java",
+    "line": 740,
+    "precode": "return CanInlineResult.NO;",
+    "aftercode": "return CanInlineResult.YES;",
+    "rule": "ReturnValue",
+    "gen_time_s": 1.24,
+    "dublicate": true
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+    "line": 92,
+    "precode": "for(Field field : orderedInstanceFieldsFrom(awaitingInjectionClazz)) {",
+    "aftercode": "for(Field field : new ArrayList<>()) {",
+    "rule": "EmptyLoop",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+    "line": 93,
+    "precode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, fieldInstance).thenInject();",
+    "aftercode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, fieldInstance).thenInject();",
+    "rule": "NoOp",
+    "gen_time_s": 1.54,
+    "dublicate": true
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+    "line": 93,
+    "precode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, fieldInstance).thenInject();",
+    "aftercode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, fieldInstance);",
+    "rule": "MethodCallRemoval",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+    "line": 94,
+    "precode": "mocks.remove(injected);",
+    "aftercode": "// mocks.remove(injected);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+    "line": 94,
+    "precode": "mocks.remove(injected);",
+    "aftercode": "mocks.add(injected);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+    "line": 94,
+    "precode": "mocks.remove(injected);",
+    "aftercode": "mocks.remove(field);",
+    "rule": "VariableReplacement",
+    "gen_time_s": 1.54,
+    "dublicate": false
+  }
+]

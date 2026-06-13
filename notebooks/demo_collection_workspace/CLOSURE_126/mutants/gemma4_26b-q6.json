@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 109,
+    "precode": "if (matchingExitNode(n, exitType, labelName)) {",
+    "aftercode": "if (!matchingExitNode(n, exitType, labelName)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 110,
+    "precode": "NodeUtil.removeChild(n.getParent(), n);",
+    "aftercode": "// NodeUtil.removeChild(n.getParent(), n);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 111,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 116,
+    "precode": "if (n.isIf()) {",
+    "aftercode": "if (!n.isIf()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 117,
+    "precode": "Node ifBlock = n.getFirstChild().getNext();",
+    "aftercode": "Node ifBlock = n.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 119,
+    "precode": "Node elseBlock = ifBlock.getNext();",
+    "aftercode": "Node elseBlock = ifBlock;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 120,
+    "precode": "if (elseBlock != null) {",
+    "aftercode": "if (elseBlock == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 127,
+    "precode": "if (n.isTry()) {",
+    "aftercode": "if (!n.isTry()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 128,
+    "precode": "Node tryBlock = n.getFirstChild();",
+    "aftercode": "Node tryBlock = n.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 131,
+    "precode": "if (NodeUtil.hasCatchHandler(allCatchNodes)) {",
+    "aftercode": "if (!NodeUtil.hasCatchHandler(allCatchNodes)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 132,
+    "precode": "Preconditions.checkState(allCatchNodes.hasOneChild());",
+    "aftercode": "// Preconditions.checkState(allCatchNodes.hasOneChild());",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 133,
+    "precode": "Node catchNode = allCatchNodes.getFirstChild();",
+    "aftercode": "Node catchNode = allCatchNodes.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 134,
+    "precode": "Node catchCodeBlock = catchNode.getLastChild();",
+    "aftercode": "Node catchCodeBlock = catchNode.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 144,
+    "precode": "if (n.isLabel()) {",
+    "aftercode": "if (!n.isLabel()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 145,
+    "precode": "Node labelBlock = n.getLastChild();",
+    "aftercode": "Node labelBlock = n.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 152,
+    "precode": "if (!n.isBlock() || n.getLastChild() == null) {",
+    "aftercode": "if (!n.isBlock() && n.getLastChild() == null) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 152,
+    "precode": "if (!n.isBlock() || n.getLastChild() == null) {",
+    "aftercode": "if (n.isBlock() || n.getLastChild() == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 152,
+    "precode": "if (!n.isBlock() || n.getLastChild() == null) {",
+    "aftercode": "if (!n.isBlock() || n.getLastChild() != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 160,
+    "precode": "for (Node c : n.children()) {",
+    "aftercode": "for (Node c : new Node[0]) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 163,
+    "precode": "if (c.isIf()) {",
+    "aftercode": "if (!c.isIf()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 168,
+    "precode": "trueBlock = ifTree.getFirstChild().getNext();",
+    "aftercode": "trueBlock = ifTree.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 169,
+    "precode": "falseBlock = trueBlock.getNext();",
+    "aftercode": "falseBlock = trueBlock;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 175,
+    "precode": "trueBlock = ifTree.getFirstChild().getNext();",
+    "aftercode": "trueBlock = ifTree.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 176,
+    "precode": "falseBlock = trueBlock.getNext();",
+    "aftercode": "falseBlock = trueBlock.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 177,
+    "precode": "if (falseBlock != null) {",
+    "aftercode": "if (falseBlock == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 183,
+    "precode": "if (c == n.getLastChild()) {",
+    "aftercode": "if (c != n.getLastChild()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 190,
+    "precode": "for (Node c = n.getLastChild(); c != null; c = n.getLastChild()) {",
+    "aftercode": "for (Node c = n.getLastChild(); c != null; c = c.getNext()) {",
+    "rule": "Loop Increment Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 190,
+    "precode": "for (Node c = n.getLastChild(); c != null; c = n.getLastChild()) {",
+    "aftercode": "for (Node c = n.getFirstChild(); c != null; c = n.getLastChild()) {",
+    "rule": "Loop Initialization Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 193,
+    "precode": "if (c == n.getLastChild()) {",
+    "aftercode": "if (c != n.getLastChild()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,392 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 120,
+    "precode": "int indexOfVararg = invocation.getRawArguments().length - 1;",
+    "aftercode": "int indexOfVararg = invocation.getRawArguments().length - 2;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 121,
+    "precode": "for (int position = 0; position < indexOfVararg; position++) {",
+    "aftercode": "for (int position = 0; position <= indexOfVararg; position++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 122,
+    "precode": "Matcher m = matchers.get(position);",
+    "aftercode": "Matcher m = matchers.get(position + 1);",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 124,
+    "precode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position, Object.class));",
+    "aftercode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position + 1, Object.class));",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 127,
+    "precode": "for (Matcher m : uniqueMatcherSet(indexOfVararg)) {",
+    "aftercode": "for (Matcher m : uniqueMatcherSet(indexOfVararg - 1)) {",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 129,
+    "precode": "Object rawArgument = invocation.getRawArguments()[indexOfVararg];",
+    "aftercode": "Object rawArgument = invocation.getRawArguments()[indexOfVararg - 1];",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 130,
+    "precode": "for (int i = 0; i < Array.getLength(rawArgument); i++) {",
+    "aftercode": "for (int i = 0; i <= Array.getLength(rawArgument); i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 131,
+    "precode": "((CapturesArguments) m).captureFrom(Array.get(rawArgument, i));",
+    "aftercode": "((CapturesArguments) m).captureFrom(Array.get(rawArgument, i + 1));",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 136,
+    "precode": "for (int position = 0; position < matchers.size(); position++) {",
+    "aftercode": "for (int position = 0; position <= matchers.size(); position++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 137,
+    "precode": "Matcher m = matchers.get(position);",
+    "aftercode": "Matcher m = matchers.get(position + 1);",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 139,
+    "precode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position, Object.class));",
+    "aftercode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position + 1, Object.class));",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 120,
+    "precode": "int indexOfVararg = invocation.getRawArguments().length - 1;",
+    "aftercode": "int indexOfVararg = invocation.getRawArguments().length;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 121,
+    "precode": "for (int position = 0; position < indexOfVararg; position++) {",
+    "aftercode": "for (int position = 0; position > indexOfVararg; position++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 122,
+    "precode": "Matcher m = matchers.get(position);",
+    "aftercode": "Matcher m = matchers.get(position - 1);",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 124,
+    "precode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position, Object.class));",
+    "aftercode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position - 1, Object.class));",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 127,
+    "precode": "for (Matcher m : uniqueMatcherSet(indexOfVararg)) {",
+    "aftercode": "for (Matcher m : uniqueMatcherSet(indexOfVararg + 1)) {",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 129,
+    "precode": "Object rawArgument = invocation.getRawArguments()[indexOfVararg];",
+    "aftercode": "Object rawArgument = invocation.getRawArguments()[indexOfVararg + 1];",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 130,
+    "precode": "for (int i = 0; i < Array.getLength(rawArgument); i++) {",
+    "aftercode": "for (int i = 0; i > Array.getLength(rawArgument); i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 131,
+    "precode": "((CapturesArguments) m).captureFrom(Array.get(rawArgument, i));",
+    "aftercode": "((CapturesArguments) m).captureFrom(Array.get(rawArgument, i - 1));",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 136,
+    "precode": "for (int position = 0; position < matchers.size(); position++) {",
+    "aftercode": "for (int position = 0; position > matchers.size(); position++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 137,
+    "precode": "Matcher m = matchers.get(position);",
+    "aftercode": "Matcher m = matchers.get(position - 1);",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 139,
+    "precode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position, Object.class));",
+    "aftercode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position - 1, Object.class));",
+    "rule": "Argument Swap / Index Shift",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 122,
+    "precode": "Matcher m = matchers.get(position);",
+    "aftercode": "Matcher m = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 129,
+    "precode": "Object rawArgument = invocation.getRawArguments()[indexOfVararg];",
+    "aftercode": "Object rawArgument = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 137,
+    "precode": "Matcher m = matchers.get(position);",
+    "aftercode": "Matcher m = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 124,
+    "precode": "((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position, Object.class));",
+    "aftercode": "((CapturesArguments) m).captureFrom(null);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 131,
+    "precode": "((CapturesArguments) m).captureFrom(Array.get(rawArgument, i));",
+    "aftercode": "((CapturesArguments) m).captureFrom(null);",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.7,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 147,
+    "precode": "for (int position = indexOfVararg; position < matchers.size(); position++) {",
+    "aftercode": "for (int position = indexOfVararg; position <= matchers.size(); position++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 147,
+    "precode": "for (int position = indexOfVararg; position < matchers.size(); position++) {",
+    "aftercode": "for (int position = indexOfVararg + 1; position < matchers.size(); position++) {",
+    "rule": "Argument Adjustments",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 147,
+    "precode": "for (int position = indexOfVararg; position < matchers.size(); position++) {",
+    "aftercode": "for (int position = indexOfVararg; position > matchers.size(); position++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 149,
+    "precode": "if(matcher instanceof MatcherDecorator) {",
+    "aftercode": "if(!(matcher instanceof MatcherDecorator)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 150,
+    "precode": "set.add(((MatcherDecorator) matcher).getActualMatcher());",
+    "aftercode": "set.add(((MatcherDecorator) matcher).hashCode());",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 150,
+    "precode": "set.add(((MatcherDecorator) matcher).getActualMatcher());",
+    "aftercode": "set.add(matcher);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 152,
+    "precode": "set.add(matcher);",
+    "aftercode": "set.add(null);",
+    "rule": "Null Return",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 152,
+    "precode": "set.add(matcher);",
+    "aftercode": "set.remove(matcher);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 155,
+    "precode": "return set;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 155,
+    "precode": "return set;",
+    "aftercode": "return new HashSet<>();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 146,
+    "precode": "HashSet<Matcher> set = new HashSet<Matcher>();",
+    "aftercode": "HashSet<Matcher> set = new LinkedHashSet<Matcher>();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/org/mockito/internal/invocation/InvocationMatcher.java",
+    "line": 146,
+    "precode": "HashSet<Matcher> set = new HashSet<Matcher>();",
+    "aftercode": "HashSet<Matcher> set = new TreeSet<Matcher>();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  }
+]

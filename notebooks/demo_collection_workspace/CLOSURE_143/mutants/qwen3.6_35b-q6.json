@@ -1,0 +1,612 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 852,
+    "precode": "String[] assignment = override.split(\"=\", 2);",
+    "aftercode": "String[] assignment = override.split(\"=\");",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 853,
+    "precode": "String defName = assignment[0];",
+    "aftercode": "String defName = assignment[1];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 856,
+    "precode": "if (assignment.length == 1) {",
+    "aftercode": "if (assignment.length != 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 857,
+    "precode": "options.setDefineToBooleanLiteral(defName, true);",
+    "aftercode": "options.setDefineToBooleanLiteral(defName, false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 860,
+    "precode": "String defValue = assignment[1];",
+    "aftercode": "String defValue = assignment[0];",
+    "rule": "Index Shift",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 862,
+    "precode": "if (defValue.equals(\"true\")) {",
+    "aftercode": "if (defValue.equals(\"false\")) {",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 863,
+    "precode": "options.setDefineToBooleanLiteral(defName, true);",
+    "aftercode": "options.setDefineToBooleanLiteral(defName, false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 865,
+    "precode": "} else if (defValue.equals(\"false\")) {",
+    "aftercode": "} else if (defValue.equals(\"true\")) {",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 866,
+    "precode": "options.setDefineToBooleanLiteral(defName, false);",
+    "aftercode": "options.setDefineToBooleanLiteral(defName, true);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 868,
+    "precode": "} else if (defValue.length() > 1",
+    "aftercode": "} else if (defValue.length() >= 1",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 869,
+    "precode": "&& ((defValue.charAt(0) == '\\'' &&",
+    "aftercode": "&& ((defValue.charAt(0) != '\\'' &&",
+    "rule": "Operator Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 870,
+    "precode": "defValue.charAt(defValue.length() - 1) == '\\'')",
+    "aftercode": "defValue.charAt(defValue.length() - 1) != '\\'')",
+    "rule": "Operator Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 871,
+    "precode": "|| (defValue.charAt(0) == '\"' &&",
+    "aftercode": "|| (defValue.charAt(0) != '\"' &&",
+    "rule": "Operator Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 872,
+    "precode": "defValue.charAt(defValue.length() - 1) == '\"') )) {",
+    "aftercode": "defValue.charAt(defValue.length() - 1) != '\"') )) {",
+    "rule": "Operator Negation",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 876,
+    "precode": "defValue.substring(1, defValue.length() - 1);",
+    "aftercode": "defValue.substring(0, defValue.length() - 1);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 876,
+    "precode": "defValue.substring(1, defValue.length() - 1);",
+    "aftercode": "defValue.substring(1, defValue.length());",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 877,
+    "precode": "if (maybeStringVal.indexOf(defValue.charAt(0)) == -1) {",
+    "aftercode": "if (maybeStringVal.indexOf(defValue.charAt(0)) != -1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 878,
+    "precode": "options.setDefineToStringLiteral(defName, maybeStringVal);",
+    "aftercode": "options.setDefineToBooleanLiteral(defName, true);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 883,
+    "precode": "options.setDefineToDoubleLiteral(defName,",
+    "aftercode": "options.setDefineToStringLiteral(defName,",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 884,
+    "precode": "Double.parseDouble(defValue));",
+    "aftercode": "Double.parseDouble(defValue) + 1);",
+    "rule": "Arithmetic Operation Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 886,
+    "precode": "} catch (NumberFormatException e) {",
+    "aftercode": "} catch (IOException e) {",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 887,
+    "precode": "// do nothing, it will be caught at the end",
+    "aftercode": "throw new RuntimeException(e);",
+    "rule": "Exception Handler Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 893,
+    "precode": "throw new RuntimeException(",
+    "aftercode": "throw new IllegalArgumentException(",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 855,
+    "precode": "if (defName.length() > 0) {",
+    "aftercode": "if (defName.length() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 855,
+    "precode": "if (defName.length() > 0) {",
+    "aftercode": "if (defName.length() < 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 856,
+    "precode": "if (assignment.length == 1) {",
+    "aftercode": "if (assignment.length > 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 868,
+    "precode": "} else if (defValue.length() > 1",
+    "aftercode": "} else if (defValue.length() < 1",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 877,
+    "precode": "if (maybeStringVal.indexOf(defValue.charAt(0)) == -1) {",
+    "aftercode": "if (maybeStringVal.indexOf(defValue.charAt(0)) > -1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 858,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 864,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 867,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 879,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 885,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 857,
+    "precode": "options.setDefineToBooleanLiteral(defName, true);",
+    "aftercode": "options.setDefineToBooleanLiteral(defName, true);",
+    "rule": "No-Op",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 852,
+    "precode": "String[] assignment = override.split(\"=\", 2);",
+    "aftercode": "String[] assignment = override.split(\"=\", 1);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 862,
+    "precode": "if (defValue.equals(\"true\")) {",
+    "aftercode": "if (defValue.equalsIgnoreCase(\"true\")) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 865,
+    "precode": "} else if (defValue.equals(\"false\")) {",
+    "aftercode": "} else if (defValue.equalsIgnoreCase(\"false\")) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 884,
+    "precode": "Double.parseDouble(defValue));",
+    "aftercode": "Double.parseDouble(defValue);",
+    "rule": "Syntax Error",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 853,
+    "precode": "String defName = assignment[0];",
+    "aftercode": "String defName = assignment[0].trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 860,
+    "precode": "String defValue = assignment[1];",
+    "aftercode": "String defValue = assignment[1].trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 876,
+    "precode": "defValue.substring(1, defValue.length() - 1);",
+    "aftercode": "defValue.substring(1, defValue.length() - 1).trim();",
+    "rule": "Method Call Addition",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 868,
+    "precode": "} else if (defValue.length() > 1",
+    "aftercode": "} else if (defValue.length() > 0",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 871,
+    "precode": "defValue.charAt(defValue.length() - 1) == '\"') )) {",
+    "aftercode": "defValue.charAt(defValue.length() - 1) == '\"') ) ) {",
+    "rule": "Syntax Error",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 852,
+    "precode": "String[] assignment = override.split(\"=\", 2);",
+    "aftercode": "String[] assignment = override.split(\"==\", 2);",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 869,
+    "precode": "&& ((defValue.charAt(0) == '\\'' &&",
+    "aftercode": "&& ((defValue.charAt(0) == '\\'' ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 871,
+    "precode": "|| (defValue.charAt(0) == '\"' &&",
+    "aftercode": "|| (defValue.charAt(0) == '\"' ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 877,
+    "precode": "if (maybeStringVal.indexOf(defValue.charAt(0)) == -1) {",
+    "aftercode": "if (maybeStringVal.indexOf(defValue.charAt(0)) == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 884,
+    "precode": "Double.parseDouble(defValue));",
+    "aftercode": "Float.parseFloat(defValue));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 894,
+    "precode": "\"--define flag syntax invalid: \" + override);",
+    "aftercode": "\"--define flag syntax invalid: \" + defName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 85,
+    "precode": "if (node.getType() != Token.EXPR_RESULT) {",
+    "aftercode": "if (node.getType() == Token.EXPR_RESULT) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 90,
+    "precode": "if (!NodeUtil.nodeTypeMayHaveSideEffects(exprBody)",
+    "aftercode": "if (NodeUtil.nodeTypeMayHaveSideEffects(exprBody)",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 90,
+    "precode": "if (!NodeUtil.nodeTypeMayHaveSideEffects(exprBody)",
+    "aftercode": "if (NodeUtil.nodeTypeMayHaveSideEffects(exprBody)",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 91,
+    "precode": "|| exprBody.getType() == Token.NEW",
+    "aftercode": "|| exprBody.getType() != Token.NEW",
+    "rule": "Equality Change",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 92,
+    "precode": "|| exprBody.getType() == Token.CALL) {",
+    "aftercode": "|| exprBody.getType() != Token.CALL) {",
+    "rule": "Equality Change",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 90,
+    "precode": "if (!NodeUtil.nodeTypeMayHaveSideEffects(exprBody)",
+    "aftercode": "if (true)",
+    "rule": "Tautology",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 91,
+    "precode": "|| exprBody.getType() == Token.NEW",
+    "aftercode": "|| false",
+    "rule": "Falsity",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 92,
+    "precode": "|| exprBody.getType() == Token.CALL) {",
+    "aftercode": "|| false",
+    "rule": "Falsity",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 89,
+    "precode": "Node exprBody = node.getFirstChild();",
+    "aftercode": "Node exprBody = node.getLastChild();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 90,
+    "precode": "if (!NodeUtil.nodeTypeMayHaveSideEffects(exprBody)",
+    "aftercode": "if (exprBody == null)",
+    "rule": "Condition Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 93,
+    "precode": "changeProxy.replaceWith(parent, node, getSideEffectNodes(exprBody));",
+    "aftercode": "changeProxy.replaceWith(node, parent, getSideEffectNodes(exprBody));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/RemoveConstantExpressions.java",
+    "line": 93,
+    "precode": "changeProxy.replaceWith(parent, node, getSideEffectNodes(exprBody));",
+    "aftercode": "changeProxy.replaceWith(parent, node, null);",
+    "rule": "Parameter Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  }
+]

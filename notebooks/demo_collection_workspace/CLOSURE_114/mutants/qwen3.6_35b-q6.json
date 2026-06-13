@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 559,
+    "precode": "Node nameNode = n.getFirstChild();",
+    "aftercode": "Node nameNode = n.getLastChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 560,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n.getParent().getParent();",
+    "rule": "Boundary Condition",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 563,
+    "precode": "if (parent.isFor() && !NodeUtil.isForIn(parent)) {",
+    "aftercode": "if (parent.isFor() && NodeUtil.isForIn(parent)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 573,
+    "precode": "if (parent.getFirstChild().getNext() != n) {",
+    "aftercode": "if (parent.getFirstChild().getNext() == n) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 576,
+    "precode": "recordDepScope(nameNode, ns);",
+    "aftercode": "recordDepScope(parent, ns);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (!(parent.isCall() && parent.getFirstChild() != n)) {",
+    "rule": "Operator Substitution",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (!(parent.isCall() || parent.getFirstChild() == n)) {",
+    "rule": "Boolean Operator",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 585,
+    "precode": "recordDepScope(recordNode, ns);",
+    "aftercode": "recordDepScope(nameNode, ns);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 561,
+    "precode": "NameInformation ns = createNameInformation(t, nameNode);",
+    "aftercode": "NameInformation ns = createNameInformation(t, parent);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 573,
+    "precode": "if (parent.getFirstChild().getNext() != n) {",
+    "aftercode": "if (parent.getFirstChild().getNext() != null) {",
+    "rule": "Null Check",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 574,
+    "precode": "recordDepScope(recordNode, ns);",
+    "aftercode": "recordDepScope(recordNode, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 576,
+    "precode": "recordDepScope(nameNode, ns);",
+    "aftercode": "recordDepScope(null, ns);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 585,
+    "precode": "recordDepScope(recordNode, ns);",
+    "aftercode": "recordDepScope(null, ns);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 563,
+    "precode": "if (parent.isFor() && !NodeUtil.isForIn(parent)) {",
+    "aftercode": "if (parent.isFor() || !NodeUtil.isForIn(parent)) {",
+    "rule": "Boolean Operator",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (!(parent.isCall() && parent.getFirstChild() == n) || true) {",
+    "rule": "Tautology",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 559,
+    "precode": "Node nameNode = n.getFirstChild();",
+    "aftercode": "Node nameNode = n.getFirstChild().getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 560,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 573,
+    "precode": "if (parent.getFirstChild().getNext() != n) {",
+    "aftercode": "if (parent.getFirstChild() != n) {",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (!(parent.isCall() && n == n)) {",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 561,
+    "precode": "NameInformation ns = createNameInformation(t, nameNode);",
+    "aftercode": "NameInformation ns = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 563,
+    "precode": "if (parent.isFor() && !NodeUtil.isForIn(parent)) {",
+    "aftercode": "if (parent.isFor() && false) {",
+    "rule": "Boolean Constant",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Boolean Constant",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 574,
+    "precode": "recordDepScope(recordNode, ns);",
+    "aftercode": "recordDepScope(ns, recordNode);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 576,
+    "precode": "recordDepScope(nameNode, ns);",
+    "aftercode": "recordDepScope(ns, nameNode);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 585,
+    "precode": "recordDepScope(recordNode, ns);",
+    "aftercode": "recordDepScope(ns, recordNode);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 563,
+    "precode": "if (parent.isFor() && !NodeUtil.isForIn(parent)) {",
+    "aftercode": "if (parent.isFor() && !NodeUtil.isForIn(parent) && false) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (!(parent.isCall() && parent.getFirstChild() == n) || false) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 573,
+    "precode": "if (parent.getFirstChild().getNext() != n) {",
+    "aftercode": "if (parent.getFirstChild().getNext() == n) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.31,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 560,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n.getParent().getNext();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 559,
+    "precode": "Node nameNode = n.getFirstChild();",
+    "aftercode": "Node nameNode = n;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/NameAnalyzer.java",
+    "line": 578,
+    "precode": "} else if (!(parent.isCall() && parent.getFirstChild() == n)) {",
+    "aftercode": "} else if (!(parent.isCall() && parent.getLastChild() == n)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  }
+]

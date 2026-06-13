@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 163,
+    "precode": "Deque<Name> workList = new ArrayDeque<Name>(namespace.getNameForest());",
+    "aftercode": "Deque<Name> workList = new ArrayDeque<Name>();",
+    "rule": "Removed Argument",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 164,
+    "precode": "while (!workList.isEmpty()) {",
+    "aftercode": "while (workList.isEmpty()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 165,
+    "precode": "Name name = workList.pop();",
+    "aftercode": "Name name = workList.poll();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 168,
+    "precode": "if (name.type == Name.Type.GET || name.type == Name.Type.SET) {",
+    "aftercode": "if (name.type == Name.Type.GET && name.type == Name.Type.SET) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 168,
+    "precode": "if (name.type == Name.Type.GET || name.type == Name.Type.SET) {",
+    "aftercode": "if (name.type == Name.Type.GET) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 172,
+    "precode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "aftercode": "if (name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 172,
+    "precode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "aftercode": "if (!name.inExterns || name.globalSets == 1 && name.localSets == 0 &&",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 172,
+    "precode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "aftercode": "if (!name.inExterns && name.globalSets != 1 && name.localSets == 0 &&",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 172,
+    "precode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "aftercode": "if (!name.inExterns && name.globalSets == 1 && name.localSets != 0 &&",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 173,
+    "precode": "name.aliasingGets > 0) {",
+    "aftercode": "name.aliasingGets >= 0) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 173,
+    "precode": "name.aliasingGets > 0) {",
+    "aftercode": "name.aliasingGets < 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 176,
+    "precode": "List<Ref> refs = Lists.newArrayList(name.getRefs());",
+    "aftercode": "List<Ref> refs = Lists.newArrayList();",
+    "rule": "Removed Argument",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 177,
+    "precode": "for (Ref ref : refs) {",
+    "aftercode": "for (Ref ref : new ArrayList<Ref>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 178,
+    "precode": "if (ref.type == Type.ALIASING_GET && ref.scope.isLocal()) {",
+    "aftercode": "if (ref.type == Type.ALIASING_GET || ref.scope.isLocal()) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 178,
+    "precode": "if (ref.type == Type.ALIASING_GET && ref.scope.isLocal()) {",
+    "aftercode": "if (ref.type != Type.ALIASING_GET && ref.scope.isLocal()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 178,
+    "precode": "if (ref.type == Type.ALIASING_GET && ref.scope.isLocal()) {",
+    "aftercode": "if (ref.type == Type.ALIASING_GET && !ref.scope.isLocal()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 180,
+    "precode": "if (inlineAliasIfPossible(ref, namespace)) {",
+    "aftercode": "if (!inlineAliasIfPossible(ref, namespace)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 181,
+    "precode": "name.removeRef(ref);",
+    "aftercode": "// name.removeRef(ref);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 189,
+    "precode": "if ((name.type == Name.Type.OBJECTLIT ||",
+    "aftercode": "if ((name.type == Name.Type.OBJECTLIT &&",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 190,
+    "precode": "name.type == Name.Type.FUNCTION) &&",
+    "aftercode": "name.type != Name.Type.FUNCTION) &&",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 191,
+    "precode": "name.aliasingGets == 0 && name.props != null) {",
+    "aftercode": "name.aliasingGets != 0 && name.props != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 191,
+    "precode": "name.aliasingGets == 0 && name.props != null) {",
+    "aftercode": "name.aliasingGets == 0 && name.props == null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 191,
+    "precode": "name.aliasingGets == 0 && name.props != null) {",
+    "aftercode": "name.aliasingGets == 0 || name.props != null) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 194,
+    "precode": "workList.addAll(name.props);",
+    "aftercode": "workList.add(name.props);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 168,
+    "precode": "if (name.type == Name.Type.GET || name.type == Name.Type.SET) {",
+    "aftercode": "if (name.type == Name.Type.GET || name.type == Name.Type.SET && false) {",
+    "rule": "Condition Forced False",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 172,
+    "precode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "aftercode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 1 &&",
+    "rule": "Value Change",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 173,
+    "precode": "name.aliasingGets > 0) {",
+    "aftercode": "name.aliasingGets > 1) {",
+    "rule": "Value Change",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 178,
+    "precode": "if (ref.type == Type.ALIASING_GET && ref.scope.isLocal()) {",
+    "aftercode": "if (ref.type == Type.ALIASING_GET) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 181,
+    "precode": "name.removeRef(ref);",
+    "aftercode": "name.removeRef(null);",
+    "rule": "Argument Mutation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 191,
+    "precode": "name.aliasingGets == 0 && name.props != null) {",
+    "aftercode": "name.aliasingGets == 0 && name.props != null",
+    "rule": "Syntax Error (simulated for test coverage)",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 164,
+    "precode": "while (!workList.isEmpty()) {",
+    "aftercode": "while (workList.size() > 0) {",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 176,
+    "precode": "List<Ref> refs = Lists.newArrayList(name.getRefs());",
+    "aftercode": "List<Ref> refs = name.getRefs();",
+    "rule": "Type Mutation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 194,
+    "precode": "workList.addAll(name.props);",
+    "aftercode": "workList.addAll(new ArrayList<>());",
+    "rule": "Empty Collection Replacement",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 168,
+    "precode": "if (name.type == Name.Type.GET || name.type == Name.Type.SET) {",
+    "aftercode": "if (name.type == Name.Type.GET || name.type == Name.Type.SET || true) {",
+    "rule": "Condition Forced True",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 172,
+    "precode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&",
+    "aftercode": "if (!name.inExterns && name.globalSets == 1 && name.localSets == 0)",
+    "rule": "Condition Truncation",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 189,
+    "precode": "if ((name.type == Name.Type.OBJECTLIT ||",
+    "aftercode": "if (name.type == Name.Type.OBJECTLIT ||",
+    "rule": "Parenthesis Removal",
+    "gen_time_s": 1.39,
+    "dublicate": false
+  }
+]

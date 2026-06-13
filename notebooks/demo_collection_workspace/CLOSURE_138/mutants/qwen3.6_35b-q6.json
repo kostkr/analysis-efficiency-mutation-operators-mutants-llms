@@ -1,0 +1,632 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 203,
+    "precode": "if (condition.getType() == CALL && condition.getChildCount() == 2) {",
+    "aftercode": "if (condition.getType() != CALL && condition.getChildCount() == 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 203,
+    "precode": "if (condition.getType() == CALL && condition.getChildCount() == 2) {",
+    "aftercode": "if (condition.getType() == CALL && condition.getChildCount() != 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 203,
+    "precode": "if (condition.getType() == CALL && condition.getChildCount() == 2) {",
+    "aftercode": "if (condition.getType() == CALL || condition.getChildCount() == 2) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 205,
+    "precode": "Node param = condition.getLastChild();",
+    "aftercode": "Node param = condition.getFirstChild();",
+    "rule": "Argument Swapping",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 206,
+    "precode": "if (callee.getType() == GETPROP && param.isQualifiedName()) {",
+    "aftercode": "if (callee.getType() != GETPROP && param.isQualifiedName()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 206,
+    "precode": "if (callee.getType() == GETPROP && param.isQualifiedName()) {",
+    "aftercode": "if (callee.getType() == GETPROP || param.isQualifiedName()) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 208,
+    "precode": "Node left = callee.getFirstChild();",
+    "aftercode": "Node left = callee.getLastChild();",
+    "rule": "Argument Swapping",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 209,
+    "precode": "Node right = callee.getLastChild();",
+    "aftercode": "Node right = callee.getFirstChild();",
+    "rule": "Argument Swapping",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 210,
+    "precode": "if (left.getType() == NAME && \"goog\".equals(left.getString()) &&",
+    "aftercode": "if (left.getType() != NAME && \"goog\".equals(left.getString()) &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 210,
+    "precode": "if (left.getType() == NAME && \"goog\".equals(left.getString()) &&",
+    "aftercode": "if (left.getType() == NAME || \"goog\".equals(left.getString()) &&",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 211,
+    "precode": "right.getType() == STRING) {",
+    "aftercode": "right.getType() != STRING) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 212,
+    "precode": "Function<TypeRestriction, JSType> restricter =\n                restricters.get(right.getString());",
+    "aftercode": "Function<TypeRestriction, JSType> restricter =\n                restricters.get(left.getString());",
+    "rule": "Argument Swapping",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 214,
+    "precode": "if (restricter != null) {",
+    "aftercode": "if (restricter == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 215,
+    "precode": "return restrictParameter(param, paramType, blindScope, restricter,",
+    "aftercode": "return restrictParameter(param, null, blindScope, restricter,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 215,
+    "precode": "return restrictParameter(param, paramType, blindScope, restricter,",
+    "aftercode": "return restrictParameter(null, paramType, blindScope, restricter,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 215,
+    "precode": "return restrictParameter(param, paramType, blindScope, restricter,",
+    "aftercode": "return restrictParameter(param, paramType, null, restricter,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 215,
+    "precode": "return restrictParameter(param, paramType, blindScope, restricter,",
+    "aftercode": "return restrictParameter(param, paramType, blindScope, null,",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 216,
+    "precode": "outcome);",
+    "aftercode": "!outcome);",
+    "rule": "Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 221,
+    "precode": "return nextPreciserScopeKnowingConditionOutcome(",
+    "aftercode": "return null;",
+    "rule": "Void Method Call",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 221,
+    "precode": "return nextPreciserScopeKnowingConditionOutcome(",
+    "aftercode": "return blindScope;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 222,
+    "precode": "condition, blindScope, outcome);",
+    "aftercode": "condition, blindScope, !outcome);",
+    "rule": "Negation",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 222,
+    "precode": "condition, blindScope, outcome);",
+    "aftercode": "null, blindScope, outcome);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java",
+    "line": 222,
+    "precode": "condition, blindScope, outcome);",
+    "aftercode": "condition, null, outcome);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 623,
+    "precode": "Node value = n.getFirstChild();",
+    "aftercode": "Node value = n.getLastChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 625,
+    "precode": "if (value != null) {",
+    "aftercode": "if (value == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 626,
+    "precode": "scope = traverse(value, scope);",
+    "aftercode": "scope = traverse(value, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 627,
+    "precode": "updateScopeForTypeChange(scope, n, n.getJSType() /* could be null */,",
+    "aftercode": "updateScopeForTypeChange(null, n, n.getJSType() /* could be null */,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 628,
+    "precode": "getJSType(value));",
+    "aftercode": "getJSType(null));",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 629,
+    "precode": "return scope;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 631,
+    "precode": "StaticSlot<JSType> var = scope.getSlot(varName);",
+    "aftercode": "StaticSlot<JSType> var = null;",
+    "rule": "Null Argument/Assignment",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 632,
+    "precode": "if (var != null) {",
+    "aftercode": "if (var == null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 638,
+    "precode": "boolean isInferred = var.isTypeInferred();",
+    "aftercode": "boolean isInferred = !var.isTypeInferred();",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 640,
+    "precode": "isInferred && unflowableVarNames.contains(varName);",
+    "aftercode": "isInferred || unflowableVarNames.contains(varName);",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 646,
+    "precode": "isInferred &&",
+    "aftercode": "isInferred ||",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 647,
+    "precode": "syntacticScope.getParent() != null &&",
+    "aftercode": "syntacticScope.getParent() == null &&",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 648,
+    "precode": "var == syntacticScope.getParent().getSlot(varName);",
+    "aftercode": "var != syntacticScope.getParent().getSlot(varName);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 650,
+    "precode": "if (!unflowable && !nonLocalInferredSlot) {",
+    "aftercode": "if (unflowable || nonLocalInferredSlot) {",
+    "rule": "De Morgan's Law",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 650,
+    "precode": "if (!unflowable && !nonLocalInferredSlot) {",
+    "aftercode": "if (!unflowable || !nonLocalInferredSlot) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 651,
+    "precode": "type = var.getType();",
+    "aftercode": "type = null;",
+    "rule": "Null Argument/Assignment",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 652,
+    "precode": "if (type == null) {",
+    "aftercode": "if (type != null) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 653,
+    "precode": "type = getNativeType(UNKNOWN_TYPE);",
+    "aftercode": "type = getNativeType(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 658,
+    "precode": "n.setJSType(type);",
+    "aftercode": "n.setJSType(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 659,
+    "precode": "return scope;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 624,
+    "precode": "JSType type = n.getJSType();",
+    "aftercode": "JSType type = null;",
+    "rule": "Null Argument/Assignment",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 640,
+    "precode": "isInferred && unflowableVarNames.contains(varName);",
+    "aftercode": "isInferred && !unflowableVarNames.contains(varName);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 648,
+    "precode": "var == syntacticScope.getParent().getSlot(varName);",
+    "aftercode": "var != syntacticScope.getParent().getSlot(varName);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 626,
+    "precode": "scope = traverse(value, scope);",
+    "aftercode": "scope = traverse(null, scope);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 627,
+    "precode": "updateScopeForTypeChange(scope, n, n.getJSType() /* could be null */,",
+    "aftercode": "updateScopeForTypeChange(scope, null, n.getJSType() /* could be null */,",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 628,
+    "precode": "getJSType(value));",
+    "aftercode": "getJSType(n));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 631,
+    "precode": "StaticSlot<JSType> var = scope.getSlot(varName);",
+    "aftercode": "StaticSlot<JSType> var = scope.getSlot(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 646,
+    "precode": "isInferred &&",
+    "aftercode": "!isInferred &&",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 647,
+    "precode": "syntacticScope.getParent() != null &&",
+    "aftercode": "syntacticScope.getParent() != null ||",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 651,
+    "precode": "type = var.getType();",
+    "aftercode": "type = var.getJSType();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 653,
+    "precode": "type = getNativeType(UNKNOWN_TYPE);",
+    "aftercode": "type = getNativeType(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.25,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 625,
+    "precode": "if (value != null) {",
+    "aftercode": "if (value != null && false) {",
+    "rule": "Condition Always False",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 632,
+    "precode": "if (var != null) {",
+    "aftercode": "if (var != null && false) {",
+    "rule": "Condition Always False",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 650,
+    "precode": "if (!unflowable && !nonLocalInferredSlot) {",
+    "aftercode": "if (!unflowable && !nonLocalInferredSlot && false) {",
+    "rule": "Condition Always False",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 652,
+    "precode": "if (type == null) {",
+    "aftercode": "if (type == null && false) {",
+    "rule": "Condition Always False",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 623,
+    "precode": "Node value = n.getFirstChild();",
+    "aftercode": "Node value = n.getNextSibling();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 638,
+    "precode": "boolean isInferred = var.isTypeInferred();",
+    "aftercode": "boolean isInferred = var.isTypeExplicit();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 640,
+    "precode": "isInferred && unflowableVarNames.contains(varName);",
+    "aftercode": "isInferred && unflowableVarNames.isEmpty();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 653,
+    "precode": "type = getNativeType(UNKNOWN_TYPE);",
+    "aftercode": "type = UNKNOWN_TYPE;",
+    "rule": "Simplification",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 658,
+    "precode": "n.setJSType(type);",
+    "aftercode": "n.setJSType(getNativeType(UNKNOWN_TYPE));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.25,
+    "dublicate": false
+  }
+]

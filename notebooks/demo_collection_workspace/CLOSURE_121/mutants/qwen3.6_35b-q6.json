@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 260,
+    "precode": "int firstRefAfterInit = (declaration == init) ? 2 : 3;",
+    "aftercode": "int firstRefAfterInit = (declaration == init) ? 3 : 2;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 262,
+    "precode": "if (refCount > 1 &&",
+    "aftercode": "if (refCount >= 1 &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 277,
+    "precode": "} else if (refCount == firstRefAfterInit) {",
+    "aftercode": "} else if (refCount >= firstRefAfterInit) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 280,
+    "precode": "Reference reference = referenceInfo.references.get(",
+    "aftercode": "Reference reference = referenceInfo.references.get(firstRefAfterInit);",
+    "rule": "Array Index Out of Bounds",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 286,
+    "precode": "} else if (declaration != init && refCount == 2) {",
+    "aftercode": "} else if (declaration != init && refCount <= 2) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 301,
+    "precode": "if (!maybeModifiedArguments &&",
+    "aftercode": "if (maybeModifiedArguments &&",
+    "rule": "Negation",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 302,
+    "precode": "!staleVars.contains(v) &&",
+    "aftercode": "staleVars.contains(v) &&",
+    "rule": "Negation",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 308,
+    "precode": "(isInlineableDeclaredConstant(v, referenceInfo) ||",
+    "aftercode": "(isInlineableDeclaredConstant(v, referenceInfo) &&",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 311,
+    "precode": "for (int i = 1 /* start from a read */; i < refs.size(); i++) {",
+    "aftercode": "for (int i = 0 /* start from a read */; i < refs.size(); i++) {",
+    "rule": "Loop Boundary Change",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 313,
+    "precode": "if (aliasCandidates.containsKey(nameNode)) {",
+    "aftercode": "if (!aliasCandidates.containsKey(nameNode)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 315,
+    "precode": "if (!staleVars.contains(candidate.alias) &&",
+    "aftercode": "if (staleVars.contains(candidate.alias) &&",
+    "rule": "Negation",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 316,
+    "precode": "!isVarInlineForbidden(candidate.alias)) {",
+    "aftercode": "isVarInlineForbidden(candidate.alias)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.67,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 18,
+    "precode": "if (generic != null && generic instanceof ParameterizedType) {",
+    "aftercode": "if (generic != null || generic instanceof ParameterizedType) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 19,
+    "precode": "Type actual = ((ParameterizedType) generic).getActualTypeArguments()[0];",
+    "aftercode": "Type actual = ((ParameterizedType) generic).getActualTypeArguments()[1];",
+    "rule": "Index Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 20,
+    "precode": "if (actual instanceof Class) {",
+    "aftercode": "if (!(actual instanceof Class)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 21,
+    "precode": "return (Class) actual;",
+    "aftercode": "return actual;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 22,
+    "precode": "} else if (actual instanceof ParameterizedType) {",
+    "aftercode": "} else if (actual instanceof Class) {",
+    "rule": "Instanceof Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 24,
+    "precode": "return (Class) ((ParameterizedType) actual).getRawType();",
+    "aftercode": "return ((ParameterizedType) actual).getRawType();",
+    "rule": "Cast Removal",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 28,
+    "precode": "return Object.class;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 19,
+    "precode": "Type actual = ((ParameterizedType) generic).getActualTypeArguments()[0];",
+    "aftercode": "Type actual = ((ParameterizedType) generic).getActualTypeArguments()[0].getClass();",
+    "rule": "Method Call Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 18,
+    "precode": "if (generic != null && generic instanceof ParameterizedType) {",
+    "aftercode": "if (generic == null && generic instanceof ParameterizedType) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 24,
+    "precode": "return (Class) ((ParameterizedType) actual).getRawType();",
+    "aftercode": "return (Class) ((ParameterizedType) actual).getActualTypeArguments()[0];",
+    "rule": "Method Call Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 21,
+    "precode": "return (Class) actual;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 28,
+    "precode": "return Object.class;",
+    "aftercode": "return Object.class.getSuperclass();",
+    "rule": "Method Call Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 19,
+    "precode": "Type actual = ((ParameterizedType) generic).getActualTypeArguments()[0];",
+    "aftercode": "Type actual = ((ParameterizedType) generic).getActualTypeArguments()[0].getTypeName();",
+    "rule": "Method Call Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMaster.java",
+    "line": 24,
+    "precode": "return (Class) ((ParameterizedType) actual).getRawType();",
+    "aftercode": "return (Class) actual;",
+    "rule": "Assignment Mutation",
+    "gen_time_s": 2.31,
+    "dublicate": false
+  }
+]

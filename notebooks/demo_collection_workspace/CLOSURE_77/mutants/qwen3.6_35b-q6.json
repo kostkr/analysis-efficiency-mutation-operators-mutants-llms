@@ -1,0 +1,342 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 0; i <= s.length(); i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 964,
+    "precode": "char c = s.charAt(i);",
+    "aftercode": "char c = s.charAt(i + 1);",
+    "rule": "Index Shift",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 974,
+    "precode": "if (i >= 2 &&",
+    "aftercode": "if (i > 2 &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 975,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' || s.charAt(i - 2) == '-') ||",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 976,
+    "precode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == ']'))) {",
+    "aftercode": "(s.charAt(i - 1) == ']' || s.charAt(i - 2) == ']'))) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 989,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(false, i + 1, END_SCRIPT, 0,",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 992,
+    "precode": "} else if (s.regionMatches(false, i + 1, START_COMMENT, 0,",
+    "aftercode": "} else if (s.regionMatches(true, i + 1, START_COMMENT, 0,",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1002,
+    "precode": "if (outputCharsetEncoder != null) {",
+    "aftercode": "if (outputCharsetEncoder == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1003,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (!outputCharsetEncoder.canEncode(c)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c >= 0x1f && c <= 0x7f) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c > 0x1f || c <= 0x7f) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 970,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 971,
+    "precode": "case '\"': sb.append(doublequoteEscape); break;",
+    "aftercode": "case '\"': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 972,
+    "precode": "case '\\'': sb.append(singlequoteEscape); break;",
+    "aftercode": "case '\\'': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 966,
+    "precode": "case '\\0': sb.append(\"\\\\0\"); break;",
+    "aftercode": "case '\\0': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 967,
+    "precode": "case '\\n': sb.append(\"\\\\n\"); break;",
+    "aftercode": "case '\\n': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 968,
+    "precode": "case '\\r': sb.append(\"\\\\r\"); break;",
+    "aftercode": "case '\\r': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 969,
+    "precode": "case '\\t': sb.append(\"\\\\t\"); break;",
+    "aftercode": "case '\\t': sb.append(c); break;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 991,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 994,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 977,
+    "precode": "sb.append(\"\\\\>\");",
+    "aftercode": "sb.append(c);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1007,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "sb.append(c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1019,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "sb.append(c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 961,
+    "precode": "StringBuilder sb = new StringBuilder(s.length() + 2);",
+    "aftercode": "StringBuilder sb = new StringBuilder(s.length() - 2);",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 990,
+    "precode": "END_SCRIPT.length())) {",
+    "aftercode": "END_SCRIPT.length() + 1)) {",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 993,
+    "precode": "START_COMMENT.length())) {",
+    "aftercode": "START_COMMENT.length() + 1)) {",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 974,
+    "precode": "if (i >= 2 &&",
+    "aftercode": "if (i >= 1 &&",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 989,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(true, i, END_SCRIPT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 992,
+    "precode": "} else if (s.regionMatches(false, i + 1, START_COMMENT, 0,",
+    "aftercode": "} else if (s.regionMatches(false, i, START_COMMENT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 1; i < s.length(); i++) {",
+    "rule": "Initializer Change",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1003,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (outputCharsetEncoder.canEncode((char)0)) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c > 0x20 && c <= 0x7f) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 975,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '\\\\') ||",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 976,
+    "precode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == ']'))) {",
+    "aftercode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == '\\\\'))) {",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.52,
+    "dublicate": false
+  }
+]

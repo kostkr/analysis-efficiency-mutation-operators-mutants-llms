@@ -1,0 +1,1332 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 275,
+    "precode": "JSType leftType = getTypeIfRefinable(left, blindScope);",
+    "aftercode": "JSType leftType = getTypeIfRefinable(right, blindScope);",
+    "rule": "Operand Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 277,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType == null) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 277,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType != null && leftType != null) {",
+    "rule": "Redundant Condition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 278,
+    "precode": "leftIsRefineable = true;",
+    "aftercode": "leftIsRefineable = false;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 281,
+    "precode": "leftType = left.getJSType();",
+    "aftercode": "leftType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 285,
+    "precode": "JSType rightType = getTypeIfRefinable(right, blindScope);",
+    "aftercode": "JSType rightType = getTypeIfRefinable(left, blindScope);",
+    "rule": "Operand Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 287,
+    "precode": "if (rightType != null) {",
+    "aftercode": "if (rightType == null) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 288,
+    "precode": "rightIsRefineable = true;",
+    "aftercode": "rightIsRefineable = false;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 291,
+    "precode": "rightType = right.getJSType();",
+    "aftercode": "rightType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 295,
+    "precode": "TypePair merged = merging.apply(new TypePair(leftType, rightType));",
+    "aftercode": "TypePair merged = merging.apply(new TypePair(rightType, leftType));",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 295,
+    "precode": "TypePair merged = merging.apply(new TypePair(leftType, rightType));",
+    "aftercode": "TypePair merged = merging.apply(null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 298,
+    "precode": "if (merged != null) {",
+    "aftercode": "if (merged == null) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 298,
+    "precode": "if (merged != null) {",
+    "aftercode": "if (merged != null && true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 301,
+    "precode": "left, leftType, leftIsRefineable ? merged.typeA : null,",
+    "aftercode": "left, leftType, leftIsRefineable ? merged.typeA : leftType,",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 301,
+    "precode": "left, leftType, leftIsRefineable ? merged.typeA : null,",
+    "aftercode": "left, leftType, leftIsRefineable ? null : merged.typeA,",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 301,
+    "precode": "left, leftType, leftIsRefineable ? merged.typeA : null,",
+    "aftercode": "left, leftType, leftIsRefineable ? merged.typeB : null,",
+    "rule": "Field Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 302,
+    "precode": "right, rightType, rightIsRefineable ? merged.typeB : null);",
+    "aftercode": "right, rightType, rightIsRefineable ? merged.typeA : null);",
+    "rule": "Field Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 302,
+    "precode": "right, rightType, rightIsRefineable ? merged.typeB : null);",
+    "aftercode": "right, rightType, rightIsRefineable ? null : merged.typeB);",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 302,
+    "precode": "right, rightType, rightIsRefineable ? merged.typeB : null);",
+    "aftercode": "right, rightType, rightIsRefineable ? merged.typeB : rightType);",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 304,
+    "precode": "return blindScope;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 304,
+    "precode": "return blindScope;",
+    "aftercode": "return leftType != null ? blindScope : null;",
+    "rule": "Conditional Return",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 275,
+    "precode": "JSType leftType = getTypeIfRefinable(left, blindScope);",
+    "aftercode": "JSType leftType = left.getJSType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 285,
+    "precode": "JSType rightType = getTypeIfRefinable(right, blindScope);",
+    "aftercode": "JSType rightType = right.getJSType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 295,
+    "precode": "TypePair merged = merging.apply(new TypePair(leftType, rightType));",
+    "aftercode": "TypePair merged = merging.apply(new TypePair(leftType, leftType));",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 295,
+    "precode": "TypePair merged = merging.apply(new TypePair(leftType, rightType));",
+    "aftercode": "TypePair merged = merging.apply(new TypePair(rightType, rightType));",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 277,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType != null && left != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 287,
+    "precode": "if (rightType != null) {",
+    "aftercode": "if (rightType != null && right != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 298,
+    "precode": "if (merged != null) {",
+    "aftercode": "if (merged != null && leftType != null) {",
+    "rule": "Condition Addition",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 301,
+    "precode": "left, leftType, leftIsRefineable ? merged.typeA : null,",
+    "aftercode": "left, leftType, leftIsRefineable ? merged.typeA : null,",
+    "rule": "Empty Statement",
+    "gen_time_s": 1.43,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 273,
+    "precode": "Function<TypePair, TypePair> merging) {",
+    "aftercode": "Function<TypePair, TypePair> merging) { /* no-op */",
+    "rule": "Semantic Change",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 275,
+    "precode": "JSType leftType = getTypeIfRefinable(left, blindScope);",
+    "aftercode": "JSType leftType = getTypeIfRefinable(left, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 285,
+    "precode": "JSType rightType = getTypeIfRefinable(right, blindScope);",
+    "aftercode": "JSType rightType = getTypeIfRefinable(right, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 295,
+    "precode": "TypePair merged = merging.apply(new TypePair(leftType, rightType));",
+    "aftercode": "TypePair merged = merging.apply(new TypePair(leftType, rightType));",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.43,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 304,
+    "precode": "return blindScope;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 310,
+    "precode": "JSType leftType = getTypeIfRefinable(left, blindScope);",
+    "aftercode": "JSType leftType = getTypeIfRefinable(right, blindScope);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 312,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 312,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType != null && false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 313,
+    "precode": "leftIsRefineable = true;",
+    "aftercode": "leftIsRefineable = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 315,
+    "precode": "leftIsRefineable = false;",
+    "aftercode": "leftIsRefineable = true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 316,
+    "precode": "leftType = left.getJSType();",
+    "aftercode": "leftType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 317,
+    "precode": "blindScope, blindScope, condition);",
+    "aftercode": "left, blindScope, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 322,
+    "precode": "JSType restrictedLeftType = (leftType == null) ? null :",
+    "aftercode": "JSType restrictedLeftType = (leftType != null) ? null :",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 322,
+    "precode": "JSType restrictedLeftType = (leftType == null) ? null :",
+    "aftercode": "JSType restrictedLeftType = (leftType == null) ? leftType :",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 323,
+    "precode": "leftType.getRestrictedTypeGivenToBooleanOutcome(condition);",
+    "aftercode": "leftType.getJSType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 324,
+    "precode": "if (restrictedLeftType == null) {",
+    "aftercode": "if (restrictedLeftType != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 325,
+    "precode": "return firstPreciserScopeKnowingConditionOutcome(",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 326,
+    "precode": "right, blindScope, condition);",
+    "aftercode": "left, blindScope, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 330,
+    "precode": "JSType rightType = getTypeIfRefinable(right, blindScope);",
+    "aftercode": "JSType rightType = getTypeIfRefinable(left, blindScope);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 332,
+    "precode": "if (rightType != null) {",
+    "aftercode": "if (rightType == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 333,
+    "precode": "rightIsRefineable = true;",
+    "aftercode": "rightIsRefineable = false;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 335,
+    "precode": "rightIsRefineable = false;",
+    "aftercode": "rightIsRefineable = true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 336,
+    "precode": "rightType = right.getJSType();",
+    "aftercode": "rightType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 337,
+    "precode": "right, blindScope, condition);",
+    "aftercode": "left, blindScope, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 341,
+    "precode": "if (condition) {",
+    "aftercode": "if (!condition) {",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 342,
+    "precode": "JSType restrictedRightType = (rightType == null) ? null :",
+    "aftercode": "JSType restrictedRightType = (rightType != null) ? null :",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 343,
+    "precode": "rightType.getRestrictedTypeGivenToBooleanOutcome(condition);",
+    "aftercode": "rightType.getJSType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 346,
+    "precode": "return maybeRestrictTwoNames(",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 347,
+    "precode": "blindScope,",
+    "aftercode": "left,",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 348,
+    "precode": "left, leftType, leftIsRefineable ? restrictedLeftType : null,",
+    "aftercode": "left, leftType, null,",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 348,
+    "precode": "left, leftType, leftIsRefineable ? restrictedLeftType : null,",
+    "aftercode": "left, leftType, leftIsRefineable ? leftType : null,",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 349,
+    "precode": "right, rightType, rightIsRefineable ? restrictedRightType : null);",
+    "aftercode": "right, rightType, null);",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 349,
+    "precode": "right, rightType, rightIsRefineable ? restrictedRightType : null);",
+    "aftercode": "right, rightType, rightIsRefineable ? rightType : null);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 351,
+    "precode": "return blindScope;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 351,
+    "precode": "return blindScope;",
+    "aftercode": "return left;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 312,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType != null && true) {",
+    "rule": "Condition Simplification",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 322,
+    "precode": "JSType restrictedLeftType = (leftType == null) ? null :",
+    "aftercode": "JSType restrictedLeftType = (leftType == null) ? leftType :",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": true
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 341,
+    "precode": "if (condition) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Simplification",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 341,
+    "precode": "if (condition) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Simplification",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 316,
+    "precode": "leftType = left.getJSType();",
+    "aftercode": "leftType = right.getJSType();",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 336,
+    "precode": "rightType = right.getJSType();",
+    "aftercode": "rightType = left.getJSType();",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 338,
+    "precode": "right, blindScope, condition);",
+    "aftercode": "right, left, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 310,
+    "precode": "JSType leftType = getTypeIfRefinable(left, blindScope);",
+    "aftercode": "JSType leftType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 330,
+    "precode": "JSType rightType = getTypeIfRefinable(right, blindScope);",
+    "aftercode": "JSType rightType = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 323,
+    "precode": "leftType.getRestrictedTypeGivenToBooleanOutcome(condition);",
+    "aftercode": "leftType.getRestrictedTypeGivenToBooleanOutcome(!condition);",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 343,
+    "precode": "rightType.getRestrictedTypeGivenToBooleanOutcome(condition);",
+    "aftercode": "rightType.getRestrictedTypeGivenToBooleanOutcome(!condition);",
+    "rule": "Negation",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 348,
+    "precode": "left, leftType, leftIsRefineable ? restrictedLeftType : null,",
+    "aftercode": "left, leftType, leftIsRefineable ? restrictedLeftType : leftType,",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 349,
+    "precode": "right, rightType, rightIsRefineable ? restrictedRightType : null);",
+    "aftercode": "right, rightType, rightIsRefineable ? restrictedRightType : rightType);",
+    "rule": "Ternary Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 307,
+    "precode": "private FlowScope caseAndOrNotShortCircuiting(Node left, Node right,",
+    "aftercode": "private FlowScope caseAndOrNotShortCircuiting(Node left, Node left,",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 318,
+    "precode": "left, blindScope, condition);",
+    "aftercode": "left, left, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 338,
+    "precode": "right, blindScope, condition);",
+    "aftercode": "right, right, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 326,
+    "precode": "right, blindScope, condition);",
+    "aftercode": "left, blindScope, condition);",
+    "rule": "Operand Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": true
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 312,
+    "precode": "if (leftType != null) {",
+    "aftercode": "if (leftType != null && blindScope != null) {",
+    "rule": "Condition Modification",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 394,
+    "precode": "if (restrictedType != null && restrictedType != originalType) {",
+    "aftercode": "if (restrictedType != null || restrictedType != originalType) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 394,
+    "precode": "if (restrictedType != null && restrictedType != originalType) {",
+    "aftercode": "if (restrictedType != null && restrictedType == originalType) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 394,
+    "precode": "if (restrictedType != null && restrictedType != originalType) {",
+    "aftercode": "if (restrictedType != null) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 395,
+    "precode": "FlowScope informed = blindScope.createChildFlowScope();",
+    "aftercode": "FlowScope informed = blindScope;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 396,
+    "precode": "declareNameInScope(informed, node, restrictedType);",
+    "aftercode": "// declareNameInScope(informed, node, restrictedType);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 396,
+    "precode": "declareNameInScope(informed, node, restrictedType);",
+    "aftercode": "declareNameInScope(blindScope, node, restrictedType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 396,
+    "precode": "declareNameInScope(informed, node, restrictedType);",
+    "aftercode": "declareNameInScope(informed, node, originalType);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 399,
+    "precode": "return blindScope;",
+    "aftercode": "return informed;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 394,
+    "precode": "if (restrictedType != null && restrictedType != originalType) {",
+    "aftercode": "if (restrictedType == null && restrictedType != originalType) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.26,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 410,
+    "precode": "restrictedLeftType != null && restrictedLeftType != originalLeftType;",
+    "aftercode": "restrictedLeftType != null || restrictedLeftType != originalLeftType;",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 410,
+    "precode": "restrictedLeftType != null && restrictedLeftType != originalLeftType;",
+    "aftercode": "restrictedLeftType != null && restrictedLeftType == originalLeftType;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 412,
+    "precode": "restrictedRightType != null && restrictedRightType != originalRightType;",
+    "aftercode": "restrictedRightType != null || restrictedRightType != originalRightType;",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 412,
+    "precode": "restrictedRightType != null && restrictedRightType != originalRightType;",
+    "aftercode": "restrictedRightType != null && restrictedRightType == originalRightType;",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 413,
+    "precode": "if (shouldRefineLeft || shouldRefineRight) {",
+    "aftercode": "if (shouldRefineLeft && shouldRefineRight) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 413,
+    "precode": "if (shouldRefineLeft || shouldRefineRight) {",
+    "aftercode": "if (shouldRefineLeft) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 413,
+    "precode": "if (shouldRefineLeft || shouldRefineRight) {",
+    "aftercode": "if (shouldRefineRight) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 414,
+    "precode": "FlowScope informed = blindScope.createChildFlowScope();",
+    "aftercode": "FlowScope informed = blindScope;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 415,
+    "precode": "if (shouldRefineLeft) {",
+    "aftercode": "if (!shouldRefineLeft) {",
+    "rule": "Negation",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 416,
+    "precode": "declareNameInScope(informed, left, restrictedLeftType);",
+    "aftercode": "declareNameInScope(informed, left, originalLeftType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 418,
+    "precode": "if (shouldRefineRight) {",
+    "aftercode": "if (!shouldRefineRight) {",
+    "rule": "Negation",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 419,
+    "precode": "declareNameInScope(informed, right, restrictedRightType);",
+    "aftercode": "declareNameInScope(informed, right, originalRightType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 421,
+    "precode": "return informed;",
+    "aftercode": "return blindScope;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 423,
+    "precode": "return blindScope;",
+    "aftercode": "return informed;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 410,
+    "precode": "restrictedLeftType != null && restrictedLeftType != originalLeftType;",
+    "aftercode": "restrictedLeftType != null && restrictedLeftType != null;",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 412,
+    "precode": "restrictedRightType != null && restrictedRightType != originalRightType;",
+    "aftercode": "restrictedRightType != null && restrictedRightType != null;",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 413,
+    "precode": "if (shouldRefineLeft || shouldRefineRight) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 413,
+    "precode": "if (shouldRefineLeft || shouldRefineRight) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 416,
+    "precode": "declareNameInScope(informed, left, restrictedLeftType);",
+    "aftercode": "declareNameInScope(blindScope, left, restrictedLeftType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 419,
+    "precode": "declareNameInScope(informed, right, restrictedRightType);",
+    "aftercode": "declareNameInScope(blindScope, right, restrictedRightType);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 429,
+    "precode": "if (type != null) {",
+    "aftercode": "if (type != null && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 429,
+    "precode": "if (type != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 430,
+    "precode": "return maybeRestrictName(",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 431,
+    "precode": "blindScope, name, type,",
+    "aftercode": "null, name, type,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 432,
+    "precode": "type.getRestrictedTypeGivenToBooleanOutcome(outcome));",
+    "aftercode": "type.getRestrictedTypeGivenToBooleanOutcome(!outcome));",
+    "rule": "Boolean Inversion",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 432,
+    "precode": "type.getRestrictedTypeGivenToBooleanOutcome(outcome));",
+    "aftercode": "type.getRestrictedTypeGivenToBooleanOutcome(true));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 432,
+    "precode": "type.getRestrictedTypeGivenToBooleanOutcome(outcome));",
+    "aftercode": "type.getRestrictedTypeGivenToBooleanOutcome(false));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 434,
+    "precode": "return blindScope;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 434,
+    "precode": "return blindScope;",
+    "aftercode": "return type;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java",
+    "line": 428,
+    "precode": "JSType type = getTypeIfRefinable(name, blindScope);",
+    "aftercode": "JSType type = getTypeIfRefinable(name, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 883,
+    "precode": "if (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "aftercode": "if (outcome || this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 883,
+    "precode": "if (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "aftercode": "if (outcome && this != getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 883,
+    "precode": "if (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "aftercode": "if (true && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 883,
+    "precode": "if (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "aftercode": "if (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {",
+    "rule": "No-op (to test test coverage)",
+    "gen_time_s": 1.33,
+    "dublicate": true
+  },
+  {
+    "id": 126,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 884,
+    "precode": "return getNativeType(JSTypeNative.CHECKED_UNKNOWN_TYPE);",
+    "aftercode": "return getNativeType(JSTypeNative.UNKNOWN_TYPE);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 888,
+    "precode": "if (literals.contains(outcome)) {",
+    "aftercode": "if (!literals.contains(outcome)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 888,
+    "precode": "if (literals.contains(outcome)) {",
+    "aftercode": "if (literals.isEmpty()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 889,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 889,
+    "precode": "return this;",
+    "aftercode": "return getNativeType(JSTypeNative.UNKNOWN_TYPE);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 891,
+    "precode": "return getNativeType(JSTypeNative.NO_TYPE);",
+    "aftercode": "return getNativeType(JSTypeNative.UNKNOWN_TYPE);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 891,
+    "precode": "return getNativeType(JSTypeNative.NO_TYPE);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 888,
+    "precode": "if (literals.contains(outcome)) {",
+    "aftercode": "if (literals.contains(true)) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  }
+]

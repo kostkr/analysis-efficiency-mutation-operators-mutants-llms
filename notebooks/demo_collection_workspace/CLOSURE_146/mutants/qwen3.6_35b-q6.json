@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 696,
+    "precode": "public TypePair getTypesUnderInequality(JSType that) {",
+    "aftercode": "public TypePair getTypesUnderEquality(JSType that) {",
+    "rule": "Method Name Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 698,
+    "precode": "if (that instanceof UnionType) {",
+    "aftercode": "if (!(that instanceof UnionType)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 699,
+    "precode": "TypePair p = that.getTypesUnderInequality(this);",
+    "aftercode": "TypePair p = that.getTypesUnderEquality(this);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 700,
+    "precode": "return new TypePair(p.typeB, p.typeA);",
+    "aftercode": "return new TypePair(p.typeA, p.typeB);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 704,
+    "precode": "switch (this.testForEquality(that)) {",
+    "aftercode": "switch (this.testForInequality(that)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 706,
+    "precode": "JSType noType = getNativeType(JSTypeNative.NO_TYPE);",
+    "aftercode": "JSType noType = getNativeType(JSTypeNative.UNKNOWN_TYPE);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 707,
+    "precode": "return new TypePair(noType, noType);",
+    "aftercode": "return new TypePair(noType, this);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 711,
+    "precode": "return new TypePair(this, that);",
+    "aftercode": "return new TypePair(that, this);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 715,
+    "precode": "throw new IllegalStateException();",
+    "aftercode": "throw new RuntimeException();",
+    "rule": "Exception Type Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 696,
+    "precode": "public TypePair getTypesUnderInequality(JSType that) {",
+    "aftercode": "public TypePair getTypesUnderInequality(JSType that) { return null; }",
+    "rule": "Return Null",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 700,
+    "precode": "return new TypePair(p.typeB, p.typeA);",
+    "aftercode": "return null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 707,
+    "precode": "return new TypePair(noType, noType);",
+    "aftercode": "return null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 711,
+    "precode": "return new TypePair(this, that);",
+    "aftercode": "return null;",
+    "rule": "Return Null",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 698,
+    "precode": "if (that instanceof UnionType) {",
+    "aftercode": "if (that == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 704,
+    "precode": "switch (this.testForEquality(that)) {",
+    "aftercode": "switch (1) {",
+    "rule": "Constant Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 706,
+    "precode": "JSType noType = getNativeType(JSTypeNative.NO_TYPE);",
+    "aftercode": "JSType noType = getNativeType(JSTypeNative.ANY_TYPE);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 707,
+    "precode": "return new TypePair(noType, noType);",
+    "aftercode": "return new TypePair(this, that);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 711,
+    "precode": "return new TypePair(this, that);",
+    "aftercode": "return new TypePair(noType, noType);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 699,
+    "precode": "TypePair p = that.getTypesUnderInequality(this);",
+    "aftercode": "TypePair p = new TypePair(this, that);",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 700,
+    "precode": "return new TypePair(p.typeB, p.typeA);",
+    "aftercode": "return new TypePair(p.typeA, p.typeA);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/rhino/jstype/JSType.java",
+    "line": 715,
+    "precode": "throw new IllegalStateException();",
+    "aftercode": "return new TypePair(this, that);",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  }
+]

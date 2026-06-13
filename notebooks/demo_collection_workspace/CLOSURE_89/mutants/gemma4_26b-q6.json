@@ -1,0 +1,982 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 478,
+    "precode": "Node rvalue = ref.node.getNext();",
+    "aftercode": "Node rvalue = ref.node.getPrev();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 479,
+    "precode": "Node parent = ref.node.getParent();",
+    "aftercode": "Node parent = ref.node.getTwin();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 480,
+    "precode": "Node gramps = parent.getParent();",
+    "aftercode": "Node gramps = parent;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 481,
+    "precode": "Node greatGramps = gramps.getParent();",
+    "aftercode": "Node greatGramps = gramps;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 482,
+    "precode": "Node greatGreatGramps = greatGramps.getParent();",
+    "aftercode": "Node greatGreatGramps = greatGramps;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 484,
+    "precode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "aftercode": "if (rvalue != null || rvalue.getType() == Token.FUNCTION) {",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 484,
+    "precode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "aftercode": "if (rvalue != null && rvalue.getType() != Token.FUNCTION) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 485,
+    "precode": "checkForHosedThisReferences(rvalue, refName.docInfo, refName);",
+    "aftercode": "// checkForHosedThisReferences(rvalue, refName.docInfo, refName);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 490,
+    "precode": "compiler.getCodingConvention(), alias, gramps.getFirstChild(),",
+    "aftercode": "compiler.getCodingConvention(), alias, gramps,",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 492,
+    "precode": "NodeUtil.copyNameAnnotations(ref.node.getLastChild(), nameNode);",
+    "aftercode": "NodeUtil.copyNameAnnotations(ref.node.getFirstChild(), nameNode);",
+    "rule": "MethodCallArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 494,
+    "precode": "if (gramps.getType() == Token.EXPR_RESULT) {",
+    "aftercode": "if (gramps.getType() != Token.EXPR_RESULT) {",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 494,
+    "precode": "if (gramps.getType() == Token.EXPR_RESULT) {",
+    "aftercode": "if (gramps.getType() == Token.OTHER) {",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 510,
+    "precode": "parent.removeChild(rvalue);",
+    "aftercode": "parent.replaceChild(rvalue, null);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 511,
+    "precode": "nameNode.addChildToFront(rvalue);",
+    "aftercode": "nameNode.addChildToBack(rvalue);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 514,
+    "precode": "greatGramps.replaceChild(gramps, varNode);",
+    "aftercode": "greatGramps.replaceChild(varNode, gramps);",
+    "rule": "ArgumentOrderReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 517,
+    "precode": "Preconditions.checkNotNull(ref.getTwin());",
+    "aftercode": "// Preconditions.checkNotNull(ref.getTwin());",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 526,
+    "precode": "Node current = gramps;",
+    "aftercode": "Node current = null;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 527,
+    "precode": "Node currentParent = gramps.getParent();",
+    "aftercode": "Node currentParent = gramps;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 528,
+    "precode": "for (; currentParent.getType() != Token.SCRIPT &&",
+    "aftercode": "for (; currentParent.getType() == Token.SCRIPT &&",
+    "rule": "RelationalOperatorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 529,
+    "precode": "currentParent.getType() != Token.BLOCK;",
+    "aftercode": "currentParent.getType() != Token.BLOCK ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 530,
+    "precode": "current = currentParent,",
+    "aftercode": "current = currentParent;",
+    "rule": "SyntaxErrorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 535,
+    "precode": "Node stubVar = new Node(Token.VAR, nameNode.cloneTree())",
+    "aftercode": "Node stubVar = new Node(Token.VAR, nameNode)",
+    "rule": "MethodCallRemoval",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 536,
+    "precode": ".copyInformationFrom(nameNode);",
+    "aftercode": ".copyInformationFrom(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 537,
+    "precode": "currentParent.addChildBefore(stubVar, current);",
+    "aftercode": "currentParent.addChildAfter(stubVar, current);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 539,
+    "precode": "parent.replaceChild(ref.node, nameNode);",
+    "aftercode": "parent.replaceChild(nameNode, ref.node);",
+    "rule": "ArgumentOrderReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 542,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "// compiler.reportCodeChange();",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 484,
+    "precode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "aftercode": "if (rvalue != null && rvalue.getType() == null) {",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 490,
+    "precode": "compiler.getCodingConvention(), alias, gramps.getFirstChild(),",
+    "aftercode": "compiler.getCodingConvention(), alias, gramps.getLastChild(),",
+    "rule": "MethodCallArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 514,
+    "precode": "greatGramps.replaceChild(gramps, varNode);",
+    "aftercode": "greatGramps.replaceChild(gramps, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 528,
+    "precode": "for (; currentParent.getType() != Token.SCRIPT &&",
+    "aftercode": "for (; currentParent.getType() != Token.SCRIPT ||",
+    "rule": "LogicalConnectorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 537,
+    "precode": "currentParent.addChildBefore(stubVar, current);",
+    "aftercode": "currentParent.addChild(stubVar);",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 480,
+    "precode": "Node gramps = parent.getParent();",
+    "aftercode": "Node gramps = parent.getTwin();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 484,
+    "precode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "aftercode": "if (rvalue != null && rvalue.getType() == Token.IDENTIFIER) {",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 492,
+    "precode": "NodeUtil.copyNameAnnotations(ref.node.getLastChild(), nameNode);",
+    "aftercode": "NodeUtil.copyNameAnnotations(ref.node, nameNode);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 510,
+    "precode": "parent.removeChild(rvalue);",
+    "aftercode": "parent.removeChild(nameNode);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 513,
+    "precode": "Node varNode = new Node(Token.VAR, nameNode);",
+    "aftercode": "Node varNode = new Node(Token.IDENTIFIER, nameNode);",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 535,
+    "precode": "Node stubVar = new Node(Token.VAR, nameNode.cloneTree())",
+    "aftercode": "Node stubVar = new Node(Token.VAR, nameNode.cloneTree());",
+    "rule": "SyntaxErrorReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 478,
+    "precode": "Node rvalue = ref.node.getNext();",
+    "aftercode": "Node rvalue = ref.node.getPrev();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 481,
+    "precode": "Node greatGramps = gramps.getParent();",
+    "aftercode": "Node greatGramps = gramps.getFirstChild();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 494,
+    "precode": "if (gramps.getType() == Token.EXPR_RESULT) {",
+    "aftercode": "if (gramps.getType() == Token.EXPR_STMT) {",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 501,
+    "precode": "// string b",
+    "aftercode": "// string c",
+    "rule": "CommentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 517,
+    "precode": "Preconditions.checkNotNull(ref.getTwin());",
+    "aftercode": "Preconditions.checkNotNull(ref.node);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 528,
+    "precode": "for (; currentParent.getType() != Token.SCRIPT &&",
+    "aftercode": "for (; currentParent.getType() != Token.SCRIPT;",
+    "rule": "LoopConditionReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 537,
+    "precode": "currentParent.addChildBefore(stubVar, current);",
+    "aftercode": "currentParent.addChildBefore(current, stubVar);",
+    "rule": "ArgumentOrderReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 539,
+    "precode": "parent.replaceChild(ref.node, nameNode);",
+    "aftercode": "parent.replaceChild(ref.node, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 485,
+    "precode": "checkForHosedThisReferences(rvalue, refName.docInfo, refName);",
+    "aftercode": "checkForHosedThisReferences(rvalue, refName.docInfo, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 490,
+    "precode": "compiler.getCodingConvention(), alias, gramps.getFirstChild(),",
+    "aftercode": "compiler.getCodingConvention(), alias, gramps.getLastChild(),",
+    "rule": "MethodCallArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 492,
+    "precode": "NodeUtil.copyNameAnnotations(ref.node.getLastChild(), nameNode);",
+    "aftercode": "NodeUtil.copyNameAnnotations(ref.node.getPrev(), nameNode);",
+    "rule": "MethodCallArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 510,
+    "precode": "parent.removeChild(rvalue);",
+    "aftercode": "parent.removeChild(ref.node);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 514,
+    "precode": "greatGramps.replaceChild(gramps, varNode);",
+    "aftercode": "greatGramps.replaceChild(gramps, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 526,
+    "precode": "Node current = gramps;",
+    "aftercode": "Node current = gramps.getParent();",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 535,
+    "precode": "Node stubVar = new Node(Token.VAR, nameNode.cloneTree())",
+    "aftercode": "Node stubVar = new Node(Token.VAR, nameNode.clone());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 537,
+    "precode": "currentParent.addChildBefore(stubVar, current);",
+    "aftercode": "currentParent.addChildBefore(stubVar, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 484,
+    "precode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "aftercode": "if (rvalue != null && rvalue.getType() == Token.VAR) {",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 480,
+    "precode": "Node gramps = parent.getParent();",
+    "aftercode": "Node gramps = parent.getPrev();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 494,
+    "precode": "if (gramps.getType() == Token.EXPR_RESULT) {",
+    "aftercode": "if (gramps.getType() == Token.VAR) {",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 517,
+    "precode": "Preconditions.checkNotNull(ref.getTwin());",
+    "aftercode": "Preconditions.checkNotNull(ref.node.getTwin());",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 528,
+    "precode": "for (; currentParent.getType() != Token.SCRIPT &&",
+    "aftercode": "for (; currentParent.getType() != Token.BLOCK &&",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 539,
+    "precode": "parent.replaceChild(ref.node, nameNode);",
+    "aftercode": "parent.replaceChild(ref.node, ref.node);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 482,
+    "precode": "Node greatGreatGramps = greatGramps.getParent();",
+    "aftercode": "Node greatGreatGramps = greatGramps.getTwin();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 489,
+    "precode": "Node nameNode = NodeUtil.newName(",
+    "aftercode": "Node nameNode = NodeUtil.newOldName(",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 513,
+    "precode": "Node varNode = new Node(Token.VAR, nameNode);",
+    "aftercode": "Node varNode = new Node(Token.EXPR_RESULT, nameNode);",
+    "rule": "ValueReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 530,
+    "precode": "current = currentParent,",
+    "aftercode": "current = currentParent.getParent(),",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 536,
+    "precode": ".copyInformationFrom(nameNode);",
+    "aftercode": ".copyInformationFrom(nameNode.cloneTree());",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 542,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "compiler.reportCodeChange(true);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 478,
+    "precode": "Node rvalue = ref.node.getNext();",
+    "aftercode": "Node rvalue = ref.node.getTwin();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 484,
+    "precode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "aftercode": "if (rvalue != null && rvalue.getType() == Token.FUNCTION) {",
+    "rule": "ConditionalsBoundary",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/CollapseProperties.java",
+    "line": 528,
+    "precode": "for (; currentParent.getType() != Token.SCRIPT &&",
+    "aftercode": "for (; currentParent.getType() != Token.SCRIPT && true",
+    "rule": "LoopConditionReplacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 897,
+    "precode": "if (type == Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "aftercode": "if (type == Type.OTHER && globalSets != 1 || localSets != 0) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 897,
+    "precode": "if (type == Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "aftercode": "if (type == Type.OTHER || globalSets != 1 && localSets != 0) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 897,
+    "precode": "if (type == Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "aftercode": "if (type == Type.OTHER || globalSets == 1 || localSets != 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 897,
+    "precode": "if (type == Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "aftercode": "if (type == Type.OTHER || globalSets != 1 || localSets == 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 897,
+    "precode": "if (type == Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "aftercode": "if (type != Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 905,
+    "precode": "if (declaration.getTwin() != null) {",
+    "aftercode": "if (declaration.getTwin() == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 905,
+    "precode": "if (declaration.getTwin() != null) {",
+    "aftercode": "if (declaration.getTwin() != null && true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 909,
+    "precode": "if (isClassOrEnum) {",
+    "aftercode": "if (!isClassOrEnum) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 909,
+    "precode": "if (isClassOrEnum) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 915,
+    "precode": "if (parent != null && parent.shouldKeepKeys()) {",
+    "aftercode": "if (parent != null || parent.shouldKeepKeys()) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 915,
+    "precode": "if (parent != null && parent.shouldKeepKeys()) {",
+    "aftercode": "if (parent == null && parent.shouldKeepKeys()) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 915,
+    "precode": "if (parent != null && parent.shouldKeepKeys()) {",
+    "aftercode": "if (parent != null && true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (aliasingGets >= 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (aliasingGets < 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (aliasingGets >= 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (aliasingGets > 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 924,
+    "precode": "return (parent == null || parent.canCollapseUnannotatedChildNames());",
+    "aftercode": "return (parent != null || parent.canCollapseUnannotatedChildNames());",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 924,
+    "precode": "return (parent == null || parent.canCollapseUnannotatedChildNames());",
+    "aftercode": "return (parent == null && parent.canCollapseUnannotatedChildNames());",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 924,
+    "precode": "return (parent == null || parent.canCollapseUnannotatedChildNames());",
+    "aftercode": "return parent.canCollapseUnannotatedChildNames();",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 924,
+    "precode": "return (parent == null || parent.canCollapseUnannotatedChildNames());",
+    "aftercode": "return (parent == null || !parent.canCollapseUnannotatedChildNames());",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 905,
+    "precode": "if (declaration.getTwin() != null) {",
+    "aftercode": "if (declaration.getTwin() != null && true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 915,
+    "precode": "if (parent != null && parent.shouldKeepKeys()) {",
+    "aftercode": "if (parent != null && parent.shouldKeepKeys()) {",
+    "rule": "Empty Body",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (aliasingGets >= 0) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 897,
+    "precode": "if (type == Type.OTHER || globalSets != 1 || localSets != 0) {",
+    "aftercode": "if (type == Type.OTHER || globalSets != 1 || localSets != 1) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 905,
+    "precode": "if (declaration.getTwin() != null) {",
+    "aftercode": "if (declaration.getTwin() != null) return true;",
+    "rule": "Return Value Change",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 915,
+    "precode": "if (parent != null && parent.shouldKeepKeys()) {",
+    "aftercode": "if (parent != null && !parent.shouldKeepKeys()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 924,
+    "precode": "return (parent == null || parent.canCollapseUnannotatedChildNames());",
+    "aftercode": "return (parent == null || parent.canCollapseUnannotatedChildNames()) == true;",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 905,
+    "precode": "if (declaration.getTwin() != null) {",
+    "aftercode": "if (declaration.getTwin() != null) { return true; }",
+    "rule": "Return Value Change",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/jscomp/GlobalNamespace.java",
+    "line": 920,
+    "precode": "if (aliasingGets > 0) {",
+    "aftercode": "if (aliasingGets >= 0) {",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.3,
+    "dublicate": true
+  }
+]

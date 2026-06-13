@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 376,
+    "precode": "for (Type type : typeVariable.getBounds()) {",
+    "aftercode": "for (Type type : typeVariable.getBounds().clone()) {",
+    "rule": "Iterator Removal",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 377,
+    "precode": "registerTypeVariablesOn(type);",
+    "aftercode": "registerTypeVariablesOn(null);",
+    "rule": "Null Return",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 379,
+    "precode": "registerTypeParametersOn(new TypeVariable[] { typeVariable });",
+    "aftercode": "registerTypeParametersOn(new TypeVariable[0]);",
+    "rule": "Array Size Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 380,
+    "precode": "registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));",
+    "aftercode": "registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable).getBounds()[0]);",
+    "rule": "Index Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 376,
+    "precode": "for (Type type : typeVariable.getBounds()) {",
+    "aftercode": "for (Type type : new Type[0]) {",
+    "rule": "Collection Change",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 377,
+    "precode": "registerTypeVariablesOn(type);",
+    "aftercode": "if (type != null) registerTypeVariablesOn(type);",
+    "rule": "Conditional Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 380,
+    "precode": "registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));",
+    "aftercode": "registerTypeVariablesOn(typeVariable);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  }
+]

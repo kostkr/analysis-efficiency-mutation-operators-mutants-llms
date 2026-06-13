@@ -1,0 +1,232 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 163,
+    "precode": "Node first = n.getFirstChild();",
+    "aftercode": "Node first = n.getLastChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 166,
+    "precode": "while (first.isCast()) {",
+    "aftercode": "while (first.isGet()) {",
+    "rule": "Method Name Mutator",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 170,
+    "precode": "if (!NodeUtil.isGet(first)) {",
+    "aftercode": "if (NodeUtil.isGet(first)) {",
+    "rule": "Negation Inverter",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 171,
+    "precode": "n.putBooleanProp(Node.FREE_CALL, true);",
+    "aftercode": "n.putBooleanProp(Node.FREE_CALL, false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 176,
+    "precode": "if (first.isName() &&",
+    "aftercode": "if (first.isName() ||",
+    "rule": "Logical Operator Change",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 177,
+    "precode": "\"eval\".equals(first.getString())) {",
+    "aftercode": "\"eval\".equals(first.getString()) == false) {",
+    "rule": "Equality Inverter",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 178,
+    "precode": "first.putBooleanProp(Node.DIRECT_EVAL, true);",
+    "aftercode": "first.putBooleanProp(Node.DIRECT_EVAL, false);",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 167,
+    "precode": "first = first.getFirstChild();",
+    "aftercode": "first = first.getParent();",
+    "rule": "Method Name Mutator",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 170,
+    "precode": "if (!NodeUtil.isGet(first)) {",
+    "aftercode": "if (!NodeUtil.isCall(first)) {",
+    "rule": "Method Name Mutator",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 176,
+    "precode": "if (first.isName() &&",
+    "aftercode": "if (first.isNumber() &&",
+    "rule": "Method Name Mutator",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 177,
+    "precode": "\"eval\".equals(first.getString())) {",
+    "aftercode": "\"call\".equals(first.getString())) {",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 178,
+    "precode": "first.putBooleanProp(Node.DIRECT_EVAL, true);",
+    "aftercode": "first.putBooleanProp(Node.DIRECT_EVAL, null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 163,
+    "precode": "Node first = n.getFirstChild();",
+    "aftercode": "Node first = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 166,
+    "precode": "while (first.isCast()) {",
+    "aftercode": "while (first != null && first.isCast()) {",
+    "rule": "Guard Addition",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 167,
+    "precode": "first = first.getFirstChild();",
+    "aftercode": "first = first.getFirstChild().getFirstChild();",
+    "rule": "Method Chaining Change",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 171,
+    "precode": "n.putBooleanProp(Node.FREE_CALL, true);",
+    "aftercode": "n.putNumberProp(Node.FREE_CALL, 1);",
+    "rule": "Method Name Mutator",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 178,
+    "precode": "first.putBooleanProp(Node.DIRECT_EVAL, true);",
+    "aftercode": "n.putBooleanProp(Node.DIRECT_EVAL, true);",
+    "rule": "Variable Name Mutator",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 161,
+    "precode": "// Keep track of of the \"this\" context of a call.  A call without an",
+    "aftercode": "// Keep track of the \"this\" context of a call.  A call without an",
+    "rule": "Comment Only Change",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 166,
+    "precode": "while (first.isCast()) {",
+    "aftercode": "if (first.isCast()) {",
+    "rule": "Loop to Conditional",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 170,
+    "precode": "if (!NodeUtil.isGet(first)) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition False",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 176,
+    "precode": "if (first.isName() &&",
+    "aftercode": "if (true &&",
+    "rule": "Condition True",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 178,
+    "precode": "first.putBooleanProp(Node.DIRECT_EVAL, true);",
+    "aftercode": "// first.putBooleanProp(Node.DIRECT_EVAL, true);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/PrepareAst.java",
+    "line": 171,
+    "precode": "n.putBooleanProp(Node.FREE_CALL, true);",
+    "aftercode": "// n.putBooleanProp(Node.FREE_CALL, true);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  }
+]

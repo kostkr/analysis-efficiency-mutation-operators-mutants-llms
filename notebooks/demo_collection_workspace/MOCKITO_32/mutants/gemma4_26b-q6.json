@@ -1,0 +1,342 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 30,
+    "precode": "Field[] fields = context.getDeclaredFields();",
+    "aftercode": "Field[] fields = context.getFields();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 32,
+    "precode": "if (field.isAnnotationPresent(Spy.class)) {",
+    "aftercode": "if (!field.isAnnotationPresent(Spy.class)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 32,
+    "precode": "if (field.isAnnotationPresent(Spy.class)) {",
+    "aftercode": "if (field.isAnnotationPresent(Object.class)) {",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 33,
+    "precode": "assertNoAnnotations(Spy.class, field, Mock.class, org.mockito.MockitoAnnotations.Mock.class, Captor.class);",
+    "aftercode": "// assertNoAnnotations(Spy.class, field, Mock.class, org.mockito.MockitoAnnotations.Mock.class, Captor.class);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 34,
+    "precode": "boolean wasAccessible = field.isAccessible();",
+    "aftercode": "boolean wasAccessible = false;",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 35,
+    "precode": "field.setAccessible(true);",
+    "aftercode": "field.setAccessible(false);",
+    "rule": "BooleanValueReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 37,
+    "precode": "Object instance = field.get(testClass);",
+    "aftercode": "Object instance = field.get(context);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 38,
+    "precode": "if (instance == null) {",
+    "aftercode": "if (instance != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 38,
+    "precode": "if (instance == null) {",
+    "aftercode": "if (instance == false) {",
+    "rule": "ConditionReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 46,
+    "precode": "if (new MockUtil().isMock(instance)) {",
+    "aftercode": "if (!new MockUtil().isMock(instance)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 46,
+    "precode": "if (new MockUtil().isMock(instance)) {",
+    "aftercode": "if (new MockUtil().isMock(null)) {",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 48,
+    "precode": "Mockito.reset(instance);",
+    "aftercode": "// Mockito.reset(instance);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 48,
+    "precode": "Mockito.reset(instance);",
+    "aftercode": "Mockito.reset(testClass);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 50,
+    "precode": "field.set(testClass, Mockito.mock(instance.getClass(), withSettings()",
+    "aftercode": "field.set(testClass, Mockito.mock(instance.getClass(), withSettings()));",
+    "rule": "StatementReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 50,
+    "precode": "field.set(testClass, Mockito.mock(instance.getClass(), withSettings()",
+    "aftercode": "field.set(context, Mockito.mock(instance.getClass(), withSettings()",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 51,
+    "precode": ".spiedInstance(instance)",
+    "aftercode": ".spiedInstance(null)",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 52,
+    "precode": ".defaultAnswer(Mockito.CALLS_REAL_METHODS)",
+    "aftercode": ".defaultAnswer(Mockito.RETURNS_DEFAULTS)",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 53,
+    "precode": ".name(field.getName())));",
+    "aftercode": ".name(\"\" + field.getName() + \"\")));",
+    "rule": "StringReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 53,
+    "precode": ".name(field.getName())));",
+    "aftercode": ".name(\"wrong_name\")));",
+    "rule": "StringReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 55,
+    "precode": "} catch (IllegalAccessException e) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "ExceptionReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 56,
+    "precode": "throw new MockitoException(\"Problems initiating spied field \" + field.getName(), e);",
+    "aftercode": "throw new RuntimeException(\"Problems initiating spied field \" + field.getName(), e);",
+    "rule": "ExceptionReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 58,
+    "precode": "field.setAccessible(wasAccessible);",
+    "aftercode": "field.setAccessible(true);",
+    "rule": "BooleanValueReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 58,
+    "precode": "field.setAccessible(wasAccessible);",
+    "aftercode": "// field.setAccessible(wasAccessible);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 31,
+    "precode": "for (Field field : fields) {",
+    "aftercode": "for (Field field : new Field[0]) {",
+    "rule": "CollectionReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 31,
+    "precode": "for (Field field : fields) {",
+    "aftercode": "for (int i = 0; i < fields.length; i++) {",
+    "rule": "LoopReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 37,
+    "precode": "Object instance = field.get(testClass);",
+    "aftercode": "Object instance = field.get(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 48,
+    "precode": "Mockito.reset(instance);",
+    "aftercode": "Mockito.reset(field);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 50,
+    "precode": "field.set(testClass, Mockito.mock(instance.getClass(), withSettings()",
+    "aftercode": "field.set(testClass, Mockito.mock(instance.getClass()));",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 52,
+    "precode": ".defaultAnswer(Mockito.CALLS_REAL_METHODS)",
+    "aftercode": ".defaultAnswer(null)",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 34,
+    "precode": "boolean wasAccessible = field.isAccessible();",
+    "aftercode": "boolean wasAccessible = field.isAnnotationPresent(Spy.class);",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 35,
+    "precode": "field.setAccessible(true);",
+    "aftercode": "field.setAccessible(wasAccessible);",
+    "rule": "VariableAssignment",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 46,
+    "precode": "if (new MockUtil().isMock(instance)) {",
+    "aftercode": "if (new MockUtil().isMock(field)) {",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 56,
+    "precode": "throw new MockitoException(\"Problems initiating spied field \" + field.getName(), e);",
+    "aftercode": "throw new MockitoException(\"Problems initiating spied field \" + field.getName());",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/org/mockito/internal/configuration/SpyAnnotationEngine.java",
+    "line": 30,
+    "precode": "Field[] fields = context.getDeclaredFields();",
+    "aftercode": "Field[] fields = context.getFields();",
+    "rule": "MethodCallReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  }
+]

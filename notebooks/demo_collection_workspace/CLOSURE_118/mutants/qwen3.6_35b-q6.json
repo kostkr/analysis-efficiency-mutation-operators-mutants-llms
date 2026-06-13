@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 491,
+    "precode": "for (Node child = n.getFirstChild();",
+    "aftercode": "for (Node child = n.getNextSibling();",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 492,
+    "precode": "child != null;",
+    "aftercode": "child == null;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 493,
+    "precode": "child = child.getNext()) {",
+    "aftercode": "child = child.getParent()) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 495,
+    "precode": "if (child.isQuotedString()) {",
+    "aftercode": "if (!child.isQuotedString()) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 500,
+    "precode": "String name = child.getString();",
+    "aftercode": "String name = child.getParent().getString();",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 501,
+    "precode": "T type = typeSystem.getType(getScope(), n, name);",
+    "aftercode": "T type = typeSystem.getType(getScope(), name, n);",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 503,
+    "precode": "Property prop = getProperty(name);",
+    "aftercode": "Property prop = getProperty(null);",
+    "rule": "Null Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 504,
+    "precode": "if (!prop.scheduleRenaming(child,",
+    "aftercode": "if (prop.scheduleRenaming(child,",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 505,
+    "precode": "processProperty(t, prop, type, null))) {",
+    "aftercode": "processProperty(t, prop, null, null))) {",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 508,
+    "precode": "if (propertiesToErrorFor.containsKey(name)) {",
+    "aftercode": "if (!propertiesToErrorFor.containsKey(name)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 509,
+    "precode": "compiler.report(JSError.make(",
+    "aftercode": "compiler.debug(JSError.make(",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 510,
+    "precode": "t.getSourceName(), child, propertiesToErrorFor.get(name),",
+    "aftercode": "t.getSourceName(), null, propertiesToErrorFor.get(name),",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 511,
+    "precode": "Warnings.INVALIDATION, name,",
+    "aftercode": "Warnings.WARNING, name,",
+    "rule": "Constant Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 512,
+    "precode": "(type == null ? \"null\" : type.toString()), n.toString(), \"\"));",
+    "aftercode": "(type == null ? \"\" : type.toString()), n.toString(), \"\"));",
+    "rule": "String Literal Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 491,
+    "precode": "for (Node child = n.getFirstChild();",
+    "aftercode": "for (Node child = n.getFirstChild();",
+    "rule": "Loop Variable Initialization",
+    "gen_time_s": 2.26,
+    "dublicate": true
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 493,
+    "precode": "child = child.getNext()) {",
+    "aftercode": "child = child.getNext().getNext()) {",
+    "rule": "Statement Deletion/Skip",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 496,
+    "precode": "continue;",
+    "aftercode": "break;",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 501,
+    "precode": "T type = typeSystem.getType(getScope(), n, name);",
+    "aftercode": "T type = null;",
+    "rule": "Assignment Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 503,
+    "precode": "Property prop = getProperty(name);",
+    "aftercode": "Property prop = null;",
+    "rule": "Assignment Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 504,
+    "precode": "if (!prop.scheduleRenaming(child,",
+    "aftercode": "if (prop == null || !prop.scheduleRenaming(child,",
+    "rule": "Null Check Addition",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 508,
+    "precode": "if (propertiesToErrorFor.containsKey(name)) {",
+    "aftercode": "if (propertiesToErrorFor.isEmpty()) {",
+    "rule": "Condition Change",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 510,
+    "precode": "t.getSourceName(), child, propertiesToErrorFor.get(name),",
+    "aftercode": "t.getSourceName(), child, null,",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 512,
+    "precode": "(type == null ? \"null\" : type.toString()), n.toString(), \"\"));",
+    "aftercode": "(type == null ? \"null\" : type.toString()), \"\", \"\"));",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 501,
+    "precode": "T type = typeSystem.getType(getScope(), n, name);",
+    "aftercode": "T type = typeSystem.getType(getScope(), n, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 505,
+    "precode": "processProperty(t, prop, type, null))) {",
+    "aftercode": "processProperty(t, prop, type, type))) {",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 495,
+    "precode": "if (child.isQuotedString()) {",
+    "aftercode": "if (child.isString()) {",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/DisambiguateProperties.java",
+    "line": 500,
+    "precode": "String name = child.getString();",
+    "aftercode": "String name = \"\";",
+    "rule": "Assignment Substitution",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  }
+]

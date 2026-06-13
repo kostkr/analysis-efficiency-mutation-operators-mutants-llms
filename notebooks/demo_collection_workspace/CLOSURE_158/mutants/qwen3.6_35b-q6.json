@@ -1,0 +1,2432 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 198,
+    "precode": "for (WarningGuardSpec.Entry entry : config.warningGuards.entries) {",
+    "aftercode": "for (WarningGuardSpec.Entry entry : config.warningGuards) {",
+    "rule": "Collection Iterator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 199,
+    "precode": "diagnosticGroups.setWarningLevel(options, entry.groupName, entry.level);",
+    "aftercode": "diagnosticGroups.setWarningLevel(options, entry.level, entry.groupName);",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 203,
+    "precode": "createDefineOrTweakReplacements(config.define, options, false);",
+    "aftercode": "createDefineOrTweakReplacements(config.define, options, true);",
+    "rule": "Boolean Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 206,
+    "precode": "createDefineOrTweakReplacements(config.tweak, options, true);",
+    "aftercode": "createDefineOrTweakReplacements(config.tweak, options, false);",
+    "rule": "Boolean Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 208,
+    "precode": "options.manageClosureDependencies = config.manageClosureDependencies;",
+    "aftercode": "options.manageClosureDependencies = !config.manageClosureDependencies;",
+    "rule": "Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 209,
+    "precode": "if (config.closureEntryPoints.size() > 0) {",
+    "aftercode": "if (config.closureEntryPoints.size() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 210,
+    "precode": "options.setManageClosureDependencies(config.closureEntryPoints);",
+    "aftercode": "options.setManageClosureDependencies(null);",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 212,
+    "precode": "options.devMode = config.jscompDevMode;",
+    "aftercode": "options.devMode = !config.jscompDevMode;",
+    "rule": "Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 216,
+    "precode": "outputCharset = options.outputCharset = getOutputCharset();",
+    "aftercode": "options.outputCharset = outputCharset = getOutputCharset();",
+    "rule": "Assignment Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 219,
+    "precode": "if (config.jsOutputFile.length() > 0) {",
+    "aftercode": "if (config.jsOutputFile.length() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 220,
+    "precode": "options.jsOutputFile = config.jsOutputFile;",
+    "aftercode": "options.jsOutputFile = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 223,
+    "precode": "if (config.createSourceMap.length() > 0) {",
+    "aftercode": "if (config.createSourceMap.length() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 224,
+    "precode": "options.sourceMapOutputPath = config.createSourceMap;",
+    "aftercode": "options.sourceMapOutputPath = \"\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 229,
+    "precode": "if (!config.variableMapInputFile.equals(\"\")) {",
+    "aftercode": "if (config.variableMapInputFile.equals(\"\")) {",
+    "rule": "Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 231,
+    "precode": "VariableMap.load(config.variableMapInputFile).toBytes();",
+    "aftercode": "VariableMap.load(\"\").toBytes();",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 234,
+    "precode": "if (!config.propertyMapInputFile.equals(\"\")) {",
+    "aftercode": "if (config.propertyMapInputFile.equals(\"\")) {",
+    "rule": "Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 236,
+    "precode": "VariableMap.load(config.propertyMapInputFile).toBytes();",
+    "aftercode": "VariableMap.load(\"\").toBytes();",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 239,
+    "precode": "if (config.languageIn.length() > 0) {",
+    "aftercode": "if (config.languageIn.length() >= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 240,
+    "precode": "if (config.languageIn.equals(\"ECMASCRIPT5_STRICT\") ||",
+    "aftercode": "if (config.languageIn.equals(\"ECMASCRIPT5_STRICT\") &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 241,
+    "precode": "config.languageIn.equals(\"ES5_STRICT\")) {",
+    "aftercode": "config.languageIn.equals(\"ES5_STRICT\")) ||",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 242,
+    "precode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5);",
+    "aftercode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT3);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 243,
+    "precode": "} else if (config.languageIn.equals(\"ECMASCRIPT5\") ||",
+    "aftercode": "} else if (config.languageIn.equals(\"ECMASCRIPT5\") &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 244,
+    "precode": "config.languageIn.equals(\"ES5\")) {",
+    "aftercode": "config.languageIn.equals(\"ES5\")) ||",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 245,
+    "precode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5);",
+    "aftercode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT3);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 246,
+    "precode": "} else if (config.languageIn.equals(\"ECMASCRIPT3\") ||",
+    "aftercode": "} else if (config.languageIn.equals(\"ECMASCRIPT3\") &&",
+    "rule": "Logical Operator",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 248,
+    "precode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT3);",
+    "aftercode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 250,
+    "precode": "throw new FlagUsageException(\"Unknown language `\" + config.languageIn +",
+    "aftercode": "throw new FlagUsageException(\"Unknown language `\" + config.languageIn + \"'\");",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 255,
+    "precode": "options.acceptConstKeyword = config.acceptConstKeyword;",
+    "aftercode": "options.acceptConstKeyword = !config.acceptConstKeyword;",
+    "rule": "Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 195,
+    "precode": "DiagnosticGroups diagnosticGroups = getDiagnosticGroups();",
+    "aftercode": "DiagnosticGroups diagnosticGroups = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 197,
+    "precode": "if (config.warningGuards != null) {",
+    "aftercode": "if (config.warningGuards == null) {",
+    "rule": "Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 205,
+    "precode": "options.setTweakProcessing(config.tweakProcessing);",
+    "aftercode": "options.setTweakProcessing(false);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 213,
+    "precode": "options.setCodingConvention(config.codingConvention);",
+    "aftercode": "options.setCodingConvention(null);",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 214,
+    "precode": "options.setSummaryDetailLevel(config.summaryDetailLevel);",
+    "aftercode": "options.setSummaryDetailLevel(0);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 217,
+    "precode": "inputCharset = getInputCharset();",
+    "aftercode": "inputCharset = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 226,
+    "precode": "options.sourceMapDetailLevel = config.sourceMapDetailLevel;",
+    "aftercode": "options.sourceMapDetailLevel = 0;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 227,
+    "precode": "options.sourceMapFormat = config.sourceMapFormat;",
+    "aftercode": "options.sourceMapFormat = null;",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 230,
+    "precode": "options.inputVariableMapSerialized =",
+    "aftercode": "options.inputVariableMapSerialized = null;",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 235,
+    "precode": "options.inputPropertyMapSerialized =",
+    "aftercode": "options.inputPropertyMapSerialized = null;",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 209,
+    "precode": "if (config.closureEntryPoints.size() > 0) {",
+    "aftercode": "if (config.closureEntryPoints.size() == 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 203,
+    "precode": "createDefineOrTweakReplacements(config.define, options, false);",
+    "aftercode": "createDefineOrTweakReplacements(null, options, false);",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 206,
+    "precode": "createDefineOrTweakReplacements(config.tweak, options, true);",
+    "aftercode": "createDefineOrTweakReplacements(null, options, true);",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 208,
+    "precode": "options.manageClosureDependencies = config.manageClosureDependencies;",
+    "aftercode": "options.manageClosureDependencies = false;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 210,
+    "precode": "options.setManageClosureDependencies(config.closureEntryPoints);",
+    "aftercode": "options.setManageClosureDependencies(new ArrayList<>());",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 212,
+    "precode": "options.devMode = config.jscompDevMode;",
+    "aftercode": "options.devMode = false;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 220,
+    "precode": "options.jsOutputFile = config.jsOutputFile;",
+    "aftercode": "options.jsOutputFile = config.jsOutputFile + \".bak\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 224,
+    "precode": "options.sourceMapOutputPath = config.createSourceMap;",
+    "aftercode": "options.sourceMapOutputPath = config.createSourceMap + \".map\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 231,
+    "precode": "VariableMap.load(config.variableMapInputFile).toBytes();",
+    "aftercode": "VariableMap.load(config.variableMapInputFile).toString();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 236,
+    "precode": "VariableMap.load(config.propertyMapInputFile).toBytes();",
+    "aftercode": "VariableMap.load(config.propertyMapInputFile).toString();",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 240,
+    "precode": "if (config.languageIn.equals(\"ECMASCRIPT5_STRICT\") ||",
+    "aftercode": "if (config.languageIn.equals(\"ECMASCRIPT5\") ||",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 243,
+    "precode": "} else if (config.languageIn.equals(\"ECMASCRIPT5\") ||",
+    "aftercode": "} else if (config.languageIn.equals(\"ECMASCRIPT5_STRICT\") ||",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 246,
+    "precode": "} else if (config.languageIn.equals(\"ECMASCRIPT3\") ||",
+    "aftercode": "} else if (config.languageIn.equals(\"ECMASCRIPT3_STRICT\") ||",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 242,
+    "precode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5);",
+    "aftercode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5_STRICT);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 245,
+    "precode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5);",
+    "aftercode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT5_STRICT);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 248,
+    "precode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT3);",
+    "aftercode": "options.setLanguageIn(CompilerOptions.LanguageMode.ECMASCRIPT3_STRICT);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 250,
+    "precode": "throw new FlagUsageException(\"Unknown language `\" + config.languageIn +",
+    "aftercode": "System.out.println(\"Unknown language `\" + config.languageIn + \"'\");",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 255,
+    "precode": "options.acceptConstKeyword = config.acceptConstKeyword;",
+    "aftercode": "options.acceptConstKeyword = true;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 199,
+    "precode": "diagnosticGroups.setWarningLevel(options, entry.groupName, entry.level);",
+    "aftercode": "diagnosticGroups.setWarningLevel(options, entry.groupName, null);",
+    "rule": "Null Return/Argument",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 205,
+    "precode": "options.setTweakProcessing(config.tweakProcessing);",
+    "aftercode": "options.setTweakProcessing(true);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 213,
+    "precode": "options.setCodingConvention(config.codingConvention);",
+    "aftercode": "options.setCodingConvention(new DefaultCodingConvention());",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 214,
+    "precode": "options.setSummaryDetailLevel(config.summaryDetailLevel);",
+    "aftercode": "options.setSummaryDetailLevel(1);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 216,
+    "precode": "outputCharset = options.outputCharset = getOutputCharset();",
+    "aftercode": "outputCharset = getOutputCharset(); options.outputCharset = getOutputCharset();",
+    "rule": "Statement Split",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 217,
+    "precode": "inputCharset = getInputCharset();",
+    "aftercode": "inputCharset = \"UTF-8\";",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 226,
+    "precode": "options.sourceMapDetailLevel = config.sourceMapDetailLevel;",
+    "aftercode": "options.sourceMapDetailLevel = 1;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 227,
+    "precode": "options.sourceMapFormat = config.sourceMapFormat;",
+    "aftercode": "options.sourceMapFormat = SourceMap.Format.JSON;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 230,
+    "precode": "options.inputVariableMapSerialized =",
+    "aftercode": "options.inputVariableMapSerialized = new byte[0];",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 235,
+    "precode": "options.inputPropertyMapSerialized =",
+    "aftercode": "options.inputPropertyMapSerialized = new byte[0];",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1502,
+    "precode": "this.warningGuards = spec;",
+    "aftercode": "this.warningGuards = null;",
+    "rule": "Value Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1502,
+    "precode": "this.warningGuards = spec;",
+    "aftercode": "spec = this.warningGuards;",
+    "rule": "Assignment Swap",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1503,
+    "precode": "return this;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1503,
+    "precode": "return this;",
+    "aftercode": "return spec;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.2,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1620,
+    "precode": "this.level = level;",
+    "aftercode": "this.level = null;",
+    "rule": "Null Return/Assignment",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1621,
+    "precode": "this.groupName = groupName;",
+    "aftercode": "this.groupName = groupName == null ? \"\" : groupName;",
+    "rule": "Null Check Injection",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1620,
+    "precode": "this.level = level;",
+    "aftercode": "this.groupName = level;",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1621,
+    "precode": "this.groupName = groupName;",
+    "aftercode": "this.level = groupName;",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(new Entry(groupName, level));",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.remove(new Entry(level, groupName));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(new Entry(null, groupName));",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "entries = new ArrayList<>();",
+    "rule": "Empty Object Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "entries.clear();",
+    "rule": "No-Op",
+    "gen_time_s": 2.3,
+    "dublicate": true
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "entries.removeIf(e -> true);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1496,
+    "precode": "private WarningGuardSpec warningGuards = null;",
+    "aftercode": "private WarningGuardSpec warningGuards = new WarningGuardSpec();",
+    "rule": "Null Return/Field Value",
+    "gen_time_s": 2.58,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1496,
+    "precode": "private WarningGuardSpec warningGuards = null;",
+    "aftercode": "private WarningGuardSpec warningGuards = WarningGuardSpec.DEFAULT;",
+    "rule": "Null Return/Field Value",
+    "gen_time_s": 2.58,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1496,
+    "precode": "private WarningGuardSpec warningGuards = null;",
+    "aftercode": "private WarningGuardSpec warningGuards = null;",
+    "rule": "Empty Mutant",
+    "gen_time_s": 2.58,
+    "dublicate": true
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1496,
+    "precode": "private WarningGuardSpec warningGuards = null;",
+    "aftercode": "private WarningGuardSpec warningGuards = null;",
+    "rule": "Variable Value Change",
+    "gen_time_s": 2.58,
+    "dublicate": true
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1496,
+    "precode": "private WarningGuardSpec warningGuards = null;",
+    "aftercode": "private WarningGuardSpec warningGuards = null;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.58,
+    "dublicate": true
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1626,
+    "precode": "private final List<Entry> entries = Lists.newArrayList();",
+    "aftercode": "private final List<Entry> entries = new ArrayList<>();",
+    "rule": "Library Call Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(new Entry(groupName, level));",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.1,
+    "dublicate": true
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.remove(new Entry(level, groupName));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": true
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(new Entry(level, groupName)); entries.add(new Entry(level, groupName));",
+    "rule": "Statement Insertion",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "if (level != null) entries.add(new Entry(level, groupName));",
+    "rule": "Null Check Insertion",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "entries = new ArrayList<>();",
+    "rule": "Object Reassignment",
+    "gen_time_s": 2.1,
+    "dublicate": true
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "if (!entries.isEmpty()) entries.clear();",
+    "rule": "Condition Insertion",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "entries.remove(0);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1620,
+    "precode": "this.level = level;",
+    "aftercode": "this.level = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": true
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1621,
+    "precode": "this.groupName = groupName;",
+    "aftercode": "this.groupName = null;",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1619,
+    "precode": "private Entry(CheckLevel level, String groupName) {",
+    "aftercode": "protected Entry(CheckLevel level, String groupName) {",
+    "rule": "Access Modifier Change",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1628,
+    "precode": "protected void add(CheckLevel level, String groupName) {",
+    "aftercode": "public void add(CheckLevel level, String groupName) {",
+    "rule": "Access Modifier Change",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1632,
+    "precode": "protected void clear() {",
+    "aftercode": "public void clear() {",
+    "rule": "Access Modifier Change",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1626,
+    "precode": "private final List<Entry> entries = Lists.newArrayList();",
+    "aftercode": "private List<Entry> entries = Lists.newArrayList();",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1616,
+    "precode": "private final CheckLevel level;",
+    "aftercode": "private CheckLevel level;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1617,
+    "precode": "private final String groupName;",
+    "aftercode": "private String groupName;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(new Entry(null, groupName));",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": true
+  },
+  {
+    "id": 103,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(new Entry(level, \"default\"));",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "entries.add(null);",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "entries.clear(); entries.clear();",
+    "rule": "Statement Duplication",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1629,
+    "precode": "entries.add(new Entry(level, groupName));",
+    "aftercode": "/* entries.add(new Entry(level, groupName)); */",
+    "rule": "Statement Removal",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1633,
+    "precode": "entries.clear();",
+    "aftercode": "/* entries.clear(); */",
+    "rule": "Statement Removal",
+    "gen_time_s": 2.1,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1616,
+    "precode": "private final CheckLevel level;",
+    "aftercode": "private CheckLevel level;",
+    "rule": "Field Modifier Change",
+    "gen_time_s": 2.06,
+    "dublicate": true
+  },
+  {
+    "id": 109,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1617,
+    "precode": "private final String groupName;",
+    "aftercode": "private String groupName;",
+    "rule": "Field Modifier Change",
+    "gen_time_s": 2.06,
+    "dublicate": true
+  },
+  {
+    "id": 110,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1619,
+    "precode": "private Entry(CheckLevel level, String groupName) {",
+    "aftercode": "Entry Entry(CheckLevel level, String groupName) {",
+    "rule": "Access Modifier Change",
+    "gen_time_s": 2.06,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1620,
+    "precode": "this.level = level;",
+    "aftercode": "this.level = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.06,
+    "dublicate": true
+  },
+  {
+    "id": 112,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1621,
+    "precode": "this.groupName = groupName;",
+    "aftercode": "this.groupName = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.06,
+    "dublicate": true
+  },
+  {
+    "id": 113,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1619,
+    "precode": "private Entry(CheckLevel level, String groupName) {",
+    "aftercode": "private Entry(CheckLevel level, String groupName, String unused) {",
+    "rule": "Parameter Addition",
+    "gen_time_s": 2.06,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1620,
+    "precode": "this.level = level;",
+    "aftercode": "this.groupName = level;",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.06,
+    "dublicate": true
+  },
+  {
+    "id": 115,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1621,
+    "precode": "this.groupName = groupName;",
+    "aftercode": "this.level = groupName;",
+    "rule": "Variable Swap",
+    "gen_time_s": 2.06,
+    "dublicate": true
+  },
+  {
+    "id": 116,
+    "filepath": "src/com/google/javascript/jscomp/AbstractCommandLineRunner.java",
+    "line": 1622,
+    "precode": "}",
+    "aftercode": "//}",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.06,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(null, CheckLevel.ERROR));",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, null));",
+    "rule": "Null Argument Injection",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.96,
+    "dublicate": true
+  },
+  {
+    "id": 121,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "// super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.96,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.INFO));",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, null));",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(null, CheckLevel.WARNING));",
+    "rule": "Null Insertion",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.54,
+    "dublicate": true
+  },
+  {
+    "id": 127,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.DEBUG));",
+    "rule": "Literal Replacement",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ON));",
+    "rule": "Argument Value Replacement",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.WARN));",
+    "rule": "Argument Value Replacement",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(null, CheckLevel.OFF));",
+    "rule": "Argument Nullification",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, null));",
+    "rule": "Argument Nullification",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "rule": "Argument Value Replacement",
+    "gen_time_s": 3.0,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 428,
+    "precode": "this.proxy = proxy;",
+    "aftercode": "this.proxy = null;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 429,
+    "precode": "this.level = level;",
+    "aftercode": "this.level = null;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 428,
+    "precode": "this.proxy = proxy;",
+    "aftercode": "this.proxy = this.proxy;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 429,
+    "precode": "this.level = level;",
+    "aftercode": "this.level = this.level;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 517,
+    "precode": "List<String> argsInFile = Lists.newArrayList();",
+    "aftercode": "List<String> argsInFile = new ArrayList<>();",
+    "rule": "Library Call Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 519,
+    "precode": "StringTokenizer tokenizer = new StringTokenizer(",
+    "aftercode": "StringTokenizer tokenizer = new StringTokenizer(",
+    "rule": "No Mutation",
+    "gen_time_s": 2.26,
+    "dublicate": true
+  },
+  {
+    "id": 139,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 520,
+    "precode": "Files.toString(flagFileInput, Charset.defaultCharset()));",
+    "aftercode": "Files.toString(flagFileInput, Charset.forName(\"UTF-8\"));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 522,
+    "precode": "while (tokenizer.hasMoreTokens()) {",
+    "aftercode": "while (tokenizer.hasMoreElements()) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 523,
+    "precode": "argsInFile.add(tokenizer.nextToken());",
+    "aftercode": "argsInFile.add(tokenizer.nextElement());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 526,
+    "precode": "flags.flag_file = \"\";",
+    "aftercode": "flags.flag_file = null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 528,
+    "precode": "= processArgs(argsInFile.toArray(new String[] {}));",
+    "aftercode": "= processArgs(argsInFile.toArray(new String[argsInFile.size()]));",
+    "rule": "Array Size Mutation",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 529,
+    "precode": "CmdLineParser parserFileArgs = new CmdLineParser(flags);",
+    "aftercode": "CmdLineParser parserFileArgs = new CmdLineParser(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 530,
+    "precode": "Flags.warningGuardSpec.clear();",
+    "aftercode": "Flags.warningGuardSpec.remove();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 531,
+    "precode": "parserFileArgs.parseArgument(processedFileArgs.toArray(new String[] {}));",
+    "aftercode": "parserFileArgs.parseArguments(processedFileArgs.toArray(new String[] {}));",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 534,
+    "precode": "if (!flags.flag_file.equals(\"\")) {",
+    "aftercode": "if (flags.flag_file == null) {",
+    "rule": "Condition Change",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 534,
+    "precode": "if (!flags.flag_file.equals(\"\")) {",
+    "aftercode": "if (flags.flag_file.equals(\"\")) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 535,
+    "precode": "err.println(\"ERROR - Arguments in the file cannot contain \"",
+    "aftercode": "err.println(\"WARNING - Arguments in the file cannot contain \"",
+    "rule": "String Constant Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 537,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = true;",
+    "rule": "Boolean Literal Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 518,
+    "precode": "File flagFileInput = new File(flags.flag_file);",
+    "aftercode": "File flagFileInput = new File(flags.flag_file + \".bak\");",
+    "rule": "String Concatenation Mutation",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 523,
+    "precode": "argsInFile.add(tokenizer.nextToken());",
+    "aftercode": "argsInFile.add(\"\");",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 528,
+    "precode": "= processArgs(argsInFile.toArray(new String[] {}));",
+    "aftercode": "= processArgs(new String[0]);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 531,
+    "precode": "parserFileArgs.parseArgument(processedFileArgs.toArray(new String[] {}));",
+    "aftercode": "parserFileArgs.parseArgument(new String[0]);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 534,
+    "precode": "if (!flags.flag_file.equals(\"\")) {",
+    "aftercode": "if (flags.flag_file.length() > 0) {",
+    "rule": "Condition Change",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 535,
+    "precode": "err.println(\"ERROR - Arguments in the file cannot contain \"",
+    "aftercode": "err.print(\"ERROR - Arguments in the file cannot contain \"",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 537,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = isConfigValid;",
+    "rule": "Self Assignment",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 520,
+    "precode": "Files.toString(flagFileInput, Charset.defaultCharset()));",
+    "aftercode": "Files.toString(flagFileInput, Charsets.UTF_8));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 526,
+    "precode": "flags.flag_file = \"\";",
+    "aftercode": "flags.flag_file = \" \";",
+    "rule": "String Constant Replacement",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 531,
+    "precode": "parserFileArgs.parseArgument(processedFileArgs.toArray(new String[] {}));",
+    "aftercode": "parserFileArgs.parseArgument(processedFileArgs.toArray(new String[1]));",
+    "rule": "Array Size Mutation",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 534,
+    "precode": "if (!flags.flag_file.equals(\"\")) {",
+    "aftercode": "if (flags.flag_file != null && !flags.flag_file.equals(\"\")) {",
+    "rule": "Null Check Addition",
+    "gen_time_s": 2.26,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 546,
+    "precode": "Flags.warningGuardSpec.clear();",
+    "aftercode": "Flags.warningGuardSpec = new ArrayList<>();",
+    "rule": "Negate Method Call",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 547,
+    "precode": "isConfigValid = true;",
+    "aftercode": "isConfigValid = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 549,
+    "precode": "parser.parseArgument(processedArgs.toArray(new String[] {}));",
+    "aftercode": "parser.parseArgument(new String[] {});",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 551,
+    "precode": "if (!flags.flag_file.equals(\"\")) {",
+    "aftercode": "if (flags.flag_file.equals(\"\")) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 552,
+    "precode": "processFlagFile(err);",
+    "aftercode": "// processFlagFile(err);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 556,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 559,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 562,
+    "precode": "if (flags.version) {",
+    "aftercode": "if (!flags.version) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 563,
+    "precode": "ResourceBundle config = ResourceBundle.getBundle(configResource);",
+    "aftercode": "ResourceBundle config = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 568,
+    "precode": "err.flush();",
+    "aftercode": "// err.flush();",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 571,
+    "precode": "if (!isConfigValid || flags.display_help) {",
+    "aftercode": "if (isConfigValid && flags.display_help) {",
+    "rule": "De Morgan's Law",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 571,
+    "precode": "if (!isConfigValid || flags.display_help) {",
+    "aftercode": "if (!isConfigValid && flags.display_help) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 572,
+    "precode": "isConfigValid = false;",
+    "aftercode": "isConfigValid = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 573,
+    "precode": "parser.printUsage(err);",
+    "aftercode": "// parser.printUsage(err);",
+    "rule": "Empty Statement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 575,
+    "precode": "getCommandLineConfig()",
+    "aftercode": "null",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 177,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 591,
+    "precode": "flags.third_party ?",
+    "aftercode": "!flags.third_party ?",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 178,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 592,
+    "precode": "new DefaultCodingConvention() :",
+    "aftercode": "new ClosureCodingConvention() :",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 179,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 593,
+    "precode": "new ClosureCodingConvention())",
+    "aftercode": "new DefaultCodingConvention())",
+    "rule": "Object Replacement",
+    "gen_time_s": 2.09,
+    "dublicate": false
+  },
+  {
+    "id": 180,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 101,
+    "precode": "private boolean display_help = false;",
+    "aftercode": "private boolean display_help = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 181,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 106,
+    "precode": "private boolean print_tree = false;",
+    "aftercode": "private boolean print_tree = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 182,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 112,
+    "precode": "private boolean compute_phase_ordering = false;",
+    "aftercode": "private boolean compute_phase_ordering = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 183,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 118,
+    "precode": "private boolean print_ast = false;",
+    "aftercode": "private boolean print_ast = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 184,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 124,
+    "precode": "private boolean print_pass_graph = false;",
+    "aftercode": "private boolean print_pass_graph = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 185,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 132,
+    "precode": "CompilerOptions.DevMode.OFF;",
+    "aftercode": "CompilerOptions.DevMode.ON;",
+    "rule": "Enum Constant Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 186,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 138,
+    "precode": "private String logging_level = Level.WARNING.getName();",
+    "aftercode": "private String logging_level = Level.INFO.getName();",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 187,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 152,
+    "precode": "private String js_output_file = \"\";",
+    "aftercode": "private String js_output_file = \"output.js\";",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 188,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 166,
+    "precode": "private String variable_map_input_file = \"\";",
+    "aftercode": "private String variable_map_input_file = \"vars.map\";",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 189,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 171,
+    "precode": "private String property_map_input_file = \"\";",
+    "aftercode": "private String property_map_input_file = \"props.map\";",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 190,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 176,
+    "precode": "private String variable_map_output_file = \"\";",
+    "aftercode": "private String variable_map_output_file = \"vars.out\";",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 191,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 185,
+    "precode": "private boolean create_name_map_files = false;",
+    "aftercode": "private boolean create_name_map_files = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 192,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 190,
+    "precode": "private String property_map_output_file = \"\";",
+    "aftercode": "private String property_map_output_file = \"props.out\";",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 193,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 196,
+    "precode": "private boolean third_party = false;",
+    "aftercode": "private boolean third_party = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 194,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 205,
+    "precode": "private int summary_detail_level = 1;",
+    "aftercode": "private int summary_detail_level = 0;",
+    "rule": "Numeric Literal Change",
+    "gen_time_s": 2.54,
+    "dublicate": false
+  },
+  {
+    "id": 195,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 397,
+    "precode": "public WarningGuardErrorOptionHandler(",
+    "aftercode": "protected WarningGuardErrorOptionHandler(",
+    "rule": "Visibility Modifier Change",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 196,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 398,
+    "precode": "CmdLineParser parser, OptionDef option,",
+    "aftercode": "OptionDef option, CmdLineParser parser,",
+    "rule": "Parameter Order Swap",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 197,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 399,
+    "precode": "Setter<? super String> setter) {",
+    "aftercode": "Setter<? super Integer> setter) {",
+    "rule": "Type Mismatch",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 198,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.WARN));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 199,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.INFO));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 200,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, null));",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.6,
+    "dublicate": true
+  },
+  {
+    "id": 201,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, setter);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.6,
+    "dublicate": false
+  },
+  {
+    "id": 202,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 400,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(null, CheckLevel.ERROR));",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.6,
+    "dublicate": true
+  },
+  {
+    "id": 203,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 204,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.DEBUG));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 205,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(null, CheckLevel.WARNING));",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 206,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, null));",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 2.36,
+    "dublicate": true
+  },
+  {
+    "id": 207,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 208,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 409,
+    "precode": "super(parser, option,",
+    "aftercode": "super(parser, null,",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 209,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 409,
+    "precode": "super(parser, option,",
+    "aftercode": "super(null, option,",
+    "rule": "Parameter Nullification",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 210,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.WARNING);",
+    "rule": "Syntax Error (Missing Semicolon)",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 211,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 410,
+    "precode": "new WarningGuardSetter(setter, CheckLevel.WARNING));",
+    "aftercode": "new WarningGuardSetter(setter, CheckLevel.WARNING););",
+    "rule": "Syntax Error (Double Semicolon)",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 212,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ON));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.84,
+    "dublicate": true
+  },
+  {
+    "id": 213,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(null, CheckLevel.OFF));",
+    "rule": "Parameter Negation",
+    "gen_time_s": 2.84,
+    "dublicate": true
+  },
+  {
+    "id": 214,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, null));",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.84,
+    "dublicate": true
+  },
+  {
+    "id": 215,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(null, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "rule": "Parameter Negation",
+    "gen_time_s": 2.84,
+    "dublicate": false
+  },
+  {
+    "id": 216,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, null, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.84,
+    "dublicate": false
+  },
+  {
+    "id": 217,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.84,
+    "dublicate": true
+  },
+  {
+    "id": 218,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.WARN));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.84,
+    "dublicate": true
+  },
+  {
+    "id": 219,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 419,
+    "precode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));",
+    "aftercode": "super(parser, option, new WarningGuardSetter(setter, CheckLevel.DEBUG));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.84,
+    "dublicate": false
+  },
+  {
+    "id": 220,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 428,
+    "precode": "this.proxy = proxy;",
+    "aftercode": "this.proxy = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.19,
+    "dublicate": true
+  },
+  {
+    "id": 221,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 429,
+    "precode": "this.level = level;",
+    "aftercode": "this.level = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.19,
+    "dublicate": true
+  },
+  {
+    "id": 222,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 432,
+    "precode": "@Override public boolean isMultiValued() { return proxy.isMultiValued(); }",
+    "aftercode": "@Override public boolean isMultiValued() { return !proxy.isMultiValued(); }",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 223,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 434,
+    "precode": "@Override public Class getType() { return proxy.getType(); }",
+    "aftercode": "@Override public Class getType() { return null; }",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 224,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 437,
+    "precode": "proxy.addValue((String) value);",
+    "aftercode": "proxy.addValue((Integer) value);",
+    "rule": "Argument Type Cast",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 225,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 438,
+    "precode": "warningGuardSpec.add(level, (String) value);",
+    "aftercode": "warningGuardSpec.add(null, (String) value);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 226,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 438,
+    "precode": "warningGuardSpec.add(level, (String) value);",
+    "aftercode": "warningGuardSpec.add(level, (Integer) value);",
+    "rule": "Argument Type Cast",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 227,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 427,
+    "precode": "private WarningGuardSetter(Setter proxy, CheckLevel level) {",
+    "aftercode": "private WarningGuardSetter(Setter proxy, String level) {",
+    "rule": "Argument Type Change",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 228,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 432,
+    "precode": "@Override public boolean isMultiValued() { return proxy.isMultiValued(); }",
+    "aftercode": "@Override public boolean isMultiValued() { return true; }",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 229,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 434,
+    "precode": "@Override public Class getType() { return proxy.getType(); }",
+    "aftercode": "@Override public Class getType() { return Object.class; }",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 230,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 437,
+    "precode": "proxy.addValue((String) value);",
+    "aftercode": "proxy.addValue(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 231,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 438,
+    "precode": "warningGuardSpec.add(level, (String) value);",
+    "aftercode": "warningGuardSpec.add(level, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 232,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 437,
+    "precode": "proxy.addValue((String) value);",
+    "aftercode": "proxy.addValue(value);",
+    "rule": "Remove Cast",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 233,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 438,
+    "precode": "warningGuardSpec.add(level, (String) value);",
+    "aftercode": "warningGuardSpec.add(level, value);",
+    "rule": "Remove Cast",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 234,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 424,
+    "precode": "private final Setter proxy;",
+    "aftercode": "private Setter proxy;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 235,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 425,
+    "precode": "private final CheckLevel level;",
+    "aftercode": "private CheckLevel level;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 236,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 437,
+    "precode": "proxy.addValue((String) value);",
+    "aftercode": "proxy.addValue(value.toString());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 237,
+    "filepath": "src/com/google/javascript/jscomp/CommandLineRunner.java",
+    "line": 438,
+    "precode": "warningGuardSpec.add(level, (String) value);",
+    "aftercode": "warningGuardSpec.add(level, value.toString());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.19,
+    "dublicate": false
+  },
+  {
+    "id": 238,
+    "filepath": "src/com/google/javascript/jscomp/DiagnosticGroups.java",
+    "line": 188,
+    "precode": "Preconditions.checkNotNull(group, \"No warning class for name: \" + name);",
+    "aftercode": "Preconditions.checkNotNull(name, \"No warning class for name: \" + name);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 239,
+    "filepath": "src/com/google/javascript/jscomp/DiagnosticGroups.java",
+    "line": 189,
+    "precode": "options.setWarningLevel(group, level);",
+    "aftercode": "options.setWarningLevel(level, group);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 240,
+    "filepath": "src/com/google/javascript/jscomp/DiagnosticGroups.java",
+    "line": 189,
+    "precode": "options.setWarningLevel(group, level);",
+    "aftercode": "options.setWarningLevel(group, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 241,
+    "filepath": "src/com/google/javascript/jscomp/DiagnosticGroups.java",
+    "line": 189,
+    "precode": "options.setWarningLevel(group, level);",
+    "aftercode": "options.setWarningLevel(null, level);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 242,
+    "filepath": "src/com/google/javascript/jscomp/DiagnosticGroups.java",
+    "line": 187,
+    "precode": "DiagnosticGroup group = forName(name);",
+    "aftercode": "DiagnosticGroup group = null;",
+    "rule": "Null Return",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  },
+  {
+    "id": 243,
+    "filepath": "src/com/google/javascript/jscomp/DiagnosticGroups.java",
+    "line": 187,
+    "precode": "DiagnosticGroup group = forName(name);",
+    "aftercode": "DiagnosticGroup group = forName(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.34,
+    "dublicate": false
+  }
+]

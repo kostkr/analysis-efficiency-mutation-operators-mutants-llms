@@ -1,0 +1,1782 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 200,
+    "precode": "maybeEscapedOrModifiedArguments(t.getScope(), referenceMap);",
+    "aftercode": "true;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 200,
+    "precode": "maybeEscapedOrModifiedArguments(t.getScope(), referenceMap);",
+    "aftercode": "false;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 201,
+    "precode": "for (Iterator<Var> it = t.getScope().getVars(); it.hasNext();) {",
+    "aftercode": "for (Iterator<Var> it = t.getScope().getVars(); true;) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 201,
+    "precode": "for (Iterator<Var> it = t.getScope().getVars(); it.hasNext();) {",
+    "aftercode": "for (Iterator<Var> it = t.getScope().getVars(); it.hasMoreElements();) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 204,
+    "precode": "ReferenceCollection referenceInfo = referenceMap.get(v);",
+    "aftercode": "ReferenceCollection referenceInfo = referenceMap.remove(v);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 208,
+    "precode": "if (referenceInfo == null || isVarInlineForbidden(v)) {",
+    "aftercode": "if (referenceInfo == null && isVarInlineForbidden(v)) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 208,
+    "precode": "if (referenceInfo == null || isVarInlineForbidden(v)) {",
+    "aftercode": "if (referenceInfo != null || isVarInlineForbidden(v)) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 208,
+    "precode": "if (referenceInfo == null || isVarInlineForbidden(v)) {",
+    "aftercode": "if (referenceInfo == null || !isVarInlineForbidden(v)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 212,
+    "precode": "} else if (isInlineableDeclaredConstant(v, referenceInfo)) {",
+    "aftercode": "} else if (!isInlineableDeclaredConstant(v, referenceInfo)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 212,
+    "precode": "} else if (isInlineableDeclaredConstant(v, referenceInfo)) {",
+    "aftercode": "} else if (isInlineableDeclaredConstant(v, null)) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 213,
+    "precode": "Reference init = referenceInfo.getInitializingReferenceForConstants();",
+    "aftercode": "Reference init = referenceInfo.getInitializingReference();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 214,
+    "precode": "Node value = init.getAssignedValue();",
+    "aftercode": "Node value = init.getAssignedReference();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 215,
+    "precode": "inlineDeclaredConstant(v, value, referenceInfo.references);",
+    "aftercode": "inlineDeclaredConstant(v, value, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 215,
+    "precode": "inlineDeclaredConstant(v, value, referenceInfo.references);",
+    "aftercode": "inlineDeclaredConstant(v, null, referenceInfo.references);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 216,
+    "precode": "staleVars.add(v);",
+    "aftercode": "staleVars.remove(v);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 216,
+    "precode": "staleVars.add(v);",
+    "aftercode": "",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 217,
+    "precode": "} else if (mode == Mode.CONSTANTS_ONLY) {",
+    "aftercode": "} else if (mode != Mode.CONSTANTS_ONLY) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 217,
+    "precode": "} else if (mode == Mode.CONSTANTS_ONLY) {",
+    "aftercode": "} else if (mode == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 222,
+    "precode": "inlineNonConstants(v, referenceInfo, maybeModifiedArguments);",
+    "aftercode": "inlineNonConstants(v, referenceInfo, true);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 222,
+    "precode": "inlineNonConstants(v, referenceInfo, maybeModifiedArguments);",
+    "aftercode": "inlineNonConstants(v, referenceInfo, false);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 222,
+    "precode": "inlineNonConstants(v, referenceInfo, maybeModifiedArguments);",
+    "aftercode": "inlineNonConstants(v, null, maybeModifiedArguments);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 201,
+    "precode": "for (Iterator<Var> it = t.getScope().getVars(); it.hasNext();) {",
+    "aftercode": "for (Iterator<Var> it = t.getScope().getVars(); it.hasNext(); it.next()) {",
+    "rule": "Loop Increment Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 204,
+    "precode": "ReferenceCollection referenceInfo = referenceMap.get(v);",
+    "aftercode": "ReferenceCollection referenceInfo = referenceMap.get(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 208,
+    "precode": "if (referenceInfo == null || isVarInlineForbidden(v)) {",
+    "aftercode": "if (referenceInfo == null || true) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 212,
+    "precode": "} else if (isInlineableDeclaredConstant(v, referenceInfo)) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 217,
+    "precode": "} else if (mode == Mode.CONSTANTS_ONLY) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 215,
+    "precode": "inlineDeclaredConstant(v, value, referenceInfo.references);",
+    "aftercode": "inlineDeclaredConstant(v, value, referenceInfo.references.iterator().next());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 202,
+    "precode": "Var v = it.next();",
+    "aftercode": "Var v = it.previous();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 199,
+    "precode": "boolean maybeModifiedArguments =",
+    "aftercode": "boolean maybeModifiedArguments = true;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 216,
+    "precode": "staleVars.add(v);",
+    "aftercode": "staleVars.add(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 229,
+    "precode": "if (scope.isLocal()) {",
+    "aftercode": "if (!scope.isLocal()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 231,
+    "precode": "ReferenceCollection refs = referenceMap.get(arguments);",
+    "aftercode": "ReferenceCollection refs = referenceMap.get(scope);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 232,
+    "precode": "if (refs != null && !refs.references.isEmpty()) {",
+    "aftercode": "if (refs != null || !refs.references.isEmpty()) {",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 232,
+    "precode": "if (refs != null && !refs.references.isEmpty()) {",
+    "aftercode": "if (refs != null && refs.references.isEmpty()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 233,
+    "precode": "for (Reference ref : refs.references) {",
+    "aftercode": "for (Reference ref : refs.references.toArray()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 238,
+    "precode": "if (!(NodeUtil.isGet(refParent)",
+    "aftercode": "if (NodeUtil.isGet(refParent)",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 239,
+    "precode": "&& refNode == ref.getParent().getFirstChild()",
+    "aftercode": "&& refNode != ref.getParent().getFirstChild()",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 239,
+    "precode": "&& refNode == ref.getParent().getFirstChild()",
+    "aftercode": "|| refNode == ref.getParent().getFirstChild()",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 240,
+    "precode": "&& !isLValue(refParent))) {",
+    "aftercode": "&& isLValue(refParent))) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 240,
+    "precode": "&& !isLValue(refParent))) {",
+    "aftercode": "&& !isLValue(refNode))) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 241,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 246,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 232,
+    "precode": "if (refs != null && !refs.references.isEmpty()) {",
+    "aftercode": "if (refs != null && refs.references != null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 233,
+    "precode": "for (Reference ref : refs.references) {",
+    "aftercode": "if (refs.references.isEmpty()) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 238,
+    "precode": "if (!(NodeUtil.isGet(refParent)",
+    "aftercode": "if (!(NodeUtil.isGet(ref)",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 232,
+    "precode": "if (refs != null && !refs.references.isEmpty()) {",
+    "aftercode": "if (refs.references != null && !refs.references.isEmpty()) {",
+    "rule": "Null Check Removal",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 239,
+    "precode": "&& refNode == ref.getParent().getFirstChild()",
+    "aftercode": "&& refNode == ref.getParent().getLastChild()",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 232,
+    "precode": "if (refs != null && !refs.references.isEmpty()) {",
+    "aftercode": "if (refs != null && refs.references.size() > 0) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 240,
+    "precode": "&& !isLValue(refParent))) {",
+    "aftercode": "&& !isLValue(ref) ) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 238,
+    "precode": "if (!(NodeUtil.isGet(refParent)",
+    "aftercode": "if (!(NodeUtil.isGet(refParent) && true",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 231,
+    "precode": "ReferenceCollection refs = referenceMap.get(arguments);",
+    "aftercode": "ReferenceCollection refs = referenceMap.get(arguments); //",
+    "rule": "Comment Insertion",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 251,
+    "precode": "return (parent.getType() == Token.INC",
+    "aftercode": "return (parent.getType() != Token.INC",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 252,
+    "precode": "|| parent.getType() == Token.DEC",
+    "aftercode": "&& parent.getType() == Token.DEC",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 253,
+    "precode": "|| (NodeUtil.isAssignmentOp(parent)",
+    "aftercode": "|| !NodeUtil.isAssignmentOp(parent)",
+    "rule": "Negation",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 254,
+    "precode": "&& parent.getFirstChild() == n));",
+    "aftercode": "&& parent.getFirstChild() != n));",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 251,
+    "precode": "return (parent.getType() == Token.INC",
+    "aftercode": "return (parent.getType() != Token.INC &&",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 253,
+    "precode": "|| (NodeUtil.isAssignmentOp(parent)",
+    "aftercode": "|| (NodeUtil.isAssignmentOp(parent) &&",
+    "rule": "Logical Connector Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 250,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.46,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 260,
+    "precode": "int refCount = referenceInfo.references.size();",
+    "aftercode": "int refCount = referenceInfo.references.size() - 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 261,
+    "precode": "Reference declaration = referenceInfo.references.get(0);",
+    "aftercode": "Reference declaration = referenceInfo.references.get(1);",
+    "rule": "Index Offset",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 263,
+    "precode": "int firstRefAfterInit = (declaration == init) ? 2 : 3;",
+    "aftercode": "int firstRefAfterInit = (declaration == init) ? 3 : 2;",
+    "rule": "Ternary Swap",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 263,
+    "precode": "int firstRefAfterInit = (declaration == init) ? 2 : 3;",
+    "aftercode": "int firstRefAfterInit = (declaration != init) ? 2 : 3;",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 265,
+    "precode": "if (refCount > 1 &&",
+    "aftercode": "if (refCount >= 1 &&",
+    "rule": "Relational Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 265,
+    "precode": "if (refCount > 1 &&",
+    "aftercode": "if (refCount > 1 ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 265,
+    "precode": "if (refCount > 1 &&",
+    "aftercode": "if (refCount > 0 &&",
+    "rule": "Relational Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 266,
+    "precode": "isImmutableAndWellDefinedVariable(v, referenceInfo)) {",
+    "aftercode": "!isImmutableAndWellDefinedVariable(v, referenceInfo)) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 270,
+    "precode": "if (init != null) {",
+    "aftercode": "if (init == null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 270,
+    "precode": "if (init != null) {",
+    "aftercode": "if (init != null && true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 275,
+    "precode": "value = NodeUtil.newUndefinedNode(srcLocation);",
+    "aftercode": "value = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 277,
+    "precode": "Preconditions.checkNotNull(value);",
+    "aftercode": "// Preconditions.checkNotNull(value);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 278,
+    "precode": "inlineWellDefinedVariable(v, value, referenceInfo.references);",
+    "aftercode": "inlineWellDefinedVariable(v, null, referenceInfo.references);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 279,
+    "precode": "staleVars.add(v);",
+    "aftercode": "// staleVars.add(v);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 280,
+    "precode": "} else if (refCount == firstRefAfterInit) {",
+    "aftercode": "} else if (refCount != firstRefAfterInit) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 280,
+    "precode": "} else if (refCount == firstRefAfterInit) {",
+    "aftercode": "} else if (refCount <= firstRefAfterInit) {",
+    "rule": "Relational Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 283,
+    "precode": "Reference reference = referenceInfo.references.get(",
+    "aftercode": "Reference reference = referenceInfo.references.get(",
+    "rule": "No Change",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 284,
+    "precode": "firstRefAfterInit - 1);",
+    "aftercode": "firstRefAfterInit + 1);",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 285,
+    "precode": "if (canInline(declaration, init, reference)) {",
+    "aftercode": "if (!canInline(declaration, init, reference)) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 286,
+    "precode": "inline(v, declaration, init, reference);",
+    "aftercode": "inline(v, init, declaration, reference);",
+    "rule": "Argument Order",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 287,
+    "precode": "staleVars.add(v);",
+    "aftercode": "staleVars.remove(v);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 289,
+    "precode": "} else if (declaration != init && refCount == 2) {",
+    "aftercode": "} else if (declaration == init && refCount == 2) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 289,
+    "precode": "} else if (declaration != init && refCount == 2) {",
+    "aftercode": "} else if (declaration != init || refCount == 2) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 289,
+    "precode": "} else if (declaration != init && refCount == 2) {",
+    "aftercode": "} else if (declaration != init && refCount == 1) {",
+    "rule": "Relational Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 290,
+    "precode": "if (isValidDeclaration(declaration) && isValidInitialization(init)) {",
+    "aftercode": "if (isValidDeclaration(declaration) || isValidInitialization(init)) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 290,
+    "precode": "if (isValidDeclaration(declaration) && isValidInitialization(init)) {",
+    "aftercode": "if (isValidDeclaration(declaration)) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 293,
+    "precode": "Node value = init.getAssignedValue();",
+    "aftercode": "Node value = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 295,
+    "precode": "inlineWellDefinedVariable(v, value, referenceInfo.references);",
+    "aftercode": "inlineWellDefinedVariable(v, value, null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 296,
+    "precode": "staleVars.add(v);",
+    "aftercode": "staleVars.add(null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 304,
+    "precode": "if (!maybeModifiedArguments &&",
+    "aftercode": "if (maybeModifiedArguments &&",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 304,
+    "precode": "if (!maybeModifiedArguments &&",
+    "aftercode": "if (!maybeModifiedArguments ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 305,
+    "precode": "!staleVars.contains(v) && referenceInfo.isWellDefined() &&",
+    "aftercode": "staleVars.contains(v) && referenceInfo.isWellDefined() &&",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 305,
+    "precode": "!staleVars.contains(v) && referenceInfo.isWellDefined() &&",
+    "aftercode": "!staleVars.contains(v) || referenceInfo.isWellDefined() &&",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 306,
+    "precode": "referenceInfo.isAssignedOnceInLifetime()) {",
+    "aftercode": "referenceInfo.isAssignedOnceInLifetime() == false) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 308,
+    "precode": "for (int i = 1 /* start from a read */; i < refs.size(); i++) {",
+    "aftercode": "for (int i = 0 /* start from a read */; i < refs.size(); i++) {",
+    "rule": "Index Offset",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 308,
+    "precode": "for (int i = 1 /* start from a read */; i < refs.size(); i++) {",
+    "aftercode": "for (int i = 1 /* start from a read */; i <= refs.size(); i++) {",
+    "rule": "Relational Boundary",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 309,
+    "precode": "Node nameNode = refs.get(i).getNameNode();",
+    "aftercode": "Node nameNode = refs.get(i-1).getNameNode();",
+    "rule": "Index Offset",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 310,
+    "precode": "if (aliasCandidates.containsKey(nameNode)) {",
+    "aftercode": "if (!aliasCandidates.containsKey(nameNode)) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 311,
+    "precode": "AliasCandidate candidate = aliasCandidates.get(nameNode);",
+    "aftercode": "AliasCandidate candidate = aliasCandidates.remove(nameNode);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 312,
+    "precode": "if (!staleVars.contains(candidate.alias) &&",
+    "aftercode": "if (staleVars.contains(candidate.alias) &&",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 312,
+    "precode": "if (!staleVars.contains(candidate.alias) &&",
+    "aftercode": "if (!staleVars.contains(candidate.alias) ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 313,
+    "precode": "!isVarInlineForbidden(candidate.alias)) {",
+    "aftercode": "isVarInlineForbidden(candidate.alias)) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 315,
+    "precode": "aliasInit = candidate.refInfo.getInitializingReference();",
+    "aftercode": "aliasInit = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 316,
+    "precode": "Node value = aliasInit.getAssignedValue();",
+    "aftercode": "Node value = aliasInit.getAssignedValue();",
+    "rule": "No Change",
+    "gen_time_s": 1.21,
+    "dublicate": true
+  },
+  {
+    "id": 103,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 316,
+    "precode": "Node value = aliasInit.getAssignedValue();",
+    "aftercode": "Node value = aliasInit.getAssignedValue() == null ? null : aliasInit.getAssignedValue();",
+    "rule": "Redundant Code",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 317,
+    "precode": "Preconditions.checkNotNull(value);",
+    "aftercode": "// Preconditions.checkNotNull(value);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 318,
+    "precode": "inlineWellDefinedVariable(candidate.alias,",
+    "aftercode": "inlineWellDefinedVariable(null,",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/com/google/javascript/jscomp/InlineVariables.java",
+    "line": 321,
+    "precode": "staleVars.add(candidate.alias);",
+    "aftercode": "staleVars.remove(candidate.alias);",
+    "rule": "Method Call Substitution",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 122,
+    "precode": "if (n.getType() == Token.NAME) {",
+    "aftercode": "if (n.getType() != Token.NAME) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 122,
+    "precode": "if (n.getType() == Token.NAME) {",
+    "aftercode": "if (n.getType() >= Token.NAME) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 124,
+    "precode": "if (n.getString().equals(\"arguments\")) {",
+    "aftercode": "if (!n.getString().equals(\"arguments\")) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 124,
+    "precode": "if (n.getString().equals(\"arguments\")) {",
+    "aftercode": "if (n.getString() == \"arguments\") {",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 125,
+    "precode": "v = t.getScope().getArgumentsVar();",
+    "aftercode": "v = t.getScope().getVar(\"arguments\");",
+    "rule": "Logic Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 127,
+    "precode": "v = t.getScope().getVar(n.getString());",
+    "aftercode": "v = t.getScope().getVar(\"\");",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 129,
+    "precode": "if (v != null && varFilter.apply(v)) {",
+    "aftercode": "if (v != null || varFilter.apply(v)) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 129,
+    "precode": "if (v != null && varFilter.apply(v)) {",
+    "aftercode": "if (v == null && varFilter.apply(v)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 129,
+    "precode": "if (v != null && varFilter.apply(v)) {",
+    "aftercode": "if (v != null && true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 129,
+    "precode": "if (v != null && varFilter.apply(v)) {",
+    "aftercode": "if (v != null && !varFilter.apply(v)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 130,
+    "precode": "addReference(t, v,",
+    "aftercode": "addReference(t, null,",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 131,
+    "precode": "new Reference(n, parent, t, blockStack.peek()));",
+    "aftercode": "new Reference(n, parent, t, null));",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 131,
+    "precode": "new Reference(n, parent, t, blockStack.peek()));",
+    "aftercode": "new Reference(n, parent, t, blockStack.pop()));",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 135,
+    "precode": "if (isBlockBoundary(n, parent)) {",
+    "aftercode": "if (!isBlockBoundary(n, parent)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 135,
+    "precode": "if (isBlockBoundary(n, parent)) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 136,
+    "precode": "blockStack.pop();",
+    "aftercode": "blockStack.push(blockStack.pop());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 136,
+    "precode": "blockStack.pop();",
+    "aftercode": "// blockStack.pop();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+    "line": 136,
+    "precode": "blockStack.pop();",
+    "aftercode": "blockStack.clear();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.19,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 292,
+    "precode": "Arguments(Scope scope) {",
+    "aftercode": "Arguments() {",
+    "rule": "Parameter Removal",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 294,
+    "precode": "false, // no inferred",
+    "aftercode": "true, // no inferred",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 295,
+    "precode": "\"arguments\", // always arguments",
+    "aftercode": "\"\"",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 296,
+    "precode": "null,  // no declaration node",
+    "aftercode": "new DeclarationNode(), // no declaration node",
+    "rule": "Null Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 298,
+    "precode": "null,  // no type info",
+    "aftercode": "new TypeInfo(),  // no type info",
+    "rule": "Null Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 299,
+    "precode": "scope,",
+    "aftercode": "null,",
+    "rule": "Variable Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 300,
+    "precode": "-1,    // no variable index",
+    "aftercode": "0,    // no variable index",
+    "rule": "Integer Substitution",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 301,
+    "precode": "null,  // input,",
+    "aftercode": "new Input(),  // input,",
+    "rule": "Null Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 302,
+    "precode": "false, // not a define",
+    "aftercode": "true, // not a define",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 303,
+    "precode": "null   // no jsdoc",
+    "aftercode": "new JSDoc(),   // no jsdoc",
+    "rule": "Null Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 294,
+    "precode": "false, // no inferred",
+    "aftercode": "null, // no inferred",
+    "rule": "Boolean to Null",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 300,
+    "precode": "-1,    // no variable index",
+    "aftercode": "1,    // no variable index",
+    "rule": "Integer Substitution",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 295,
+    "precode": "\"arguments\", // always arguments",
+    "aftercode": "\"arg\", // always arguments",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 299,
+    "precode": "scope,",
+    "aftercode": "this.scope,",
+    "rule": "Variable Replacement",
+    "gen_time_s": 0.95,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 486,
+    "precode": "if (arguments == null) {",
+    "aftercode": "if (arguments != null) {",
+    "rule": "Negation of Condition",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 486,
+    "precode": "if (arguments == null) {",
+    "aftercode": "if (arguments == true) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 487,
+    "precode": "arguments = new Arguments(this);",
+    "aftercode": "arguments = null;",
+    "rule": "Assignment to Null",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 487,
+    "precode": "arguments = new Arguments(this);",
+    "aftercode": "arguments = new Arguments(null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 489,
+    "precode": "return arguments;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 486,
+    "precode": "if (arguments == null) {",
+    "aftercode": "if (arguments == null && false) {",
+    "rule": "Logical Connector Insertion",
+    "gen_time_s": 1.27,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 61,
+    "precode": "private final boolean isBottom;",
+    "aftercode": "private final boolean isBottom = true;",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 63,
+    "precode": "private Var arguments;",
+    "aftercode": "private Var arguments = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 61,
+    "precode": "private final boolean isBottom;",
+    "aftercode": "private boolean isBottom;",
+    "rule": "Modifier Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 63,
+    "precode": "private Var arguments;",
+    "aftercode": "private final Var arguments;",
+    "rule": "Modifier Addition",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 65,
+    "precode": "/** Stores info about a variable */",
+    "aftercode": "// Stores info about a variable",
+    "rule": "Comment Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 294,
+    "precode": "false, // no inferred",
+    "aftercode": "true, // no inferred",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": true
+  },
+  {
+    "id": 151,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 295,
+    "precode": "\"arguments\", // always arguments",
+    "aftercode": "\"\"",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": true
+  },
+  {
+    "id": 152,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 296,
+    "precode": "null,  // no declaration node",
+    "aftercode": "new Object(), // no declaration node",
+    "rule": "Null to Non-Null",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 298,
+    "precode": "null,  // no type info",
+    "aftercode": "new Object(), // no type info",
+    "rule": "Null to Non-Null",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 300,
+    "precode": "-1,    // no variable index",
+    "aftercode": "0,    // no variable index",
+    "rule": "Integer Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": true
+  },
+  {
+    "id": 155,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 302,
+    "precode": "false, // not a define",
+    "aftercode": "true, // not a define",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": true
+  },
+  {
+    "id": 156,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 303,
+    "precode": "null   // no jsdoc",
+    "aftercode": "new Object(), // no jsdoc",
+    "rule": "Null to Non-Null",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 308,
+    "precode": "if (!(other instanceof Arguments)) {",
+    "aftercode": "if (!(other instanceof Object)) {",
+    "rule": "Type Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 308,
+    "precode": "if (!(other instanceof Arguments)) {",
+    "aftercode": "if (other instanceof Arguments) {",
+    "rule": "Negation",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 309,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Boolean Substitution",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 312,
+    "precode": "Arguments otherVar = (Arguments) other;",
+    "aftercode": "Object otherVar = (Arguments) other;",
+    "rule": "Type Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 313,
+    "precode": "return otherVar.scope.getRootNode() == scope.getRootNode();",
+    "aftercode": "return otherVar.scope.getRootNode() != scope.getRootNode();",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 313,
+    "precode": "return otherVar.scope.getRootNode() == scope.getRootNode();",
+    "aftercode": "return otherVar.scope == scope;",
+    "rule": "Logic Simplification",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 313,
+    "precode": "return otherVar.scope.getRootNode() == scope.getRootNode();",
+    "aftercode": "return otherVar.scope.getRootNode().equals(scope.getRootNode());",
+    "rule": "Equality Method Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 313,
+    "precode": "return otherVar.scope.getRootNode() == scope.getRootNode();",
+    "aftercode": "return scope.getRootNode() == otherVar.scope.getRootNode();",
+    "rule": "Operand Swap",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 313,
+    "precode": "return otherVar.scope.getRootNode() == scope.getRootNode();",
+    "aftercode": "return otherVar.scope.getRootNode() == null;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 313,
+    "precode": "return otherVar.scope.getRootNode() == scope.getRootNode();",
+    "aftercode": "return otherVar.scope == null;",
+    "rule": "Logic Error",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return this.hashCode();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(otherVar);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return 0;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(scope);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return 1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(other);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return (int)this.hashCode();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 174,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 175,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return -1;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 176,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(otherVar.scope);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 177,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(this) + 1;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  },
+  {
+    "id": 178,
+    "filepath": "src/com/google/javascript/jscomp/Scope.java",
+    "line": 317,
+    "precode": "return System.identityHashCode(this);",
+    "aftercode": "return System.identityHashCode(this) == 0;",
+    "rule": "Return Type Change",
+    "gen_time_s": 1.06,
+    "dublicate": false
+  }
+]

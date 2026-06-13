@@ -1,0 +1,1062 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 200,
+    "precode": "new HashSet<String>(externedNames.size() + quotedNames.size());",
+    "aftercode": "new HashSet<String>(externedNames.size() * quotedNames.size());",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 206,
+    "precode": "Set<Property> propsByFreq = new TreeSet<Property>(FREQUENCY_COMPARATOR);",
+    "aftercode": "Set<Property> propsByFreq = new HashSet<Property>();",
+    "rule": "Collection Type Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 208,
+    "precode": "if (!p.skipAmbiguating) {",
+    "aftercode": "if (p.skipAmbiguating) {",
+    "rule": "Negation Inverter",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 209,
+    "precode": "++numRenamedPropertyNames;",
+    "aftercode": "numRenamedPropertyNames++;",
+    "rule": "Increment/Decrement Position",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 212,
+    "precode": "++numSkippedPropertyNames;",
+    "aftercode": "numSkippedPropertyNames++;",
+    "rule": "Increment/Decrement Position",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 217,
+    "precode": "PropertyGraph graph = new PropertyGraph(Lists.newLinkedList(propsByFreq));",
+    "aftercode": "PropertyGraph graph = new PropertyGraph(new ArrayList<Property>(propsByFreq));",
+    "rule": "Collection Type Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 220,
+    "precode": "int numNewPropertyNames = coloring.color();",
+    "aftercode": "int numNewPropertyNames = 0;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 222,
+    "precode": "NameGenerator nameGen = new NameGenerator(",
+    "aftercode": "NameGenerator nameGen = new NameGenerator(",
+    "rule": "Constructor Argument Change",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 223,
+    "precode": "reservedNames, \"\", reservedCharacters);",
+    "aftercode": "reservedNames, reservedCharacters, \"\");",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 224,
+    "precode": "for (int i = 0; i < numNewPropertyNames; ++i) {",
+    "aftercode": "for (int i = 0; i <= numNewPropertyNames; ++i) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 224,
+    "precode": "for (int i = 0; i < numNewPropertyNames; ++i) {",
+    "aftercode": "for (int i = numNewPropertyNames; i > 0; --i) {",
+    "rule": "Loop Control Variable Mutator",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 225,
+    "precode": "colorMap.put(i, nameGen.generateNextName());",
+    "aftercode": "colorMap.put(i, null);",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 225,
+    "precode": "colorMap.put(i, nameGen.generateNextName());",
+    "aftercode": "nameGen.generateNextName();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 227,
+    "precode": "for (GraphNode<Property, Void> node : graph.getNodes()) {",
+    "aftercode": "for (GraphNode<Property, Void> node : graph.getNodes().subList(0, 1)) {",
+    "rule": "Loop Control Variable Mutator",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 228,
+    "precode": "node.getValue().newName = colorMap.get(node.getAnnotation().hashCode());",
+    "aftercode": "node.getValue().newName = colorMap.get(node.getAnnotation().toString());",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 228,
+    "precode": "node.getValue().newName = colorMap.get(node.getAnnotation().hashCode());",
+    "aftercode": "node.getValue().newName = colorMap.get(i);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 229,
+    "precode": "renamingMap.put(node.getValue().oldName, node.getValue().newName);",
+    "aftercode": "renamingMap.put(node.getValue().newName, node.getValue().oldName);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 233,
+    "precode": "for (Node n : stringNodesToRename) {",
+    "aftercode": "for (Node n : new ArrayList<Node>(stringNodesToRename)) {",
+    "rule": "Collection Type Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 235,
+    "precode": "Property p = propertyMap.get(oldName);",
+    "aftercode": "Property p = null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 236,
+    "precode": "if (p != null && p.newName != null) {",
+    "aftercode": "if (p != null || p.newName != null) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 236,
+    "precode": "if (p != null && p.newName != null) {",
+    "aftercode": "if (p == null || p.newName == null) {",
+    "rule": "Negation Inverter",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 237,
+    "precode": "Preconditions.checkState(oldName.equals(p.oldName));",
+    "aftercode": "Preconditions.checkState(oldName.equals(p.newName));",
+    "rule": "Member Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 238,
+    "precode": "if (!p.newName.equals(oldName)) {",
+    "aftercode": "if (p.newName.equals(oldName)) {",
+    "rule": "Negation Inverter",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 239,
+    "precode": "n.setString(p.newName);",
+    "aftercode": "n.setString(oldName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 240,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "// compiler.reportCodeChange();",
+    "rule": "Method Call Removal",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 245,
+    "precode": "logger.info(\"Collapsed \" + numRenamedPropertyNames + \" properties into \"",
+    "aftercode": "logger.warn(\"Collapsed \" + numRenamedPropertyNames + \" properties into \"",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 246,
+    "precode": "+ numNewPropertyNames + \" and skipped renaming \"",
+    "aftercode": "+ numSkippedPropertyNames + \" and skipped renaming \"",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 247,
+    "precode": "+ numSkippedPropertyNames + \" properties.\");",
+    "aftercode": "+ numRenamedPropertyNames + \" properties.\");",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 196,
+    "precode": "NodeTraversal.traverse(compiler, externs, new ProcessExterns());",
+    "aftercode": "NodeTraversal.traverse(compiler, externs, null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 197,
+    "precode": "NodeTraversal.traverse(compiler, root, new ProcessProperties());",
+    "aftercode": "NodeTraversal.traverse(compiler, root, null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 201,
+    "precode": "reservedNames.addAll(externedNames);",
+    "aftercode": "reservedNames.removeAll(externedNames);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 202,
+    "precode": "reservedNames.addAll(quotedNames);",
+    "aftercode": "reservedNames.removeAll(quotedNames);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 210,
+    "precode": "propsByFreq.add(p);",
+    "aftercode": "propsByFreq.remove(p);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 213,
+    "precode": "reservedNames.add(p.oldName);",
+    "aftercode": "reservedNames.remove(p.oldName);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 218,
+    "precode": "GraphColoring<Property, Void> coloring =",
+    "aftercode": "GraphColoring<Property, Void> coloring =",
+    "rule": "Whitespace Change",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 219,
+    "precode": "new GreedyGraphColoring<Property, Void>(graph, FREQUENCY_COMPARATOR);",
+    "aftercode": "new GreedyGraphColoring<Property, Void>(graph, null);",
+    "rule": "Argument Nullification",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 223,
+    "precode": "reservedNames, \"\", reservedCharacters);",
+    "aftercode": "reservedNames, reservedCharacters, reservedCharacters);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 225,
+    "precode": "colorMap.put(i, nameGen.generateNextName());",
+    "aftercode": "colorMap.put(i, nameGen.generateNextName());",
+    "rule": "No-op Change",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 228,
+    "precode": "node.getValue().newName = colorMap.get(node.getAnnotation().hashCode());",
+    "aftercode": "node.getValue().newName = colorMap.get(node.getAnnotation().hashCode());",
+    "rule": "No-op Change",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 234,
+    "precode": "String oldName = n.getString();",
+    "aftercode": "String oldName = \"\";",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 238,
+    "precode": "if (!p.newName.equals(oldName)) {",
+    "aftercode": "if (p.newName == null || !p.newName.equals(oldName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 239,
+    "precode": "n.setString(p.newName);",
+    "aftercode": "n.setString(p.oldName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 245,
+    "precode": "logger.info(\"Collapsed \" + numRenamedPropertyNames + \" properties into \"",
+    "aftercode": "logger.debug(\"Collapsed \" + numRenamedPropertyNames + \" properties into \"",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 246,
+    "precode": "+ numNewPropertyNames + \" and skipped renaming \"",
+    "aftercode": "+ numRenamedPropertyNames + \" and skipped renaming \"",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 247,
+    "precode": "+ numSkippedPropertyNames + \" properties.\");",
+    "aftercode": "+ 0 + \" properties.\");",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 204,
+    "precode": "int numRenamedPropertyNames = 0;",
+    "aftercode": "int numRenamedPropertyNames = 1;",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 205,
+    "precode": "int numSkippedPropertyNames = 0;",
+    "aftercode": "int numSkippedPropertyNames = 1;",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 207,
+    "precode": "for (Property p : propertyMap.values()) {",
+    "aftercode": "for (Property p : new ArrayList<Property>(propertyMap.values())) {",
+    "rule": "Collection Type Change",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 208,
+    "precode": "if (!p.skipAmbiguating) {",
+    "aftercode": "if (p.skipAmbiguating) {",
+    "rule": "Negation Inverter",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 224,
+    "precode": "for (int i = 0; i < numNewPropertyNames; ++i) {",
+    "aftercode": "for (int i = 0; i < numNewPropertyNames; i++) {",
+    "rule": "Increment/Decrement Position",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 236,
+    "precode": "if (p != null && p.newName != null) {",
+    "aftercode": "if (p != null && p.oldName != null) {",
+    "rule": "Member Variable Replacement",
+    "gen_time_s": 2.32,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 239,
+    "precode": "n.setString(p.newName);",
+    "aftercode": "n.setString(p.newName);",
+    "rule": "No-op Change",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 240,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "compiler.reportCodeChange();",
+    "rule": "No-op Change",
+    "gen_time_s": 2.32,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 352,
+    "precode": "if (typesRelatedToSet.intersects(prop.typesSet)) {",
+    "aftercode": "if (!typesRelatedToSet.intersects(prop.typesSet)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 353,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 355,
+    "precode": "return !prop.relatedTypesSet.intersects(typesInSet);",
+    "aftercode": "return prop.relatedTypesSet.intersects(typesInSet);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 355,
+    "precode": "return !prop.relatedTypesSet.intersects(typesInSet);",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 352,
+    "precode": "if (typesRelatedToSet.intersects(prop.typesSet)) {",
+    "aftercode": "if (typesRelatedToSet.isEmpty()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 355,
+    "precode": "return !prop.relatedTypesSet.intersects(typesInSet);",
+    "aftercode": "return typesInSet.intersects(prop.relatedTypesSet);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.4,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 364,
+    "precode": "typesInSet.or(prop.typesSet);",
+    "aftercode": "typesInSet.or(prop.relatedTypesSet);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 365,
+    "precode": "typesRelatedToSet.or(prop.relatedTypesSet);",
+    "aftercode": "typesRelatedToSet.or(prop.typesSet);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 364,
+    "precode": "typesInSet.or(prop.typesSet);",
+    "aftercode": "typesInSet.and(prop.typesSet);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 365,
+    "precode": "typesRelatedToSet.or(prop.relatedTypesSet);",
+    "aftercode": "typesRelatedToSet.and(prop.relatedTypesSet);",
+    "rule": "Method Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 588,
+    "precode": "if (skipAmbiguating || isInvalidatingType(newType)) {",
+    "aftercode": "if (skipAmbiguating && isInvalidatingType(newType)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 594,
+    "precode": "if (!typesSet.get(typeInt)) {",
+    "aftercode": "if (typesSet.get(typeInt)) {",
+    "rule": "Negation",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 593,
+    "precode": "int typeInt = getIntForType(newType);",
+    "aftercode": "int typeInt = getIntForType(null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 593,
+    "precode": "int typeInt = getIntForType(newType);",
+    "aftercode": "int typeInt = 0;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 596,
+    "precode": "typesSet.set(typeInt);",
+    "aftercode": "typesSet.clear(typeInt);",
+    "rule": "Method Return Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 597,
+    "precode": "relatedTypesSet.or(getRelatedTypesOnNonUnion(newType));",
+    "aftercode": "relatedTypesSet.and(getRelatedTypesOnNonUnion(newType));",
+    "rule": "Method Return Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 589,
+    "precode": "skipAmbiguating = true;",
+    "aftercode": "skipAmbiguating = false;",
+    "rule": "Boolean Literal Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 595,
+    "precode": "computeRelatedTypes(newType);",
+    "aftercode": "computeRelatedTypes(null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 596,
+    "precode": "typesSet.set(typeInt);",
+    "aftercode": "typesSet.set(typeInt); typesSet.clear(typeInt);",
+    "rule": "Empty Block Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 597,
+    "precode": "relatedTypesSet.or(getRelatedTypesOnNonUnion(newType));",
+    "aftercode": "relatedTypesSet.xor(getRelatedTypesOnNonUnion(newType));",
+    "rule": "Method Return Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 590,
+    "precode": "return;",
+    "aftercode": "skipAmbiguating = false; return;",
+    "rule": "Empty Block Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 594,
+    "precode": "if (!typesSet.get(typeInt)) {",
+    "aftercode": "if (typesSet.get(typeInt) == false) {",
+    "rule": "Equality Mutator",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 593,
+    "precode": "int typeInt = getIntForType(newType);",
+    "aftercode": "int typeInt = getIntForType(newType) + 1;",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.36,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 554,
+    "precode": "boolean skipAmbiguating;",
+    "aftercode": "boolean skipAmbiguating = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 555,
+    "precode": "JSTypeBitSet typesSet = new JSTypeBitSet(intForType.size());",
+    "aftercode": "JSTypeBitSet typesSet = new JSTypeBitSet(0);",
+    "rule": "Mathematical Constant Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 556,
+    "precode": "JSTypeBitSet relatedTypesSet = new JSTypeBitSet(intForType.size());",
+    "aftercode": "JSTypeBitSet relatedTypesSet = new JSTypeBitSet(0);",
+    "rule": "Mathematical Constant Replacement",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 552,
+    "precode": "String newName;",
+    "aftercode": "String newName = null;",
+    "rule": "Null Assignment",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 553,
+    "precode": "int numOccurrences;",
+    "aftercode": "int numOccurrences = 0;",
+    "rule": "Integer Literal Change",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 555,
+    "precode": "JSTypeBitSet typesSet = new JSTypeBitSet(intForType.size());",
+    "aftercode": "JSTypeBitSet typesSet = new JSTypeBitSet(intForType.size() + 1);",
+    "rule": "Increment Operator",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 556,
+    "precode": "JSTypeBitSet relatedTypesSet = new JSTypeBitSet(intForType.size());",
+    "aftercode": "JSTypeBitSet relatedTypesSet = new JSTypeBitSet(intForType.size() + 1);",
+    "rule": "Increment Operator",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 551,
+    "precode": "final String oldName;",
+    "aftercode": "final String oldName = \"\";",
+    "rule": "Empty String Assignment",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/jscomp/AmbiguateProperties.java",
+    "line": 554,
+    "precode": "boolean skipAmbiguating;",
+    "aftercode": "boolean skipAmbiguating = false;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.48,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 558,
+    "precode": "if (propType instanceof FunctionType) {",
+    "aftercode": "if (!(propType instanceof FunctionType)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 559,
+    "precode": "return (FunctionType) propType;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 563,
+    "precode": "for (ObjectType iface :",
+    "aftercode": "for (ObjectType iface :",
+    "rule": "Empty Loop",
+    "gen_time_s": 2.14,
+    "dublicate": true
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 564,
+    "precode": "ownerType.getCtorImplementedInterfaces()) {",
+    "aftercode": "ownerType.getCtorSuperClasses()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 565,
+    "precode": "propType = iface.getPropertyType(propName);",
+    "aftercode": "propType = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 566,
+    "precode": "if (propType instanceof FunctionType) {",
+    "aftercode": "if (propType == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 567,
+    "precode": "return (FunctionType) propType;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 557,
+    "precode": "JSType propType = ownerType.getPropertyType(propName);",
+    "aftercode": "JSType propType = ownerType.getPropertyType(null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 557,
+    "precode": "JSType propType = ownerType.getPropertyType(propName);",
+    "aftercode": "JSType propType = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 558,
+    "precode": "if (propType instanceof FunctionType) {",
+    "aftercode": "if (propType instanceof ObjectType) {",
+    "rule": "Type Cast Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 565,
+    "precode": "propType = iface.getPropertyType(propName);",
+    "aftercode": "propType = iface.getPropertyType(null);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 566,
+    "precode": "if (propType instanceof FunctionType) {",
+    "aftercode": "if (propType != null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 559,
+    "precode": "return (FunctionType) propType;",
+    "aftercode": "return (FunctionType) null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 567,
+    "precode": "return (FunctionType) propType;",
+    "aftercode": "return (FunctionType) null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 564,
+    "precode": "ownerType.getCtorImplementedInterfaces()) {",
+    "aftercode": "ownerType.getCtorImplementedInterfaces() != null) {",
+    "rule": "Null Check",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 558,
+    "precode": "if (propType instanceof FunctionType) {",
+    "aftercode": "if (propType == null) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 566,
+    "precode": "if (propType instanceof FunctionType) {",
+    "aftercode": "if (propType instanceof ObjectType) {",
+    "rule": "Type Cast Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 565,
+    "precode": "propType = iface.getPropertyType(propName);",
+    "aftercode": "propType = iface.getSupertype();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 557,
+    "precode": "JSType propType = ownerType.getPropertyType(propName);",
+    "aftercode": "JSType propType = ownerType.getSupertype();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 563,
+    "precode": "for (ObjectType iface :",
+    "aftercode": "if (ownerType.getCtorImplementedInterfaces() != null) {",
+    "rule": "Loop to If",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/com/google/javascript/jscomp/TypedScopeCreator.java",
+    "line": 572,
+    "precode": "return null;",
+    "aftercode": "return (FunctionType) propType;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.14,
+    "dublicate": false
+  }
+]

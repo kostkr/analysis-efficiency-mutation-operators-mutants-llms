@@ -1,0 +1,752 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 961,
+    "precode": "StringBuilder sb = new StringBuilder(s.length() + 2);",
+    "aftercode": "StringBuilder sb = new StringBuilder(s.length());",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 962,
+    "precode": "sb.append(quote);",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 0; i <= s.length(); i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 1; i < s.length(); i++) {",
+    "rule": "Loop Initialization",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 966,
+    "precode": "case '\\0': sb.append(\"\\\\0\"); break;",
+    "aftercode": "case '\\0': sb.append(\"\\\\0\");",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 967,
+    "precode": "case '\\n': sb.append(\"\\\\n\"); break;",
+    "aftercode": "case '\\n': sb.append(\"\\\\r\"); break;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 968,
+    "precode": "case '\\r': sb.append(\"\\\\r\"); break;",
+    "aftercode": "case '\\r': sb.append(\"\\\\n\"); break;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 969,
+    "precode": "case '\\t': sb.append(\"\\\\t\"); break;",
+    "aftercode": "case '\\t': sb.append(\"\\\\ \"); break;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 970,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(doublequoteEscape); break;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 971,
+    "precode": "case '\"': sb.append(doublequoteEscape); break;",
+    "aftercode": "case '\"': sb.append(singlequoteEscape); break;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 972,
+    "precode": "case '\\'': sb.append(singlequoteEscape); break;",
+    "aftercode": "case '\\'': sb.append(backslashEscape); break;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 974,
+    "precode": "if (i >= 2 &&",
+    "aftercode": "if (i > 2 &&",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 974,
+    "precode": "if (i >= 2 &&",
+    "aftercode": "if (i >= 2 ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 975,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' || s.charAt(i - 2) == '-') ||",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 975,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) != '-') ||",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 976,
+    "precode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == ']')) {",
+    "aftercode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) != ']')) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 977,
+    "precode": "sb.append(\"\\\\>\");",
+    "aftercode": "sb.append(c);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 989,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(false, i + 1, END_SCRIPT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 989,
+    "precode": "if (s.regionMatches(true, i + 1, END_SCRIPT, 0,",
+    "aftercode": "if (s.regionMatches(true, i, END_SCRIPT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 990,
+    "precode": "END_SCRIPT.length())) {",
+    "aftercode": "END_SCRIPT.length() - 1)) {",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 991,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 992,
+    "precode": "} else if (s.regionMatches(false, i + 1, START_COMMENT, 0,",
+    "aftercode": "} else if (s.regionMatches(true, i + 1, START_COMMENT, 0,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 993,
+    "precode": "START_COMMENT.length())) {",
+    "aftercode": "START_COMMENT.length() + 1)) {",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 994,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1002,
+    "precode": "if (outputCharsetEncoder != null) {",
+    "aftercode": "if (outputCharsetEncoder == null) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1003,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (!outputCharsetEncoder.canEncode(c)) {",
+    "rule": "Conditional Negation",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1004,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(backslashEscape);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1007,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "sb.append(c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c >= 0x1f && c <= 0x7f) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c > 0x1f || c <= 0x7f) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c > 0x1f && c < 0x7f) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c >= 0x1f && c < 0x7f) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1014,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(backslashEscape);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1019,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "sb.append(c);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "sb.append(quote);",
+    "aftercode": "",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1025,
+    "precode": "return sb.toString();",
+    "aftercode": "return sb.toString().toLowerCase();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 965,
+    "precode": "switch (c) {",
+    "aftercode": "if (c == '\\0') {",
+    "rule": "Control Flow Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 970,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(\"\\\\\\\\\"); break;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 973,
+    "precode": "case '>':",
+    "aftercode": "case 'x':",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 976,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') &&",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 982,
+    "precode": "case '<':",
+    "aftercode": "case '(':",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 984,
+    "precode": "final String END_SCRIPT = \"/script\";",
+    "aftercode": "final String END_SCRIPT = \"script\";",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 987,
+    "precode": "final String START_COMMENT = \"!--\";",
+    "aftercode": "final String START_COMMENT = \"--\";",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1003,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (outputCharsetEncoder.canEncode(' ')) {",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c > 0x20 && c <= 0x7e) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 961,
+    "precode": "StringBuilder sb = new StringBuilder(s.length() + 2);",
+    "aftercode": "StringBuilder sb = new StringBuilder(s.length() + 1);",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 0; i < s.length() - 1; i++) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 966,
+    "precode": "case '\\0': sb.append(\"\\\\0\"); break;",
+    "aftercode": "case '\\0': sb.append(\"\\\\x00\"); break;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 970,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(backslashEscape);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 971,
+    "precode": "case '\"': sb.append(doublequoteEscape); break;",
+    "aftercode": "case '\"': sb.append(doublequoteEscape);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 972,
+    "precode": "case '\\'': sb.append(singlequoteEscape); break;",
+    "aftercode": "case '\\'': sb.append(singlequoteEscape);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 977,
+    "precode": "sb.append(\"\\\\>\");",
+    "aftercode": "sb.append(\"\\>\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 991,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"\\\\<\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 994,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"\\\\<\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1004,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(s.charAt(i));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1014,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(s.charAt(i));",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "sb.append(quote);",
+    "aftercode": "sb.append(s);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 0; i < s.length(); i++) {",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 975,
+    "precode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') ||",
+    "aftercode": "((s.charAt(i - 1) == '-' && s.charAt(i - 2) == '-') &&",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 976,
+    "precode": "(s.charAt(i - 1) == ']' && s.charAt(i - 2) == ']')) {",
+    "aftercode": "(s.charAt(i - 1) == ']' || s.charAt(i - 2) == ']')) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1003,
+    "precode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "aftercode": "if (outputCharsetEncoder.canEncode(c)) {",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1013,
+    "precode": "if (c > 0x1f && c <= 0x7f) {",
+    "aftercode": "if (c > 0x1f && c < 0x7f) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 961,
+    "precode": "StringBuilder sb = new StringBuilder(s.length() + 2);",
+    "aftercode": "StringBuilder sb = new StringBuilder(s.length() + 3);",
+    "rule": "Arithmetic Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 963,
+    "precode": "for (int i = 0; i < s.length(); i++) {",
+    "aftercode": "for (int i = 0; i < s.length(); i++) {",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 970,
+    "precode": "case '\\\\': sb.append(backslashEscape); break;",
+    "aftercode": "case '\\\\': sb.append(backslashEscape); break;",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 971,
+    "precode": "case '\"': sb.append(doublequoteEscape); break;",
+    "aftercode": "case '\"': sb.append(doublequoteEscape); break;",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 972,
+    "precode": "case '\\'': sb.append(singlequoteEscape); break;",
+    "aftercode": "case '\\'': sb.append(singlequoteEscape); break;",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 977,
+    "precode": "sb.append(\"\\\\>\");",
+    "aftercode": "sb.append(\"\\>\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 991,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 994,
+    "precode": "sb.append(\"<\\\\\");",
+    "aftercode": "sb.append(\"<\");",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1004,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(c);",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1014,
+    "precode": "sb.append(c);",
+    "aftercode": "sb.append(c);",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1019,
+    "precode": "appendHexJavaScriptRepresentation(sb, c);",
+    "aftercode": "appendHexJavaScriptRepresentation(sb, c);",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1024,
+    "precode": "sb.append(quote);",
+    "aftercode": "sb.append(quote);",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/CodeGenerator.java",
+    "line": 1025,
+    "precode": "return sb.toString();",
+    "aftercode": "return sb.toString();",
+    "rule": "No-op",
+    "gen_time_s": 1.25,
+    "dublicate": true
+  }
+]

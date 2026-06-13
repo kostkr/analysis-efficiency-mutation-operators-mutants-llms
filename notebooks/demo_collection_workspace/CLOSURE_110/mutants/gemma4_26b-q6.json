@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 354,
+    "precode": "for (Var v : scope.getVarIterable()) {",
+    "aftercode": "for (Var v : scope.getVarIterable().iterator().next() == null ? Collections.emptyList() : scope.getVarIterable()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 357,
+    "precode": "boolean isVar = parent.isVar();",
+    "aftercode": "boolean isVar = !parent.isVar();",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 359,
+    "precode": "if (isVar && n.getFirstChild() != null && n.getFirstChild().isQualifiedName()) {",
+    "aftercode": "if (isVar || n.getFirstChild() != null && n.getFirstChild().isQualifiedName()) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 359,
+    "precode": "if (isVar && n.getFirstChild() != null && n.getFirstChild().isQualifiedName()) {",
+    "aftercode": "if (isVar && n.getFirstChild() != null && !n.getFirstChild().isQualifiedName()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 361,
+    "precode": "} else if (v.isBleedingFunction()) {",
+    "aftercode": "} else if (!v.isBleedingFunction()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 364,
+    "precode": "} else if (parent.getType() == Token.LP) {",
+    "aftercode": "} else if (parent.getType() != Token.LP) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 367,
+    "precode": "} else if (isVar || isFunctionDecl) {",
+    "aftercode": "} else if (isVar && isFunctionDecl) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 370,
+    "precode": "Node value = v.getInitialValue() != null ?",
+    "aftercode": "Node value = v.getInitialValue() == null ?",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 376,
+    "precode": "int nameCount = scopedAliasNames.count(name);",
+    "aftercode": "int nameCount = 0;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 379,
+    "precode": "$jscomp.scope.",
+    "aftercode": "$jscomp.scope.none",
+    "rule": "String Literal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 379,
+    "precode": "(nameCount == 0 ? \"\" : (\"$\" + nameCount));",
+    "aftercode": "(nameCount != 0 ? \"\" : (\"$\" + nameCount));",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 385,
+    "precode": "if (isFunctionDecl) {",
+    "aftercode": "if (!isFunctionDecl) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 387,
+    "precode": "Node existingName = v.getNameNode();",
+    "aftercode": "Node existingName = null;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 396,
+    "precode": "Node newName = IR.name(\"\").useSourceInfoFrom(existingName);",
+    "aftercode": "Node newName = IR.name(\"dummy\").useSourceInfoFrom(existingName);",
+    "rule": "String Literal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 397,
+    "precode": "value.replaceChild(existingName, newName);",
+    "aftercode": "value.replaceChild(newName, existingName);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 399,
+    "precode": "varNode = IR.var(existingName).useSourceInfoFrom(existingName);",
+    "aftercode": "varNode = IR.var(newName).useSourceInfoFrom(existingName);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 400,
+    "precode": "grandparent.replaceChild(parent, varNode);",
+    "aftercode": "grandparent.replaceChild(varNode, parent);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 402,
+    "precode": "if (value != null) {",
+    "aftercode": "if (value == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 405,
+    "precode": "value.detachFromParent();",
+    "aftercode": "// value.detachFromParent();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 412,
+    "precode": "if (value != null || v.getJSDocInfo() != null) {",
+    "aftercode": "if (value != null && v.getJSDocInfo() != null) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 413,
+    "precode": "Node newDecl = NodeUtil.newQualifiedNameNode(",
+    "aftercode": "Node newDecl = null;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 418,
+    "precode": ".useSourceInfoIfMissingFromForTree(n);",
+    "aftercode": ".useSourceInfoIfMissingFromForTree(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 422,
+    "precode": "if (isHoisted) {",
+    "aftercode": "if (!isHoisted) {",
+    "rule": "Negation",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 423,
+    "precode": "grandparent.addChildToFront(newDecl);",
+    "aftercode": "grandparent.addChildToBack(newDecl);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 425,
+    "precode": "grandparent.addChildBefore(newDecl, varNode);",
+    "aftercode": "grandparent.addChildAfter(newDecl, varNode);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 430,
+    "precode": "v.getNameNode().addChildToFront(",
+    "aftercode": "v.getNameNode().addChildToBack(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 434,
+    "precode": "recordAlias(v);",
+    "aftercode": "// recordAlias(v);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/ScopedAliases.java",
+    "line": 437,
+    "precode": "report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());",
+    "aftercode": "// report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 550,
+    "precode": "if (child == first) {",
+    "aftercode": "if (child != first) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 550,
+    "precode": "if (child == first) {",
+    "aftercode": "if (child == null) {",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 551,
+    "precode": "return null;",
+    "aftercode": "return child;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 553,
+    "precode": "Node n = first;",
+    "aftercode": "Node n = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 554,
+    "precode": "if (n == null) {",
+    "aftercode": "if (n != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 555,
+    "precode": "throw new RuntimeException(\"node is not a child\");",
+    "aftercode": "// throw new RuntimeException(\"node is not a child\");",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 558,
+    "precode": "while (n.next != child) {",
+    "aftercode": "while (n.next == child) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 558,
+    "precode": "while (n.next != child) {",
+    "aftercode": "while (n.next != null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 559,
+    "precode": "n = n.next;",
+    "aftercode": "n = n;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 559,
+    "precode": "n = n.next;",
+    "aftercode": "n = n.prev;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 560,
+    "precode": "if (n == null) {",
+    "aftercode": "if (n != null) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 561,
+    "precode": "throw new RuntimeException(\"node is not a child\");",
+    "aftercode": "return n;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 564,
+    "precode": "return n;",
+    "aftercode": "return child;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 558,
+    "precode": "while (n.next != child) {",
+    "aftercode": "while (true) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 550,
+    "precode": "if (child == first) {",
+    "aftercode": "if (child == first && first != null) {",
+    "rule": "Condition Modification",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 553,
+    "precode": "Node n = first;",
+    "aftercode": "Node n = child;",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/rhino/Node.java",
+    "line": 558,
+    "precode": "while (n.next != child) {",
+    "aftercode": "while (n != child) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.01,
+    "dublicate": false
+  }
+]

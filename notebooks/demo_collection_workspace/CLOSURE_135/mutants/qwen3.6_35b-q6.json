@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 360,
+    "precode": "if (NodeUtil.isThis(child)) {",
+    "aftercode": "if (!NodeUtil.isThis(child)) {",
+    "rule": "Negation Condition",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 360,
+    "precode": "if (NodeUtil.isThis(child)) {",
+    "aftercode": "if (NodeUtil.isThis(child) && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 359,
+    "precode": "for (Node child : node.children()) {",
+    "aftercode": "if (node.children().isEmpty()) {",
+    "rule": "Empty Collection Check",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 362,
+    "precode": "newName.setJSType(child.getJSType());",
+    "aftercode": "newName.setJSType(null);",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 362,
+    "precode": "newName.setJSType(child.getJSType());",
+    "aftercode": "child.setJSType(newName.getJSType());",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 363,
+    "precode": "node.replaceChild(child, newName);",
+    "aftercode": "node.removeChild(child);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 363,
+    "precode": "node.replaceChild(child, newName);",
+    "aftercode": "newName.replaceChild(child, newName);",
+    "rule": "Object Swap",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 365,
+    "precode": "replaceReferencesToThis(child, name);",
+    "aftercode": "replaceReferencesToThis(child, null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 365,
+    "precode": "replaceReferencesToThis(child, name);",
+    "aftercode": "replaceReferencesToThis(name, child);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 356,
+    "precode": "return;",
+    "aftercode": "// return;",
+    "rule": "Comment Out Statement",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 356,
+    "precode": "return;",
+    "aftercode": "return node;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 361,
+    "precode": "Node newName = Node.newString(Token.NAME, name);",
+    "aftercode": "Node newName = null;",
+    "rule": "Null Return Value",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 361,
+    "precode": "Node newName = Node.newString(Token.NAME, name);",
+    "aftercode": "Node newName = Node.newString(Token.NAME, \"\");",
+    "rule": "String Literal Change",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 366,
+    "precode": "}",
+    "aftercode": "else { break; }",
+    "rule": "Control Flow Change",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/DevirtualizePrototypeMethods.java",
+    "line": 355,
+    "precode": "if (NodeUtil.isFunction(node)) {",
+    "aftercode": "if (NodeUtil.isFunction(node) || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.12,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) && \"prototype\".equals(name);",
+    "rule": "Conditional Operator",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return !super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "rule": "Negation",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) || \"prototype\".equalsIgnoreCase(name);",
+    "rule": "String Method",
+    "gen_time_s": 2.92,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 473,
+    "precode": "if (\"prototype\".equals(name)) {",
+    "aftercode": "if (!\"prototype\".equals(name)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 474,
+    "precode": "ObjectType objType = type.toObjectType();",
+    "aftercode": "ObjectType objType = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 476,
+    "precode": "if (objType.equals(prototype)) {",
+    "aftercode": "if (!objType.equals(prototype)) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 477,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 479,
+    "precode": "return setPrototype(",
+    "aftercode": "return !setPrototype(",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 481,
+    "precode": "registry, this, objType, isNativeObjectType()));",
+    "aftercode": "registry, this, objType, !isNativeObjectType()));",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 486,
+    "precode": "return super.defineProperty(name, type, inferred, inExterns);",
+    "aftercode": "return super.defineProperty(name, type, !inferred, inExterns);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 474,
+    "precode": "ObjectType objType = type.toObjectType();",
+    "aftercode": "ObjectType objType = type.toPrimitiveType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 476,
+    "precode": "if (objType.equals(prototype)) {",
+    "aftercode": "if (objType == prototype) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 483,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 481,
+    "precode": "registry, this, objType, isNativeObjectType()));",
+    "aftercode": "registry, this, null, isNativeObjectType()));",
+    "rule": "Parameter Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 474,
+    "precode": "ObjectType objType = type.toObjectType();",
+    "aftercode": "ObjectType objType = type.toFunctionType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 479,
+    "precode": "return setPrototype(",
+    "aftercode": "setPrototype(",
+    "rule": "Remove Method Call",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 486,
+    "precode": "return super.defineProperty(name, type, inferred, inExterns);",
+    "aftercode": "return super.defineProperty(type, name, inferred, inExterns);",
+    "rule": "Parameter Order",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 473,
+    "precode": "if (\"prototype\".equals(name)) {",
+    "aftercode": "if (name.equals(\"prototype\")) {",
+    "rule": "Equality Operator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 481,
+    "precode": "registry, this, objType, isNativeObjectType()));",
+    "aftercode": "registry, this, objType, false));",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 486,
+    "precode": "return super.defineProperty(name, type, inferred, inExterns);",
+    "aftercode": "return defineProperty(name, type, inferred, inExterns);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) && \"prototype\".equals(name);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.77,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) || !\"prototype\".equals(name);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) || \"prototype\".hashCode() == name.hashCode();",
+    "rule": "Equality Change",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) || false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/rhino/jstype/FunctionType.java",
+    "line": 414,
+    "precode": "return super.hasOwnProperty(name) || \"prototype\".equals(name);",
+    "aftercode": "return super.hasOwnProperty(name) || \"prototype\".equals(name) || true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.77,
+    "dublicate": false
+  }
+]

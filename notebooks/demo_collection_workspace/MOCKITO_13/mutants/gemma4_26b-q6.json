@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 59,
+    "precode": "if (invocationContainerImpl.hasAnswersForStubbing()) {",
+    "aftercode": "if (!invocationContainerImpl.hasAnswersForStubbing()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 61,
+    "precode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), invocation);",
+    "aftercode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(null, invocation);",
+    "rule": "NullValue",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 63,
+    "precode": "invocationContainerImpl.setMethodForStubbing(invocationMatcher);",
+    "aftercode": "// invocationContainerImpl.setMethodForStubbing(invocationMatcher);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 64,
+    "precode": "return null;",
+    "aftercode": "return invocationMatcher;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 66,
+    "precode": "VerificationMode verificationMode = mockingProgress.pullVerificationMode();",
+    "aftercode": "VerificationMode verificationMode = null;",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 68,
+    "precode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), invocation);",
+    "aftercode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), null);",
+    "rule": "NullValue",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 71,
+    "precode": "mockingProgress.validateState();",
+    "aftercode": "// mockingProgress.validateState();",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 74,
+    "precode": "if (verificationMode != null) {",
+    "aftercode": "if (verificationMode == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 77,
+    "precode": "if (((MockAwareVerificationMode) verificationMode).getMock() == invocation.getMock()) {",
+    "aftercode": "if (((MockAwareVerificationMode) verificationMode).getMock() != invocation.getMock()) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 78,
+    "precode": "VerificationDataImpl data = new VerificationDataImpl(invocationContainerImpl, invocationMatcher);",
+    "aftercode": "VerificationDataImpl data = new VerificationDataImpl(null, invocationMatcher);",
+    "rule": "NullValue",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 79,
+    "precode": "verificationMode.verify(data);",
+    "aftercode": "// verificationMode.verify(data);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 80,
+    "precode": "return null;",
+    "aftercode": "return data;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 84,
+    "precode": "mockingProgress.verificationStarted(verificationMode);",
+    "aftercode": "// mockingProgress.verificationStarted(verificationMode);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 88,
+    "precode": "invocationContainerImpl.setInvocationForPotentialStubbing(invocationMatcher);",
+    "aftercode": "invocationContainerImpl.setInvocationForPotentialStubbing(null);",
+    "rule": "NullValue",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 89,
+    "precode": "OngoingStubbingImpl<T> ongoingStubbing = new OngoingStubbingImpl<T>(invocationContainerImpl);",
+    "aftercode": "OngoingStubbingImpl<T> ongoingStubbing = new OngoingStubbingImpl<T>(null);",
+    "rule": "NullValue",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 90,
+    "precode": "mockingProgress.reportOngoingStubbing(ongoingStubbing);",
+    "aftercode": "// mockingProgress.reportOngoingStubbing(ongoingStubbing);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 92,
+    "precode": "StubbedInvocationMatcher stubbedInvocation = invocationContainerImpl.findAnswerFor(invocation);",
+    "aftercode": "StubbedInvocationMatcher stubbedInvocation = null;",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 94,
+    "precode": "if (stubbedInvocation != null) {",
+    "aftercode": "if (stubbedInvocation == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 95,
+    "precode": "stubbedInvocation.captureArgumentsFrom(invocation);",
+    "aftercode": "// stubbedInvocation.captureArgumentsFrom(invocation);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 96,
+    "precode": "return stubbedInvocation.answer(invocation);",
+    "aftercode": "return null;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 98,
+    "precode": "Object ret = mockSettings.getDefaultAnswer().answer(invocation);",
+    "aftercode": "Object ret = null;",
+    "rule": "ConstantReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 105,
+    "precode": "invocationContainerImpl.resetInvocationForPotentialStubbing(invocationMatcher);",
+    "aftercode": "// invocationContainerImpl.resetInvocationForPotentialStubbing(invocationMatcher);",
+    "rule": "StatementRemoval",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 106,
+    "precode": "return ret;",
+    "aftercode": "return null;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 59,
+    "precode": "if (invocationContainerImpl.hasAnswersForStubbing()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals_True",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 59,
+    "precode": "if (invocationContainerImpl.hasAnswersForStubbing()) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals_False",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 74,
+    "precode": "if (verificationMode != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals_True",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 74,
+    "precode": "if (verificationMode != null) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals_False",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 77,
+    "precode": "if (((MockAwareVerificationMode) verificationMode).getMock() == invocation.getMock()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals_True",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 77,
+    "precode": "if (((MockAwareVerificationMode) verificationMode).getMock() == invocation.getMock()) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals_False",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 94,
+    "precode": "if (stubbedInvocation != null) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals_True",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 94,
+    "precode": "if (stubbedInvocation != null) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals_False",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 61,
+    "precode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), invocation);",
+    "aftercode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 68,
+    "precode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), invocation);",
+    "aftercode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(null, invocation);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 78,
+    "precode": "VerificationDataImpl data = new VerificationDataImpl(invocationContainerImpl, invocationMatcher);",
+    "aftercode": "VerificationDataImpl data = new VerificationDataImpl(invocationMatcher, invocationContainerImpl);",
+    "rule": "ArgumentOrder",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 84,
+    "precode": "mockingProgress.verificationStarted(verificationMode);",
+    "aftercode": "mockingProgress.verificationStarted(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 89,
+    "precode": "OngoingStubbingImpl<T> ongoingStubbing = new OngoingStubbingImpl<T>(invocationContainerImpl);",
+    "aftercode": "OngoingStubbingImpl<T> ongoingStubbing = new OngoingStubbingImpl<T>(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 90,
+    "precode": "mockingProgress.reportOngoingStubbing(ongoingStubbing);",
+    "aftercode": "mockingProgress.reportOngoingStubbing(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 95,
+    "precode": "stubbedInvocation.captureArgumentsFrom(invocation);",
+    "aftercode": "stubbedInvocation.captureArgumentsFrom(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 96,
+    "precode": "return stubbedInvocation.answer(invocation);",
+    "aftercode": "return stubbedInvocation.answer(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 98,
+    "precode": "Object ret = mockSettings.getDefaultAnswer().answer(invocation);",
+    "aftercode": "Object ret = mockSettings.getDefaultAnswer().answer(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 105,
+    "precode": "invocationContainerImpl.resetInvocationForPotentialStubbing(invocationMatcher);",
+    "aftercode": "invocationContainerImpl.resetInvocationForPotentialStubbing(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 63,
+    "precode": "invocationContainerImpl.setMethodForStubbing(invocationMatcher);",
+    "aftercode": "invocationContainerImpl.setMethodForStubbing(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 68,
+    "precode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), invocation);",
+    "aftercode": "InvocationMatcher invocationMatcher = matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 44,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 78,
+    "precode": "VerificationDataImpl data = new VerificationDataImpl(invocationContainerImpl, invocationMatcher);",
+    "aftercode": "VerificationDataImpl data = new VerificationDataImpl(invocationContainerImpl, null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 79,
+    "precode": "verificationMode.verify(data);",
+    "aftercode": "verificationMode.verify(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 84,
+    "precode": "mockingProgress.verificationStarted(verificationMode);",
+    "aftercode": "mockingProgress.verificationStarted(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 88,
+    "precode": "invocationContainerImpl.setInvocationForPotentialStubbing(invocationMatcher);",
+    "aftercode": "invocationContainerImpl.setInvocationForPotentialStubbing(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 90,
+    "precode": "mockingProgress.reportOngoingStubbing(ongoingStubbing);",
+    "aftercode": "mockingProgress.reportOngoingStubbing(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 95,
+    "precode": "stubbedInvocation.captureArgumentsFrom(invocation);",
+    "aftercode": "stubbedInvocation.captureArgumentsFrom(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 96,
+    "precode": "return stubbedInvocation.answer(invocation);",
+    "aftercode": "return stubbedInvocation.answer(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 98,
+    "precode": "Object ret = mockSettings.getDefaultAnswer().answer(invocation);",
+    "aftercode": "Object ret = mockSettings.getDefaultAnswer().answer(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 52,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 105,
+    "precode": "invocationContainerImpl.resetInvocationForPotentialStubbing(invocationMatcher);",
+    "aftercode": "invocationContainerImpl.resetInvocationForPotentialStubbing(null);",
+    "rule": "ArgumentReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 64,
+    "precode": "return null;",
+    "aftercode": "return invocation;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 80,
+    "precode": "return null;",
+    "aftercode": "return invocation;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/org/mockito/internal/MockHandler.java",
+    "line": 106,
+    "precode": "return ret;",
+    "aftercode": "return invocation;",
+    "rule": "ReturnReplacement",
+    "gen_time_s": 1.16,
+    "dublicate": false
+  }
+]

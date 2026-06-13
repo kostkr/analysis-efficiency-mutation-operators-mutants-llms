@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 325,
+    "precode": "if (NodeUtil.isName(n) && variable.equals(n.getString())) {",
+    "aftercode": "if (NodeUtil.isName(n) || variable.equals(n.getString())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 325,
+    "precode": "if (NodeUtil.isName(n) && variable.equals(n.getString())) {",
+    "aftercode": "if (NodeUtil.isName(n) && !variable.equals(n.getString())) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 326,
+    "precode": "if (NodeUtil.isLhs(n, n.getParent())) {",
+    "aftercode": "if (NodeUtil.isLhs(n, n.getParent()) == false) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 327,
+    "precode": "Preconditions.checkState(n.getParent().getType() == Token.ASSIGN);",
+    "aftercode": "Preconditions.checkState(n.getParent().getType() != Token.ASSIGN);",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 331,
+    "precode": "Node rhs = n.getNext();",
+    "aftercode": "Node rhs = n.getPrevious();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 332,
+    "precode": "VariableLiveness state = isVariableReadBeforeKill(rhs, variable);",
+    "aftercode": "VariableLiveness state = isVariableReadBeforeKill(rhs, null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 333,
+    "precode": "if (state == VariableLiveness.READ) {",
+    "aftercode": "if (state != VariableLiveness.READ) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 333,
+    "precode": "if (state == VariableLiveness.READ) {",
+    "aftercode": "if (state == VariableLiveness.KILL) {",
+    "rule": "Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 334,
+    "precode": "return state;",
+    "aftercode": "return VariableLiveness.KILL;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 334,
+    "precode": "return state;",
+    "aftercode": "return VariableLiveness.READ;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 336,
+    "precode": "return VariableLiveness.KILL;",
+    "aftercode": "return VariableLiveness.READ;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 338,
+    "precode": "return VariableLiveness.READ;",
+    "aftercode": "return VariableLiveness.KILL;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 338,
+    "precode": "return VariableLiveness.READ;",
+    "aftercode": "return VariableLiveness.MAYBE_LIVE;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 343,
+    "precode": "for (Node child = n.getFirstChild();",
+    "aftercode": "for (Node child = n.getLastChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 344,
+    "precode": "child != null; child = child.getNext()) {",
+    "aftercode": "child != null; child = child.getPrevious()) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 344,
+    "precode": "child != null; child = child.getNext()) {",
+    "aftercode": "child == null; child = child.getNext()) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 345,
+    "precode": "if (!ControlFlowGraph.isEnteringNewCfgNode(child)) { // Not a FUNCTION",
+    "aftercode": "if (ControlFlowGraph.isEnteringNewCfgNode(child)) { // Not a FUNCTION",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 346,
+    "precode": "VariableLiveness state = isVariableReadBeforeKill(child, variable);",
+    "aftercode": "VariableLiveness state = isVariableReadBeforeKill(child, variable);",
+    "rule": "No-Op",
+    "gen_time_s": 2.24,
+    "dublicate": true
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 347,
+    "precode": "if (state != VariableLiveness.MAYBE_LIVE) {",
+    "aftercode": "if (state == VariableLiveness.MAYBE_LIVE) {",
+    "rule": "Negate Condition",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 347,
+    "precode": "if (state != VariableLiveness.MAYBE_LIVE) {",
+    "aftercode": "if (state < VariableLiveness.MAYBE_LIVE) {",
+    "rule": "Condition Boundary",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 348,
+    "precode": "return state;",
+    "aftercode": "return VariableLiveness.MAYBE_LIVE;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 348,
+    "precode": "return state;",
+    "aftercode": "return VariableLiveness.READ;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 348,
+    "precode": "return state;",
+    "aftercode": "return VariableLiveness.KILL;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 352,
+    "precode": "return VariableLiveness.MAYBE_LIVE;",
+    "aftercode": "return VariableLiveness.READ;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 352,
+    "precode": "return VariableLiveness.MAYBE_LIVE;",
+    "aftercode": "return VariableLiveness.KILL;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 325,
+    "precode": "if (NodeUtil.isName(n) && variable.equals(n.getString())) {",
+    "aftercode": "if (NodeUtil.isName(n) && n.getString().equals(variable)) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 331,
+    "precode": "Node rhs = n.getNext();",
+    "aftercode": "Node rhs = n.getFirstChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 343,
+    "precode": "for (Node child = n.getFirstChild();",
+    "aftercode": "for (Node child = n.getParent().getFirstChild();",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 346,
+    "precode": "VariableLiveness state = isVariableReadBeforeKill(child, variable);",
+    "aftercode": "VariableLiveness state = isVariableReadBeforeKill(n, variable);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 332,
+    "precode": "VariableLiveness state = isVariableReadBeforeKill(rhs, variable);",
+    "aftercode": "VariableLiveness state = isVariableReadBeforeKill(n, variable);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/DeadAssignmentsElimination.java",
+    "line": 336,
+    "precode": "return VariableLiveness.KILL;",
+    "aftercode": "return VariableLiveness.MAYBE_LIVE;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.24,
+    "dublicate": false
+  }
+]

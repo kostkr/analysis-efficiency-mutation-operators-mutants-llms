@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 525,
+    "precode": "Preconditions.checkNotNull(resultType);",
+    "aftercode": "// Preconditions.checkNotNull(resultType);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 526,
+    "precode": "switch (left.getType()) {",
+    "aftercode": "switch (left.getType() == null ? Token.NAME : left.getType()) {",
+    "rule": "Null Insertion",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 528,
+    "precode": "String varName = left.getString();",
+    "aftercode": "String varName = \"\";",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 529,
+    "precode": "Var var = syntacticScope.getVar(varName);",
+    "aftercode": "Var var = null;",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 530,
+    "precode": "JSType varType = var == null ? null : var.getType();",
+    "aftercode": "JSType varType = var == null ? var.getType() : null;",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 531,
+    "precode": "boolean isVarDeclaration = left.hasChildren()",
+    "aftercode": "boolean isVarDeclaration = !left.hasChildren()",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 532,
+    "precode": "&& varType != null && !var.isTypeInferred();",
+    "aftercode": "&& varType != null || !var.isTypeInferred();",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 532,
+    "precode": "&& varType != null && !var.isTypeInferred();",
+    "aftercode": "&& varType == null && !var.isTypeInferred();",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 532,
+    "precode": "&& varType != null && !var.isTypeInferred();",
+    "aftercode": "&& varType != null && var.isTypeInferred();",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 550,
+    "precode": "boolean isVarTypeBetter = isVarDeclaration &&",
+    "aftercode": "boolean isVarTypeBetter = isVarDeclaration ||",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 552,
+    "precode": "!resultType.isNullType() && !resultType.isVoidType();",
+    "aftercode": "resultType.isNullType() && !resultType.isVoidType();",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 552,
+    "precode": "!resultType.isNullType() && !resultType.isVoidType();",
+    "aftercode": "!resultType.isNullType() || !resultType.isVoidType();",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 552,
+    "precode": "!resultType.isNullType() && !resultType.isVoidType();",
+    "aftercode": "!resultType.isNullType() && resultType.isVoidType();",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 564,
+    "precode": "if (isVarTypeBetter) {",
+    "aftercode": "if (!isVarTypeBetter) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 565,
+    "precode": "redeclareSimpleVar(scope, left, varType);",
+    "aftercode": "redeclareSimpleVar(scope, left, resultType);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 567,
+    "precode": "redeclareSimpleVar(scope, left, resultType);",
+    "aftercode": "redeclareSimpleVar(scope, left, varType);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 569,
+    "precode": "left.setJSType(resultType);",
+    "aftercode": "left.setJSType(varType);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 571,
+    "precode": "if (var != null && var.isTypeInferred()) {",
+    "aftercode": "if (var != null || var.isTypeInferred()) {",
+    "rule": "Logical Connector Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 571,
+    "precode": "if (var != null && var.isTypeInferred()) {",
+    "aftercode": "if (var == null && var.isTypeInferred()) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 571,
+    "precode": "if (var != null && var.isTypeInferred()) {",
+    "aftercode": "if (var != null && !var.isTypeInferred()) {",
+    "rule": "Logical Negation",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 573,
+    "precode": "resultType : oldType.getLeastSupertype(resultType));",
+    "aftercode": "resultType : resultType.getLeastSupertype(oldType));",
+    "rule": "Argument Order",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 573,
+    "precode": "resultType : oldType.getLeastSupertype(resultType));",
+    "aftercode": "resultType : oldType.getLeastSupertype(oldType));",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 573,
+    "precode": "resultType : oldType.getLeastSupertype(resultType));",
+    "aftercode": "resultType : oldType.getLeastSupertype(null));",
+    "rule": "Null Insertion",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 577,
+    "precode": "case Token.GETPROP:",
+    "aftercode": "case Token.NAME:",
+    "rule": "Token Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 579,
+    "precode": "if (qualifiedName != null) {",
+    "aftercode": "if (qualifiedName == null) {",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 580,
+    "precode": "scope.inferQualifiedSlot(left, qualifiedName,",
+    "aftercode": "scope.inferQualifiedSlot(left, \"\",",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 581,
+    "precode": "leftType == null ? unknownType : leftType,",
+    "aftercode": "leftType != null ? unknownType : leftType,",
+    "rule": "Relational Operator Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 581,
+    "precode": "leftType == null ? unknownType : leftType,",
+    "aftercode": "leftType == null ? leftType : unknownType,",
+    "rule": "Ternary Operator Swap",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 582,
+    "precode": "resultType);",
+    "aftercode": "null);",
+    "rule": "Null Insertion",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 585,
+    "precode": "left.setJSType(resultType);",
+    "aftercode": "left.setJSType(leftType);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 586,
+    "precode": "ensurePropertyDefined(left, resultType);",
+    "aftercode": "ensurePropertyDefined(left, leftType);",
+    "rule": "Variable Substitution",
+    "gen_time_s": 1.24,
+    "dublicate": false
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 117,
+    "precode": "Node ifBlock = n.getFirstChild().getNext();",
+    "aftercode": "Node ifBlock = n.getFirstChild();",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 119,
+    "precode": "Node elseBlock = ifBlock.getNext();",
+    "aftercode": "Node elseBlock = ifBlock.getFirstChild();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 128,
+    "precode": "Node tryBlock = n.getFirstChild();",
+    "aftercode": "Node tryBlock = n.getLastChild();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 130,
+    "precode": "Node allCatchNodes = NodeUtil.getCatchBlock(n);",
+    "aftercode": "Node allCatchNodes = NodeUtil.getFinallyBlock(n);",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 134,
+    "precode": "Node catchCodeBlock = catchNode.getLastChild();",
+    "aftercode": "Node catchCodeBlock = catchNode.getFirstChild();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 145,
+    "precode": "Node labelBlock = n.getLastChild();",
+    "aftercode": "Node labelBlock = n.getFirstChild();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 152,
+    "precode": "if (!n.isBlock() || n.getLastChild() == null) {",
+    "aftercode": "if (!n.isBlock() && n.getLastChild() == null) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 168,
+    "precode": "trueBlock = ifTree.getFirstChild().getNext();",
+    "aftercode": "trueBlock = ifTree.getFirstChild().getNext().getNext();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 169,
+    "precode": "falseBlock = trueBlock.getNext();",
+    "aftercode": "falseBlock = trueBlock.getParent();",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 175,
+    "precode": "trueBlock = ifTree.getFirstChild().getNext();",
+    "aftercode": "trueBlock = ifTree.getLastChild();",
+    "rule": "Argument Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 176,
+    "precode": "falseBlock = trueBlock.getNext();",
+    "aftercode": "falseBlock = trueBlock.getParent();",
+    "rule": "Method Name Substitution",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 177,
+    "precode": "if (falseBlock != null) {",
+    "aftercode": "if (falseBlock == null) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 190,
+    "precode": "for (Node c = n.getLastChild(); c != null; c = n.getLastChild()) {",
+    "aftercode": "for (Node c = n.getFirstChild(); c != null; c = n.getLastChild()) {",
+    "rule": "Initialization Change",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/MinimizeExitPoints.java",
+    "line": 193,
+    "precode": "if (c == n.getLastChild()) {",
+    "aftercode": "if (c != n.getLastChild()) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.51,
+    "dublicate": false
+  }
+]

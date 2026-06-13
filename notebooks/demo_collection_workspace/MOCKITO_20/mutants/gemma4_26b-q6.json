@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 25,
+    "precode": "if (settings.getSerializableMode() == SerializableMode.ACROSS_CLASSLOADERS) {",
+    "aftercode": "if (settings.getSerializableMode() != SerializableMode.ACROSS_CLASSLOADERS) {",
+    "rule": "Negation",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 25,
+    "precode": "if (settings.getSerializableMode() == SerializableMode.ACROSS_CLASSLOADERS) {",
+    "aftercode": "if (settings.getSerializableMode() != null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 28,
+    "precode": "Class<? extends T> mockedProxyType = cachingMockBytecodeGenerator.get(",
+    "aftercode": "Class<? extends T> mockedProxyType = null;",
+    "rule": "Void Method Call",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 29,
+    "precode": "settings.getTypeToMock(),",
+    "aftercode": "null,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 30,
+    "precode": "settings.getExtraInterfaces()",
+    "aftercode": "null",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 32,
+    "precode": "Instantiator instantiator = new InstantiatorProvider().getInstantiator(settings);",
+    "aftercode": "Instantiator instantiator = new InstantiatorProvider().getInstantiator(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 33,
+    "precode": "T mockInstance = null;",
+    "aftercode": "T mockInstance = new Object();",
+    "rule": "Variable Initialization",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 35,
+    "precode": "mockInstance = instantiator.newInstance(mockedProxyType);",
+    "aftercode": "mockInstance = instantiator.newInstance(settings.getTypeToMock());",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 36,
+    "precode": "MockMethodInterceptor.MockAccess mockAccess = (MockMethodInterceptor.MockAccess) mockInstance;",
+    "aftercode": "MockMethodInterceptor.MockAccess mockAccess = (MockMethodInterceptor.MockAccess) settings.getTypeToMock();",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 37,
+    "precode": "mockAccess.setMockitoInterceptor(new MockMethodInterceptor(asInternalMockHandler(handler), settings));",
+    "aftercode": "mockAccess.setMockitoInterceptor(new MockMethodInterceptor(asInternalMockHandler(handler), null));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 37,
+    "precode": "mockAccess.setMockitoInterceptor(new MockMethodInterceptor(asInternalMockHandler(handler), settings));",
+    "aftercode": "mockAccess.setMockitoInterceptor(new MockMethodInterceptor(asInternalMockHandler(null), settings));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 39,
+    "precode": "return ensureMockIsAssignableToMockedType(settings, mockInstance);",
+    "aftercode": "return mockInstance;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 39,
+    "precode": "return ensureMockIsAssignableToMockedType(settings, mockInstance);",
+    "aftercode": "return ensureMockIsAssignableToMockedType(null, mockInstance);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 40,
+    "precode": "} catch (ClassCastException cce) {",
+    "aftercode": "} catch (Exception cce) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 41,
+    "precode": "throw new MockitoException(join(",
+    "aftercode": "throw new RuntimeException(join(",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 43,
+    "precode": "\"  class to mock : \" + describeClass(mockedProxyType),",
+    "aftercode": "\"  class to mock : \" + describeClass(null),",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 44,
+    "precode": "\"  created class : \" + describeClass(settings.getTypeToMock()),",
+    "aftercode": "\"  created class : \" + describeClass(null),",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 45,
+    "precode": "\"  proxy instance class : \" + describeClass(mockInstance),",
+    "aftercode": "\"  proxy instance class : \" + describeClass(null),",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 46,
+    "precode": "\"  instance creation by : \" + instantiator.getClass().getSimpleName(),",
+    "aftercode": "\"  instance creation by : \" + instantiator.getClass().getName(),",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 50,
+    "precode": "),cce);",
+    "aftercode": "), null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 51,
+    "precode": "} catch (org.mockito.internal.creation.instance.InstantiationException e) {",
+    "aftercode": "} catch (RuntimeException e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 52,
+    "precode": "throw new MockitoException(\"Unable to create mock instance of type '\" + mockedProxyType.getSuperclass().getSimpleName() + \"'\", e);",
+    "aftercode": "throw new MockitoException(\"Unable to create mock instance of type '\" + mockedProxyType.getName() + \"'\", e);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 52,
+    "precode": "throw new MockitoException(\"Unable to create mock instance of type '\" + mockedProxyType.getSuperclass().getSimpleName() + \"'\", e);",
+    "aftercode": "throw new MockitoException(\"Unable to create mock instance\", e);",
+    "rule": "String Literal Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 28,
+    "precode": "Class<? extends T> mockedProxyType = cachingMockBytecodeGenerator.get(",
+    "aftercode": "Class<? extends T> mockedProxyType = cachingMockBytecodeGenerator.get(",
+    "rule": "No-op",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 25,
+    "precode": "if (settings.getSerializableMode() == SerializableMode.ACROSS_CLASSLOADERS) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Removal",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 35,
+    "precode": "mockInstance = instantiator.newInstance(mockedProxyType);",
+    "aftercode": "mockInstance = instantiator.newInstance(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 37,
+    "precode": "mockAccess.setMockitoInterceptor(new MockMethodInterceptor(asInternalMockHandler(handler), settings));",
+    "aftercode": "mockAccess.setMockitoInterceptor(null);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 32,
+    "precode": "Instantiator instantiator = new InstantiatorProvider().getInstantiator(settings);",
+    "aftercode": "Instantiator instantiator = new InstantiatorProvider().getInstantiator(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 40,
+    "precode": "} catch (ClassCastException cce) {",
+    "aftercode": "} catch (Throwable cce) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java",
+    "line": 28,
+    "precode": "Class<? extends T> mockedProxyType = cachingMockBytecodeGenerator.get(",
+    "aftercode": "Class<? extends T> mockedProxyType = cachingMockBytecodeGenerator.get(",
+    "rule": "Duplicate Code",
+    "gen_time_s": 1.29,
+    "dublicate": true
+  }
+]

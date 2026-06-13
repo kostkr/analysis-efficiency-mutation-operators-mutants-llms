@@ -1,0 +1,582 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 231,
+    "precode": "new LoggerErrorManager(createMessageFormatter(), logger));",
+    "aftercode": "new LoggerErrorManager(null, logger));",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 234,
+    "precode": "new PrintStreamErrorManager(createMessageFormatter(), outStream);",
+    "aftercode": "new PrintStreamErrorManager(createMessageFormatter(), null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 241,
+    "precode": "if (options.enables(DiagnosticGroups.CHECK_TYPES)) {",
+    "aftercode": "if (!options.enables(DiagnosticGroups.CHECK_TYPES)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 243,
+    "precode": "else if (options.disables(DiagnosticGroups.CHECK_TYPES)) {",
+    "aftercode": "else if (!options.disables(DiagnosticGroups.CHECK_TYPES)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 245,
+    "precode": "else if (!options.checkTypes) {",
+    "aftercode": "else if (options.checkTypes) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 242,
+    "precode": "options.checkTypes = true;",
+    "aftercode": "options.checkTypes = false;",
+    "rule": "Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 244,
+    "precode": "options.checkTypes = false;",
+    "aftercode": "options.checkTypes = true;",
+    "rule": "Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 255,
+    "precode": "if (options.checkGlobalThisLevel.isOn()) {",
+    "aftercode": "if (!options.checkGlobalThisLevel.isOn()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 262,
+    "precode": "List<WarningsGuard> guards = Lists.newArrayList();",
+    "aftercode": "List<WarningsGuard> guards = null;",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 263,
+    "precode": "guards.add(",
+    "aftercode": "guards.remove(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 265,
+    "precode": "getDiagnosticGroups().getRegisteredGroups()));",
+    "aftercode": "Collections.emptyList()));",
+    "rule": "Collection Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 266,
+    "precode": "guards.add(options.getWarningsGuard());",
+    "aftercode": "guards.clear();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 268,
+    "precode": "ComposeWarningsGuard composedGuards = new ComposeWarningsGuard(guards);",
+    "aftercode": "ComposeWarningsGuard composedGuards = new ComposeWarningsGuard(null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 275,
+    "precode": "if (!options.checkSymbols &&",
+    "aftercode": "if (options.checkSymbols &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 276,
+    "precode": "!composedGuards.enables(DiagnosticGroups.CHECK_VARIABLES)) {",
+    "aftercode": "composedGuards.enables(DiagnosticGroups.CHECK_VARIABLES)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 277,
+    "precode": "composedGuards.addGuard(new DiagnosticGroupWarningsGuard(",
+    "aftercode": "composedGuards.removeGuard(new DiagnosticGroupWarningsGuard(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 278,
+    "precode": "DiagnosticGroups.CHECK_VARIABLES, CheckLevel.OFF));",
+    "aftercode": "DiagnosticGroups.CHECK_VARIABLES, CheckLevel.ERROR));",
+    "rule": "Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 281,
+    "precode": "this.warningsGuard = composedGuards;",
+    "aftercode": "this.warningsGuard = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 235,
+    "precode": "printer.setSummaryDetailLevel(options.summaryDetailLevel);",
+    "aftercode": "printer.setSummaryDetailLevel(null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 236,
+    "precode": "setErrorManager(printer);",
+    "aftercode": "setErrorManager(null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 249,
+    "precode": "options.setWarningLevel(",
+    "aftercode": "options.clearWarningLevel(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 251,
+    "precode": "RhinoErrorReporter.TYPE_PARSE_ERROR),",
+    "aftercode": "RhinoErrorReporter.TYPE_PARSE_ERROR, CheckLevel.ERROR),",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 252,
+    "precode": "CheckLevel.OFF);",
+    "aftercode": "CheckLevel.ERROR);",
+    "rule": "Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 257,
+    "precode": "DiagnosticGroups.GLOBAL_THIS,",
+    "aftercode": "DiagnosticGroups.GLOBAL_THIS, CheckLevel.ERROR,",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 258,
+    "precode": "options.checkGlobalThisLevel);",
+    "aftercode": "CheckLevel.ERROR);",
+    "rule": "Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 264,
+    "precode": "new SuppressDocWarningsGuard(",
+    "aftercode": "new SuppressDocWarningsGuard(null,",
+    "rule": "Argument Addition",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 269,
+    "precode": "",
+    "aftercode": "",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 227,
+    "precode": "this.options = options;",
+    "aftercode": "this.options = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 228,
+    "precode": "if (errorManager == null) {",
+    "aftercode": "if (errorManager != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 229,
+    "precode": "if (outStream == null) {",
+    "aftercode": "if (outStream != null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 230,
+    "precode": "setErrorManager(",
+    "aftercode": "if (errorManager == null) setErrorManager(",
+    "rule": "Code Insertion",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 237,
+    "precode": "}",
+    "aftercode": "",
+    "rule": "Code Deletion",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 253,
+    "precode": "}",
+    "aftercode": "",
+    "rule": "Code Deletion",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 259,
+    "precode": "}",
+    "aftercode": "",
+    "rule": "Code Deletion",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 279,
+    "precode": "}",
+    "aftercode": "",
+    "rule": "Code Deletion",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 231,
+    "precode": "new LoggerErrorManager(createMessageFormatter(), logger));",
+    "aftercode": "new LoggerErrorManager(createMessageFormatter(), null));",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 234,
+    "precode": "new PrintStreamErrorManager(createMessageFormatter(), outStream);",
+    "aftercode": "new PrintStreamErrorManager(null, outStream);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 241,
+    "precode": "if (options.enables(DiagnosticGroups.CHECK_TYPES)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 243,
+    "precode": "else if (options.disables(DiagnosticGroups.CHECK_TYPES)) {",
+    "aftercode": "else if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 245,
+    "precode": "else if (!options.checkTypes) {",
+    "aftercode": "else if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 255,
+    "precode": "if (options.checkGlobalThisLevel.isOn()) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 275,
+    "precode": "if (!options.checkSymbols &&",
+    "aftercode": "if (false &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 276,
+    "precode": "!composedGuards.enables(DiagnosticGroups.CHECK_VARIABLES)) {",
+    "aftercode": "false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 265,
+    "precode": "getDiagnosticGroups().getRegisteredGroups()));",
+    "aftercode": "null));",
+    "rule": "Return Value Change",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 266,
+    "precode": "guards.add(options.getWarningsGuard());",
+    "aftercode": "guards.add(null);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.0,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 277,
+    "precode": "composedGuards.addGuard(new DiagnosticGroupWarningsGuard(",
+    "aftercode": "composedGuards.addGuard(new DiagnosticGroupWarningsGuard(",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 278,
+    "precode": "DiagnosticGroups.CHECK_VARIABLES, CheckLevel.OFF));",
+    "aftercode": "DiagnosticGroups.CHECK_VARIABLES, CheckLevel.OFF));",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 235,
+    "precode": "printer.setSummaryDetailLevel(options.summaryDetailLevel);",
+    "aftercode": "printer.setSummaryDetailLevel(options.summaryDetailLevel);",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 236,
+    "precode": "setErrorManager(printer);",
+    "aftercode": "setErrorManager(printer);",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 249,
+    "precode": "options.setWarningLevel(",
+    "aftercode": "options.setWarningLevel(",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 250,
+    "precode": "DiagnosticGroup.forType(",
+    "aftercode": "DiagnosticGroup.forType(",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 251,
+    "precode": "RhinoErrorReporter.TYPE_PARSE_ERROR),",
+    "aftercode": "RhinoErrorReporter.TYPE_PARSE_ERROR),",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 252,
+    "precode": "CheckLevel.OFF);",
+    "aftercode": "CheckLevel.OFF);",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 256,
+    "precode": "options.setWarningLevel(",
+    "aftercode": "options.setWarningLevel(",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 257,
+    "precode": "DiagnosticGroups.GLOBAL_THIS,",
+    "aftercode": "DiagnosticGroups.GLOBAL_THIS,",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 258,
+    "precode": "options.checkGlobalThisLevel);",
+    "aftercode": "options.checkGlobalThisLevel);",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 268,
+    "precode": "ComposeWarningsGuard composedGuards = new ComposeWarningsGuard(guards);",
+    "aftercode": "ComposeWarningsGuard composedGuards = new ComposeWarningsGuard(guards);",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/Compiler.java",
+    "line": 281,
+    "precode": "this.warningsGuard = composedGuards;",
+    "aftercode": "this.warningsGuard = composedGuards;",
+    "rule": "",
+    "gen_time_s": 2.0,
+    "dublicate": true
+  }
+]

@@ -1,0 +1,532 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 169,
+    "precode": "Node nextCfgNode = outEdges.get(0).getDestination().getValue();",
+    "aftercode": "Node nextCfgNode = outEdges.get(1).getDestination().getValue();",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 162,
+    "precode": "if (outEdges.size() == 1 &&",
+    "aftercode": "if (outEdges.size() == 0 &&",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 178,
+    "precode": "if (parent == null || parent.isFunction()) {",
+    "aftercode": "if (parent != null || parent.isFunction()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 180,
+    "precode": "} else if (NodeUtil.isTryFinallyNode(parent, child)) {",
+    "aftercode": "} else if (!(NodeUtil.isTryFinallyNode(parent, child))) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 178,
+    "precode": "if (parent == null || parent.isFunction()) {",
+    "aftercode": "if (parent == null || false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 180,
+    "precode": "} else if (NodeUtil.isTryFinallyNode(parent, child)) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 183,
+    "precode": "return inFinally(parent.getParent(), parent);",
+    "aftercode": "return inFinally((com.google.javascript.rhino.Node) null, parent);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 183,
+    "precode": "return inFinally(parent.getParent(), parent);",
+    "aftercode": "return false;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 178,
+    "precode": "if (parent == null || parent.isFunction()) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 178,
+    "precode": "if (parent == null || parent.isFunction()) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 180,
+    "precode": "} else if (NodeUtil.isTryFinallyNode(parent, child)) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 183,
+    "precode": "return inFinally(parent.getParent(), parent);",
+    "aftercode": "return inFinally(parent, parent);",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 181,
+    "precode": "return true;",
+    "aftercode": "return (true) ? false : false;",
+    "rule": "False Returns",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 183,
+    "precode": "return inFinally(parent.getParent(), parent);",
+    "aftercode": "return (inFinally(parent.getParent(), parent)) ? false : false;",
+    "rule": "False Returns",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 179,
+    "precode": "return false;",
+    "aftercode": "return (false) ? true : true;",
+    "rule": "True Returns",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 183,
+    "precode": "return inFinally(parent.getParent(), parent);",
+    "aftercode": "return (inFinally(parent.getParent(), parent)) ? true : true;",
+    "rule": "True Returns",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 167,
+    "precode": "outEdges.get(0).getValue() == Branch.UNCOND);",
+    "aftercode": "outEdges.get(1).getValue() == Branch.UNCOND);",
+    "rule": "Inline Constant",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 141,
+    "precode": "if (n == null) {",
+    "aftercode": "if (n != null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 147,
+    "precode": "if (gNode == null) {",
+    "aftercode": "if (gNode != null) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 153,
+    "precode": "if (n.hasChildren()) {",
+    "aftercode": "if (!(n.hasChildren())) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 162,
+    "precode": "if (outEdges.size() == 1 &&",
+    "aftercode": "if (outEdges.size() != 1 &&",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 164,
+    "precode": "(n.getNext() == null || n.getNext().isFunction())) {",
+    "aftercode": "(n.getNext() != null || n.getNext().isFunction())) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 167,
+    "precode": "outEdges.get(0).getValue() == Branch.UNCOND);",
+    "aftercode": "outEdges.get(0).getValue() != Branch.UNCOND);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 170,
+    "precode": "if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {",
+    "aftercode": "if (nextCfgNode != fallThrough && !inFinally(n.getParent(), n)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 145,
+    "precode": "DiGraphNode<Node, Branch> gNode = cfg.getDirectedGraphNode(n);",
+    "aftercode": "DiGraphNode<Node, Branch> gNode = (com.google.javascript.jscomp.graph.DiGraph.DiGraphNode) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 151,
+    "precode": "switch (n.getType()) {",
+    "aftercode": "switch (0) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 153,
+    "precode": "if (n.hasChildren()) {",
+    "aftercode": "if (false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 161,
+    "precode": "List<DiGraphEdge<Node, Branch>> outEdges = gNode.getOutEdges();",
+    "aftercode": "List<DiGraphEdge<Node, Branch>> outEdges = (java.util.List) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 162,
+    "precode": "if (outEdges.size() == 1 &&",
+    "aftercode": "if (0 == 1 &&",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 164,
+    "precode": "(n.getNext() == null || n.getNext().isFunction())) {",
+    "aftercode": "((com.google.javascript.rhino.Node) null == null || n.getNext().isFunction())) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 164,
+    "precode": "(n.getNext() == null || n.getNext().isFunction())) {",
+    "aftercode": "(n.getNext() == null || ((com.google.javascript.rhino.Node) null).isFunction())) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 164,
+    "precode": "(n.getNext() == null || n.getNext().isFunction())) {",
+    "aftercode": "(n.getNext() == null || false)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 167,
+    "precode": "outEdges.get(0).getValue() == Branch.UNCOND);",
+    "aftercode": "((java.lang.Object) null).getValue() == Branch.UNCOND);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 167,
+    "precode": "outEdges.get(0).getValue() == Branch.UNCOND);",
+    "aftercode": "(java.lang.Object) null == Branch.UNCOND);",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 168,
+    "precode": "Node fallThrough = computeFollowing(n);",
+    "aftercode": "Node fallThrough = (Node) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 169,
+    "precode": "Node nextCfgNode = outEdges.get(0).getDestination().getValue();",
+    "aftercode": "Node nextCfgNode = ((java.lang.Object) null).getDestination().getValue();",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 169,
+    "precode": "Node nextCfgNode = outEdges.get(0).getDestination().getValue();",
+    "aftercode": "Node nextCfgNode = ((com.google.javascript.jscomp.graph.DiGraph.DiGraphNode) null).getValue();",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 169,
+    "precode": "Node nextCfgNode = outEdges.get(0).getDestination().getValue();",
+    "aftercode": "Node nextCfgNode = (Node) null;",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 170,
+    "precode": "if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {",
+    "aftercode": "if (nextCfgNode == fallThrough && !inFinally((com.google.javascript.rhino.Node) null, n)) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 170,
+    "precode": "if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {",
+    "aftercode": "if (nextCfgNode == fallThrough && !false) {",
+    "rule": "Non Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 141,
+    "precode": "if (n == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 147,
+    "precode": "if (gNode == null) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 170,
+    "precode": "if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {",
+    "aftercode": "if (false) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 141,
+    "precode": "if (n == null) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 147,
+    "precode": "if (gNode == null) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 153,
+    "precode": "if (n.hasChildren()) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 170,
+    "precode": "if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {",
+    "aftercode": "if (true) {",
+    "rule": "Remove Conditional",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 171,
+    "precode": "removeNode(n);",
+    "aftercode": "if (System.currentTimeMillis() == Long.MIN_VALUE) { removeNode(n); }",
+    "rule": "Void Method Calls",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 168,
+    "precode": "Node fallThrough = computeFollowing(n);",
+    "aftercode": "Node fallThrough = n;",
+    "rule": "Argument Propagation",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 164,
+    "precode": "(n.getNext() == null || n.getNext().isFunction())) {",
+    "aftercode": "(n == null || n.getNext().isFunction())) {",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 164,
+    "precode": "(n.getNext() == null || n.getNext().isFunction())) {",
+    "aftercode": "(n.getNext() == null || n.isFunction())) {",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 170,
+    "precode": "if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {",
+    "aftercode": "if (nextCfgNode == fallThrough && !inFinally(n, n)) {",
+    "rule": "Naked Receiver",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/UnreachableCodeElimination.java",
+    "line": 151,
+    "precode": "switch (n.getType()) {",
+    "aftercode": "switch ((n.getType() == Token.RETURN) ? -2 : Token.RETURN) {",
+    "rule": "Experimental Switch",
+    "gen_time_s": 0.07,
+    "dublicate": false
+  }
+]

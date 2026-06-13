@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 376,
+    "precode": "for (Type type : typeVariable.getBounds()) {",
+    "aftercode": "for (Type type : new Type[0]) {",
+    "rule": "Loop Removal",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 377,
+    "precode": "registerTypeVariablesOn(type);",
+    "aftercode": "// registerTypeVariablesOn(type);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 379,
+    "precode": "registerTypeParametersOn(new TypeVariable[] { typeVariable });",
+    "aftercode": "registerTypeParametersOn(new TypeVariable[] { });",
+    "rule": "Array Element Deletion",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 380,
+    "precode": "registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));",
+    "aftercode": "// registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 376,
+    "precode": "for (Type type : typeVariable.getBounds()) {",
+    "aftercode": "for (Type type : typeVariable.getBounds().subList(0, typeVariable.getBounds().size() - 1)) {",
+    "rule": "Boundary Condition",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 379,
+    "precode": "registerTypeParametersOn(new TypeVariable[] { typeVariable });",
+    "aftercode": "registerTypeParametersOn(new TypeVariable[] { typeVariable, typeVariable });",
+    "rule": "Duplicate Element",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/util/reflection/GenericMetadataSupport.java",
+    "line": 380,
+    "precode": "registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));",
+    "aftercode": "registerTypeVariablesOn(getActualTypeArgumentFor(null));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.57,
+    "dublicate": false
+  }
+]

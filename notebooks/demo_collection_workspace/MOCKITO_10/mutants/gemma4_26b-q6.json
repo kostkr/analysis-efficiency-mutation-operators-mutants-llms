@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 60,
+    "precode": "InternalMockHandler<Object> handler = new MockUtil().getMockHandler(invocation.getMock());",
+    "aftercode": "InternalMockHandler<Object> handler = new MockUtil().getMockHandler(invocation);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 61,
+    "precode": "InvocationContainerImpl container = (InvocationContainerImpl) handler.getInvocationContainer();",
+    "aftercode": "InvocationContainerImpl container = (InvocationContainerImpl) handler.getInvocationContainer();",
+    "rule": "No-op (Cast Removal Simulation)",
+    "gen_time_s": 1.38,
+    "dublicate": true
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 64,
+    "precode": "for (StubbedInvocationMatcher stubbedInvocationMatcher : container.getStubbedInvocations()) {",
+    "aftercode": "for (StubbedInvocationMatcher stubbedInvocationMatcher : container.getStubbedInvocations().subList(1, container.getStubbedInvocations().size())) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 65,
+    "precode": "if (container.getInvocationForStubbing().matches(stubbedInvocationMatcher.getInvocation())) {",
+    "aftercode": "if (!container.getInvocationForStubbing().matches(stubbedInvocationMatcher.getInvocation())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 65,
+    "precode": "if (container.getInvocationForStubbing().matches(stubbedInvocationMatcher.getInvocation())) {",
+    "aftercode": "if (container.getInvocationForStubbing().equals(stubbedInvocationMatcher.getInvocation())) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 66,
+    "precode": "return stubbedInvocationMatcher.answer(invocation);",
+    "aftercode": "return stubbedInvocationMatcher.answer(null);",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 66,
+    "precode": "return stubbedInvocationMatcher.answer(invocation);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 64,
+    "precode": "for (StubbedInvocationMatcher stubbedInvocationMatcher : container.getStubbedInvocations()) {",
+    "aftercode": "for (StubbedInvocationMatcher stubbedInvocationMatcher : new java.util.ArrayList<>()) {",
+    "rule": "Empty Collection",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 72,
+    "precode": "newDeepStubMock(returnTypeGenericMetadata, invocation.getMock()),",
+    "aftercode": "newDeepStubMock(null, invocation.getMock()),",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 72,
+    "precode": "newDeepStubMock(returnTypeGenericMetadata, invocation.getMock()),",
+    "aftercode": "newDeepStubMock(returnTypeGenericMetadata, null),",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 72,
+    "precode": "newDeepStubMock(returnTypeGenericMetadata, invocation.getMock()),",
+    "aftercode": "newDeepStubMock(returnTypeGenericMetadata, invocation.getMock()),",
+    "rule": "Void Method Call",
+    "gen_time_s": 1.38,
+    "dublicate": true
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 71,
+    "precode": "return recordDeepStubAnswer(",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 65,
+    "precode": "if (container.getInvocationForStubbing().matches(stubbedInvocationMatcher.getInvocation())) {",
+    "aftercode": "if (container.getInvocationForStubbing() != null && container.getInvocationForStubbing().matches(stubbedInvocationMatcher.getInvocation())) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 60,
+    "precode": "InternalMockHandler<Object> handler = new MockUtil().getMockHandler(invocation.getMock());",
+    "aftercode": "InternalMockHandler<Object> handler = new MockUtil().getMockHandler(invocation.getMock());",
+    "rule": "Variable Assignment",
+    "gen_time_s": 1.38,
+    "dublicate": true
+  },
+  {
+    "id": 15,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 66,
+    "precode": "return stubbedInvocationMatcher.answer(invocation);",
+    "aftercode": "return stubbedInvocationMatcher.getInvocation();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 73,
+    "precode": "container",
+    "aftercode": "null",
+    "rule": "Argument Substitution",
+    "gen_time_s": 1.38,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 64,
+    "precode": "for (StubbedInvocationMatcher stubbedInvocationMatcher : container.getStubbedInvocations()) {",
+    "aftercode": "for (StubbedInvocationMatcher stubbedInvocationMatcher : container.getStubbedInvocations()) {",
+    "rule": "Loop Replacement",
+    "gen_time_s": 1.38,
+    "dublicate": true
+  },
+  {
+    "id": 18,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 89,
+    "precode": "MockCreationSettings parentMockSettings = new MockUtil().getMockSettings(parentMock);",
+    "aftercode": "MockCreationSettings parentMockSettings = new MockUtil().getMockSettings(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 90,
+    "precode": "return mockitoCore().mock(",
+    "aftercode": "return mockitoCore().mock(null,",
+    "rule": "Method Call Argument Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 91,
+    "precode": "returnTypeGenericMetadata.rawType(),",
+    "aftercode": "returnTypeGenericMetadata.getClass(),",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 92,
+    "precode": "withSettingsUsing(returnTypeGenericMetadata, parentMockSettings)",
+    "aftercode": "withSettingsUsing(null, parentMockSettings)",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 92,
+    "precode": "withSettingsUsing(returnTypeGenericMetadata, parentMockSettings)",
+    "aftercode": "withSettingsUsing(returnTypeGenericMetadata, null)",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 89,
+    "precode": "MockCreationSettings parentMockSettings = new MockUtil().getMockSettings(parentMock);",
+    "aftercode": "MockCreationSettings parentMockSettings = null;",
+    "rule": "Variable Assignment Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 90,
+    "precode": "return mockitoCore().mock(",
+    "aftercode": "return mockitoCore().create(",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.43,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 97,
+    "precode": "MockSettings mockSettings = returnTypeGenericMetadata.hasRawExtraInterfaces() ?",
+    "aftercode": "MockSettings mockSettings = !returnTypeGenericMetadata.hasRawExtraInterfaces() ?",
+    "rule": "Negation",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 98,
+    "precode": "withSettings().extraInterfaces(returnTypeGenericMetadata.rawExtraInterfaces())",
+    "aftercode": "withSettings().extraInterfaces(new ArrayList<>())",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 99,
+    "precode": ": withSettings();",
+    "aftercode": ": null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 101,
+    "precode": "return propagateSerializationSettings(mockSettings, parentMockSettings)",
+    "aftercode": "return propagateSerializationSettings(parentMockSettings, mockSettings)",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 101,
+    "precode": "return propagateSerializationSettings(mockSettings, parentMockSettings)",
+    "aftercode": "return mockSettings;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 102,
+    "precode": ".defaultAnswer(returnsDeepStubsAnswerUsing(returnTypeGenericMetadata));",
+    "aftercode": ".defaultAnswer(returnsDeepStubsAnswerUsing(null));",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 102,
+    "precode": ".defaultAnswer(returnsDeepStubsAnswerUsing(returnTypeGenericMetadata));",
+    "aftercode": ".defaultAnswer(null);",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 97,
+    "precode": "MockSettings mockSettings = returnTypeGenericMetadata.hasRawExtraInterfaces() ?",
+    "aftercode": "MockSettings mockSettings = returnTypeGenericMetadata.hasRawExtraInterfaces() : null;",
+    "rule": "Ternary Operator Removal",
+    "gen_time_s": 1.45,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 106,
+    "precode": "return mockSettings.serializable(parentMockSettings.getSerializableMode());",
+    "aftercode": "return parentMockSettings.serializable(mockSettings.getSerializableMode());",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.68,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 106,
+    "precode": "return mockSettings.serializable(parentMockSettings.getSerializableMode());",
+    "aftercode": "return mockSettings;",
+    "rule": "Method Call Removal",
+    "gen_time_s": 1.68,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java",
+    "line": 106,
+    "precode": "return mockSettings.serializable(parentMockSettings.getSerializableMode());",
+    "aftercode": "return mockSettings.serializable(null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 1.68,
+    "dublicate": false
+  }
+]

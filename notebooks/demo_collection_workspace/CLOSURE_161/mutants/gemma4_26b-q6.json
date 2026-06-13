@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1279,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1283,
+    "precode": "if (isAssignmentTarget(n)) {",
+    "aftercode": "if (!isAssignmentTarget(n)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1287,
+    "precode": "if (right.getType() != Token.NUMBER) {",
+    "aftercode": "if (right.getType() == Token.NUMBER) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1293,
+    "precode": "double index = right.getDouble();",
+    "aftercode": "double index = 0.0;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1294,
+    "precode": "int intIndex = (int) index;",
+    "aftercode": "int intIndex = (int) 0;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1295,
+    "precode": "if (intIndex != index) {",
+    "aftercode": "if (intIndex == index) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1296,
+    "precode": "error(INVALID_GETELEM_INDEX_ERROR, right);",
+    "aftercode": "// error(INVALID_GETELEM_INDEX_ERROR, right);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1300,
+    "precode": "if (intIndex < 0) {",
+    "aftercode": "if (intIndex <= 0) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1300,
+    "precode": "if (intIndex < 0) {",
+    "aftercode": "if (intIndex > 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1301,
+    "precode": "error(INDEX_OUT_OF_BOUNDS_ERROR, right);",
+    "aftercode": "return n;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1305,
+    "precode": "Node elem = left.getFirstChild();",
+    "aftercode": "Node elem = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null || i < intIndex; i++) {",
+    "rule": "Logical Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i <= intIndex; i++) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 1; elem != null && i < intIndex; i++) {",
+    "rule": "Increment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "rule": "No Change (Dummy)",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex; ) {",
+    "rule": "Increment Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1307,
+    "precode": "elem = elem.getNext();",
+    "aftercode": "elem = elem.getPrevious();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1310,
+    "precode": "if (elem == null) {",
+    "aftercode": "if (elem != null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1311,
+    "precode": "error(INDEX_OUT_OF_BOUNDS_ERROR, right);",
+    "aftercode": "return null;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1315,
+    "precode": "if (elem.getType() == Token.EMPTY) {",
+    "aftercode": "if (elem.getType() != Token.EMPTY) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1316,
+    "precode": "elem = NodeUtil.newUndefinedNode(elem);",
+    "aftercode": "elem = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1318,
+    "precode": "left.removeChild(elem);",
+    "aftercode": "// left.removeChild(elem);",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1322,
+    "precode": "n.getParent().replaceChild(n, elem);",
+    "aftercode": "n.replaceChild(n, elem);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1323,
+    "precode": "reportCodeChange();",
+    "aftercode": "// reportCodeChange();",
+    "rule": "Statement Removal",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1324,
+    "precode": "return elem;",
+    "aftercode": "return n;",
+    "rule": "Return Value",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1287,
+    "precode": "if (right.getType() != Token.NUMBER) {",
+    "aftercode": "if (right.getType() != Token.STRING) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1295,
+    "precode": "if (intIndex != index) {",
+    "aftercode": "if (intIndex > index) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1300,
+    "precode": "if (intIndex < 0) {",
+    "aftercode": "if (intIndex < -1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex - 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex + 1; i++) {",
+    "rule": "Loop Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1315,
+    "precode": "if (elem.getType() == Token.EMPTY) {",
+    "aftercode": "if (elem.getType() == Token.STRING) {",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1318,
+    "precode": "left.removeChild(elem);",
+    "aftercode": "left.removeFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1283,
+    "precode": "if (isAssignmentTarget(n)) {",
+    "aftercode": "if (isAssignmentTarget(n) && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1294,
+    "precode": "int intIndex = (int) index;",
+    "aftercode": "int intIndex = (int) -index;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1300,
+    "precode": "if (intIndex < 0) {",
+    "aftercode": "if (intIndex < 0 && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1305,
+    "precode": "Node elem = left.getFirstChild();",
+    "aftercode": "Node elem = left.getLastChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "rule": "Loop Increment",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1306,
+    "precode": "for (int i = 0; elem != null && i < intIndex; i++) {",
+    "aftercode": "for (int i = 0; elem != null && i < intIndex; i--) {",
+    "rule": "Increment Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1310,
+    "precode": "if (elem == null) {",
+    "aftercode": "if (elem == null || false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1318,
+    "precode": "left.removeChild(elem);",
+    "aftercode": "left.removeChild(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1322,
+    "precode": "n.getParent().replaceChild(n, elem);",
+    "aftercode": "n.getParent().replaceChild(elem, n);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1293,
+    "precode": "double index = right.getDouble();",
+    "aftercode": "double index = right.getInt();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1287,
+    "precode": "if (right.getType() != Token.NUMBER) {",
+    "aftercode": "if (right.getType() != Token.NUMBER || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1300,
+    "precode": "if (intIndex < 0) {",
+    "aftercode": "if (intIndex < 0) {",
+    "rule": "Conditional Removal",
+    "gen_time_s": 1.2,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/PeepholeFoldConstants.java",
+    "line": 1315,
+    "precode": "if (elem.getType() == Token.EMPTY) {",
+    "aftercode": "if (elem.getType() == Token.EMPTY || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]

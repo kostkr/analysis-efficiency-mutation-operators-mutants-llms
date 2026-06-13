@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 340,
+    "precode": "Node assign = processInfixExpression(assignmentNode);",
+    "aftercode": "Node assign = null;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 341,
+    "precode": "Node target = assign.getFirstChild();",
+    "aftercode": "Node target = assign.getNextSibling();",
+    "rule": "Sibling/Child Mutation",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 342,
+    "precode": "if (!validAssignmentTarget(target)) {",
+    "aftercode": "if (validAssignmentTarget(target)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 342,
+    "precode": "if (!validAssignmentTarget(target)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 343,
+    "precode": "\"invalid assignment target\",",
+    "aftercode": "\"valid assignment target\",",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 346,
+    "precode": "target.getLineno(), \"\", 0);",
+    "aftercode": "target.getLineno(), \"\", 1);",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 346,
+    "precode": "target.getLineno(), \"\", 0);",
+    "aftercode": "0, \"\", 0);",
+    "rule": "Literal Substitution",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 348,
+    "precode": "return assign;",
+    "aftercode": "return target;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 348,
+    "precode": "return assign;",
+    "aftercode": "return null;",
+    "rule": "Return Value Negation",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 348,
+    "precode": "return assign;",
+    "aftercode": "return target.getParent();",
+    "rule": "Sibling/Child Mutation",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 341,
+    "precode": "Node target = assign.getFirstChild();",
+    "aftercode": "Node target = assign;",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.08,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 800,
+    "precode": "if (type == Token.NEG && operand.getType() == Token.NUMBER) {",
+    "aftercode": "if (type == Token.NEG || operand.getType() == Token.NUMBER) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 800,
+    "precode": "if (type == Token.NEG && operand.getType() == Token.NUMBER) {",
+    "aftercode": "if (type != Token.NEG && operand.getType() == Token.NUMBER) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 801,
+    "precode": "operand.setDouble(-operand.getDouble());",
+    "aftercode": "operand.setDouble(operand.getDouble());",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 801,
+    "precode": "operand.setDouble(-operand.getDouble());",
+    "aftercode": "operand.setDouble(0.0);",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 804,
+    "precode": "if (type == Token.INC || type == Token.DEC) {",
+    "aftercode": "if (type == Token.INC && type == Token.DEC) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 805,
+    "precode": "if (!validAssignmentTarget(operand)) {",
+    "aftercode": "if (validAssignmentTarget(operand)) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 806,
+    "precode": "String msg = (type == Token.INC)",
+    "aftercode": "String msg = (type != Token.INC)",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 806,
+    "precode": "String msg = (type == Token.INC)",
+    "aftercode": "String msg = (type == Token.DEC)",
+    "rule": "Argument Selection",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 816,
+    "precode": "Node node = newNode(type, operand);",
+    "aftercode": "Node node = newNode(operand, type);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 817,
+    "precode": "if (exprNode.isPostfix()) {",
+    "aftercode": "if (!exprNode.isPostfix()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 818,
+    "precode": "node.putBooleanProp(Node.INCRDECR_PROP, true);",
+    "aftercode": "node.putBooleanProp(Node.INCRDECR_PROP, false);",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 818,
+    "precode": "node.putBooleanProp(Node.INCRDECR_PROP, true);",
+    "aftercode": "node.putBooleanProp(Node.INCRDECR_PROP, null);",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 799,
+    "precode": "Node operand = transform(exprNode.getOperand());",
+    "aftercode": "Node operand = null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 802,
+    "precode": "return operand;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 802,
+    "precode": "return operand;",
+    "aftercode": "return operand.getPrev();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 820,
+    "precode": "return node;",
+    "aftercode": "return null;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 800,
+    "precode": "if (type == Token.NEG && operand.getType() == Token.NUMBER) {",
+    "aftercode": "if (type == Token.NEG && operand.getType() == Token.STRING) {",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 804,
+    "precode": "if (type == Token.INC || type == Token.DEC) {",
+    "aftercode": "if (type == Token.INC || type == Token.ADD) {",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 811,
+    "precode": "sourceName,",
+    "aftercode": "sourceName.toUpperCase(),",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 812,
+    "precode": "operand.getLineno(), \"\", 0);",
+    "aftercode": "operand.getLineno(), \"\", 1);",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 801,
+    "precode": "operand.setDouble(-operand.getDouble());",
+    "aftercode": "operand.setDouble(operand.getDouble() * 2);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 816,
+    "precode": "Node node = newNode(type, operand);",
+    "aftercode": "Node node = newNode(type);",
+    "rule": "Argument Count",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 805,
+    "precode": "if (!validAssignmentTarget(operand)) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 817,
+    "precode": "if (exprNode.isPostfix()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 800,
+    "precode": "if (type == Token.NEG && operand.getType() == Token.NUMBER) {",
+    "aftercode": "if (type == Token.NEG && operand.getType() == Token.STRING || operand.getType() == Token.NUMBER) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 806,
+    "precode": "String msg = (type == Token.INC)",
+    "aftercode": "String msg = (type == Token.INC) ? \"invalid decrement target\"",
+    "rule": "Literal Value Mutator",
+    "gen_time_s": 2.3,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 826,
+    "precode": "case Token.NAME:",
+    "aftercode": "case Token.GETPROP:",
+    "rule": "Switch Case Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 827,
+    "precode": "case Token.GETPROP:",
+    "aftercode": "case Token.GETELEM:",
+    "rule": "Switch Case Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 829,
+    "precode": "return true;",
+    "aftercode": "return false;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 831,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 828,
+    "precode": "case Token.GETELEM:",
+    "aftercode": "case Token.SETELEM:",
+    "rule": "Switch Case Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 829,
+    "precode": "return true;",
+    "aftercode": "return !true;",
+    "rule": "Negation Introduction",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 831,
+    "precode": "return false;",
+    "aftercode": "return !false;",
+    "rule": "Negation Introduction",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 826,
+    "precode": "case Token.NAME:",
+    "aftercode": "case Token.SETNAME:",
+    "rule": "Switch Case Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/parsing/IRFactory.java",
+    "line": 827,
+    "precode": "case Token.GETPROP:",
+    "aftercode": "case Token.SETPROP:",
+    "rule": "Switch Case Replacement",
+    "gen_time_s": 1.97,
+    "dublicate": false
+  }
+]

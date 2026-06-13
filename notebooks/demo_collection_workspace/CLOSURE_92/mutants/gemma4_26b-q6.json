@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 748,
+    "precode": "if (firstNode == null) {",
+    "aftercode": "if (firstNode != null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 750,
+    "precode": "replacementNode = candidateDefinition;",
+    "aftercode": "replacementNode = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 756,
+    "precode": "if (candidateDefinition != null && explicitNode != null) {",
+    "aftercode": "if (candidateDefinition != null || explicitNode != null) {",
+    "rule": "Logical Connector",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 756,
+    "precode": "if (candidateDefinition != null && explicitNode != null) {",
+    "aftercode": "if (candidateDefinition == null && explicitNode != null) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 757,
+    "precode": "explicitNode.detachFromParent();",
+    "aftercode": "// explicitNode.detachFromParent();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 762,
+    "precode": "if (NodeUtil.isExpressionNode(candidateDefinition)) {",
+    "aftercode": "if (!NodeUtil.isExpressionNode(candidateDefinition)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 763,
+    "precode": "candidateDefinition.putBooleanProp(Node.IS_NAMESPACE, true);",
+    "aftercode": "candidateDefinition.putBooleanProp(Node.IS_NAMESPACE, false);",
+    "rule": "Value Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 766,
+    "precode": "if (nameNode.getType() == Token.NAME) {",
+    "aftercode": "if (nameNode.getType() != Token.NAME) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 769,
+    "precode": "assignNode.removeChild(nameNode);",
+    "aftercode": "// assignNode.removeChild(nameNode);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 770,
+    "precode": "assignNode.removeChild(valueNode);",
+    "aftercode": "// assignNode.removeChild(valueNode);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 771,
+    "precode": "nameNode.addChildToFront(valueNode);",
+    "aftercode": "nameNode.addChildToBack(valueNode);",
+    "rule": "Method Call Argument",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 772,
+    "precode": "Node varNode = new Node(Token.VAR, nameNode);",
+    "aftercode": "Node varNode = new Node(Token.VAR);",
+    "rule": "Argument Removal",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 773,
+    "precode": "varNode.copyInformationFrom(candidateDefinition);",
+    "aftercode": "// varNode.copyInformationFrom(candidateDefinition);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 774,
+    "precode": "candidateDefinition.getParent().replaceChild(",
+    "aftercode": "candidateDefinition.getParent().replaceChild(",
+    "rule": "No Change",
+    "gen_time_s": 1.14,
+    "dublicate": true
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 776,
+    "precode": "nameNode.setJSDocInfo(assignNode.getJSDocInfo());",
+    "aftercode": "nameNode.setJSDocInfo(null);",
+    "rule": "Value Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 778,
+    "precode": "replacementNode = varNode;",
+    "aftercode": "replacementNode = candidateDefinition;",
+    "rule": "Assignment",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 783,
+    "precode": "replacementNode = createDeclarationNode();",
+    "aftercode": "replacementNode = null;",
+    "rule": "Assignment",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 784,
+    "precode": "if (firstModule == minimumModule) {",
+    "aftercode": "if (firstModule != minimumModule) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 785,
+    "precode": "firstNode.getParent().addChildBefore(replacementNode, firstNode);",
+    "aftercode": "firstNode.getParent().addChildAfter(replacementNode, firstNode);",
+    "rule": "Method Call Argument",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 789,
+    "precode": "int indexOfDot = namespace.lastIndexOf('.');",
+    "aftercode": "int indexOfDot = namespace.indexOf('.');",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 790,
+    "precode": "if (indexOfDot == -1) {",
+    "aftercode": "if (indexOfDot != -1) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 790,
+    "precode": "if (indexOfDot == -1) {",
+    "aftercode": "if (indexOfDot == 0) {",
+    "rule": "Relational Operator",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 793,
+    "precode": "compiler.getNodeForCodeInsertion(minimumModule)",
+    "aftercode": "compiler.getNodeForCodeInsertion(null)",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 797,
+    "precode": "providedNames.get(namespace.substring(0, indexOfDot));",
+    "aftercode": "providedNames.get(namespace.substring(0, indexOfDot + 1));",
+    "rule": "Boundary Change",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 798,
+    "precode": "Preconditions.checkNotNull(parentName);",
+    "aftercode": "// Preconditions.checkNotNull(parentName);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 799,
+    "precode": "Preconditions.checkNotNull(parentName.replacementNode);",
+    "aftercode": "Preconditions.checkNotNull(parentName);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 800,
+    "precode": "parentName.replacementNode.getParent().addChildAfter(",
+    "aftercode": "parentName.replacementNode.getParent().addChildBefore(",
+    "rule": "Method Call Argument",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 804,
+    "precode": "if (explicitNode != null) {",
+    "aftercode": "if (explicitNode == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 805,
+    "precode": "explicitNode.detachFromParent();",
+    "aftercode": "explicitNode.getParent().detach();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/ProcessClosurePrimitives.java",
+    "line": 807,
+    "precode": "compiler.reportCodeChange();",
+    "aftercode": "// compiler.reportCodeChange();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.14,
+    "dublicate": false
+  }
+]

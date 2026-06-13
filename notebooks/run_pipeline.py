@@ -41,10 +41,10 @@ def _build_bug_id_batches(
 BUG_ID_BATCHES = _build_bug_id_batches(BUG_IDS_BY_PROJECT)
 
 
-RUN_CLASSIC_GENERATION = False
+RUN_CLASSIC_GENERATION = True
 RUN_LLM_QWEN3_6_Q6 = True
 RUN_LLM_GEMMA4_26B_Q6 = True
-RUN_COLLECTION = False
+RUN_COLLECTION = True
 
 
 # ── Classic generation ────────────────────────────────────────────

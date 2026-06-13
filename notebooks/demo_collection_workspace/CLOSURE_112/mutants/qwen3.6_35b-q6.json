@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1185,
+    "precode": "final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()",
+    "aftercode": "final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1186,
+    "precode": ".getTemplateKeys();",
+    "aftercode": ".getTemplateKeys();",
+    "rule": "Null Return",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1187,
+    "precode": "if (keys.isEmpty()) {",
+    "aftercode": "if (!keys.isEmpty()) {",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1188,
+    "precode": "return false;",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1192,
+    "precode": "Map<TemplateType, JSType> inferred = Maps.filterKeys(",
+    "aftercode": "Map<TemplateType, JSType> inferred = Maps.filterKeys(",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1193,
+    "precode": "inferTemplateTypesFromParameters(fnType, n),",
+    "aftercode": "inferTemplateTypesFromParameters(n, fnType),",
+    "rule": "Parameter Swap",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return !keys.contains(key);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1204,
+    "precode": "TemplateTypeReplacer replacer = new TemplateTypeReplacer(",
+    "aftercode": "TemplateTypeReplacer replacer = new TemplateTypeReplacer(",
+    "rule": "Constructor Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1205,
+    "precode": "registry, inferred);",
+    "aftercode": "registry, inferred);",
+    "rule": "Argument Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1206,
+    "precode": "Node callTarget = n.getFirstChild();",
+    "aftercode": "Node callTarget = n.getLastChild();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1208,
+    "precode": "FunctionType replacementFnType = fnType.visit(replacer)",
+    "aftercode": "FunctionType replacementFnType = fnType.visit(replacer)",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1209,
+    "precode": ".toMaybeFunctionType();",
+    "aftercode": ".toMaybeFunctionType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1210,
+    "precode": "Preconditions.checkNotNull(replacementFnType);",
+    "aftercode": "Preconditions.checkNotNull(replacementFnType);",
+    "rule": "Null Check Removal",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1212,
+    "precode": "callTarget.setJSType(replacementFnType);",
+    "aftercode": "callTarget.setJSType(null);",
+    "rule": "Null Argument",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1213,
+    "precode": "n.setJSType(replacementFnType.getReturnType());",
+    "aftercode": "n.setJSType(replacementFnType);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1215,
+    "precode": "return replacer.madeChanges;",
+    "aftercode": "return !replacer.madeChanges;",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1185,
+    "precode": "final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()",
+    "aftercode": "final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1186,
+    "precode": ".getTemplateKeys();",
+    "aftercode": ".getTemplateKeys();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1194,
+    "precode": "new Predicate<TemplateType>() {",
+    "aftercode": "new Predicate<TemplateType>() {",
+    "rule": "Anonymous Class Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1197,
+    "precode": "public boolean apply(TemplateType key) {",
+    "aftercode": "public boolean apply(TemplateType key) {",
+    "rule": "Method Signature Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1199,
+    "precode": "}}",
+    "aftercode": "}}",
+    "rule": "Syntax Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1200,
+    "precode": ");",
+    "aftercode": ");",
+    "rule": "Syntax Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1204,
+    "precode": "TemplateTypeReplacer replacer = new TemplateTypeReplacer(",
+    "aftercode": "TemplateTypeReplacer replacer = new TemplateTypeReplacer(",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1205,
+    "precode": "registry, inferred);",
+    "aftercode": "inferred, registry);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1206,
+    "precode": "Node callTarget = n.getFirstChild();",
+    "aftercode": "Node callTarget = n.getChildCount() > 0 ? n.getFirstChild() : null;",
+    "rule": "Arithmetic Operator",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1208,
+    "precode": "FunctionType replacementFnType = fnType.visit(replacer)",
+    "aftercode": "FunctionType replacementFnType = fnType.visit(replacer)",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1209,
+    "precode": ".toMaybeFunctionType();",
+    "aftercode": ".toMaybeFunctionType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1210,
+    "precode": "Preconditions.checkNotNull(replacementFnType);",
+    "aftercode": "Preconditions.checkNotNull(replacementFnType, \"No replacement found\");",
+    "rule": "Argument Add",
+    "gen_time_s": 2.21,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1212,
+    "precode": "callTarget.setJSType(replacementFnType);",
+    "aftercode": "callTarget.setJSType(replacementFnType);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1213,
+    "precode": "n.setJSType(replacementFnType.getReturnType());",
+    "aftercode": "n.setJSType(replacementFnType.getReturnType());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1215,
+    "precode": "return replacer.madeChanges;",
+    "aftercode": "return replacer.madeChanges;",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1185,
+    "precode": "final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()",
+    "aftercode": "final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1192,
+    "precode": "Map<TemplateType, JSType> inferred = Maps.filterKeys(",
+    "aftercode": "Map<TemplateType, JSType> inferred = Maps.filterKeys(",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1204,
+    "precode": "TemplateTypeReplacer replacer = new TemplateTypeReplacer(",
+    "aftercode": "TemplateTypeReplacer replacer = new TemplateTypeReplacer(",
+    "rule": "Constructor Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1212,
+    "precode": "callTarget.setJSType(replacementFnType);",
+    "aftercode": "callTarget.setJSType(replacementFnType);",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.21,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return keys.isEmpty();",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.15,
+    "dublicate": true
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return !keys.contains(key);",
+    "rule": "Negate Conditionals",
+    "gen_time_s": 2.15,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return keys.contains(key) && keys.size() > 0;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return keys.contains(key) || keys.size() > 0;",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return key.equals(keys);",
+    "rule": "Argument Method Call Replacer",
+    "gen_time_s": 2.15,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return !keys.contains(key);",
+    "rule": "Negate Returns",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return true;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/TypeInference.java",
+    "line": 1198,
+    "precode": "return keys.contains(key);",
+    "aftercode": "return false;",
+    "rule": "Return Value Mutator",
+    "gen_time_s": 2.27,
+    "dublicate": true
+  }
+]

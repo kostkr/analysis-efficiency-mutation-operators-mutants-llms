@@ -1,0 +1,582 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 727,
+    "precode": "ObjectType dereferenced = type.dereference();",
+    "aftercode": "ObjectType dereferenced = type.toObjectType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 729,
+    "precode": "type = dereferenced;",
+    "aftercode": "type = type.toObjectType();",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 734,
+    "precode": "if (type.isFunctionPrototypeType() ||",
+    "aftercode": "if (type.isFunctionPrototypeType() &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 735,
+    "precode": "(type.toObjectType() != null &&",
+    "aftercode": "(type.toObjectType() == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 736,
+    "precode": "type.toObjectType().getConstructor() != null)) {",
+    "aftercode": "type.toObjectType().getConstructor() == null)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 744,
+    "precode": "ObjectType objectType = getJSType(n.getFirstChild()).dereference();",
+    "aftercode": "ObjectType objectType = getJSType(n.getFirstChild()).toObjectType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 747,
+    "precode": "if (objectType.getConstructor() != null &&",
+    "aftercode": "if (objectType.getConstructor() == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 748,
+    "precode": "objectType.getConstructor().isInterface()) {",
+    "aftercode": "objectType.getConstructor().isClass()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 753,
+    "precode": "while (objectType != null && !objectType.hasOwnProperty(propName)) {",
+    "aftercode": "while (objectType != null && objectType.hasOwnProperty(propName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 761,
+    "precode": "(objectType.getConstructor() != null ||",
+    "aftercode": "(objectType.getConstructor() == null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 768,
+    "precode": "String qualifiedName = n.getQualifiedName();",
+    "aftercode": "String qualifiedName = n.getSourceFileName();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 771,
+    "precode": "} else if (type.isFunctionType()) {",
+    "aftercode": "} else if (type.isObjectPrototypeType()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 773,
+    "precode": "return \"function\";",
+    "aftercode": "return \"object\";",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 775,
+    "precode": "return type.toString();",
+    "aftercode": "return type.toSource();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 728,
+    "precode": "if (dereferenced != null) {",
+    "aftercode": "if (dereferenced == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 743,
+    "precode": "if (n.isGetProp()) {",
+    "aftercode": "if (n.isSetProp()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 745,
+    "precode": "if (objectType != null) {",
+    "aftercode": "if (objectType == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 746,
+    "precode": "String propName = n.getLastChild().getString();",
+    "aftercode": "String propName = n.getFirstChild().getString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 760,
+    "precode": "if (objectType != null &&",
+    "aftercode": "if (objectType == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 762,
+    "precode": "objectType.isFunctionPrototypeType())) {",
+    "aftercode": "objectType.isObjectPrototypeType())) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 769,
+    "precode": "if (qualifiedName != null) {",
+    "aftercode": "if (qualifiedName == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 763,
+    "precode": "return objectType.toString() + \".\" + propName;",
+    "aftercode": "return propName + \".\" + objectType.toString();",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 749,
+    "precode": "objectType = FunctionType.getTopDefiningInterface(",
+    "aftercode": "objectType = FunctionType.getTopDefiningClass(",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 754,
+    "precode": "objectType = objectType.getImplicitPrototype();",
+    "aftercode": "objectType = objectType.getExplicitPrototype();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 725,
+    "precode": "JSType type = getJSType(n);",
+    "aftercode": "JSType type = getJSType(n.getFirstChild());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 737,
+    "precode": "return type.toString();",
+    "aftercode": "return type.toSource();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 770,
+    "precode": "return qualifiedName;",
+    "aftercode": "return null;",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 726,
+    "precode": "if (dereference) {",
+    "aftercode": "if (!dereference) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 724,
+    "precode": "String getReadableJSTypeName(Node n, boolean dereference) {",
+    "aftercode": "String getReadableJSTypeName(Node n, boolean dereference, boolean flag) {",
+    "rule": "Parameter Addition",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 727,
+    "precode": "ObjectType dereferenced = type.dereference();",
+    "aftercode": "ObjectType dereferenced = type.getImplicitPrototype();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 735,
+    "precode": "(type.toObjectType() != null &&",
+    "aftercode": "(type.toObjectType() != null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 744,
+    "precode": "ObjectType objectType = getJSType(n.getFirstChild()).dereference();",
+    "aftercode": "ObjectType objectType = getJSType(n.getLastChild()).dereference();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 747,
+    "precode": "if (objectType.getConstructor() != null &&",
+    "aftercode": "if (objectType.getConstructor() != null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 753,
+    "precode": "while (objectType != null && !objectType.hasOwnProperty(propName)) {",
+    "aftercode": "while (objectType != null && objectType.hasOwnProperty(propName) == false) {",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 761,
+    "precode": "(objectType.getConstructor() != null ||",
+    "aftercode": "(objectType.getConstructor() != null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 771,
+    "precode": "} else if (type.isFunctionType()) {",
+    "aftercode": "} else if (type.isObjectPrototypeType()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 725,
+    "precode": "JSType type = getJSType(n);",
+    "aftercode": "JSType type = n.getJSType();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 729,
+    "precode": "type = dereferenced;",
+    "aftercode": "type = type;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 734,
+    "precode": "if (type.isFunctionPrototypeType() ||",
+    "aftercode": "if (type.isObjectPrototypeType() ||",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 736,
+    "precode": "type.toObjectType().getConstructor() != null)) {",
+    "aftercode": "type.toObjectType().getConstructor() != null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 745,
+    "precode": "if (objectType != null) {",
+    "aftercode": "if (objectType != null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 748,
+    "precode": "objectType.getConstructor().isInterface()) {",
+    "aftercode": "objectType.getConstructor().isClass()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 754,
+    "precode": "objectType = objectType.getImplicitPrototype();",
+    "aftercode": "objectType = null;",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 760,
+    "precode": "if (objectType != null &&",
+    "aftercode": "if (objectType != null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 762,
+    "precode": "objectType.isFunctionPrototypeType())) {",
+    "aftercode": "objectType.isObjectPrototypeType())) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 768,
+    "precode": "String qualifiedName = n.getQualifiedName();",
+    "aftercode": "String qualifiedName = n.toString();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 773,
+    "precode": "return \"function\";",
+    "aftercode": "return null;",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 775,
+    "precode": "return type.toString();",
+    "aftercode": "return \"unknown\";",
+    "rule": "Literal Value Replacement",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 749,
+    "precode": "objectType = FunctionType.getTopDefiningInterface(",
+    "aftercode": "objectType = FunctionType.getTopDefiningClass(",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 750,
+    "precode": "objectType, propName);",
+    "aftercode": "propName, objectType);",
+    "rule": "Argument Swapping",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 744,
+    "precode": "ObjectType objectType = getJSType(n.getFirstChild()).dereference();",
+    "aftercode": "ObjectType objectType = getJSType(n.getFirstChild());",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 727,
+    "precode": "ObjectType dereferenced = type.dereference();",
+    "aftercode": "ObjectType dereferenced = type.getImplicitPrototype();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 735,
+    "precode": "(type.toObjectType() != null &&",
+    "aftercode": "(type.toObjectType() == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 747,
+    "precode": "if (objectType.getConstructor() != null &&",
+    "aftercode": "if (objectType.getConstructor() == null &&",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 753,
+    "precode": "while (objectType != null && !objectType.hasOwnProperty(propName)) {",
+    "aftercode": "while (objectType != null && objectType.hasOwnProperty(propName)) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 761,
+    "precode": "(objectType.getConstructor() != null ||",
+    "aftercode": "(objectType.getConstructor() == null ||",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 769,
+    "precode": "if (qualifiedName != null) {",
+    "aftercode": "if (qualifiedName == null) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/TypeValidator.java",
+    "line": 771,
+    "precode": "} else if (type.isFunctionType()) {",
+    "aftercode": "} else if (type.isObjectPrototypeType()) {",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.38,
+    "dublicate": true
+  }
+]

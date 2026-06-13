@@ -1,0 +1,922 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 25,
+    "precode": "if(mocks.size() == 1) {",
+    "aftercode": "if(mocks.size() >= 1) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 25,
+    "precode": "if(mocks.size() == 1) {",
+    "aftercode": "if(mocks.size() > 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 25,
+    "precode": "if(mocks.size() == 1) {",
+    "aftercode": "if(mocks.size() != 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 26,
+    "precode": "final Object matchingMock = mocks.iterator().next();",
+    "aftercode": "final Object matchingMock = mocks.get(0);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 26,
+    "precode": "final Object matchingMock = mocks.iterator().next();",
+    "aftercode": "final Object matchingMock = null;",
+    "rule": "Variable Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 31,
+    "precode": "if (!new BeanPropertySetter(fieldInstance, field).set(matchingMock)) {",
+    "aftercode": "if (new BeanPropertySetter(fieldInstance, field).set(matchingMock)) {",
+    "rule": "Negation Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 31,
+    "precode": "if (!new BeanPropertySetter(fieldInstance, field).set(matchingMock)) {",
+    "aftercode": "if (new BeanPropertySetter(fieldInstance, field).set(matchingMock) == null) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 32,
+    "precode": "new FieldSetter(fieldInstance, field).set(matchingMock);",
+    "aftercode": "// new FieldSetter(fieldInstance, field).set(matchingMock);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 32,
+    "precode": "new FieldSetter(fieldInstance, field).set(matchingMock);",
+    "aftercode": "new FieldSetter(field, fieldInstance).set(matchingMock);",
+    "rule": "Argument Order Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 34,
+    "precode": "} catch (RuntimeException e) {",
+    "aftercode": "} catch (Exception e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 34,
+    "precode": "} catch (RuntimeException e) {",
+    "aftercode": "} catch (Throwable e) {",
+    "rule": "Exception Type Change",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 34,
+    "precode": "} catch (RuntimeException e) {",
+    "aftercode": "} // catch (RuntimeException e) {",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 35,
+    "precode": "new Reporter().cannotInjectDependency(field, matchingMock, e);",
+    "aftercode": "// new Reporter().cannotInjectDependency(field, matchingMock, e);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 35,
+    "precode": "new Reporter().cannotInjectDependency(field, matchingMock, e);",
+    "aftercode": "new Reporter().cannotInjectDependency(matchingMock, field, e);",
+    "rule": "Argument Order Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 37,
+    "precode": "return matchingMock;",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 37,
+    "precode": "return matchingMock;",
+    "aftercode": "return fieldInstance;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 44,
+    "precode": "return null;",
+    "aftercode": "return matchingMock;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 44,
+    "precode": "return null;",
+    "aftercode": "return fieldInstance;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 25,
+    "precode": "if(mocks.size() == 1) {",
+    "aftercode": "if(mocks.size() == 0) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 31,
+    "precode": "if (!new BeanPropertySetter(fieldInstance, field).set(matchingMock)) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 31,
+    "precode": "if (!new BeanPropertySetter(fieldInstance, field).set(matchingMock)) {",
+    "aftercode": "if (false) {",
+    "rule": "Conditional Constant Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 32,
+    "precode": "new FieldSetter(fieldInstance, field).set(matchingMock);",
+    "aftercode": "new FieldSetter(fieldInstance, field).set(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 35,
+    "precode": "new Reporter().cannotInjectDependency(field, matchingMock, e);",
+    "aftercode": "new Reporter().cannotInjectDependency(field, field, e);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.18,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/FinalMockCandidateFilter.java",
+    "line": 24,
+    "precode": "public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {",
+    "aftercode": "public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {",
+    "rule": "No-op (for structural check)",
+    "gen_time_s": 1.18,
+    "dublicate": true
+  },
+  {
+    "id": 25,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/MockCandidateFilter.java",
+    "line": 14,
+    "precode": "Collection<Object> mocks,",
+    "aftercode": "List<Object> mocks,",
+    "rule": "Type Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/MockCandidateFilter.java",
+    "line": 15,
+    "precode": "Field fieldToBeInjected,",
+    "aftercode": "Object fieldToBeInjected,",
+    "rule": "Type Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/MockCandidateFilter.java",
+    "line": 16,
+    "precode": "List<Field> fields, Object instance",
+    "aftercode": "List<Field> fields, null instance",
+    "rule": "Null Assignment",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/MockCandidateFilter.java",
+    "line": 16,
+    "precode": "List<Field> fields, Object instance",
+    "aftercode": "Set<Field> fields, Object instance",
+    "rule": "Type Change",
+    "gen_time_s": 1.33,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 25,
+    "precode": "if (mocks.size() > 1) {",
+    "aftercode": "if (mocks.size() >= 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 25,
+    "precode": "if (mocks.size() > 1) {",
+    "aftercode": "if (mocks.size() < 1) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 27,
+    "precode": "if (field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "aftercode": "if (field.getName().contains(mockUtil.getMockName(mock).toString())) {",
+    "rule": "String Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 27,
+    "precode": "if (field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "aftercode": "if (!field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 28,
+    "precode": "mockNameMatches.add(mock);",
+    "aftercode": "mockNameMatches.add(null);",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 31,
+    "precode": "return next.filterCandidate(mockNameMatches, field, fields,",
+    "aftercode": "return next.filterCandidate(null, field, fields,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 42,
+    "precode": "} else if (mocks.size() == 1) {",
+    "aftercode": "} else if (mocks.size() > 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 42,
+    "precode": "} else if (mocks.size() == 1) {",
+    "aftercode": "} else if (mocks.size() >= 1) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 43,
+    "precode": "String mockName = mockUtil.getMockName(mocks.iterator().next())",
+    "aftercode": "String mockName = mockUtil.getMockName(mocks.iterator().previous())",
+    "rule": "Iterator Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 47,
+    "precode": "if (!otherField.equals(field)",
+    "aftercode": "if (otherField.equals(field)",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 48,
+    "precode": "&& otherField.getType().equals(field.getType())",
+    "aftercode": "&& !otherField.getType().equals(field.getType())",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 48,
+    "precode": "&& otherField.getType().equals(field.getType())",
+    "aftercode": "|| otherField.getType().equals(field.getType())",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 41,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 49,
+    "precode": "&& otherField.getName().equals(mockName)) {",
+    "aftercode": "&& !otherField.getName().equals(mockName)) {",
+    "rule": "Negation",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 49,
+    "precode": "&& otherField.getName().equals(mockName)) {",
+    "aftercode": "&& otherField.getName().contains(mockName)) {",
+    "rule": "String Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 53,
+    "precode": "return null;",
+    "aftercode": "return fieldInstance;",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 59,
+    "precode": "return next.filterCandidate(mocks, field, fields, fieldInstance);",
+    "aftercode": "return next.filterCandidate(new ArrayList<>(), field, fields, fieldInstance);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 24,
+    "precode": "List<Object> mockNameMatches = new ArrayList<Object>();",
+    "aftercode": "List<Object> mockNameMatches = new LinkedList<Object>();",
+    "rule": "Implementation Change",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 27,
+    "precode": "if (field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "aftercode": "if (field.getName().equalsIgnoreCase(mockUtil.getMockName(mock).toString())) {",
+    "rule": "String Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 47,
+    "precode": "if (!otherField.equals(field)",
+    "aftercode": "if (!otherField.equals(null)",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 48,
+    "precode": "&& otherField.getType().equals(field.getType())",
+    "aftercode": "&& otherField.getClass().equals(field.getClass())",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 49,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 26,
+    "precode": "for (Object mock : mocks) {",
+    "aftercode": "for (Object mock : new ArrayList<>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 46,
+    "precode": "for (Field otherField : fields) {",
+    "aftercode": "for (Field otherField : new ArrayList<Field>()) {",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 25,
+    "precode": "if (mocks.size() > 1) {",
+    "aftercode": "if (mocks.size() > 0) {",
+    "rule": "Relational Operator Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 27,
+    "precode": "if (field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "aftercode": "if (field.getName() == mockUtil.getMockName(mock).toString()) {",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 49,
+    "precode": "&& otherField.getName().equals(mockName)) {",
+    "aftercode": "&& otherField.getName().equals(null)) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 53,
+    "precode": "return null;",
+    "aftercode": "return new Object();",
+    "rule": "Value Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 31,
+    "precode": "return next.filterCandidate(mockNameMatches, field, fields,",
+    "aftercode": "return next.filterCandidate(mockNameMatches, null, fields,",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 59,
+    "precode": "return next.filterCandidate(mocks, field, fields, fieldInstance);",
+    "aftercode": "return null;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 57,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 24,
+    "precode": "List<Object> mockNameMatches = new ArrayList<Object>();",
+    "aftercode": "List<Object> mockNameMatches = null;",
+    "rule": "Assignment Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 43,
+    "precode": "String mockName = mockUtil.getMockName(mocks.iterator().next())",
+    "aftercode": "String mockName = mockUtil.getMockName(mocks.get(0))",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 27,
+    "precode": "if (field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "aftercode": "if (field.getName().equals(mockUtil.getMockName(mock))) {",
+    "rule": "Method Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 48,
+    "precode": "&& otherField.getType().equals(field.getType())",
+    "aftercode": "&& otherField.getType() == field.getType()",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 25,
+    "precode": "if (mocks.size() > 1) {",
+    "aftercode": "if (mocks.isEmpty()) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 42,
+    "precode": "} else if (mocks.size() == 1) {",
+    "aftercode": "} else if (mocks.size() == 0) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 28,
+    "precode": "mockNameMatches.add(mock);",
+    "aftercode": "mockNameMatches.remove(mock);",
+    "rule": "Method Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 47,
+    "precode": "if (!otherField.equals(field)",
+    "aftercode": "if (otherField != field",
+    "rule": "Equality Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 31,
+    "precode": "return next.filterCandidate(mockNameMatches, field, fields,",
+    "aftercode": "return next.filterCandidate(mockNameMatches, field, new ArrayList<>(),",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 59,
+    "precode": "return next.filterCandidate(mocks, field, fields, fieldInstance);",
+    "aftercode": "return next.filterCandidate(mocks, field, fields, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 27,
+    "precode": "if (field.getName().equals(mockUtil.getMockName(mock).toString())) {",
+    "aftercode": "if (field.getName().equals(mockUtil.getMockName(mock).toString()))",
+    "rule": "Block Removal",
+    "gen_time_s": 1.21,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 53,
+    "precode": "return null;",
+    "aftercode": "return new Object();",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": true
+  },
+  {
+    "id": 69,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 53,
+    "precode": "return null;",
+    "aftercode": "return this;",
+    "rule": "Return Value Replacement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+    "line": 53,
+    "precode": "return null;",
+    "aftercode": "",
+    "rule": "Empty Statement",
+    "gen_time_s": 1.23,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 21,
+    "precode": "List<Object> mockTypeMatches = new ArrayList<Object>();",
+    "aftercode": "List<Object> mockTypeMatches = Collections.emptyList();",
+    "rule": "Collection Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 23,
+    "precode": "if (field.getType().isAssignableFrom(mock.getClass())) {",
+    "aftercode": "if (field.getType().isAssignableFrom(mock.getClass()) || true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 23,
+    "precode": "if (field.getType().isAssignableFrom(mock.getClass())) {",
+    "aftercode": "if (!field.getType().isAssignableFrom(mock.getClass())) {",
+    "rule": "Negation",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 23,
+    "precode": "if (field.getType().isAssignableFrom(mock.getClass())) {",
+    "aftercode": "if (mock.getClass().isAssignableFrom(field.getType())) {",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 24,
+    "precode": "mockTypeMatches.add(mock);",
+    "aftercode": "mockTypeMatches.add(field);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 24,
+    "precode": "mockTypeMatches.add(mock);",
+    "aftercode": "// mockTypeMatches.add(mock);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 28,
+    "precode": "return next.filterCandidate(mockTypeMatches, field, fields, fieldInstance);",
+    "aftercode": "return next.filterCandidate(mocks, field, fields, fieldInstance);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 28,
+    "precode": "return next.filterCandidate(mockTypeMatches, field, fields, fieldInstance);",
+    "aftercode": "return next.filterCandidate(mockTypeMatches, fields, field, fieldInstance);",
+    "rule": "Argument Swap",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 28,
+    "precode": "return next.filterCandidate(mockTypeMatches, field, fields, fieldInstance);",
+    "aftercode": "return next.filterCandidate(mockTypeMatches, field, fields, null);",
+    "rule": "Null Constant",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+    "line": 22,
+    "precode": "for (Object mock : mocks) {",
+    "aftercode": "for (Object mock : new ArrayList<Object>()) {",
+    "rule": "Loop Replacement",
+    "gen_time_s": 1.28,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 112,
+    "precode": "for (Iterator<Field> it = orderedInstanceFields.iterator(); it.hasNext(); ) {",
+    "aftercode": "for (Iterator<Field> it = orderedInstanceFields.iterator(); true; ) {",
+    "rule": "Infinite Loop",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 114,
+    "precode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, orderedInstanceFields, instance).thenInject();",
+    "aftercode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, instance, orderedInstanceFields).thenInject();",
+    "rule": "Argument Order",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 115,
+    "precode": "if (injected != null) {",
+    "aftercode": "if (injected == null) {",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 116,
+    "precode": "injectionOccurred |= true;",
+    "aftercode": "injectionOccurred |= false;",
+    "rule": "Assignment",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 116,
+    "precode": "injectionOccurred |= true;",
+    "aftercode": "injectionOccurred = true;",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 117,
+    "precode": "mocks.remove(injected);",
+    "aftercode": "// mocks.remove(injected);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 117,
+    "precode": "mocks.remove(injected);",
+    "aftercode": "mocks.add(injected);",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 118,
+    "precode": "it.remove();",
+    "aftercode": "// it.remove();",
+    "rule": "Statement Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 121,
+    "precode": "return injectionOccurred;",
+    "aftercode": "return !injectionOccurred;",
+    "rule": "Negation",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 90,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 121,
+    "precode": "return injectionOccurred;",
+    "aftercode": "return true;",
+    "rule": "Constant Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 112,
+    "precode": "for (Iterator<Field> it = orderedInstanceFields.iterator(); it.hasNext(); ) {",
+    "aftercode": "for (Iterator<Field> it = orderedInstanceFields.iterator(); it.next() != null; ) {",
+    "rule": "Condition Replacement",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/org/mockito/internal/configuration/injection/PropertyAndSetterInjection.java",
+    "line": 114,
+    "precode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, orderedInstanceFields, instance).thenInject();",
+    "aftercode": "Object injected = mockCandidateFilter.filterCandidate(mocks, field, orderedInstanceFields, instance);",
+    "rule": "Method Call Deletion",
+    "gen_time_s": 1.2,
+    "dublicate": false
+  }
+]

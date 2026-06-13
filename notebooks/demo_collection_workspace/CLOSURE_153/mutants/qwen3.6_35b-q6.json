@@ -1,0 +1,1732 @@
+[
+  {
+    "id": 1,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 640,
+    "precode": "Preconditions.checkState(n.getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkState(n.getType() != Token.NAME);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 2,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 642,
+    "precode": "Var v = s.getVar(name);",
+    "aftercode": "Var v = s.getVar(null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 3,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 644,
+    "precode": "if (v != null && s.isGlobal()) {",
+    "aftercode": "if (v == null && s.isGlobal()) {",
+    "rule": "Negation Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 4,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 649,
+    "precode": "if (v.isExtern() && !input.isExtern()) {",
+    "aftercode": "if (v.isExtern() && input.isExtern()) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 5,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 657,
+    "precode": "if (v != null && v.getParentNode().getType() == Token.CATCH) {",
+    "aftercode": "if (v != null && v.getParentNode().getType() != Token.CATCH) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 6,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 673,
+    "precode": "name = MakeDeclaredNamesUnique.ContextualRenameInverter.getOrginalName(",
+    "aftercode": "name = MakeDeclaredNamesUnique.ContextualRenameInverter.getUniqueName(",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 7,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 679,
+    "precode": "} else if (v != null && parent.getType() == Token.FUNCTION) {",
+    "aftercode": "} else if (v != null && parent.getType() != Token.FUNCTION) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 8,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 680,
+    "precode": "if (v.getParentNode().getType() == Token.VAR) {",
+    "aftercode": "if (v.getParentNode().getType() != Token.VAR) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 9,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 681,
+    "precode": "s.undeclare(v);",
+    "aftercode": "s.declare(v.getName(), v.getDefiningNode(), v.getJSType(), v.input);",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 10,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 682,
+    "precode": "s.declare(name, n, n.getJSType(), v.input);",
+    "aftercode": "s.undeclare(v);",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 11,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 683,
+    "precode": "replaceVarWithAssignment(v.getNameNode(), v.getParentNode(),",
+    "aftercode": "replaceVarWithAssignment(v.getDefiningNode(), v.getParentNode(),",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 12,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 686,
+    "precode": "} else if (parent.getType() == Token.VAR) {",
+    "aftercode": "} else if (parent.getType() != Token.VAR) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 13,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 687,
+    "precode": "Preconditions.checkState(parent.hasOneChild());",
+    "aftercode": "Preconditions.checkState(parent.hasChildren());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 14,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 689,
+    "precode": "replaceVarWithAssignment(n, parent, parent.getParent());",
+    "aftercode": "replaceVarWithAssignment(n, parent, null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 15,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 640,
+    "precode": "Preconditions.checkState(n.getType() == Token.NAME);",
+    "aftercode": "// Preconditions.checkState(n.getType() == Token.NAME);",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 16,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 650,
+    "precode": "if (hasOkDuplicateDeclaration.add(v)) {",
+    "aftercode": "if (!hasOkDuplicateDeclaration.add(v)) {",
+    "rule": "Negation Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 17,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 644,
+    "precode": "if (v != null && s.isGlobal()) {",
+    "aftercode": "if (v != null || s.isGlobal()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 18,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 649,
+    "precode": "if (v.isExtern() && !input.isExtern()) {",
+    "aftercode": "if (v.isExtern() || !input.isExtern()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 19,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 657,
+    "precode": "if (v != null && v.getParentNode().getType() == Token.CATCH) {",
+    "aftercode": "if (v == null || v.getParentNode().getType() == Token.CATCH) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 20,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 679,
+    "precode": "} else if (v != null && parent.getType() == Token.FUNCTION) {",
+    "aftercode": "} else if (v == null || parent.getType() == Token.FUNCTION) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 21,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 680,
+    "precode": "if (v.getParentNode().getType() == Token.VAR) {",
+    "aftercode": "if (v.getParentNode().getType() == Token.VAR && false) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 22,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 651,
+    "precode": "return;",
+    "aftercode": "throw new RuntimeException(\"Unexpected duplicate declaration\");",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 23,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 675,
+    "precode": "compiler.report(",
+    "aftercode": "return;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 24,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 676,
+    "precode": "JSError.make(",
+    "aftercode": "compiler.report(",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 25,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 684,
+    "precode": "v.getParentNode().getParent());",
+    "aftercode": "v.getParentNode());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 26,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 642,
+    "precode": "Var v = s.getVar(name);",
+    "aftercode": "Var v = null;",
+    "rule": "Null Return Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 27,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 644,
+    "precode": "if (v != null && s.isGlobal()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 28,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 649,
+    "precode": "if (v.isExtern() && !input.isExtern()) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 29,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 657,
+    "precode": "if (v != null && v.getParentNode().getType() == Token.CATCH) {",
+    "aftercode": "if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 30,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 679,
+    "precode": "} else if (v != null && parent.getType() == Token.FUNCTION) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 31,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 686,
+    "precode": "} else if (parent.getType() == Token.VAR) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 32,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 640,
+    "precode": "Preconditions.checkState(n.getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkNotNull(n);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 33,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 641,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n.getParent().getParent();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 34,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 650,
+    "precode": "if (hasOkDuplicateDeclaration.add(v)) {",
+    "aftercode": "if (hasOkDuplicateDeclaration.contains(v)) {",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 35,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 673,
+    "precode": "name = MakeDeclaredNamesUnique.ContextualRenameInverter.getOrginalName(",
+    "aftercode": "name = name;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 36,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 681,
+    "precode": "s.undeclare(v);",
+    "aftercode": "s.clear();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 37,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 682,
+    "precode": "s.declare(name, n, n.getJSType(), v.input);",
+    "aftercode": "s.declare(name, n, null, v.input);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 38,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 687,
+    "precode": "Preconditions.checkState(parent.hasOneChild());",
+    "aftercode": "Preconditions.checkState(true);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 39,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 689,
+    "precode": "replaceVarWithAssignment(n, parent, parent.getParent());",
+    "aftercode": "replaceVarWithAssignment(n, parent.getParent(), parent.getParent());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 40,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 649,
+    "precode": "if (v.isExtern() && !input.isExtern()) {",
+    "aftercode": "if (v.isExtern() && input.isExtern()) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 41,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 657,
+    "precode": "if (v != null && v.getParentNode().getType() == Token.CATCH) {",
+    "aftercode": "if (v != null && v.getParentNode().getType() == Token.VAR) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 42,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 679,
+    "precode": "} else if (v != null && parent.getType() == Token.FUNCTION) {",
+    "aftercode": "} else if (v != null && parent.getType() == Token.VAR) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 43,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 680,
+    "precode": "if (v.getParentNode().getType() == Token.VAR) {",
+    "aftercode": "if (v.getParentNode().getType() == Token.FUNCTION) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 44,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 686,
+    "precode": "} else if (parent.getType() == Token.VAR) {",
+    "aftercode": "} else if (parent.getType() == Token.FUNCTION) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 45,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 651,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 46,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 675,
+    "precode": "compiler.report(",
+    "aftercode": "compiler.error(",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 47,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 676,
+    "precode": "JSError.make(",
+    "aftercode": "JSError.warn(",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 48,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 683,
+    "precode": "replaceVarWithAssignment(v.getNameNode(), v.getParentNode(),",
+    "aftercode": "replaceVarWithAssignment(v.getDefiningNode(), v.getParentNode(),",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 49,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 684,
+    "precode": "v.getParentNode().getParent());",
+    "aftercode": "v.getParentNode().getParent().getParent());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 50,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 640,
+    "precode": "Preconditions.checkState(n.getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkArgument(n.getType() == Token.NAME);",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 51,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 642,
+    "precode": "Var v = s.getVar(name);",
+    "aftercode": "Var v = s.getVar(name + \"_\");",
+    "rule": "String Constant Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 52,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 650,
+    "precode": "if (hasOkDuplicateDeclaration.add(v)) {",
+    "aftercode": "if (hasOkDuplicateDeclaration.remove(v)) {",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 53,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 673,
+    "precode": "name = MakeDeclaredNamesUnique.ContextualRenameInverter.getOrginalName(",
+    "aftercode": "name = name.toUpperCase();",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 54,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 681,
+    "precode": "s.undeclare(v);",
+    "aftercode": "v = null;",
+    "rule": "Statement Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 55,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 682,
+    "precode": "s.declare(name, n, n.getJSType(), v.input);",
+    "aftercode": "s.declare(name, n, n.getJSType(), null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 56,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 687,
+    "precode": "Preconditions.checkState(parent.hasOneChild());",
+    "aftercode": "Preconditions.checkState(parent.hasChildren());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": true
+  },
+  {
+    "id": 57,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 689,
+    "precode": "replaceVarWithAssignment(n, parent, parent.getParent());",
+    "aftercode": "replaceVarWithAssignment(n.getParent(), parent, parent.getParent());",
+    "rule": "Method Name Replacement",
+    "gen_time_s": 2.29,
+    "dublicate": false
+  },
+  {
+    "id": 58,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 631,
+    "precode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet();",
+    "aftercode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newLinkedHashSet();",
+    "rule": "Collection Creation",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 59,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 631,
+    "precode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet();",
+    "aftercode": "private Set<Var> hasOkDuplicateDeclaration = new HashSet<>();",
+    "rule": "Library Substitution",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 60,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 631,
+    "precode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet();",
+    "aftercode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newConcurrentHashSet();",
+    "rule": "Library Substitution",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 61,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 631,
+    "precode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet();",
+    "aftercode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet(0);",
+    "rule": "Argument Removal",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 62,
+    "filepath": "src/com/google/javascript/jscomp/Normalize.java",
+    "line": 631,
+    "precode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet();",
+    "aftercode": "private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet(null);",
+    "rule": "Null Argument Insertion",
+    "gen_time_s": 2.9,
+    "dublicate": false
+  },
+  {
+    "id": 63,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 84,
+    "precode": "sourceName = (String) n.getProp(Node.SOURCENAME_PROP);",
+    "aftercode": "sourceName = (String) n.getProp(Node.CHILDINDEX_PROP);",
+    "rule": "Property Key Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 64,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 87,
+    "precode": "final Node args = fnNameNode.getNext();",
+    "aftercode": "final Node args = fnNameNode.getPrevious();",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 65,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 88,
+    "precode": "final Node body = args.getNext();",
+    "aftercode": "final Node body = args.getPrevious();",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 66,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 93,
+    "precode": "if (!fnName.isEmpty() && NodeUtil.isFunctionExpression(n)) {",
+    "aftercode": "if (fnName.isEmpty() && NodeUtil.isFunctionExpression(n)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 67,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 93,
+    "precode": "if (!fnName.isEmpty() && NodeUtil.isFunctionExpression(n)) {",
+    "aftercode": "if (!fnName.isEmpty() || NodeUtil.isFunctionExpression(n)) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 68,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 98,
+    "precode": "Preconditions.checkState(args.getType() == Token.LP);",
+    "aftercode": "Preconditions.checkState(args.getType() != Token.LP);",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 69,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 99,
+    "precode": "for (Node a = args.getFirstChild(); a != null;",
+    "aftercode": "for (Node a = args.getFirstChild(); a == null;",
+    "rule": "Loop Condition Negation",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 70,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 99,
+    "precode": "for (Node a = args.getFirstChild(); a != null;",
+    "aftercode": "for (Node a = args.getFirstChild(); a != null && false;",
+    "rule": "Loop Condition Mutant",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 71,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 101,
+    "precode": "Preconditions.checkState(a.getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkState(a.getType() != Token.NAME);",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 72,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 106,
+    "precode": "scanVars(body, n);",
+    "aftercode": "scanVars(n, body);",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 73,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 109,
+    "precode": "Preconditions.checkState(scope.getParent() == null);",
+    "aftercode": "Preconditions.checkState(scope.getParent() != null);",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 74,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 110,
+    "precode": "scanVars(n, null);",
+    "aftercode": "scanVars(null, n);",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 75,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 83,
+    "precode": "if (n.getType() == Token.FUNCTION) {",
+    "aftercode": "if (n.getType() != Token.FUNCTION) {",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 76,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 83,
+    "precode": "if (n.getType() == Token.FUNCTION) {",
+    "aftercode": "if (n.getType() == Token.STRING) {",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 77,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 92,
+    "precode": "String fnName = fnNameNode.getString();",
+    "aftercode": "String fnName = fnNameNode.getType();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 78,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 94,
+    "precode": "declareVar(fnNameNode);",
+    "aftercode": "declareVar(body);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 79,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 102,
+    "precode": "declareVar(a);",
+    "aftercode": "declareVar(fnNameNode);",
+    "rule": "Variable Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 80,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 86,
+    "precode": "final Node fnNameNode = n.getFirstChild();",
+    "aftercode": "final Node fnNameNode = n.getLastChild();",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 81,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 87,
+    "precode": "final Node args = fnNameNode.getNext();",
+    "aftercode": "final Node args = fnNameNode.getNext().getNext();",
+    "rule": "Statement Insertion",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 82,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 88,
+    "precode": "final Node body = args.getNext();",
+    "aftercode": "final Node body = args.getNext().getNext();",
+    "rule": "Statement Insertion",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 83,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 99,
+    "precode": "for (Node a = args.getFirstChild(); a != null;",
+    "aftercode": "for (Node a = args.getLastChild(); a != null;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 84,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 100,
+    "precode": "a = a.getNext()) {",
+    "aftercode": "a = a.getPrevious()) {",
+    "rule": "Method Argument Swap",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 85,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 101,
+    "precode": "Preconditions.checkState(a.getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkState(a.getType() == Token.NUMBER);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 86,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 84,
+    "precode": "sourceName = (String) n.getProp(Node.SOURCENAME_PROP);",
+    "aftercode": "sourceName = (String) n.getProp(Node.INPUT_START_PROP);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 87,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 93,
+    "precode": "if (!fnName.isEmpty() && NodeUtil.isFunctionExpression(n)) {",
+    "aftercode": "if (!fnName.isEmpty() && NodeUtil.isFunctionDeclaration(n)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 88,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 98,
+    "precode": "Preconditions.checkState(args.getType() == Token.LP);",
+    "aftercode": "Preconditions.checkState(args.getType() == Token.RP);",
+    "rule": "Constant Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 89,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 109,
+    "precode": "Preconditions.checkState(scope.getParent() == null);",
+    "aftercode": "Preconditions.checkState(scope.getParent() != null);",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": true
+  },
+  {
+    "id": 90,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 106,
+    "precode": "scanVars(body, n);",
+    "aftercode": "scanVars(body, null);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 91,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 110,
+    "precode": "scanVars(n, null);",
+    "aftercode": "scanVars(n, n);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 92,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 86,
+    "precode": "final Node fnNameNode = n.getFirstChild();",
+    "aftercode": "final Node fnNameNode = n.getNextSibling();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 93,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 87,
+    "precode": "final Node args = fnNameNode.getNext();",
+    "aftercode": "final Node args = fnNameNode.getFirstChild();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.33,
+    "dublicate": false
+  },
+  {
+    "id": 94,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 121,
+    "precode": "for (Node child = n.getFirstChild();",
+    "aftercode": "for (Node child = n.getFirstChild().getNext();",
+    "rule": "Iterator Removal",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 95,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 123,
+    "precode": "Node next = child.getNext();",
+    "aftercode": "Node next = child.getNext().getNext();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 96,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 124,
+    "precode": "declareVar(child);",
+    "aftercode": "declareVar(child.getNext());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 97,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 125,
+    "precode": "child = next;",
+    "aftercode": "child = null;",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 98,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 127,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Return Statement Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 99,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 130,
+    "precode": "if (NodeUtil.isFunctionExpression(n)) {",
+    "aftercode": "if (!NodeUtil.isFunctionExpression(n)) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 100,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 131,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Return Statement Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 101,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 134,
+    "precode": "String fnName = n.getFirstChild().getString();",
+    "aftercode": "String fnName = n.getSecondChild().getString();",
+    "rule": "Index/Property Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 102,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 135,
+    "precode": "if (fnName.isEmpty()) {",
+    "aftercode": "if (!fnName.isEmpty()) {",
+    "rule": "Condition Negation",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 103,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 137,
+    "precode": "return;",
+    "aftercode": "break;",
+    "rule": "Return Statement Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 104,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 139,
+    "precode": "declareVar(n.getFirstChild());",
+    "aftercode": "declareVar(n.getSecondChild());",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 105,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 140,
+    "precode": "return;   // should not examine function's children",
+    "aftercode": "// should not examine function's children",
+    "rule": "Statement Removal",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 106,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 143,
+    "precode": "Preconditions.checkState(n.getChildCount() == 2);",
+    "aftercode": "Preconditions.checkState(n.getChildCount() == 3);",
+    "rule": "Arithmetic Operator Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 107,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 144,
+    "precode": "Preconditions.checkState(n.getFirstChild().getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkState(n.getFirstChild().getType() != Token.NAME);",
+    "rule": "Equality Operator Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 108,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 148,
+    "precode": "final Node var = n.getFirstChild();",
+    "aftercode": "final Node var = n.getSecondChild();",
+    "rule": "Index/Property Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 109,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 149,
+    "precode": "final Node block = var.getNext();",
+    "aftercode": "final Node block = var.getPrev();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 110,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 151,
+    "precode": "declareVar(var);",
+    "aftercode": "declareVar(block);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 111,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 152,
+    "precode": "scanVars(block, n);",
+    "aftercode": "scanVars(var, n);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 112,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 153,
+    "precode": "return;  // only one child to scan",
+    "aftercode": "break;  // only one child to scan",
+    "rule": "Return Statement Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 113,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 156,
+    "precode": "sourceName = (String) n.getProp(Node.SOURCENAME_PROP);",
+    "aftercode": "sourceName = (String) n.getProp(Node.SOURCENAME_PROP) + \"_backup\";",
+    "rule": "String Concatenation",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 114,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 162,
+    "precode": "if (NodeUtil.isControlStructure(n) || NodeUtil.isStatementBlock(n)) {",
+    "aftercode": "if (NodeUtil.isControlStructure(n) && NodeUtil.isStatementBlock(n)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 115,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 163,
+    "precode": "for (Node child = n.getFirstChild();",
+    "aftercode": "for (Node child = n.getSecondChild();",
+    "rule": "Index/Property Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 116,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 165,
+    "precode": "Node next = child.getNext();",
+    "aftercode": "Node next = child.getPrev();",
+    "rule": "Method Call Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 117,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 166,
+    "precode": "scanVars(child, n);",
+    "aftercode": "scanVars(next, n);",
+    "rule": "Argument Replacement",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 118,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 167,
+    "precode": "child = next;",
+    "aftercode": "child = child.getNext();",
+    "rule": "Assignment Mutator",
+    "gen_time_s": 2.17,
+    "dublicate": false
+  },
+  {
+    "id": 119,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 192,
+    "precode": "if (origParent.getType() == Token.CATCH &&",
+    "aftercode": "if (origParent.getType() != Token.CATCH &&",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 120,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 193,
+    "precode": "parent.getType() == Token.CATCH) {",
+    "aftercode": "parent.getType() != Token.CATCH) {",
+    "rule": "Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 121,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 192,
+    "precode": "if (origParent.getType() == Token.CATCH &&",
+    "aftercode": "if (origParent.getType() == Token.CATCH ||",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 122,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 198,
+    "precode": "boolean allowDupe = false;",
+    "aftercode": "boolean allowDupe = true;",
+    "rule": "Boolean Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 123,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 200,
+    "precode": "if (info == null) {",
+    "aftercode": "if (info != null) {",
+    "rule": "Condition Boundary Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 124,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 204,
+    "precode": "info != null && info.getSuppressions().contains(\"duplicate\");",
+    "aftercode": "info == null && info.getSuppressions().contains(\"duplicate\");",
+    "rule": "Null Check Inversion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 125,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 204,
+    "precode": "info != null && info.getSuppressions().contains(\"duplicate\");",
+    "aftercode": "info != null || info.getSuppressions().contains(\"duplicate\");",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 126,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 206,
+    "precode": "if (!allowDupe) {",
+    "aftercode": "if (allowDupe) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 127,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 211,
+    "precode": "(origVar.input != null",
+    "aftercode": "(origVar.input == null",
+    "rule": "Condition Boundary Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 128,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 215,
+    "precode": "} else if (name.equals(ARGUMENTS) && !NodeUtil.isVarDeclaration(n)) {",
+    "aftercode": "} else if (name.equals(ARGUMENTS) || !NodeUtil.isVarDeclaration(n)) {",
+    "rule": "Logical Operator Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 129,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 215,
+    "precode": "} else if (name.equals(ARGUMENTS) && !NodeUtil.isVarDeclaration(n)) {",
+    "aftercode": "} else if (name.equals(ARGUMENTS) && NodeUtil.isVarDeclaration(n)) {",
+    "rule": "Negation Removal",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 130,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 186,
+    "precode": "Node parent = n.getParent();",
+    "aftercode": "Node parent = n;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 131,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 190,
+    "precode": "Scope.Var origVar = scope.getVar(name);",
+    "aftercode": "Scope.Var origVar = scope.getVar(\"dummy\");",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 132,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 191,
+    "precode": "Node origParent = origVar.getParentNode();",
+    "aftercode": "Node origParent = origVar;",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 133,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 199,
+    "precode": "JSDocInfo info = n.getJSDocInfo();",
+    "aftercode": "JSDocInfo info = parent.getJSDocInfo();",
+    "rule": "Object Reference Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 134,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 201,
+    "precode": "info = parent.getJSDocInfo();",
+    "aftercode": "info = n.getJSDocInfo();",
+    "rule": "Object Reference Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 135,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 204,
+    "precode": "info != null && info.getSuppressions().contains(\"duplicate\");",
+    "aftercode": "info != null && info.getSuppressions().contains(\"suppress\");",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 136,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 208,
+    "precode": "JSError.make(sourceName, n,",
+    "aftercode": "JSError.make(sourceName, origParent,",
+    "rule": "Object Reference Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 137,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 210,
+    "precode": "name,",
+    "aftercode": "\"dummy\",",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 138,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 218,
+    "precode": "compiler.report(",
+    "aftercode": "return;",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 139,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 189,
+    "precode": "if (scope.isGlobal()) {",
+    "aftercode": "if (!scope.isGlobal()) {",
+    "rule": "Condition Inversion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 140,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 195,
+    "precode": "return;",
+    "aftercode": "",
+    "rule": "Statement Deletion",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 141,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 213,
+    "precode": "\"??\")));",
+    "aftercode": "\"ERROR\")));",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 142,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 204,
+    "precode": "info != null && info.getSuppressions().contains(\"duplicate\");",
+    "aftercode": "false;",
+    "rule": "Expression Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 143,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 204,
+    "precode": "info != null && info.getSuppressions().contains(\"duplicate\");",
+    "aftercode": "true;",
+    "rule": "Expression Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 144,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 207,
+    "precode": "if (!allowDupe) {",
+    "aftercode": "if (true) {",
+    "rule": "Condition Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 145,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 207,
+    "precode": "if (!allowDupe) {",
+    "aftercode": "if (false) {",
+    "rule": "Condition Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 146,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 215,
+    "precode": "} else if (name.equals(ARGUMENTS) && !NodeUtil.isVarDeclaration(n)) {",
+    "aftercode": "} else if (false) {",
+    "rule": "Condition Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 147,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 215,
+    "precode": "} else if (name.equals(ARGUMENTS) && !NodeUtil.isVarDeclaration(n)) {",
+    "aftercode": "} else if (true) {",
+    "rule": "Condition Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 148,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 204,
+    "precode": "info != null && info.getSuppressions().contains(\"duplicate\");",
+    "aftercode": "info != null && info.getSuppressions().isEmpty();",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 149,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 192,
+    "precode": "if (origParent.getType() == Token.CATCH &&",
+    "aftercode": "if (origParent == null &&",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 150,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 193,
+    "precode": "parent.getType() == Token.CATCH) {",
+    "aftercode": "parent == null) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 151,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 211,
+    "precode": "? origVar.input.getName()",
+    "aftercode": "? origVar.input.toString()",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 152,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 212,
+    "precode": ": \"??\")));",
+    "aftercode": ": \"UNKNOWN\")));",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 153,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 209,
+    "precode": "VAR_MULTIPLY_DECLARED_ERROR,",
+    "aftercode": "VAR_DECLARED_ERROR,",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 154,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 220,
+    "precode": "VAR_ARGUMENTS_SHADOWED_ERROR));",
+    "aftercode": "VAR_SHADOWED_ERROR));",
+    "rule": "Literal Change",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 155,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 215,
+    "precode": "} else if (name.equals(ARGUMENTS) && !NodeUtil.isVarDeclaration(n)) {",
+    "aftercode": "} else if (name != null && !NodeUtil.isVarDeclaration(n)) {",
+    "rule": "Method Call Replacement",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 156,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 190,
+    "precode": "Scope.Var origVar = scope.getVar(name);",
+    "aftercode": "Scope.Var origVar = null;",
+    "rule": "Expression Constantification",
+    "gen_time_s": 2.18,
+    "dublicate": false
+  },
+  {
+    "id": 157,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 232,
+    "precode": "Preconditions.checkState(n.getType() == Token.NAME);",
+    "aftercode": "Preconditions.checkState(n.getType() != Token.NAME);",
+    "rule": "Conditionals Boundary",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 158,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 236,
+    "precode": "if (scope.isDeclared(name, false)",
+    "aftercode": "if (scope.isDeclared(name, true)",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 159,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 237,
+    "precode": "|| (scope.isLocal() && name.equals(ARGUMENTS))) {",
+    "aftercode": "|| (scope.isLocal() || name.equals(ARGUMENTS))) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 160,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 237,
+    "precode": "|| (scope.isLocal() && name.equals(ARGUMENTS))) {",
+    "aftercode": "&& (scope.isLocal() && name.equals(ARGUMENTS))) {",
+    "rule": "Boolean Operator Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 161,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 237,
+    "precode": "|| (scope.isLocal() && name.equals(ARGUMENTS))) {",
+    "aftercode": "|| (scope.isLocal() && !name.equals(ARGUMENTS))) {",
+    "rule": "Negation Inverter",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 162,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 239,
+    "precode": "scope, name, n, input);",
+    "aftercode": "scope, name, input, n);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 163,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 241,
+    "precode": "scope.declare(name, n, null, input);",
+    "aftercode": "scope.declare(name, n, input, null);",
+    "rule": "Argument Swap",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 164,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 241,
+    "precode": "scope.declare(name, n, null, input);",
+    "aftercode": "scope.declare(name, null, null, input);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 165,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 234,
+    "precode": "CompilerInput input = compiler.getInput(sourceName);",
+    "aftercode": "CompilerInput input = compiler.getInput(null);",
+    "rule": "Null Argument Replacement",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 166,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 235,
+    "precode": "String name = n.getString();",
+    "aftercode": "String name = n.getParent().getString();",
+    "rule": "Method Receiver Change",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 167,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 236,
+    "precode": "if (scope.isDeclared(name, false)",
+    "aftercode": "if (scope.isDeclared(name, false) && true",
+    "rule": "Tautology/Contradiction",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 168,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 237,
+    "precode": "|| (scope.isLocal() && name.equals(ARGUMENTS))) {",
+    "aftercode": "|| (scope.isLocal() && name.equals(ARGUMENTS)) && false) {",
+    "rule": "Tautology/Contradiction",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 169,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 238,
+    "precode": "redeclarationHandler.onRedeclaration(",
+    "aftercode": "redeclarationHandler.onDeclaration(",
+    "rule": "Method Name Change",
+    "gen_time_s": 2.45,
+    "dublicate": false
+  },
+  {
+    "id": 170,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 177,
+    "precode": "Scope s, String name, Node n, CompilerInput input);",
+    "aftercode": "String name, Scope s, Node n, CompilerInput input);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 171,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 177,
+    "precode": "Scope s, String name, Node n, CompilerInput input);",
+    "aftercode": "Scope s, Node n, String name, CompilerInput input);",
+    "rule": "Argument Order Swap",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 172,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 176,
+    "precode": "void onRedeclaration(",
+    "aftercode": "void onRedeclarations(",
+    "rule": "Identifier Name Change",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  },
+  {
+    "id": 173,
+    "filepath": "src/com/google/javascript/jscomp/SyntacticScopeCreator.java",
+    "line": 177,
+    "precode": "Scope s, String name, Node n, CompilerInput input);",
+    "aftercode": "Scope s, String name, CompilerInput input);",
+    "rule": "Parameter Deletion",
+    "gen_time_s": 2.62,
+    "dublicate": false
+  }
+]
