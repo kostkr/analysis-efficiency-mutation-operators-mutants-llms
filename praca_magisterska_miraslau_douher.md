@@ -397,26 +397,26 @@ Każdy błąd został zgłoszony w systemie śledzenia zgłoszeń, a następnie 
 Kod każdego błędu został ręcznie minimalizowany w taki sposób, żeby usunąć zmiany, które nie były związane z defektem, takie jak refaktoryzacja, czyli nowe funkcje.
 Zgodnie z dokumentacją dla każdego błędu istnieje przynajmniej jeden test, który zawsze kończy się niepowodzeniem niezależnie od kolejności wywołania testów.
 
-| Identyfikator   | Projekt                | Liczba aktywnych bugów | IDs aktywnych bugów          |
-|-----------------|------------------------|------------------------|------------------------------|
-| Chart           | jfreechart             | 26                     | 1–26                         |
-| Cli             | commons-cli            | 39                     | 1–5, 7–40                    |
-| Closure         | closure-compiler       | 174                    | 1–62, 64–92, 94–176          |
-| Codec           | commons-codec          | 18                     | 1–18                         |
-| Collections     | commons-collections    | 28                     | 1–28                         |
-| Compress        | commons-compress       | 47                     | 1–47                         |
-| Csv             | commons-csv            | 16                     | 1–16                         |
-| Gson            | gson                   | 18                     | 1–18                         |
-| JacksonCore     | jackson-core           | 26                     | 1–26                         |
-| JacksonDatabind | jackson-databind       | 110                    | 1–64, 66–88, 90–112          |
-| JacksonXml      | jackson-dataformat-xml | 6                      | 1–6                          |
-| Jsoup           | jsoup                  | 93                     | 1–93                         |
-| JxPath          | commons-jxpath         | 22                     | 1–22                         |
-| Lang            | commons-lang           | 61                     | 1, 3–17, 19–24, 26–47, 49–65 |
-| Math            | commons-math           | 106                    | 1–106                        |
-| Mockito         | mockito                | 38                     | 1–38                         |
-| Time            | joda-time              | 26                     | 1–20, 22–27                  |
-| **Razem**       |                        | **854**                | –                            |
+| Identyfikator   | Projekt                | Liczba aktywnych bugów | IDs aktywnych bugów               |
+|-----------------|------------------------|------------------------|-----------------------------------|
+| Chart           | jfreechart             | 26                     | 1–26                              |
+| Cli             | commons-cli            | 39                     | 1–5, 7–40                         |
+| Closure         | closure-compiler       | 174                    | 1–62, 64–92, 94–120, 122–176      |
+| Codec           | commons-codec          | 18                     | 1–18                              |
+| Collections     | commons-collections    | 28                     | 1–9, 11-28                        |
+| Compress        | commons-compress       | 47                     | 1–47                              |
+| Csv             | commons-csv            | 16                     | 1–16                              |
+| Gson            | gson                   | 18                     | 1–18                              |
+| JacksonCore     | jackson-core           | 26                     | 1–16, 18–26                       |
+| JacksonDatabind | jackson-databind       | 110                    | 1–25, 27–33, 35–64, 66–88, 90–112 |
+| JacksonXml      | jackson-dataformat-xml | 6                      | 1–6                               |
+| Jsoup           | jsoup                  | 93                     | 1-8, 10–16, 18-24, 26–93          |
+| JxPath          | commons-jxpath         | 22                     | 1–22                              |
+| Lang            | commons-lang           | 61                     | 1, 3–17, 19–24, 26–47, 49–65      |
+| Math            | commons-math           | 106                    | 1–11, 13-103, 105-106             |
+| Mockito         | mockito                | 38                     | 1–25, 27–38                       |
+| Time            | joda-time              | 26                     | 1–20, 22–27                       |
+| **Razem**       |                        | **854**                | –                                 |
 
 Projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (Lang, Math, Collections), przez parsery i kodeki (Jsoup, Gson, JacksonCore, JacksonDatabind, Codec), aż po kompilatory (Closure) i narzędzia ogólnego przeznaczenia (Compress, Csv, Cli). Różnorodność dziedzin zapewnia, że wyniki nie są specyficzne dla jednego rodzaju kodu i mogą stanowić podstawę wniosków ogólniejszej natury. Ze względu na koszty wywołań interfejsu API modelu językowego i czas uruchomienia testów, spośród dostępnych błędów wybierana jest reprezentatywna próba spełniająca zdefiniowane kryteria selekcji.
 
