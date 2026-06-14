@@ -456,7 +456,7 @@ Jeżeli mutant jest identyczny z oryginałem, oznacza się go jako duplikat.
 Po ich usunięciu pozostaje zbiór mutantów unikalnych, który wraz z warunkiem kompilowalności stanowi podstawę do obliczania dalszych metryk.
 
 ```
-Duplication Mutation Rate (DMR) = liczba mutantów zduplikowanych / liczba mutantów kompilowalnych
+Duplication Mutation Rate (DMR) = liczba mutantów zduplikowanych kompilowalnych / liczba mutantów kompilowalnych
 ```
 
 Wskaźnik ten pokazuje, jaki odsetek mutantów kompilowanych stanowią duplikaty.

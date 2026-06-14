@@ -513,6 +513,33 @@ class CalculateMetricsTest(unittest.TestCase):
         self.assertEqual(metrics.compiled_duplicates, 2)
         self.assertAlmostEqual(metrics.dmr or 0.0, 2 / 3)
 
+    def test_dmr_ignores_duplicate_mutants_that_do_not_compile(self) -> None:
+        tmp, workspace = self.make_bug_workspace(
+            {
+                "gemma4_model.json": [
+                    self.mutant(1, "return 2;"),
+                    self.mutant(2, "return 2; // duplicate"),
+                    self.mutant(3, "return 2; // duplicate"),
+                ]
+            },
+            {
+                "gemma4_model.json": [
+                    self.result(1, failing_tests=[]),
+                    self.result(2, compiled=False, compile_error="javac"),
+                    self.result(3, compiled=False, compile_error="javac"),
+                ]
+            },
+        )
+        with tmp:
+            bug = cm.load_bugs(workspace, ())[0]
+            metrics = cm.calculate_metrics("BUG_1", "gemma4", (bug,))
+
+        self.assertEqual(metrics.generated, 3)
+        self.assertEqual(metrics.duplicates, 2)
+        self.assertEqual(metrics.compiled, 1)
+        self.assertEqual(metrics.compiled_duplicates, 0)
+        self.assertAlmostEqual(metrics.dmr or 0.0, 0.0)
+
     def test_classic_final_metrics_ignore_invalid_and_duplicates(self) -> None:
         tmp, workspace = self.make_bug_workspace(
             {

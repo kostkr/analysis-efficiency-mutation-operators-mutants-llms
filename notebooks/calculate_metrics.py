@@ -515,7 +515,7 @@ def calculate_metrics(
         high_ochiai_mutants=high_ochiai_mutants,
         new_mutants=new_mutants,
         cmr=safe_div(compiled, generated),
-        dmr=safe_div(duplicates, compiled),
+        dmr=safe_div(compiled_duplicates, compiled),
         emr=safe_div(survived_useful, len(profile_ready)),
         mutation_score=safe_div(killed_useful, len(profile_ready)),
         llm_nmr=llm_nmr,
@@ -679,12 +679,12 @@ def print_table(headers: list[str], rows: list[list[str]]) -> None:
     if not rows:
         print("(no rows)")
         return
-    widths = [
-        max(len(str(row[index])) for row in [headers] + rows)
-        for index in range(len(headers))
-    ]
+    widths: list[int] = []
+    for index in range(len(headers)):
+        column_values = [headers[index], *(row[index] for row in rows)]
+        widths.append(max(len(str(value)) for value in column_values))
     print(" | ".join(header.ljust(widths[index]) for index, header in enumerate(headers)))
-    print("-+-".join("-" * width for width in widths))
+    print("-+-".join("-" * int(width) for width in widths))  # type: ignore[arg-type]
     for row in rows:
         print(" | ".join(str(value).ljust(widths[index]) for index, value in enumerate(row)))
 
