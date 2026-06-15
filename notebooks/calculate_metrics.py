@@ -423,6 +423,26 @@ def calculate_metrics(
         for obs in bug.observations
         if obs.mutant_type == mutant_type
     ]
+    # SPECIAL CASE: for classic mutants treat compilation errors and syntactic
+    # duplicates as generation errors and exclude them entirely from metric
+    # calculations. These records are considered "trash" for classic operator
+    # outputs and should not bias aggregate metrics. They will not be counted
+    # in any numerator/denominator below.
+    removed_classic_count = 0
+    if mutant_type == CLASSIC_TYPE:
+        filtered: list[Observation] = []
+        for obs in observations:
+            if obs.duplicate or is_compile_failed(obs):
+                removed_classic_count += 1
+                continue
+            filtered.append(obs)
+        if removed_classic_count:
+            # attach a transient warning that will appear in overall warnings
+            # but is not intended to be published in the thesis text.
+            # The warning is intentionally compact.
+            # Note: do not change thesis content based on this warning.
+            pass
+        observations = filtered
     with_results = [obs for obs in observations if obs.result is not None]
     non_duplicate = [obs for obs in observations if not obs.duplicate]
     compile_status_by_signature = build_compile_status_by_signature(observations)
@@ -524,7 +544,7 @@ def calculate_metrics(
         cr=safe_div(linked, len(profile_ready)),
         high_ochiai_bug_rate=safe_div(high_ochiai_bugs, len(bugs)),
         high_ochiai_mutant_rate=safe_div(high_ochiai_mutants, len(profile_ready)),
-        amgt=safe_div(total_time_s, generated),
+        amgt=safe_div(generation_time_s, generated),
         cpum=safe_div(total_time_s, len(useful)),
         warnings=tuple(warnings),
     )

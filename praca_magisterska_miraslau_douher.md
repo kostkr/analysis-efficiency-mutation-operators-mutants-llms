@@ -55,10 +55,9 @@
     - [5.3.7 Cost per Useful Mutant](#cost-per-useful-mutant) (DONE)
   - [5.4 Cel pracy i pytania badawcze](#cel-pracy-i-pytania-badawcze) (DONE)
 
-- [6 Założenia eksperymentu i metodyka](#założenia-eksperymentu-i-metodyka) (TO DO)
-  - [6.1 Generacja mutantów](#generacja-mutantów) (TO DO)
-  - [6.2 Przebieg eksperymentu](#przebieg-eksperymentu) (TO DO)
-  - [6.3 Weryfikacja mutantów i zbieranie wyników](#weryfikacja-mutantów-i-zbieranie-wyników) (TO DO)
+- [6 Założenia eksperymentu i metodyka](#założenia-eksperymentu-i-metodyka) (DONE)
+  - [6.1 Generacja mutantów](#generacja-mutantów) (DONE)
+  - [6.2 Przebieg eksperymentu](#przebieg-eksperymentu) (DONE)
 
 - [7 Analiza wyników i wnioski](#analiza-wyników-i-wnioski) (TO DO)
   - [7.1 Statystyki ogólne eksperymentu](#statystyki-ogólne-eksperymentu) (TO DO)
@@ -401,22 +400,22 @@ Zgodnie z dokumentacją dla każdego błędu istnieje przynajmniej jeden test, k
 |-----------------|------------------------|------------------------|-----------------------------------|
 | Chart           | jfreechart             | 26                     | 1–26                              |
 | Cli             | commons-cli            | 39                     | 1–5, 7–40                         |
-| Closure         | closure-compiler       | 174                    | 1–62, 64–92, 94–120, 122–176      |
+| Closure         | closure-compiler       | 173                    | 1–62, 64–92, 94–120, 122–176      |
 | Codec           | commons-codec          | 18                     | 1–18                              |
-| Collections     | commons-collections    | 28                     | 1–9, 11-28                        |
+| Collections     | commons-collections    | 27                     | 1–9, 11-28                        |
 | Compress        | commons-compress       | 47                     | 1–47                              |
 | Csv             | commons-csv            | 16                     | 1–16                              |
 | Gson            | gson                   | 18                     | 1–18                              |
-| JacksonCore     | jackson-core           | 26                     | 1–16, 18–26                       |
-| JacksonDatabind | jackson-databind       | 110                    | 1–25, 27–33, 35–64, 66–88, 90–112 |
+| JacksonCore     | jackson-core           | 25                     | 1–16, 18–26                       |
+| JacksonDatabind | jackson-databind       | 108                    | 1–25, 27–33, 35–64, 66–88, 90–112 |
 | JacksonXml      | jackson-dataformat-xml | 6                      | 1–6                               |
-| Jsoup           | jsoup                  | 93                     | 1-8, 10–16, 18-24, 26–93          |
+| Jsoup           | jsoup                  | 90                     | 1-8, 10–16, 18-24, 26–93          |
 | JxPath          | commons-jxpath         | 22                     | 1–22                              |
 | Lang            | commons-lang           | 61                     | 1, 3–17, 19–24, 26–47, 49–65      |
-| Math            | commons-math           | 106                    | 1–11, 13-103, 105-106             |
-| Mockito         | mockito                | 38                     | 1–25, 27–38                       |
+| Math            | commons-math           | 104                    | 1–11, 13-103, 105-106             |
+| Mockito         | mockito                | 37                     | 1–25, 27–38                       |
 | Time            | joda-time              | 26                     | 1–20, 22–27                       |
-| **Razem**       |                        | **854**                | –                                 |
+| **Razem**       |                        | **843**                | –                                 |
 
 Projekty reprezentują szerokie spektrum dziedzin, od bibliotek narzędziowych (Lang, Math, Collections), przez parsery i kodeki (Jsoup, Gson, JacksonCore, JacksonDatabind, Codec), aż po kompilatory (Closure) i narzędzia ogólnego przeznaczenia (Compress, Csv, Cli). Różnorodność dziedzin zapewnia, że wyniki nie są specyficzne dla jednego rodzaju kodu i mogą stanowić podstawę wniosków ogólniejszej natury. Ze względu na koszty wywołań interfejsu API modelu językowego i czas uruchomienia testów, spośród dostępnych błędów wybierana jest reprezentatywna próba spełniająca zdefiniowane kryteria selekcji.
 
@@ -427,7 +426,30 @@ W dalszej części rozdziału termin defekt oznacza pojedynczy rzeczywisty błą
 
 ### Rodzaje mutantów
 
-Dla przeprowadzenia badania trzeba zdefiniować rodzaje mutantów, na podstawie których będą liczone metryki dla odpowiedzi na tezy badawcze.
+Przeprowadzenia badania wymagano zdefiniowania zbiorów mutantów, na podstawie których będą liczone metryki wykorzystane w analizie tez badawczych.
+Dla każdej metryki będzie wykorzystywany jeden z kolejnych zbiorów mutantów lub defektów:
+
+- N_generated - liczba wszystkich wygenerowanych mutantów (zarówno LLM, jak i klasycznych).
+- N_compilable - liczba mutantów, które można poprawnie skompilować.
+- N_dup_compilable - liczba mutantów kompilowalnych, które zostały oznaczone jako duplikaty syntaktyczne względem innego mutanta lub oryginału.
+- N_useful - liczba "użytecznych" mutantów, czyli N_compilable - N_dup_compilable.
+- N_killed - liczba mutantów zabitych przez co najmniej jeden test.
+- N_survived - liczba mutantów przeżywających, czyli N_compilable - N_killed.
+- N_coupled_mutants - liczba użytecznych mutantów, które są powiązane z profilem testowym odpowiadającego im defektu.
+- N_high_ochiai_mutants - liczba użytecznych mutantów, dla których Ochiai przekracza przyjęty próg.
+- N_new_mutants_LLM - liczba mutantów z tablicy LLM, które nie mają odpowiednika w tablicy mutantów klasycznych.
+
+Wszystkie mutanty, dla których uruchomienie testów zakończyło się timeoutem, nie są zaliczane do zbioru ani do N_useful, ani do liczników N_killed/N_survived.
+
+- T_gen_total - całkowity czas generacji mutantów ze zbioru N_generated.
+- T_end2end_total - całkowity czas generacji oraz uruchomienia testów dla mutantów ze zbioru N_useful, potrzebny dla obliczenia metryk potrzebnych do analizy testów.
+
+- N_defects - liczba wszystkich defektów analizowanych branych do analizy.
+- N_detected_defects - liczba defektów, dla których co najmniej jeden użyteczny mutant powoduje nieprzechodzenie przynajmniej jednego testu z profilu tego defektu.
+- N_ochiai_total - suma średnich wartości Ochiai wyznaczonych osobno dla każdego defektu na podstawie mutantów przypisanych do tego defektu.
+- N_high_ochiai_defects - liczba defektów, dla których średni Ochiai przekracza przyjęty próg.
+
+W dalszej części pracy termin "mutant" oznacza element ze zbioru użytecznych mutantów (N_useful), jeżeli nie napisano inaczej.
 
 #### Compilable mutants
 
@@ -438,7 +460,7 @@ Mutanty niekompilowane nie będą uczestniczyć w metrykach opartych na uruchami
 
 Metryka jest zdefiniowana jako liczba mutantów, które można skompilować, podzielona przez całkowitą liczbę wygenerowanych mutantów.
 ```
-Compilability Mutation Rate (CMR) = liczba mutantów, które można skompilować / liczba wygenerowanych mutantów
+Compilability Mutation Rate (CMR) = N_compilable / N_generated
 ```
 
 Ta metryka będzie używana do obliczenia liczby mutantów możliwych do użycia w testowaniu, ponieważ LLM nie może gwarantować poprawnej generacji mutantów.
@@ -456,7 +478,7 @@ Jeżeli mutant jest identyczny z oryginałem, oznacza się go jako duplikat.
 Po ich usunięciu pozostaje zbiór mutantów unikalnych, który wraz z warunkiem kompilowalności stanowi podstawę do obliczania dalszych metryk.
 
 ```
-Duplication Mutation Rate (DMR) = liczba mutantów zduplikowanych kompilowalnych / liczba mutantów kompilowalnych
+Duplication Mutation Rate (DMR) = N_dup_compilable / N_compilable
 ```
 
 Wskaźnik ten pokazuje, jaki odsetek mutantów kompilowanych stanowią duplikaty.
@@ -471,7 +493,7 @@ Podejście daje wyniki przybliżone, bo mutanty mogą przeżywać testy z powodu
 Choć takie podejście nie daje dokładnych wyników, ale pozwala porównać efektywność generacji mutantów, co w naszym przypadku jest wystarczające.
 
 ```
-Equivalent Mutation Rate (EMR) = liczba mutantów przeżywających / (liczba mutantów kompilowalnych - liczba duplikatów)
+Equivalent Mutation Rate (EMR) = N_survived / N_useful
 ```
 
 ### Metryki i kryteria oceny
@@ -490,7 +512,7 @@ Mutant LLM liczy się za nowy, gdy spełnia jednocześnie:
 2. Nie istnieje mutant klasyczny wywołujący ten sam zestaw nieprzechodzących testów (brak odpowiednika w profilu testowym).
 
 ```
-LLM-NMR = liczba mutantów LLM bez odpowiednika wśród mutantów klasycznych / liczba wszystkich użytecznych mutantów LLM
+LLM-NMR = N_new_mutants_LLM / N_useful(LLM)
 ```
 
 Wysoka wartość wskaźnika oznacza, że LLM generuje dużo mutantów nieobecnych w katalogu klasycznym; niska, że generowane mutanty w znaczącej mierze pokrywają się z istniejącymi operatorami klasycznymi.
@@ -503,7 +525,7 @@ Profil mutanta definiowany jako zbiór testów nieprzechodzących po wprowadzeni
 Na przykład, jeśli profil defektu zawiera testy `T1` i `T2`, a istnieje mutant powodujący niepowodzenie testu `T1`, to taki rzeczywisty defekt jest uznawany za wykryty. 
 
 ```
-RBDR = liczba defektów wykrytych przez co najmniej jeden mutant / liczba wszystkich analizowanych defektów
+RBDR = N_detected_defects / N_defects
 ```
 
 Wysoka wartość RBDR oznacza, że dla wielu rzeczywistych defektów istnieją mutanty, które powodują niepowodzenie co najmniej części tych samych testów, co wskazuje na to, że odzwierciedlają one zachowanie rzeczywistych błędów.
@@ -516,7 +538,7 @@ W przeciwieństwie do `RBDR`, który jest metryką binarną, `AOR` odzwierciedla
 Im większa część testów wykrywających defekt znajduje się również w profilu mutanta, tym wyższa jest wartość tej metryki.
 
 ```
-AOR = średnia(liczba wspólnych testów nieprzechodzących / pierwiastek z (liczba testów nieprzechodzących mutanta × liczba testów wykrywających defekt))
+AOR = N_ochiai_total / N_defects
 ```
 
 Wyższa wartość `AOR` oznacza, że profile niepowodzeń mutantów są bardziej zbliżone do profili testowych rzeczywistych defektów.
@@ -528,7 +550,7 @@ Kluczowym aspektem tej metryki jest identyfikacja defektów, dla których więks
 W przeciwieństwie do AOR, który uśrednia wartości Ochiai dla wszystkich defektów, HAOR pokazuje odsetek defektów, które spełniają kryterium wysokiej zgodności.
 
 ```
-HAOR = liczba defektów, dla których średni Ochiai ≥ próg / liczba wszystkich defektów
+HAOR = N_high_ochiai_defects / N_defects
 ```
 
 Wyższa wartość `HAOR` oznacza, że dla większej części defektów wygenerowany zbiór mutantów jest bardzo podobny do rzeczywistych defektów.
@@ -540,7 +562,7 @@ Kluczowym aspektem tej metryki jest identyfikacja mutantów, które indywidualni
 W przeciwieństwie do AOR oraz HAOR, które analizują podobieństwo na poziomie defektów, HOMR pozwala określić, jaka część wygenerowanych mutantów reprezentuje rzeczywiste błędy, pomijając te mutanty, które nie odzwierciedlają zachowania rzeczywistych defektów.
 
 ```
-HOMR = liczba mutantów, dla których Ochiai ≥ próg / liczba wszystkich użytecznych mutantów
+HOMR = N_high_ochiai_mutants / N_useful
 ```
 
 Wyższa wartość `HOMR` oznacza, że większa część wygenerowanych mutantów wykazuje wysokie podobieństwo do rzeczywistych błędów.
@@ -552,7 +574,7 @@ Kluczowym elementem oceny jest porównanie dwóch zbiorów testów: profilu muta
 Mutant jest powiązany z defektem, jeśli powoduje niepowodzenie co najmniej jednego testu z profilu tego defektu.
 
 ```
-CR = liczba użytecznych mutantów powiązanych z odpowiadającym im defektami / liczba wszystkich użytecznych mutantów
+CR = N_coupled_mutants / N_useful
 ```
 
 W odróżnieniu od `RBDR`, który ocenia pokrycie od strony defektów, `CR` pokazuje, jaka część mutantów jest rzeczywiście związana z zachowaniem błędów w programie.
@@ -564,7 +586,7 @@ Podstawą oceny jest łączny czas etapu generacji oraz całkowita liczba wygene
 Dla LLM czas ten obejmuje okres od wysłania zapytania do modelu do uzyskania pełnej odpowiedzi.
 
 ```
-AMGT = łączny czas generacji / liczba wszystkich wygenerowanych mutantów
+AMGT = T_gen_total / N_generated
 ```
 
 Niższa wartość `AMGT` oznacza szybsze wytwarzanie pojedynczych mutantów i mniejszy koszt czasowy etapu generacji mutantów.
@@ -574,7 +596,7 @@ Niższa wartość `AMGT` oznacza szybsze wytwarzanie pojedynczych mutantów i mn
 *Cost per Useful Mutant* (CPUM) mierzy koszt czasowy uzyskania jednego użytecznego mutanta, czyli mutanta kompilowalnego i niezduplikowanego.
 
 ```
-CPUM = łączny czas generacji / liczba mutantów kompilowalnych i niezduplikowanych
+CPUM = T_end2end_total / N_useful
 ```
 
 Niższa wartość `CPUM` oznacza, że dane podejście szybciej generuje mutanty przydatne do dalszego uruchomienia oraz analizy.
@@ -632,41 +654,59 @@ Pytania badawcze są wzajemnie uzupełniające: RQ1 bada różnorodność, RQ2 b
 Celem tego eksperymentu jest porównanie efektywności mutantów wygenerowanych przez modele językowe z klasycznymi metodami generacji.
 W związku z tym dla każdego analizowanego defektu [3] generowany jest zbiór mutantów, na których są uruchomione testy, które stanowią podstawę dla dalszych obliczeń i interpretacji metryk.
 Podczas uruchamiania testów dla każdego mutanta są zbierane wyniki testów, czas potrzebny dla generacji, uruchomienia wraz z informacją o niepowodzeniu kompilacji, błędy wykonania kodu oraz duplikatach mutantów.
-Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić koszt, jakość, podobieństwo do rzeczywistych defektów oraz ocenić efektywność różnych podejść w analizie testów dla wytwarzania oprogramowania.
+Zebrany zestaw danych pozwoli policzyć wszystkie zdefiniowane metryki oraz uwzględnić koszt, jakość, podobieństwo do rzeczywistych defektów oraz ocenić efektywność różnych podejść w analizie testów dla wytwarzania oprogramowania.
 
 ### Generacja mutantów
 
-[//]: # (Generacja mutantów w niniejszym badaniu jest ograniczona do tych metod programu, które są bezpośrednio związane z analizowanym defektem, tj. do fragmentów kodu objętych rzeczywistą poprawką lub pozostających z nią w bezpośrednim związku semantycznym. Takie zawężenie zakresu analizy pozwala skupić proces mutacji na miejscach istotnych z punktu widzenia rzeczywistych błędów oraz zapewnia porównywalność wyników pomiędzy podejściem klasycznym i podejściem opartym na dużych modelach językowych. W podejściu klasycznym wykorzystywane jest narzędzie PIT, przy czym zastosowano modyfikację oryginalnego kodu źródłowego tego narzędzia, umożliwiającą rejestrowanie konkretnych zmian generowanych przez operator mutacji. Rozszerzenie to jest niezbędne z dwóch powodów: po pierwsze, pozwala odtworzyć mutanta w tej samej reprezentacji, w jakiej zapisywane są mutanty wygenerowane przez modele językowe, a po drugie, umożliwia późniejsze wykrywanie mutantów nowych względem zbioru klasycznego oraz porównywanie efektywności obu sposobów generowania. W celu zapewnienia rzetelnego porównania wykorzystywane są wyłącznie wcześniej zdefiniowane operatory mutacji, stanowiące reprezentatywną grupę przekształceń dla analizowanego typu błędów; ograniczenie to redukuje wpływ operatorów skrajnie rzadkich lub mało informatywnych i ułatwia interpretację wyników.)
+Pierwszym etapem eksperymentu jest generowanie mutantów klasycznych oraz mutantów LLM dla każdego defektu z listy aktywnych bugów zbioru Defects4J.
+Na tym etapie identyfikowane są zmodyfikowane klasy dla naprawy defektu, a następnie fragmenty kodu tych klas bezpośrednio związane z poprawką.
+W tym celu porównywane są wersje *buggy* i *fixed* za pomocą komendy diff wbudowane w Defects4J, co pozwala określić zmienione oraz dodane linie kodu.
+Na podstawie wyznaczonej różnicy wyznaczany jest obszar generowania mutantów, ograniczony przez użyte w kodzie konstrukcje językowe.
+Obejmuje on przede wszystkim metody i konstruktory klasy, których zakres pokrywa się z co najmniej jedną linią zmodyfikowaną w poprawionej wersji względem wersji błędnej.
+Jeżeli sama modyfikacja nie znajduje się bezpośrednio wewnątrz ciała metody, uwzględniane są również odpowiednie bloki inicjalizacji statycznej lub instancyjnej.
+Takie podejście pozwala ograniczyć obszar mutacji wyłącznie do fragmentów kodu o największym znaczeniu z punktu widzenia rzeczywistych błędów, co umożliwia analizowanie tylko kodu istotnego dla konkretnego defektu, a nie całej klasy.
+Ponadto, takie podejście zapewnia porównywalność między mutantami klasycznymi oraz mutantami generowanymi przez duże modele językowe, ponieważ obie metody działają na tym samym zbiorze danych wejściowych.
 
-[//]: # (W podejściu opartym na LLM generacja odbywa się z wykorzystaniem lokalnego serwera Ollama, uruchamiającego gotowe, spakowane i zoptymalizowane warianty modeli przeznaczone do lokalnej inferencji. W eksperymentach zastosowano modele batiai/gemma4-26b:q6 oraz batiai/qwen3.6-35b:q6, udostępniane przez BatiAI jako kwantyzowane wersje modeli bazowych zbudowane bezpośrednio z oficjalnych wag BF16 odpowiednio od Google i Alibaba. Model Gemma 4 26B-A4B-it jest architekturą typu MoE, obejmującą 26 miliardów parametrów łącznych i około 3,8 miliarda parametrów aktywowanych na token; w wariancie Ollama jest dostarczany jako model tekstowy, natomiast tag q6 korzysta z kwantyzacji Q6_K, traktowanej jako wariant najwyższej jakości spośród lokalnie oferowanych kwantyzacji dla tego modelu. Strona modelu podaje również, że wariant q6 wymaga co najmniej komputera klasy 36 GB+ RAM dla komfortowego uruchomienia, a na konfiguracji Mac z 48 GB zunifikowanej pamięci osiąga około 48–50 tokenów na sekundę. [ollama.com])
+W podejściu klasycznym do generowania mutantów wykorzystywane jest narzędzie PIT z modyfikacją oryginalnego kodu źródłowego [7].
+Rozszerzenie pozwala zapisać mutanta w tej samej formie, w jakiej zapisywane są mutanty generowane przez modele językowe.
+Współdzielenie ujednoliconej struktury mutantów pozwala na porównanie generacji mutantów w identycznych warunkach, bez optymalizacji na poziomie bajtkodu dla konkretnego języka.
+Ponadto PIT posiada fundamentalne ograniczenie, ponieważ wykonuje testy tylko do momentu "zabicia" mutanta, co nie pozwala uzyskać pełnego profilu testowego dla każdego mutanta.
+Aby obejść to ograniczenie, wykorzystana zmodyfikowana wersja PIT, która zapisuje mutanty w odpowiednim formacie, umożliwiając późniejsze uruchomienie testów w izolowanym środowisku oraz zbierając metryki.
+Generacja klasyczna przebiega w kilku krokach.
+Najpierw przygotowywana jest wersja fixed oraz wersja buggy danego defektu, po czym wersja fixed jest kompilowana dla całego defektu.
+Następnie wybrane jednostki wejściowe są grupowane według klasy i przekazywane do PIT.
+Wygenerowane mutanty są zapisywane przez zmodyfikowany mechanizm raportowania w postaci zawierającej numer linii kodu, linię źródłową kodu przed zmianą oraz po zmianie, nazwę operatora jak w dokumentacji PIT [1].
 
-[//]: # (Analogicznie, model Qwen 3.6 35B-A3B jest udostępniany w Ollama jako lokalna, tekstowa wersja modelu bazowego z oficjalnych wag Alibaba BF16, również przygotowana przez BatiAI. Jest to model typu MoE o 35 miliardach parametrów całkowitych, z czego około 3 miliardy są aktywowane na token, co pozwala osiągnąć korzystny kompromis między zdolnościami modelu a kosztem obliczeniowym. Warianty IQ3 i IQ4 tej rodziny są opisane jako kwantyzacje kalibrowane metodą imatrix, natomiast Q6_K stanowi wariant wysokobitowy, określany jako zbliżony jakością do BF16 i rekomendowany dla środowisk dysponujących co najmniej 36 GB pamięci zunifikowanej. Producent podkreśla ponadto, że model ten został zoptymalizowany pod zastosowania związane z agentic coding, wspiera narzędzia i tryb „thinking”, oferuje kontekst 256K tokenów, a według przytoczonych benchmarków BF16 przewyższa wcześniejszy model Qwen 3.5 35B-A3B m.in. w SWE-bench Verified &#40;73.4 vs 70.0&#41; oraz Terminal-Bench 2.0 &#40;51.5 vs 40.5&#41;. [ollama.com])
+W badaniu jako reprezentację podejścia LLM wykorzystywane są dwa skwantyzowane modele `gemma4-26b-A4` oraz `qwen3.6-35b-A3`, które będą uruchamiane na serwerze Ollama w formacie GGUF.
+Model `gemma4-26b-A4` jest oparty na oficjalnych wagach Google w formacie BF16 z architekturą Mixture of Experts (MoE).
+Posiada on 25,2 miliarda parametrów, z czego podczas przetwarzania tokenu aktywowanych jest tylko 3,8 miliarda.
+Finalny rozmiar modelu z zastosowanej kwantyzacji Q6_K wynosi 23 GB.
+Drugi model `qwen3.6-35b-A3` jest oparty na oficjalnych wagach BF16 od Alibaba oraz architekturze MoE.
+W tym przypadku model ma 34,7 miliarda parametrów, a liczba aktywnych parametrów podczas generowania wynosi 3 miliardy.
+Rozmiar modelu po zastosowaniu kwantyzacji Q6_K wynosi 29 GB.
+Oba modele oferują długość kontekstu równą 131072 tokenów, co po normalizacji danych wejściowych gwarantuje przestrzeganie całego kontekstu dla generacji mutantów.
+Jedną z kluczowych cech obu modeli jest architektura MoE, która aktywuje tylko część dostępnych parametrów podczas generowania, co pozwala na kilkukrotne obniżenie kosztów obliczeniowych w porównaniu do modeli aktywujących wszystkie parametry.
 
-[//]: # (Zastosowanie lokalnych, skwantyzowanych modeli w Ollama ma w tym kontekście znaczenie metodologiczne: pozwala mierzyć nie tylko jakość generowanych mutantów, ale także praktyczny koszt ich wytwarzania w realistycznym środowisku wykonawczym. Z tego względu ocena efektywności procesu generowania mutantów będzie prowadzona na powszechnie dostępnej konfiguracji sprzętowej reprezentującej współczesny komputer deweloperski, tj. Mac mini z układem M4 Pro, 14-rdzeniowym CPU, 20-rdzeniowym GPU oraz 48 GB pamięci zunifikowanej. Taki dobór platformy ma na celu możliwie wierne odzwierciedlenie warunków, w których lokalne modele językowe mogą być realnie wykorzystywane w codziennej pracy programistycznej.)
+W podejściu opartym na LLM dla generacji mutantów każdy fragment kodu jest traktowany jako osobna jednostka wejściowa dla generacji mutantów.
+Podejście to zostało zastosowane w celu normalizacji danych wejściowych i zachowania balansu między długością kontekstu a efektywnością przetwarzania danych wejściowych.
+Dla każdej jednostki tworzony jest dynamiczny prompt zawierający kod źródłowy wraz z numerami linii, "few-shot" przykłady mutantów oraz instrukcja określająca format wyjściowy, w jakim mają być zwracane wyniki.
+Po zakończeniu generacji wykonywane jest oznaczanie duplikatów, obejmujące zarówno mutanty powtarzające poprzednie wygenerowane zmiany lub odpowiadające oryginalnemu kodowi.
+Oba modele są zaprojektowane do pracy na sprzęcie z co najmniej 36 GB pamięci, co pozwala uruchomić modele zarówno na lokalnej stancji roboczej, jak i na podstawowym sprzęcie dla AI, co jest istotne z punktu widzenia oceny kosztów generowania mutantów w zastosowaniu produkcyjnym.
+Cała generacja odbywa się w izolowanym środowisku, które stanowi serwer oparty na Mac mini z układem M4 Pro, 14-rdzeniowym CPU, 20-rdzeniowym GPU oraz 48 GB zunifikowanej pamięci RAM współdzielonej przez CPU i GPU.
+Architektura pamięci zunifikowanej umożliwia efektywne wykorzystanie dostępnych zasobów przez modele językowe.
+W połączeniu z architekturą Apple Silicon umożliwia na wykorzystanie sprzętowej akceleracji obliczeń, zoptymalizowanymi bibliotekami wykorzystywanmymi przez Ollama daje stabilne śtodowiko.
 
 ### Przebieg eksperymentu
 
-[//]: # ()
-[//]: # (Eksperyment jest wykonywany osobno dla każdego defektu i za każdym razem przebiega według tego samego schematu.)
-
-[//]: # (Najpierw wybierany jest rzeczywisty błąd oraz fragment kodu związany z jego poprawką.)
-
-[//]: # (Następnie dla tego miejsca generowane są dwa zbiory mutantów, jeden przez modele językowe, a drugi przez narzędzie klasyczne.)
-
-[//]: # (W kolejnym kroku każdy mutant jest sprawdzany i uruchamiany na odpowiednim zestawie testów, aby zebrać informacje o tym, czy daje się zastosować, czy prowadzi do poprawnego wykonania programu oraz jakie testy wykrywają wprowadzoną zmianę.)
-
-[//]: # (Po zakończeniu tego etapu porządkowane są zebrane dane, obliczane są metryki i tworzona jest lista nowych mutantów wygenerowanych przez LLM.)
-
-[//]: # (W rezultacie cały eksperyment ma postać powtarzalnego procesu, który dla każdego defektu prowadzi od wygenerowania zmian do ich końcowej oceny.)
-
-[//]: # ()
-[//]: # (Eksperyment przeprowadzany jest oddzielnie dla każdego defektu, a jego przebieg zawsze wygląda tak samo. Na początku wybieramy konkretny błąd oraz fragment kodu, który jest z nim związany. Następnie tworzymy dwa zestawy mutantów: jeden za pomocą modeli językowych, a drugi przy użyciu tradycyjnego narzędzia. W kolejnym kroku każdy mutant jest testowany i uruchamiany na odpowiednim zestawie testów, aby zebrać informacje na temat jego zastosowania, sprawności programu oraz tego, które testy wykrywają wprowadzone zmiany. Po zakończeniu tego etapu porządkujemy zebrane dane, obliczamy metryki i tworzymy listę nowych mutantów wygenerowanych przez LLM. W efekcie cały eksperyment staje się powtarzalnym procesem, który dla każdego defektu prowadzi od generowania zmian do ich ostatecznej oceny.)
-
-[//]: # ()
-
-### Weryfikacja mutantów i zbieranie wyników
-
-[//]: # (Aby ograniczyć ryzyko błędu, po wygenerowaniu mutantów wykonywana jest ich dodatkowa weryfikacja. Najpierw sprawdzane jest, czy każda zaproponowana zmiana rzeczywiście pasuje do badanego fragmentu programu i czy może zostać poprawnie użyta w dalszej części eksperymentu. Następnie dla zaakceptowanych mutantów uruchamiane są testy, a wyniki są zapisywane w taki sposób, aby dla każdego mutanta było wiadomo, czy przeszedł etap sprawdzenia, czy program działał poprawnie po wprowadzeniu zmiany oraz które testy zakończyły się niepowodzeniem. Na tej podstawie wyznaczane są później wszystkie metryki używane w analizie. Równolegle tworzona jest także lista nowych mutantów wygenerowanych przez LLM, czyli takich zmian, które nie mają odpowiednika wśród mutantów klasycznych. Po zakończeniu całego procesu sprawdzana jest kompletność i spójność zgromadzonych danych, tak aby dalsza analiza opierała się wyłącznie na wynikach nadających się do rzetelnego porównania.)
+Eksperyment został zaplanowany w sposób powtarzalny, realizowany według tego samego algorytmu.
+Najpierw dla każdego defektu badawczego generowane są zbiory mutantów: klasyczne mutanty oraz LLM mutanty dla każdego z analizowanych modeli.
+Potem każdemu mutantu jest przypisywany unikalny identyfikator, metadane oraz może zostać oznaczony jako duplikat, jeżeli jest identyczny z innym mutantem lub oryginałem.
+Następnie każdy z mutantów przechodzi procedurę weryfikacji, żeby sprawdzić możliwości zastosowania mutacji w kodzie, a następnie poprawnie skompilowany.
+Każde pojedyncze uruchomienie testów na mutancie dostarcza nie tylko informacji o tym, czy dany mutant został zabity albo przeżył, ale również zestaw metryk potrzebnych do dalszej analizy efektywności LLM w generowaniu mutantów.
+Na przykład takie dane jak status zastosowania mutacji, wynik kompilacji, profil testowy oraz czas potrzebny na kompilację i uruchomienie testów.
+Takie podejście pozwala na porównanie obu metod generowania mutantów w tych samych warunkach eksperymentalnych.
+Po zakończeniu etapu generacji oraz uruchamiania testów wyniki są porządkowane według analizowanego defektu i typu mutanta.
+W wyniku tego procesu powstaje uporządkowany zbiór danych, który zawiera wszystkie dane niezbędne do obliczenia zdefiniowanych metryk oraz analizy.
 
 ---
 
@@ -677,12 +717,6 @@ Zebrany zestaw danych pozwoli policzyć wszystkie metryki oraz uwzględnić kosz
 ### Statystyki ogólne eksperymentu
 
 > ✏️ **Wskazówka do pisania:** W tej części wprowadź czytelnika w dane, na których opiera się dalsza analiza. Napisz krótko, ile defektów i mutantów objęto badaniem, a następnie odwołuj się już tylko do poniższej tabeli. Nie opisuj tutaj interpretacji szczegółowych, ponieważ to należy do kolejnych podrozdziałów. Po tabeli dodaj 2–4 zdania ogólnego komentarza o skali eksperymentu i o tym, czy zebrany materiał jest wystarczający do odpowiedzi na pytania badawcze.
-
-Type    | Mutants | CMR    | DMR   | EMR    | Mut.Score | LLM-NMR | RBDR   | AOR    | CR     | HAOR  | HOMR  | AMGT s  | CPUM s
---------+---------+--------+-------+--------+-----------+---------+--------+--------+--------+-------+-------+---------+--------
-classic | 49258   | 94.35% | 0.11% | 35.96% | 64.04%    | NA      | 97.16% | 23.56% | 25.65% | 2.41% | 4.04% | 13.0824 | 14.2013
-gemma4  | 20741   | 88.26% | 8.72% | 31.04% | 68.96%    | 34.02%  | 98.03% | 24.93% | 36.05% | 2.19% | 7.44% | 15.7560 | 19.8118
-qwen3.6 | 19406   | 89.94% | 7.79% | 29.45% | 70.55%    | 37.61%  | 97.81% | 25.95% | 37.26% | 4.16% | 7.82% | 15.6404 | 19.3151
 
 > ✏️ **Jak napisać komentarz pod tabelą:** Najpierw wskaż, które różnice są największe. Następnie zaznacz, że ta tabela stanowi wspólną podstawę dla odpowiedzi na RQ1, RQ2 i RQ3. Nie powtarzaj już tych samych wartości w formie kolejnych tabel w dalszych sekcjach, tylko odwołuj się do danych zestawionych tutaj.
 
@@ -755,6 +789,9 @@ URL: https://www.st.cs.uni-saarland.de/edu/recommendation-systems/papers/Hints_o
 [6] LLMorpheus: Mutation Testing using Large Language Models.
 URL: https://arxiv.org/html/2404.09952v2#S1
 
-[7] Ollama: Local LLMs
+[7] Pitest: State of the art mutation testing system for the JVM
+URL: https://github.com/hcoles/pitest.git
+
+[8] Ollama: Local LLMs
 https://ollama.com/batiai/gemma4-26b:q6
 https://ollama.com/batiai/qwen3.6-35b:q6
