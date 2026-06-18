@@ -1188,9 +1188,9 @@ private boolean serializable;
 private Boolean serializable;
 ```
 
-![Wzorce transformacji w grupie nowych mutantów](images/rq1_beyond_classic_patterns.png)
+![Wzorce transformacji nowych mutantów](images/rq1_beyond_classic_patterns.png)
 
-Rysunek 7.4: Rozkład wzorców transformacji w grupie nowych mutantów LLM spoza katalogu PIT
+Rysunek 7.4: Rozkład wzorców transformacji nowych mutantów LLM spoza katalogu PIT
 
 #### Odpowiedź na RQ1
 
