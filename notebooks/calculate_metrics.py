@@ -129,6 +129,15 @@ class TypeMetrics:
     amgt: float | None
     cpum: float | None
     warnings: tuple[str, ...]
+    # Denominator for RBDR/HAOR: only bugs that have a bug_profile
+    bugs_with_profile: int
+    # Coupling categorization (Wang et al. 2024, Table 7)
+    cc_strong: int
+    cc_strong_extra: int
+    cc_partial: int
+    cc_partial_extra: int
+    cc_not_sub: int
+    cc_not_detected: int
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -458,6 +467,13 @@ def calculate_metrics(
     high_ochiai_mutants = 0
     linked = 0
     detected_bugs = 0
+    bugs_with_profile = 0
+    cc_strong = 0
+    cc_strong_extra = 0
+    cc_partial = 0
+    cc_partial_extra = 0
+    cc_not_sub = 0
+    cc_not_detected = 0
 
     for bug in bugs:
         bug_observations = [obs for obs in bug.observations if obs.mutant_type == mutant_type]
@@ -470,6 +486,7 @@ def calculate_metrics(
             warnings.append(f"{bug.key}: missing bug_profile.failing_tests")
             continue
 
+        bugs_with_profile += 1
         bug_detected = False
         bug_ochiai_values: list[float] = []
         for obs in bug_profile_ready:
@@ -480,6 +497,19 @@ def calculate_metrics(
                 linked += 1
                 bug_detected = True
             bug_ochiai_values.append(ochiai(failing, bug_tests))
+            category = classify_coupling(failing, bug_tests)
+            if category == "strong":
+                cc_strong += 1
+            elif category == "strong_extra":
+                cc_strong_extra += 1
+            elif category == "partial":
+                cc_partial += 1
+            elif category == "partial_extra":
+                cc_partial_extra += 1
+            elif category == "not_sub":
+                cc_not_sub += 1
+            else:
+                cc_not_detected += 1
         per_bug_ochiai_values.append(statistics.fmean(bug_ochiai_values) if bug_ochiai_values else 0.0)
         if bug_detected:
             detected_bugs += 1
@@ -535,18 +565,25 @@ def calculate_metrics(
         high_ochiai_mutants=high_ochiai_mutants,
         new_mutants=new_mutants,
         cmr=safe_div(compiled, generated),
-        dmr=safe_div(compiled_duplicates, compiled),
+        dmr=safe_div(compiled_duplicates, generated),
         emr=safe_div(survived_useful, len(profile_ready)),
         mutation_score=safe_div(killed_useful, len(profile_ready)),
         llm_nmr=llm_nmr,
-        rbdr=safe_div(detected_bugs, len(bugs)),
+        rbdr=safe_div(detected_bugs, bugs_with_profile),
         aor=statistics.fmean(per_bug_ochiai_values) if per_bug_ochiai_values else None,
         cr=safe_div(linked, len(profile_ready)),
-        high_ochiai_bug_rate=safe_div(high_ochiai_bugs, len(bugs)),
+        high_ochiai_bug_rate=safe_div(high_ochiai_bugs, bugs_with_profile),
         high_ochiai_mutant_rate=safe_div(high_ochiai_mutants, len(profile_ready)),
         amgt=safe_div(generation_time_s, generated),
         cpum=safe_div(total_time_s, len(useful)),
         warnings=tuple(warnings),
+        bugs_with_profile=bugs_with_profile,
+        cc_strong=cc_strong,
+        cc_strong_extra=cc_strong_extra,
+        cc_partial=cc_partial,
+        cc_partial_extra=cc_partial_extra,
+        cc_not_sub=cc_not_sub,
+        cc_not_detected=cc_not_detected,
     )
 
 
@@ -585,22 +622,28 @@ def calculate_llm_nmr(
         for obs in classic_final:
             classic_by_line.setdefault(mutation_location(obs.mutant), []).append(obs)
 
+        # Condition 2 (thesis 5.3.1): test-profile match is checked against ALL
+        # classic mutants, not just same-line candidates.  The original code
+        # short-circuited when no same-line candidates existed, which caused the
+        # test-profile check to be silently skipped and inflated LLM-NMR.
+        all_classic_profiles: set[frozenset[str]] = {
+            llm_nmr_test_signature(obs) for obs in classic_final
+        }
+
         for obs in target_final:
             candidates = classic_by_line.get(mutation_location(obs.mutant), [])
-            if not candidates:
-                new_mutants += 1
-                continue
 
             target_syntax = llm_nmr_syntactic_signature(obs.mutant)
             target_profile = llm_nmr_test_signature(obs)
+
+            # Condition 1: syntactic match — same line only (thesis definition)
             syntactic_match = any(
                 llm_nmr_syntactic_signature(candidate.mutant) == target_syntax
                 for candidate in candidates
             )
-            test_profile_match = any(
-                llm_nmr_test_signature(candidate) == target_profile
-                for candidate in candidates
-            )
+            # Condition 2: test-profile match — ALL classic mutants (thesis definition)
+            test_profile_match = target_profile in all_classic_profiles
+
             if not syntactic_match and not test_profile_match:
                 new_mutants += 1
 
@@ -610,6 +653,29 @@ def calculate_llm_nmr(
     if llm_nmr is not None and not (0.0 <= llm_nmr <= 1.0):
         warnings.append(f"{mutant_type}: LLM-NMR outside [0, 1]")
     return new_mutants, llm_nmr, warnings
+
+
+def classify_coupling(failing: set[str], bug_tests: set[str]) -> str:
+    """Classify a mutant into one of 6 coupling categories.
+
+    Categories:
+      "strong"        – all bug_tests fail, no extra tests fail
+      "strong_extra"  – all bug_tests fail, additional non-bug tests also fail
+      "partial"       – some bug_tests fail, no extra tests fail
+      "partial_extra" – some bug_tests fail, additional non-bug tests also fail
+      "not_sub"       – only non-bug tests fail (no bug_test coverage)
+      "not_detected"  – no tests fail at all
+    """
+    if not failing:
+        return "not_detected"
+    in_bug = failing & bug_tests
+    if not in_bug:
+        return "not_sub"
+    has_extra = bool(failing - bug_tests)
+    all_bug_covered = bug_tests.issubset(failing)
+    if all_bug_covered:
+        return "strong_extra" if has_extra else "strong"
+    return "partial_extra" if has_extra else "partial"
 
 
 def print_report(
@@ -635,16 +701,22 @@ def print_report(
         ],
     )
 
-    print("\nAggregate chapter 5 metrics")
-    print_table(
-        ["Type", "Mutants", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
-        [metrics_row(item) for item in aggregate_metrics],
-    )
-
     print("\nPer-bug chapter 5 metrics")
     print_table(
         ["Bug", "Type", "Mutants", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
         [metrics_row(item, include_scope=True) for item in per_bug_metrics],
+    )
+
+    print("\nCoupling categorization (% of useful mutants with complete profiles)")
+    print_table(
+        ["Type", "Strong", "Strong+Extra", "Partial", "Partial+Extra", "Not Sub.", "Not Detected"],
+        [coupling_category_row(item) for item in aggregate_metrics],
+    )
+
+    print("\nAggregate chapter 5 metrics")
+    print_table(
+        ["Type", "Mutants", "CMR", "DMR", "EMR", "Mut.Score", "LLM-NMR", "RBDR", "AOR", "CR", "HAOR", "HOMR", "AMGT s", "CPUM s"],
+        [metrics_row(item) for item in aggregate_metrics],
     )
 
     all_warnings = collect_warnings(bugs, aggregate_metrics)
@@ -693,6 +765,23 @@ def metrics_row(metrics: TypeMetrics, include_scope: bool = False) -> list[str]:
     if include_scope:
         return [metrics.scope] + row
     return row
+
+
+def coupling_category_row(metrics: TypeMetrics) -> list[str]:
+    total = metrics.profile_ready
+
+    def pct(n: int) -> str:
+        return format_percent(safe_div(n, total))
+
+    return [
+        metrics.mutant_type,
+        pct(metrics.cc_strong),
+        pct(metrics.cc_strong_extra),
+        pct(metrics.cc_partial),
+        pct(metrics.cc_partial_extra),
+        pct(metrics.cc_not_sub),
+        pct(metrics.cc_not_detected),
+    ]
 
 
 def print_table(headers: list[str], rows: list[list[str]]) -> None:
@@ -847,9 +936,16 @@ def metrics_to_dict(metrics: TypeMetrics) -> dict[str, Any]:
             "high_ochiai_bugs": metrics.high_ochiai_bugs,
             "high_ochiai_mutants": metrics.high_ochiai_mutants,
             "new_mutants": metrics.new_mutants,
+            "bugs_with_profile": metrics.bugs_with_profile,
             "generation_time_s": metrics.generation_time_s,
             "execution_time_s": metrics.execution_time_s,
             "total_time_s": metrics.total_time_s,
+            "cc_strong": metrics.cc_strong,
+            "cc_strong_extra": metrics.cc_strong_extra,
+            "cc_partial": metrics.cc_partial,
+            "cc_partial_extra": metrics.cc_partial_extra,
+            "cc_not_sub": metrics.cc_not_sub,
+            "cc_not_detected": metrics.cc_not_detected,
         },
         "metrics": {
             "Generated (all)": metrics.generated,
@@ -865,6 +961,14 @@ def metrics_to_dict(metrics: TypeMetrics) -> dict[str, Any]:
             "HOMR": metrics.high_ochiai_mutant_rate,
             "AMGT": metrics.amgt,
             "CPUM": metrics.cpum,
+            "coupling_categorization": {
+                "strong": safe_div(metrics.cc_strong, metrics.profile_ready),
+                "strong_extra": safe_div(metrics.cc_strong_extra, metrics.profile_ready),
+                "partial": safe_div(metrics.cc_partial, metrics.profile_ready),
+                "partial_extra": safe_div(metrics.cc_partial_extra, metrics.profile_ready),
+                "not_sub": safe_div(metrics.cc_not_sub, metrics.profile_ready),
+                "not_detected": safe_div(metrics.cc_not_detected, metrics.profile_ready),
+            },
         },
         "warnings": list(metrics.warnings),
     }

@@ -12,7 +12,7 @@
 
 ## Spis treści
 
-- [Streszczenie](#streszczenie) (TO DO)
+- [Streszczenie](#streszczenie) (DONE)
 
 - [1 Wstęp](#rozdział-wstęp) (DONE)
   - [1.1 Temat i cel pracy](#temat-i-cel-pracy) (DONE)
@@ -59,35 +59,25 @@
   - [6.1 Generacja mutantów](#generacja-mutantów) (DONE)
   - [6.2 Przebieg eksperymentu](#przebieg-eksperymentu) (DONE)
 
-- [7 Analiza wyników i wnioski](#analiza-wyników-i-wnioski) (TO DO)
-  - [7.1 Statystyki ogólne eksperymentu](#statystyki-ogólne-eksperymentu) (TO DO)
-  - [7.2 RQ1 - Różnorodność i nowość mutantów LLM](#rq1---różnorodność-i-nowość-mutantów-llm) (TO DO)
-  - [7.3 RQ2 - Podobieństwo mutantów do defektów rzeczywistych](#rq2---podobieństwo-mutantów-do-defektów-rzeczywistych) (TO DO)
-  - [7.4 RQ3 - Koszty i wydajność podejścia](#rq3---koszty-i-wydajność-podejścia) (TO DO)
-  - [7.5 Porównanie LLM vs PIT](#porównanie-llm-vs-pit) (TO DO)
-  - [7.6 Ograniczenia badania](#ograniczenia-badania) (TO DO)
+- [7 Analiza wyników i wnioski](#analiza-wyników-i-wnioski) (DONE)
+  - [7.1 Statystyki ogólne eksperymentu](#statystyki-ogólne-eksperymentu) (DONE)
+  - [7.2 RQ1 - Różnorodność i nowość mutantów LLM](#rq1---różnorodność-i-nowość-mutantów-llm) (DONE)
+  - [7.3 RQ2 - Podobieństwo mutantów do defektów rzeczywistych](#rq2---podobieństwo-mutantów-do-defektów-rzeczywistych) (DONE)
+  - [7.4 RQ3 - Koszty i wydajność podejścia](#rq3---koszty-i-wydajność-podejścia) (DONE)
 
-- [Podsumowanie i wnioski](#podsumowanie-i-wnioski) (TO DO)
+- [Podsumowanie i wnioski](#podsumowanie-i-wnioski) (DONE)
 
 - [Bibliografia](#bibliografia) (DONE)
 
 ## Streszczenie
 
-> ✏️ **Wskazówka do pisania:** Streszczenie piszesz NA KOŃCU, gdy masz już wyniki.
-> Napisz 8–12 zdań w następującej kolejności:
-> (1) o czym jest praca, (2) jaki problem rozwiązujesz, (3) jak to sprawdzasz,
-> (4) 2–3 najważniejsze wyniki liczbowe, (5) jedno zdanie wniosków.
-> Bez detali technicznych. Ogólny opis „co i po co".
-
-*[Do napisania jako ostatnie - po przeprowadzeniu eksperymentu i napisaniu pozostałych rozdziałów.]*
-
-Praca dotyczy zastosowania dużych modeli językowych (LLM) do generowania operatorów mutacyjnych - reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne, definiowane ręcznie w narzędziach takich jak PIT, stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów. Niniejsza praca weryfikuje, czy LLM są w stanie indukować nowe reguły mutacyjne wykraczające poza ten katalog oraz czy generowane przez nie mutanty są bliższe rzeczywistym defektom oprogramowania pod względem zachowania programu.
-
-W ramach badania przeprowadzono jeden kompleksowy eksperyment na zbiorze błędów z repozytorium Defects4J: wygenerowano mutanty przy użyciu LLM oraz narzędzia PIT dla tych samych projektów Java, następnie każdy mutant poddano kompilacji i uruchomieniu relewantnego zestawu testów, a zebrane dane przeanalizowano pod kątem trzech tez badawczych dotyczących nowości mutantów, realizmu i wydajności podejścia LLM.
-
-*[Uzupełnić po eksperymencie: X% użytecznych mutantów LLM nie posiadało odpowiednika wśród mutantów PIT. Mediana podobieństwa testowego (proximity) mutantów LLM do rzeczywistych błędów wyniosła Y, wobec Z dla mutantów PIT. Wyniki sugerują, że …]*
-
-**Słowa kluczowe:** testowanie mutacyjne, operatory mutacyjne, duże modele językowe, LLM, PIT, Defects4J, mutation score, proximity to real bugs.
+Testowanie mutacyjne polega na wprowadzaniu drobnych, celowych zmiany w kodzie, aby ocenić jakość testów.
+Klasyczne narzędzia, takie jak PIT, polegają na stałym zestawie deterministycznych reguł dla generacji mutantów.
+W tej pracy analizowano efektywność generacji mutantów przez LLM pod względem nowości, podobieństwa do rzeczywistych błędów oraz kosztów generacji.
+Eksperyment przeprowadzono na 843 defektach, generując ponad 156 000 mutantów przy użyciu PIT oraz modeli gemma4 i qwen3.6.
+Wyniki pokazują, że LLM potrafią wygenerować mutanty, które nie mają odpowiedników w PIT.
+Mutanty LLM częściej odpowiadają rzeczywistym błędom i osiągają wyższe metryki jakości, choć ich generacja jest wolniejsza.
+LLM stanowią wartościowe uzupełnienie klasycznych narzędzi, szczególnie w podejściu hybrydowym łączącym szybkość PIT z większym realizmem mutantów LLM.
 
 ---
 
@@ -712,60 +702,635 @@ W wyniku tego procesu powstaje uporządkowany zbiór danych, który zawiera wszy
 
 ## Analiza wyników i wnioski
 
-> ✏️ **Wskazówka do pisania:** Ten rozdział uzupełniasz dopiero po wpisaniu wszystkich wartości liczbowych. Jego celem nie jest ponowne opisywanie przebiegu eksperymentu, lecz interpretacja wyników i udzielenie odpowiedzi na pytania badawcze. Pisz od razu językiem analitycznym i w każdym podrozdziale zaczynaj od najważniejszego wyniku, a dopiero potem wyjaśniaj, co on oznacza.
+Wyniki badania przedstawiono w kontekście tez badawczych na podstawie zebranych danych o mutantach oraz profilów testowych dla rzeczywistych defektów.
+Mutanty wygenerowane z użyciem klasycznego narzędzia PIT oraz modeli LLM, czyli automatycznego narzędzia do generacji tekstu.
+Dla wszystkich mutantów uruchomiono zestawy testowe, co pozwoliło na zebranie porównywalnych metryk.
+Prezentacja wyników obejmuje ogólne statystyki eksperymentu, analizę odnoszącą się do poszczególnych tez badawczych oraz omówieniem istotnych ograniczeń.
 
 ### Statystyki ogólne eksperymentu
 
-> ✏️ **Wskazówka do pisania:** W tej części wprowadź czytelnika w dane, na których opiera się dalsza analiza. Napisz krótko, ile defektów i mutantów objęto badaniem, a następnie odwołuj się już tylko do poniższej tabeli. Nie opisuj tutaj interpretacji szczegółowych, ponieważ to należy do kolejnych podrozdziałów. Po tabeli dodaj 2–4 zdania ogólnego komentarza o skali eksperymentu i o tym, czy zebrany materiał jest wystarczający do odpowiedzi na pytania badawcze.
+Badanie przeprowadzono na wszystkich *843 defektach* ze zbioru Defects4J 3.0.1, obejmującego 17 projektów w różnych domenach.
+Łącznie wygenerowano *159970 mutantów*.
 
-> ✏️ **Jak napisać komentarz pod tabelą:** Najpierw wskaż, które różnice są największe. Następnie zaznacz, że ta tabela stanowi wspólną podstawę dla odpowiedzi na RQ1, RQ2 i RQ3. Nie powtarzaj już tych samych wartości w formie kolejnych tabel w dalszych sekcjach, tylko odwołuj się do danych zestawionych tutaj.
+Tabela 7.1: Ogólne metryki jakościowe mutantów
+
+| Metryka                        | Pit     | Gemma4-26b-A4 | Qwen3.6-35b-A3 |
+|--------------------------------|---------|---------------|----------------|
+| Number of Mutants              | 76 648  | 40 426        | 39 410         |
+| Compilability Mutation Rate    | 100,00% | 88,00%        | 88,15%         |
+| Duplication Mutation Rate      | 0,00%   | 7,24%         | 10,11%         |
+| Equivalent Mutation Rate       | 31,43%  | 30,40%        | 28,94%         |
+| LLM New Mutant Rate            | NA      | 13,75%        | 15,23%         |
+| Real Bug Detection Rate        | 98,70%  | 97,98%        | 98,34%         |
+| Average Ochiai Rate            | 22,66%  | 23,57%        | 24,37%         |
+| Coupling Rate                  | 29,28%  | 36,10%        | 37,35%         |
+| High Average Ochiai Rate       | 2,14%   | 2,14%         | 3,08%          |
+| High Ochiai Mutant Rate        | 4,51%   | 6,94%         | 7,45%          |
+| Average Mutant Generation Time | 0,047s  | 1,280s        | 2,422s         |
+| Cost per Useful Mutant         | 22,44s  | 30,15s        | 29,68s         |
 
 ### RQ1 - Różnorodność i nowość mutantów LLM
 
-> ✏️ **Wskazówka do pisania:** Zacznij od jednego zdania, które wprost odpowiada na pytanie badawcze, na przykład czy mutanty LLM w istotnym stopniu wykraczają poza zbiór mutantów klasycznych. Następnie odwołaj się do metryki nowości z tabeli 7.1 i wyjaśnij, co ten wynik oznacza. W dalszej części opisz, czy nowość mutantów ma charakter praktycznie użyteczny, czyli czy wskazuje na dodatkowe typy zmian, które mogą mieć znaczenie z perspektywy rzeczywistych błędów, czy raczej prowadzi do zmian mało istotnych. Na końcu sformułuj krótką odpowiedź na RQ1 w jednym lub dwóch zdaniach.
+Czy możliwe jest generowanie nowych mutantów przy użyciu LLM, wykraczających poza klasyczny katalog operatorów mutacyjnych?
 
-> ✏️ **Proponowany układ akapitu:** Najpierw podaj wynik liczbowy. Następnie zinterpretuj, czy jest on wysoki czy niski w kontekście celu pracy. Potem wskaż, jakie znaczenie ma to dla oceny LLM jako źródła nowych mutantów. Zakończ jednoznacznym wnioskiem, czy RQ1 zostało potwierdzone, częściowo potwierdzone albo niepotwierdzone.
+Metryka LLM-NMR mierzy, jaki odsetek użytecznych mutantów LLM nie ma odpowiednika wśród mutantów PIT ani pod względem syntaktycznym, ani pod względem profilu testów.
+Liczone są wyłącznie mutanty na liniach kodu, gdzie PIT również wygenerował co najmniej jednego mutanta.
+
+| Model          | Porównywalne użyteczne mutanty | Nowe mutanty | LLM-NMR    |
+|----------------|--------------------------------|--------------|------------|
+| Gemma4-26b-A4  | 32 015                         | 4 402        | **13,75%** |
+| Qwen3.6-35b-A3 | 29 974                         | 4 565        | **15,23%** |
+| Łącznie        |                                | **8 967**    |            |
+
+Oznacza to, że 13,75% użytecznych mutantów modelu Gemma4-26b-A4 i 15,23% modelu Qwen3.6-35b-A3 nie ma odpowiedników wśród mutantów PIT (ani syntaktycznie, ani pod względem profilu testów).
+Brak odpowiednika oznacza, że PIT nie wygenerował mutanta w danej linii kodu, a nie że jego operatorzy nie potrafią wygenerować takiego rodzaju transformacji.
+Spośród nowych mutantów część wykorzystuje znane operatory PIT, a tylko część reprezentuje transformacje, których PIT nie potrafi wygenerować.
+
+![LLM-NMR - odsetek nowych mutantów](images/rq1_llm_nmr_breakdown.png)
+
+Rysunek 7.1: LLM-NMR dla gemma4 i qwen3.6 oraz procent mutantów spoza PIT wśród użytecznych mutantów LLM.
+
+#### Klasyfikacja nowych mutantów według rodzin PIT
+
+Spośród nowych mutantów przeprowadzono klasyfikację według czterech rodzin operatorów klasycznych z rozdziału 3.
+Wynik pokazuje, jaka część mutantów korzysta ze znanych transformacji operatorom PIT, ale zastosowanych w miejscu pominiętym przez PIT, a jaka generuje wzorce spoza zdefiniowanych operatorów PIT.
+
+Tabela 7.2: Nowe mutanty LLM według rodzin operatorów PIT
+
+| Rodzina PIT (rozdział 3) | gemma4    | qwen3.6   | Łącznie   | Udział    | Kill rate |
+|--------------------------|-----------|-----------|-----------|-----------|-----------|
+| Mutanty projektowe       | 1 658     | 1 759     | 3 417     | 38,1%     | 96,0%     |
+| Mutanty na gramatyce     | 582       | 592       | 1 174     | 13,1%     | 94,9%     |
+| Mutanty obiektowe        | 180       | 185       | 365       | 4,1%      | 97,3%     |
+| Mutanty integracyjne     | 99        | 75        | 174       | 1,9%      | 98,3%     |
+| **Nowe wzorce**          | **1 883** | **1 954** | **3 837** | **42,8%** | **96,1%** |
+| **Łącznie**              | **4 402** | **4 565** | **8 967** | **100%**  |           |
+
+Wynik ujawnia, że spośród 8 967 nowych mutantów 57,2% (5 130) należy do rodzin transformacji PIT, ale w kontekstach lub lokalizacjach kodu, których deterministyczne reguły PIT nie uwzględniły
+Dopiero reszta mutantów 42,8% (3 837) implementuje wzorce, których PIT nie posiada w żadnej ze swoich grup operatorów.
+
+![Rozkład nowych mutantów LLM według rodzin PIT](images/rq1_pit_family_distribution.png)
+
+Rysunek 7.2: Rozkład nowych mutantów LLM według rodzin operatorów PIT
+
+![Kill rate nowych mutantów według rodziny PIT](images/rq1_kill_rate_by_family.png)
+
+Rysunek 7.3: Współczynnik zabicia nowych mutantów LLM według rodziny operatorów
+
+#### Wzorce mutacyjne spoza PIT
+
+Łącznie 3 837 nowych mutantów LLM (42,8%) nie odpowiada żadnemu operatorowi PIT.
+Poniżej przedstawiono podział tych wzorców wraz z uzasadnieniem, dlaczego PIT ich nie obejmuje.
+
+Tabela 7.3: Wzorce mutacyjne spoza PIT
+
+| Kategoria                            | Liczba | Udział | Dlaczego jest nowa                                                                                   |
+|--------------------------------------|--------|--------|------------------------------------------------------------------------------------------------------|
+| Podstawienie wartości null           | 658    | 17,1%  | PIT nie zastępuje null w argumentu wywołania                                                         |
+| Zmiana nazwy wywoływanej metody      | 532    | 13,9%  | PIT nie zastępuje nazwy jednej metody inną                                                           |
+| Negacja wyrażenia logicznego         | 474    | 12,4%  | PIT nie neguje zmiennych boolowskich ani wyników wywołań metod                                       |
+| Podstawienie argumentu               | 373    | 9,7%   | PIT nie modyfikuje wartości poszczególnych argumentów wywołania                                      |
+| Zmiana opakowywania wywołania        | 329    | 8,6%   | PIT może usunąć wywołanie, ale nie dodaje ani nie usuwa wrapperów wokół argumentów                   |
+| Zmiana wartości przypisania          | 306    | 8,0%   | PIT nie zastępuje złożonego wyrażenia po prawej stronie przypisania                                  |
+| Usunięcie negacji                    | 299    | 7,8%   | PIT nie usuwa istniejącej negacji z wyrażenia warunkowego                                            |
+| Zamiana stałej wyliczeniowej         | 175    | 4,6%   | PIT działa tylko na literałach numerycznych; nie obejmuje stałych symbolicznych i enum               |
+| Zastąpienie wyrażenia stałą logiczną | 105    | 2,7%   | PIT nie zastępuje pod-wyrażenia wewnątrz złożonego warunku                                           |
+| Zmiana literału łańcuchowego         | 97     | 2,5%   | PIT nie obejmuje literałów tekstowych                                                                |
+| Zmiana literału boolowskiego         | 87     | 2,3%   | PIT działa tylko na instrukcjach return, nie na przypisaniach                                        |
+| Zamiana kolejności argumentów        | 60     | 1,6%   | PIT nie dokonuje permutacji argumentów wywołania                                                     |
+| Usunięcie wartości null              | 60     | 1,6%   | PIT nie zastępuje wartości null wyrażeniem kontekstowym                                              |
+| Zmiana przepływu sterowania          | 57     | 1,5%   | PIT nie zmienia słów kluczowych break/continue; nie zamienia while na if                             |
+| Zmiana wyrażenia instanceof          | 40     | 1,0%   | PIT nie obejmuje wyrażeń instanceof; brak operatora zmieniającego typ w instanceof                   |
+| Zamiana gałęzi wyrażenia trójkowego  | 31     | 0,8%   | PIT nie zamienia miejscami gałęzi true/false wyrażenia trójkowego                                    |
+| Zamiana klasy wyjątku                | 28     | 0,7%   | PIT nie zastępuje klasy wyjątku inną klasą wyjątku                                                   |
+| Zmiana indeksu tablicy               | 22     | 0,6%   | PIT nie zamienia indeksy tablic                                                                      |
+| Zmiana semantyki porównania          | 21     | 0,5%   | PIT nie zamienia .equals() na == lub odwracającego argumenty equals()                                |
+| Wykomentowanie instrukcji            | 19     | 0,5%   | PIT nie komentuje instrukcji - usuwa lub zastępuje; wstawienie `//` jest nowym operatorem            |
+| Zamiana kolejności operandów         | 18     | 0,5%   | PIT Math zmienia operator arytmetyczny, nie kolejność operandów (a − b -> b − a)                     |
+| Zamiana klasy implementacji          | 16     | 0,4%   | PIT nie zamienia konkretną klasę implementacji (np. LinkedHashMap -> LinkedHashMap bez args)         |
+| Zmiana modyfikatora                  | 13     | 0,3%   | PIT nie modyfikuje słów kluczowych dostępu ani modyfikatorów pól (private -> public, final usunięty) |
+| Przypisanie własne                   | 8      | 0,2%   | PIT nie zastępuje wyrażeń przypisaniem samej zmiennej (x = method(x) -> x = x)                       |
+| Zamiana stron przypisania            | 6      | 0,2%   | PIT nie zamienia miejscami lewej i prawej strony przypisania (x = y -> y = x)                        |
+| Zmiana typu zmiennej                 | 3      | 0,1%   | PIT nie zmienia deklarowanego typu zmiennej (boolean -> Boolean)                                     |
+
+**1. Podstawienie wartości null** (17,1%, n = 658)
+
+LLM zastępuje jeden z argumentów wywołania metody wartością `null`.
+Taki mutant sprawdza, czy kod poprawnie obsługuje brak wartości przy przekazaniu argumentu.
+PIT może zwrócić `null` w wyniku wywołania metody, ale nie zastępuje argumentu wywołania wartością `null`.
+
+```java
+// PRE  (CLI_1)
+Option key = resolveOption(opt);
+// POST
+Option key = resolveOption(null);
+```
+
+```java
+// PRE  (CLI_13)
+commandLine.addValue(option, token);
+// POST
+commandLine.addValue(null, token);
+```
+
+**2. Zmiana nazwy wywoływanej metody** (13,9%, n = 532)
+
+LLM zastępuje nazwę metody inną nazwą, zachowując obiekt i argumenty wywołania.
+Dotyczy zarówno prostych wywołań, jak i metod w złożonych wyrażeniach.
+PIT może usunąć wywołanie lub zastąpić całe wywołanie argumentem, ale nieć uży innej metody.
+
+```java
+// PRE  (CHART_1)
+int seriesCount = dataset.getRowCount();
+// POST
+int seriesCount = dataset.getColumnCount();
+```
+
+```java
+// PRE  (CLI_1)
+if (opt.equals(option.getOpt()))
+// POST
+if (opt.contains(option.getOpt()))
+```
+
+**3. Negacja wyrażenia logicznego** (12,4%, n = 474)
+
+LLM dodaje `!` przed zmienną logiczną lub wywołaniem metody zwracającej wartość logiczną.
+PIT działa wyłącznie na operatorach relacyjnych (`==`, `<`, `>`) albo na wartościach liczbowych, nie może negować zmiennych boolowskich ani wyników wywołań metod.
+
+```java
+// PRE  (CLI_11)
+if (option.hasArg() && option.hasArgName())
+// POST
+if (option.hasArg() && !option.hasArgName())
+```
+
+```java
+// PRE  (CLOSURE_4)
+boolean resolved = resolveViaRegistry(t, enclosing);
+// POST
+boolean resolved = !resolveViaRegistry(t, enclosing);
+```
+
+**4. Podstawienie argumentu** (9,7%, n = 373)
+
+LLM zastępuje wartość jednego argumentu wewnątrz wywołania inną wartością, przy zachowaniu nazwy metody i pozostałych argumentów.
+PIT zastępuje całe wywołanie jednym argumentów, ale nie może modyfikować poszczególnych argumentów.
+
+```java
+// PRE  (CHART_2)
+double lower = getLowerBound(series, item);
+// POST
+double lower = getLowerBound(series, 0);
+```
+
+**5. Zmiana opakowywania wywołania** (8,6%, n = 329)
+
+LLM usuwa lub dodaje wywołanie metody-wrappera wokół argumentu.
+PIT może usunąć całe wywołanie metody, ale nie zmienia struktury zagnieżdżenia argumentów.
+
+```java
+// PRE  (CLI_8)
+sb.append(rtrim(text));
+// POST
+sb.append(text);
+```
+
+```java
+// PRE  (CLI_8)
+sb.append(rtrim(text.substring(0, pos))).append(defaultNewLine);
+// POST
+sb.append(text.substring(0, pos)).append(defaultNewLine);
+```
+
+Taki mutant symuluje pominięcie normalizacji parametrów wejściowych, np. wywołanie `rtrim()` usuwa białe znaki na końcu.
+
+**6. Zmiana wartości przypisania** (8,0%, n = 306)
+
+LLM zastępuje złożone wyrażenie po prawej stronie przypisania innym wyrażeniem kontekstowym.
+Żaden operator PIT nie produkuje tego wzorca dla złożonych wyrażeń.
+
+```java
+// PRE  (CLI_15)
+final Set triggers = option.getTriggers();
+// POST
+final Set triggers = new HashSet();
+```
+
+**7. Usunięcie negacji** (7,8%, n = 299)
+
+LLM usuwa `!` z wyrażenia warunkowego, wzorzec odwrotny do negacji.
+PIT zmienia operatory relacyjne, ale nie usuwa istniejącego `!`.
+
+```java
+// PRE  (CLI_20)
+if (!options.hasOption(opt) && stopAtNonOption)
+// POST
+if (options.hasOption(opt) && stopAtNonOption)
+```
+
+```java
+// PRE  (CLI_22)
+if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))
+// POST
+if (stopAtNonOption && (currentOption == null || currentOption.hasArg()))
+```
+
+Taki mutant sprawdza, czy testy pokrywają pod-wyrażenia złożonego warunku niezależnie.
+
+**8. Zamiana stałej wyliczeniowej** (4,6%, n = 175)
+
+LLM zamienia jedną stałą wartość na inną z tej samej klasy.
+PIT modyfikuje wyłącznie literały numeryczne (`int`, `long`, `float`, `double`), ale nie obejmuje stałych symbolicznych ani wartości enum.
+
+```java
+// PRE  (CHART_2)
+double minimum = Double.POSITIVE_INFINITY;
+// POST
+double minimum = Double.NEGATIVE_INFINITY;
+```
+
+```java
+// PRE  (CHART_12)
+this.dataExtractOrder = TableOrder.BY_COLUMN;
+// POST
+this.dataExtractOrder = TableOrder.BY_ROW;
+```
+
+**9. Zastąpienie wyrażenia stałą logiczną** (2,7%, n = 105)
+
+LLM zastępuje pod-wyrażenie złożonego warunku wartością `true` lub `false`.
+PIT zastępuje cały warunek instrukcji `if`, a nie jego część, np. `if (a && b)` -> `if (true)` to całkowite usunięcie warunku.
+Tutaj tylko jedno z wyrażeń złożonych zostaje zastąpione stałą.
+
+```java
+// PRE  (CLI_22)
+if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))
+// POST
+if (true && (currentOption == null || !currentOption.hasArg()))
+```
+
+```java
+// PRE  (CLOSURE_6)
+if (ownerFn.isInterface() && ...)
+// POST
+if (true && ...)
+```
+
+**10. Zmiana literału łańcuchowego** (2,5%, n = 97)
+
+LLM zmienia wartość literału tekstowego wewnątrz wyrażenia.
+PIT obsługuje tylko typy numeryczne, może zwrócić pusty łańcuch jako wynik metody, ale nie zmienia literałów w kodzie.
+
+```java
+// PRE  (CLI_30)
+|| "true".equalsIgnoreCase(value)
+// POST
+|| "false".equalsIgnoreCase(value)
+```
+
+```java
+// PRE  (CLOSURE_9)
+filename = filename.replace("\\", "/");
+// POST
+filename = filename.replace("/", "\\");
+```
+
+**11. Zmiana literału boolowskiego w przypisaniu** (2,3%, n = 87)
+
+LLM zamienia `false` na `true` w instrukcji przypisania.
+PIT działa tylko na `return`, albo wyklucza wartości logiczne w *Inline Constant*.
+
+```java
+// PRE  (CLI_31)
+required = false;
+// POST
+required = true;
+```
+
+**12. Zamiana kolejności argumentów** (1,6%, n = 60)
+
+LLM przestawia kolejność argumentów w wywołaniu metody.
+PIT nie dokonuje permutacji argumentów.
+
+```java
+// PRE  (CHART_1)
+LegendItem item = getLegendItem(index, i);
+// POST
+LegendItem item = getLegendItem(i, index);
+```
+
+**13. Usunięcie wartości null** (1,6%, n = 60)
+
+LLM zastępuje wartość `null` wyrażeniem kontekstowym.
+PIT może ustawiać wyniki na null, ale nie odwrotnie.
+
+```java
+// PRE  (CLI_21)
+checkForOption = null;
+// POST
+checkForOption = trigger;
+```
+
+**14. Zmiana przepływu sterowania** (1,5%, n = 57)
+
+LLM zmienia słowo kluczowe sterujące przepływem: `break` -> `continue`, `else if` -> `if`, lub komentuje instrukcję.
+Żaden operator PIT nie modyfikuje słów kluczowych pętli ani struktury warunkowej.
+
+```java
+// PRE  (CLI_2)
+break;
+// POST
+continue;
+```
+
+```java
+// PRE  (CLI_5)
+else if (str.startsWith("-"))
+// POST
+if (str.startsWith("-"))
+```
+
+**15. Zmiana wyrażenia instanceof** (1,0%, n = 40)
+
+LLM zmienia typ lub neguje wyrażenie `instanceof`.
+PIT nie obejmuje wyrażeń sprawdzania typu.
+
+```java
+// PRE  (CHART_2)
+if (includeInterval && dataset instanceof IntervalXYDataset) {
+// POST
+if (includeInterval && !(dataset instanceof IntervalXYDataset)) {
+```
+
+**16. Zamiana gałęzi wyrażenia trójkowego** (0,8%, n = 31)
+
+LLM zamienia miejscami gałęzie `true` i `false` wyrażenia (`? a : b` -> `? b : a`).
+
+```java
+// PRE  (JACKSONCORE_2)
+_inputPtr = negative ? (startPtr + 1) : startPtr;
+// POST
+_inputPtr = negative ? startPtr : (startPtr + 1);
+```
+
+**17. Zamiana klasy wyjątku** (0,7%, n = 28)
+
+LLM zastępuje klasę rzucanego wyjątku inną klasą.
+PIT nie posiada operatora modyfikującego typ wyjątku.
+
+```java
+// PRE  (COMPRESS_5)
+throw new IOException("The stream is closed");
+// POST
+throw new RuntimeException("The stream is closed");
+```
+
+**18. Zmiana indeksu tablicy** (0,6%, n = 22)
+
+LLM zastępuje jeden indeks tablicy innym.
+
+```java
+// PRE  (JACKSONCORE_1)
+return _inputBuffer[_inputPtr];
+// POST
+return _inputBuffer[_inputPtr + 1];
+```
+
+**19. Zmiana semantyki porównania** (0,5%, n = 21)
+
+LLM zamienia metodę porównującą na inną o odmiennej semantyce: `.equals()` ↔ `==`, `.equals()` ↔ `.contains()`.
+Zamiana `.equals()` na `==` symuluje mylenie równości wartościowej z referencyjną w Javie.
+
+```java
+// PRE  (CLI_1)
+if (opt.equals(option.getOpt()))
+// POST
+if (opt.contains(option.getOpt()))
+```
+
+**20. Wykomentowanie instrukcji** (0,5%, n = 19)
+
+LLM komentuje istniejącą instrukcję zamiast np. `break;` -> `// break;` lub `@Override` -> `// @Override`.
+PIT usuwa lub zastępuje kod, ale nigdy nie stosuje komentarzy jako operatora mutacyjnego.
+
+```java
+// PRE  (CLI_2)
+break;
+// POST
+// break;
+```
+
+**21. Zamiana kolejności operandów** (0,5%, n = 18)
+
+LLM odwraca kolejność operandów w wyrażeniu arytmetycznym: `a - b` -> `b - a`, `rhs / entry` -> `entry / rhs`.
+PIT zmienia symbol operatora arytmetycznego (np. `+` na `-`), ale nie zamienia miejscami operandów.
+
+```java
+// PRE  (TIME_19)
+int diff = offsetPrev - offsetLocal;
+// POST
+int diff = offsetLocal - offsetPrev;
+```
+
+**22. Zamiana klasy implementacji** (0,4%, n = 16)
+
+LLM zastępuje konkretną klasę implementacji interfejsu inną klasą implementującą ten sam interfejs.
+PIT nie zamienia klas implementacji.
+
+```java
+// PRE  (CLI_7)
+StringBuffer buff = new StringBuffer("Missing required option");
+// POST
+StringBuilder buff = new StringBuilder("Missing required option");
+```
+
+**23. Zmiana modyfikatora** (0,3%, n = 13)
+
+LLM zmienia modyfikatory dostępu przy deklaracjach pól i klas: `private` -> `public`, usuwa `final`.
+PIT nie dotyka nagłówków deklaracji.
+
+```java
+// PRE  (CSV_16)
+private CSVRecord current;
+// POST
+public CSVRecord current;
+```
+
+**24. Przypisanie własne** (0,2%, n = 8)
+
+LLM zastępuje wyrażenie przypisaniem samej zmiennej lewej strony (`x = method(x)` -> `x = x`), omijając obliczenie.
+PIT nie produkuje tego wzorca.
+
+```java
+// PRE  (CHART_2)
+minimum = Math.min(minimum, lvalue);
+// POST
+minimum = minimum;
+```
+
+```java
+// PRE  (MOCKITO_23)
+abstract class SerializableAnswer implements Answer<Object>, Serializable {
+// POST
+abstract class SerializableAnswer implements Answer<Object> {
+```
+
+**25. Zamiana stron przypisania** (0,2%, n = 6)
+
+LLM zamienia miejscami lewą i prawą stronę przypisania: `x = y` -> `y = x`.
+
+```java
+// PRE  (CLOSURE_103)
+foundType = maybeType;
+// POST
+maybeType = foundType;
+```
+
+**26. Zmiana typu zmiennej** (0,1%, n = 3)
+
+LLM zmienia deklarowany typ zmiennej lub pola: `boolean` -> `Boolean` (typ prymitywny na opakowanie obiektowe), co ma znaczenie semantyczne w Javie.
+
+```java
+// PRE  (MOCKITO_17)
+private boolean serializable;
+// POST
+private Boolean serializable;
+```
+
+![Wzorce transformacji w grupie nowych mutantów](images/rq1_beyond_classic_patterns.png)
+
+Rysunek 7.4: Rozkład wzorców transformacji w grupie nowych mutantów LLM spoza katalogu PIT
+
+#### Odpowiedź na RQ1
+
+Mutanty LLM wykraczają poza klasyczny katalog PIT.
+Podczas analizy zostało wykryto 26 kategorii wzorców nieobecnych w katalogu PIT.
+Największe kategorie to: podstawianie wartości null do argumentów wywołań (17,1%), zmiana nazwy wywoływanej metody (13,9%), negacja wyrażeń logicznych (12,4%), podstawienie argumentu (9,7%), zmiana opakowywania wywołania (8,6%) oraz zmiana wartości przypisania (8,0%).
+Wszystkie kategorie mają wysoki współczynnik zabicia, co potwierdza ich użyteczność w testowaniu mutacyjnym.
 
 ### RQ2 - Podobieństwo mutantów do defektów rzeczywistych
 
-> ✏️ **Wskazówka do pisania:** W tej części skup się wyłącznie na interpretacji metryk opisujących podobieństwo mutantów do rzeczywistych defektów. Odwołuj się do wartości RBDR, Ochiai i Coupling Rate z tabeli 7.1 i wyjaśnij, który z dwóch sposobów generowania daje mutanty bliższe rzeczywistym błędom. Nie wracaj do opisu testów ani procedury eksperymentalnej. Interesuje Cię wyłącznie to, co wyniki mówią o jakości mutantów jako przybliżenia realnych defektów.
+RQ2 - Czy mutanty LLM są bliższe rzeczywistym defektom niż mutanty klasyczne?
 
-> ✏️ **Proponowany układ akapitu:** Zacznij od porównania ogólnego, czyli wskaż, która metoda wypada lepiej i według jakich metryk. Następnie omów krótko każdą z najważniejszych miar, ale bez przepisywania definicji z części metodologicznej. Na końcu napisz, czy otrzymane wyniki wskazują na przewagę jednej z metod w kontekście realizmu mutantów i jakie ma to znaczenie dla praktycznej oceny jakości testów.
+Dla każdego użytecznego mutanta posiadającego kompletny profil testowy przeanalizowano, jak jego zestaw wykrytych testów pokrywa się z zestawem testów wykrywających badany defekt.
+Na tej podstawie każdy mutant trafia do jednej z sześciu kategorii:
+
+| Kategoria           | Opis                                                                              | Znaczenie                                                    |
+|---------------------|-----------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **Strong**          | Mutant jest wykrywany wyłącznie przez testy, które wykrywają badany defekt        | Mutant precyzyjnie modeluje defekt                           |
+| **Strong + Extra**  | Mutant wykrywa wszystkie testy defektu oraz dodatkowo inne testy                  | Pokrywa defekt, ale jest też wrażliwy na inne fragmenty kodu |
+| **Partial**         | Mutant i defekt mają część wspólnych testów, ale żaden zbiór nie zawiera drugiego | Częściowe podobieństwo do defektu                            |
+| **Partial + Extra** | Jak Partial, lecz mutant wykrywa też testy niezwiązane bezpośrednio z defektem    | Częściowe podobieństwo z nadmiarową czułością                |
+| **Not Subsumed**    | Mutant jest wykrywany, ale wyłącznie przez testy niezwiązane z badanym defektem   | Aktywny, lecz niepowiązany z defektem                        |
+| **Not Detected**    | Mutant przeżył wszystkie testy                                                    | Ekwiwalentny lub zbyt słaby, by zauważyć różnicę             |
+
+Kategorie *Strong* i *Strong+Extra* łącznie odwzorowują odsetek mutantów, które bezpośrednio symulują badany defekt.
+To oznacza im wyższy ich łączny udział, tym lepiej symuluje rzeczywiste bugi w defektach.
+*Not Subsumed* to mutanty, które poprawiają ogólną jakość testów, lecz nie są powiązane z badanym defektem.
+*Not Detected* odpowiada mutantom ekwiwalentnym lub zbyt słabym.
+
+Tabela 7.4: Klasyfikacja sprzężenia mutantów
+
+| Kategoria                 | PIT        | gemma4     | qwen3.6    |
+|---------------------------|------------|------------|------------|
+| **Strong**                | 4,00%      | 6,09%      | 6,45%      |
+| **Strong + Extra**        | 16,34%     | 18,15%     | 19,19%     |
+| **Partial**               | 2,38%      | 3,45%      | 3,53%      |
+| **Partial + Extra**       | 6,56%      | 8,40%      | 8,19%      |
+| **Not Subsumed**          | 39,28%     | 33,51%     | 33,70%     |
+| **Not Detected**          | 31,43%     | 30,40%     | 28,94%     |
+| **Strong + Strong+Extra** | **20,34%** | **24,24%** | **25,64%** |
+
+Mutanty LLM wykazują wyższy łączny odsetek *Strong + Strong+Extra*, co wskazuje na lepszą symulację rzeczywistych defektów.
+Różnica ta jest wyraźna szczególnie w kategorii *Strong*, bo odsetek sprzężonych mutantów wzrasta z 4,00% dla PIT do 6,09-6,45% dla modeli LLM.
+Jednocześnie kategoria *Not Subsumed* jest niższa dla LLM (33,51–33,70%) niż dla PIT (39,28%), co oznacza, że LLM rzadziej generuje mutanty aktywne, lecz niezwiązane z badanym defektem.
+Oba te efekty wskazują, że transformacje generowane przez LLM lepiej symulują rzeczywiste bugi w defektach.
+
+![Klasyfikacja sprzężenia mutantów z defektami](images/rq1_coupling_categorization.png)
+
+Rysunek 7.5: Klasyfikacja mutantów według podobieństwa do rzeczywistych defektów
+
+#### Wyniki metryk podobieństwa
+
+Tabela 7.5: Metryki podobieństwa mutantów do rzeczywistych defektów
+
+| Metryka | PIT    | gemma4 | qwen3.6 |
+|---------|--------|--------|---------|
+| RBDR    | 98,70% | 97,98% | 98,34%  |
+| AOR     | 22,66% | 23,57% | 24,37%  |
+| CR      | 29,28% | 36,10% | 37,35%  |
+| HAOR    | 2,14%  | 2,14%  | 3,08%   |
+| HOMR    | 4,51%  | 6,94%  | 7,45%   |
+
+Mutanty LLM przewyższają PIT pod względem AOR i HOMR.
+RBDR jest zbliżone dla wszystkich typów, co oznacza, że prawie wszystkie badane defekty są wykrywane przez przynajmniej jednego mutanta każdego z narzędzi.
+
+#### Odpowiedź na RQ2
+
+Mutanty LLM są bardziej zbliżone do rzeczywistych defektów niż mutanty klasyczne PIT.
+Wskazuje na wyższe wyniki LLM we wszystkich metrykach podobieństwa, a łączny odsetek kategorii *Strong + Strong+Extra* w Coupling Categorization wynosi 24,24% (gemma4) i 25,64% (qwen3.6) wobec 20,34% dla PIT.
+RBDR jest zbliżone dla wszystkich podejść, co oznacza, że niemal każdy badany defekt jest wykrywany przez przynajmniej jednego mutanta niezależnie od metody generacji.
+Wyższa wartość CR i HOMR dla LLM sugeruje, że LLM trenowane na rzeczywistym kodzie produkcyjnym zawierającym prawdziwe błędy potrafią wygenerować mutanty lepiej odzwierciedlające te defekty niż zdefiniowane reguły PIT. 
+Bardzo dobrym przykładem jest kategoria *Strong*, gdzie mutanty LLM (6,09–6,45%) wyprzedzają PIT (4,00%).
+Podsumowując, mutanty LLM są bliższe do rzeczywistych błędów w kodzie.
 
 ### RQ3 - Koszty i wydajność podejścia
 
-> ✏️ **Wskazówka do pisania:** Ten podrozdział ma odpowiedzieć na pytanie, ile kosztuje uzyskanie mutantów przydatnych do analizy i jak szybko można je otrzymać. Korzystaj wyłącznie z danych o czasie generacji i koszcie jednego użytecznego mutanta z tabeli 7.1. Nie opisuj tutaj technicznych szczegółów środowiska ani sposobu uruchamiania narzędzi. Zamiast tego pokaż, czy różnice kosztowe i czasowe są na tyle duże, że wpływają na praktyczną opłacalność stosowania danej metody.
+RQ3 - Czy mutanty generowane przez LLM są bardziej wydajne od bliskich klasycznych odpowiedników?
 
-> ✏️ **Proponowany układ akapitu:** Najpierw wskaż, która metoda jest szybsza, a która bardziej kosztowna. Następnie oceń, czy wyższy koszt LLM jest uzasadniony jakością uzyskanych rezultatów, czy też stanowi istotne ograniczenie. Na końcu sformułuj krótką odpowiedź, w jakich warunkach dane podejście można uznać za opłacalne z praktycznego punktu widzenia.
+RQ3 bada efektywność generacji mutantów zapomocą LLM, uwzględniając jakość wygenerowanych mutantów (CMR, DMR, EMR) oraz czas potrzebny na ich uzyskanie (AMGT, CPUM).
 
-### Porównanie LLM vs PIT
+Tabela 7.6: Metryki jakości generacji
 
-> ✏️ **Wskazówka do pisania:** Tutaj nie wprowadzasz nowych danych, tylko syntetyzujesz wnioski z RQ1, RQ2 i RQ3. Napisz ten fragment jako zwartą ocenę porównawczą obu podejść. Pokaż, w czym LLM wypada lepiej, w czym lepszy jest PIT oraz czy wyniki sugerują zastąpienie jednego podejścia drugim, czy raczej ich uzupełniające wykorzystanie. Ten podrozdział powinien być krótki, ale stanowczy.
+| Metryka        | PIT     | gemma4 | qwen3.6 | Różnica LLM−PIT    |
+|----------------|---------|--------|---------|--------------------|
+| CMR            | 100,00% | 88,00% | 88,15%  | −12,00 / −11,85 pp |
+| DMR            | 0,00%   | 7,24%  | 10,11%  | +7,24 / +10,11 pp  |
+| EMR            | 31,43%  | 30,40% | 28,94%  | −1,03 / −2,49 pp   |
+| Mutation Score | 68,57%  | 69,60% | 71,06%  | +1,03 / +2,49 pp   |
 
-> ✏️ **Co warto porównać w tekście:** różnorodność mutantów, podobieństwo do rzeczywistych defektów, koszt uzyskania wyników, szybkość generacji oraz praktyczną przydatność w codziennej pracy. Zakończ jednym jasnym zdaniem rekomendacji, które podejście jest lepsze jako rozwiązanie podstawowe, a które jako uzupełniające.
+PIT generuje mutanty 100% kompilowalne bez duplikatów syntaktycznych, ponieważ jest narzędziem deterministycznym opartym na szablonach mutacji kodu.
+Modele LLM mają CMR na poziomie 88%, co oznacza, że co ósmy generowany mutant jest odrzucany już na etapie kompilacji.
+Wskaźnik DMR wynosi 7,24% (gemma4) i 10,11% (qwen3.6), co oznacza, że modele generują znaczący odsetek syntaktycznie identycznych mutantów.
+Wynika to z technologii generacji tekstu na podstawie rozkładu prawdopodobieństwa trenowanych wzorców, co prowadzi do powtarzalności mutacji.
 
-### Ograniczenia badania
+#### Czas generacji i koszt na pojedynczy mutant
 
-> ✏️ **Wskazówka do pisania:** W tej części wskaż tylko takie ograniczenia, które rzeczywiście wpływają na interpretację wyników. Nie opisuj ograniczeń technicznych w detalach implementacyjnych. Skup się na tym, co może zawężać możliwość uogólnienia wniosków. Mogą to być na przykład ograniczenia związane z zakresem zbioru badawczego, liczbą analizowanych defektów, wyborem modeli, przyjętą definicją nowości mutanta albo charakterem metryk użytych w analizie.
+Tabela 7.7: Metryki czasowe i kosztowe
 
-> ✏️ **Proponowany układ akapitu:** Najpierw wskaż ograniczenia dotyczące danych i zakresu badania. Następnie opisz ograniczenia wynikające z samej metody porównania LLM i PIT. Na końcu dopisz jedno zdanie, że mimo tych ograniczeń uzyskane wyniki pozwalają sformułować użyteczne wnioski dla analizowanego problemu, ale wymagają ostrożności przy ich uogólnianiu.
+| Metryka                   | PIT    | gemma4 | qwen3.6 |
+|---------------------------|--------|--------|---------|
+| AMGT                      | 0,047s | 1,280s | 2,422s  |
+| CPUM                      | 22,44s | 30,15s | 29,68s  |
+| Mnożnik AMGT względem PIT | 1      | **27** | **52**  |
 
----
+Czas potrzebny dla generacji pojedynczego mutanta przez modele LLM jest znacznie dłuższy niż w przypadku PIT, np. gemma4 zajmuje 1,28 s, qwen3.6 zajmuje 2,42 s, a PIT zajmuje tylko 0,0047 s.
+To oznacza, że mamy do czynienia z **27-krotnym (gemma4) i 52-krotnym (qwen3.6) wzrostem czasu generacji** w porównaniu do PIT.
+Różnica wynika z ilości obliczeń potrzebnych dla generacji tekstu, nawet gdy korzystamy z bardzo efektywnych modeli.
+
+Mimo że czas generacji jest znacznie dłuższy, wskaźnik CPUM różni się znacznie mniej: gemma4 30,15 s, a qwen3.6 29,68 s, a PIT 22,44 s.
+Przyczyna polega na tym, że składnikiem CPUM jest czas uruchamiania testów, który jest wspólny dla wszystkich podejść, co przekłada się na 34% wzrost całkowitego kosztu czasowego.
+Dla badanych modeli całkowity czas generacji wszystkich 40 426 mutantów gemma4 wyniósł około 14,4 h, a dla 39 410 mutantów qwen3.6 około 26,5 h.
+
+#### Odpowiedź na RQ3
+
+Modele LLM generują mutanty wolniej i z niższą kompilowalnością niż PIT (CMR: 88% vs 100%, AMGT: 27–52× wyższy).
+Jednak całkowity koszt na jeden użyteczny mutant (CPUM) jest tylko 34% wyższy, ponieważ dominującą składową kosztu jest czas uruchamiania testów, a nie generacji mutantów.
+RQ3 jest częściowo potwierdzone, ponieważ LLM jest kosztowniejsze i wolniejsze w generacji, ale narzut całkowity jest umiarkowany, co z większym podobieństwom do rzeczywistych błędów może być korzystniejsze.
 
 ## Podsumowanie i wnioski
 
-Niniejsza praca dotyczyła zastosowania dużych modeli językowych do generowania operatorów mutacyjnych - reguł wprowadzania celowych błędów w kodzie źródłowym, służących do oceny jakości testów automatycznych. Klasyczne operatory mutacyjne definiowane w narzędziach takich jak PIT stanowią ograniczony i statyczny katalog reguł, który może nie odzwierciedlać typów błędów rzeczywiście popełnianych przez programistów.
+Przeanalizowane wyniki badania sugerują, że LLM wprowadzają nową jakość w testowaniu mutacyjnym.
+LLM generują mutanty, których klasyczne narzędzia nie są w stanie wygenerować, w tym nowe typy mutantów, które nie są zdefiniowane w PIT.
+Co więcej, mutanty wygenerowane przez LLM mają lepsze podobieństwo do rzeczywistych błędów.
+To oznacza, że mutanty LLM mogą wygenerować mniej mutantów, ale o wyższej wartości niż klasyczne narzędzia.
 
-W pracy postawiono trzy pytania badawcze: (RQ1) czy LLM generuje mutanty nieobecne w zbiorze mutantów PIT ALL; (RQ2) czy mutanty LLM są bliższe rzeczywistym defektom z Defects4J pod względem zachowania programu niż mutanty PIT; (RQ3) jakie są koszty i wydajność podejścia LLM w porównaniu z PIT. Eksperyment przeprowadzono na wybranym podzbiorze błędów z benchmarku Defects4J 3.0.1 - uznanego standardu w badaniach nad jakością testów.
-
-Wyniki eksperymentu wskazują, że:
-- *[RQ1: X% użytecznych mutantów LLM nie ma odpowiednika wśród mutantów PIT ALL - co potwierdza / częściowo potwierdza hipotezę o różnorodności.]*
-- *[RQ2: Mutanty LLM osiągają RBDR = X% wobec Y% dla PIT oraz medianę Ochiai A wobec B - co oznacza, że LLM generuje / nie generuje realistyczniejsze mutanty.]*
-- *[RQ3: LLM osiąga CMR = X% i jest Z-krotnie droższy od PIT per użyteczny mutant - co czyni podejście akceptowalnym / kosztownym dla projektów o małej do średniej liczbie bugów.]*
-
-Wyniki sugerują, że podejście oparte na LLM stanowi wartościowe uzupełnienie klasycznych narzędzi mutacyjnych, a nie ich zastąpienie. PIT pozostaje szybki, deterministyczny i bezkosztowy, natomiast LLM dostarcza bogatszego i bardziej realistycznego zestawu operatorów - kosztem wyższego nakładu obliczeniowego i finansowego. Praktycznym wnioskiem jest rekomendacja hybrydowego podejścia: PIT jako szybka warstwa bazowa, LLM jako warstwa uzupełniająca dla obszarów kodu słabo wykrywanych przez klasyczne operatory.
-
-*[Uzupełnić po eksperymencie: ostateczne sformułowanie wniosków z konkretnymi wartościami liczbowymi.]*
+Z drugiej strony, korzystanie z LLM wiąże się z dłuższym czasem generacji i mniejszą kontrolą nad jakością mutantów, np. problemy z kompilacją).
+Jednak w praktyce ten koszt okazuje się umiarkowany, ponieważ głównym ograniczeniem pozostaje czas wykonywania testów, który jest podobny dla obu narzędzi.
+W rezultacie LLM mogą być stosowane razem z PIT, żeby uzupełnić jakość testów w krytycznych modułach aplikacji.
+Rozwiązaniem jest model hybrydowy, w którym klasyczne narzędzia dają szybszą generację mutantów, a LLM poszerzają zbiór mutantów o bardziej realistyczne i semantycznie złożone przypadki.
+Takie połączenie pozwala na efektywne generowanie mutantów bez znaczącego wzrostu kosztów.
 
 ---
 
