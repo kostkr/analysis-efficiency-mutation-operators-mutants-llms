@@ -15,13 +15,13 @@
 
 \usepackage{geometry}
 % PDF VIEW
-% \geometry{total={210mm,297mm},
-% left=25mm,right=25mm,%
-% bindingoffset=0mm, top=25mm,bottom=25mm}
-% PRINT
 \geometry{total={210mm,297mm},
-    left=20mm,right=20mm,
-    bindingoffset=10mm, top=25mm,bottom=25mm}
+    left=20mm,right=20mm,%
+    bindingoffset=0mm, top=25mm,bottom=25mm}
+% PRINT
+% \geometry{total={210mm,297mm},
+%     left=20mm,right=20mm,
+%     bindingoffset=10mm, top=25mm,bottom=25mm}
 
 \OnehalfSpacing
 
@@ -151,7 +151,6 @@
 \renewcommand\appendixpagename{Dodatki}
 
 \renewcommand\lstlistingname{Pseudokod}
-\renewcommand\lstlistlistingname{Spis pseudokodów}
 
 \newcommand{\AR}[1]{\todo[inline, color=blue!30]{AR: #1}}
 \newcommand{\MM}[1]{\todo[inline, color=green!30]{MM: #1}}
@@ -268,15 +267,12 @@
     \listoftables
 
     \newpage
-    \lstlistoflistings
-
-    \newpage
 
     \begin{abstract}
         Testowanie mutacyjne polega na wprowadzaniu drobnych, celowych zmian w kodzie, aby ocenić jakość testów.
         Klasyczne narzędzia, takie jak PIT, polegają na stałym zestawie deterministycznych reguł dla generacji mutantów.
         W tej pracy analizowano efektywność generacji mutantów przez LLM pod względem nowości, podobieństwa do rzeczywistych błędów oraz kosztów generacji.
-        Eksperyment przeprowadzono na 843 defektach, generując ponad 156 000 mutantów przy użyciu PIT oraz modeli gemma4 i qwen3.6.
+        Eksperyment przeprowadzono na 843 defektach, generując ponad 156 000 mutantów przy użyciu PIT oraz modeli Gemma4-26b-A4 i Qwen3.6-35b-A3.
         Wyniki pokazują, że LLM potrafią wygenerować mutanty, które nie mają odpowiedników w PIT.
         Mutanty LLM częściej odpowiadają rzeczywistym błędom i osiągają wyższe metryki jakości, choć ich generacja jest wolniejsza.
         LLM stanowią wartościowe uzupełnienie klasycznych narzędzi, szczególnie w podejściu hybrydowym łączącym szybkość PIT z większym realizmem mutantów LLM.
@@ -294,7 +290,7 @@
     Jedną z najlepszych metod oceny jakości testów jest stosowanie testowania mutacyjnego, polegające na wprowadzaniu drobnych zmian w kodzie i sprawdzaniu, czy istniejące testy potrafią je wykryć.
     Klasyczne narzędzia mutacyjne dysponują jednak tylko niewielkim katalogiem operatorów, co ogranicza przestrzeń defektów rzeczywiście popełnianych przez programistów.
 
-    Z drugiej strony LLM, trenowane na większości dostępnych w internecie zbiorach kodu oraz historii bugów, mają szerszą wiedzę o defektach popełnianych w produkcyjnym oprogramowaniu.
+    Z drugiej strony LLM, trenowane na dużych dostępnych w internecie zbiorach kodu oraz historii bugów, mają szerszą wiedzę o defektach popełnianych w produkcyjnym oprogramowaniu.
     Dzięki temu możliwe jest wykorzystanie LLM do generowania bardziej nieoczekiwanych oraz realistycznych mutantów.
     Pozwala to wykraczać poza ograniczony zestaw reguł dostępnych w klasycznych narzędziach mutacyjnych, a tym samym zwiększać jakość testów.
     Z kolei pozwala to wzmocnić poziom zaufania do oprogramowania, w tym do automatycznie wygenerowanego kodu.
@@ -312,9 +308,9 @@
         \item \textbf{Rozdział 3} Klasyczne operatory mutacyjne na przykładzie narzędzia PIT, zasada działania, katalog operatorów klasycznych z grupy ALL.
         \item \textbf{Rozdział 4} Duże modele językowe w inżynierii oprogramowania, testowaniu mutacyjnym, rola LLM jako generatora mutantów i zmian w kodzie oraz związane z tym ryzyka.
         \item \textbf{Rozdział 5} Rzeczywiste błędy ze zbioru Defects4J 3.0.1 miary podobieństwa mutantów do defektów wyznaczone na podstawie profili testowych oraz definicja wszystkich metryk i kryteriów oceny stosowanych w badaniu.
-        \item \textbf{Rozdział 6} Metodyka eksperymentu: przebieg badania, generacja mutantów przez LLM i PIT, weryfikacja wyników oraz zbieranie danych do dalszej analizy metryk.
+        \item \textbf{Rozdział 6} Założenia i metodyka eksperymentu, generacja mutantów przez LLM i PIT oraz szczegóły implementacji.
         \item \textbf{Rozdział 7} Analiza wyników eksperymentu, interpretacja danych liczbowych, odpowiedzi na tezy badawcze, porównanie LLM i PIT oraz ograniczenia badania.
-        \item \textbf{Podsumowanie} Główne wnioski pracy.
+        \item \textbf{Rozdział 8} Podsumowanie wyników oraz odpowiedź na pytania badawcze.
     \end{itemize}
 
     \clearpage
@@ -416,7 +412,7 @@
     \begin{enumerate}
         \item Na początku wybierany jest fragment kodu, który będzie analizowany.
         \item Generowany jest zbiór mutantów w celu symulowania potencjalnych błędów w kodzie.
-        \item Dla każdego wygenerowanego mutantu sprawdzana jest poprawność techniczna, najczęściej poprzez kompilację, tak aby do dalszego etapu trafiały jedynie mutanty możliwe do uruchomienia.
+        \item Dla każdego wygenerowanego mutanta sprawdzana jest poprawność techniczna, najczęściej poprzez kompilację, tak aby do dalszego etapu trafiały jedynie mutanty możliwe do uruchomienia.
         \item Dla mutantów, które przeszły ten etap, wykonywany jest zbiór testów w celu sprawdzenia, czy wprowadzona zmiana powoduje obserwowalną zmianę zachowania kodu.
         \item Po zakończeniu testów mutant zostaje sklasyfikowany jako zabity, jeżeli co najmniej jeden test zakończy się niepowodzeniem, albo jako przeżywający, jeżeli cały zestaw testów przejdzie.
         \item Kolejnym krokiem oblicza się mutation score, czyli procent zabitych mutantów, które przeszły etap sprawdzenia technicznego.
@@ -441,7 +437,10 @@
     Dodatkową zaletą jest to, że istnieją już małe, kwantyzowane LLM osiągające dobre wyniki w benchmarkach, dla których koszt obliczeniowy oraz czas pojedynczej generacji mogą być relatywnie niskie.
     Oznacza to, że przy odpowiednio dobranym modelu i strategii selekcji mutantów podejście LLM może częściowo poprawić praktyczną opłacalność testowania mutacyjnego, zwiększając dostępność tego podejścia dla szerszego zakresu projektów produkcyjnych.
 
+    \clearpage
+    \openany
     \chapter{Operatory mutacyjne w narzędziach klasycznych}
+    \openright
 
     Głównym celem operatorów mutacyjnych jest symulowanie typowych błędów w kodzie.
     Klasyczne operatory mutacyjne to zbiór zdefiniowanych reguł transformacji kodu, których celem jest tworzenie sztucznych błędów o przewidywalnym charakterze.
@@ -604,7 +603,7 @@
     \begin{table}[H]
         \centering
         \small
-        \begin{tabular}{|l|l|c|l|}
+        \begin{tabular}{|l|l|p{3.0cm}|l|}
             \hline
             Identyfikator & Projekt & Liczba aktywnych bugów & IDs aktywnych bugów \\ \hline
             Chart & jfreechart & 26 & 1-26 \\ \hline
@@ -682,11 +681,13 @@
     Ta metryka będzie używana do obliczenia liczby mutantów możliwych do użycia w testowaniu, ponieważ LLM nie może gwarantować poprawnej generacji mutantów.
     Będzie to potrzebne do oceniania stabilności generowania mutantów przez LLM, a także do porównania z klasycznymi mutantami, które charakteryzują się bardzo wysoką kompilowalnością 100\% dla niektórych klasycznych narzędzi.
 
-    \subsection{Duplicate mutants}
+    \subsection{Equivalent mutants}
 
-    Mutant zduplikowany to mutant, który syntaktycznie jest identyczny z innym mutantem albo z oryginalnym kodem.
-    Takie mutanty nie wprowadzają nowego zachowania i nie wnoszą nowych danych do analizy, ponieważ ich efekt został już uwzględniony.
-    Przed obliczaniem metryk usuwa się je ze zbioru, aby nie zawyżały wyników niektórych metryk.
+    Mutanty równoważne to mutanty, które nie zmieniają swojego zachowania względem kodu oryginalnego. W tej kategorii występują podkategorie mutantów zduplikowanych oraz mutantów semantycznie równoważnych.
+
+    \subsubsection{Duplicate mutants}
+
+    Mutant zduplikowany to mutant, który syntaktycznie jest identyczny z innym mutantem albo z oryginalnym kodem. Taki mutant nie wprowadza nowego zachowania i nie wnosi nowych danych do analizy, ponieważ jego efekt został już uwzględniony. Przed obliczaniem metryk usuwa się je ze zbioru, aby nie zawyżały wyników niektórych metryk.
 
     Algorytm identyfikacji duplikatów polega na porównaniu reprezentacji kodu wygenerowanego mutanta po normalizacji z oryginalnym kodem oraz już istniejącymi mutantami.
     Jeżeli dwie reprezentacje mutantów są identyczne względem siebie, oba mutanty traktowane są jako duplikaty tej samej modyfikacji.
@@ -699,14 +700,14 @@
 
     Wskaźnik ten pokazuje, jaki odsetek mutantów kompilowanych stanowią duplikaty.
 
-    \subsection{Equivalent mutants}
+    \subsubsection{Semantic equivalent mutants}
 
     Mutant ekwiwalentny to mutant, który mimo różnic syntaktycznych zachowuje się w taki sam sposób jak oryginalny kod.
     Oznacza to, że żaden test nie jest w stanie wykryć wprowadzonej zmiany, ponieważ nie prowadzi ona do obserwowalnej różnicy w zachowaniu kodu.
     Nie istnieje uniwersalny algorytm rozpoznawania mutantów ekwiwalentnych, ponieważ problem ten jest nierozstrzygalny w ogólnym przypadku, dlatego w analizie będą stosowane przybliżone metryki oparte na wynikach testów.
     Za mutanty ekwiwalentne uznaje się mutanty kompilowane i niezduplikowane, które przeżywają cały dostępny zestaw testów.
     Podejście daje wyniki przybliżone, bo mutanty mogą przeżywać testy z powodu ich niedostatecznego pokrycia, a nie faktycznej ekwiwalentności semantycznej.
-    Takie podejście nie daje dokładnych wyników, ale pozwala porównać efektywność generacji mutantów, co w naszym przypadku jest wystarczające.
+    Takie podejście nie daje dokładnych wyników, ale pozwala porównać efektywność generacji mutantów, co w tym przypadku jest wystarczające.
 
     \begin{center}
         \texttt{Equivalent Mutation Rate (EMR) = N\_survived / N\_useful}
@@ -850,9 +851,9 @@
     \begin{table}[H]
         \centering
         \small
-        \begin{tabular}{|l|l|p{6.5cm}|c|}
+        \begin{tabular}{|l|l|p{5.5cm}|c|}
             \hline
-            Metryka & Skrót & Co mierzy & Powiązane RQ \\ \hline
+            Metryka & Skrót & Opis & Powiązane RQ \\ \hline
             LLM New Mutant Rate & LLM-NMR & Odsetek mutantów LLM bez odpowiednika wśród mutantów klasycznych & RQ1 \\ \hline
             Real Bug Detection Rate & RBDR & Odsetek defektów, dla których istnieje co najmniej jeden powiązany mutant & RQ2 \\ \hline
             Average Ochiai Rate & AOR & Średni stopień podobieństwa profili testowych mutanta i defektu & RQ2 \\ \hline
@@ -873,13 +874,33 @@
 
     \clearpage
     \openany
-    \chapter{Założenia eksperymentu i metodyka}
+    \chapter{Eksperyment}
     \openright
+
+    \section{Założenia eksperymentu}
 
     Celem tego eksperymentu jest porównanie efektywności mutantów wygenerowanych przez modele językowe z klasycznymi metodami generacji.
     W związku z tym dla każdego analizowanego defektu \cite{ref3} generowany jest zbiór mutantów, na których są uruchomione testy, które stanowią podstawę dla dalszych obliczeń i interpretacji metryk.
     Podczas uruchamiania testów dla każdego mutanta są zbierane wyniki testów, czas potrzebny dla generacji, uruchomienia wraz z informacją o niepowodzeniu kompilacji, błędy wykonania kodu oraz duplikatach mutantów.
     Zebrany zestaw danych pozwoli policzyć wszystkie zdefiniowane metryki oraz uwzględnić koszt, jakość, podobieństwo do rzeczywistych defektów oraz ocenić efektywność różnych podejść w analizie testów dla wytwarzania oprogramowania.
+
+    \section{Metodyka eksperymentu}
+
+
+    W eksperymencie porównywana jest klasyczna i LLM grupa mutantów.
+    Grupa klasyczna obejmuje mutanty wygenerowane przez zmodyfikowaną wersję narzędzia PIT, żeby zapisywać wygenerowane zmiany w kodzie.
+    Grupa LLM obejmuje mutanty wygenerowane przez dwa modele językowe gemma4-26b-A4 oraz qwen3.6-35b-A3.
+
+    Dane wejściowe dla obu grup przygotowywane są w ten sam sposób, żeby zapewnić porównywalność wyników.
+    Dla każdego z 843 defektów ze zbioru Defects4J ładowane są dwie wersje projektu, czyli wersja z błędem oraz wersja naprawiona.
+    Na podstawie różnicy między tymi wersjami wyznaczane są zmodyfikowane linie kodu dla naprawy błędu.
+    Następnie w pliku źródłowym wyszukiwane są metody, konstruktory oraz bloki statyczne, których zakres pokrywa się z co najmniej jedną zmodyfikowaną linią.
+    Każdy taki fragment kodu stanowi wejście zarówno dla PIT oraz LLM, żeby gwarantować, że oba podejścia generują mutanty dla tego samego błędu w kodzie.
+
+    Wszystkie mutanty, niezależnie od sposobu ich generacji, są oceniane w jednakowy sposób poprzez kompilację projektu oraz uruchomienie zestawu testów powiązanych z analizowanym defektem.
+    Dla każdego mutanta rejestrowany jest wynik kompilacji, profil testowy, czas generacji oraz czas uruchomienia testów.
+    Na podstawie zebranych danych obliczane są metryki zdefiniowane w rozdziale 5, jednakowe dla obu grup.
+    Jedyną zmienną różniącą grupy mutantów jest sposób generacji mutantów, dzięki czemu różnice w wynikach można interpretować jako efekt zastosowanej metody generacji mutantów.
 
     \section{Generacja mutantów}
 
@@ -901,6 +922,8 @@
     Najpierw przygotowywana jest wersja fixed oraz wersja buggy danego defektu, po czym wersja fixed jest kompilowana dla całego defektu.
     Następnie wybrane jednostki wejściowe są grupowane według klasy i przekazywane do PIT.
     Wygenerowane mutanty są zapisywane przez zmodyfikowany mechanizm raportowania w postaci zawierającej numer linii kodu, linię źródłową kodu przed zmianą oraz po zmianie, nazwę operatora jak w dokumentacji PIT \cite{ref1}.
+    PIT uruchamiany jest poleceniem \texttt{java -cp ... ClassicJsonMutationGenerator} z parametrami \texttt{--targetClass}, \texttt{--targetMethods} (nazwy metod, konstruktorów oraz bloków inicjalizacji, oddzielone przecinkiem).
+    Czas generacji PIT jest obliczany jako średnia czasów generacji dla wszystkich fragmentów kodu w danej klasie, co daje wartość \texttt{gen\_time\_s} na mutanta.
 
     W badaniu jako reprezentację podejścia LLM wykorzystywane są dwa skwantyzowane modele \texttt{gemma4-26b-A4} oraz \texttt{qwen3.6-35b-A3}, które będą uruchamiane na serwerze Ollama w formacie GGUF.
     Model \texttt{gemma4-26b-A4} jest oparty na oficjalnych wagach Google w formacie BF16 z architekturą Mixture of Experts (MoE).
@@ -915,11 +938,81 @@
     W podejściu opartym na LLM dla generacji mutantów każdy fragment kodu jest traktowany jako osobna jednostka wejściowa dla generacji mutantów.
     Podejście to zostało zastosowane w celu normalizacji danych wejściowych i zachowania balansu między długością kontekstu a efektywnością przetwarzania danych wejściowych.
     Dla każdej jednostki tworzony jest dynamiczny prompt zawierający kod źródłowy wraz z numerami linii, „few-shot” przykłady mutantów oraz instrukcja określająca format wyjściowy, w jakim mają być zwracane wyniki.
+
+
+    \begin{lstlisting}[basicstyle=\small\ttfamily,frame=single,numbers=none]
+    System: You are an expert in mutation testing. Make small
+    realistic code changes that imitate real bugs, producing
+    syntactically valid and likely compilable single-line mutants
+    that reveal weak tests.
+
+
+
+    User: Above is the original code. Your task is to generate '6'
+    high-value mutants, (notice: mutant refers to the mutant in
+    software testing - subtle code changes that reveal weak tests)
+    in:
+
+      45:  public static int compare(int a, int b) {
+      46:      if (a > b) {
+      47:          return 1;
+      48:      }
+      49:      return 0;
+      50:  }
+
+    Refer to these examples:
+
+    {
+    ...
+      "precode": 'if (a > 0 && b > 0) {',
+      "aftercode": 'if (a > 0 || b > 0) {',
+    ...
+      "precode": 'if (index >= size) {',
+      "aftercode": 'if (index > size) {',
+    ...
+      "precode": 'for (int i = 0; i < list.size(); i++) {',
+      "aftercode": 'for (int i = 0; i <= list.size(); i++) {',
+    ...
+      "precode": 'total = total + price;',
+      "aftercode": 'total = total - price;',
+    ...
+      "precode": 'c = bin_op.apply(b, a);',
+      "aftercode": 'c = bin_op.apply(a, b);',
+    ...
+    }
+
+    #Requirement:
+    1. Provide generated mutants directly
+    2. A mutation can only occur on one line
+    3. Your output must be like:
+       [ { "line": 123, "precode": "", "aftercode": "", "rule": "" } ],
+       where "line" represents the 1-based absolute line number of the mutated line,
+       "precode" represents the original line of code before mutation and it can not be empty,
+       "aftercode" represents the mutated line of code after mutation and should be a valid line replacement,
+       "rule" is a short mutation-operator name, for example "Conditionals Boundary"
+    4. Prohibit generating the exact same mutants
+    \end{lstlisting}
+
+    Prompt jest budowany dynamicznie gdzie celowa liczba mutantów jest równa liczbie linii w danym fragmencie kodu, a numeracja linii odpowiada ich pozycjom w pliku źródłowym.
+    Przykłady few-shot zostały dobrane w taki sposób, aby reprezentować różne typy mutacji spotykanych w rzeczywistym kodzie.
+
     Po zakończeniu generacji wykonywane jest oznaczanie duplikatów, obejmujące zarówno mutanty powtarzające poprzednie wygenerowane zmiany lub odpowiadające oryginalnemu kodowi.
     Oba modele są zaprojektowane do pracy na sprzęcie z co najmniej 36 GB pamięci, co pozwala uruchomić modele zarówno na lokalnej stacji roboczej, jak i na podstawowym sprzęcie dla AI, co jest istotne z punktu widzenia oceny kosztów generowania mutantów w zastosowaniu produkcyjnym.
     Cała generacja odbywa się w izolowanym środowisku, które stanowi serwer oparty na MAC mini z układem M4 Pro, 14-rdzeniowym CPU, 20-rdzeniowym GPU oraz 48 GB zunifikowanej pamięci RAM współdzielonej przez CPU i GPU.
     Architektura pamięci zunifikowanej umożliwia efektywne wykorzystanie dostępnych zasobów przez modele językowe.
     W połączeniu z architekturą Apple Silicon rozwiązanie umożliwia wykorzystanie sprzętowej akceleracji obliczeń oraz zoptymalizowanych bibliotek wykorzystywanych przez narzędzie Ollama, co zapewnia stabilne środowisko.
+    Zapytanie do modelu wysyłane z domyślną konfiguracją w trybie generacji bez myślenia (POST do endpointu \texttt{/api/generate} z parametrami \texttt{stream=true}, \texttt{think=false}).
+    Odpowiedź jest w formacie JSON zgodnym ze schematem definiującym tablicę obiektów z polami \texttt{line}, \texttt{precode}, \texttt{aftercode}, \texttt{rule}).
+    Po otrzymaniu odpowiedzi walidowane są pola JSON, do rekordu dodawana jest ścieżka pliku źródłowego, czas generacji oraz metadane.
+    Czas generacji mutanta jest liczony jako średnia czasów generacji dla wszystkich mutantów w fragmencie kodu.
+    Wyniki obu metod generacji zapisywane są w formacie: \texttt{\{id, filepath, line, precode, aftercode, rule, gen\_time\_s, duplicate\}}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.85\textwidth]{images/pipeline-generacja-mutantow.png}
+        \caption{Pipeline generujący mutanty za pomocą PIT oraz LLM.}
+        \label{fig:pipeline_gen}
+    \end{figure}
 
     \section{Przebieg eksperymentu}
 
@@ -933,9 +1026,25 @@
     Po zakończeniu etapu generacji oraz uruchamiania testów wyniki są porządkowane według analizowanego defektu i typu mutanta.
     W wyniku tego procesu powstaje uporządkowany zbiór danych, który zawiera wszystkie dane niezbędne do obliczenia zdefiniowanych metryk oraz analizy.
 
+    Technicznie generacja przebiega w następujący sposób.
+    Na początku na wersji fixed uruchamiane jest polecenie \texttt{defects4j test -r}, które zwraca listę relewantnych testów (suite\_profile) dla defektu i waliduje poprawność konfiguracji defektu.
+    Następnie to samo polecenie uruchamiane jest na wersji buggy, co daje listę testów wykrywających defekt (bug\_profile).
+    Dla testowania tworzona jest pula 10 workerów, które równolegle uruchamiają testy na mutantach.
+    Dla każdego nieduplikowanego mutanta wykonywane są kroki: podmiana linii w pliku źródłowym (\texttt{precode} $\rightarrow$ \texttt{aftercode}), kompilacja, uruchomienie \texttt{defects4j test -r} z odpowiednim timeoutem (min(config, max(160s, 0.038s × N\_testów))).
+    Jeśli kompilacja nie powiedzie się lub wystąpi timeout, worker jest resetowany poleceniem \texttt{git reset --hard} przed kolejnym mutantem.
+    Każdy wynik zawiera: \texttt{mutant\_id}, \texttt{compiled}, \texttt{failing\_tests}, \texttt{test\_time\_s} oraz \texttt{wall\_time\_s}.
+    Po przetworzeniu wszystkich 843 defektów obliczane są metryki na podstawie profilów testowych mutantów.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/pipeline-przebieg-eksperymentu.png}
+        \caption{Pipeline uruchamiający testy na wygenerowanych mutantach.}
+        \label{fig:pipeline_przebieg}
+    \end{figure}
+
     \clearpage
     \openany
-    \chapter{Analiza wyników i wnioski}
+    \chapter{Analiza wyników}
     \openright
 
     Wyniki badania przedstawiono w kontekście tez badawczych na podstawie zebranych danych o mutantach oraz profilów testowych dla rzeczywistych defektów.
@@ -946,7 +1055,7 @@
     \section{Statystyki ogólne eksperymentu}
 
     Badanie przeprowadzono na wszystkich \textit{843 defektach} ze zbioru Defects4J 3.0.1, obejmującego 17 projektów w różnych domenach.
-    Łącznie wygenerowano \textit{159970 mutantów}.
+    Łącznie wygenerowano \textit{156 484 mutantów}.
 
     \begin{table}[H]
         \centering
@@ -971,6 +1080,64 @@
         \label{tab:ogolne}
     \end{table}
 
+    \begin{table}[H]
+        \centering
+        \scriptsize
+        \begin{tabular}{|l|r|r|r|r|r|r|r|r|r||r|r|r|}
+            \hline
+            & \multicolumn{3}{c||}{Mutanty} & \multicolumn{3}{c||}{CMR (\%)} & \multicolumn{3}{c||}{Mutation Score (\%)} & \multicolumn{3}{c|}{Coupling Rate (\%)} \\ \hline
+            Projekt & PIT & Gemma & Qwen & PIT & Gemma & Qwen & PIT & Gemma & Qwen & PIT & Gemma & Qwen \\ \hline
+            Chart & 1815 & 1087 & 995 & 100.0 & 92.3 & 88.5 & 52.6 & 50.3 & 56.0 & 32.3 & 38.4 & 42.1 \\ \hline
+            Cli & 1255 & 1433 & 1406 & 100.0 & 87.8 & 91.0 & 89.0 & 77.4 & 75.5 & 49.0 & 40.9 & 38.9 \\ \hline
+            Closure & 13833 & 10450 & 8584 & 100.0 & 83.3 & 83.4 & 83.1 & 77.5 & 77.5 & 40.1 & 40.1 & 42.1 \\ \hline
+            Codec & 1514 & 785 & 803 & 100.0 & 94.5 & 91.8 & 84.6 & 74.4 & 75.8 & 41.9 & 44.6 & 43.8 \\ \hline
+            Collections & 1017 & 701 & 716 & 100.0 & 87.0 & 85.6 & 47.0 & 48.8 & 51.2 & 25.1 & 31.0 & 31.1 \\ \hline
+            Compress & 2784 & 2099 & 2064 & 100.0 & 93.4 & 90.9 & 75.6 & 65.4 & 69.5 & 40.1 & 34.9 & 39.1 \\ \hline
+            Csv & 490 & 390 & 350 & 100.0 & 89.0 & 82.9 & 86.8 & 87.9 & 86.4 & 28.0 & 30.0 & 33.2 \\ \hline
+            Gson & 1465 & 688 & 609 & 100.0 & 89.1 & 85.9 & 80.4 & 72.2 & 73.7 & 21.3 & 34.4 & 36.5 \\ \hline
+            JacksonCore & 2362 & 2952 & 2927 & 100.0 & 81.3 & 95.2 & 62.9 & 65.5 & 67.4 & 25.8 & 20.1 & 17.5 \\ \hline
+            JacksonDatabind & 6506 & 6174 & 6412 & 100.0 & 85.9 & 83.0 & 70.3 & 61.5 & 63.7 & 27.9 & 26.5 & 28.0 \\ \hline
+            JacksonXml & 415 & 280 & 213 & 100.0 & 86.1 & 94.4 & 57.3 & 55.5 & 55.2 & 40.1 & 37.6 & 42.3 \\ \hline
+            Jsoup & 23592 & 4063 & 3822 & 100.0 & 91.3 & 88.4 & 51.4 & 68.0 & 68.1 & 13.8 & 35.7 & 36.4 \\ \hline
+            JxPath & 1502 & 1205 & 1075 & 100.0 & 89.8 & 86.3 & 79.2 & 72.3 & 78.4 & 45.9 & 39.7 & 44.4 \\ \hline
+            Lang & 5828 & 2116 & 2378 & 100.0 & 93.9 & 94.9 & 77.1 & 69.1 & 72.7 & 42.7 & 46.4 & 47.7 \\ \hline
+            Math & 8578 & 3912 & 5015 & 100.0 & 96.0 & 94.2 & 74.6 & 68.1 & 71.1 & 36.2 & 36.9 & 40.6 \\ \hline
+            Mockito & 903 & 970 & 917 & 100.0 & 82.3 & 82.7 & 88.8 & 80.0 & 81.6 & 49.7 & 47.2 & 46.8 \\ \hline
+            Time & 2789 & 1121 & 1124 & 100.0 & 94.6 & 91.0 & 79.4 & 77.5 & 79.3 & 24.3 & 41.0 & 42.3 \\ \hline
+        \end{tabular}
+        \caption{Metryki jakościowe w podziale na projekty 1}
+        \label{tab:per_project_1}
+    \end{table}
+
+    \begin{table}[H]
+        \centering
+        \scriptsize
+        \begin{tabular}{|l|r|r|r|r|r|r|r|r|r|r|r|}
+            \hline
+            & \multicolumn{3}{c||}{AOR (\%)} & \multicolumn{3}{c||}{HOMR (\%)} & \multicolumn{3}{c||}{RBDR (\%)} & \multicolumn{2}{c|}{LLM-NMR (\%)} \\ \hline
+            Projekt & PIT & Gemma & Qwen & PIT & Gemma & Qwen & PIT & Gemma & Qwen & Gemma & Qwen \\ \hline
+            Chart & 30.5 & 31.9 & 34.0 & 5.6 & 7.4 & 9.3 & 100.0 & 100.0 & 100.0 & 4.0 & 4.2 \\ \hline
+            Cli & 26.1 & 23.1 & 25.4 & 8.3 & 7.4 & 7.3 & 100.0 & 100.0 & 100.0 & 16.7 & 19.0 \\ \hline
+            Closure & 16.8 & 17.1 & 18.6 & 3.4 & 4.5 & 5.4 & 100.0 & 98.8 & 100.0 & 17.6 & 18.9 \\ \hline
+            Codec & 25.1 & 24.2 & 22.4 & 2.8 & 5.2 & 5.3 & 100.0 & 83.3 & 83.3 & 11.7 & 13.9 \\ \hline
+            Collections & 34.4 & 43.0 & 43.3 & 8.8 & 12.1 & 11.3 & 100.0 & 100.0 & 96.3 & 6.1 & 6.2 \\ \hline
+            Compress & 23.6 & 22.4 & 21.7 & 5.7 & 7.5 & 6.4 & 97.9 & 97.9 & 95.7 & 10.9 & 10.3 \\ \hline
+            Csv & 14.1 & 19.4 & 21.7 & 2.3 & 5.3 & 6.1 & 87.5 & 100.0 & 100.0 & 32.2 & 28.2 \\ \hline
+            Gson & 16.6 & 19.5 & 22.7 & 4.6 & 6.8 & 8.0 & 100.0 & 100.0 & 100.0 & 20.4 & 22.9 \\ \hline
+            JacksonCore & 23.4 & 27.2 & 26.3 & 3.4 & 4.5 & 3.9 & 100.0 & 100.0 & 100.0 & 37.0 & 39.6 \\ \hline
+            JacksonDatabind & 20.7 & 20.1 & 20.9 & 7.0 & 7.6 & 8.0 & 98.1 & 95.4 & 98.1 & 8.4 & 9.2 \\ \hline
+            JacksonXml & 34.2 & 25.7 & 37.8 & 12.5 & 12.8 & 18.0 & 100.0 & 100.0 & 100.0 & 17.0 & 10.8 \\ \hline
+            Jsoup & 20.6 & 24.1 & 23.7 & 1.5 & 7.1 & 7.2 & 98.9 & 100.0 & 100.0 & 10.2 & 12.6 \\ \hline
+            JxPath & 19.8 & 20.6 & 22.2 & 5.3 & 5.2 & 6.0 & 100.0 & 100.0 & 100.0 & 11.1 & 13.2 \\ \hline
+            Lang & 33.8 & 32.7 & 34.4 & 12.9 & 15.1 & 15.9 & 98.4 & 98.4 & 96.7 & 3.7 & 4.7 \\ \hline
+            Math & 26.4 & 26.8 & 28.9 & 5.3 & 6.9 & 7.8 & 98.1 & 97.1 & 99.0 & 10.5 & 11.8 \\ \hline
+            Mockito & 20.2 & 22.0 & 16.3 & 6.0 & 6.6 & 5.1 & 97.3 & 94.6 & 91.9 & 22.4 & 25.3 \\ \hline
+            Time & 19.6 & 25.0 & 24.5 & 4.8 & 8.8 & 7.9 & 96.2 & 100.0 & 100.0 & 11.3 & 12.6 \\ \hline
+        \end{tabular}
+        \caption{Metryki jakościowe w podziale na projekty 2}
+        \label{tab:per_project_2}
+    \end{table}
+
     \section{RQ1 - Różnorodność i nowość mutantów LLM}
 
     Czy możliwe jest generowanie nowych mutantów przy użyciu LLM, wykraczających poza klasyczny katalog operatorów mutacyjnych?
@@ -990,7 +1157,7 @@
     \end{table}
 
     Oznacza to, że 13,75\% użytecznych mutantów modelu Gemma4-26b-A4 i 15,23\% modelu Qwen3.6-35b-A3 nie ma odpowiedników wśród mutantów PIT (ani syntaktycznie, ani pod względem profilu testów).
-    Brak odpowiednika oznacza, że PIT nie wygenerował mutanta w danej linii kodu, a nie że jego operatorzy nie potrafią wygenerować takiego rodzaju transformacji.
+    Brak odpowiednika oznacza, że PIT nie wygenerował mutanta w danej linii kodu, a nie że jego operatory nie potrafią wygenerować takiego rodzaju transformacji.
     Spośród nowych mutantów część wykorzystuje znane operatory PIT, a tylko część reprezentuje transformacje, których PIT nie potrafi wygenerować.
 
     \begin{figure}[H]
@@ -1053,7 +1220,7 @@
             \hline
             Kategoria & Liczba & Udział & Dlaczego jest nowa \\ \hline
             \endhead
-            Podstawienie wartości null & 658 & 17,1\% & PIT nie zastępuje null w argumentu wywołania \\ \hline
+            Podstawienie wartości null & 658 & 17,1\% & PIT nie zastępuje null w argumencie wywołania \\ \hline
             Zmiana nazwy wywoływanej metody & 532 & 13,9\% & PIT nie zastępuje nazwy jednej metody inną \\ \hline
             Negacja wyrażenia logicznego & 474 & 12,4\% & PIT nie neguje zmiennych boolowskich ani wyników wywołań metod \\ \hline
             Podstawienie argumentu & 373 & 9,7\% & PIT nie modyfikuje wartości poszczególnych argumentów wywołania \\ \hline
@@ -1144,7 +1311,7 @@ boolean resolved = !resolveViaRegistry(t, enclosing);
     \textbf{4. Podstawienie argumentu} (9,7\%, n = 373)
 
     LLM zastępuje wartość jednego argumentu wewnątrz wywołania inną wartością, przy zachowaniu nazwy metody i pozostałych argumentów.
-    PIT zastępuje całe wywołanie jednym argumentów, ale nie może modyfikować poszczególnych argumentów.
+    PIT zastępuje całe wywołanie jednym argumentem, ale nie może modyfikować poszczególnych argumentów.
 
     \begin{lstlisting}
 // PRE  (CHART_2)
@@ -1504,7 +1671,7 @@ private Boolean serializable;
     \end{table}
 
     Kategorie \textit{Strong} i \textit{Strong+Extra} łącznie odwzorowują odsetek mutantów, które bezpośrednio symulują badany defekt.
-    To oznacza im wyższy ich łączny udział, tym lepiej symuluje rzeczywiste bugi w defektach.
+    Im wyższy ich łączny udział, tym lepiej symuluje rzeczywiste bugi w defektach.
     \textit{Not Subsumed} to mutanty, które poprawiają ogólną jakość testów, lecz nie są powiązane z badanym defektem.
     \textit{Not Detected} odpowiada mutantom ekwiwalentnym lub zbyt słabym.
 
@@ -1564,7 +1731,7 @@ private Boolean serializable;
     RBDR jest zbliżone dla wszystkich podejść, co oznacza, że niemal każdy badany defekt jest wykrywany przez przynajmniej jednego mutanta niezależnie od metody generacji.
     Wyższa wartość CR i HOMR dla LLM sugeruje, że LLM trenowane na rzeczywistym kodzie produkcyjnym zawierającym prawdziwe błędy potrafią wygenerować mutanty lepiej odzwierciedlające te defekty niż zdefiniowane reguły PIT.
     Dobrym przykładem jest kategoria \textit{Strong}, gdzie mutanty LLM (6,09-6,45\%) wyprzedzają PIT (4,00\%).
-    Podsumowując, mutanty LLM są bliższe do rzeczywistych błędów w kodzie.
+    Podsumowując, mutanty LLM są bliższe rzeczywistym błędom w kodzie.
 
     \section{RQ3 - Koszty i wydajność podejścia}
 
@@ -1617,6 +1784,7 @@ private Boolean serializable;
     \subsection{Odpowiedź na RQ3}
 
     Modele LLM generują mutanty wolniej i z niższą kompilowalnością niż PIT (CMR: 88\% i 100\%, AMGT: 27-52 razy wyższy).
+    Niższa kompilowalność też oznacza dodatkowy koszt, na przykład większe zużycie tokenów na generację mutantów, które ostatecznie nie przejdą kompilacji i nie będą użyte dla analizy testów.
     Jednak całkowity koszt na jeden użyteczny mutant (CPUM) jest tylko 34\% wyższy, ponieważ dominującą składową kosztu jest czas uruchamiania testów, a nie generacji mutantów.
     RQ3 jest częściowo potwierdzone, ponieważ LLM jest kosztowniejsze i wolniejsze w generacji, ale narzut całkowity jest umiarkowany, co z większym podobieństwem do rzeczywistych błędów może być korzystniejsze.
 
@@ -1635,9 +1803,6 @@ private Boolean serializable;
     W rezultacie LLM mogą być stosowane razem z PIT, żeby uzupełnić jakość testów w krytycznych modułach aplikacji.
     Rozwiązaniem jest model hybrydowy, w którym klasyczne narzędzia dają szybszą generację mutantów, a LLM poszerzają zbiór mutantów o bardziej realistyczne i semantycznie złożone przypadki.
     Takie połączenie pozwala na efektywne generowanie mutantów bez znaczącego wzrostu kosztów.
-
-    \newpage
-
 
     \begin{thebibliography}{11}
 
@@ -1658,7 +1823,7 @@ private Boolean serializable;
         URL: \url{https://lira.epac.to/DOCS-TECH/Engineering%20and%20Management/Software%20Testing/Introduction%20to%20Software%20Testing.pdf}
 
         \bibitem{ref5}
-        R.A. De Millo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer. \\
+        R.A. DeMillo, R.J. Lipton, and F.G. Sayward. Hints on test data selection: help for the practicing programmer. \\
         URL: \url{https://www.st.cs.uni-saarland.de/edu/recommendation-systems/papers/Hints_on_Test_Data_Selection-1.pdf}
 
         \bibitem{ref6}
